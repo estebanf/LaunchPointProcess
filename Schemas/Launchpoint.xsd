@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Launchpoint" xmlns:tns="http://www.example.org/Launchpoint" elementFormDefault="qualified">
+
+    <complexType name="CaseType">
+    	<sequence>
+    		<element name="CaseId" type="string"></element>
+    		<element name="ISOIndicator" type="string"></element>
+    		<element name="Score" type="string"></element>
+    		<element name="AccidentDate" type="date"></element>
+    		<element name="BenefitAmount" type="string"></element>
+    		<element name="FundingSource" type="string"></element>
+    		<element name="LOB" type="string"></element>
+    		<element name="State" type="string"></element>
+    		<element name="WorkComp" type="string"></element>
+    		<element name="CaseStatus" type="string"></element>
+    		<element name="CaseSource">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value="system"></enumeration>
+    					<enumeration value="user"></enumeration>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="BatchType">
+    	<sequence>
+    		<element name="BatchId" type="string"></element>
+            <element name="EnvironmentId" type="string"></element>
+            <element name="ClientId" type="string"></element>
+            <element name="TotalCaseCount" type="string"></element>
+    		<element name="Cases" type="tns:CaseType"
+    			maxOccurs="unbounded" minOccurs="1">
+    		</element>
+    	</sequence>
+    </complexType>
+
+</schema>

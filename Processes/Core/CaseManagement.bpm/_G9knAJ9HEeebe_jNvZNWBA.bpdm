@@ -1,0 +1,33 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:tns="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/Queue_Service" xmlns:Case_Manager="http://thisdiagram/Case_Manager" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Queue_Service">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_esGHQJ9GEeebe_jNvZNWBA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Queue_Service" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Case_Manager" bpdm:prefix="Case_Manager" bpdm:comment="contrib=&apos;partner-pool:///_esGHQJ9GEeebe_jNvZNWBA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_esGHQJ9GEeebe_jNvZNWBA" bpdm:label="Case Manager"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Queue Service" bpdm:ID="_G9knAJ9HEeebe_jNvZNWBA">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="case_ManagerAndQueue_ServicePlkVar" partnerLinkType="diag:Case_ManagerAndQueue_Service" initializePartnerRole="yes" partnerRole="Case_Manager_for_Queue_Service" bpdm:invokedService="Case_Manager:CanonicServiceForQueue_Service" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Case_Manager/Queue_Service" bpdm:invokedIsDefault="true" bpdm:clientTasks="_G9knAJ9HEeebe_jNvZNWBA:_S_Q3QJ9HEeebe_jNvZNWBA" bpdm:isManaged="true" bpdm:otherPoolId="_esGHQJ9GEeebe_jNvZNWBA"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="case_ManagerEventStartMessageRequest1" messageType="Case_Manager:EventStartMessageRequest" bpdm:id="_hp3qgJ9HEeebe_jNvZNWBA" bpdm:messageIds=" out:_hpU38J9HEeebe_jNvZNWBA">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="Case_Manager:EventStartMessageRequest" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask eventType="start: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Start_Event" bpdm:ID="_PgtFsJ9HEeebe_jNvZNWBA" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+            <bpdm:messagingtask operation="EventStartMessage" partnerLink="case_ManagerAndQueue_ServicePlkVar" portType="Case_Manager:ForQueue_Service" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Read from queue" bpdm:ID="_S_Q3QJ9HEeebe_jNvZNWBA" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="case_ManagerEventStartMessageRequest1" bpdm:msgVarScopeId="_G9knAJ9HEeebe_jNvZNWBA" bpdm:variableIsManaged="true" bpdm:messageType="Case_Manager:EventStartMessageRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_hpU38J9HEeebe_jNvZNWBA"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_VQEcQJ9HEeebe_jNvZNWBA" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>

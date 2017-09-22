@@ -1,0 +1,143 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:ns="http://caseidentificationrule.rules.launchpoint_local" xmlns:ax246="http://caseidentificationrule.rules.launchpoint_local/bre" xmlns:Case_ManagerimplicitPartner="http://thisdiagram/Case_ManagerimplicitPartner" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/Case_Manager" xmlns:GenerateISOData-ISO="http://thisproject/Processes/Core/GenerateISOData/ISO" xmlns:diag="http://thisdiagram" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ax245="http://caseidentificationrule.rules.launchpoint_local/xsd" xmlns:Queue_Service="http://thisdiagram/Queue_Service" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Case_Manager">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://caseidentificationrule.rules.launchpoint_local" bpdm:prefix="ns" bpdm:comment="contrib=&apos;project:///Rules/CaseIdentificationRule.bre/dtws_launchpoint_local_rules_caseidentificationrule/META-INF/dtws_launchpoint_local_rules_caseidentificationrule.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://caseidentificationrule.rules.launchpoint_local/bre" bpdm:prefix="ax246" bpdm:comment="contrib=&apos;project:///Rules/CaseIdentificationRule.bre/dtws_launchpoint_local_rules_caseidentificationrule/META-INF/dtws_launchpoint_local_rules_caseidentificationrule.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Case_ManagerimplicitPartner" bpdm:prefix="Case_ManagerimplicitPartner" bpdm:comment="contrib=&apos;partner-pool:///_esGHQJ9GEeebe_jNvZNWBAimplicitPartner"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Case_Manager" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/GenerateISOData/ISO" bpdm:prefix="GenerateISOData-ISO" bpdm:comment="contrib=&apos;project:///Processes/Core/GenerateISOData-ISO.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_G9knAJ9HEeebe_jNvZNWBA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://caseidentificationrule.rules.launchpoint_local/xsd" bpdm:prefix="ax245" bpdm:comment="contrib=&apos;project:///Rules/CaseIdentificationRule.bre/dtws_launchpoint_local_rules_caseidentificationrule/META-INF/dtws_launchpoint_local_rules_caseidentificationrule.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Queue_Service" bpdm:prefix="Queue_Service" bpdm:comment="contrib=&apos;partner-pool:///_G9knAJ9HEeebe_jNvZNWBA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <wsdl:portType name="ForQueue_Service">
+                <wsdl:operation name="EventStartMessage" bpdm:source="partner-pool:///_G9knAJ9HEeebe_jNvZNWBA">
+                    <wsdl:input message="this:EventStartMessageRequest" name="EventStartMessage"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForQueue_Service" type="this:ForQueue_Service" bpdm:isSynchronized="true"/>
+            <xs:element name="EventStartMessageRequest" type="Launchpoint:BatchType" bpdm:source="partner-pool:///_G9knAJ9HEeebe_jNvZNWBA"/>
+            <wsdl:message name="EventStartMessageRequest" bpdm:source="partner-pool:///_G9knAJ9HEeebe_jNvZNWBA">
+                <wsdl:part name="body" element="this:EventStartMessageRequest"/>
+            </wsdl:message>
+        </bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_G9knAJ9HEeebe_jNvZNWBA" bpdm:label="Queue Service"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_esGHQJ9GEeebe_jNvZNWBAimplicitPartner" bpdm:label="Case ManagerimplicitPartner"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/GenerateISOData-ISO.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpoint_local_rules_caseidentificationrule/META-INF/dtws_launchpoint_local_rules_caseidentificationrule.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Case Manager" bpdm:ID="_esGHQJ9GEeebe_jNvZNWBA">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="case_ManagerAndQueue_ServicePlkVar" partnerLinkType="diag:Case_ManagerAndQueue_Service" myRole="Case_Manager_for_Queue_Service" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForQueue_Service" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Case_Manager/Queue_Service" bpdm:providedIsDefault="true" bpdm:clientTasks="_esGHQJ9GEeebe_jNvZNWBA:_aLBTUJ9HEeebe_jNvZNWBA" bpdm:isManaged="true" bpdm:otherPoolId="_G9knAJ9HEeebe_jNvZNWBA"/>
+            <bpel:partnerLink name="case_ManagerimplicitPartnerAndCase_ManagerForPortDtws_launchpoint_local_rules_caseidentificationruleHttpSoap11EndpointPlkVar" partnerLinkType="diag:Case_ManagerimplicitPartnerAndCase_ManagerForPortDtws_launchpoint_local_rules_caseidentificationruleHttpSoap11EndpointPlk" initializePartnerRole="yes" partnerRole="Case_ManagerimplicitPartner_for_Case_Manager" bpdm:invokedService="ns:dtws_launchpoint_local_rules_caseidentificationrule" bpdm:invokedPort="dtws_launchpoint_local_rules_caseidentificationruleHttpSoap11Endpoint" bpdm:invokedSOAPAddress="http://localhost:8080/everteam/ode/processes/dtws_launchpoint_local_rules_caseidentificationrule" bpdm:invokedIsDefault="true" bpdm:clientTasks="_rQxB8J-4Eeee0o7jDg0-OQ:_MJSKkJ_OEeee0o7jDg0-OQ" bpdm:isManaged="true" bpdm:otherPoolId="_esGHQJ9GEeebe_jNvZNWBAimplicitPartner"/>
+            <bpel:partnerLink name="case_ManagerimplicitPartnerAndCase_ManagerForCanonicPortPlkVar" partnerLinkType="diag:Case_ManagerimplicitPartnerAndCase_ManagerForCanonicPortPlk" initializePartnerRole="yes" partnerRole="Case_ManagerimplicitPartner_for_Case_Manager" bpdm:invokedService="GenerateISOData-ISO:CanonicServiceForCase_Manager" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_rQxB8J-4Eeee0o7jDg0-OQ:_ECleUJ_QEeee0o7jDg0-OQ" bpdm:isManaged="true" bpdm:otherPoolId="_esGHQJ9GEeebe_jNvZNWBAimplicitPartner"/>
+        </bpel:partnerLinks>
+        <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
+            <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_es-4EJ9GEeebe_jNvZNWBA" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_es-4EJ9GEeebe_jNvZNWBA"/>
+            <bpel:variable name="case_ManagerEventStartMessageRequest1" messageType="this:EventStartMessageRequest" bpdm:id="_hqEe0J9HEeebe_jNvZNWBA" bpdm:messageIds="inc:_hpU38J9HEeebe_jNvZNWBA"/>
+            <bpel:variable name="BatchType" type="Launchpoint:BatchType" bpdm:id="_K53WoJ-5Eeee0o7jDg0-OQ">
+                <bpel:from>
+                    <bpel:literal bpdm:linkedType="Launchpoint:BatchType"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask eventType="start: message" operation="EventStartMessage" partnerLink="case_ManagerAndQueue_ServicePlkVar" portType="this:ForQueue_Service" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_Start_Event" bpdm:ID="_aLBTUJ9HEeebe_jNvZNWBA" bpdm:isHeaderAuthorizationAware="yes">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$case_ManagerEventStartMessageRequest1.body</bpel:from>
+                        <bpel:to>$BatchType</bpel:to><mapper:mapperLink><mapper:vertice id="199626669" targetPath="$BatchType" targetedBy="1605786357-arg0"></mapper:vertice><mapper:vertice id="1605786357" sourcePath="$case_ManagerEventStartMessageRequest1.body"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="case_ManagerEventStartMessageRequest1" bpdm:msgVarScopeId="_esGHQJ9GEeebe_jNvZNWBA" bpdm:variableIsManaged="true" bpdm:messageType="this:EventStartMessageRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_hpU38J9HEeebe_jNvZNWBA"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Read case batch" bpdm:ID="_nBTX4J-4Eeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$case_ManagerEventStartMessageRequest1.body</bpel:from>
+                        <bpel:to>$BatchType</bpel:to><mapper:mapperLink><mapper:vertice id="1564363834" targetPath="$BatchType" targetedBy="1882166175-arg0"></mapper:vertice><mapper:vertice id="1882166175" sourcePath="$case_ManagerEventStartMessageRequest1.body"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_rQxB8J-4Eeee0o7jDg0-OQ">
+                <bpdm:linkset bpdm:type="loop" bpdm:loopType="forEach" bpdm:backEdgeParticipantType="none" parallel="yes" counterName="caseIdxCounter" bpdm:isBackEdgeContributor="no">
+                    <bpel:condition bpdm:loopType="forEachStartCounter">1<mapper:mapperLink><mapper:vertice id="845801360" targetPath="$Start counter" targetedBy="369370080-arg0"></mapper:vertice><mapper:vertice id="369370080" dimension="79x24" location="567,17"><mapper:value>1</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
+                    <bpel:condition bpdm:loopType="forEachFinalCounter">count($BatchType/Launchpoint:Cases)
+<mapper:mapperLink>
+  <mapper:vertice id="1852515171" targetPath="$Final counter" targetedBy="262071492-arg0"></mapper:vertice>
+  <mapper:vertice id="262071492" dimension="79x24" location="276,84">
+    <mapper:value>count()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1606585829" sourcePath="$BatchType/Launchpoint:Cases" targetedBy="262071492-arg1"></mapper:vertice>
+</mapper:mapperLink></bpel:condition>
+                </bpdm:linkset>
+                <bpel:variables>
+                    <bpel:variable name="CaseType" type="Launchpoint:CaseType" bpdm:id="_BO7iYJ-5Eeee0o7jDg0-OQ">
+                        <bpel:from>
+                            <bpel:literal bpdm:linkedType="Launchpoint:CaseType"></bpel:literal>
+                        </bpel:from>
+                    </bpel:variable>
+                    <bpel:variable name="caseidentificationrule.rules.launchpoint_localInvokeDecisionTableResponse1Msg" messageType="ns:invokeDecisionTableResponse" binding="ns:dtws_launchpoint_local_rules_caseidentificationruleSoap11Binding" operation="invokeDecisionTable" opMsgType="1" bpdm:messageIds="inc:_MJSKkJ_OEeee0o7jDg0-OQIncoming"/>
+                    <bpel:variable name="caseidentificationrule.rules.launchpoint_localInvokeDecisionTableRequest1Msg" messageType="ns:invokeDecisionTableRequest" binding="ns:dtws_launchpoint_local_rules_caseidentificationruleSoap11Binding" operation="invokeDecisionTable" opMsgType="0" bpdm:messageIds=" out:_MJSKkJ_OEeee0o7jDg0-OQOutgoing">
+                        <bpel:from bpdm:toPart="parameters">
+                            <bpel:literal bpdm:linkedMessageType="ns:invokeDecisionTableRequest" bpdm:linkedPart="parameters" bpdm:binding="ns:dtws_launchpoint_local_rules_caseidentificationruleSoap11Binding" bpdm:opMsgType="0" bpdm:operation="invokeDecisionTable"></bpel:literal>
+                        </bpel:from>
+                    </bpel:variable>
+                    <bpel:variable name="iSOReceive_ISOResponse1Msg" messageType="GenerateISOData-ISO:Receive_ISOResponse" binding="GenerateISOData-ISO:ISoAndCase_ManagerServiceBinding" operation="Receive_ISO" opMsgType="1" bpdm:messageIds="inc:_ECleUJ_QEeee0o7jDg0-OQIncoming"/>
+                    <bpel:variable name="iSOReceive_ISO1Msg" messageType="GenerateISOData-ISO:Receive_ISORequest" binding="GenerateISOData-ISO:ISoAndCase_ManagerServiceBinding" operation="Receive_ISO" opMsgType="0" bpdm:messageIds=" out:_ECleUJ_QEeee0o7jDg0-OQOutgoing">
+                        <bpel:from bpdm:toPart="body">
+                            <bpel:literal bpdm:linkedMessageType="GenerateISOData-ISO:Receive_ISORequest" bpdm:linkedPart="body" bpdm:binding="GenerateISOData-ISO:ISoAndCase_ManagerServiceBinding" bpdm:opMsgType="0" bpdm:operation="Receive_ISO"></bpel:literal>
+                        </bpel:from>
+                    </bpel:variable>
+                </bpel:variables>
+                <bpel:flow>
+                    <bpel:sequence>
+                        <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Extract case" bpdm:ID="_rQ8BEJ-4Eeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="no">
+                            <bpdm:linkset bpdm:type="assignments">
+                                <bpel:copy>
+                                    <bpel:from>$BatchType/Launchpoint:Cases[$caseIdxCounter]</bpel:from>
+                                    <bpel:to>$CaseType</bpel:to><mapper:mapperLink><mapper:vertice id="1071236571" targetPath="$CaseType" targetedBy="2058775892-arg2"></mapper:vertice><mapper:vertice id="2058775892" dimension="79x24" location="319,64"><mapper:value>[]</mapper:value></mapper:vertice><mapper:vertice id="689651304" sourcePath="$BatchType/Launchpoint:Cases" targetedBy="2058775892-arg0"></mapper:vertice><mapper:vertice id="1712765408" sourcePath="$caseIdxCounter" targetedBy="2058775892-arg1"></mapper:vertice></mapper:mapperLink>
+                                </bpel:copy>
+                            </bpdm:linkset>
+                        </bpdm:messagingtask>
+                        <bpdm:messagingtask operation="invokeDecisionTable" partnerLink="case_ManagerimplicitPartnerAndCase_ManagerForPortDtws_launchpoint_local_rules_caseidentificationruleHttpSoap11EndpointPlkVar" portType="ns:dtws_launchpoint_local_rules_caseidentificationrulePortType" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="CaseIdentificationRule" bpdm:ID="_MJSKkJ_OEeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="no">
+                            <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="caseidentificationrule.rules.launchpoint_localInvokeDecisionTableRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:invokeDecisionTableRequest" bpdm:binding="ns:dtws_launchpoint_local_rules_caseidentificationruleSoap11Binding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_MJSKkJ_OEeee0o7jDg0-OQOutgoing"></bpdm:linkset>
+                            <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="caseidentificationrule.rules.launchpoint_localInvokeDecisionTableResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:invokeDecisionTableResponse" bpdm:binding="ns:dtws_launchpoint_local_rules_caseidentificationruleSoap11Binding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_MJSKkJ_OEeee0o7jDg0-OQIncoming"></bpdm:linkset>
+                            <bpdm:thrownFault msgFaultNcName="Exception" msgFaultTypeQname="ns:Exception"/>
+                        </bpdm:messagingtask>
+                        <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_asWQkJ-8Eeee0o7jDg0-OQ" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
+                            <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_dqbLQJ-8Eeee0o7jDg0-OQ" bpdm:targetDisplayName="default"></bpdm:linkset>
+                            <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_Juqt0J_EEeee0o7jDg0-OQ" bpdm:targetDisplayName="[GatewayDataBasedExclusive - Wait 60 days before sending to ISO]"></bpdm:linkset>
+                            <bpel:sequence>
+                                <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="IQ" bpdm:ID="_dqO-AJ-8Eeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                            </bpel:sequence>
+                            <bpel:sequence>
+                                <bpdm:messagingtask eventType="intermediate: timer" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Wait 60 days before sending to ISO" bpdm:ID="_Jud5gJ_EEeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="no">
+                                    <bpdm:linkset bpdm:type="timer">
+                                        <bpel:until>xs:dayTimeDuration("P60D") + $CaseType/Launchpoint:AccidentDate<mapper:mapperLink><mapper:vertice id="2110875237" targetPath="$date" targetedBy="1596017961-arg2"></mapper:vertice><mapper:vertice id="1596017961" dimension="79x24" location="384,60"><mapper:value>+</mapper:value></mapper:vertice><mapper:vertice id="153295843" dimension="121x24" location="216,24" targetedBy="1596017961-arg0"><mapper:value>xs:dayTimeDuration()</mapper:value></mapper:vertice><mapper:vertice id="1429403389" dimension="79x24" location="72,24" targetedBy="153295843-arg0"><mapper:value>"P60D"</mapper:value></mapper:vertice><mapper:vertice id="637201165" sourcePath="$CaseType/Launchpoint:AccidentDate" targetedBy="1596017961-arg1"></mapper:vertice></mapper:mapperLink></bpel:until>
+                                    </bpdm:linkset>
+                                </bpdm:messagingtask>
+                                <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Generate ISO Data" bpdm:ID="_lKBPsJ_EEeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send to ISO" bpdm:ID="_fEQgcJ_GEeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_n7n0oJ_EEeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                            </bpel:sequence>
+                        </bpdm:gateway>
+                    </bpel:sequence>
+                    <bpel:sequence>
+                        <bpdm:messagingtask operation="Receive_ISO" partnerLink="case_ManagerimplicitPartnerAndCase_ManagerForCanonicPortPlkVar" portType="GenerateISOData-ISO:ForCase_Manager" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send to ISO" bpdm:ID="_ECleUJ_QEeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="no">
+                            <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iSOReceive_ISO1Msg" bpdm:variableIsManaged="true" bpdm:messageType="GenerateISOData-ISO:Receive_ISORequest" bpdm:binding="GenerateISOData-ISO:ISoAndCase_ManagerServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_ECleUJ_QEeee0o7jDg0-OQOutgoing"></bpdm:linkset>
+                            <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="iSOReceive_ISOResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="GenerateISOData-ISO:Receive_ISOResponse" bpdm:binding="GenerateISOData-ISO:ISoAndCase_ManagerServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_ECleUJ_QEeee0o7jDg0-OQIncoming"></bpdm:linkset>
+                        </bpdm:messagingtask>
+                    </bpel:sequence>
+                </bpel:flow>
+            </bpel:scope>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>
