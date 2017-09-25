@@ -12,18 +12,18 @@
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Case_Manager" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
             <wsdl:portType name="ForQueue_Service">
-                <wsdl:operation name="EventStartMessage" bpdm:source="partner-pool:///_G9knAJ9HEeebe_jNvZNWBA">
-                    <wsdl:input message="this:EventStartMessageRequest" name="EventStartMessage"/>
+                <wsdl:operation name="Read_case_batch" bpdm:source="partner-pool:///_G9knAJ9HEeebe_jNvZNWBA">
+                    <wsdl:input message="this:Read_case_batchRequest" name="Read_case_batch"/>
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForQueue_Service" type="this:ForQueue_Service" bpdm:isSynchronized="true"/>
-            <xs:element name="EventStartMessageRequest" type="Launchpoint:BatchType" bpdm:source="partner-pool:///_G9knAJ9HEeebe_jNvZNWBA"/>
-            <wsdl:message name="EventStartMessageRequest" bpdm:source="partner-pool:///_G9knAJ9HEeebe_jNvZNWBA">
-                <wsdl:part name="body" element="this:EventStartMessageRequest"/>
+            <xs:element name="Read_case_batchRequest" type="Launchpoint:BatchType" bpdm:source="partner-pool:///_G9knAJ9HEeebe_jNvZNWBA"/>
+            <wsdl:message name="Read_case_batchRequest" bpdm:source="partner-pool:///_G9knAJ9HEeebe_jNvZNWBA">
+                <wsdl:part name="body" element="this:Read_case_batchRequest"/>
             </wsdl:message>
         </bpdm:namespaceContributor>
-        <bpdm:namespaceContributor bpdm:url="partner-pool:///_G9knAJ9HEeebe_jNvZNWBA" bpdm:label="Queue Service"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_esGHQJ9GEeebe_jNvZNWBAimplicitPartner" bpdm:label="Case ManagerimplicitPartner"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_G9knAJ9HEeebe_jNvZNWBA" bpdm:label="Queue Service"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/GenerateISOData-ISO.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -31,35 +31,31 @@
     </bpdm:dependencies>
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Case Manager" bpdm:ID="_esGHQJ9GEeebe_jNvZNWBA">
         <bpel:partnerLinks>
-            <bpel:partnerLink name="case_ManagerAndQueue_ServicePlkVar" partnerLinkType="diag:Case_ManagerAndQueue_Service" myRole="Case_Manager_for_Queue_Service" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForQueue_Service" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Case_Manager/Queue_Service" bpdm:providedIsDefault="true" bpdm:clientTasks="_esGHQJ9GEeebe_jNvZNWBA:_aLBTUJ9HEeebe_jNvZNWBA" bpdm:isManaged="true" bpdm:otherPoolId="_G9knAJ9HEeebe_jNvZNWBA"/>
             <bpel:partnerLink name="case_ManagerimplicitPartnerAndCase_ManagerForCanonicPortPlkVar" partnerLinkType="diag:Case_ManagerimplicitPartnerAndCase_ManagerForCanonicPortPlk" initializePartnerRole="yes" partnerRole="Case_ManagerimplicitPartner_for_Case_Manager" bpdm:invokedService="GenerateISOData-ISO:CanonicServiceForCase_Manager" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_rQxB8J-4Eeee0o7jDg0-OQ:_ECleUJ_QEeee0o7jDg0-OQ" bpdm:isManaged="true" bpdm:otherPoolId="_esGHQJ9GEeebe_jNvZNWBAimplicitPartner"/>
+            <bpel:partnerLink name="case_ManagerAndQueue_ServicePlkVar" partnerLinkType="diag:Case_ManagerAndQueue_Service" myRole="Case_Manager_for_Queue_Service" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForQueue_Service" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Case_Manager/Queue_Service" bpdm:providedIsDefault="true" bpdm:clientTasks="_esGHQJ9GEeebe_jNvZNWBA:_nBTX4J-4Eeee0o7jDg0-OQ" bpdm:isManaged="true" bpdm:otherPoolId="_G9knAJ9HEeebe_jNvZNWBA"/>
         </bpel:partnerLinks>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
             <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_es-4EJ9GEeebe_jNvZNWBA" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_es-4EJ9GEeebe_jNvZNWBA"/>
-            <bpel:variable name="case_ManagerEventStartMessageRequest1" messageType="this:EventStartMessageRequest" bpdm:id="_hqEe0J9HEeebe_jNvZNWBA" bpdm:messageIds="inc:_hpU38J9HEeebe_jNvZNWBA"/>
             <bpel:variable name="BatchType" type="Launchpoint:BatchType" bpdm:id="_K53WoJ-5Eeee0o7jDg0-OQ">
                 <bpel:from>
                     <bpel:literal bpdm:linkedType="Launchpoint:BatchType"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
+            <bpel:variable name="case_ManagerRead_case_batchRequest1Msg" messageType="this:Read_case_batchRequest" bpdm:id="_9WDDwKISEeeW6fy7N0wOvg" bpdm:messageIds="inc:_9VylEKISEeeW6fy7N0wOvg"/>
         </bpel:variables>
         <bpel:sequence>
-            <bpdm:messagingtask eventType="start: message" operation="EventStartMessage" partnerLink="case_ManagerAndQueue_ServicePlkVar" portType="this:ForQueue_Service" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_Start_Event" bpdm:ID="_aLBTUJ9HEeebe_jNvZNWBA" bpdm:isHeaderAuthorizationAware="yes">
+            <bpdm:messagingtask operation="Read_case_batch" partnerLink="case_ManagerAndQueue_ServicePlkVar" portType="this:ForQueue_Service" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Read case batch" bpdm:ID="_nBTX4J-4Eeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="yes">
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
-                        <bpel:from>$case_ManagerEventStartMessageRequest1.body</bpel:from>
-                        <bpel:to>$BatchType</bpel:to><mapper:mapperLink><mapper:vertice id="199626669" targetPath="$BatchType" targetedBy="1605786357-arg0"></mapper:vertice><mapper:vertice id="1605786357" sourcePath="$case_ManagerEventStartMessageRequest1.body"></mapper:vertice></mapper:mapperLink>
+                        <bpel:from>$case_ManagerRead_case_batchRequest1Msg.body</bpel:from>
+                        <bpel:to>$BatchType</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1357975510" targetPath="$BatchType" targetedBy="378515565-arg0"></mapper:vertice>
+  <mapper:vertice id="378515565" sourcePath="$case_ManagerRead_case_batchRequest1Msg.body"></mapper:vertice>
+</mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
-                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="case_ManagerEventStartMessageRequest1" bpdm:msgVarScopeId="_esGHQJ9GEeebe_jNvZNWBA" bpdm:variableIsManaged="true" bpdm:messageType="this:EventStartMessageRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_hpU38J9HEeebe_jNvZNWBA"></bpdm:linkset>
-            </bpdm:messagingtask>
-            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Read case batch" bpdm:ID="_nBTX4J-4Eeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="no">
-                <bpdm:linkset bpdm:type="assignments">
-                    <bpel:copy>
-                        <bpel:from>$case_ManagerEventStartMessageRequest1.body</bpel:from>
-                        <bpel:to>$BatchType</bpel:to><mapper:mapperLink><mapper:vertice id="1564363834" targetPath="$BatchType" targetedBy="1882166175-arg0"></mapper:vertice><mapper:vertice id="1882166175" sourcePath="$case_ManagerEventStartMessageRequest1.body"></mapper:vertice></mapper:mapperLink>
-                    </bpel:copy>
-                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="case_ManagerRead_case_batchRequest1Msg" bpdm:msgVarScopeId="_esGHQJ9GEeebe_jNvZNWBA" bpdm:variableIsManaged="true" bpdm:messageType="this:Read_case_batchRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_9VylEKISEeeW6fy7N0wOvg"></bpdm:linkset>
             </bpdm:messagingtask>
             <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_rQxB8J-4Eeee0o7jDg0-OQ">
                 <bpdm:linkset bpdm:type="loop" bpdm:loopType="forEach" bpdm:backEdgeParticipantType="none" parallel="yes" counterName="caseIdxCounter" bpdm:isBackEdgeContributor="no">
