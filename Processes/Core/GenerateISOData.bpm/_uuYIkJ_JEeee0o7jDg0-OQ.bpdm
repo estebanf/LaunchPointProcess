@@ -36,17 +36,41 @@
         </bpel:partnerLinks>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
             <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_k7S2Np_PEeee0o7jDg0-OQ" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_k7S2Np_PEeee0o7jDg0-OQ"/>
-            <bpel:variable name="iSOReceive_ISORequest1Msg" messageType="this:Receive_ISORequest" bpdm:id="_u9UUwJ_PEeee0o7jDg0-OQ" bpdm:messageIds="inc:_u9NnEJ_PEeee0o7jDg0-OQ"/>
+            <bpel:variable name="iSOEventStartMessageRequest1" messageType="this:Receive_ISORequest" bpdm:id="_u9UUwJ_PEeee0o7jDg0-OQ" bpdm:messageIds="inc:_u9NnEJ_PEeee0o7jDg0-OQ"/>
             <bpel:variable name="iSOReceive_ISOResponse1Msg" messageType="this:Receive_ISOResponse" bpdm:id="_v_CQcJ_PEeee0o7jDg0-OQ" bpdm:messageIds=" out:_v-9X8J_PEeee0o7jDg0-OQ">
                 <bpel:from bpdm:toPart="body">
                     <bpel:literal bpdm:linkedMessageType="this:Receive_ISOResponse" bpdm:linkedPart="body"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
+            <bpel:variable name="delayDuration" type="xs:duration" bpdm:id="_RHmtEKRgEee5Z9cgyrUsUw">
+                <bpel:from>
+                    <bpel:literal bpdm:linkedType="xs:duration" bpdm:linkedFile="duration-_uuYIkJ_JEeee0o7jDg0-OQ-0-literal.xml"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
         </bpel:variables>
         <bpel:sequence>
             <bpdm:messagingtask eventType="start: message" operation="Receive_ISO" partnerLink="iSoAndCase_ManagerPlkVar" portType="this:ForCase_Manager" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive ISO" bpdm:ID="_1rwKYJ_JEeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="yes">
-                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="iSOReceive_ISORequest1Msg" bpdm:msgVarScopeId="_uuYIkJ_JEeee0o7jDg0-OQ" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_ISORequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_u9NnEJ_PEeee0o7jDg0-OQ"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="iSOEventStartMessageRequest1" bpdm:msgVarScopeId="_uuYIkJ_JEeee0o7jDg0-OQ" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_ISORequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_u9NnEJ_PEeee0o7jDg0-OQ"></bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="iSOReceive_ISOResponse1Msg" bpdm:msgVarScopeId="_uuYIkJ_JEeee0o7jDg0-OQ" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_ISOResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_v-9X8J_PEeee0o7jDg0-OQ"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask eventType="intermediate: timer" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Timer_Intermediate_Event" bpdm:ID="_vtXH8KO8EeebaeMgAfjGcw" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="timer">
+                    <bpel:until>bpel:doXslTransform("../../XSLT/calculateISOSendDate.xsl", $iSOEventStartMessageRequest1.body, "delayDuration", $delayDuration)
+<mapper:mapperLink>
+  <mapper:vertice id="639832817" targetPath="$date" targetedBy="1171127106-arg1"></mapper:vertice>
+  <mapper:vertice id="1171127106" dimension="126x24" location="276,84">
+    <mapper:value>bpel:doXslTransform()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="339842662" dimension="202x24" location="144,24" targetedBy="1171127106-arg0">
+    <mapper:value>"../../XSLT/calculateISOSendDate.xsl"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="70893056" sourcePath="$iSOEventStartMessageRequest1.body" targetedBy="1171127106-arg2"></mapper:vertice>
+  <mapper:vertice id="822669475" dimension="92x24" location="132,132" targetedBy="1171127106-arg3">
+    <mapper:value>"delayDuration"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1060171806" sourcePath="$delayDuration" targetedBy="1171127106-arg4"></mapper:vertice>
+</mapper:mapperLink></bpel:until>
+                </bpdm:linkset>
             </bpdm:messagingtask>
             <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Generate ISO Data" bpdm:ID="_uuYvoJ_JEeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
             <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_45eDkJ_JEeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>

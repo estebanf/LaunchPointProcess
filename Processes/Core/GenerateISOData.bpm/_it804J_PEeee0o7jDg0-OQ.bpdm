@@ -16,7 +16,7 @@
             <bpel:partnerLink name="iSoAndCase_ManagerPlkVar" partnerLinkType="diag:ISoAndCase_Manager" initializePartnerRole="yes" partnerRole="ISO_for_Case_Manager" bpdm:invokedService="ISO:CanonicServiceForCase_Manager" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/ISO/Case_Manager" bpdm:invokedIsDefault="true" bpdm:clientTasks="_it804J_PEeee0o7jDg0-OQ:_rrtaEJ_PEeee0o7jDg0-OQ" bpdm:isManaged="true" bpdm:otherPoolId="_uuYIkJ_JEeee0o7jDg0-OQ"/>
         </bpel:partnerLinks>
         <bpel:variables>
-            <bpel:variable name="iSOReceive_ISORequest1Msg" messageType="ISO:Receive_ISORequest" bpdm:id="_u9QDUZ_PEeee0o7jDg0-OQ" bpdm:messageIds=" out:_u9NnEJ_PEeee0o7jDg0-OQ">
+            <bpel:variable name="iSOEventStartMessageRequest1" messageType="ISO:Receive_ISORequest" bpdm:id="_u9QDUZ_PEeee0o7jDg0-OQ" bpdm:messageIds=" out:_u9NnEJ_PEeee0o7jDg0-OQ">
                 <bpel:from bpdm:toPart="body">
                     <bpel:literal bpdm:linkedMessageType="ISO:Receive_ISORequest" bpdm:linkedPart="body"></bpel:literal>
                 </bpel:from>
@@ -25,7 +25,7 @@
         </bpel:variables>
         <bpel:sequence>
             <bpdm:messagingtask operation="Receive_ISO" partnerLink="iSoAndCase_ManagerPlkVar" portType="ISO:ForCase_Manager" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send to ISO" bpdm:ID="_rrtaEJ_PEeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="no">
-                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iSOReceive_ISORequest1Msg" bpdm:msgVarScopeId="_it804J_PEeee0o7jDg0-OQ" bpdm:variableIsManaged="true" bpdm:messageType="ISO:Receive_ISORequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_u9NnEJ_PEeee0o7jDg0-OQ"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iSOEventStartMessageRequest1" bpdm:msgVarScopeId="_it804J_PEeee0o7jDg0-OQ" bpdm:variableIsManaged="true" bpdm:messageType="ISO:Receive_ISORequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_u9NnEJ_PEeee0o7jDg0-OQ"></bpdm:linkset>
                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="iSOReceive_ISOResponse1Msg" bpdm:msgVarScopeId="_it804J_PEeee0o7jDg0-OQ" bpdm:variableIsManaged="true" bpdm:messageType="ISO:Receive_ISOResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_v-9X8J_PEeee0o7jDg0-OQ"></bpdm:linkset>
             </bpdm:messagingtask>
         </bpel:sequence>
