@@ -7,7 +7,23 @@
  Complete doXslTransform: bpel:doXslTransform("../../XSLT/calculateISOSendDate.xsl", $iSOEventStartMessageRequest1.body, "delayDuration", $delayDuration)
  Input document as defined in the mapper: $iSOEventStartMessageRequest1.body-->
   <test:input>
-    <this:Receive_ISORequest>
+  
+  
+<Receive_ISORequest xmlns="http://bpms.everteam.com/Processes/Core/ProcessISOCase/Process_ISO_Case">
+<CaseId xmlns="http://www.example.org/Launchpoint">456</CaseId>
+<ISOIndicator xmlns="http://www.example.org/Launchpoint">1</ISOIndicator>
+<Score xmlns="http://www.example.org/Launchpoint">67</Score>
+<AccidentDate xmlns="http://www.example.org/Launchpoint">2017-09-28T09:45:49-06:00</AccidentDate>
+<BenefitAmount xmlns="http://www.example.org/Launchpoint">5000</BenefitAmount>
+<FundingSource xmlns="http://www.example.org/Launchpoint">Medicaid</FundingSource>
+<LOB xmlns="http://www.example.org/Launchpoint">Health</LOB>
+<State xmlns="http://www.example.org/Launchpoint">CO</State>
+<WorkComp xmlns="http://www.example.org/Launchpoint">false</WorkComp>
+<CaseStatus xmlns="http://www.example.org/Launchpoint">Investigate</CaseStatus>
+<CaseSource xmlns="http://www.example.org/Launchpoint">Generated</CaseSource>
+</Receive_ISORequest>
+  
+<!--     <this:Receive_ISORequest>
       <Launchpoint:CaseId>string</Launchpoint:CaseId>
       <Launchpoint:ISOIndicator>string</Launchpoint:ISOIndicator>
       <Launchpoint:Score>string</Launchpoint:Score>
@@ -19,7 +35,7 @@
       <Launchpoint:WorkComp>string</Launchpoint:WorkComp>
       <Launchpoint:CaseStatus>string</Launchpoint:CaseStatus>
       <Launchpoint:CaseSource>string</Launchpoint:CaseSource>
-    </this:Receive_ISORequest>
+    </this:Receive_ISORequest> -->
   </test:input>
   <test:param name="delayDuration">PT2M</test:param>
 </test:testxsl>
