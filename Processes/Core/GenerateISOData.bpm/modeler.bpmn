@@ -42,7 +42,13 @@
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_UuPckKRgEee5Z9cgyrUsUw" key="douri" value="builtin:///xsd?xsdtype={http://www.w3.org/2001/XMLSchema}duration"/>
       </eAnnotations>
     </artifacts>
-    <vertices xmi:type="bpmn:Activity" xmi:id="_uuYvoZ_JEeee0o7jDg0-OQ" iD="_uuYvoJ_JEeee0o7jDg0-OQ" outgoingEdges="_45lYUZ_JEeee0o7jDg0-OQ" incomingEdges="_zQGO4aO8EeebaeMgAfjGcw" name="Generate ISO Data" activityType="Task"/>
+    <artifacts xmi:type="bpmn:DataObject" xmi:id="_0PSosaSFEee5Z9cgyrUsUw" iD="_0PSosKSFEee5Z9cgyrUsUw" name="skipDuplicateCheck">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_0PSosqSFEee5Z9cgyrUsUw" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0PSos6SFEee5Z9cgyrUsUw" key="isBpelDeclaration" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0PSotKSFEee5Z9cgyrUsUw" key="defaultDeclarationName" value="variable"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_6j_g8KSFEee5Z9cgyrUsUw" key="douri" value="builtin:///xsd?xsdtype={http://www.w3.org/2001/XMLSchema}boolean"/>
+      </eAnnotations>
+    </artifacts>
     <vertices xmi:type="bpmn:Activity" xmi:id="_1rwxcJ_JEeee0o7jDg0-OQ" iD="_1rwKYJ_JEeee0o7jDg0-OQ" associations="_u9Vi4J_PEeee0o7jDg0-OQ _v_IXEJ_PEeee0o7jDg0-OQ" outgoingEdges="_yDWu8aO8EeebaeMgAfjGcw" name="Receive ISO" activityType="EventStartMessage" looping="false">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_u9PcQZ_PEeee0o7jDg0-OQ" source="variableSuffix">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_u9QDUJ_PEeee0o7jDg0-OQ" key="_1rwKYJ_JEeee0o7jDg0-OQ" value="1"/>
@@ -50,11 +56,44 @@
       <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_u9NnEZ_PEeee0o7jDg0-OQ"/>
       <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_v-9_AJ_PEeee0o7jDg0-OQ"/>
     </vertices>
-    <vertices xmi:type="bpmn:Activity" xmi:id="_45eDkZ_JEeee0o7jDg0-OQ" iD="_45eDkJ_JEeee0o7jDg0-OQ" incomingEdges="_45lYUZ_JEeee0o7jDg0-OQ" activityType="EventEndEmpty"/>
-    <vertices xmi:type="bpmn:Activity" xmi:id="_vtXvAKO8EeebaeMgAfjGcw" iD="_vtXH8KO8EeebaeMgAfjGcw" outgoingEdges="_zQGO4aO8EeebaeMgAfjGcw" incomingEdges="_yDWu8aO8EeebaeMgAfjGcw" activityType="EventIntermediateTimer"/>
-    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_45lYUZ_JEeee0o7jDg0-OQ" iD="_45lYUJ_JEeee0o7jDg0-OQ"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_45eDkZ_JEeee0o7jDg0-OQ" iD="_45eDkJ_JEeee0o7jDg0-OQ" incomingEdges="_gZHvgaSFEee5Z9cgyrUsUw _cvaz8aVAEeeldJrblXbbPg" activityType="EventEndEmpty"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_vtXvAKO8EeebaeMgAfjGcw" iD="_vtXH8KO8EeebaeMgAfjGcw" outgoingEdges="_X2h5waU9EeeldJrblXbbPg" incomingEdges="_yDWu8aO8EeebaeMgAfjGcw" activityType="EventIntermediateTimer"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_FxphoaSFEee5Z9cgyrUsUw" iD="_FxphoKSFEee5Z9cgyrUsUw" outgoingEdges="_Q8M6AaU_EeeldJrblXbbPg _ZQCDUaU9EeeldJrblXbbPg" incomingEdges="_X2h5waU9EeeldJrblXbbPg" activityType="GatewayDataBasedExclusive"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_XwOnEaSFEee5Z9cgyrUsUw" iD="_XwOnEKSFEee5Z9cgyrUsUw" outgoingEdges="_Sw7nAaU_EeeldJrblXbbPg _dteBkaSFEee5Z9cgyrUsUw" incomingEdges="_QoGhAaU5EeeldJrblXbbPg" activityType="GatewayDataBasedExclusive"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_dtZJEaSFEee5Z9cgyrUsUw" iD="_dtZJEKSFEee5Z9cgyrUsUw" outgoingEdges="_gZHvgaSFEee5Z9cgyrUsUw" incomingEdges="_dteBkaSFEee5Z9cgyrUsUw" name="Log duplicate" activityType="Task"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_lD9BiKU2Eee5Z9cgyrUsUw" iD="_lD7zYaU2Eee5Z9cgyrUsUw" outgoingEdges="_cQHo0aVAEeeldJrblXbbPg" incomingEdges="_TaBAQaU_EeeldJrblXbbPg" name="Fetch ISO Data" activityType="Task">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lD9BiaU2Eee5Z9cgyrUsUw" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_lD9BiqU2Eee5Z9cgyrUsUw" key="blackbox" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_lD9Bi6U2Eee5Z9cgyrUsUw" key="douri" value="project:///Processes/Core/DCMGenerateISOData-DCM.wsdl?invokerequestresponsebound={http://thisproject/Processes/Core/DCMGenerateISOData/DCM}CanonicServiceForISO/canonicPort/Generate_ISO_Data"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_lD9BjKU2Eee5Z9cgyrUsUw" key="douri2" value="project:///Processes/Core/DCMGenerateISOData.bpm/_acEc0KU2Eee5Z9cgyrUsUw.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Fetch ISO Data"/>
+      </eAnnotations>
+    </vertices>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_JU6nQKU5EeeldJrblXbbPg" iD="_JUvBEKU5EeeldJrblXbbPg" outgoingEdges="_QoGhAaU5EeeldJrblXbbPg" incomingEdges="_ZQCDUaU9EeeldJrblXbbPg" name="Duplicate Check" activityType="Task">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JU6nQaU5EeeldJrblXbbPg" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JU6nQqU5EeeldJrblXbbPg" key="blackbox" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JU6nQ6U5EeeldJrblXbbPg" key="douri" value="project:///Processes/Core/CheckDatabaseForDuplicateISO-Tracking_Database.wsdl?invokerequestresponsebound={http://thisproject/Processes/Core/CheckDatabaseForDuplicateISO/Tracking_Database}CanonicServiceForISO/canonicPort/Database_Connector"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JU6nRKU5EeeldJrblXbbPg" key="douri2" value="project:///Processes/Core/CheckDatabaseForDuplicateISO.bpm/_9KoYgKU0Eee5Z9cgyrUsUw.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Duplicate Check"/>
+      </eAnnotations>
+    </vertices>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_PBQ3UKU_EeeldJrblXbbPg" iD="_PBQQQKU_EeeldJrblXbbPg" outgoingEdges="_TaBAQaU_EeeldJrblXbbPg" incomingEdges="_Q8M6AaU_EeeldJrblXbbPg _Sw7nAaU_EeeldJrblXbbPg" activityType="GatewayDataBasedExclusive"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_bQpv6KVAEeeldJrblXbbPg" iD="_bQn6tKVAEeeldJrblXbbPg" outgoingEdges="_cvaz8aVAEeeldJrblXbbPg" incomingEdges="_cQHo0aVAEeeldJrblXbbPg" name="Send Case Data to ISO" activityType="Task">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_bQpv6aVAEeeldJrblXbbPg" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_bQpv6qVAEeeldJrblXbbPg" key="blackbox" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_bQpv66VAEeeldJrblXbbPg" key="douri" value="project:///Processes/Core/ISOService-ISO_Service.wsdl?invokerequestresponsebound={http://thisproject/Processes/Core/ISOService/ISO_Service}CanonicServiceForISO/canonicPort/Receive_Case_Data"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_bQpv7KVAEeeldJrblXbbPg" key="douri2" value="project:///Processes/Core/ISOService.bpm/_Ti2WsKVAEeeldJrblXbbPg.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Send Case Data to ISO"/>
+      </eAnnotations>
+    </vertices>
     <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_yDWu8aO8EeebaeMgAfjGcw" iD="_yDWu8KO8EeebaeMgAfjGcw"/>
-    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_zQGO4aO8EeebaeMgAfjGcw" iD="_zQGO4KO8EeebaeMgAfjGcw"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_dteBkaSFEee5Z9cgyrUsUw" iD="_dteBkKSFEee5Z9cgyrUsUw" name="Duplicate"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_gZHvgaSFEee5Z9cgyrUsUw" iD="_gZHvgKSFEee5Z9cgyrUsUw"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_QoGhAaU5EeeldJrblXbbPg" iD="_QoGhAKU5EeeldJrblXbbPg"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_X2h5waU9EeeldJrblXbbPg" iD="_X2h5wKU9EeeldJrblXbbPg"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_ZQCDUaU9EeeldJrblXbbPg" iD="_ZQCDUKU9EeeldJrblXbbPg" conditionType="Default" isDefault="true"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_Q8M6AaU_EeeldJrblXbbPg" iD="_Q8M6AKU_EeeldJrblXbbPg" name="Skip duplicate check"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_Sw7nAaU_EeeldJrblXbbPg" iD="_Sw7nAKU_EeeldJrblXbbPg" conditionType="Default" isDefault="true"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_TaBAQaU_EeeldJrblXbbPg" iD="_TaBAQKU_EeeldJrblXbbPg"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_cQHo0aVAEeeldJrblXbbPg" iD="_cQHo0KVAEeeldJrblXbbPg"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_cvaz8aVAEeeldJrblXbbPg" iD="_cvaz8KVAEeeldJrblXbbPg"/>
   </pools>
   <pools xmi:type="bpmn:Pool" xmi:id="_it804Z_PEeee0o7jDg0-OQ" iD="_it804J_PEeee0o7jDg0-OQ" name="Case Manager">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lWQT4J_PEeee0o7jDg0-OQ" source="executablepool">

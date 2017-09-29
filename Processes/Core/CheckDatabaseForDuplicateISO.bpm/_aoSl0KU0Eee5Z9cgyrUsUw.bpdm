@@ -1,0 +1,51 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/Tracking_Database" xmlns:ISO="http://thisdiagram/ISO" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Tracking_Database">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_gQ1isKU0Eee5Z9cgyrUsUw"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Tracking_Database" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/ISO" bpdm:prefix="ISO" bpdm:comment="contrib=&apos;partner-pool:///_gQ1isKU0Eee5Z9cgyrUsUw"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <wsdl:portType name="ForISO">
+                <wsdl:operation name="Database_Connector" bpdm:source="partner-pool:///_gQ1isKU0Eee5Z9cgyrUsUw">
+                    <wsdl:input message="this:Database_ConnectorRequest" name="Database_Connector"/>
+                    <wsdl:output message="this:Database_ConnectorResponse" name="Database_ConnectorResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForISO" type="this:ForISO" bpdm:isSynchronized="true"/>
+            <xs:element name="Database_ConnectorRequest" type="xs:string" bpdm:source="partner-pool:///_gQ1isKU0Eee5Z9cgyrUsUw"/>
+            <wsdl:message name="Database_ConnectorRequest" bpdm:source="partner-pool:///_gQ1isKU0Eee5Z9cgyrUsUw">
+                <wsdl:part name="body" element="this:Database_ConnectorRequest"/>
+            </wsdl:message>
+            <xs:element name="Database_ConnectorResponse" type="xs:string" bpdm:source="partner-pool:///_gQ1isKU0Eee5Z9cgyrUsUw"/>
+            <wsdl:message name="Database_ConnectorResponse" bpdm:source="partner-pool:///_gQ1isKU0Eee5Z9cgyrUsUw">
+                <wsdl:part name="body" element="this:Database_ConnectorResponse"/>
+            </wsdl:message>
+        </bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_gQ1isKU0Eee5Z9cgyrUsUw" bpdm:label="ISO"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Tracking Database" bpdm:ID="_aoSl0KU0Eee5Z9cgyrUsUw">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="iSoAndTracking_DatabasePlkVar" partnerLinkType="diag:ISoAndTracking_Database" myRole="Tracking_Database_for_ISO" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForISO" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Tracking_Database/ISO" bpdm:providedIsDefault="true" bpdm:clientTasks="_aoSl0KU0Eee5Z9cgyrUsUw:_aoSl0qU0Eee5Z9cgyrUsUw" bpdm:isManaged="true" bpdm:otherPoolId="_gQ1isKU0Eee5Z9cgyrUsUw"/>
+        </bpel:partnerLinks>
+        <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
+            <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_ascGAKU0Eee5Z9cgyrUsUw" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_ascGAKU0Eee5Z9cgyrUsUw"/>
+            <bpel:variable name="thisDatabase_ConnectorRequest1Msg" messageType="this:Database_ConnectorRequest" bpdm:id="_yAdmJaU0Eee5Z9cgyrUsUw" bpdm:messageIds="inc:_yAZ7wKU0Eee5Z9cgyrUsUw"/>
+            <bpel:variable name="thisDatabase_ConnectorResponse2Msg" messageType="this:Database_ConnectorResponse" bpdm:id="_yZqwUKU0Eee5Z9cgyrUsUw" bpdm:messageIds=" out:_yZme4KU0Eee5Z9cgyrUsUw">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="this:Database_ConnectorResponse" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask operation="Database_Connector" partnerLink="iSoAndTracking_DatabasePlkVar" portType="this:ForISO" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Database Connector" bpdm:ID="_aoSl0qU0Eee5Z9cgyrUsUw" bpdm:isHeaderAuthorizationAware="yes">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisDatabase_ConnectorRequest1Msg" bpdm:msgVarScopeId="_aoSl0KU0Eee5Z9cgyrUsUw" bpdm:variableIsManaged="true" bpdm:messageType="this:Database_ConnectorRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_yAZ7wKU0Eee5Z9cgyrUsUw"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisDatabase_ConnectorResponse2Msg" bpdm:msgVarScopeId="_aoSl0KU0Eee5Z9cgyrUsUw" bpdm:variableIsManaged="true" bpdm:messageType="this:Database_ConnectorResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_yZme4KU0Eee5Z9cgyrUsUw"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>
