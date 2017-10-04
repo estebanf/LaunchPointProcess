@@ -1,0 +1,33 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:ISO_Response_Manager="http://thisdiagram/ISO_Response_Manager" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/Queue_Service" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Queue_Service">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_Svwt0KhqEeeC1M91oPbQ3Q"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/ISO_Response_Manager" bpdm:prefix="ISO_Response_Manager" bpdm:comment="contrib=&apos;partner-pool:///_Svwt0KhqEeeC1M91oPbQ3Q"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Queue_Service" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_Svwt0KhqEeeC1M91oPbQ3Q" bpdm:label="ISO Response Manager"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Queue Service" bpdm:ID="_3Bc-QKhqEeeC1M91oPbQ3Q">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="iSO_Response_ManagerAndQueue_ServicePlkVar" partnerLinkType="diag:ISO_Response_ManagerAndQueue_Service" initializePartnerRole="yes" partnerRole="ISO_Response_Manager_for_Queue_Service" bpdm:invokedService="ISO_Response_Manager:CanonicServiceForQueue_Service" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/ISO_Response_Manager/Queue_Service" bpdm:invokedIsDefault="true" bpdm:clientTasks="_3Bc-QKhqEeeC1M91oPbQ3Q:_I6CJYKhrEeeC1M91oPbQ3Q" bpdm:isManaged="true" bpdm:otherPoolId="_Svwt0KhqEeeC1M91oPbQ3Q"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="iSO_Response_ManagerTaskRequest1Msg" messageType="ISO_Response_Manager:Process_responseRequest" bpdm:id="_UgpAIKhrEeeC1M91oPbQ3Q" bpdm:messageIds=" out:_UgKfAKhrEeeC1M91oPbQ3Q">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="ISO_Response_Manager:Process_responseRequest" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="iSO_Response_ManagerProcess_responseResponse2Msg" messageType="ISO_Response_Manager:Process_responseResponse" bpdm:id="_VTeyUKhrEeeC1M91oPbQ3Q" bpdm:messageIds="inc:_VS3uUKhrEeeC1M91oPbQ3Q"/>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask eventType="start: message" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_Start_Event" bpdm:ID="_H3gVYKhrEeeC1M91oPbQ3Q" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+            <bpdm:messagingtask operation="Process_response" partnerLink="iSO_Response_ManagerAndQueue_ServicePlkVar" portType="ISO_Response_Manager:ForQueue_Service" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Read from queue" bpdm:ID="_I6CJYKhrEeeC1M91oPbQ3Q" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iSO_Response_ManagerTaskRequest1Msg" bpdm:msgVarScopeId="_3Bc-QKhqEeeC1M91oPbQ3Q" bpdm:variableIsManaged="true" bpdm:messageType="ISO_Response_Manager:Process_responseRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_UgKfAKhrEeeC1M91oPbQ3Q"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="iSO_Response_ManagerProcess_responseResponse2Msg" bpdm:msgVarScopeId="_3Bc-QKhqEeeC1M91oPbQ3Q" bpdm:variableIsManaged="true" bpdm:messageType="ISO_Response_Manager:Process_responseResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_VS3uUKhrEeeC1M91oPbQ3Q"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_KwcRYKhrEeeC1M91oPbQ3Q" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>
