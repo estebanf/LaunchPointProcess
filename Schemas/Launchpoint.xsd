@@ -37,162 +37,32 @@
     </complexType>
 
 
-    <complexType name="AddrType">
-    	<sequence>
-    		<element name="Addr1" type="string"></element>
-    		<element name="Addr2" type="string"></element>
-    		<element name="City" type="string"></element>
-    		<element name="StateProvCd" type="string"></element>
-    		<element name="PostalCode" type="string"></element>
-    		<element name="CountryCd" type="string"></element>
-    	</sequence>
-    </complexType>
-
-    <complexType name="ClaimsOccurrenceType">
-    	<sequence>
-    		<element name="ItemIdInfo" type="tns:ItemIdInfoType"></element>
-    		<element name="ClaimsReported"
-    			type="tns:ClaimsReportedType">
-    		</element>
-    		<element name="LossDt" type="date"></element>
-    		<element name="LossTime" type="time"></element>
-    		<element name="IncidentDesc" type="string"></element>
-    		<element name="Addr" type="tns:AddrType"></element>
-    	</sequence>
-    	<attribute name="id" type="string"></attribute>
-    </complexType>
 
 
-    <complexType name="ItemIdInfoType">
-    	<sequence>
-    		<element name="InsurerId" type="string"></element>
-    	</sequence>
-    </complexType>
+
     
-    <complexType name="ClaimsReportedType">
-    	<sequence>
-    		<element name="ReportedDt" type="date"></element>
-    	</sequence>
-    	<attribute name="ReportedToRef" type="string"></attribute>
-    </complexType>
 
 
 
-    <complexType name="ClaimsPartyType">
-    	<sequence>
-    		<element name="GeneralPartyInfo"
-    			type="tns:GeneralPartyInfoType">
-    		</element>
-    		<element name="PersonInfo" type="tns:PersonInfoType"></element>
-    		<element name="ClaimsPartyInfo"
-    			type="tns:ClaimsPartyInfoType">
-    		</element>
-    		<element name="ClaimsInjuredInfo"
-    			type="tns:ClaimsInjuredInfoType">
-    		</element>
-    	</sequence>
-    	<attribute name="id" type="string"></attribute>
-    </complexType>
 
-    <complexType name="GeneralPartyInfoType">
-    	<sequence>
-    		<element name="NameInfo" type="tns:NameInfoType"></element>
-    		<element name="Addr" type="tns:AddrType"></element>
-    		<element name="Communications" type="tns:CommunicationsType"></element>
-    	</sequence>
-    </complexType>
     
-    <complexType name="NameInfoType">
-    	<sequence>
-    		<element name="PersonName" type="tns:PersonNameType"></element>
-    		<element name="TaxIdentity" type="tns:TaxIdentityType"></element>
-    	</sequence>
-    </complexType>
     
-    <complexType name="PersonNameType">
-    	<sequence>
-    		<element name="Surname" type="string"></element>
-    		<element name="GivenName" type="string"></element>
-    		<element name="OtherGivenName" type="string"></element>
-    	</sequence>
-    </complexType>
     
-    <complexType name="TaxIdentityType">
-    	<sequence>
-    		<element name="TaxIdTypeCd" type="string"></element>
-    		<element name="TaxId" type="string"></element>
-    	</sequence>
-    </complexType>
     
-    <complexType name="CommunicationsType">
-    	<sequence>
-    		<element name="PhoneInfo" type="tns:PhoneInfoType" maxOccurs="unbounded" minOccurs="1"></element>
-    	</sequence>
-    </complexType>
     
-    <complexType name="PhoneInfoType">
-    	<sequence>
-    		<element name="PhoneTypeCd" type="string"></element>
-    		<element name="CommunicationUseCd" type="string"></element>
-    		<element name="PhoneNumber" type="string"></element>
-    	</sequence>
-    </complexType>
     
-    <complexType name="PersonInfoType">
-    	<sequence>
-    		<element name="GenderCd" type="string"></element>
-    		<element name="BirthDt" type="date"></element>
-    	</sequence>
-    </complexType>
     
-    <complexType name="ClaimsPartyInfoType">
-    	<sequence>
-    		<element name="ClaimsPartyRoleCd" type="string"></element>
-    	</sequence>
-    </complexType>
     
-    <complexType name="ClaimsInjuredInfoType">
-    	<sequence>
-    		<element name="ClaimsInjury" type="tns:ClaimsInjuryType"></element>
-    	</sequence>
-    	<attribute name="id" type="string"></attribute>
-    </complexType>
 
-    <complexType name="ClaimsInjuryType">
-    	<sequence>
-    		<element name="InjuryNatureDesc" type="string"></element>
-    		<element name="LossCauseDesc" type="string"></element>
-    		<element name="ImpairmentPct" type="int"></element>
-    	</sequence>
-    </complexType>
 
-    <complexType name="AdjusterPartyType">
-    	<sequence>
-    		<element name="AdjusterPartyInfo" type="tns:AdjusterPartyInfoType"></element>
-    	</sequence>
-    </complexType>
     
-    <complexType name="AdjusterPartyInfoType">
-    	<sequence>
-    		<element name="CoverageCd" type="string"></element>
-    		<element name="LossCauseCd" type="string"></element>
-    	</sequence>
-    	<attribute name="AssignmentRef" type="string"></attribute>
-    </complexType>
 
-    <complexType name="ClaimType">
-    	<sequence>
-    		<element name="ClaimsOccurrence" type="tns:ClaimsOccurrenceType"></element>
-    		<element name="ClaimsParty" type="tns:ClaimsPartyType"></element>
-    		<element name="AdjusterParty" type="tns:AdjusterPartyType"></element>
-    	</sequence>
-    </complexType>
 
-    <complexType name="Case2Type">
+
+    <complexType name="BpmAckType">
     	<sequence>
-    		<element name="CaseID" type="string"></element>
-    		<element name="ReplacementInd" type="int"></element>
-    		<element name="Claim" type="tns:ClaimType"></element>
+    		<element name="pid" type="string"></element>
+    		<element name="timestamp" type="dateTime"></element>
     	</sequence>
     </complexType>
 </schema>

@@ -1,9 +1,9 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:ISOService-ISO_Service="http://thisproject/Processes/Core/ISOService/ISO_Service" xmlns:tns="http://everteam.com/xvar/example" xmlns:CheckDatabaseForDuplicateISO-Trackin="http://thisproject/Processes/Core/CheckDatabaseForDuplicateISO/Tracking_Database" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Process_ISO_CaseimplicitPartner="http://thisdiagram/Process_ISO_CaseimplicitPartner" xmlns:DCMGenerateISOData-DCM="http://thisproject/Processes/Core/DCMGenerateISOData/DCM" xmlns:this="http://thisdiagram/Process_ISO_Case" xmlns:Case_Manager="http://thisdiagram/Case_Manager" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Process_ISO_Case">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:ISOService-ISO_Service="http://thisproject/Processes/Core/ISOService/ISO_Service" xmlns:ns="urn:intalio.com:connectors:database:launchpointprocess:check_duplicatesservice" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Process_ISO_CaseimplicitPartner="http://thisdiagram/Process_ISO_CaseimplicitPartner" xmlns:DCMGenerateISOData-DCM="http://thisproject/Processes/Core/DCMGenerateISOData/DCM" xmlns:this="http://thisdiagram/Process_ISO_Case" xmlns:Case_Manager="http://thisdiagram/Case_Manager" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Process_ISO_Case">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_it804J_PEeee0o7jDg0-OQ"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/ISOService/ISO_Service" bpdm:prefix="ISOService-ISO_Service" bpdm:comment="contrib=&apos;project:///Processes/Core/ISOService-ISO_Service.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:launchpointprocess:check_duplicatesservice" bpdm:prefix="ns" bpdm:comment="contrib=&apos;project:///Connectors/Database/check_duplicates.sql/check_duplicates.sql.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
-        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/CheckDatabaseForDuplicateISO/Tracking_Database" bpdm:prefix="CheckDatabaseForDuplicateISO-Trackin" bpdm:comment="contrib=&apos;project:///Processes/Core/CheckDatabaseForDuplicateISO-Tracking_Database.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
@@ -24,15 +24,16 @@
             <wsdl:message name="Receive_ISORequest" bpdm:source="partner-pool:///_it804J_PEeee0o7jDg0-OQ">
                 <wsdl:part name="body" element="this:Receive_ISORequest"/>
             </wsdl:message>
-            <xs:element name="Receive_ISOResponse" type="xs:string" bpdm:source="partner-pool:///_it804J_PEeee0o7jDg0-OQ"/>
+            <xs:element name="Receive_ISOResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_it804J_PEeee0o7jDg0-OQ"/>
             <wsdl:message name="Receive_ISOResponse" bpdm:source="partner-pool:///_it804J_PEeee0o7jDg0-OQ">
                 <wsdl:part name="body" element="this:Receive_ISOResponse"/>
             </wsdl:message>
         </bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_it804J_PEeee0o7jDg0-OQ" bpdm:label="Case Manager"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner" bpdm:label="Process ISO CaseimplicitPartner"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/CheckDatabaseForDuplicateISO-Tracking_Database.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/check_duplicates.sql/check_duplicates.sql.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/check_duplicates.sql/check_duplicates.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ISOService-ISO_Service.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/DCMGenerateISOData-DCM.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -41,9 +42,9 @@
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Process ISO Case" bpdm:ID="_uuYIkJ_JEeee0o7jDg0-OQ">
         <bpel:partnerLinks>
             <bpel:partnerLink name="process_ISO_CaseAndCase_ManagerPlkVar" partnerLinkType="diag:Process_ISO_CaseAndCase_Manager" myRole="Process_ISO_Case_for_Case_Manager" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForCase_Manager" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_ISO_Case/Case_Manager" bpdm:providedIsDefault="true" bpdm:clientTasks="_uuYIkJ_JEeee0o7jDg0-OQ:_1rwKYJ_JEeee0o7jDg0-OQ" bpdm:isManaged="true" bpdm:otherPoolId="_it804J_PEeee0o7jDg0-OQ"/>
-            <bpel:partnerLink name="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk0Var" partnerLinkType="diag:Process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk0" initializePartnerRole="yes" partnerRole="Process_ISO_CaseimplicitPartner_for_Process_ISO_Case" bpdm:invokedService="CheckDatabaseForDuplicateISO-Trackin:CanonicServiceForISO" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_uuYIkJ_JEeee0o7jDg0-OQ:_JUvBEKU5EeeldJrblXbbPg" bpdm:isManaged="true" bpdm:otherPoolId="_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner"/>
-            <bpel:partnerLink name="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk2Var" partnerLinkType="diag:Process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk2" initializePartnerRole="yes" partnerRole="Process_ISO_CaseimplicitPartner_for_Process_ISO_Case" bpdm:invokedService="ISOService-ISO_Service:CanonicServiceForISO" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_uuYIkJ_JEeee0o7jDg0-OQ:_bQn6tKVAEeeldJrblXbbPg" bpdm:isManaged="true" bpdm:otherPoolId="_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner"/>
-            <bpel:partnerLink name="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk1Var" partnerLinkType="diag:Process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk1" initializePartnerRole="yes" partnerRole="Process_ISO_CaseimplicitPartner_for_Process_ISO_Case" bpdm:invokedService="DCMGenerateISOData-DCM:CanonicServiceForISO" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_uuYIkJ_JEeee0o7jDg0-OQ:_09pKIKVOEeeDc_yuGO31xQ" bpdm:isManaged="true" bpdm:otherPoolId="_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner"/>
+            <bpel:partnerLink name="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCheck_duplicatesPortPlkVar" partnerLinkType="diag:Process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCheck_duplicatesPortPlk" initializePartnerRole="yes" partnerRole="Process_ISO_CaseimplicitPartner_for_Process_ISO_Case" bpdm:invokedService="ns:check_duplicatesService" bpdm:invokedPort="check_duplicatesPort" bpdm:invokedSOAPAddress="http://192.168.241.200:8080/everteam/ode/processes/LaunchPointProcess/Connectors/Database/check_duplicates" bpdm:invokedIsDefault="true" bpdm:clientTasks="_uuYIkJ_JEeee0o7jDg0-OQ:_WnJ04K32EeeL56TO7yisxA" bpdm:isManaged="true" bpdm:otherPoolId="_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner"/>
+            <bpel:partnerLink name="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk0Var" partnerLinkType="diag:Process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk0" initializePartnerRole="yes" partnerRole="Process_ISO_CaseimplicitPartner_for_Process_ISO_Case" bpdm:invokedService="DCMGenerateISOData-DCM:CanonicServiceForISO" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_uuYIkJ_JEeee0o7jDg0-OQ:_09pKIKVOEeeDc_yuGO31xQ" bpdm:isManaged="true" bpdm:otherPoolId="_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner"/>
+            <bpel:partnerLink name="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk1Var" partnerLinkType="diag:Process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk1" initializePartnerRole="yes" partnerRole="Process_ISO_CaseimplicitPartner_for_Process_ISO_Case" bpdm:invokedService="ISOService-ISO_Service:CanonicServiceForISO" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_uuYIkJ_JEeee0o7jDg0-OQ:_bQn6tKVAEeeldJrblXbbPg" bpdm:isManaged="true" bpdm:otherPoolId="_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner"/>
         </bpel:partnerLinks>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
             <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_k7S2Np_PEeee0o7jDg0-OQ" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_k7S2Np_PEeee0o7jDg0-OQ"/>
@@ -53,20 +54,9 @@
                     <bpel:literal bpdm:linkedMessageType="this:Receive_ISOResponse" bpdm:linkedPart="body"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
-            <bpel:variable name="delayDuration" type="xs:duration" bpdm:id="_RHmtEKRgEee5Z9cgyrUsUw">
-                <bpel:from>
-                    <bpel:literal bpdm:linkedType="xs:duration" bpdm:linkedFile="duration-_uuYIkJ_JEeee0o7jDg0-OQ-0-literal.xml"></bpel:literal>
-                </bpel:from>
-            </bpel:variable>
             <bpel:variable name="skipDuplicateCheck" type="xs:boolean" bpdm:id="_0PSosKSFEee5Z9cgyrUsUw">
                 <bpel:from>
                     <bpel:literal bpdm:linkedType="xs:boolean" bpdm:linkedFile="boolean-_uuYIkJ_JEeee0o7jDg0-OQ-0-literal.xml"></bpel:literal>
-                </bpel:from>
-            </bpel:variable>
-            <bpel:variable name="checkDatabaseForDuplicateISO-TrackinDatabase_ConnectorResponse1Msg" messageType="CheckDatabaseForDuplicateISO-Trackin:Database_ConnectorResponse" binding="CheckDatabaseForDuplicateISO-Trackin:ISoAndTracking_DatabaseServiceBinding" operation="Database_Connector" opMsgType="1" bpdm:messageIds="inc:_JUvBEKU5EeeldJrblXbbPgIncoming"/>
-            <bpel:variable name="checkDatabaseForDuplicateISO-TrackinDatabase_Connector1Msg" messageType="CheckDatabaseForDuplicateISO-Trackin:Database_ConnectorRequest" binding="CheckDatabaseForDuplicateISO-Trackin:ISoAndTracking_DatabaseServiceBinding" operation="Database_Connector" opMsgType="0" bpdm:messageIds=" out:_JUvBEKU5EeeldJrblXbbPgOutgoing">
-                <bpel:from bpdm:toPart="body">
-                    <bpel:literal bpdm:linkedMessageType="CheckDatabaseForDuplicateISO-Trackin:Database_ConnectorRequest" bpdm:linkedPart="body" bpdm:binding="CheckDatabaseForDuplicateISO-Trackin:ISoAndTracking_DatabaseServiceBinding" bpdm:opMsgType="0" bpdm:operation="Database_Connector"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
             <bpel:variable name="iSOService-ISO_ServiceReceive_Case_DataResponse1Msg" messageType="ISOService-ISO_Service:Receive_Case_DataResponse" binding="ISOService-ISO_Service:ISoAndISO_ServiceServiceBinding" operation="Receive_Case_Data" opMsgType="1" bpdm:messageIds="inc:_bQn6tKVAEeeldJrblXbbPgIncoming"/>
@@ -81,15 +71,60 @@
                     <bpel:literal bpdm:linkedMessageType="DCMGenerateISOData-DCM:Generate_ISO_DataRequest" bpdm:linkedPart="body" bpdm:binding="DCMGenerateISOData-DCM:ISoAndDCMServiceBinding" bpdm:opMsgType="0" bpdm:operation="Generate_ISO_Data"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
+            <bpel:variable name="nsCheck_duplicatesResponse1Msg" messageType="ns:check_duplicatesOutput" binding="ns:check_duplicatesPortSoapBinding" operation="check_duplicates" opMsgType="1" bpdm:messageIds="inc:_WnJ04K32EeeL56TO7yisxAIncoming"/>
+            <bpel:variable name="nsCheck_duplicatesRequest1Msg" messageType="ns:check_duplicatesInput" binding="ns:check_duplicatesPortSoapBinding" operation="check_duplicates" opMsgType="0" bpdm:messageIds=" out:_WnJ04K32EeeL56TO7yisxAOutgoing">
+                <bpel:from bpdm:toPart="parameters">
+                    <bpel:literal bpdm:linkedMessageType="ns:check_duplicatesInput" bpdm:linkedPart="parameters" bpdm:binding="ns:check_duplicatesPortSoapBinding" bpdm:opMsgType="0" bpdm:operation="check_duplicates"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
         </bpel:variables>
         <bpel:sequence>
             <bpdm:messagingtask eventType="start: message" operation="Receive_ISO" partnerLink="process_ISO_CaseAndCase_ManagerPlkVar" portType="this:ForCase_Manager" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive ISO" bpdm:ID="_1rwKYJ_JEeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="yes">
                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="iSOEventStartMessageRequest1" bpdm:msgVarScopeId="_uuYIkJ_JEeee0o7jDg0-OQ" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_ISORequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_u9NnEJ_PEeee0o7jDg0-OQ"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$ode:pid</bpel:from>
+                        <bpel:to>$iSOReceive_ISOResponse1Msg.body/Launchpoint:pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="110656570" targetPath="$iSOReceive_ISOResponse1Msg.body/Launchpoint:pid" targetedBy="1331145244-arg0"></mapper:vertice>
+  <mapper:vertice id="1331145244" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>current-dateTime()</bpel:from>
+                        <bpel:to>$iSOReceive_ISOResponse1Msg.body/Launchpoint:timestamp</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="214563206" targetPath="$iSOReceive_ISOResponse1Msg.body/Launchpoint:timestamp" targetedBy="608257937-arg0"></mapper:vertice>
+  <mapper:vertice id="608257937" dimension="109x24" location="372,72">
+    <mapper:value>current-dateTime()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="iSOReceive_ISOResponse1Msg" bpdm:msgVarScopeId="_uuYIkJ_JEeee0o7jDg0-OQ" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_ISOResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_v-9X8J_PEeee0o7jDg0-OQ"></bpdm:linkset>
             </bpdm:messagingtask>
-            <bpdm:messagingtask eventType="intermediate: timer" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Timer_Intermediate_Event" bpdm:ID="_vtXH8KO8EeebaeMgAfjGcw" bpdm:isHeaderAuthorizationAware="no">
+            <bpdm:messagingtask eventType="intermediate: timer" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Delay sending to ISO" bpdm:ID="_vtXH8KO8EeebaeMgAfjGcw" bpdm:isHeaderAuthorizationAware="no">
                 <bpdm:linkset bpdm:type="timer">
-                    <bpel:until>bpel:doXslTransform("../../XSLT/calculateISOSendDate.xsl", $iSOEventStartMessageRequest1.body, "delayDuration", $delayDuration)<mapper:mapperLink><mapper:vertice id="639832817" targetPath="$date" targetedBy="1171127106-arg1"></mapper:vertice><mapper:vertice id="1171127106" dimension="126x24" location="276,84"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="339842662" dimension="202x24" location="144,24" targetedBy="1171127106-arg0"><mapper:value>"../../XSLT/calculateISOSendDate.xsl"</mapper:value></mapper:vertice><mapper:vertice id="70893056" sourcePath="$iSOEventStartMessageRequest1.body" targetedBy="1171127106-arg2"></mapper:vertice><mapper:vertice id="822669475" dimension="92x24" location="132,132" targetedBy="1171127106-arg3"><mapper:value>"delayDuration"</mapper:value></mapper:vertice><mapper:vertice id="1060171806" sourcePath="$delayDuration" targetedBy="1171127106-arg4"></mapper:vertice></mapper:mapperLink></bpel:until>
+                    <bpel:until>bpel:doXslTransform("../../XSLT/calculateISOSendDate.xsl", $iSOEventStartMessageRequest1.body, "delayDuration", ode:get-property-value("delayDuration"))
+<mapper:mapperLink>
+  <mapper:vertice id="1116831848" targetPath="$date" targetedBy="758036270-arg1"></mapper:vertice>
+  <mapper:vertice id="758036270" dimension="126x24" location="444,96">
+    <mapper:value>bpel:doXslTransform()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1977512578" dimension="202x24" location="108,24" targetedBy="758036270-arg0">
+    <mapper:value>"../../XSLT/calculateISOSendDate.xsl"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="2018213589" sourcePath="$iSOEventStartMessageRequest1.body" targetedBy="758036270-arg2"></mapper:vertice>
+  <mapper:vertice id="1491351192" dimension="92x24" location="96,84" targetedBy="758036270-arg3">
+    <mapper:value>"delayDuration"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="611798391" dimension="139x24" location="96,132" targetedBy="758036270-arg4">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1643240589" dimension="92x24" location="12,192" targetedBy="611798391-arg0">
+    <mapper:value>"delayDuration"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink></bpel:until>
                 </bpdm:linkset>
             </bpdm:messagingtask>
             <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_FxphoKSFEee5Z9cgyrUsUw" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
@@ -97,13 +132,39 @@
                     <bpel:condition>$skipDuplicateCheck = true()<mapper:mapperLink><mapper:vertice id="43625244" targetPath="$condition" targetedBy="652599924-arg2"></mapper:vertice><mapper:vertice id="652599924" dimension="79x24" location="288,60"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1985148812" sourcePath="$skipDuplicateCheck" targetedBy="652599924-arg0"></mapper:vertice><mapper:vertice id="1168022674" dimension="79x24" location="120,108" targetedBy="652599924-arg1"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_ZQCDUKU9EeeldJrblXbbPg" bpdm:targetDisplayName="default"></bpdm:linkset>
+                <bpel:sequence></bpel:sequence>
                 <bpel:sequence>
-                    <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_PBQQQKU_EeeldJrblXbbPg" bpdm:gatewayType="data_xor" bpdm:isMerge="true"></bpdm:gateway>
-                    <bpdm:messagingtask operation="Generate_ISO_Data" partnerLink="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk1Var" portType="DCMGenerateISOData-DCM:ForISO" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Fetch ISO Data" bpdm:ID="_09pKIKVOEeeDc_yuGO31xQ" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:messagingtask operation="check_duplicates" partnerLink="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCheck_duplicatesPortPlkVar" portType="ns:check_duplicatesPort" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Check for duplicates" bpdm:ID="_WnJ04K32EeeL56TO7yisxA" bpdm:isHeaderAuthorizationAware="no">
+                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="nsCheck_duplicatesRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:check_duplicatesInput" bpdm:binding="ns:check_duplicatesPortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_WnJ04K32EeeL56TO7yisxAOutgoing"></bpdm:linkset>
+                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="nsCheck_duplicatesResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:check_duplicatesOutput" bpdm:binding="ns:check_duplicatesPortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_WnJ04K32EeeL56TO7yisxAIncoming"></bpdm:linkset>
+                        <bpdm:thrownFault msgFaultNcName="nscheck_duplicatesFault" msgFaultTypeQname="ns:check_duplicatesFault"/>
+                    </bpdm:messagingtask>
+                    <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Task" bpdm:ID="_ajCboK32EeeL56TO7yisxA" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                    <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_XwOnEKSFEee5Z9cgyrUsUw" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
+                        <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_dteBkKSFEee5Z9cgyrUsUw" bpdm:targetDisplayName="Duplicate">
+                            <bpel:condition>true()<mapper:mapperLink><mapper:vertice id="1614080291" targetPath="$condition" targetedBy="863941547-arg0"></mapper:vertice><mapper:vertice id="863941547" dimension="79x24" location="324,24"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
+                        </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_CMVhEK33EeeL56TO7yisxA" bpdm:targetDisplayName="default"></bpdm:linkset>
+                        <bpel:sequence>
+                            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log duplicate" bpdm:ID="_dtZJEKSFEee5Z9cgyrUsUw" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                        </bpel:sequence>
+                        <bpel:sequence></bpel:sequence>
+                    </bpdm:gateway>
+                    <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="__3aREK32EeeL56TO7yisxA" bpdm:gatewayType="data_xor" bpdm:isMerge="true"></bpdm:gateway>
+                </bpel:sequence>
+            </bpdm:gateway>
+            <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_PBQQQKU_EeeldJrblXbbPg" bpdm:gatewayType="data_xor" bpdm:isMerge="true"></bpdm:gateway>
+            <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_VfSYcK33EeeL56TO7yisxA" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
+                <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_WijzUK33EeeL56TO7yisxA" bpdm:targetDisplayName="default"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_XZ0LcK33EeeL56TO7yisxA" bpdm:targetDisplayName="[GatewayDataBasedExclusive - EventEndEmpty]">
+                    <bpel:condition>false()<mapper:mapperLink><mapper:vertice id="10036459" targetPath="$condition" targetedBy="1892841749-arg0"></mapper:vertice><mapper:vertice id="1892841749" dimension="79x24" location="468,24"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
+                </bpdm:linkset>
+                <bpel:sequence>
+                    <bpdm:messagingtask operation="Generate_ISO_Data" partnerLink="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk0Var" portType="DCMGenerateISOData-DCM:ForISO" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Fetch ISO Data" bpdm:ID="_09pKIKVOEeeDc_yuGO31xQ" bpdm:isHeaderAuthorizationAware="no">
                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMGenerateISOData-DCMGenerate_ISO_Data1Msg" bpdm:variableIsManaged="true" bpdm:messageType="DCMGenerateISOData-DCM:Generate_ISO_DataRequest" bpdm:binding="DCMGenerateISOData-DCM:ISoAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_09pKIKVOEeeDc_yuGO31xQOutgoing"></bpdm:linkset>
                         <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="dCMGenerateISOData-DCMGenerate_ISO_DataResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="DCMGenerateISOData-DCM:Generate_ISO_DataResponse" bpdm:binding="DCMGenerateISOData-DCM:ISoAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_09pKIKVOEeeDc_yuGO31xQIncoming"></bpdm:linkset>
                     </bpdm:messagingtask>
-                    <bpdm:messagingtask operation="Receive_Case_Data" partnerLink="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk2Var" portType="ISOService-ISO_Service:ForISO" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send Case Data to ISO" bpdm:ID="_bQn6tKVAEeeldJrblXbbPg" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:messagingtask operation="Receive_Case_Data" partnerLink="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk1Var" portType="ISOService-ISO_Service:ForISO" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send Case Data to ISO" bpdm:ID="_bQn6tKVAEeeldJrblXbbPg" bpdm:isHeaderAuthorizationAware="no">
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>$dCMGenerateISOData-DCMGenerate_ISO_DataResponse1Msg.body</bpel:from>
@@ -113,41 +174,12 @@
                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iSOService-ISO_ServiceReceive_Case_Data1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ISOService-ISO_Service:Receive_Case_DataRequest" bpdm:binding="ISOService-ISO_Service:ISoAndISO_ServiceServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_bQn6tKVAEeeldJrblXbbPgOutgoing"></bpdm:linkset>
                         <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="iSOService-ISO_ServiceReceive_Case_DataResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ISOService-ISO_Service:Receive_Case_DataResponse" bpdm:binding="ISOService-ISO_Service:ISoAndISO_ServiceServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_bQn6tKVAEeeldJrblXbbPgIncoming"></bpdm:linkset>
                     </bpdm:messagingtask>
+                    <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_45eDkJ_JEeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
                 </bpel:sequence>
                 <bpel:sequence>
-                    <bpdm:messagingtask operation="Database_Connector" partnerLink="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk0Var" portType="CheckDatabaseForDuplicateISO-Trackin:ForISO" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Duplicate Check" bpdm:ID="_JUvBEKU5EeeldJrblXbbPg" bpdm:isHeaderAuthorizationAware="no">
-                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="checkDatabaseForDuplicateISO-TrackinDatabase_Connector1Msg" bpdm:variableIsManaged="true" bpdm:messageType="CheckDatabaseForDuplicateISO-Trackin:Database_ConnectorRequest" bpdm:binding="CheckDatabaseForDuplicateISO-Trackin:ISoAndTracking_DatabaseServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_JUvBEKU5EeeldJrblXbbPgOutgoing"></bpdm:linkset>
-                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="checkDatabaseForDuplicateISO-TrackinDatabase_ConnectorResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="CheckDatabaseForDuplicateISO-Trackin:Database_ConnectorResponse" bpdm:binding="CheckDatabaseForDuplicateISO-Trackin:ISoAndTracking_DatabaseServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_JUvBEKU5EeeldJrblXbbPgIncoming"></bpdm:linkset>
-                    </bpdm:messagingtask>
-                    <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_XwOnEKSFEee5Z9cgyrUsUw" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
-                        <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_Sw7nAKU_EeeldJrblXbbPg" bpdm:targetDisplayName="default"></bpdm:linkset>
-                        <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_dteBkKSFEee5Z9cgyrUsUw" bpdm:targetDisplayName="Duplicate">
-                            <bpel:condition>$checkDatabaseForDuplicateISO-TrackinDatabase_ConnectorResponse1Msg.body/text() = true()<mapper:mapperLink><mapper:vertice id="1054078762" targetPath="$condition" targetedBy="669419693-arg2"></mapper:vertice><mapper:vertice id="669419693" dimension="79x24" location="310,44"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1523517415" sourcePath="$checkDatabaseForDuplicateISO-TrackinDatabase_ConnectorResponse1Msg.body/text()" targetedBy="669419693-arg0"></mapper:vertice><mapper:vertice id="1395676084" dimension="79x24" location="168,132" targetedBy="669419693-arg1"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
-                        </bpdm:linkset>
-                        <bpel:sequence>
-                            <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_PBQQQKU_EeeldJrblXbbPg" bpdm:gatewayType="data_xor" bpdm:isMerge="true"></bpdm:gateway>
-                            <bpdm:messagingtask operation="Generate_ISO_Data" partnerLink="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk1Var" portType="DCMGenerateISOData-DCM:ForISO" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Fetch ISO Data" bpdm:ID="_09pKIKVOEeeDc_yuGO31xQ" bpdm:isHeaderAuthorizationAware="no">
-                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMGenerateISOData-DCMGenerate_ISO_Data1Msg" bpdm:variableIsManaged="true" bpdm:messageType="DCMGenerateISOData-DCM:Generate_ISO_DataRequest" bpdm:binding="DCMGenerateISOData-DCM:ISoAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_09pKIKVOEeeDc_yuGO31xQOutgoing"></bpdm:linkset>
-                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="dCMGenerateISOData-DCMGenerate_ISO_DataResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="DCMGenerateISOData-DCM:Generate_ISO_DataResponse" bpdm:binding="DCMGenerateISOData-DCM:ISoAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_09pKIKVOEeeDc_yuGO31xQIncoming"></bpdm:linkset>
-                            </bpdm:messagingtask>
-                            <bpdm:messagingtask operation="Receive_Case_Data" partnerLink="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk2Var" portType="ISOService-ISO_Service:ForISO" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send Case Data to ISO" bpdm:ID="_bQn6tKVAEeeldJrblXbbPg" bpdm:isHeaderAuthorizationAware="no">
-                                <bpdm:linkset bpdm:type="assignments">
-                                    <bpel:copy>
-                                        <bpel:from>$dCMGenerateISOData-DCMGenerate_ISO_DataResponse1Msg.body</bpel:from>
-                                        <bpel:to>$iSOService-ISO_ServiceReceive_Case_Data1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="1510454943" targetPath="$iSOService-ISO_ServiceReceive_Case_Data1Msg.body" targetedBy="211813565-arg0"></mapper:vertice><mapper:vertice id="211813565" sourcePath="$dCMGenerateISOData-DCMGenerate_ISO_DataResponse1Msg.body"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                </bpdm:linkset>
-                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iSOService-ISO_ServiceReceive_Case_Data1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ISOService-ISO_Service:Receive_Case_DataRequest" bpdm:binding="ISOService-ISO_Service:ISoAndISO_ServiceServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_bQn6tKVAEeeldJrblXbbPgOutgoing"></bpdm:linkset>
-                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="iSOService-ISO_ServiceReceive_Case_DataResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ISOService-ISO_Service:Receive_Case_DataResponse" bpdm:binding="ISOService-ISO_Service:ISoAndISO_ServiceServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_bQn6tKVAEeeldJrblXbbPgIncoming"></bpdm:linkset>
-                            </bpdm:messagingtask>
-                        </bpel:sequence>
-                        <bpel:sequence>
-                            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log duplicate" bpdm:ID="_dtZJEKSFEee5Z9cgyrUsUw" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
-                        </bpel:sequence>
-                    </bpdm:gateway>
+                    <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_XZpzYK33EeeL56TO7yisxA" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
                 </bpel:sequence>
             </bpdm:gateway>
-            <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_45eDkJ_JEeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
         </bpel:sequence>
     </bpel:scope>
 </bpel:process>
