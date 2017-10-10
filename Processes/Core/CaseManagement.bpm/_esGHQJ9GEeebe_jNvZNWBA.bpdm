@@ -33,8 +33,8 @@
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/Logging.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Logging.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOCase-Process_ISO_Case.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
@@ -44,7 +44,7 @@
         <bpel:partnerLinks>
             <bpel:partnerLink name="case_ManagerimplicitPartnerAndCase_ManagerForCanonicPortPlkVar" partnerLinkType="diag:Case_ManagerimplicitPartnerAndCase_ManagerForCanonicPortPlk" initializePartnerRole="yes" partnerRole="Case_ManagerimplicitPartner_for_Case_Manager" bpdm:invokedService="ProcessISOCase-Process_ISO_Case:CanonicServiceForCase_Manager" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_rQxB8J-4Eeee0o7jDg0-OQ:_35zS4KVGEeevGO5wNBDUig" bpdm:isManaged="true" bpdm:otherPoolId="_esGHQJ9GEeebe_jNvZNWBAimplicitPartner"/>
             <bpel:partnerLink name="case_ManagerAndQueue_ServicePlkVar" partnerLinkType="diag:Case_ManagerAndQueue_Service" myRole="Case_Manager_for_Queue_Service" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForQueue_Service" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Case_Manager/Queue_Service" bpdm:providedIsDefault="true" bpdm:clientTasks="_sHLSYKWTEee5f7pDYw9XWA:_nBTX4J-4Eeee0o7jDg0-OQ" bpdm:isManaged="true" bpdm:otherPoolId="_G9knAJ9HEeebe_jNvZNWBA"/>
-            <bpel:partnerLink name="case_ManagerimplicitPartnerAndCase_ManagerForPortDtws_launchpointprocess_rules_caseidentificationruleHttpSoap11EndpointPlkVar" partnerLinkType="diag:Case_ManagerimplicitPartnerAndCase_ManagerForPortDtws_launchpointprocess_rules_caseidentificationruleHttpSoap11EndpointPlk" initializePartnerRole="yes" partnerRole="Case_ManagerimplicitPartner_for_Case_Manager" bpdm:invokedService="ns:dtws_launchpointprocess_rules_caseidentificationrule" bpdm:invokedPort="dtws_launchpointprocess_rules_caseidentificationruleHttpSoap11Endpoint" bpdm:invokedSOAPAddress="http://192.168.241.200:8080/everteam/ode/processes/dtws_launchpointprocess_rules_caseidentificationrule" bpdm:invokedIsDefault="true" bpdm:clientTasks="_rQxB8J-4Eeee0o7jDg0-OQ:_Jm4xwKeOEeegibFn-dU-wQ" bpdm:isManaged="true" bpdm:otherPoolId="_esGHQJ9GEeebe_jNvZNWBAimplicitPartner"/>
+            <bpel:partnerLink name="case_ManagerimplicitPartnerAndCase_ManagerForPortDtws_launchpointprocess_rules_caseidentificationruleHttpSoap11EndpointPlkVar" partnerLinkType="diag:Case_ManagerimplicitPartnerAndCase_ManagerForPortDtws_launchpointprocess_rules_caseidentificationruleHttpSoap11EndpointPlk" initializePartnerRole="yes" partnerRole="Case_ManagerimplicitPartner_for_Case_Manager" bpdm:invokedService="ns:dtws_launchpointprocess_rules_caseidentificationrule" bpdm:invokedPort="dtws_launchpointprocess_rules_caseidentificationruleHttpSoap11Endpoint" bpdm:invokedSOAPAddress="http://localhost:8080/everteam/ode/processes/dtws_launchpointprocess_rules_caseidentificationrule" bpdm:invokedIsDefault="true" bpdm:clientTasks="_rQxB8J-4Eeee0o7jDg0-OQ:_Jm4xwKeOEeegibFn-dU-wQ" bpdm:isManaged="true" bpdm:otherPoolId="_esGHQJ9GEeebe_jNvZNWBAimplicitPartner"/>
             <bpel:partnerLink name="case_ManagerimplicitPartnerAndCase_ManagerForHttpPortPlkVar" partnerLinkType="diag:Case_ManagerimplicitPartnerAndCase_ManagerForHttpPortPlk" initializePartnerRole="yes" partnerRole="Case_ManagerimplicitPartner_for_Case_Manager" bpdm:invokedService="Logging:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://192.168.241.200:3001/logging" bpdm:invokedIsDefault="true" bpdm:clientTasks="_GovagKceEee5f7pDYw9XWA:_ckuoUKcsEeeL58NlVk-uQQ, _sHLSYKWTEee5f7pDYw9XWA:_WoqMwKlAEeeMP6pg1gqXnA" bpdm:isManaged="true" bpdm:otherPoolId="_esGHQJ9GEeebe_jNvZNWBAimplicitPartner"/>
         </bpel:partnerLinks>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
@@ -90,46 +90,19 @@
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>"Read batch"</bpel:from>
-                                <bpel:to>$loggingSend_logRequest1Msg.body/step_id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1530144708" targetPath="$loggingSend_logRequest1Msg.body/step_id" targetedBy="624593883-arg0"></mapper:vertice>
-  <mapper:vertice id="624593883" dimension="79x24" location="252,48">
-    <mapper:value>"Read batch"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$loggingSend_logRequest1Msg.body/step_id</bpel:to><mapper:mapperLink><mapper:vertice id="1530144708" targetPath="$loggingSend_logRequest1Msg.body/step_id" targetedBy="624593883-arg0"></mapper:vertice><mapper:vertice id="624593883" dimension="79x24" location="252,48"><mapper:value>"Read batch"</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>"info"</bpel:from>
-                                <bpel:to>$loggingSend_logRequest1Msg.body/log_type</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1684129395" targetPath="$loggingSend_logRequest1Msg.body/log_type" targetedBy="1214546146-arg0"></mapper:vertice>
-  <mapper:vertice id="1214546146" dimension="79x24" location="264,84">
-    <mapper:value>"info"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$loggingSend_logRequest1Msg.body/log_type</bpel:to><mapper:mapperLink><mapper:vertice id="1684129395" targetPath="$loggingSend_logRequest1Msg.body/log_type" targetedBy="1214546146-arg0"></mapper:vertice><mapper:vertice id="1214546146" dimension="79x24" location="264,84"><mapper:value>"info"</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>"Read a batch of cases off of the queue"</bpel:from>
-                                <bpel:to>$loggingSend_logRequest1Msg.body/description</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1379061441" targetPath="$loggingSend_logRequest1Msg.body/description" targetedBy="78770026-arg0"></mapper:vertice>
-  <mapper:vertice id="78770026" dimension="219x24" location="228,132">
-    <mapper:value>"Read a batch of cases off of the queue"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$loggingSend_logRequest1Msg.body/description</bpel:to><mapper:mapperLink><mapper:vertice id="1379061441" targetPath="$loggingSend_logRequest1Msg.body/description" targetedBy="78770026-arg0"></mapper:vertice><mapper:vertice id="78770026" dimension="219x24" location="228,132"><mapper:value>"Read a batch of cases off of the queue"</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>ode:get-property-value("logServiceURL")</bpel:from>
-                                <bpel:to endpointReference="partnerRole"/>
-<mapper:mapperLink>
-  <mapper:vertice id="456305354" targetPath="$endpoint" targetedBy="909515089-arg1"></mapper:vertice>
-  <mapper:vertice id="909515089" dimension="139x24" location="564,192">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="977371578" dimension="93x24" location="408,216" targetedBy="909515089-arg0">
-    <mapper:value>"logServiceURL"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="456305354" targetPath="$endpoint" targetedBy="909515089-arg1"></mapper:vertice><mapper:vertice id="909515089" dimension="139x24" location="564,192"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="977371578" dimension="93x24" location="408,216" targetedBy="909515089-arg0"><mapper:value>"logServiceURL"</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggingSend_logRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_input" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_WoqMwKlAEeeMP6pg1gqXnAOutgoing"></bpdm:linkset>
