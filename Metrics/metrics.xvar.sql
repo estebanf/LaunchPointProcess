@@ -1,5 +1,5 @@
-﻿-- External variable database definition for H2 
--- Generated 10/5/17 2:50 PM
+﻿-- External variable database definition for PostGres 
+-- Generated 10/11/17 9:29 AM
 -- Descriptor: Metrics/metrics.xvar (currently edited)
 -- External variable CaseTable
 DROP TABLE IF EXISTS CaseTable;

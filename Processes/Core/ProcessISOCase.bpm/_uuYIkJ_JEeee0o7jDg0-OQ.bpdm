@@ -54,11 +54,6 @@
                     <bpel:literal bpdm:linkedMessageType="this:Receive_ISOResponse" bpdm:linkedPart="body"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
-            <bpel:variable name="skipDuplicateCheck" type="xs:boolean" bpdm:id="_0PSosKSFEee5Z9cgyrUsUw">
-                <bpel:from>
-                    <bpel:literal bpdm:linkedType="xs:boolean" bpdm:linkedFile="boolean-_uuYIkJ_JEeee0o7jDg0-OQ-0-literal.xml"></bpel:literal>
-                </bpel:from>
-            </bpel:variable>
             <bpel:variable name="iSOService-ISO_ServiceReceive_Case_DataResponse1Msg" messageType="ISOService-ISO_Service:Receive_Case_DataResponse" binding="ISOService-ISO_Service:ISoAndISO_ServiceServiceBinding" operation="Receive_Case_Data" opMsgType="1" bpdm:messageIds="inc:_bQn6tKVAEeeldJrblXbbPgIncoming"/>
             <bpel:variable name="iSOService-ISO_ServiceReceive_Case_Data1Msg" messageType="ISOService-ISO_Service:Receive_Case_DataRequest" binding="ISOService-ISO_Service:ISoAndISO_ServiceServiceBinding" operation="Receive_Case_Data" opMsgType="0" bpdm:messageIds=" out:_bQn6tKVAEeeldJrblXbbPgOutgoing">
                 <bpel:from bpdm:toPart="body">
@@ -75,6 +70,11 @@
             <bpel:variable name="nsCheck_duplicatesRequest1Msg" messageType="ns:check_duplicatesInput" binding="ns:check_duplicatesPortSoapBinding" operation="check_duplicates" opMsgType="0" bpdm:messageIds=" out:_WnJ04K32EeeL56TO7yisxAOutgoing">
                 <bpel:from bpdm:toPart="parameters">
                     <bpel:literal bpdm:linkedMessageType="ns:check_duplicatesInput" bpdm:linkedPart="parameters" bpdm:binding="ns:check_duplicatesPortSoapBinding" bpdm:opMsgType="0" bpdm:operation="check_duplicates"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="isDuplicate" type="xs:boolean" bpdm:id="_Uw5acK6REeeL56TO7yisxA">
+                <bpel:from>
+                    <bpel:literal bpdm:linkedType="xs:boolean" bpdm:linkedFile="boolean-_uuYIkJ_JEeee0o7jDg0-OQ-0-literal.xml"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
         </bpel:variables>
@@ -129,17 +129,58 @@
             </bpdm:messagingtask>
             <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_FxphoKSFEee5Z9cgyrUsUw" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_Q8M6AKU_EeeldJrblXbbPg" bpdm:targetDisplayName="Skip duplicate check">
-                    <bpel:condition>$skipDuplicateCheck = true()<mapper:mapperLink><mapper:vertice id="43625244" targetPath="$condition" targetedBy="652599924-arg2"></mapper:vertice><mapper:vertice id="652599924" dimension="79x24" location="288,60"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1985148812" sourcePath="$skipDuplicateCheck" targetedBy="652599924-arg0"></mapper:vertice><mapper:vertice id="1168022674" dimension="79x24" location="120,108" targetedBy="652599924-arg1"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
+                    <bpel:condition>$iSOEventStartMessageRequest1.body/Launchpoint:SkipDuplicateCheck = true()
+<mapper:mapperLink>
+  <mapper:vertice id="123731358" targetPath="$condition" targetedBy="864344938-arg2"></mapper:vertice>
+  <mapper:vertice id="864344938" dimension="79x24" location="288,60">
+    <mapper:value>=</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="604845266" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:SkipDuplicateCheck" targetedBy="864344938-arg0"></mapper:vertice>
+  <mapper:vertice id="1520442938" dimension="79x24" location="168,180" targetedBy="864344938-arg1">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink></bpel:condition>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_ZQCDUKU9EeeldJrblXbbPg" bpdm:targetDisplayName="default"></bpdm:linkset>
                 <bpel:sequence></bpel:sequence>
                 <bpel:sequence>
                     <bpdm:messagingtask operation="check_duplicates" partnerLink="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCheck_duplicatesPortPlkVar" portType="ns:check_duplicatesPort" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Check for duplicates" bpdm:ID="_WnJ04K32EeeL56TO7yisxA" bpdm:isHeaderAuthorizationAware="no">
+                        <bpdm:linkset bpdm:type="assignments">
+                            <bpel:copy>
+                                <bpel:from>$iSOEventStartMessageRequest1.body/Launchpoint:CaseId</bpel:from>
+                                <bpel:to>$nsCheck_duplicatesRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1700443884" targetPath="$nsCheck_duplicatesRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseId" targetedBy="2098781912-arg0"></mapper:vertice>
+  <mapper:vertice id="2098781912" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:CaseId"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                        </bpdm:linkset>
                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="nsCheck_duplicatesRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:check_duplicatesInput" bpdm:binding="ns:check_duplicatesPortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_WnJ04K32EeeL56TO7yisxAOutgoing"></bpdm:linkset>
                         <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="nsCheck_duplicatesResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:check_duplicatesOutput" bpdm:binding="ns:check_duplicatesPortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_WnJ04K32EeeL56TO7yisxAIncoming"></bpdm:linkset>
                         <bpdm:thrownFault msgFaultNcName="nscheck_duplicatesFault" msgFaultTypeQname="ns:check_duplicatesFault"/>
                     </bpdm:messagingtask>
-                    <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Task" bpdm:ID="_ajCboK32EeeL56TO7yisxA" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                    <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Process DB Response" bpdm:ID="_ajCboK32EeeL56TO7yisxA" bpdm:isHeaderAuthorizationAware="no">
+                        <bpdm:linkset bpdm:type="assignments">
+                            <bpel:copy>
+                                <bpel:from>bpel:doXslTransform("../../XSLT/processDuplicateCheck.xsl", $nsCheck_duplicatesResponse1Msg.parameters, "caseId", $iSOEventStartMessageRequest1.body/Launchpoint:CaseId)</bpel:from>
+                                <bpel:to>$isDuplicate</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1050960258" targetPath="$isDuplicate" targetedBy="1965431706-arg1"></mapper:vertice>
+  <mapper:vertice id="1965431706" dimension="126x73" location="396,72">
+    <mapper:value>bpel:doXslTransform()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1190618325" dimension="210x24" location="120,12" targetedBy="1965431706-arg0">
+    <mapper:value>"../../XSLT/processDuplicateCheck.xsl"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="548656052" sourcePath="$nsCheck_duplicatesResponse1Msg.parameters" targetedBy="1965431706-arg2"></mapper:vertice>
+  <mapper:vertice id="809612920" dimension="79x24" location="180,192" targetedBy="1965431706-arg3">
+    <mapper:value>"caseId"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1115902528" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:CaseId" targetedBy="1965431706-arg4"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                        </bpdm:linkset>
+                    </bpdm:messagingtask>
                     <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_XwOnEKSFEee5Z9cgyrUsUw" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                         <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_dteBkKSFEee5Z9cgyrUsUw" bpdm:targetDisplayName="Duplicate">
                             <bpel:condition>true()<mapper:mapperLink><mapper:vertice id="1614080291" targetPath="$condition" targetedBy="863941547-arg0"></mapper:vertice><mapper:vertice id="863941547" dimension="79x24" location="324,24"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
