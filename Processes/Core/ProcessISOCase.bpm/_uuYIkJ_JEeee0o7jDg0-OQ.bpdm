@@ -32,10 +32,10 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_it804J_PEeee0o7jDg0-OQ" bpdm:label="Case Manager"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner" bpdm:label="Process ISO CaseimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/DCMGenerateISOData-DCM.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/check_duplicates.sql/check_duplicates.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/check_duplicates.sql/check_duplicates.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ISOService-ISO_Service.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/DCMGenerateISOData-DCM.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
     </bpdm:dependencies>
@@ -84,62 +84,23 @@
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$ode:pid</bpel:from>
-                        <bpel:to>$iSOReceive_ISOResponse1Msg.body/Launchpoint:pid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="110656570" targetPath="$iSOReceive_ISOResponse1Msg.body/Launchpoint:pid" targetedBy="1331145244-arg0"></mapper:vertice>
-  <mapper:vertice id="1331145244" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$iSOReceive_ISOResponse1Msg.body/Launchpoint:pid</bpel:to><mapper:mapperLink><mapper:vertice id="110656570" targetPath="$iSOReceive_ISOResponse1Msg.body/Launchpoint:pid" targetedBy="1331145244-arg0"></mapper:vertice><mapper:vertice id="1331145244" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>current-dateTime()</bpel:from>
-                        <bpel:to>$iSOReceive_ISOResponse1Msg.body/Launchpoint:timestamp</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="214563206" targetPath="$iSOReceive_ISOResponse1Msg.body/Launchpoint:timestamp" targetedBy="608257937-arg0"></mapper:vertice>
-  <mapper:vertice id="608257937" dimension="109x24" location="372,72">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$iSOReceive_ISOResponse1Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="214563206" targetPath="$iSOReceive_ISOResponse1Msg.body/Launchpoint:timestamp" targetedBy="608257937-arg0"></mapper:vertice><mapper:vertice id="608257937" dimension="109x24" location="372,72"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="iSOReceive_ISOResponse1Msg" bpdm:msgVarScopeId="_uuYIkJ_JEeee0o7jDg0-OQ" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_ISOResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_v-9X8J_PEeee0o7jDg0-OQ"></bpdm:linkset>
             </bpdm:messagingtask>
             <bpdm:messagingtask eventType="intermediate: timer" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Delay sending to ISO" bpdm:ID="_vtXH8KO8EeebaeMgAfjGcw" bpdm:isHeaderAuthorizationAware="no">
                 <bpdm:linkset bpdm:type="timer">
-                    <bpel:until>bpel:doXslTransform("../../XSLT/calculateISOSendDate.xsl", $iSOEventStartMessageRequest1.body, "delayDuration", ode:get-property-value("delayDuration"))
-<mapper:mapperLink>
-  <mapper:vertice id="1116831848" targetPath="$date" targetedBy="758036270-arg1"></mapper:vertice>
-  <mapper:vertice id="758036270" dimension="126x24" location="444,96">
-    <mapper:value>bpel:doXslTransform()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1977512578" dimension="202x24" location="108,24" targetedBy="758036270-arg0">
-    <mapper:value>"../../XSLT/calculateISOSendDate.xsl"</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="2018213589" sourcePath="$iSOEventStartMessageRequest1.body" targetedBy="758036270-arg2"></mapper:vertice>
-  <mapper:vertice id="1491351192" dimension="92x24" location="96,84" targetedBy="758036270-arg3">
-    <mapper:value>"delayDuration"</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="611798391" dimension="139x24" location="96,132" targetedBy="758036270-arg4">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1643240589" dimension="92x24" location="12,192" targetedBy="611798391-arg0">
-    <mapper:value>"delayDuration"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink></bpel:until>
+                    <bpel:until>bpel:doXslTransform("../../XSLT/calculateISOSendDate.xsl", $iSOEventStartMessageRequest1.body, "delayDuration", ode:get-property-value("delayDuration"))<mapper:mapperLink><mapper:vertice id="1116831848" targetPath="$date" targetedBy="758036270-arg1"></mapper:vertice><mapper:vertice id="758036270" dimension="126x24" location="444,96"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="1977512578" dimension="202x24" location="108,24" targetedBy="758036270-arg0"><mapper:value>"../../XSLT/calculateISOSendDate.xsl"</mapper:value></mapper:vertice><mapper:vertice id="2018213589" sourcePath="$iSOEventStartMessageRequest1.body" targetedBy="758036270-arg2"></mapper:vertice><mapper:vertice id="1491351192" dimension="92x24" location="96,84" targetedBy="758036270-arg3"><mapper:value>"delayDuration"</mapper:value></mapper:vertice><mapper:vertice id="611798391" dimension="139x24" location="96,132" targetedBy="758036270-arg4"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1643240589" dimension="92x24" location="12,192" targetedBy="611798391-arg0"><mapper:value>"delayDuration"</mapper:value></mapper:vertice></mapper:mapperLink></bpel:until>
                 </bpdm:linkset>
             </bpdm:messagingtask>
             <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_FxphoKSFEee5Z9cgyrUsUw" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_Q8M6AKU_EeeldJrblXbbPg" bpdm:targetDisplayName="Skip duplicate check">
-                    <bpel:condition>$iSOEventStartMessageRequest1.body/Launchpoint:SkipDuplicateCheck = true()
-<mapper:mapperLink>
-  <mapper:vertice id="123731358" targetPath="$condition" targetedBy="864344938-arg2"></mapper:vertice>
-  <mapper:vertice id="864344938" dimension="79x24" location="288,60">
-    <mapper:value>=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="604845266" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:SkipDuplicateCheck" targetedBy="864344938-arg0"></mapper:vertice>
-  <mapper:vertice id="1520442938" dimension="79x24" location="168,180" targetedBy="864344938-arg1">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                    <bpel:condition>$iSOEventStartMessageRequest1.body/Launchpoint:SkipDuplicateCheck = true()<mapper:mapperLink><mapper:vertice id="123731358" targetPath="$condition" targetedBy="864344938-arg2"></mapper:vertice><mapper:vertice id="864344938" dimension="79x24" location="288,60"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="604845266" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:SkipDuplicateCheck" targetedBy="864344938-arg0"></mapper:vertice><mapper:vertice id="1520442938" dimension="79x24" location="168,180" targetedBy="864344938-arg1"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_ZQCDUKU9EeeldJrblXbbPg" bpdm:targetDisplayName="default"></bpdm:linkset>
                 <bpel:sequence></bpel:sequence>
@@ -148,11 +109,7 @@
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>$iSOEventStartMessageRequest1.body/Launchpoint:CaseId</bpel:from>
-                                <bpel:to>$nsCheck_duplicatesRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1700443884" targetPath="$nsCheck_duplicatesRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseId" targetedBy="2098781912-arg0"></mapper:vertice>
-  <mapper:vertice id="2098781912" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$nsCheck_duplicatesRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseId</bpel:to><mapper:mapperLink><mapper:vertice id="1700443884" targetPath="$nsCheck_duplicatesRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseId" targetedBy="2098781912-arg0"></mapper:vertice><mapper:vertice id="2098781912" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="nsCheck_duplicatesRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:check_duplicatesInput" bpdm:binding="ns:check_duplicatesPortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_WnJ04K32EeeL56TO7yisxAOutgoing"></bpdm:linkset>
@@ -163,21 +120,7 @@
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>bpel:doXslTransform("../../XSLT/processDuplicateCheck.xsl", $nsCheck_duplicatesResponse1Msg.parameters, "caseId", $iSOEventStartMessageRequest1.body/Launchpoint:CaseId)</bpel:from>
-                                <bpel:to>$isDuplicate</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1050960258" targetPath="$isDuplicate" targetedBy="1965431706-arg1"></mapper:vertice>
-  <mapper:vertice id="1965431706" dimension="126x73" location="396,72">
-    <mapper:value>bpel:doXslTransform()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1190618325" dimension="210x24" location="120,12" targetedBy="1965431706-arg0">
-    <mapper:value>"../../XSLT/processDuplicateCheck.xsl"</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="548656052" sourcePath="$nsCheck_duplicatesResponse1Msg.parameters" targetedBy="1965431706-arg2"></mapper:vertice>
-  <mapper:vertice id="809612920" dimension="79x24" location="180,192" targetedBy="1965431706-arg3">
-    <mapper:value>"caseId"</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1115902528" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:CaseId" targetedBy="1965431706-arg4"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$isDuplicate</bpel:to><mapper:mapperLink><mapper:vertice id="1050960258" targetPath="$isDuplicate" targetedBy="1965431706-arg1"></mapper:vertice><mapper:vertice id="1965431706" dimension="126x73" location="396,72"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="1190618325" dimension="210x24" location="120,12" targetedBy="1965431706-arg0"><mapper:value>"../../XSLT/processDuplicateCheck.xsl"</mapper:value></mapper:vertice><mapper:vertice id="548656052" sourcePath="$nsCheck_duplicatesResponse1Msg.parameters" targetedBy="1965431706-arg2"></mapper:vertice><mapper:vertice id="809612920" dimension="79x24" location="180,192" targetedBy="1965431706-arg3"><mapper:value>"caseId"</mapper:value></mapper:vertice><mapper:vertice id="1115902528" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:CaseId" targetedBy="1965431706-arg4"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>
