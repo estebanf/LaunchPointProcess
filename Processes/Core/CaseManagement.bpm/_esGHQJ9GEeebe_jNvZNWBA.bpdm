@@ -32,9 +32,9 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_esGHQJ9GEeebe_jNvZNWBAimplicitPartner" bpdm:label="Case ManagerimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOCase-Process_ISO_Case.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/Logging.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Logging.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOCase-Process_ISO_Case.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
@@ -324,6 +324,19 @@
                                         <bpel:from>$CaseType/tns:CaseId</bpel:from>
                                         <bpel:to>$loggingSend_logRequest3Msg.body/case_id</bpel:to><mapper:mapperLink><mapper:vertice id="1098307745" targetPath="$loggingSend_logRequest3Msg.body/case_id" targetedBy="911264794-arg0"></mapper:vertice><mapper:vertice id="911264794" sourcePath="$CaseType/tns:CaseId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>ode:get-property-value("logServiceURL")</bpel:from>
+                                        <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="1902273715" targetPath="$endpoint" targetedBy="1192673952-arg1"></mapper:vertice>
+  <mapper:vertice id="1192673952" dimension="139x24" location="456,204">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="117083701" dimension="93x24" location="336,204" targetedBy="1192673952-arg0">
+    <mapper:value>"logServiceURL"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggingSend_logRequest3Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_input" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_D4IBgK7IEee8meOENvr0_gOutgoing"></bpdm:linkset>
                                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="loggingSend_logResponse3Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_output" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_D4IBgK7IEee8meOENvr0_gIncoming"></bpdm:linkset>
@@ -332,42 +345,19 @@
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>$CaseType/tns:CaseId</bpel:from>
-                                        <bpel:to>$CaseTracking/metrics:caseId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1233911532" targetPath="$CaseTracking/metrics:caseId" targetedBy="1215109224-arg0"></mapper:vertice>
-  <mapper:vertice id="1215109224" sourcePath="$CaseType/tns:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$CaseTracking/metrics:caseId</bpel:to><mapper:mapperLink><mapper:vertice id="1233911532" targetPath="$CaseTracking/metrics:caseId" targetedBy="1215109224-arg0"></mapper:vertice><mapper:vertice id="1215109224" sourcePath="$CaseType/tns:CaseId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax29:decision/ax210:type</bpel:from>
-                                        <bpel:to>$CaseTracking/metrics:caseType</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="725491769" targetPath="$CaseTracking/metrics:caseType" targetedBy="721034010-arg0"></mapper:vertice>
-  <mapper:vertice id="721034010" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax29:decision/ax210:type"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$CaseTracking/metrics:caseType</bpel:to><mapper:mapperLink><mapper:vertice id="725491769" targetPath="$CaseTracking/metrics:caseType" targetedBy="721034010-arg0"></mapper:vertice><mapper:vertice id="721034010" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax29:decision/ax210:type"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>current-dateTime()</bpel:from>
-                                        <bpel:to>$CaseTracking/metrics:identifiedCase</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="168903628" targetPath="$CaseTracking/metrics:identifiedCase" targetedBy="344247127-arg0"></mapper:vertice>
-  <mapper:vertice id="344247127" dimension="109x24" location="504,252">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$CaseTracking/metrics:identifiedCase</bpel:to><mapper:mapperLink><mapper:vertice id="168903628" targetPath="$CaseTracking/metrics:identifiedCase" targetedBy="344247127-arg0"></mapper:vertice><mapper:vertice id="344247127" dimension="109x24" location="504,252"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("IDENTIFIED_CASE")</bpel:from>
-                                        <bpel:to>$CaseTracking/metrics:caseState</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2038809391" targetPath="$CaseTracking/metrics:caseState" targetedBy="25859938-arg1"></mapper:vertice>
-  <mapper:vertice id="25859938" dimension="139x24" location="456,108">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="978920172" dimension="110x24" location="216,108" targetedBy="25859938-arg0">
-    <mapper:value>"IDENTIFIED_CASE"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$CaseTracking/metrics:caseState</bpel:to><mapper:mapperLink><mapper:vertice id="2038809391" targetPath="$CaseTracking/metrics:caseState" targetedBy="25859938-arg1"></mapper:vertice><mapper:vertice id="25859938" dimension="139x24" location="456,108"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="978920172" dimension="110x24" location="216,108" targetedBy="25859938-arg0"><mapper:value>"IDENTIFIED_CASE"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>

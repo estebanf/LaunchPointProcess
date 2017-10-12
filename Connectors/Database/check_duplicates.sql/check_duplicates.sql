@@ -1,1 +1,1 @@
-select caseId, sentToISO from casetable where caseId = ?
+select caseId, sentToISO from casetracking where caseId = ?
