@@ -35,12 +35,12 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_it804J_PEeee0o7jDg0-OQ" bpdm:label="Case Manager"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner" bpdm:label="Process ISO CaseimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/DCMGenerateISOData-DCM.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ISOService-ISO_Service.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/check_duplicates.sql/check_duplicates.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/check_duplicates.sql/check_duplicates.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/Logging.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Logging.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/DCMGenerateISOData-DCM.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
@@ -80,12 +80,12 @@
                     <bpel:literal bpdm:linkedMessageType="ns:check_duplicatesInput" bpdm:linkedPart="parameters" bpdm:binding="ns:check_duplicatesPortSoapBinding" bpdm:opMsgType="0" bpdm:operation="check_duplicates"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
-            <bpel:variable name="isDuplicate" type="xs:boolean" bpdm:id="_Uw5acK6REeeL56TO7yisxA">
+            <bpel:variable name="CaseTracking" element="metrics:CaseTracking" xvar:id="CaseTracking-_y_V3wK7NEee4kK0wiP9LYg" xvar:relates-to="CaseTracking-keys" bpdm:xvarType="metrics:CaseTracking" bpdm:id="_y_V3wK7NEee4kK0wiP9LYg"/>
+            <bpel:variable name="isDuplicate" element="Launchpoint:isDuplicate" bpdm:id="_bwXdYK-WEeems5uK1Gdg5g">
                 <bpel:from>
-                    <bpel:literal bpdm:linkedType="xs:boolean" bpdm:linkedFile="boolean-_uuYIkJ_JEeee0o7jDg0-OQ-0-literal.xml"></bpel:literal>
+                    <bpel:literal bpdm:linkedElement="Launchpoint:isDuplicate"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
-            <bpel:variable name="CaseTracking" element="metrics:CaseTracking" xvar:id="CaseTracking-_y_V3wK7NEee4kK0wiP9LYg" xvar:relates-to="CaseTracking-keys" bpdm:xvarType="metrics:CaseTracking" bpdm:id="_y_V3wK7NEee4kK0wiP9LYg"/>
         </bpel:variables>
         <bpel:sequence>
             <bpdm:messagingtask eventType="start: message" operation="Receive_ISO" partnerLink="process_ISO_CaseAndCase_ManagerPlkVar" portType="this:ForCase_Manager" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive ISO" bpdm:ID="_1rwKYJ_JEeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="yes">
@@ -102,7 +102,7 @@
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="iSOReceive_ISOResponse1Msg" bpdm:msgVarScopeId="_uuYIkJ_JEeee0o7jDg0-OQ" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_ISOResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_v-9X8J_PEeee0o7jDg0-OQ"></bpdm:linkset>
             </bpdm:messagingtask>
-            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_uzCE0K7MEee4kK0wiP9LYg">
+            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="logging iso received" bpdm:ID="_uzCE0K7MEee4kK0wiP9LYg">
                 <bpel:variables>
                     <bpel:variable name="loggingSend_logResponse1Msg" messageType="Logging:send_log_output" binding="Logging:restBinding" operation="send_log" opMsgType="1" bpdm:messageIds="inc:_PvuvYK7NEee4kK0wiP9LYgIncoming"/>
                     <bpel:variable name="loggingSend_logRequest1Msg" messageType="Logging:send_log_input" binding="Logging:restBinding" operation="send_log" opMsgType="0" bpdm:messageIds=" out:_PvuvYK7NEee4kK0wiP9LYgOutgoing">
@@ -165,7 +165,7 @@
                     <bpel:until>bpel:doXslTransform("../../XSLT/calculateISOSendDate.xsl", $iSOEventStartMessageRequest1.body, "delayDuration", ode:get-property-value("delayDuration"))<mapper:mapperLink><mapper:vertice id="1116831848" targetPath="$date" targetedBy="758036270-arg1"></mapper:vertice><mapper:vertice id="758036270" dimension="126x24" location="444,96"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="1977512578" dimension="202x24" location="108,24" targetedBy="758036270-arg0"><mapper:value>"../../XSLT/calculateISOSendDate.xsl"</mapper:value></mapper:vertice><mapper:vertice id="2018213589" sourcePath="$iSOEventStartMessageRequest1.body" targetedBy="758036270-arg2"></mapper:vertice><mapper:vertice id="1491351192" dimension="92x24" location="96,84" targetedBy="758036270-arg3"><mapper:value>"delayDuration"</mapper:value></mapper:vertice><mapper:vertice id="611798391" dimension="139x24" location="96,132" targetedBy="758036270-arg4"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1643240589" dimension="92x24" location="12,192" targetedBy="611798391-arg0"><mapper:value>"delayDuration"</mapper:value></mapper:vertice></mapper:mapperLink></bpel:until>
                 </bpdm:linkset>
             </bpdm:messagingtask>
-            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_5ImxgK7MEee4kK0wiP9LYg">
+            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="logging begin processing" bpdm:ID="_5ImxgK7MEee4kK0wiP9LYg">
                 <bpel:variables>
                     <bpel:variable name="loggingSend_logResponse2Msg" messageType="Logging:send_log_output" binding="Logging:restBinding" operation="send_log" opMsgType="1" bpdm:messageIds="inc:_Qb4OQa7OEee4kK0wiP9LYgIncoming"/>
                     <bpel:variable name="loggingSend_logRequest2Msg" messageType="Logging:send_log_input" binding="Logging:restBinding" operation="send_log" opMsgType="0" bpdm:messageIds=" out:_Qb4OQa7OEee4kK0wiP9LYgOutgoing">
@@ -227,6 +227,12 @@
                 <bpel:sequence></bpel:sequence>
                 <bpel:sequence>
                     <bpdm:messagingtask operation="check_duplicates" partnerLink="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCheck_duplicatesPortPlkVar" portType="ns:check_duplicatesPort" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Check for duplicates" bpdm:ID="_WnJ04K32EeeL56TO7yisxA" bpdm:isHeaderAuthorizationAware="no">
+                        <bpdm:linkset bpdm:type="assignments">
+                            <bpel:copy>
+                                <bpel:from>$iSOEventStartMessageRequest1.body/Launchpoint:CaseId</bpel:from>
+                                <bpel:to>$nsCheck_duplicatesRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseId</bpel:to><mapper:mapperLink><mapper:vertice id="907057782" targetPath="$nsCheck_duplicatesRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseId" targetedBy="1756686261-arg0"></mapper:vertice><mapper:vertice id="1756686261" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                        </bpdm:linkset>
                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="nsCheck_duplicatesRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:check_duplicatesInput" bpdm:binding="ns:check_duplicatesPortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_WnJ04K32EeeL56TO7yisxAOutgoing"></bpdm:linkset>
                         <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="nsCheck_duplicatesResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:check_duplicatesOutput" bpdm:binding="ns:check_duplicatesPortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_WnJ04K32EeeL56TO7yisxAIncoming"></bpdm:linkset>
                         <bpdm:thrownFault msgFaultNcName="nscheck_duplicatesFault" msgFaultTypeQname="ns:check_duplicatesFault"/>
@@ -235,24 +241,17 @@
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>bpel:doXslTransform("../../XSLT/processDuplicateCheck.xsl", $nsCheck_duplicatesResponse1Msg.parameters, "caseId", $iSOEventStartMessageRequest1.body/Launchpoint:CaseId)</bpel:from>
-                                <bpel:to>$isDuplicate</bpel:to><mapper:mapperLink><mapper:vertice id="2054896022" targetPath="$isDuplicate" targetedBy="1612712002-arg1"></mapper:vertice><mapper:vertice id="1612712002" dimension="126x73" location="396,72"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="464174685" dimension="210x24" location="120,12" targetedBy="1612712002-arg0"><mapper:value>"../../XSLT/processDuplicateCheck.xsl"</mapper:value></mapper:vertice><mapper:vertice id="685412360" sourcePath="$nsCheck_duplicatesResponse1Msg.parameters" targetedBy="1612712002-arg2"></mapper:vertice><mapper:vertice id="860735338" dimension="79x24" location="192,192" targetedBy="1612712002-arg3"><mapper:value>"caseId"</mapper:value></mapper:vertice><mapper:vertice id="832579802" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:CaseId" targetedBy="1612712002-arg4"></mapper:vertice></mapper:mapperLink>
+                                <bpel:to>$isDuplicate</bpel:to><mapper:mapperLink><mapper:vertice id="1260013278" targetPath="$isDuplicate" targetedBy="1300522273-arg4"></mapper:vertice><mapper:vertice id="1300522273" dimension="126x73" location="396,72"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="1066424450" dimension="210x24" location="120,12" targetedBy="1300522273-arg0"><mapper:value>"../../XSLT/processDuplicateCheck.xsl"</mapper:value></mapper:vertice><mapper:vertice id="129415411" sourcePath="$nsCheck_duplicatesResponse1Msg.parameters" targetedBy="1300522273-arg1"></mapper:vertice><mapper:vertice id="1881746157" dimension="79x24" location="192,192" targetedBy="1300522273-arg2"><mapper:value>"caseId"</mapper:value></mapper:vertice><mapper:vertice id="1627001910" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:CaseId" targetedBy="1300522273-arg3"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>
-                    <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_XwOnEKSFEee5Z9cgyrUsUw" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
-                        <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_dteBkKSFEee5Z9cgyrUsUw" bpdm:targetDisplayName="default"></bpdm:linkset>
-                        <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_CMVhEK33EeeL56TO7yisxA" bpdm:targetDisplayName="[GatewayDataBasedExclusive - GatewayDataBasedExclusive]">
-                            <bpel:condition>not($isDuplicate)
-<mapper:mapperLink>
-  <mapper:vertice id="5605388" targetPath="$condition" targetedBy="131687960-arg1"></mapper:vertice>
-  <mapper:vertice id="131687960" dimension="79x24" location="400,95">
-    <mapper:value>not()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="2130235323" sourcePath="$isDuplicate" targetedBy="131687960-arg0"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                    <bpdm:gateway bpdm:label="Is duplicate?" bpdm:ID="_jmhE0K-XEeems5uK1Gdg5g" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
+                        <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_kMuwQK-XEeems5uK1Gdg5g" bpdm:targetDisplayName="Yes">
+                            <bpel:condition>$isDuplicate/Launchpoint:duplicate<mapper:mapperLink><mapper:vertice id="2088417245" targetPath="$condition" targetedBy="440105939-arg0"></mapper:vertice><mapper:vertice id="440105939" sourcePath="$isDuplicate/Launchpoint:duplicate"></mapper:vertice></mapper:mapperLink></bpel:condition>
                         </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_lQlZ8K-XEeems5uK1Gdg5g" bpdm:targetDisplayName="default"></bpdm:linkset>
                         <bpel:sequence>
-                            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_NDYPUK74EeeQHuz5vWBUiA">
+                            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="logging duplicate" bpdm:ID="_NDYPUK74EeeQHuz5vWBUiA">
                                 <bpel:variables>
                                     <bpel:variable name="loggingSend_logResponse3Msg" messageType="Logging:send_log_output" binding="Logging:restBinding" operation="send_log" opMsgType="1" bpdm:messageIds="inc:_BJLRsK75EeeQHuz5vWBUiAIncoming"/>
                                     <bpel:variable name="loggingSend_logRequest3Msg" messageType="Logging:send_log_input" binding="Logging:restBinding" operation="send_log" opMsgType="0" bpdm:messageIds=" out:_BJLRsK75EeeQHuz5vWBUiAOutgoing">
@@ -317,21 +316,17 @@
                 </bpel:sequence>
             </bpdm:gateway>
             <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_PBQQQKU_EeeldJrblXbbPg" bpdm:gatewayType="data_xor" bpdm:isMerge="true"></bpdm:gateway>
-            <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_VfSYcK33EeeL56TO7yisxA" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
+            <bpdm:gateway bpdm:label="Should continue?" bpdm:ID="_VfSYcK33EeeL56TO7yisxA" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                 <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_WijzUK33EeeL56TO7yisxA" bpdm:targetDisplayName="default"></bpdm:linkset>
-                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_XZ0LcK33EeeL56TO7yisxA" bpdm:targetDisplayName="[GatewayDataBasedExclusive - EventEndEmpty]">
-                    <bpel:condition>$isDuplicate
-<mapper:mapperLink>
-  <mapper:vertice id="100550728" targetPath="$condition" targetedBy="721863560-arg0"></mapper:vertice>
-  <mapper:vertice id="721863560" sourcePath="$isDuplicate"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_XZ0LcK33EeeL56TO7yisxA" bpdm:targetDisplayName="No">
+                    <bpel:condition>$isDuplicate/Launchpoint:duplicate<mapper:mapperLink><mapper:vertice id="723100652" targetPath="$condition" targetedBy="1657056688-arg0"></mapper:vertice><mapper:vertice id="1657056688" sourcePath="$isDuplicate/Launchpoint:duplicate"></mapper:vertice></mapper:mapperLink></bpel:condition>
                 </bpdm:linkset>
                 <bpel:sequence>
                     <bpdm:messagingtask operation="Generate_ISO_Data" partnerLink="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk0Var" portType="DCMGenerateISOData-DCM:ForISO" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Fetch ISO Data" bpdm:ID="_09pKIKVOEeeDc_yuGO31xQ" bpdm:isHeaderAuthorizationAware="no">
                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMGenerateISOData-DCMGenerate_ISO_Data1Msg" bpdm:variableIsManaged="true" bpdm:messageType="DCMGenerateISOData-DCM:Generate_ISO_DataRequest" bpdm:binding="DCMGenerateISOData-DCM:ISoAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_09pKIKVOEeeDc_yuGO31xQOutgoing"></bpdm:linkset>
                         <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="dCMGenerateISOData-DCMGenerate_ISO_DataResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="DCMGenerateISOData-DCM:Generate_ISO_DataResponse" bpdm:binding="DCMGenerateISOData-DCM:ISoAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_09pKIKVOEeeDc_yuGO31xQIncoming"></bpdm:linkset>
                     </bpdm:messagingtask>
-                    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_4cupgK75EeeQHuz5vWBUiA">
+                    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="logging fetch data" bpdm:ID="_4cupgK75EeeQHuz5vWBUiA">
                         <bpel:variables>
                             <bpel:variable name="loggingSend_logResponse4Msg" messageType="Logging:send_log_output" binding="Logging:restBinding" operation="send_log" opMsgType="1" bpdm:messageIds="inc:_RQp2IK76EeeQHuz5vWBUiAIncoming"/>
                             <bpel:variable name="loggingSend_logRequest4Msg" messageType="Logging:send_log_input" binding="Logging:restBinding" operation="send_log" opMsgType="0" bpdm:messageIds=" out:_RQp2IK76EeeQHuz5vWBUiAOutgoing">
@@ -399,7 +394,7 @@
                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iSOService-ISO_ServiceReceive_Case_Data1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ISOService-ISO_Service:Receive_Case_DataRequest" bpdm:binding="ISOService-ISO_Service:ISoAndISO_ServiceServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_bQn6tKVAEeeldJrblXbbPgOutgoing"></bpdm:linkset>
                         <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="iSOService-ISO_ServiceReceive_Case_DataResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ISOService-ISO_Service:Receive_Case_DataResponse" bpdm:binding="ISOService-ISO_Service:ISoAndISO_ServiceServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_bQn6tKVAEeeldJrblXbbPgIncoming"></bpdm:linkset>
                     </bpdm:messagingtask>
-                    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_Bb6LAK76EeeQHuz5vWBUiA">
+                    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="logging send data" bpdm:ID="_Bb6LAK76EeeQHuz5vWBUiA">
                         <bpel:variables>
                             <bpel:variable name="loggingSend_logResponse5Msg" messageType="Logging:send_log_output" binding="Logging:restBinding" operation="send_log" opMsgType="1" bpdm:messageIds="inc:_X-vewK76EeeQHuz5vWBUiAIncoming"/>
                             <bpel:variable name="loggingSend_logRequest5Msg" messageType="Logging:send_log_input" binding="Logging:restBinding" operation="send_log" opMsgType="0" bpdm:messageIds=" out:_X-vewK76EeeQHuz5vWBUiAOutgoing">
