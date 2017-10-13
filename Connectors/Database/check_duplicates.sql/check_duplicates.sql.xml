@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jdbc:descriptor wsdlLocation="check_duplicates.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:check_duplicatesservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
     <jdbc:service name="check_duplicatesService">
-        <jdbc:operation name="urn:check_duplicates" sqlStatement="select caseId, sentToISO from casetracking where caseId = ?" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:check_duplicatesservice">
+        <jdbc:operation name="urn:check_duplicates" sqlStatement="select caseId, sentToISO from casetracking where caseId = ? and senttoiso is null;" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:check_duplicatesservice">
             <jdbc:input>
                 <jdbc:parameter>
                     <jdbc:mode>1</jdbc:mode>
@@ -22,16 +22,16 @@
             <jdbc:output/>
         </jdbc:operation>
         <jdbc:port>
-            <jdbc:address location="http://192.168.241.200:8080/everteam/ode/processes/check_duplicatesService"/>
+            <jdbc:address location="http://bpms.everteam.us:8080/everteam/ode/processes/check_duplicatesService"/>
         </jdbc:port>
         <jdbc:connection jndiName="java:comp/env/jdbc/BAMDB">
             <jdbc:databaseProductName>Generic JDBC</jdbc:databaseProductName>
             <jdbc:databaseProductVersion>1.0</jdbc:databaseProductVersion>
             <jdbc:driverClass>org.postgresql.Driver</jdbc:driverClass>
-            <jdbc:databaseUrl>jdbc:postgresql://192.168.241.200/postgres</jdbc:databaseUrl>
-            <jdbc:databaseName>postgres</jdbc:databaseName>
-            <jdbc:userName>postgres</jdbc:userName>
-            <jdbc:password>decrypt[aXud2UPnnGza86up67jdsTpGxxuTl2zl]</jdbc:password>
+            <jdbc:databaseUrl>jdbc:postgresql://bpms.everteam.us:5432/bamdb</jdbc:databaseUrl>
+            <jdbc:databaseName>BAMDB</jdbc:databaseName>
+            <jdbc:userName>bam</jdbc:userName>
+            <jdbc:password>decrypt[HwHZ4lPVUk0ZZ5D1bX/2RgijaJ6kiKJg]</jdbc:password>
         </jdbc:connection>
     </jdbc:service>
 </jdbc:descriptor>
