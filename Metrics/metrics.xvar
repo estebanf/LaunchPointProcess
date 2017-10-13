@@ -6,7 +6,8 @@
       <xjdbc:jdbc>
         <xjdbc:datasource-jndi>java:comp/env/jdbc/BAMDB</xjdbc:datasource-jndi>
         <xjdbc:table xbpms:isDefault="true">ISOResponseTracking</xjdbc:table>
-        <xjdbc:column key="yes" name="requestId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="yes" name="pid" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="requestId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
         <xjdbc:column key="no" name="caseId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
         <xjdbc:column key="no" name="previousScore" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
         <xjdbc:column key="no" name="responseState" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
@@ -14,8 +15,7 @@
         <xjdbc:column key="no" name="receivedScore" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
         <xjdbc:column key="no" name="createdDiary" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
         <xjdbc:column key="no" name="updatedCase" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-        <xjdbc:column generator="pid" key="no" name="pdid" sql-type="VARCHAR" xbpms:type-label="process-definition-id" xsd-type="xs:string"/>
-        <xjdbc:column generator="iid" key="no" name="pid" sql-type="BIGINT" xbpms:type-label="process-instance-id" xsd-type="xs:long"/>
+        <xjdbc:column generator="pid" key="no" name="pdid" xbpms:type-label="process-definition-id"/>
         <xjdbc:column generator="ctimestamp" key="no" name="createdAt" sql-type="TIMESTAMP" xbpms:type-label="creation-timestamp" xsd-type="xs:dateTime"/>
         <xjdbc:column generator="utimestamp" key="no" name="updatedAt" sql-type="TIMESTAMP" xbpms:type-label="update-timestamp" xsd-type="xs:dateTime"/>
         <xjdbc:init mode="update-insert"/>
@@ -28,17 +28,18 @@
       <xjdbc:jdbc>
         <xjdbc:datasource-jndi>java:comp/env/jdbc/BAMDB</xjdbc:datasource-jndi>
         <xjdbc:table xbpms:isDefault="true">ISOTracking</xjdbc:table>
-        <xjdbc:column key="yes" name="caseId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="yes" name="pid" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="caseId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="requestId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
         <xjdbc:column key="no" name="caseState" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
         <xjdbc:column key="no" name="receivedISO" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
         <xjdbc:column key="no" name="beganISOProcessing" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
         <xjdbc:column key="no" name="foundDuplicateISO" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
         <xjdbc:column key="no" name="fetchedISOData" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
         <xjdbc:column key="no" name="sentToISO" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-        <xjdbc:column generator="pid" key="no" name="pdid" sql-type="VARCHAR" xbpms:type-label="process-definition-id" xsd-type="xs:string"/>
-        <xjdbc:column generator="iid" key="no" name="pid" sql-type="BIGINT" xbpms:type-label="process-instance-id" xsd-type="xs:long"/>
-        <xjdbc:column generator="ctimestamp" key="no" name="createdAt" sql-type="TIMESTAMP" xbpms:type-label="creation-timestamp" xsd-type="xs:dateTime"/>
-        <xjdbc:column generator="utimestamp" key="no" name="modifiedAt" sql-type="TIMESTAMP" xbpms:type-label="update-timestamp" xsd-type="xs:dateTime"/>
+        <xjdbc:column generator="pid" key="no" name="pdid" xbpms:type-label="process-definition-id"/>
+        <xjdbc:column generator="ctimestamp" key="no" name="createdAt" xbpms:type-label="creation-timestamp"/>
+        <xjdbc:column generator="utimestamp" key="no" name="modifiedAt" xbpms:type-label="update-timestamp"/>
         <xjdbc:init mode="update-insert"/>
       </xjdbc:jdbc>
     </xbpms:binding>
@@ -49,7 +50,8 @@
       <xjdbc:jdbc>
         <xjdbc:datasource-jndi>java:comp/env/jdbc/BAMDB</xjdbc:datasource-jndi>
         <xjdbc:table xbpms:isDefault="true">CaseTracking</xjdbc:table>
-        <xjdbc:column key="yes" name="caseId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="yes" name="pid" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="caseId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
         <xjdbc:column key="no" name="isoIndicator" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
         <xjdbc:column key="no" name="score" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
         <xjdbc:column key="no" name="accidentDate" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
@@ -66,7 +68,6 @@
         <xjdbc:column key="no" name="receivedCase" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
         <xjdbc:column key="no" name="identifiedCase" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
         <xjdbc:column generator="pid" key="no" name="pdid" xbpms:type-label="process-definition-id"/>
-        <xjdbc:column generator="iid" key="no" name="pid" xbpms:type-label="process-instance-id"/>
         <xjdbc:column generator="ctimestamp" key="no" name="createdAt" xbpms:type-label="creation-timestamp"/>
         <xjdbc:column generator="utimestamp" key="no" name="modifiedAt" xbpms:type-label="update-timestamp"/>
         <xjdbc:init mode="update-insert"/>

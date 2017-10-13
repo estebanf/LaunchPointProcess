@@ -38,9 +38,9 @@
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/DCMGenerateISOData-DCM.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/Logging.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Logging.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ISOService-ISO_Service.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/check_duplicates.sql/check_duplicates.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/check_duplicates.sql/check_duplicates.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ISOService-ISO_Service.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
@@ -108,6 +108,14 @@
                         <bpel:from>$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId</bpel:from>
                         <bpel:to>$ISOTracking/metrics:caseId</bpel:to><mapper:mapperLink><mapper:vertice id="2050668346" targetPath="$ISOTracking/metrics:caseId" targetedBy="1541974316-arg0"></mapper:vertice><mapper:vertice id="1541974316" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$ode:pid</bpel:from>
+                        <bpel:to>$ISOTracking/metrics:pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="40466478" targetPath="$ISOTracking/metrics:pid" targetedBy="1739535493-arg0"></mapper:vertice>
+  <mapper:vertice id="1739535493" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
                 </bpdm:linkset>
             </bpdm:messagingtask>
             <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="logging iso received" bpdm:ID="_uzCE0K7MEee4kK0wiP9LYg">
@@ -167,6 +175,14 @@
                             <bpel:copy>
                                 <bpel:from>$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId</bpel:from>
                                 <bpel:to>$ISOTracking/metrics:caseId</bpel:to><mapper:mapperLink><mapper:vertice id="154177822" targetPath="$ISOTracking/metrics:caseId" targetedBy="1921324291-arg0"></mapper:vertice><mapper:vertice id="1921324291" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$ode:pid</bpel:from>
+                                <bpel:to>$ISOTracking/metrics:pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="777193551" targetPath="$ISOTracking/metrics:pid" targetedBy="1922817437-arg0"></mapper:vertice>
+  <mapper:vertice id="1922817437" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>
@@ -231,6 +247,14 @@
                                 <bpel:from>current-dateTime()</bpel:from>
                                 <bpel:to>$ISOTracking/metrics:beganISOProcessing</bpel:to><mapper:mapperLink><mapper:vertice id="113468028" targetPath="$ISOTracking/metrics:beganISOProcessing" targetedBy="837603331-arg0"></mapper:vertice><mapper:vertice id="837603331" dimension="109x24" location="524,146"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$ode:pid</bpel:from>
+                                <bpel:to>$ISOTracking/metrics:pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="949175302" targetPath="$ISOTracking/metrics:pid" targetedBy="1536394773-arg0"></mapper:vertice>
+  <mapper:vertice id="1536394773" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>
                 </bpel:sequence>
@@ -263,17 +287,7 @@
                     </bpdm:messagingtask>
                     <bpdm:gateway bpdm:label="Is duplicate?" bpdm:ID="_jmhE0K-XEeems5uK1Gdg5g" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                         <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_kMuwQK-XEeems5uK1Gdg5g" bpdm:targetDisplayName="Yes">
-                            <bpel:condition>$isDuplicate/Launchpoint:duplicate = true()
-<mapper:mapperLink>
-  <mapper:vertice id="177776757" targetPath="$condition" targetedBy="22742927-arg2"></mapper:vertice>
-  <mapper:vertice id="22742927" dimension="79x24" location="744,100">
-    <mapper:value>=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="613652899" sourcePath="$isDuplicate/Launchpoint:duplicate" targetedBy="22742927-arg0"></mapper:vertice>
-  <mapper:vertice id="1639296014" dimension="79x24" location="677,178" targetedBy="22742927-arg1">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                            <bpel:condition>$isDuplicate/Launchpoint:duplicate = true()<mapper:mapperLink><mapper:vertice id="177776757" targetPath="$condition" targetedBy="22742927-arg2"></mapper:vertice><mapper:vertice id="22742927" dimension="79x24" location="744,100"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="613652899" sourcePath="$isDuplicate/Launchpoint:duplicate" targetedBy="22742927-arg0"></mapper:vertice><mapper:vertice id="1639296014" dimension="79x24" location="677,178" targetedBy="22742927-arg1"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
                         </bpdm:linkset>
                         <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_lQlZ8K-XEeems5uK1Gdg5g" bpdm:targetDisplayName="default"></bpdm:linkset>
                         <bpel:sequence>
@@ -335,6 +349,14 @@
                                                 <bpel:from>current-dateTime()</bpel:from>
                                                 <bpel:to>$ISOTracking/metrics:foundDuplicateISO</bpel:to><mapper:mapperLink><mapper:vertice id="1532153384" targetPath="$ISOTracking/metrics:foundDuplicateISO" targetedBy="1786513714-arg0"></mapper:vertice><mapper:vertice id="1786513714" dimension="109x24" location="462,164"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
+                                            <bpel:copy>
+                                                <bpel:from>$ode:pid</bpel:from>
+                                                <bpel:to>$ISOTracking/metrics:pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="812343857" targetPath="$ISOTracking/metrics:pid" targetedBy="2049248543-arg0"></mapper:vertice>
+  <mapper:vertice id="2049248543" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
+                                            </bpel:copy>
                                         </bpdm:linkset>
                                     </bpdm:messagingtask>
                                 </bpel:sequence>
@@ -349,17 +371,7 @@
             <bpdm:gateway bpdm:label="Should continue?" bpdm:ID="_VfSYcK33EeeL56TO7yisxA" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                 <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_WijzUK33EeeL56TO7yisxA" bpdm:targetDisplayName="default"></bpdm:linkset>
                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_XZ0LcK33EeeL56TO7yisxA" bpdm:targetDisplayName="No">
-                    <bpel:condition>$isDuplicate/Launchpoint:duplicate = true()
-<mapper:mapperLink>
-  <mapper:vertice id="727634135" targetPath="$condition" targetedBy="1353407972-arg2"></mapper:vertice>
-  <mapper:vertice id="1353407972" dimension="79x24" location="478,50">
-    <mapper:value>=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="742474682" sourcePath="$isDuplicate/Launchpoint:duplicate" targetedBy="1353407972-arg0"></mapper:vertice>
-  <mapper:vertice id="2036328276" dimension="79x24" location="360,132" targetedBy="1353407972-arg1">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                    <bpel:condition>$isDuplicate/Launchpoint:duplicate = true()<mapper:mapperLink><mapper:vertice id="727634135" targetPath="$condition" targetedBy="1353407972-arg2"></mapper:vertice><mapper:vertice id="1353407972" dimension="79x24" location="478,50"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="742474682" sourcePath="$isDuplicate/Launchpoint:duplicate" targetedBy="1353407972-arg0"></mapper:vertice><mapper:vertice id="2036328276" dimension="79x24" location="360,132" targetedBy="1353407972-arg1"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
                 </bpdm:linkset>
                 <bpel:sequence>
                     <bpdm:messagingtask operation="Generate_ISO_Data" partnerLink="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCanonicPortPlk0Var" portType="DCMGenerateISOData-DCM:ForISO" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Fetch ISO Data" bpdm:ID="_09pKIKVOEeeDc_yuGO31xQ" bpdm:isHeaderAuthorizationAware="no">
@@ -423,6 +435,14 @@
                                     <bpel:copy>
                                         <bpel:from>current-dateTime()</bpel:from>
                                         <bpel:to>$ISOTracking/metrics:fetchedISOData</bpel:to><mapper:mapperLink><mapper:vertice id="87791529" targetPath="$ISOTracking/metrics:fetchedISOData" targetedBy="1001684278-arg0"></mapper:vertice><mapper:vertice id="1001684278" dimension="109x24" location="420,192"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$ode:pid</bpel:from>
+                                        <bpel:to>$ISOTracking/metrics:pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="279667776" targetPath="$ISOTracking/metrics:pid" targetedBy="449230766-arg0"></mapper:vertice>
+  <mapper:vertice id="449230766" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
@@ -495,6 +515,14 @@
                                     <bpel:copy>
                                         <bpel:from>current-dateTime()</bpel:from>
                                         <bpel:to>$ISOTracking/metrics:sentToISO</bpel:to><mapper:mapperLink><mapper:vertice id="6147646" targetPath="$ISOTracking/metrics:sentToISO" targetedBy="1436240216-arg0"></mapper:vertice><mapper:vertice id="1436240216" dimension="109x24" location="486,198"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$ode:pid</bpel:from>
+                                        <bpel:to>$ISOTracking/metrics:pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="334615376" targetPath="$ISOTracking/metrics:pid" targetedBy="301740436-arg0"></mapper:vertice>
+  <mapper:vertice id="301740436" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
