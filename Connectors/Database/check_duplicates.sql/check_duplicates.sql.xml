@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jdbc:descriptor wsdlLocation="check_duplicates.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:check_duplicatesservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
     <jdbc:service name="check_duplicatesService">
-        <jdbc:operation name="urn:check_duplicates" sqlStatement="select caseId, sentToISO from isotracking where caseId = ? and senttoiso != null;" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:check_duplicatesservice">
+        <jdbc:operation name="urn:check_duplicates" sqlStatement="select * from isotracking where caseid=? and senttoiso is not null order by modifiedat desc limit 1;" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:check_duplicatesservice">
             <jdbc:input>
                 <jdbc:parameter>
                     <jdbc:mode>1</jdbc:mode>
-                    <jdbc:name>caseId</jdbc:name>
+                    <jdbc:name>caseid</jdbc:name>
                     <jdbc:type>40</jdbc:type>
                     <jdbc:length>10</jdbc:length>
                     <jdbc:typeName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
                     <jdbc:precision>0</jdbc:precision>
                     <jdbc:scale>0</jdbc:scale>
                     <jdbc:nullable>false</jdbc:nullable>
-                    <jdbc:value>458</jdbc:value>
                     <jdbc:index>0</jdbc:index>
                 </jdbc:parameter>
             </jdbc:input>
@@ -31,7 +30,7 @@
             <jdbc:databaseUrl>jdbc:postgresql://192.168.241.200/postgres</jdbc:databaseUrl>
             <jdbc:databaseName>postgres</jdbc:databaseName>
             <jdbc:userName>postgres</jdbc:userName>
-            <jdbc:password>decrypt[mOCSqsOOokhrU70a2npOOrwjskbYkFKz]</jdbc:password>
+            <jdbc:password>decrypt[dmZwIMBiHthY6QF2LEkPpVS2wRgMRKzk]</jdbc:password>
         </jdbc:connection>
     </jdbc:service>
 </jdbc:descriptor>
