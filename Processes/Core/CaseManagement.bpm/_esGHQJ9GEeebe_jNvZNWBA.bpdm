@@ -31,10 +31,10 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_G9knAJ9HEeebe_jNvZNWBA" bpdm:label="Queue Service"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_esGHQJ9GEeebe_jNvZNWBAimplicitPartner" bpdm:label="Case ManagerimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOCase-Process_ISO_Case.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/Logging.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Logging.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOCase-Process_ISO_Case.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
@@ -326,16 +326,7 @@
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("logServiceURL")</bpel:from>
-                                        <bpel:to endpointReference="partnerRole"/>
-<mapper:mapperLink>
-  <mapper:vertice id="1902273715" targetPath="$endpoint" targetedBy="1192673952-arg1"></mapper:vertice>
-  <mapper:vertice id="1192673952" dimension="139x24" location="456,204">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="117083701" dimension="93x24" location="336,204" targetedBy="1192673952-arg0">
-    <mapper:value>"logServiceURL"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="1902273715" targetPath="$endpoint" targetedBy="1192673952-arg1"></mapper:vertice><mapper:vertice id="1192673952" dimension="139x24" location="456,204"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="117083701" dimension="93x24" location="336,204" targetedBy="1192673952-arg0"><mapper:value>"logServiceURL"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggingSend_logRequest3Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_input" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_D4IBgK7IEee8meOENvr0_gOutgoing"></bpdm:linkset>
@@ -382,7 +373,19 @@
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>$CaseType</bpel:from>
-                                        <bpel:to>$processISOCase-Process_ISO_CaseReceive_ISO1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="1652480314" targetPath="$processISOCase-Process_ISO_CaseReceive_ISO1Msg.body" targetedBy="2039020910-arg0"></mapper:vertice><mapper:vertice id="2039020910" sourcePath="$CaseType"></mapper:vertice></mapper:mapperLink>
+                                        <bpel:to>$processISOCase-Process_ISO_CaseReceive_ISO1Msg.body/tns:case</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1910671971" targetPath="$processISOCase-Process_ISO_CaseReceive_ISO1Msg.body/tns:case" targetedBy="1035937283-arg0"></mapper:vertice>
+  <mapper:vertice id="1035937283" sourcePath="$CaseType"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$BatchType/tns:BatchId</bpel:from>
+                                        <bpel:to>$processISOCase-Process_ISO_CaseReceive_ISO1Msg.body/tns:batchId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1668698956" targetPath="$processISOCase-Process_ISO_CaseReceive_ISO1Msg.body/tns:batchId" targetedBy="1566941937-arg0"></mapper:vertice>
+  <mapper:vertice id="1566941937" sourcePath="$BatchType/tns:BatchId"></mapper:vertice>
+</mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="processISOCase-Process_ISO_CaseReceive_ISO1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOCase-Process_ISO_Case:Receive_ISORequest" bpdm:binding="ProcessISOCase-Process_ISO_Case:Process_ISO_CaseAndCase_ManagerServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_35zS4KVGEeevGO5wNBDUigOutgoing"></bpdm:linkset>

@@ -14,7 +14,7 @@
 	<xsl:template match="/this:Receive_ISORequest">
 		<xsl:copy>
 			<xsl:value-of
-				select="xs:dateTime(Launchpoint:AccidentDate) + xs:dayTimeDuration($delayDuration)" />
+				select="xs:dateTime(Launchpoint:case/Launchpoint:AccidentDate) + xs:dayTimeDuration($delayDuration)" />
 		</xsl:copy>
 	</xsl:template>
 </xsl:stylesheet>
