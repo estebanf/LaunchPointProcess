@@ -35,12 +35,12 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_it804J_PEeee0o7jDg0-OQ" bpdm:label="Case Manager"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner" bpdm:label="Process ISO CaseimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/DCMGenerateISOData-DCM.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/check_duplicates.sql/check_duplicates.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/check_duplicates.sql/check_duplicates.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ISOService-ISO_Service.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/Logging.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Logging.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ISOService-ISO_Service.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/DCMGenerateISOData-DCM.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
@@ -80,7 +80,6 @@
                     <bpel:literal bpdm:linkedMessageType="ns:check_duplicatesInput" bpdm:linkedPart="parameters" bpdm:binding="ns:check_duplicatesPortSoapBinding" bpdm:opMsgType="0" bpdm:operation="check_duplicates"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
-            <bpel:variable name="CaseTracking" element="metrics:CaseTracking" xvar:id="CaseTracking-_y_V3wK7NEee4kK0wiP9LYg" xvar:relates-to="CaseTracking-keys" bpdm:xvarType="metrics:CaseTracking" bpdm:id="_y_V3wK7NEee4kK0wiP9LYg"/>
             <bpel:variable name="isDuplicate" element="Launchpoint:isDuplicate" bpdm:id="_bwXdYK-WEeems5uK1Gdg5g">
                 <bpel:from>
                     <bpel:literal bpdm:linkedElement="Launchpoint:isDuplicate"></bpel:literal>
@@ -107,11 +106,7 @@
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId</bpel:from>
-                        <bpel:to>$ISOTracking/metrics:caseId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2050668346" targetPath="$ISOTracking/metrics:caseId" targetedBy="1541974316-arg0"></mapper:vertice>
-  <mapper:vertice id="1541974316" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$ISOTracking/metrics:caseId</bpel:to><mapper:mapperLink><mapper:vertice id="2050668346" targetPath="$ISOTracking/metrics:caseId" targetedBy="1541974316-arg0"></mapper:vertice><mapper:vertice id="1541974316" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
             </bpdm:messagingtask>
@@ -163,34 +158,15 @@
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>ode:get-property-value("RECEIVED_ISO")</bpel:from>
-                                <bpel:to>$ISOTracking/metrics:caseState</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="337405659" targetPath="$ISOTracking/metrics:caseState" targetedBy="153580963-arg1"></mapper:vertice>
-  <mapper:vertice id="153580963" dimension="139x24" location="468,156">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="2005488238" dimension="92x24" location="288,156" targetedBy="153580963-arg0">
-    <mapper:value>"RECEIVED_ISO"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$ISOTracking/metrics:caseState</bpel:to><mapper:mapperLink><mapper:vertice id="337405659" targetPath="$ISOTracking/metrics:caseState" targetedBy="153580963-arg1"></mapper:vertice><mapper:vertice id="153580963" dimension="139x24" location="468,156"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="2005488238" dimension="92x24" location="288,156" targetedBy="153580963-arg0"><mapper:value>"RECEIVED_ISO"</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>current-dateTime()</bpel:from>
-                                <bpel:to>$ISOTracking/metrics:receivedISO</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1424214946" targetPath="$ISOTracking/metrics:receivedISO" targetedBy="1442935412-arg0"></mapper:vertice>
-  <mapper:vertice id="1442935412" dimension="109x24" location="492,192">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$ISOTracking/metrics:receivedISO</bpel:to><mapper:mapperLink><mapper:vertice id="1424214946" targetPath="$ISOTracking/metrics:receivedISO" targetedBy="1442935412-arg0"></mapper:vertice><mapper:vertice id="1442935412" dimension="109x24" location="492,192"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId</bpel:from>
-                                <bpel:to>$ISOTracking/metrics:caseId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="154177822" targetPath="$ISOTracking/metrics:caseId" targetedBy="1921324291-arg0"></mapper:vertice>
-  <mapper:vertice id="1921324291" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$ISOTracking/metrics:caseId</bpel:to><mapper:mapperLink><mapper:vertice id="154177822" targetPath="$ISOTracking/metrics:caseId" targetedBy="1921324291-arg0"></mapper:vertice><mapper:vertice id="1921324291" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>
@@ -245,34 +221,15 @@
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId</bpel:from>
-                                <bpel:to>$ISOTracking/metrics:caseId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="213819615" targetPath="$ISOTracking/metrics:caseId" targetedBy="1256469923-arg0"></mapper:vertice>
-  <mapper:vertice id="1256469923" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$ISOTracking/metrics:caseId</bpel:to><mapper:mapperLink><mapper:vertice id="213819615" targetPath="$ISOTracking/metrics:caseId" targetedBy="1256469923-arg0"></mapper:vertice><mapper:vertice id="1256469923" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>ode:get-property-value("BEGAN_ISO_PROCESSING")</bpel:from>
-                                <bpel:to>$ISOTracking/metrics:caseState</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1218622610" targetPath="$ISOTracking/metrics:caseState" targetedBy="31874125-arg1"></mapper:vertice>
-  <mapper:vertice id="31874125" dimension="139x24" location="540,84">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="219541553" dimension="153x24" location="360,84" targetedBy="31874125-arg0">
-    <mapper:value>"BEGAN_ISO_PROCESSING"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$ISOTracking/metrics:caseState</bpel:to><mapper:mapperLink><mapper:vertice id="1218622610" targetPath="$ISOTracking/metrics:caseState" targetedBy="31874125-arg1"></mapper:vertice><mapper:vertice id="31874125" dimension="139x24" location="540,84"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="219541553" dimension="153x24" location="360,84" targetedBy="31874125-arg0"><mapper:value>"BEGAN_ISO_PROCESSING"</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>current-dateTime()</bpel:from>
-                                <bpel:to>$ISOTracking/metrics:beganISOProcessing</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="113468028" targetPath="$ISOTracking/metrics:beganISOProcessing" targetedBy="837603331-arg0"></mapper:vertice>
-  <mapper:vertice id="837603331" dimension="109x24" location="524,146">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$ISOTracking/metrics:beganISOProcessing</bpel:to><mapper:mapperLink><mapper:vertice id="113468028" targetPath="$ISOTracking/metrics:beganISOProcessing" targetedBy="837603331-arg0"></mapper:vertice><mapper:vertice id="837603331" dimension="109x24" location="524,146"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>
@@ -358,34 +315,15 @@
                                         <bpdm:linkset bpdm:type="assignments">
                                             <bpel:copy>
                                                 <bpel:from>$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId</bpel:from>
-                                                <bpel:to>$ISOTracking/metrics:caseId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1242117288" targetPath="$ISOTracking/metrics:caseId" targetedBy="86178919-arg0"></mapper:vertice>
-  <mapper:vertice id="86178919" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                                                <bpel:to>$ISOTracking/metrics:caseId</bpel:to><mapper:mapperLink><mapper:vertice id="1242117288" targetPath="$ISOTracking/metrics:caseId" targetedBy="86178919-arg0"></mapper:vertice><mapper:vertice id="86178919" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                             <bpel:copy>
                                                 <bpel:from>ode:get-property-value("FOUND_DUPLICATE_ISO")</bpel:from>
-                                                <bpel:to>$ISOTracking/metrics:caseState</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="242971541" targetPath="$ISOTracking/metrics:caseState" targetedBy="1130075212-arg1"></mapper:vertice>
-  <mapper:vertice id="1130075212" dimension="139x24" location="420,120">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1703515796" dimension="147x24" location="240,120" targetedBy="1130075212-arg0">
-    <mapper:value>"FOUND_DUPLICATE_ISO"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                <bpel:to>$ISOTracking/metrics:caseState</bpel:to><mapper:mapperLink><mapper:vertice id="242971541" targetPath="$ISOTracking/metrics:caseState" targetedBy="1130075212-arg1"></mapper:vertice><mapper:vertice id="1130075212" dimension="139x24" location="420,120"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1703515796" dimension="147x24" location="240,120" targetedBy="1130075212-arg0"><mapper:value>"FOUND_DUPLICATE_ISO"</mapper:value></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                             <bpel:copy>
                                                 <bpel:from>current-dateTime()</bpel:from>
-                                                <bpel:to>$ISOTracking/metrics:foundDuplicateISO</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1532153384" targetPath="$ISOTracking/metrics:foundDuplicateISO" targetedBy="1786513714-arg0"></mapper:vertice>
-  <mapper:vertice id="1786513714" dimension="109x24" location="462,164">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                <bpel:to>$ISOTracking/metrics:foundDuplicateISO</bpel:to><mapper:mapperLink><mapper:vertice id="1532153384" targetPath="$ISOTracking/metrics:foundDuplicateISO" targetedBy="1786513714-arg0"></mapper:vertice><mapper:vertice id="1786513714" dimension="109x24" location="462,164"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                     </bpdm:messagingtask>
@@ -456,34 +394,15 @@
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId</bpel:from>
-                                        <bpel:to>$ISOTracking/metrics:caseId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2118277091" targetPath="$ISOTracking/metrics:caseId" targetedBy="1177677045-arg0"></mapper:vertice>
-  <mapper:vertice id="1177677045" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$ISOTracking/metrics:caseId</bpel:to><mapper:mapperLink><mapper:vertice id="2118277091" targetPath="$ISOTracking/metrics:caseId" targetedBy="1177677045-arg0"></mapper:vertice><mapper:vertice id="1177677045" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("FETCHED_ISO_DATA")</bpel:from>
-                                        <bpel:to>$ISOTracking/metrics:caseState</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="777118307" targetPath="$ISOTracking/metrics:caseState" targetedBy="1129590231-arg1"></mapper:vertice>
-  <mapper:vertice id="1129590231" dimension="139x24" location="516,132">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1316343676" dimension="127x24" location="336,132" targetedBy="1129590231-arg0">
-    <mapper:value>"FETCHED_ISO_DATA"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$ISOTracking/metrics:caseState</bpel:to><mapper:mapperLink><mapper:vertice id="777118307" targetPath="$ISOTracking/metrics:caseState" targetedBy="1129590231-arg1"></mapper:vertice><mapper:vertice id="1129590231" dimension="139x24" location="516,132"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1316343676" dimension="127x24" location="336,132" targetedBy="1129590231-arg0"><mapper:value>"FETCHED_ISO_DATA"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>current-dateTime()</bpel:from>
-                                        <bpel:to>$ISOTracking/metrics:fetchedISOData</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="87791529" targetPath="$ISOTracking/metrics:fetchedISOData" targetedBy="1001684278-arg0"></mapper:vertice>
-  <mapper:vertice id="1001684278" dimension="109x24" location="420,192">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$ISOTracking/metrics:fetchedISOData</bpel:to><mapper:mapperLink><mapper:vertice id="87791529" targetPath="$ISOTracking/metrics:fetchedISOData" targetedBy="1001684278-arg0"></mapper:vertice><mapper:vertice id="1001684278" dimension="109x24" location="420,192"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
@@ -547,34 +466,15 @@
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId</bpel:from>
-                                        <bpel:to>$ISOTracking/metrics:caseId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1457409393" targetPath="$ISOTracking/metrics:caseId" targetedBy="1028466661-arg0"></mapper:vertice>
-  <mapper:vertice id="1028466661" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$ISOTracking/metrics:caseId</bpel:to><mapper:mapperLink><mapper:vertice id="1457409393" targetPath="$ISOTracking/metrics:caseId" targetedBy="1028466661-arg0"></mapper:vertice><mapper:vertice id="1028466661" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("SENT_ISO")</bpel:from>
-                                        <bpel:to>$ISOTracking/metrics:caseState</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1373130111" targetPath="$ISOTracking/metrics:caseState" targetedBy="1452863152-arg1"></mapper:vertice>
-  <mapper:vertice id="1452863152" dimension="139x24" location="504,108">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1074889089" dimension="79x24" location="324,108" targetedBy="1452863152-arg0">
-    <mapper:value>"SENT_ISO"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$ISOTracking/metrics:caseState</bpel:to><mapper:mapperLink><mapper:vertice id="1373130111" targetPath="$ISOTracking/metrics:caseState" targetedBy="1452863152-arg1"></mapper:vertice><mapper:vertice id="1452863152" dimension="139x24" location="504,108"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1074889089" dimension="79x24" location="324,108" targetedBy="1452863152-arg0"><mapper:value>"SENT_ISO"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>current-dateTime()</bpel:from>
-                                        <bpel:to>$ISOTracking/metrics:sentToISO</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="6147646" targetPath="$ISOTracking/metrics:sentToISO" targetedBy="1436240216-arg0"></mapper:vertice>
-  <mapper:vertice id="1436240216" dimension="109x24" location="486,198">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$ISOTracking/metrics:sentToISO</bpel:to><mapper:mapperLink><mapper:vertice id="6147646" targetPath="$ISOTracking/metrics:sentToISO" targetedBy="1436240216-arg0"></mapper:vertice><mapper:vertice id="1436240216" dimension="109x24" location="486,198"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
