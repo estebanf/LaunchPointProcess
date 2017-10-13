@@ -1,1 +1,1 @@
-select caseId, sentToISO from casetracking where caseId = ? and senttoiso is null; 
+select caseId, sentToISO from isotracking where caseId = ? and senttoiso is null; 
