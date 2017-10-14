@@ -31,10 +31,10 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_G9knAJ9HEeebe_jNvZNWBA" bpdm:label="Queue Service"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_esGHQJ9GEeebe_jNvZNWBAimplicitPartner" bpdm:label="Case ManagerimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOCase-Process_ISO_Case.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/Logging.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Logging.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOCase-Process_ISO_Case.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -88,8 +88,17 @@
                                         <bpel:to>$loggingSend_logRequest1Msg.body/process_instance_id</bpel:to><mapper:mapperLink><mapper:vertice id="693967429" targetPath="$loggingSend_logRequest1Msg.body/process_instance_id" targetedBy="643996026-arg0"></mapper:vertice><mapper:vertice id="643996026" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
-                                        <bpel:from>ode:get-property-value("logServiceURL")</bpel:from>
-                                        <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="19262759" targetPath="$endpoint" targetedBy="2103548875-arg1"></mapper:vertice><mapper:vertice id="2103548875" dimension="139x24" location="576,240"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="582146531" dimension="93x24" location="408,228" targetedBy="2103548875-arg0"><mapper:value>"logServiceURL"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                        <bpel:from>ode:get-property-value("LOG_SERVICE_URL")</bpel:from>
+                                        <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="1403331747" targetPath="$endpoint" targetedBy="836087566-arg1"></mapper:vertice>
+  <mapper:vertice id="836087566" dimension="139x24" location="576,240">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="518521934" dimension="115x24" location="408,228" targetedBy="836087566-arg0">
+    <mapper:value>"LOG_SERVICE_URL"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("RECEIVED_BATCH")</bpel:from>
@@ -183,8 +192,17 @@
                                     <bpdm:messagingtask operation="send_log" partnerLink="case_ManagerimplicitPartnerAndCase_ManagerForHttpPortPlkVar" portType="Logging:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log extract case" bpdm:ID="_ckuoUKcsEeeL58NlVk-uQQ" bpdm:isHeaderAuthorizationAware="no">
                                         <bpdm:linkset bpdm:type="assignments">
                                             <bpel:copy>
-                                                <bpel:from>ode:get-property-value("logServiceURL")</bpel:from>
-                                                <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="1752094699" targetPath="$endpoint" targetedBy="1157871540-arg1"></mapper:vertice><mapper:vertice id="1157871540" dimension="139x24" location="564,312"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="753595469" dimension="93x24" location="408,312" targetedBy="1157871540-arg0"><mapper:value>"logServiceURL"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                <bpel:from>ode:get-property-value("LOG_SERVICE_URL")</bpel:from>
+                                                <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="176072477" targetPath="$endpoint" targetedBy="2075698673-arg1"></mapper:vertice>
+  <mapper:vertice id="2075698673" dimension="139x24" location="564,312">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1545485892" dimension="115x24" location="408,312" targetedBy="2075698673-arg0">
+    <mapper:value>"LOG_SERVICE_URL"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                             </bpel:copy>
                                             <bpel:copy>
                                                 <bpel:from>ode:get-property-value("RECEIVED_CASE_DESCRIPTION")</bpel:from>
@@ -272,11 +290,7 @@
                                             </bpel:copy>
                                             <bpel:copy>
                                                 <bpel:from>$ode:pid</bpel:from>
-                                                <bpel:to>$CaseTracking/metrics:pid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="439513824" targetPath="$CaseTracking/metrics:pid" targetedBy="202984526-arg0"></mapper:vertice>
-  <mapper:vertice id="202984526" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                                <bpel:to>$CaseTracking/metrics:pid</bpel:to><mapper:mapperLink><mapper:vertice id="439513824" targetPath="$CaseTracking/metrics:pid" targetedBy="202984526-arg0"></mapper:vertice><mapper:vertice id="202984526" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                     </bpdm:messagingtask>
@@ -348,8 +362,17 @@
                                                 <bpel:to>$loggingSend_logRequest3Msg.body/step_id</bpel:to><mapper:mapperLink><mapper:vertice id="1908195668" targetPath="$loggingSend_logRequest3Msg.body/step_id" targetedBy="1414807531-arg1"></mapper:vertice><mapper:vertice id="1414807531" dimension="139x24" location="504,96"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1593624045" dimension="110x24" location="264,96" targetedBy="1414807531-arg0"><mapper:value>"IDENTIFIED_CASE"</mapper:value></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                             <bpel:copy>
-                                                <bpel:from>ode:get-property-value("logServiceURL")</bpel:from>
-                                                <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="1902273715" targetPath="$endpoint" targetedBy="1192673952-arg1"></mapper:vertice><mapper:vertice id="1192673952" dimension="139x24" location="456,204"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="117083701" dimension="93x24" location="336,204" targetedBy="1192673952-arg0"><mapper:value>"logServiceURL"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                <bpel:from>ode:get-property-value("LOG_SERVICE_URL")</bpel:from>
+                                                <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="91818432" targetPath="$endpoint" targetedBy="154159738-arg1"></mapper:vertice>
+  <mapper:vertice id="154159738" dimension="139x24" location="456,204">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="723622586" dimension="115x24" location="300,204" targetedBy="154159738-arg0">
+    <mapper:value>"LOG_SERVICE_URL"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                             </bpel:copy>
                                             <bpel:copy>
                                                 <bpel:from>$Batch/tns:BatchId</bpel:from>
@@ -385,11 +408,7 @@
                                             </bpel:copy>
                                             <bpel:copy>
                                                 <bpel:from>$ode:pid</bpel:from>
-                                                <bpel:to>$CaseTracking/metrics:pid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1586095399" targetPath="$CaseTracking/metrics:pid" targetedBy="2146222703-arg0"></mapper:vertice>
-  <mapper:vertice id="2146222703" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                                <bpel:to>$CaseTracking/metrics:pid</bpel:to><mapper:mapperLink><mapper:vertice id="1586095399" targetPath="$CaseTracking/metrics:pid" targetedBy="2146222703-arg0"></mapper:vertice><mapper:vertice id="2146222703" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                     </bpdm:messagingtask>
