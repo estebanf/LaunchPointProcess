@@ -1,55 +1,82 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:Logging="http://bpms.everteam.com/Services/REST/Logging.rest" xmlns:this="http://thisdiagram/ISO_Response_Manager" xmlns:ns="http://isoscoringaction.rules.launchpointprocess" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ISO="http://thisdiagram/ISO" xmlns:ax214="http://isoscoringaction.rules.launchpointprocess/bre" xmlns:diag="http://thisdiagram" xmlns:Logging1="__project:///Schemas/Logging.xsd" xmlns:ISO_Response_ManagerimplicitPartner="http://thisdiagram/ISO_Response_ManagerimplicitPartner" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ax213="http://isoscoringaction.rules.launchpointprocess/xsd" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/ISO_Response_Manager">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:CreateActivityService="http://bpms.everteam.com/Services/REST/CreateActivityService.rest" xmlns:Logging="http://bpms.everteam.com/Services/REST/Logging.rest" xmlns:load_case="urn:intalio.com:connectors:database:launchpointprocess:load_caseservice" xmlns:this="http://thisdiagram/ISO_Response_Manager" xmlns:ns="http://isoscoringaction.rules.launchpointprocess" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:CreateDiary="__project:///Schemas/CreateDiary.xsd" xmlns:UpdateCase="__project:///Schemas/UpdateCase.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:DB="http://thisdiagram/DB" xmlns:ISO="http://thisdiagram/ISO" xmlns:ax214="http://isoscoringaction.rules.launchpointprocess/bre" xmlns:CreateDiaryService="http://bpms.everteam.com/Services/REST/CreateDiaryService.rest" xmlns:UpdateStatusService="http://bpms.everteam.com/Services/REST/UpdateStatusService.rest" xmlns:diag="http://thisdiagram" xmlns:CreateActivity="__project:///Schemas/CreateActivity.xsd" xmlns:Logging1="__project:///Schemas/Logging.xsd" xmlns:ISO_Response_ManagerimplicitPartner="http://thisdiagram/ISO_Response_ManagerimplicitPartner" xmlns:tns="http://everteam.com/xvar/example" xmlns:load_previous_score="urn:intalio.com:connectors:database:launchpointprocess:load_previous_scoreservice" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ax213="http://isoscoringaction.rules.launchpointprocess/xsd" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/ISO_Response_Manager">
     <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/Services/REST/CreateActivityService.rest" bpdm:prefix="CreateActivityService" bpdm:comment="contrib=&apos;project:///Services/REST/CreateActivityService.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/Services/REST/Logging.rest" bpdm:prefix="Logging" bpdm:comment="contrib=&apos;project:///Services/REST/Logging.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:launchpointprocess:load_caseservice" bpdm:prefix="load_case" bpdm:comment="contrib=&apos;project:///Connectors/Database/load_case.sql/load_case.sql.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/ISO_Response_Manager" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://isoscoringaction.rules.launchpointprocess" bpdm:prefix="ns" bpdm:comment="contrib=&apos;project:///Rules/ISOScoringAction.bre/dtws_launchpointprocess_rules_isoscoringaction/META-INF/dtws_launchpointprocess_rules_isoscoringaction.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/CreateDiary.xsd" bpdm:prefix="CreateDiary" bpdm:comment="contrib=&apos;project:///Schemas/CreateDiary.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/UpdateCase.xsd" bpdm:prefix="UpdateCase" bpdm:comment="contrib=&apos;project:///Schemas/UpdateCase.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/DB" bpdm:prefix="DB" bpdm:comment="contrib=&apos;partner-pool:///_Ir-wwLA2EeeytYusscoK1g"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/ISO" bpdm:prefix="ISO" bpdm:comment="contrib=&apos;partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://isoscoringaction.rules.launchpointprocess/bre" bpdm:prefix="ax214" bpdm:comment="contrib=&apos;project:///Rules/ISOScoringAction.bre/dtws_launchpointprocess_rules_isoscoringaction/META-INF/dtws_launchpointprocess_rules_isoscoringaction.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/Services/REST/CreateDiaryService.rest" bpdm:prefix="CreateDiaryService" bpdm:comment="contrib=&apos;project:///Services/REST/CreateDiaryService.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/Services/REST/UpdateStatusService.rest" bpdm:prefix="UpdateStatusService" bpdm:comment="contrib=&apos;project:///Services/REST/UpdateStatusService.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_Svwt0KhqEeeC1M91oPbQ3QimplicitPartner"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/CreateActivity.xsd" bpdm:prefix="CreateActivity" bpdm:comment="contrib=&apos;project:///Schemas/CreateActivity.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/Logging.xsd" bpdm:prefix="Logging1" bpdm:comment="contrib=&apos;project:///Schemas/Logging.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/ISO_Response_ManagerimplicitPartner" bpdm:prefix="ISO_Response_ManagerimplicitPartner" bpdm:comment="contrib=&apos;partner-pool:///_Svwt0KhqEeeC1M91oPbQ3QimplicitPartner"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:launchpointprocess:load_previous_scoreservice" bpdm:prefix="load_previous_score" bpdm:comment="contrib=&apos;project:///Connectors/Database/load_previous_score.sql/load_previous_score.sql.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://isoscoringaction.rules.launchpointprocess/xsd" bpdm:prefix="ax213" bpdm:comment="contrib=&apos;project:///Rules/ISOScoringAction.bre/dtws_launchpointprocess_rules_isoscoringaction/META-INF/dtws_launchpointprocess_rules_isoscoringaction.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
             <wsdl:portType name="ForISO">
-                <wsdl:operation name="EventStartMessage" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
-                    <wsdl:input message="this:EventStartMessageRequest" name="EventStartMessage"/>
-                    <wsdl:output message="this:EventStartMessageResponse" name="EventStartMessageResponse"/>
+                <wsdl:operation name="Receive_ISO_Response" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
+                    <wsdl:input message="this:Receive_ISO_ResponseRequest" name="Receive_ISO_Response"/>
+                    <wsdl:output message="this:Receive_ISO_ResponseResponse" name="Receive_ISO_ResponseResponse"/>
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForISO" type="this:ForISO" bpdm:isSynchronized="true"/>
-            <xs:element name="EventStartMessageRequest" type="xs:string" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q"/>
-            <wsdl:message name="EventStartMessageRequest" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
-                <wsdl:part name="body" element="this:EventStartMessageRequest"/>
+            <xs:element name="Receive_ISO_ResponseRequest" type="xs:string" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q"/>
+            <wsdl:message name="Receive_ISO_ResponseRequest" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
+                <wsdl:part name="body" element="this:Receive_ISO_ResponseRequest"/>
             </wsdl:message>
-            <xs:element name="EventStartMessageResponse" type="xs:string" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q"/>
-            <wsdl:message name="EventStartMessageResponse" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
-                <wsdl:part name="body" element="this:EventStartMessageResponse"/>
+            <xs:element name="Receive_ISO_ResponseResponse" type="xs:string" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q"/>
+            <wsdl:message name="Receive_ISO_ResponseResponse" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
+                <wsdl:part name="body" element="this:Receive_ISO_ResponseResponse"/>
             </wsdl:message>
         </bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q" bpdm:label="ISO"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_Svwt0KhqEeeC1M91oPbQ3QimplicitPartner" bpdm:label="ISO Response ManagerimplicitPartner"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/Logging.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_Ir-wwLA2EeeytYusscoK1g" bpdm:label="DB"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/load_case.sql/load_case.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Rules/ISOScoringAction.bre/dtws_launchpointprocess_rules_isoscoringaction/META-INF/dtws_launchpointprocess_rules_isoscoringaction.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/CreateActivityService.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/CreateActivity.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/Logging.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Logging.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/CreateDiaryService.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/CreateDiary.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/UpdateStatusService.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/UpdateCase.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/load_previous_score.sql/load_previous_score.sql.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/load_previous_score.sql/load_previous_score.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/load_case.sql/load_case.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
     </bpdm:dependencies>
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="ISO Response Manager" bpdm:ID="_Svwt0KhqEeeC1M91oPbQ3Q">
         <bpel:partnerLinks>
             <bpel:partnerLink name="iSO_Response_ManagerAndISOPlkVar" partnerLinkType="diag:ISO_Response_ManagerAndISO" myRole="ISO_Response_Manager_for_ISO" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForISO" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/ISO_Response_Manager/ISO" bpdm:providedIsDefault="true" bpdm:clientTasks="_Svwt0KhqEeeC1M91oPbQ3Q:_pE-1MLAyEeeytYusscoK1g" bpdm:isManaged="true" bpdm:otherPoolId="_3Bc-QKhqEeeC1M91oPbQ3Q"/>
-            <bpel:partnerLink name="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlkVar" partnerLinkType="diag:ISO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk" initializePartnerRole="yes" partnerRole="ISO_Response_ManagerimplicitPartner_for_ISO_Response_Manager" bpdm:invokedService="Logging:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://192.168.241.200:3001/logging" bpdm:invokedIsDefault="true" bpdm:clientTasks="_Svwt0KhqEeeC1M91oPbQ3Q:_-CCogLAzEeeytYusscoK1g, _tAUXcLA0EeeytYusscoK1g:_OB35kLBFEeeNMveUiU8NQQ, _7TNmkLA6EeeNMveUiU8NQQ:_UOU0wLBFEeeNMveUiU8NQQ, __ZvXELA6EeeNMveUiU8NQQ:_afROYLBFEeeNMveUiU8NQQ, _C7F98LA7EeeNMveUiU8NQQ:_jMs4kLBFEeeNMveUiU8NQQ, _UpBccLA0EeeytYusscoK1g:_W2v4QLA0EeeytYusscoK1g" bpdm:isManaged="true" bpdm:otherPoolId="_Svwt0KhqEeeC1M91oPbQ3QimplicitPartner"/>
             <bpel:partnerLink name="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForPortDtws_launchpointprocess_rules_isoscoringactionHttpSoap11EndpointPlkVar" partnerLinkType="diag:ISO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForPortDtws_launchpointprocess_rules_isoscoringactionHttpSoap11EndpointPlk" initializePartnerRole="yes" partnerRole="ISO_Response_ManagerimplicitPartner_for_ISO_Response_Manager" bpdm:invokedService="ns:dtws_launchpointprocess_rules_isoscoringaction" bpdm:invokedPort="dtws_launchpointprocess_rules_isoscoringactionHttpSoap11Endpoint" bpdm:invokedSOAPAddress="http://192.168.241.200:8080/everteam/ode/processes/dtws_launchpointprocess_rules_isoscoringaction" bpdm:invokedIsDefault="true" bpdm:clientTasks="_Svwt0KhqEeeC1M91oPbQ3Q:_JzUowLA1EeeytYusscoK1g" bpdm:isManaged="true" bpdm:otherPoolId="_Svwt0KhqEeeC1M91oPbQ3QimplicitPartner"/>
+            <bpel:partnerLink name="iSO_Response_ManagerAndDBForLoad_casePortPlkVar" partnerLinkType="diag:ISO_Response_ManagerAndDBForLoad_casePortPlk" initializePartnerRole="yes" partnerRole="DB_for_ISO_Response_Manager" bpdm:invokedService="load_case:load_caseService" bpdm:invokedPort="load_casePort" bpdm:invokedSOAPAddress="http://192.168.241.200:8080/everteam/ode/processes/LaunchPointProcess/Connectors/Database/load_case" bpdm:invokedIsDefault="true" bpdm:clientTasks="_Svwt0KhqEeeC1M91oPbQ3Q:_HSxCcLAzEeeytYusscoK1g" bpdm:isManaged="true" bpdm:otherPoolId="_Ir-wwLA2EeeytYusscoK1g"/>
+            <bpel:partnerLink name="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk1Var" partnerLinkType="diag:ISO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk1" initializePartnerRole="yes" partnerRole="ISO_Response_ManagerimplicitPartner_for_ISO_Response_Manager" bpdm:invokedService="CreateDiaryService:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://192.168.241.200:3001/creatediary" bpdm:invokedIsDefault="true" bpdm:clientTasks="_Svwt0KhqEeeC1M91oPbQ3Q:_LHU98LCbEeegIIb6ZCcPpA" bpdm:isManaged="true" bpdm:otherPoolId="_Svwt0KhqEeeC1M91oPbQ3QimplicitPartner"/>
+            <bpel:partnerLink name="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk2Var" partnerLinkType="diag:ISO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk2" initializePartnerRole="yes" partnerRole="ISO_Response_ManagerimplicitPartner_for_ISO_Response_Manager" bpdm:invokedService="Logging:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://192.168.241.200:3001/logging" bpdm:invokedIsDefault="true" bpdm:clientTasks="_Svwt0KhqEeeC1M91oPbQ3Q:_-CCogLAzEeeytYusscoK1g, _tAUXcLA0EeeytYusscoK1g:_OB35kLBFEeeNMveUiU8NQQ, _7TNmkLA6EeeNMveUiU8NQQ:_UOU0wLBFEeeNMveUiU8NQQ, __ZvXELA6EeeNMveUiU8NQQ:_afROYLBFEeeNMveUiU8NQQ, _C7F98LA7EeeNMveUiU8NQQ:_jMs4kLBFEeeNMveUiU8NQQ, _UpBccLA0EeeytYusscoK1g:_W2v4QLA0EeeytYusscoK1g" bpdm:isManaged="true" bpdm:otherPoolId="_Svwt0KhqEeeC1M91oPbQ3QimplicitPartner"/>
+            <bpel:partnerLink name="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk0Var" partnerLinkType="diag:ISO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk0" initializePartnerRole="yes" partnerRole="ISO_Response_ManagerimplicitPartner_for_ISO_Response_Manager" bpdm:invokedService="CreateActivityService:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://192.168.241.200:3001/createactivity" bpdm:invokedIsDefault="true" bpdm:clientTasks="_Svwt0KhqEeeC1M91oPbQ3Q:_u14sILCbEeegIIb6ZCcPpA" bpdm:isManaged="true" bpdm:otherPoolId="_Svwt0KhqEeeC1M91oPbQ3QimplicitPartner"/>
+            <bpel:partnerLink name="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk3Var" partnerLinkType="diag:ISO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk3" initializePartnerRole="yes" partnerRole="ISO_Response_ManagerimplicitPartner_for_ISO_Response_Manager" bpdm:invokedService="UpdateStatusService:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://192.168.241.200:3001/updatestatus" bpdm:invokedIsDefault="true" bpdm:clientTasks="_Svwt0KhqEeeC1M91oPbQ3Q:_IxOMwLCcEeegIIb6ZCcPpA" bpdm:isManaged="true" bpdm:otherPoolId="_Svwt0KhqEeeC1M91oPbQ3QimplicitPartner"/>
+            <bpel:partnerLink name="iSO_Response_ManagerAndDBForLoad_previous_scorePortPlkVar" partnerLinkType="diag:ISO_Response_ManagerAndDBForLoad_previous_scorePortPlk" initializePartnerRole="yes" partnerRole="DB_for_ISO_Response_Manager" bpdm:invokedService="load_previous_score:load_previous_scoreService" bpdm:invokedPort="load_previous_scorePort" bpdm:invokedSOAPAddress="http://192.168.241.200:8080/everteam/ode/processes/LaunchPointProcess/Connectors/Database/load_previous_score" bpdm:invokedIsDefault="true" bpdm:clientTasks="_Svwt0KhqEeeC1M91oPbQ3Q:_MOH8ALCdEeegIIb6ZCcPpA" bpdm:isManaged="true" bpdm:otherPoolId="_Ir-wwLA2EeeytYusscoK1g"/>
         </bpel:partnerLinks>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
             <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_S0NI8ahqEeeC1M91oPbQ3Q" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_S0NI8ahqEeeC1M91oPbQ3Q"/>
-            <bpel:variable name="thisEventStartMessageRequest1" messageType="this:EventStartMessageRequest" bpdm:id="_rIwDwLAyEeeytYusscoK1g" bpdm:messageIds="inc:_rIchwLAyEeeytYusscoK1g"/>
-            <bpel:variable name="thisEventStartMessageResponse1" messageType="this:EventStartMessageResponse" bpdm:id="_r4VtoLAyEeeytYusscoK1g" bpdm:messageIds=" out:_r4ISQLAyEeeytYusscoK1g">
+            <bpel:variable name="thisEventStartMessageRequest1" messageType="this:Receive_ISO_ResponseRequest" bpdm:id="_rIwDwLAyEeeytYusscoK1g" bpdm:messageIds="inc:_rIchwLAyEeeytYusscoK1g"/>
+            <bpel:variable name="thisEventStartMessageResponse1" messageType="this:Receive_ISO_ResponseResponse" bpdm:id="_r4VtoLAyEeeytYusscoK1g" bpdm:messageIds=" out:_r4ISQLAyEeeytYusscoK1g">
                 <bpel:from bpdm:toPart="body">
-                    <bpel:literal bpdm:linkedMessageType="this:EventStartMessageResponse" bpdm:linkedPart="body"></bpel:literal>
+                    <bpel:literal bpdm:linkedMessageType="this:Receive_ISO_ResponseResponse" bpdm:linkedPart="body"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
             <bpel:variable name="loggingSend_logResponse1Msg" messageType="Logging:send_log_output" binding="Logging:restBinding" operation="send_log" opMsgType="1" bpdm:messageIds="inc:_-CCogLAzEeeytYusscoK1gIncoming"/>
@@ -64,24 +91,78 @@
                     <bpel:literal bpdm:linkedMessageType="ns:invokeDecisionTableRequest" bpdm:linkedPart="parameters" bpdm:binding="ns:dtws_launchpointprocess_rules_isoscoringactionSoap11Binding" bpdm:opMsgType="0" bpdm:operation="invokeDecisionTable"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
+            <bpel:variable name="dBFetch_Case_DataRequest1Msg" messageType="load_case:load_caseInput" binding="load_case:load_casePortSoapBinding" operation="load_case" opMsgType="0" bpdm:id="_SpMKsLCMEeegIIb6ZCcPpA" bpdm:messageIds=" out:_SoXrULCMEeegIIb6ZCcPpA">
+                <bpel:from bpdm:toPart="parameters">
+                    <bpel:literal bpdm:linkedMessageType="load_case:load_caseInput" bpdm:linkedPart="parameters" bpdm:binding="load_case:load_casePortSoapBinding" bpdm:opMsgType="0" bpdm:operation="load_case"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="load_caseLoad_caseResponse2Msg" messageType="load_case:load_caseOutput" binding="load_case:load_casePortSoapBinding" operation="load_case" opMsgType="1" bpdm:id="_TbM2cLCMEeegIIb6ZCcPpA" bpdm:messageIds="inc:_TalLYLCMEeegIIb6ZCcPpA"/>
+            <bpel:variable name="createDiaryServiceCreate_DiaryResponse1Msg" messageType="CreateDiaryService:Create_Diary_output" binding="CreateDiaryService:restBinding" operation="Create_Diary" opMsgType="1" bpdm:messageIds="inc:_LHU98LCbEeegIIb6ZCcPpAIncoming"/>
+            <bpel:variable name="createDiaryServiceCreate_DiaryRequest1Msg" messageType="CreateDiaryService:Create_Diary_input" binding="CreateDiaryService:restBinding" operation="Create_Diary" opMsgType="0" bpdm:messageIds=" out:_LHU98LCbEeegIIb6ZCcPpAOutgoing">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="CreateDiaryService:Create_Diary_input" bpdm:linkedPart="body" bpdm:binding="CreateDiaryService:restBinding" bpdm:opMsgType="0" bpdm:operation="Create_Diary"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="createActivityServiceCreate_ActivityResponse1Msg" messageType="CreateActivityService:Create_Activity_output" binding="CreateActivityService:restBinding" operation="Create_Activity" opMsgType="1" bpdm:messageIds="inc:_u14sILCbEeegIIb6ZCcPpAIncoming"/>
+            <bpel:variable name="createActivityServiceCreate_ActivityRequest1Msg" messageType="CreateActivityService:Create_Activity_input" binding="CreateActivityService:restBinding" operation="Create_Activity" opMsgType="0" bpdm:messageIds=" out:_u14sILCbEeegIIb6ZCcPpAOutgoing">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="CreateActivityService:Create_Activity_input" bpdm:linkedPart="body" bpdm:binding="CreateActivityService:restBinding" bpdm:opMsgType="0" bpdm:operation="Create_Activity"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="updateStatusServiceUpdate_Case_StatusResponse1Msg" messageType="UpdateStatusService:Update_Case_Status_output" binding="UpdateStatusService:restBinding" operation="Update_Case_Status" opMsgType="1" bpdm:messageIds="inc:_IxOMwLCcEeegIIb6ZCcPpAIncoming"/>
+            <bpel:variable name="updateStatusServiceUpdate_Case_StatusRequest1Msg" messageType="UpdateStatusService:Update_Case_Status_input" binding="UpdateStatusService:restBinding" operation="Update_Case_Status" opMsgType="0" bpdm:messageIds=" out:_IxOMwLCcEeegIIb6ZCcPpAOutgoing">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="UpdateStatusService:Update_Case_Status_input" bpdm:linkedPart="body" bpdm:binding="UpdateStatusService:restBinding" bpdm:opMsgType="0" bpdm:operation="Update_Case_Status"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="caseId" element="Launchpoint:caseId" bpdm:id="_njEJULCcEeegIIb6ZCcPpA">
+                <bpel:from>
+                    <bpel:literal bpdm:linkedElement="Launchpoint:caseId"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="batchId" element="Launchpoint:batchId" bpdm:id="_pmSlULCcEeegIIb6ZCcPpA">
+                <bpel:from>
+                    <bpel:literal bpdm:linkedElement="Launchpoint:batchId"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="requestId" element="Launchpoint:requestId" bpdm:id="_r_SdALCcEeegIIb6ZCcPpA">
+                <bpel:from>
+                    <bpel:literal bpdm:linkedElement="Launchpoint:requestId"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="dBFetch_Previous_ScoreRequest1Msg" messageType="load_previous_score:load_previous_scoreInput" binding="load_previous_score:load_previous_scorePortSoapBinding" operation="load_previous_score" opMsgType="0" bpdm:id="_ChfCILCeEeegIIb6ZCcPpA" bpdm:messageIds=" out:_CgbSMLCeEeegIIb6ZCcPpA">
+                <bpel:from bpdm:toPart="parameters">
+                    <bpel:literal bpdm:linkedMessageType="load_previous_score:load_previous_scoreInput" bpdm:linkedPart="parameters" bpdm:binding="load_previous_score:load_previous_scorePortSoapBinding" bpdm:opMsgType="0" bpdm:operation="load_previous_score"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="load_previous_scoreLoad_previous_scoreResponse2Msg" messageType="load_previous_score:load_previous_scoreOutput" binding="load_previous_score:load_previous_scorePortSoapBinding" operation="load_previous_score" opMsgType="1" bpdm:id="_C5st0LCeEeegIIb6ZCcPpA" bpdm:messageIds="inc:_C4vEgLCeEeegIIb6ZCcPpA"/>
         </bpel:variables>
         <bpel:sequence>
-            <bpdm:messagingtask eventType="start: message" operation="EventStartMessage" partnerLink="iSO_Response_ManagerAndISOPlkVar" portType="this:ForISO" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_Start_Event" bpdm:ID="_pE-1MLAyEeeytYusscoK1g" bpdm:isHeaderAuthorizationAware="yes">
-                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisEventStartMessageRequest1" bpdm:msgVarScopeId="_Svwt0KhqEeeC1M91oPbQ3Q" bpdm:variableIsManaged="true" bpdm:messageType="this:EventStartMessageRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_rIchwLAyEeeytYusscoK1g"></bpdm:linkset>
-                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisEventStartMessageResponse1" bpdm:msgVarScopeId="_Svwt0KhqEeeC1M91oPbQ3Q" bpdm:variableIsManaged="true" bpdm:messageType="this:EventStartMessageResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_r4ISQLAyEeeytYusscoK1g"></bpdm:linkset>
+            <bpdm:messagingtask eventType="start: message" operation="Receive_ISO_Response" partnerLink="iSO_Response_ManagerAndISOPlkVar" portType="this:ForISO" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive ISO Response" bpdm:ID="_pE-1MLAyEeeytYusscoK1g" bpdm:isHeaderAuthorizationAware="yes">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisEventStartMessageRequest1" bpdm:msgVarScopeId="_Svwt0KhqEeeC1M91oPbQ3Q" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_ISO_ResponseRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_rIchwLAyEeeytYusscoK1g"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisEventStartMessageResponse1" bpdm:msgVarScopeId="_Svwt0KhqEeeC1M91oPbQ3Q" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_ISO_ResponseResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_r4ISQLAyEeeytYusscoK1g"></bpdm:linkset>
             </bpdm:messagingtask>
-            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Load old score" bpdm:ID="_HSxCcLAzEeeytYusscoK1g" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
-            <bpdm:messagingtask operation="send_log" partnerLink="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlkVar" portType="Logging:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log old score fetched" bpdm:ID="_-CCogLAzEeeytYusscoK1g" bpdm:isHeaderAuthorizationAware="no">
+            <bpdm:messagingtask operation="load_case" partnerLink="iSO_Response_ManagerAndDBForLoad_casePortPlkVar" portType="load_case:load_casePort" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Load case data" bpdm:ID="_HSxCcLAzEeeytYusscoK1g" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dBFetch_Case_DataRequest1Msg" bpdm:msgVarScopeId="_Svwt0KhqEeeC1M91oPbQ3Q" bpdm:variableIsManaged="true" bpdm:messageType="load_case:load_caseInput" bpdm:binding="load_case:load_casePortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_SoXrULCMEeegIIb6ZCcPpA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="load_caseLoad_caseResponse2Msg" bpdm:msgVarScopeId="_Svwt0KhqEeeC1M91oPbQ3Q" bpdm:variableIsManaged="true" bpdm:messageType="load_case:load_caseOutput" bpdm:binding="load_case:load_casePortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_TalLYLCMEeegIIb6ZCcPpA"></bpdm:linkset>
+                <bpdm:thrownFault msgFaultNcName="nsload_caseFault" msgFaultTypeQname="load_case:load_caseFault"/>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="load_previous_score" partnerLink="iSO_Response_ManagerAndDBForLoad_previous_scorePortPlkVar" portType="load_previous_score:load_previous_scorePort" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Load previous score" bpdm:ID="_MOH8ALCdEeegIIb6ZCcPpA" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dBFetch_Previous_ScoreRequest1Msg" bpdm:msgVarScopeId="_Svwt0KhqEeeC1M91oPbQ3Q" bpdm:variableIsManaged="true" bpdm:messageType="load_previous_score:load_previous_scoreInput" bpdm:binding="load_previous_score:load_previous_scorePortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_CgbSMLCeEeegIIb6ZCcPpA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="load_previous_scoreLoad_previous_scoreResponse2Msg" bpdm:msgVarScopeId="_Svwt0KhqEeeC1M91oPbQ3Q" bpdm:variableIsManaged="true" bpdm:messageType="load_previous_score:load_previous_scoreOutput" bpdm:binding="load_previous_score:load_previous_scorePortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_C4vEgLCeEeegIIb6ZCcPpA"></bpdm:linkset>
+                <bpdm:thrownFault msgFaultNcName="nsload_previous_scoreFault" msgFaultTypeQname="load_previous_score:load_previous_scoreFault"/>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="send_log" partnerLink="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk2Var" portType="Logging:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log old score fetched" bpdm:ID="_-CCogLAzEeeytYusscoK1g" bpdm:isHeaderAuthorizationAware="no">
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>ode:get-property-value("LOG_SERVICE_URL")</bpel:from>
                         <bpel:to endpointReference="partnerRole"/>
 <mapper:mapperLink>
-  <mapper:vertice id="199319225" targetPath="$endpoint" targetedBy="1999656114-arg0"></mapper:vertice>
-  <mapper:vertice id="1999656114" dimension="139x24" location="600,156">
+  <mapper:vertice id="1835007625" targetPath="$endpoint" targetedBy="1931116290-arg0"></mapper:vertice>
+  <mapper:vertice id="1931116290" dimension="139x24" location="576,276">
     <mapper:value>ode:get-property-value()</mapper:value>
   </mapper:vertice>
-  <mapper:vertice id="203540043" dimension="115x24" location="372,168" targetedBy="1999656114-arg1">
+  <mapper:vertice id="1216891293" dimension="115x24" location="360,276" targetedBy="1931116290-arg1">
     <mapper:value>"LOG_SERVICE_URL"</mapper:value>
   </mapper:vertice>
 </mapper:mapperLink>
@@ -101,20 +182,11 @@
                     </bpel:variable>
                 </bpel:variables>
                 <bpel:sequence>
-                    <bpdm:messagingtask operation="send_log" partnerLink="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlkVar" portType="Logging:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log sent response to DCM" bpdm:ID="_W2v4QLA0EeeytYusscoK1g" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:messagingtask operation="send_log" partnerLink="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk2Var" portType="Logging:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log sent response to DCM" bpdm:ID="_W2v4QLA0EeeytYusscoK1g" bpdm:isHeaderAuthorizationAware="no">
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>ode:get-property-value("LOG_SERVICE_URL")</bpel:from>
-                                <bpel:to endpointReference="partnerRole"/>
-<mapper:mapperLink>
-  <mapper:vertice id="1025585402" targetPath="$endpoint" targetedBy="224613461-arg1"></mapper:vertice>
-  <mapper:vertice id="224613461" dimension="139x24" location="576,168">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="852569677" dimension="115x24" location="348,180" targetedBy="224613461-arg0">
-    <mapper:value>"LOG_SERVICE_URL"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="1025585402" targetPath="$endpoint" targetedBy="224613461-arg1"></mapper:vertice><mapper:vertice id="224613461" dimension="139x24" location="576,168"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="852569677" dimension="115x24" location="348,180" targetedBy="224613461-arg0"><mapper:value>"LOG_SERVICE_URL"</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggingSend_logRequest2Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_input" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_W2v4QLA0EeeytYusscoK1gOutgoing"></bpdm:linkset>
@@ -134,20 +206,11 @@
                     </bpel:variable>
                 </bpel:variables>
                 <bpel:sequence>
-                    <bpdm:messagingtask operation="send_log" partnerLink="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlkVar" portType="Logging:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log received score" bpdm:ID="_OB35kLBFEeeNMveUiU8NQQ" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:messagingtask operation="send_log" partnerLink="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk2Var" portType="Logging:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log received score" bpdm:ID="_OB35kLBFEeeNMveUiU8NQQ" bpdm:isHeaderAuthorizationAware="no">
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>ode:get-property-value("LOG_SERVICE_URL")</bpel:from>
-                                <bpel:to endpointReference="partnerRole"/>
-<mapper:mapperLink>
-  <mapper:vertice id="160564922" targetPath="$endpoint" targetedBy="1082735759-arg1"></mapper:vertice>
-  <mapper:vertice id="1082735759" dimension="139x24" location="516,168">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1468255200" dimension="115x24" location="288,180" targetedBy="1082735759-arg0">
-    <mapper:value>"LOG_SERVICE_URL"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="160564922" targetPath="$endpoint" targetedBy="1082735759-arg1"></mapper:vertice><mapper:vertice id="1082735759" dimension="139x24" location="516,168"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1468255200" dimension="115x24" location="288,180" targetedBy="1082735759-arg0"><mapper:value>"LOG_SERVICE_URL"</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggingSend_logRequest3Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_input" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_OB35kLBFEeeNMveUiU8NQQOutgoing"></bpdm:linkset>
@@ -164,12 +227,30 @@
             <bpdm:gateway bpdm:label="Parallel_Gateway" bpdm:ID="_WqgBcLAzEeeytYusscoK1g" bpdm:gatewayType="parallel_and" bpdm:isMerge="false">
                 <bpel:sequence>
                     <bpdm:gateway bpdm:label="Create diary" bpdm:ID="_Y0X4ALAzEeeytYusscoK1g" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
-                        <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_n3-vMLA1EeeytYusscoK1g" bpdm:targetDisplayName="[Create diary - Create diary]">
+                        <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_n3-vMLA1EeeytYusscoK1g" bpdm:targetDisplayName="[Create diary - Create_Diary]">
                             <bpel:condition>true()<mapper:mapperLink><mapper:vertice id="1162112921" targetPath="$condition" targetedBy="1471438153-arg0"></mapper:vertice><mapper:vertice id="1471438153" dimension="79x24" location="400,123"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
                         </bpdm:linkset>
                         <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_sS6CYLA1EeeytYusscoK1g" bpdm:targetDisplayName="default"></bpdm:linkset>
                         <bpel:sequence>
-                            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Create diary" bpdm:ID="_n3wswLA1EeeytYusscoK1g" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                            <bpdm:messagingtask operation="Create_Diary" partnerLink="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk1Var" portType="CreateDiaryService:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Create_Diary" bpdm:ID="_LHU98LCbEeegIIb6ZCcPpA" bpdm:isHeaderAuthorizationAware="no">
+                                <bpdm:linkset bpdm:type="assignments">
+                                    <bpel:copy>
+                                        <bpel:from>ode:get-property-value("CREATE_DIARY_SERVICE_URL")</bpel:from>
+                                        <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="649799459" targetPath="$endpoint" targetedBy="181296955-arg1"></mapper:vertice>
+  <mapper:vertice id="181296955" dimension="139x24" location="600,240">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="540226154" dimension="172x24" location="324,240" targetedBy="181296955-arg0">
+    <mapper:value>"CREATE_DIARY_SERVICE_URL"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                </bpdm:linkset>
+                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="createDiaryServiceCreate_DiaryRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="CreateDiaryService:Create_Diary_input" bpdm:binding="CreateDiaryService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_LHU98LCbEeegIIb6ZCcPpAOutgoing"></bpdm:linkset>
+                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="createDiaryServiceCreate_DiaryResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="CreateDiaryService:Create_Diary_output" bpdm:binding="CreateDiaryService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_LHU98LCbEeegIIb6ZCcPpAIncoming"></bpdm:linkset>
+                            </bpdm:messagingtask>
                             <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_7TNmkLA6EeeNMveUiU8NQQ">
                                 <bpel:variables>
                                     <bpel:variable name="loggingSend_logResponse4Msg" messageType="Logging:send_log_output" binding="Logging:restBinding" operation="send_log" opMsgType="1" bpdm:messageIds="inc:_UOU0wLBFEeeNMveUiU8NQQIncoming"/>
@@ -180,20 +261,11 @@
                                     </bpel:variable>
                                 </bpel:variables>
                                 <bpel:sequence>
-                                    <bpdm:messagingtask operation="send_log" partnerLink="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlkVar" portType="Logging:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log created diary" bpdm:ID="_UOU0wLBFEeeNMveUiU8NQQ" bpdm:isHeaderAuthorizationAware="no">
+                                    <bpdm:messagingtask operation="send_log" partnerLink="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk2Var" portType="Logging:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log created diary" bpdm:ID="_UOU0wLBFEeeNMveUiU8NQQ" bpdm:isHeaderAuthorizationAware="no">
                                         <bpdm:linkset bpdm:type="assignments">
                                             <bpel:copy>
                                                 <bpel:from>ode:get-property-value("LOG_SERVICE_URL")</bpel:from>
-                                                <bpel:to endpointReference="partnerRole"/>
-<mapper:mapperLink>
-  <mapper:vertice id="2118449518" targetPath="$endpoint" targetedBy="1466915051-arg1"></mapper:vertice>
-  <mapper:vertice id="1466915051" dimension="139x24" location="504,132">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1276364808" dimension="115x24" location="276,144" targetedBy="1466915051-arg0">
-    <mapper:value>"LOG_SERVICE_URL"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="2118449518" targetPath="$endpoint" targetedBy="1466915051-arg1"></mapper:vertice><mapper:vertice id="1466915051" dimension="139x24" location="504,132"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1276364808" dimension="115x24" location="276,144" targetedBy="1466915051-arg0"><mapper:value>"LOG_SERVICE_URL"</mapper:value></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggingSend_logRequest4Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_input" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_UOU0wLBFEeeNMveUiU8NQQOutgoing"></bpdm:linkset>
@@ -210,12 +282,30 @@
                 </bpel:sequence>
                 <bpel:sequence>
                     <bpdm:gateway bpdm:label="Create activity" bpdm:ID="_aRYBgLAzEeeytYusscoK1g" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
-                        <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_tpZUMLA1EeeytYusscoK1g" bpdm:targetDisplayName="[Create activity - Create activity]">
+                        <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_tpZUMLA1EeeytYusscoK1g" bpdm:targetDisplayName="[Create activity - Create_Activity]">
                             <bpel:condition>true()<mapper:mapperLink><mapper:vertice id="418205916" targetPath="$condition" targetedBy="2069825082-arg0"></mapper:vertice><mapper:vertice id="2069825082" dimension="79x24" location="559,65"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
                         </bpdm:linkset>
                         <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_wqcDULA1EeeytYusscoK1g" bpdm:targetDisplayName="default"></bpdm:linkset>
                         <bpel:sequence>
-                            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Create activity" bpdm:ID="_tpL40LA1EeeytYusscoK1g" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                            <bpdm:messagingtask operation="Create_Activity" partnerLink="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk0Var" portType="CreateActivityService:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Create_Activity" bpdm:ID="_u14sILCbEeegIIb6ZCcPpA" bpdm:isHeaderAuthorizationAware="no">
+                                <bpdm:linkset bpdm:type="assignments">
+                                    <bpel:copy>
+                                        <bpel:from>ode:get-property-value("CREATE_ACTIVITY_SERVICE_URL")</bpel:from>
+                                        <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="1347289020" targetPath="$endpoint" targetedBy="1679266544-arg1"></mapper:vertice>
+  <mapper:vertice id="1679266544" dimension="139x24" location="564,240">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1839565072" dimension="189x24" location="288,240" targetedBy="1679266544-arg0">
+    <mapper:value>"CREATE_ACTIVITY_SERVICE_URL"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                </bpdm:linkset>
+                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="createActivityServiceCreate_ActivityRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="CreateActivityService:Create_Activity_input" bpdm:binding="CreateActivityService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_u14sILCbEeegIIb6ZCcPpAOutgoing"></bpdm:linkset>
+                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="createActivityServiceCreate_ActivityResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="CreateActivityService:Create_Activity_output" bpdm:binding="CreateActivityService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_u14sILCbEeegIIb6ZCcPpAIncoming"></bpdm:linkset>
+                            </bpdm:messagingtask>
                             <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="__ZvXELA6EeeNMveUiU8NQQ">
                                 <bpel:variables>
                                     <bpel:variable name="loggingSend_logResponse5Msg" messageType="Logging:send_log_output" binding="Logging:restBinding" operation="send_log" opMsgType="1" bpdm:messageIds="inc:_afROYLBFEeeNMveUiU8NQQIncoming"/>
@@ -226,20 +316,11 @@
                                     </bpel:variable>
                                 </bpel:variables>
                                 <bpel:sequence>
-                                    <bpdm:messagingtask operation="send_log" partnerLink="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlkVar" portType="Logging:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log created activity" bpdm:ID="_afROYLBFEeeNMveUiU8NQQ" bpdm:isHeaderAuthorizationAware="no">
+                                    <bpdm:messagingtask operation="send_log" partnerLink="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk2Var" portType="Logging:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log created activity" bpdm:ID="_afROYLBFEeeNMveUiU8NQQ" bpdm:isHeaderAuthorizationAware="no">
                                         <bpdm:linkset bpdm:type="assignments">
                                             <bpel:copy>
                                                 <bpel:from>ode:get-property-value("LOG_SERVICE_URL")</bpel:from>
-                                                <bpel:to endpointReference="partnerRole"/>
-<mapper:mapperLink>
-  <mapper:vertice id="2005396067" targetPath="$endpoint" targetedBy="132304146-arg1"></mapper:vertice>
-  <mapper:vertice id="132304146" dimension="139x24" location="540,168">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="728200908" dimension="115x24" location="312,180" targetedBy="132304146-arg0">
-    <mapper:value>"LOG_SERVICE_URL"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="2005396067" targetPath="$endpoint" targetedBy="132304146-arg1"></mapper:vertice><mapper:vertice id="132304146" dimension="139x24" location="540,168"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="728200908" dimension="115x24" location="312,180" targetedBy="132304146-arg0"><mapper:value>"LOG_SERVICE_URL"</mapper:value></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggingSend_logRequest5Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_input" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_afROYLBFEeeNMveUiU8NQQOutgoing"></bpdm:linkset>
@@ -256,12 +337,30 @@
                 </bpel:sequence>
                 <bpel:sequence>
                     <bpdm:gateway bpdm:label="Update status" bpdm:ID="_bXi_YLAzEeeytYusscoK1g" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
-                        <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_6z9RALA1EeeytYusscoK1g" bpdm:targetDisplayName="[Update status - Update case status]">
+                        <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_6z9RALA1EeeytYusscoK1g" bpdm:targetDisplayName="[Update status - Update_Case_Status]">
                             <bpel:condition>true()<mapper:mapperLink><mapper:vertice id="2062929487" targetPath="$condition" targetedBy="1304014718-arg0"></mapper:vertice><mapper:vertice id="1304014718" dimension="79x24" location="538,128"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
                         </bpdm:linkset>
                         <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_-A4gALA1EeeytYusscoK1g" bpdm:targetDisplayName="default"></bpdm:linkset>
                         <bpel:sequence>
-                            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Update case status" bpdm:ID="_6zwcsLA1EeeytYusscoK1g" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                            <bpdm:messagingtask operation="Update_Case_Status" partnerLink="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk3Var" portType="UpdateStatusService:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Update_Case_Status" bpdm:ID="_IxOMwLCcEeegIIb6ZCcPpA" bpdm:isHeaderAuthorizationAware="no">
+                                <bpdm:linkset bpdm:type="assignments">
+                                    <bpel:copy>
+                                        <bpel:from>ode:get-property-value("UPDATE_CASE_STATUS_SERVICE_URL")</bpel:from>
+                                        <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="595355562" targetPath="$endpoint" targetedBy="1887201048-arg1"></mapper:vertice>
+  <mapper:vertice id="1887201048" dimension="139x24" location="600,264">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="586319877" dimension="216x24" location="324,264" targetedBy="1887201048-arg0">
+    <mapper:value>"UPDATE_CASE_STATUS_SERVICE_URL"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                </bpdm:linkset>
+                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="updateStatusServiceUpdate_Case_StatusRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="UpdateStatusService:Update_Case_Status_input" bpdm:binding="UpdateStatusService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_IxOMwLCcEeegIIb6ZCcPpAOutgoing"></bpdm:linkset>
+                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="updateStatusServiceUpdate_Case_StatusResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="UpdateStatusService:Update_Case_Status_output" bpdm:binding="UpdateStatusService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_IxOMwLCcEeegIIb6ZCcPpAIncoming"></bpdm:linkset>
+                            </bpdm:messagingtask>
                             <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_C7F98LA7EeeNMveUiU8NQQ">
                                 <bpel:variables>
                                     <bpel:variable name="loggingSend_logResponse6Msg" messageType="Logging:send_log_output" binding="Logging:restBinding" operation="send_log" opMsgType="1" bpdm:messageIds="inc:_jMs4kLBFEeeNMveUiU8NQQIncoming"/>
@@ -272,20 +371,11 @@
                                     </bpel:variable>
                                 </bpel:variables>
                                 <bpel:sequence>
-                                    <bpdm:messagingtask operation="send_log" partnerLink="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlkVar" portType="Logging:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log updated case status" bpdm:ID="_jMs4kLBFEeeNMveUiU8NQQ" bpdm:isHeaderAuthorizationAware="no">
+                                    <bpdm:messagingtask operation="send_log" partnerLink="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForHttpPortPlk2Var" portType="Logging:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log updated case status" bpdm:ID="_jMs4kLBFEeeNMveUiU8NQQ" bpdm:isHeaderAuthorizationAware="no">
                                         <bpdm:linkset bpdm:type="assignments">
                                             <bpel:copy>
                                                 <bpel:from>ode:get-property-value("LOG_SERVICE_URL")</bpel:from>
-                                                <bpel:to endpointReference="partnerRole"/>
-<mapper:mapperLink>
-  <mapper:vertice id="1625632718" targetPath="$endpoint" targetedBy="37188838-arg1"></mapper:vertice>
-  <mapper:vertice id="37188838" dimension="139x24" location="552,180">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1400249407" dimension="115x24" location="324,192" targetedBy="37188838-arg0">
-    <mapper:value>"LOG_SERVICE_URL"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="1625632718" targetPath="$endpoint" targetedBy="37188838-arg1"></mapper:vertice><mapper:vertice id="37188838" dimension="139x24" location="552,180"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1400249407" dimension="115x24" location="324,192" targetedBy="37188838-arg0"><mapper:value>"LOG_SERVICE_URL"</mapper:value></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggingSend_logRequest6Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_input" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_jMs4kLBFEeeNMveUiU8NQQOutgoing"></bpdm:linkset>
