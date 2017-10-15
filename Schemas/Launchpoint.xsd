@@ -89,6 +89,7 @@
     	<sequence>
     		<element name="case" type="tns:CaseType"></element>
     		<element name="batchId" type="string"></element>
+    		<element name="parentPid" type="string"></element>
     	</sequence>
     </complexType>
 
@@ -115,4 +116,56 @@
     <element name="requestId" type="string"></element>
 
     <element name="batchId" type="string"></element>
+
+    <complexType name="ISOFileWrapperType">
+    	<sequence>
+    		<element name="content" type="anyType"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="ISORequestFile" type="tns:ISOFileWrapperType"></element>
+
+    <element name="ISOResponseFile" type="tns:ISOFileWrapperType"></element>
+    
+    <element name="ISOResponseFileACK" type="tns:BpmAckType"></element>
+
+    <element name="ISOResponseCanonical">
+    	<complexType>
+    		<sequence>
+    			<element name="requestId" type="string"></element>
+    			<element name="caseId" type="string"></element>
+    			<element name="batchId" type="string"></element>
+    			<element name="previousScore" type="string"></element>
+    			<element name="status" type="string"></element>
+                <element name="score" type="string"></element>
+                <element name="content" type="anyType"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+
+    <complexType name="ISOScoringType">
+    	<sequence>
+    		<element name="batchId" type="string"></element>
+    		<element name="caseId" type="string"></element>
+    		<element name="environmentId" type="string"></element>
+    		<element name="status" type="string"></element>
+    		<element name="score" type="string"></element>
+    	</sequence>
+    </complexType>
+
+
+    <element name="ISOScoring" type="tns:ISOScoringType"></element>
+
+    <element name="ISOScoringACK" type="tns:BpmAckType"></element>
+
+    <element name="DCMISORequestFile">
+    	<complexType>
+    		<sequence>
+    			<element name="caseId" type="string"></element>
+    			<element name="content" type="anyType"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+
+    <element name="DCMISORequestFileACK" type="tns:BpmAckType"></element>
 </schema>
