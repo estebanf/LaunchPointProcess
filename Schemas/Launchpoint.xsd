@@ -158,14 +158,32 @@
 
     <element name="ISOScoringACK" type="tns:BpmAckType"></element>
 
-    <element name="DCMISORequestFile">
-    	<complexType>
-    		<sequence>
-    			<element name="caseId" type="string"></element>
-    			<element name="content" type="anyType"></element>
-    		</sequence>
-    	</complexType>
+    <element name="DCMISORequestFile" type="tns:DCMISOFileWrapperType">
     </element>
 
     <element name="DCMISORequestFileACK" type="tns:BpmAckType"></element>
+
+
+    <complexType name="DCMISOFileWrapperType">
+    	<sequence>
+    		<element name="caseId" type="string"></element>
+    		<element name="content" type="anyType"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="ISOCaseRequestFile"
+    	type="tns:DCMISOFileWrapperType">
+    </element>
+    
+    <element name="ISOCaseRequestACKFile"
+    	type="tns:DCMISOFileWrapperType">
+    </element>
+
+    <element name="RqUID">
+    	<complexType>
+    		<sequence>
+    			<element name="value" type="string"></element>
+    		</sequence>
+    	</complexType>
+    </element>
 </schema>
