@@ -75,7 +75,7 @@
         <bpel:partnerLinks>
             <bpel:partnerLink name="process_ISO_CaseAndCase_ManagerPlkVar" partnerLinkType="diag:Process_ISO_CaseAndCase_Manager" myRole="Process_ISO_Case_for_Case_Manager" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForCase_Manager" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_ISO_Case/Case_Manager" bpdm:providedIsDefault="true" bpdm:clientTasks="_uuYIkJ_JEeee0o7jDg0-OQ:_1rwKYJ_JEeee0o7jDg0-OQ" bpdm:isManaged="true" bpdm:otherPoolId="_it804J_PEeee0o7jDg0-OQ"/>
             <bpel:partnerLink name="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForHttpPortPlk0Var" partnerLinkType="diag:Process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForHttpPortPlk0" initializePartnerRole="yes" partnerRole="Process_ISO_CaseimplicitPartner_for_Process_ISO_Case" bpdm:invokedService="Logging:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:3002/api/logs" bpdm:invokedIsDefault="true" bpdm:clientTasks="_JhuUcLDPEeeWxcgptknY3g:_PvuvYK7NEee4kK0wiP9LYg, _S4tucLDOEeeWxcgptknY3g:_Qb4OQa7OEee4kK0wiP9LYg, _hymo8LDQEeeWxcgptknY3g:_X-vewK76EeeQHuz5vWBUiA, _2X1dALDPEeeWxcgptknY3g:_RQp2IK76EeeQHuz5vWBUiA, _NDYPUK74EeeQHuz5vWBUiA:_BJLRsK75EeeQHuz5vWBUiA" bpdm:isManaged="true" bpdm:otherPoolId="_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner"/>
-            <bpel:partnerLink name="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCheck_duplicatesPortPlkVar" partnerLinkType="diag:Process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCheck_duplicatesPortPlk" initializePartnerRole="yes" partnerRole="Process_ISO_CaseimplicitPartner_for_Process_ISO_Case" bpdm:invokedService="ns:check_duplicatesService" bpdm:invokedPort="check_duplicatesPort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:8080/everteam/ode/processes/LaunchPointProcess/Connectors/Database/check_duplicates" bpdm:invokedIsDefault="true" bpdm:clientTasks="_WW7FQLDPEeeWxcgptknY3g:_WnJ04K32EeeL56TO7yisxA" bpdm:isManaged="true" bpdm:otherPoolId="_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner"/>
+            <bpel:partnerLink name="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCheck_duplicatesPortPlkVar" partnerLinkType="diag:Process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForCheck_duplicatesPortPlk" initializePartnerRole="yes" partnerRole="Process_ISO_CaseimplicitPartner_for_Process_ISO_Case" bpdm:invokedService="ns:check_duplicatesService" bpdm:invokedPort="check_duplicatesPort" bpdm:invokedSOAPAddress="http://192.168.241.200:8080/everteam/ode/processes/LaunchPointProcess/Connectors/Database/check_duplicates" bpdm:invokedIsDefault="true" bpdm:clientTasks="_WW7FQLDPEeeWxcgptknY3g:_WnJ04K32EeeL56TO7yisxA" bpdm:isManaged="true" bpdm:otherPoolId="_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner"/>
             <bpel:partnerLink name="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForHttpPortPlk1Var" partnerLinkType="diag:Process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForHttpPortPlk1" initializePartnerRole="yes" partnerRole="Process_ISO_CaseimplicitPartner_for_Process_ISO_Case" bpdm:invokedService="SendToISOService:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:3002/api/iso" bpdm:invokedIsDefault="true" bpdm:clientTasks="_hymo8LDQEeeWxcgptknY3g:_C7TAMLBlEeeryvHur6MY9g" bpdm:isManaged="true" bpdm:otherPoolId="_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner"/>
             <bpel:partnerLink name="process_ISO_CaseAndDCMForHttpPortPlkVar" partnerLinkType="diag:Process_ISO_CaseAndDCMForHttpPortPlk" initializePartnerRole="yes" myRole="Process_ISO_Case_for_DCM" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForDCM" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_ISO_Case/DCM" bpdm:providedIsDefault="true" partnerRole="DCM_for_Process_ISO_Case" bpdm:invokedService="GenerateFileService:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:3002/api/generateFile" bpdm:invokedIsDefault="true" bpdm:clientTasks="_2X1dALDPEeeWxcgptknY3g:_nu8JMLH8Eee6aeEJgFykVw, _2X1dALDPEeeWxcgptknY3g:_moD0prDTEeeWxcgptknY3g" bpdm:isManaged="true" bpdm:otherPoolId="_s6fdgLH7Eee6aeEJgFykVw"/>
         </bpel:partnerLinks>
@@ -237,6 +237,14 @@
                                     <bpel:copy>
                                         <bpel:from>$iSOEventStartMessageRequest1.body/Launchpoint:batchId</bpel:from>
                                         <bpel:to>$loggingSend_logRequest2Msg.body/batch_id</bpel:to><mapper:mapperLink><mapper:vertice id="92827669" targetPath="$loggingSend_logRequest2Msg.body/batch_id" targetedBy="1483953559-arg0"></mapper:vertice><mapper:vertice id="1483953559" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:batchId"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$ode:pid</bpel:from>
+                                        <bpel:to>$loggingSend_logRequest2Msg.body/process_instance_id</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1921820286" targetPath="$loggingSend_logRequest2Msg.body/process_instance_id" targetedBy="1776002128-arg0"></mapper:vertice>
+  <mapper:vertice id="1776002128" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggingSend_logRequest2Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_input" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Qb4OQa7OEee4kK0wiP9LYgOutgoing"></bpdm:linkset>
@@ -431,6 +439,19 @@
                                         <bpel:from>"ISO_REQUEST"</bpel:from>
                                         <bpel:to>$dCMFetch_ISO_DataRequest1Msg.body/file_type</bpel:to><mapper:mapperLink><mapper:vertice id="245999493" targetPath="$dCMFetch_ISO_DataRequest1Msg.body/file_type" targetedBy="2064138720-arg0"></mapper:vertice><mapper:vertice id="2064138720" dimension="90x24" location="516,157"><mapper:value>"ISO_REQUEST"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>ode:get-property-value("GENERATE_FILE_SERVICE_URL")</bpel:from>
+                                        <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="715593145" targetPath="$endpoint" targetedBy="1194409542-arg1"></mapper:vertice>
+  <mapper:vertice id="1194409542" dimension="139x24" location="696,252">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1432684625" dimension="175x24" location="456,252" targetedBy="1194409542-arg0">
+    <mapper:value>"GENERATE_FILE_SERVICE_URL"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMFetch_ISO_DataRequest1Msg" bpdm:msgVarScopeId="_2X1dALDPEeeWxcgptknY3g" bpdm:variableIsManaged="true" bpdm:messageType="GenerateFileService:Fetch_ISO_Data_input" bpdm:binding="GenerateFileService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_lcvdELH8Eee6aeEJgFykVw">
                                     <bpel:correlation set="fetchDataCorr" initiate="join" pattern="request" bpdm:isSource="false"></bpel:correlation>
@@ -554,19 +575,11 @@
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId</bpel:from>
-                                        <bpel:to>$sendToISOServiceSend_To_ISORequest1Msg.body/Launchpoint:caseId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1959890709" targetPath="$sendToISOServiceSend_To_ISORequest1Msg.body/Launchpoint:caseId" targetedBy="2092434421-arg0"></mapper:vertice>
-  <mapper:vertice id="2092434421" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$sendToISOServiceSend_To_ISORequest1Msg.body/Launchpoint:caseId</bpel:to><mapper:mapperLink><mapper:vertice id="1959890709" targetPath="$sendToISOServiceSend_To_ISORequest1Msg.body/Launchpoint:caseId" targetedBy="2092434421-arg0"></mapper:vertice><mapper:vertice id="2092434421" sourcePath="$iSOEventStartMessageRequest1.body/Launchpoint:case/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$ISORequestFile/Launchpoint:content</bpel:from>
-                                        <bpel:to>$sendToISOServiceSend_To_ISORequest1Msg.body/Launchpoint:content</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1942577854" targetPath="$sendToISOServiceSend_To_ISORequest1Msg.body/Launchpoint:content" targetedBy="2023961010-arg0"></mapper:vertice>
-  <mapper:vertice id="2023961010" sourcePath="$ISORequestFile/Launchpoint:content"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$sendToISOServiceSend_To_ISORequest1Msg.body/Launchpoint:content</bpel:to><mapper:mapperLink><mapper:vertice id="1942577854" targetPath="$sendToISOServiceSend_To_ISORequest1Msg.body/Launchpoint:content" targetedBy="2023961010-arg0"></mapper:vertice><mapper:vertice id="2023961010" sourcePath="$ISORequestFile/Launchpoint:content"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="sendToISOServiceSend_To_ISORequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="SendToISOService:Send_To_ISO_input" bpdm:binding="SendToISOService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_C7TAMLBlEeeryvHur6MY9gOutgoing"></bpdm:linkset>
@@ -576,17 +589,7 @@
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>bpel:doXslTransform("../../XSLT/ExtractRqUID.xsl", $sendToISOServiceSend_To_ISOResponse1Msg.response)</bpel:from>
-                                        <bpel:to>$RqUID</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="915000241" targetPath="$RqUID" targetedBy="376948207-arg2"></mapper:vertice>
-  <mapper:vertice id="376948207" dimension="126x24" location="269,128">
-    <mapper:value>bpel:doXslTransform()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="100426747" dimension="155x24" location="68,56" targetedBy="376948207-arg0">
-    <mapper:value>"../../XSLT/ExtractRqUID.xsl"</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="2038893753" sourcePath="$sendToISOServiceSend_To_ISOResponse1Msg.response" targetedBy="376948207-arg1"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$RqUID</bpel:to><mapper:mapperLink><mapper:vertice id="915000241" targetPath="$RqUID" targetedBy="376948207-arg2"></mapper:vertice><mapper:vertice id="376948207" dimension="126x24" location="269,128"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="100426747" dimension="155x24" location="68,56" targetedBy="376948207-arg0"><mapper:value>"../../XSLT/ExtractRqUID.xsl"</mapper:value></mapper:vertice><mapper:vertice id="2038893753" sourcePath="$sendToISOServiceSend_To_ISOResponse1Msg.response" targetedBy="376948207-arg1"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
@@ -648,11 +651,7 @@
                                             </bpel:copy>
                                             <bpel:copy>
                                                 <bpel:from>$RqUID/Launchpoint:value</bpel:from>
-                                                <bpel:to>$ISOTracking/metrics:requestId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="511816092" targetPath="$ISOTracking/metrics:requestId" targetedBy="1722749723-arg0"></mapper:vertice>
-  <mapper:vertice id="1722749723" sourcePath="$RqUID/Launchpoint:value"></mapper:vertice>
-</mapper:mapperLink>
+                                                <bpel:to>$ISOTracking/metrics:requestId</bpel:to><mapper:mapperLink><mapper:vertice id="511816092" targetPath="$ISOTracking/metrics:requestId" targetedBy="1722749723-arg0"></mapper:vertice><mapper:vertice id="1722749723" sourcePath="$RqUID/Launchpoint:value"></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                     </bpdm:messagingtask>
