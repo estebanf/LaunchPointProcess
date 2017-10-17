@@ -62,9 +62,9 @@
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/GenerateFileService.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/GenerateFile.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/SendToISOService.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/check_duplicates.sql/check_duplicates.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/check_duplicates.sql/check_duplicates.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/SendToISOService.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Logging.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
@@ -240,11 +240,7 @@
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$ode:pid</bpel:from>
-                                        <bpel:to>$loggingSend_logRequest2Msg.body/process_instance_id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1921820286" targetPath="$loggingSend_logRequest2Msg.body/process_instance_id" targetedBy="1776002128-arg0"></mapper:vertice>
-  <mapper:vertice id="1776002128" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$loggingSend_logRequest2Msg.body/process_instance_id</bpel:to><mapper:mapperLink><mapper:vertice id="1921820286" targetPath="$loggingSend_logRequest2Msg.body/process_instance_id" targetedBy="1776002128-arg0"></mapper:vertice><mapper:vertice id="1776002128" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggingSend_logRequest2Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_input" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Qb4OQa7OEee4kK0wiP9LYgOutgoing"></bpdm:linkset>
@@ -441,16 +437,7 @@
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("GENERATE_FILE_SERVICE_URL")</bpel:from>
-                                        <bpel:to endpointReference="partnerRole"/>
-<mapper:mapperLink>
-  <mapper:vertice id="715593145" targetPath="$endpoint" targetedBy="1194409542-arg1"></mapper:vertice>
-  <mapper:vertice id="1194409542" dimension="139x24" location="696,252">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1432684625" dimension="175x24" location="456,252" targetedBy="1194409542-arg0">
-    <mapper:value>"GENERATE_FILE_SERVICE_URL"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="715593145" targetPath="$endpoint" targetedBy="1194409542-arg1"></mapper:vertice><mapper:vertice id="1194409542" dimension="139x24" location="696,252"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1432684625" dimension="175x24" location="456,252" targetedBy="1194409542-arg0"><mapper:value>"GENERATE_FILE_SERVICE_URL"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMFetch_ISO_DataRequest1Msg" bpdm:msgVarScopeId="_2X1dALDPEeeWxcgptknY3g" bpdm:variableIsManaged="true" bpdm:messageType="GenerateFileService:Fetch_ISO_Data_input" bpdm:binding="GenerateFileService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_lcvdELH8Eee6aeEJgFykVw">
