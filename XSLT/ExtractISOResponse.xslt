@@ -8,6 +8,7 @@
     <Launchpoint:ISOResponseCanonical>
       <Launchpoint:requestId><xsl:value-of select="Launchpoint:content/ClaimInvestigationAddRs/RqUID" /></Launchpoint:requestId>
       <Launchpoint:caseId></Launchpoint:caseId>
+      <Launchpoint:clientid></Launchpoint:clientid>
       <Launchpoint:batchId></Launchpoint:batchId>
       <Launchpoint:previousScore></Launchpoint:previousScore>
       <Launchpoint:content>

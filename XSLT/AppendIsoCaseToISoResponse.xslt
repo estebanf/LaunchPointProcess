@@ -15,6 +15,7 @@
     <Launchpoint:ISOResponseCanonical>
       <Launchpoint:requestId><xsl:value-of select="$doc/Launchpoint:ISOResponseCanonical/Launchpoint:requestId" /></Launchpoint:requestId>
       <Launchpoint:caseId><xsl:value-of select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:caseid"/></Launchpoint:caseId>
+      <Launchpoint:clientid><xsl:value-of select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:clientid"/></Launchpoint:clientid>
       <Launchpoint:batchId><xsl:value-of select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:batchid"/></Launchpoint:batchId>
       <Launchpoint:previousScore><xsl:value-of select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:score"/></Launchpoint:previousScore>
       <Launchpoint:content>
