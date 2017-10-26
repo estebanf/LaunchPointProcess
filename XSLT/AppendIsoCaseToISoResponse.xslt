@@ -17,7 +17,21 @@
       <Launchpoint:caseId><xsl:value-of select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:caseid"/></Launchpoint:caseId>
       <Launchpoint:clientid><xsl:value-of select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:clientid"/></Launchpoint:clientid>
       <Launchpoint:batchId><xsl:value-of select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:batchid"/></Launchpoint:batchId>
-      <Launchpoint:previousScore><xsl:value-of select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:score"/></Launchpoint:previousScore>
+
+	<xsl:variable name="previousScore">
+		<xsl:choose>
+			<xsl:when
+				test="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:score = ''">
+				<xsl:text>NONE</xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of
+					select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:score" />
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+      
+      <Launchpoint:previousScore><xsl:value-of select="$previousScore"/></Launchpoint:previousScore>
       <Launchpoint:content>
         <xsl:copy-of select="$doc/Launchpoint:ISOResponseCanonical/Launchpoint:content/ClaimInvestigationAddRs" />
       </Launchpoint:content>
