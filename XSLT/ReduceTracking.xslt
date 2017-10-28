@@ -16,26 +16,31 @@
 	<!--No parameters are currently passed to doXslTransform. -->
 	<xsl:template match="/this:Receive_LogRequest">
 		<Tracking:Tracking>
-			<!-- <xsl:comment> Got here </xsl:comment> -->
 			<xsl:for-each select="child::node()">
-				<xsl:if test="*">
-					<xsl:element name="{name()}">
-						<xsl:for-each select="child::node()">
-							<xsl:call-template name="entry">
-								<xsl:with-param name="itemName" select="name()" />
-								<xsl:with-param name="itemValue" select="text()" />
-							</xsl:call-template>
-						</xsl:for-each>
-					</xsl:element>
-				</xsl:if>
+				<xsl:choose>
+					<xsl:when test="*">
+						<xsl:element name="{name()}">
+							<xsl:for-each select="child::node()">
+								<xsl:call-template name="entry">
+									<xsl:with-param name="itemName" select="name()" />
+									<xsl:with-param name="itemValue" select="text()" />
+								</xsl:call-template>
+							</xsl:for-each>
+						</xsl:element>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:call-template name="entry">
+							<xsl:with-param name="itemName" select="name()" />
+							<xsl:with-param name="itemValue" select="text()" />
+						</xsl:call-template>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:for-each>
 		</Tracking:Tracking>
 	</xsl:template>
 	<xsl:template name="entry">
 		<xsl:param name="itemName" />
 		<xsl:param name="itemValue" />
-		<!-- <xsl:comment> Got here too <xsl:value-of select="$itemName"/> <xsl:value-of 
-			select="$itemValue"/> </xsl:comment> -->
 		<xsl:variable name="nItemName">
 			<xsl:value-of select="$itemName" />
 		</xsl:variable>

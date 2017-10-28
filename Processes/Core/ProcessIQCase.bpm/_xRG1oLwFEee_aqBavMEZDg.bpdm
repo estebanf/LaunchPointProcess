@@ -1,0 +1,93 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:Logging="http://bpms.everteam.com/Services/REST/Logging.rest" xmlns:diag="http://thisdiagram" xmlns:Logging1="__project:///Schemas/Logging.xsd" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Process_IQ_CaseimplicitPartner="http://thisdiagram/Process_IQ_CaseimplicitPartner" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/Process_IQ_Case" xmlns:Case_Manager="http://thisdiagram/Case_Manager" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Process_IQ_Case">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/Services/REST/Logging.rest" bpdm:prefix="Logging" bpdm:comment="contrib=&apos;project:///Services/REST/Logging.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_0uuMALwFEee_aqBavMEZDg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/Logging.xsd" bpdm:prefix="Logging1" bpdm:comment="contrib=&apos;project:///Schemas/Logging.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Process_IQ_CaseimplicitPartner" bpdm:prefix="Process_IQ_CaseimplicitPartner" bpdm:comment="contrib=&apos;partner-pool:///_xRG1oLwFEee_aqBavMEZDgimplicitPartner"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Process_IQ_Case" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Case_Manager" bpdm:prefix="Case_Manager" bpdm:comment="contrib=&apos;partner-pool:///_0uuMALwFEee_aqBavMEZDg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <wsdl:portType name="ForCase_Manager">
+                <wsdl:operation name="EventStartMessage" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
+                    <wsdl:input message="this:EventStartMessageRequest" name="EventStartMessage"/>
+                    <wsdl:output message="this:EventStartMessageResponse" name="EventStartMessageResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForCase_Manager" type="this:ForCase_Manager" bpdm:isSynchronized="true"/>
+            <xs:element name="EventStartMessageRequest" type="xs:string" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
+            <wsdl:message name="EventStartMessageRequest" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
+                <wsdl:part name="body" element="this:EventStartMessageRequest"/>
+            </wsdl:message>
+            <xs:element name="EventStartMessageResponse" type="xs:string" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
+            <wsdl:message name="EventStartMessageResponse" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
+                <wsdl:part name="body" element="this:EventStartMessageResponse"/>
+            </wsdl:message>
+        </bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_0uuMALwFEee_aqBavMEZDg" bpdm:label="Case Manager"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_xRG1oLwFEee_aqBavMEZDgimplicitPartner" bpdm:label="Process IQ CaseimplicitPartner"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/Logging.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Logging.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Process IQ Case" bpdm:ID="_xRG1oLwFEee_aqBavMEZDg">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="process_IQ_CaseAndCase_ManagerPlkVar" partnerLinkType="diag:Process_IQ_CaseAndCase_Manager" myRole="Process_IQ_Case_for_Case_Manager" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForCase_Manager" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_IQ_Case/Case_Manager" bpdm:providedIsDefault="true" bpdm:clientTasks="_xRG1oLwFEee_aqBavMEZDg:_FHX1cLwGEee_aqBavMEZDg" bpdm:isManaged="true" bpdm:otherPoolId="_0uuMALwFEee_aqBavMEZDg"/>
+            <bpel:partnerLink name="process_IQ_CaseimplicitPartnerAndProcess_IQ_CaseForHttpPortPlkVar" partnerLinkType="diag:Process_IQ_CaseimplicitPartnerAndProcess_IQ_CaseForHttpPortPlk" initializePartnerRole="yes" partnerRole="Process_IQ_CaseimplicitPartner_for_Process_IQ_Case" bpdm:invokedService="Logging:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:3002/api/logs" bpdm:invokedIsDefault="true" bpdm:clientTasks="_jnjaQLwGEee_aqBavMEZDg:_wVDAkLwGEee_aqBavMEZDg" bpdm:isManaged="true" bpdm:otherPoolId="_xRG1oLwFEee_aqBavMEZDgimplicitPartner"/>
+        </bpel:partnerLinks>
+        <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
+            <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_xan-ALwFEee_aqBavMEZDg" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_xan-ALwFEee_aqBavMEZDg"/>
+            <bpel:variable name="thisEventStartMessageRequest1" messageType="this:EventStartMessageRequest" bpdm:id="_HPexcLwGEee_aqBavMEZDg" bpdm:messageIds="inc:_HPVAcLwGEee_aqBavMEZDg"/>
+            <bpel:variable name="thisEventStartMessageResponse1" messageType="this:EventStartMessageResponse" bpdm:id="_IHWNkLwGEee_aqBavMEZDg" bpdm:messageIds=" out:_IHSjMLwGEee_aqBavMEZDg">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="this:EventStartMessageResponse" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask eventType="start: message" operation="EventStartMessage" partnerLink="process_IQ_CaseAndCase_ManagerPlkVar" portType="this:ForCase_Manager" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_Start_Event" bpdm:ID="_FHX1cLwGEee_aqBavMEZDg" bpdm:isHeaderAuthorizationAware="yes">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisEventStartMessageRequest1" bpdm:msgVarScopeId="_xRG1oLwFEee_aqBavMEZDg" bpdm:variableIsManaged="true" bpdm:messageType="this:EventStartMessageRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_HPVAcLwGEee_aqBavMEZDg"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisEventStartMessageResponse1" bpdm:msgVarScopeId="_xRG1oLwFEee_aqBavMEZDg" bpdm:variableIsManaged="true" bpdm:messageType="this:EventStartMessageResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_IHSjMLwGEee_aqBavMEZDg"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_jnjaQLwGEee_aqBavMEZDg">
+                <bpel:variables>
+                    <bpel:variable name="loggingSend_logResponse1Msg" messageType="Logging:send_log_output" binding="Logging:restBinding" operation="send_log" opMsgType="1" bpdm:messageIds="inc:_wVDAkLwGEee_aqBavMEZDgIncoming"/>
+                    <bpel:variable name="loggingSend_logRequest1Msg" messageType="Logging:send_log_input" binding="Logging:restBinding" operation="send_log" opMsgType="0" bpdm:messageIds=" out:_wVDAkLwGEee_aqBavMEZDgOutgoing">
+                        <bpel:from bpdm:toPart="body">
+                            <bpel:literal bpdm:linkedMessageType="Logging:send_log_input" bpdm:linkedPart="body" bpdm:binding="Logging:restBinding" bpdm:opMsgType="0" bpdm:operation="send_log"></bpel:literal>
+                        </bpel:from>
+                    </bpel:variable>
+                </bpel:variables>
+                <bpel:sequence>
+                    <bpdm:messagingtask eventType="start: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Start_Event" bpdm:ID="_pIZMoLwGEee_aqBavMEZDg" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                    <bpdm:messagingtask operation="send_log" partnerLink="process_IQ_CaseimplicitPartnerAndProcess_IQ_CaseForHttpPortPlkVar" portType="Logging:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="send_log" bpdm:ID="_wVDAkLwGEee_aqBavMEZDg" bpdm:isHeaderAuthorizationAware="no">
+                        <bpdm:linkset bpdm:type="assignments">
+                            <bpel:copy>
+                                <bpel:from>ode:get-property-value("LOG_SERVICE_URL")</bpel:from>
+                                <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="1894595705" targetPath="$endpoint" targetedBy="1241847995-arg1"></mapper:vertice><mapper:vertice id="1241847995" dimension="139x24" location="492,264"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="645798931" dimension="115x24" location="348,264" targetedBy="1241847995-arg0"><mapper:value>"LOG_SERVICE_URL"</mapper:value></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>ode:get-property-value("LOG_LEVEL_INFO")</bpel:from>
+                                <bpel:to>$loggingSend_logRequest1Msg.body/log_type</bpel:to><mapper:mapperLink><mapper:vertice id="1439235216" targetPath="$loggingSend_logRequest1Msg.body/log_type" targetedBy="1377720289-arg1"></mapper:vertice><mapper:vertice id="1377720289" dimension="139x24" location="468,180"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="907639132" dimension="109x24" location="288,180" targetedBy="1377720289-arg0"><mapper:value>"LOG_LEVEL_INFO"</mapper:value></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>ode:get-property-value("RECEIVED_IQ_DESCRIPTION")</bpel:from>
+                                <bpel:to>$loggingSend_logRequest1Msg.body/description</bpel:to><mapper:mapperLink><mapper:vertice id="267973851" targetPath="$loggingSend_logRequest1Msg.body/description" targetedBy="312069506-arg1"></mapper:vertice><mapper:vertice id="312069506" dimension="139x24" location="468,216"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1394965262" dimension="164x24" location="264,216" targetedBy="312069506-arg0"><mapper:value>"RECEIVED_IQ_DESCRIPTION"</mapper:value></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>ode:get-property-value("RECEIVED_IQ")</bpel:from>
+                                <bpel:to>$loggingSend_logRequest1Msg.body/step_id</bpel:to><mapper:mapperLink><mapper:vertice id="2056756214" targetPath="$loggingSend_logRequest1Msg.body/step_id" targetedBy="351860612-arg1"></mapper:vertice><mapper:vertice id="351860612" dimension="139x24" location="468,144"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1650082625" dimension="86x24" location="288,144" targetedBy="351860612-arg0"><mapper:value>"RECEIVED_IQ"</mapper:value></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                        </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggingSend_logRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_input" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_wVDAkLwGEee_aqBavMEZDgOutgoing"></bpdm:linkset>
+                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="loggingSend_logResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_output" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_wVDAkLwGEee_aqBavMEZDgIncoming"></bpdm:linkset>
+                    </bpdm:messagingtask>
+                </bpel:sequence>
+            </bpel:scope>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>
