@@ -36,9 +36,9 @@
       <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_HPVAcbwGEee_aqBavMEZDg"/>
       <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_IHSjMbwGEee_aqBavMEZDg"/>
     </vertices>
-    <vertices xmi:type="bpmn:SubProcess" xmi:id="_jnjaQbwGEee_aqBavMEZDg" iD="_jnjaQLwGEee_aqBavMEZDg" incomingEdges="_joE-sbwGEee_aqBavMEZDg" activityType="SubProcess">
+    <vertices xmi:type="bpmn:SubProcess" xmi:id="_jnjaQbwGEee_aqBavMEZDg" iD="_jnjaQLwGEee_aqBavMEZDg" outgoingEdges="_axTIQbwnEeeTv952wF_hAw" incomingEdges="_joE-sbwGEee_aqBavMEZDg" name="Log Received IQ Case" activityType="SubProcess">
       <vertices xmi:type="bpmn:Activity" xmi:id="_pIZzsLwGEee_aqBavMEZDg" iD="_pIZMoLwGEee_aqBavMEZDg" outgoingEdges="_2Gv5cbwGEee_aqBavMEZDg" activityType="EventStartEmpty"/>
-      <vertices xmi:type="bpmn:ActivityService" xmi:id="_wVPN17wGEee_aqBavMEZDg" iD="_wVDAkLwGEee_aqBavMEZDg" incomingEdges="_2Gv5cbwGEee_aqBavMEZDg" name="send_log" activityType="ServiceTask">
+      <vertices xmi:type="bpmn:ActivityService" xmi:id="_wVPN17wGEee_aqBavMEZDg" iD="_wVDAkLwGEee_aqBavMEZDg" incomingEdges="_2Gv5cbwGEee_aqBavMEZDg" name="Log received case" activityType="ServiceTask">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wVPN2LwGEee_aqBavMEZDg" source="attachedDataobject">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wVPN2bwGEee_aqBavMEZDg" key="douri" value="project:///Services/REST/Logging.wsdl?invokerequestresponsebound={http://bpms.everteam.com/Services/REST/Logging.rest}restService/httpPort/send_log"/>
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wVPN2rwGEee_aqBavMEZDg" key="blackbox" value="true"/>
@@ -47,7 +47,69 @@
       </vertices>
       <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_2Gv5cbwGEee_aqBavMEZDg" iD="_2Gv5cLwGEee_aqBavMEZDg"/>
     </vertices>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_aw1OMLwnEeeTv952wF_hAw" iD="_aw0nILwnEeeTv952wF_hAw" outgoingEdges="_YoucwbwoEeeTv952wF_hAw" incomingEdges="_axTIQbwnEeeTv952wF_hAw" name="Get add'l case data" activityType="Task"/>
+    <vertices xmi:type="bpmn:SubProcess" xmi:id="_UT3VUbwoEeeTv952wF_hAw" iD="_UT3VULwoEeeTv952wF_hAw" outgoingEdges="_NYtrobwpEeeTv952wF_hAw" incomingEdges="_YoucwbwoEeeTv952wF_hAw" name="Log Received Case Data" looping="false">
+      <vertices xmi:type="bpmn:Activity" xmi:id="_UUIbEbwoEeeTv952wF_hAw" iD="_UUIbELwoEeeTv952wF_hAw" outgoingEdges="_GHGpwbwqEeeTv952wF_hAw" activityType="EventStartEmpty" looping="false"/>
+      <vertices xmi:type="bpmn:ActivityService" xmi:id="__UyBYLwpEeeTv952wF_hAw" iD="__Uj-8LwpEeeTv952wF_hAw" incomingEdges="_GHGpwbwqEeeTv952wF_hAw" name="Log add'l case data" activityType="ServiceTask">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__UyBYbwpEeeTv952wF_hAw" source="attachedDataobject">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="__UyBYrwpEeeTv952wF_hAw" key="douri" value="project:///Services/REST/Logging.wsdl?invokerequestresponsebound={http://bpms.everteam.com/Services/REST/Logging.rest}restService/httpPort/send_log"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="__UyBY7wpEeeTv952wF_hAw" key="blackbox" value="true"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="__UyBZLwpEeeTv952wF_hAw" key="canonic_invoker" value="true"/>
+        </eAnnotations>
+      </vertices>
+      <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_GHGpwbwqEeeTv952wF_hAw" iD="_GHGpwLwqEeeTv952wF_hAw"/>
+    </vertices>
+    <vertices xmi:type="bpmn:SubProcess" xmi:id="_zAD84bwoEeeTv952wF_hAw" iD="_zAD84LwoEeeTv952wF_hAw" outgoingEdges="_U4WwMbwtEeeTv952wF_hAw" incomingEdges="_N3YkobwpEeeTv952wF_hAw" name="Log Send Case Rule Result" looping="false">
+      <vertices xmi:type="bpmn:Activity" xmi:id="_zANG0bwoEeeTv952wF_hAw" iD="_zANG0LwoEeeTv952wF_hAw" outgoingEdges="_xZhyAbwqEeeTv952wF_hAw" activityType="EventStartEmpty" looping="false"/>
+      <vertices xmi:type="bpmn:ActivityService" xmi:id="_q0ibCLwqEeeTv952wF_hAw" iD="_q0digLwqEeeTv952wF_hAw" incomingEdges="_xZhyAbwqEeeTv952wF_hAw" name="Log send case result" activityType="ServiceTask">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_q0ibCbwqEeeTv952wF_hAw" source="attachedDataobject">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_q0ibCrwqEeeTv952wF_hAw" key="douri" value="project:///Services/REST/Logging.wsdl?invokerequestresponsebound={http://bpms.everteam.com/Services/REST/Logging.rest}restService/httpPort/send_log"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_q0ibC7wqEeeTv952wF_hAw" key="blackbox" value="true"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_q0ibDLwqEeeTv952wF_hAw" key="canonic_invoker" value="true"/>
+        </eAnnotations>
+      </vertices>
+      <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_xZhyAbwqEeeTv952wF_hAw" iD="_xZhyALwqEeeTv952wF_hAw"/>
+    </vertices>
+    <vertices xmi:type="bpmn:ActivityRule" xmi:id="_JGY60bwpEeeTv952wF_hAw" iD="_JGY60LwpEeeTv952wF_hAw" outgoingEdges="_N3YkobwpEeeTv952wF_hAw" incomingEdges="_NYtrobwpEeeTv952wF_hAw" name="Send Case Rule"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_U4JU0bwtEeeTv952wF_hAw" iD="_U4JU0LwtEeeTv952wF_hAw" outgoingEdges="_WCTa0bwtEeeTv952wF_hAw _aaLaAbwtEeeTv952wF_hAw" incomingEdges="_U4WwMbwtEeeTv952wF_hAw" activityType="GatewayDataBasedExclusive"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_WCFYYLwtEeeTv952wF_hAw" iD="_WCExULwtEeeTv952wF_hAw" outgoingEdges="__p_GQbwyEeeTv952wF_hAw" incomingEdges="_WCTa0bwtEeeTv952wF_hAw" name="Call LGE for PDF Generation" activityType="Task"/>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_aZ9-obwtEeeTv952wF_hAw" iD="_aZ9-oLwtEeeTv952wF_hAw" incomingEdges="_aaLaAbwtEeeTv952wF_hAw" activityType="EventEndEmpty"/>
+    <vertices xmi:type="bpmn:SubProcess" xmi:id="_9G9I0bwyEeeTv952wF_hAw" iD="_9G9I0LwyEeeTv952wF_hAw" outgoingEdges="_dRuAIbwzEeeTv952wF_hAw" incomingEdges="__p_GQbwyEeeTv952wF_hAw" name="Log Generated Letter" looping="false">
+      <vertices xmi:type="bpmn:Activity" xmi:id="_9HHg5bwyEeeTv952wF_hAw" iD="_9HHg5LwyEeeTv952wF_hAw" outgoingEdges="_Nd-lIbw0EeeTv952wF_hAw" activityType="EventStartEmpty" looping="false"/>
+      <vertices xmi:type="bpmn:ActivityService" xmi:id="_9WngALwzEeeTv952wF_hAw" iD="_9WeWELwzEeeTv952wF_hAw" incomingEdges="_Nd-lIbw0EeeTv952wF_hAw" name="Log generated letter" activityType="ServiceTask">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9WngAbwzEeeTv952wF_hAw" source="attachedDataobject">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9WngArwzEeeTv952wF_hAw" key="douri" value="project:///Services/REST/Logging.wsdl?invokerequestresponsebound={http://bpms.everteam.com/Services/REST/Logging.rest}restService/httpPort/send_log"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9WngA7wzEeeTv952wF_hAw" key="blackbox" value="true"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9WngBLwzEeeTv952wF_hAw" key="canonic_invoker" value="true"/>
+        </eAnnotations>
+      </vertices>
+      <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_Nd-lIbw0EeeTv952wF_hAw" iD="_Nd-lILw0EeeTv952wF_hAw"/>
+    </vertices>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_dRfWobwzEeeTv952wF_hAw" iD="_dRfWoLwzEeeTv952wF_hAw" outgoingEdges="_nWkJMbwzEeeTv952wF_hAw" incomingEdges="_dRuAIbwzEeeTv952wF_hAw" name="Add letter to queue" activityType="Task"/>
+    <vertices xmi:type="bpmn:SubProcess" xmi:id="_jKysUbwzEeeTv952wF_hAw" iD="_jKysULwzEeeTv952wF_hAw" outgoingEdges="_yM3kYbwzEeeTv952wF_hAw" incomingEdges="_nWkJMbwzEeeTv952wF_hAw" name="Log Letter added to Queue" looping="false">
+      <vertices xmi:type="bpmn:Activity" xmi:id="_jK1vqrwzEeeTv952wF_hAw" iD="_jK1vqbwzEeeTv952wF_hAw" outgoingEdges="_Cbr8Ybw0EeeTv952wF_hAw" activityType="EventStartEmpty" looping="false"/>
+      <vertices xmi:type="bpmn:ActivityService" xmi:id="_AxdPOLw0EeeTv952wF_hAw" iD="_Axay8Lw0EeeTv952wF_hAw" incomingEdges="_Cbr8Ybw0EeeTv952wF_hAw" name="Log letter queued" activityType="ServiceTask">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_AxdPObw0EeeTv952wF_hAw" source="attachedDataobject">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_AxdPOrw0EeeTv952wF_hAw" key="douri" value="project:///Services/REST/Logging.wsdl?invokerequestresponsebound={http://bpms.everteam.com/Services/REST/Logging.rest}restService/httpPort/send_log"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_AxdPO7w0EeeTv952wF_hAw" key="blackbox" value="true"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_AxdPPLw0EeeTv952wF_hAw" key="canonic_invoker" value="true"/>
+        </eAnnotations>
+      </vertices>
+      <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_Cbr8Ybw0EeeTv952wF_hAw" iD="_Cbr8YLw0EeeTv952wF_hAw"/>
+    </vertices>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_yMph8bwzEeeTv952wF_hAw" iD="_yMph8LwzEeeTv952wF_hAw" incomingEdges="_yM3kYbwzEeeTv952wF_hAw" activityType="EventEndEmpty"/>
     <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_joE-sbwGEee_aqBavMEZDg" iD="_joE-sLwGEee_aqBavMEZDg"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_axTIQbwnEeeTv952wF_hAw" iD="_axTIQLwnEeeTv952wF_hAw"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_YoucwbwoEeeTv952wF_hAw" iD="_YoucwLwoEeeTv952wF_hAw"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_NYtrobwpEeeTv952wF_hAw" iD="_NYtroLwpEeeTv952wF_hAw"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_N3YkobwpEeeTv952wF_hAw" iD="_N3YkoLwpEeeTv952wF_hAw"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_U4WwMbwtEeeTv952wF_hAw" iD="_U4WwMLwtEeeTv952wF_hAw"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_WCTa0bwtEeeTv952wF_hAw" iD="_WCTa0LwtEeeTv952wF_hAw" conditionType="Default" isDefault="true"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_aaLaAbwtEeeTv952wF_hAw" iD="_aaLaALwtEeeTv952wF_hAw"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="__p_GQbwyEeeTv952wF_hAw" iD="__p_GQLwyEeeTv952wF_hAw"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_dRuAIbwzEeeTv952wF_hAw" iD="_dRuAILwzEeeTv952wF_hAw"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_nWkJMbwzEeeTv952wF_hAw" iD="_nWkJMLwzEeeTv952wF_hAw"/>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_yM3kYbwzEeeTv952wF_hAw" iD="_yM3kYLwzEeeTv952wF_hAw"/>
   </pools>
   <pools xmi:type="bpmn:Pool" xmi:id="_0uuMAbwFEee_aqBavMEZDg" iD="_0uuMALwFEee_aqBavMEZDg" name="Case Manager">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2eb2ILwFEee_aqBavMEZDg" source="executablepool">

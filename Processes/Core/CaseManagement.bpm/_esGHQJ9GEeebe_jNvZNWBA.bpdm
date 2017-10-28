@@ -34,11 +34,11 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_G9knAJ9HEeebe_jNvZNWBA" bpdm:label="Queue Service"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_esGHQJ9GEeebe_jNvZNWBAimplicitPartner" bpdm:label="Case ManagerimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOCase-Process_ISO_Case.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessIQCase-Process_IQ_Case.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/Logging.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Logging.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOCase-Process_ISO_Case.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/Logging-Log_and_Track.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Tracking.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
@@ -462,17 +462,7 @@
                             <bpdm:messagingtask eventType="start: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Start_Event" bpdm:ID="_Bb0jYLAWEee2ap8-imiIyw" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
                             <bpdm:gateway bpdm:label="Case Type?" bpdm:ID="_asWQkJ-8Eeee0o7jDg0-OQ" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_XOqDkLwJEee_aqBavMEZDg" bpdm:targetDisplayName="[Case Type? - Handle IQ Case]">
-                                    <bpel:condition>"IQ" = $CaseDecision/tns:decision
-<mapper:mapperLink>
-  <mapper:vertice id="970960343" targetPath="$condition" targetedBy="352202338-arg2"></mapper:vertice>
-  <mapper:vertice id="352202338" dimension="79x24" location="384,180">
-    <mapper:value>=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="964405067" dimension="79x24" location="240,240" targetedBy="352202338-arg0">
-    <mapper:value>"IQ"</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1583163108" sourcePath="$CaseDecision/tns:decision" targetedBy="352202338-arg1"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                                    <bpel:condition>"IQ" = $CaseDecision/tns:decision<mapper:mapperLink><mapper:vertice id="970960343" targetPath="$condition" targetedBy="352202338-arg2"></mapper:vertice><mapper:vertice id="352202338" dimension="79x24" location="384,180"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="964405067" dimension="79x24" location="240,240" targetedBy="352202338-arg0"><mapper:value>"IQ"</mapper:value></mapper:vertice><mapper:vertice id="1583163108" sourcePath="$CaseDecision/tns:decision" targetedBy="352202338-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_VZeHYKDdEeeW6fy7N0wOvg" bpdm:targetDisplayName="[Case Type? - Handle ISO Case]">
                                     <bpel:condition>"ISO" = $CaseDecision/tns:decision<mapper:mapperLink><mapper:vertice id="2059566571" targetPath="$condition" targetedBy="2093051403-arg1"></mapper:vertice><mapper:vertice id="2093051403" dimension="79x24" location="264,60"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="477784719" dimension="79x24" location="120,120" targetedBy="2093051403-arg0"><mapper:value>"ISO"</mapper:value></mapper:vertice><mapper:vertice id="690626041" sourcePath="$CaseDecision/tns:decision" targetedBy="2093051403-arg2"></mapper:vertice></mapper:mapperLink></bpel:condition>
