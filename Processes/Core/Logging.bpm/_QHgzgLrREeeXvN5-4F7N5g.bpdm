@@ -1,0 +1,185 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:Logging="http://bpms.everteam.com/Services/REST/Logging.rest" xmlns:diag="http://thisdiagram" xmlns:Logging1="__project:///Schemas/Logging.xsd" xmlns:Log_and_TrackimplicitPartner="http://thisdiagram/Log_and_TrackimplicitPartner" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:this="http://thisdiagram/Log_and_Track" xmlns:Caller="http://thisdiagram/Caller" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Tracking="http://www.example.org/Tracking" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Log_and_Track">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/Services/REST/Logging.rest" bpdm:prefix="Logging" bpdm:comment="contrib=&apos;project:///Services/REST/Logging.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_STBBwLrREeeXvN5-4F7N5g"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/Logging.xsd" bpdm:prefix="Logging1" bpdm:comment="contrib=&apos;project:///Schemas/Logging.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Log_and_TrackimplicitPartner" bpdm:prefix="Log_and_TrackimplicitPartner" bpdm:comment="contrib=&apos;partner-pool:///_QHgzgLrREeeXvN5-4F7N5gimplicitPartner"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Log_and_Track" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Caller" bpdm:prefix="Caller" bpdm:comment="contrib=&apos;partner-pool:///_STBBwLrREeeXvN5-4F7N5g"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://test.com/xvar/example" bpdm:prefix="metrics" bpdm:comment="contrib=&apos;project:///Metrics/metrics.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Tracking" bpdm:prefix="Tracking" bpdm:comment="contrib=&apos;project:///Schemas/Tracking.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <wsdl:portType name="ForCaller">
+                <wsdl:operation name="Receive_Log" bpdm:source="partner-pool:///_STBBwLrREeeXvN5-4F7N5g">
+                    <wsdl:input message="this:Receive_LogRequest" name="Receive_Log"/>
+                    <wsdl:output message="this:Receive_LogResponse" name="Receive_LogResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForCaller" type="this:ForCaller" bpdm:isSynchronized="true"/>
+            <xs:element name="Receive_LogRequest" type="Tracking:TrackingType" bpdm:source="partner-pool:///_STBBwLrREeeXvN5-4F7N5g"/>
+            <wsdl:message name="Receive_LogRequest" bpdm:source="partner-pool:///_STBBwLrREeeXvN5-4F7N5g">
+                <wsdl:part name="body" element="this:Receive_LogRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_LogResponse" type="xs:string" bpdm:source="partner-pool:///_STBBwLrREeeXvN5-4F7N5g"/>
+            <wsdl:message name="Receive_LogResponse" bpdm:source="partner-pool:///_STBBwLrREeeXvN5-4F7N5g">
+                <wsdl:part name="body" element="this:Receive_LogResponse"/>
+            </wsdl:message>
+        </bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_STBBwLrREeeXvN5-4F7N5g" bpdm:label="Caller"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_QHgzgLrREeeXvN5-4F7N5gimplicitPartner" bpdm:label="Log and TrackimplicitPartner"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/Logging.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Tracking.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Logging.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log and Track" bpdm:ID="_QHgzgLrREeeXvN5-4F7N5g">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="callerAndLog_and_TrackPlkVar" partnerLinkType="diag:CallerAndLog_and_Track" myRole="Log_and_Track_for_Caller" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForCaller" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Log_and_Track/Caller" bpdm:providedIsDefault="true" bpdm:clientTasks="_QHgzgLrREeeXvN5-4F7N5g:_QHhakLrREeeXvN5-4F7N5g" bpdm:isManaged="true" bpdm:otherPoolId="_STBBwLrREeeXvN5-4F7N5g"/>
+            <bpel:partnerLink name="log_and_TrackimplicitPartnerAndLog_and_TrackForHttpPortPlkVar" partnerLinkType="diag:Log_and_TrackimplicitPartnerAndLog_and_TrackForHttpPortPlk" initializePartnerRole="yes" partnerRole="Log_and_TrackimplicitPartner_for_Log_and_Track" bpdm:invokedService="Logging:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:3002/api/logs" bpdm:invokedIsDefault="true" bpdm:clientTasks="_QHgzgLrREeeXvN5-4F7N5g:_Xp3kgLs7EeeXvN5-4F7N5g" bpdm:isManaged="true" bpdm:otherPoolId="_QHgzgLrREeeXvN5-4F7N5gimplicitPartner"/>
+        </bpel:partnerLinks>
+        <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
+            <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_QPcAcLrREeeXvN5-4F7N5g" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_QPcAcLrREeeXvN5-4F7N5g"/>
+            <bpel:variable name="thisTaskRequest1Msg" messageType="this:Receive_LogRequest" bpdm:id="_bd5AdLrSEeeXvN5-4F7N5g" bpdm:messageIds="inc:_bdohwLrSEeeXvN5-4F7N5g"/>
+            <bpel:variable name="thisReceive_LogResponse2Msg" messageType="this:Receive_LogResponse" bpdm:id="_cMd9sLrSEeeXvN5-4F7N5g" bpdm:messageIds=" out:_cMOGELrSEeeXvN5-4F7N5g">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="this:Receive_LogResponse" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="BatchTracking" element="metrics:BatchTracking" xvar:id="BatchTracking-_Pevb8LrUEeeXvN5-4F7N5g" xvar:relates-to="BatchTracking-keys" bpdm:xvarType="metrics:BatchTracking" bpdm:id="_Pevb8LrUEeeXvN5-4F7N5g"/>
+            <bpel:variable name="ReducedTracking" element="Tracking:Tracking" bpdm:id="_d0_v0LrUEeeXvN5-4F7N5g">
+                <bpel:from>
+                    <bpel:literal bpdm:linkedElement="Tracking:Tracking"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="loggingSend_logResponse1Msg" messageType="Logging:send_log_output" binding="Logging:restBinding" operation="send_log" opMsgType="1" bpdm:messageIds="inc:_Xp3kgLs7EeeXvN5-4F7N5gIncoming"/>
+            <bpel:variable name="loggingSend_logRequest1Msg" messageType="Logging:send_log_input" binding="Logging:restBinding" operation="send_log" opMsgType="0" bpdm:messageIds=" out:_Xp3kgLs7EeeXvN5-4F7N5gOutgoing">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="Logging:send_log_input" bpdm:linkedPart="body" bpdm:binding="Logging:restBinding" bpdm:opMsgType="0" bpdm:operation="send_log"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask operation="Receive_Log" partnerLink="callerAndLog_and_TrackPlkVar" portType="this:ForCaller" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive Log" bpdm:ID="_QHhakLrREeeXvN5-4F7N5g" bpdm:isHeaderAuthorizationAware="yes">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisTaskRequest1Msg" bpdm:msgVarScopeId="_QHgzgLrREeeXvN5-4F7N5g" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_LogRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_bdohwLrSEeeXvN5-4F7N5g"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_LogResponse2Msg" bpdm:msgVarScopeId="_QHgzgLrREeeXvN5-4F7N5g" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_LogResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_cMOGELrSEeeXvN5-4F7N5g"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Reduce Metric" bpdm:ID="_moyBALrREeeXvN5-4F7N5g" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>bpel:doXslTransform("../../XSLT/ReduceTracking.xslt", $thisTaskRequest1Msg.body)</bpel:from>
+                        <bpel:to>$ReducedTracking</bpel:to><mapper:mapperLink><mapper:vertice id="448491930" targetPath="$ReducedTracking" targetedBy="901189533-arg1"></mapper:vertice><mapper:vertice id="901189533" dimension="126x24" location="456,111"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="400761853" dimension="176x24" location="252,24" targetedBy="901189533-arg0"><mapper:value>"../../XSLT/ReduceTracking.xslt"</mapper:value></mapper:vertice><mapper:vertice id="615535250" sourcePath="$thisTaskRequest1Msg.body" targetedBy="901189533-arg2"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:gateway bpdm:label="Parallel_Gateway" bpdm:ID="_rKvJQLrREeeXvN5-4F7N5g" bpdm:gatewayType="parallel_and" bpdm:isMerge="false">
+                <bpel:sequence>
+                    <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_vNcJsLrREeeXvN5-4F7N5g" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
+                        <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_FnDQALrSEeeXvN5-4F7N5g" bpdm:targetDisplayName="Map Batch">
+                            <bpel:condition>"batch" = $thisTaskRequest1Msg.body/Tracking:type<mapper:mapperLink><mapper:vertice id="1325353644" targetPath="$condition" targetedBy="1241309091-arg2"></mapper:vertice><mapper:vertice id="1241309091" dimension="79x24" location="484,34"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1441904709" dimension="79x24" location="360,72" targetedBy="1241309091-arg0"><mapper:value>"batch"</mapper:value></mapper:vertice><mapper:vertice id="1105299849" sourcePath="$thisTaskRequest1Msg.body/Tracking:type" targetedBy="1241309091-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
+                        </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_GctFoLrSEeeXvN5-4F7N5g" bpdm:targetDisplayName="Map Case">
+                            <bpel:condition>"case" = $thisTaskRequest1Msg.body/Tracking:type<mapper:mapperLink><mapper:vertice id="823857269" targetPath="$condition" targetedBy="1687441799-arg2"></mapper:vertice><mapper:vertice id="1687441799" dimension="79x24" location="615,42"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1933032003" dimension="79x24" location="384,12" targetedBy="1687441799-arg0"><mapper:value>"case"</mapper:value></mapper:vertice><mapper:vertice id="1088312064" sourcePath="$thisTaskRequest1Msg.body/Tracking:type" targetedBy="1687441799-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
+                        </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_HQq5MLrSEeeXvN5-4F7N5g" bpdm:targetDisplayName="default"></bpdm:linkset>
+                        <bpel:sequence>
+                            <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_7W3ZoLrREeeXvN5-4F7N5g" bpdm:isHeaderAuthorizationAware="no">
+                                <bpdm:linkset bpdm:type="assignments">
+                                    <bpel:copy>
+                                        <bpel:from>$ReducedTracking/Tracking:Batch/Tracking:BatchId</bpel:from>
+                                        <bpel:to>$BatchTracking/metrics:batchId</bpel:to><mapper:mapperLink><mapper:vertice id="1434549227" targetPath="$BatchTracking/metrics:batchId" targetedBy="1248979434-arg0"></mapper:vertice><mapper:vertice id="1248979434" sourcePath="$ReducedTracking/Tracking:Batch/Tracking:BatchId"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:Batch/Tracking:EnvironmentId</bpel:from>
+                                        <bpel:to>$BatchTracking/metrics:environmentId</bpel:to><mapper:mapperLink><mapper:vertice id="1213199212" targetPath="$BatchTracking/metrics:environmentId" targetedBy="273464780-arg0"></mapper:vertice><mapper:vertice id="273464780" sourcePath="$ReducedTracking/Tracking:Batch/Tracking:EnvironmentId"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:Batch/Tracking:ClientId</bpel:from>
+                                        <bpel:to>$BatchTracking/metrics:clientId</bpel:to><mapper:mapperLink><mapper:vertice id="2122678523" targetPath="$BatchTracking/metrics:clientId" targetedBy="1979392543-arg0"></mapper:vertice><mapper:vertice id="1979392543" sourcePath="$ReducedTracking/Tracking:Batch/Tracking:ClientId"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:Batch/Tracking:TotalCaseCount</bpel:from>
+                                        <bpel:to>$BatchTracking/metrics:caseCount</bpel:to><mapper:mapperLink><mapper:vertice id="969820613" targetPath="$BatchTracking/metrics:caseCount" targetedBy="1386766317-arg0"></mapper:vertice><mapper:vertice id="1386766317" sourcePath="$ReducedTracking/Tracking:Batch/Tracking:TotalCaseCount"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:Batch/Tracking:BatchProcessingBegan</bpel:from>
+                                        <bpel:to>$BatchTracking/metrics:batchProcessingBegan</bpel:to><mapper:mapperLink><mapper:vertice id="1158564672" targetPath="$BatchTracking/metrics:batchProcessingBegan" targetedBy="1612172399-arg0"></mapper:vertice><mapper:vertice id="1612172399" sourcePath="$ReducedTracking/Tracking:Batch/Tracking:BatchProcessingBegan"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:Batch/Tracking:BatchProcessingEnded</bpel:from>
+                                        <bpel:to>$BatchTracking/metrics:BatchProcessingEnded</bpel:to><mapper:mapperLink><mapper:vertice id="1722312915" targetPath="$BatchTracking/metrics:BatchProcessingEnded" targetedBy="305662227-arg0"></mapper:vertice><mapper:vertice id="305662227" sourcePath="$ReducedTracking/Tracking:Batch/Tracking:BatchProcessingEnded"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:Batch/Tracking:BatchProcessingBeganAt</bpel:from>
+                                        <bpel:to>$BatchTracking/metrics:batchProcessingBeganAt</bpel:to><mapper:mapperLink><mapper:vertice id="194717485" targetPath="$BatchTracking/metrics:batchProcessingBeganAt" targetedBy="1037798373-arg0"></mapper:vertice><mapper:vertice id="1037798373" sourcePath="$ReducedTracking/Tracking:Batch/Tracking:BatchProcessingBeganAt"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:Batch/Tracking:BatchProcessingEndedAt</bpel:from>
+                                        <bpel:to>$BatchTracking/metrics:batchProcessingEndedAt</bpel:to><mapper:mapperLink><mapper:vertice id="1268222774" targetPath="$BatchTracking/metrics:batchProcessingEndedAt" targetedBy="395489361-arg0"></mapper:vertice><mapper:vertice id="395489361" sourcePath="$ReducedTracking/Tracking:Batch/Tracking:BatchProcessingEndedAt"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                </bpdm:linkset>
+                            </bpdm:messagingtask>
+                        </bpel:sequence>
+                        <bpel:sequence>
+                            <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_9KQp4LrREeeXvN5-4F7N5g" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                        </bpel:sequence>
+                        <bpel:sequence>
+                            <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_-6OysLrREeeXvN5-4F7N5g" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                        </bpel:sequence>
+                    </bpdm:gateway>
+                </bpel:sequence>
+                <bpel:sequence>
+                    <bpdm:messagingtask operation="send_log" partnerLink="log_and_TrackimplicitPartnerAndLog_and_TrackForHttpPortPlkVar" portType="Logging:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="send_log" bpdm:ID="_Xp3kgLs7EeeXvN5-4F7N5g" bpdm:isHeaderAuthorizationAware="no">
+                        <bpdm:linkset bpdm:type="assignments">
+                            <bpel:copy ignoreMissingFromData="yes">
+                                <bpel:from>$ReducedTracking/Tracking:Logging/Tracking:pid</bpel:from>
+                                <bpel:to>$loggingSend_logRequest1Msg.body/process_instance_id</bpel:to><mapper:mapperLink><mapper:vertice id="218238353" targetPath="$loggingSend_logRequest1Msg.body/process_instance_id" targetedBy="487094084-arg0"></mapper:vertice><mapper:vertice id="487094084" sourcePath="$ReducedTracking/Tracking:Logging/Tracking:pid"></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy ignoreMissingFromData="yes">
+                                <bpel:from>$ReducedTracking/Tracking:Logging/Tracking:BatchId</bpel:from>
+                                <bpel:to>$loggingSend_logRequest1Msg.body/batch_id</bpel:to><mapper:mapperLink><mapper:vertice id="769223092" targetPath="$loggingSend_logRequest1Msg.body/batch_id" targetedBy="884140966-arg0"></mapper:vertice><mapper:vertice id="884140966" sourcePath="$ReducedTracking/Tracking:Logging/Tracking:BatchId"></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy ignoreMissingFromData="yes">
+                                <bpel:from>$ReducedTracking/Tracking:Logging/Tracking:CaseId</bpel:from>
+                                <bpel:to>$loggingSend_logRequest1Msg.body/case_id</bpel:to><mapper:mapperLink><mapper:vertice id="129084493" targetPath="$loggingSend_logRequest1Msg.body/case_id" targetedBy="2047468510-arg0"></mapper:vertice><mapper:vertice id="2047468510" sourcePath="$ReducedTracking/Tracking:Logging/Tracking:CaseId"></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy ignoreMissingFromData="yes">
+                                <bpel:from>$ReducedTracking/Tracking:Logging/Tracking:StepId</bpel:from>
+                                <bpel:to>$loggingSend_logRequest1Msg.body/step_id</bpel:to><mapper:mapperLink><mapper:vertice id="918450459" targetPath="$loggingSend_logRequest1Msg.body/step_id" targetedBy="987778445-arg0"></mapper:vertice><mapper:vertice id="987778445" sourcePath="$ReducedTracking/Tracking:Logging/Tracking:StepId"></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy ignoreMissingFromData="yes">
+                                <bpel:from>$ReducedTracking/Tracking:Logging/Tracking:LogType</bpel:from>
+                                <bpel:to>$loggingSend_logRequest1Msg.body/log_type</bpel:to><mapper:mapperLink><mapper:vertice id="575690148" targetPath="$loggingSend_logRequest1Msg.body/log_type" targetedBy="668626226-arg0"></mapper:vertice><mapper:vertice id="668626226" sourcePath="$ReducedTracking/Tracking:Logging/Tracking:LogType"></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy ignoreMissingFromData="yes">
+                                <bpel:from>$ReducedTracking/Tracking:Logging/Tracking:Description</bpel:from>
+                                <bpel:to>$loggingSend_logRequest1Msg.body/description</bpel:to><mapper:mapperLink><mapper:vertice id="889105571" targetPath="$loggingSend_logRequest1Msg.body/description" targetedBy="440022621-arg0"></mapper:vertice><mapper:vertice id="440022621" sourcePath="$ReducedTracking/Tracking:Logging/Tracking:Description"></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>ode:get-property-value("LOG_SERVICE_URL")</bpel:from>
+                                <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="1078756616" targetPath="$endpoint" targetedBy="659196888-arg1"></mapper:vertice>
+  <mapper:vertice id="659196888" dimension="139x24" location="480,300">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1234577960" dimension="115x24" location="324,300" targetedBy="659196888-arg0">
+    <mapper:value>"LOG_SERVICE_URL"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                        </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggingSend_logRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_input" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Xp3kgLs7EeeXvN5-4F7N5gOutgoing"></bpdm:linkset>
+                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="loggingSend_logResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_output" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Xp3kgLs7EeeXvN5-4F7N5gIncoming"></bpdm:linkset>
+                    </bpdm:messagingtask>
+                </bpel:sequence>
+            </bpdm:gateway>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>

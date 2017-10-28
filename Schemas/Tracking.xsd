@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Tracking" xmlns:tns="http://www.example.org/Tracking" elementFormDefault="qualified">
+
+    <complexType name="BatchTrackingType">
+    	<sequence>
+    		<element name="BatchId" type="string"></element>
+    		<element name="EnvironmentId" type="string"></element>
+    		<element name="ClientId" type="string"></element>
+    		<element name="TotalCaseCount" type="int"></element>
+    		<element name="BatchProcessingBegan" type="boolean"></element>
+    		<element name="BatchProcessingEnded" type="boolean"></element>
+    		<element name="BatchProcessingBeganAt" type="dateTime"></element>
+    		<element name="BatchProcessingEndedAt" type="dateTime"></element>
+    	</sequence>
+    </complexType>
+
+
+
+    
+    <complexType name="LoggingType">
+    	<sequence>
+    		<element name="pid" type="string"></element>
+    		<element name="BatchId" type="string"></element>
+    		<element name="CaseId" type="string"></element>
+    		<element name="StepId" type="string"></element>
+    		<element name="LogType" type="string"></element>
+    		<element name="Description" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="TrackingType">
+    	<sequence>
+    		<element name="type" type="string"></element>
+    		<element name="Logging" type="tns:LoggingType"></element>
+    		<element name="Batch" type="tns:BatchTrackingType"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="Tracking" type="tns:TrackingType"></element>
+</schema>
