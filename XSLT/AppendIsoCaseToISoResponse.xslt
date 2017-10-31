@@ -17,6 +17,7 @@
       <Launchpoint:caseId><xsl:value-of select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:caseid"/></Launchpoint:caseId>
       <Launchpoint:clientid><xsl:value-of select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:clientid"/></Launchpoint:clientid>
       <Launchpoint:batchId><xsl:value-of select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:batchid"/></Launchpoint:batchId>
+      <Launchpoint:environmentId><xsl:value-of select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:environmentid"/></Launchpoint:environmentId>
 
 	<xsl:variable name="previousScore">
 		<xsl:choose>

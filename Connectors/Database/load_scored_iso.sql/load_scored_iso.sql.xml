@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jdbc:descriptor wsdlLocation="load_scored_iso.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:load_scored_isoservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
     <jdbc:service name="load_scored_isoService">
-        <jdbc:operation name="urn:load_scored_iso" sqlStatement="select isotracking.caseid,isotracking.batchid , isoresponsetracking.score,batchtracking.clientid
+        <jdbc:operation name="urn:load_scored_iso" sqlStatement="select isotracking.caseid,isotracking.batchid , isoresponsetracking.score,batchtracking.clientid,environmentid
 from isotracking left outer join isoresponsetracking on (isotracking.caseid = isoresponsetracking.caseid)
 inner join batchtracking on (isotracking.batchid = batchtracking.batchid)
 where isotracking.requestid=?
@@ -17,7 +17,7 @@ limit 1;" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:con
                     <jdbc:precision>0</jdbc:precision>
                     <jdbc:scale>0</jdbc:scale>
                     <jdbc:nullable>false</jdbc:nullable>
-                    <jdbc:value>00a3f68d-ab9b-48fb-9c79-53927ef32118</jdbc:value>
+                    <jdbc:value>968f134a-9cd7-4f3c-96f4-8f8c5966dbc2</jdbc:value>
                     <jdbc:index>0</jdbc:index>
                 </jdbc:parameter>
             </jdbc:input>
@@ -27,16 +27,16 @@ limit 1;" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:con
             <jdbc:output/>
         </jdbc:operation>
         <jdbc:port>
-            <jdbc:address location="http://bpms.everteam.us:8080/everteam/ode/processes/load_scored_isoService"/>
+            <jdbc:address location="http://192.168.241.205:8080/everteam/ode/processes/load_scored_isoService"/>
         </jdbc:port>
         <jdbc:connection jndiName="java:comp/env/jdbc/BAMDB">
             <jdbc:databaseProductName>Generic JDBC</jdbc:databaseProductName>
             <jdbc:databaseProductVersion>1.0</jdbc:databaseProductVersion>
             <jdbc:driverClass>org.postgresql.Driver</jdbc:driverClass>
-            <jdbc:databaseUrl>jdbc:postgresql://bpms.everteam.us:5432/bamdb</jdbc:databaseUrl>
-            <jdbc:databaseName>BAMDB</jdbc:databaseName>
-            <jdbc:userName>bam</jdbc:userName>
-            <jdbc:password>decrypt[smLFIycTjZx2Itbl/52EapqOSN2EoicA]</jdbc:password>
+            <jdbc:databaseUrl>jdbc:postgresql://192.168.241.205/postgres</jdbc:databaseUrl>
+            <jdbc:databaseName>postgres</jdbc:databaseName>
+            <jdbc:userName>postgres</jdbc:userName>
+            <jdbc:password>decrypt[wtkIAz6bC8nLtJOzlxSXtTrvxa7NSeIe]</jdbc:password>
         </jdbc:connection>
     </jdbc:service>
 </jdbc:descriptor>

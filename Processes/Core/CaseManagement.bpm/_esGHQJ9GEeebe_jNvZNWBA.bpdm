@@ -34,9 +34,9 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_G9knAJ9HEeebe_jNvZNWBA" bpdm:label="Queue Service"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_esGHQJ9GEeebe_jNvZNWBAimplicitPartner" bpdm:label="Case ManagerimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOCase-Process_ISO_Case.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessIQCase-Process_IQ_Case.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/Logging.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Logging.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/Logging-Log_and_Track.wsdl"/>
@@ -464,13 +464,13 @@
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_XOqDkLwJEee_aqBavMEZDg" bpdm:targetDisplayName="[Case Type? - Handle IQ Case]">
                                     <bpel:condition>"IQ" = $CaseDecision/tns:decision<mapper:mapperLink><mapper:vertice id="970960343" targetPath="$condition" targetedBy="352202338-arg2"></mapper:vertice><mapper:vertice id="352202338" dimension="79x24" location="384,180"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="964405067" dimension="79x24" location="240,240" targetedBy="352202338-arg0"><mapper:value>"IQ"</mapper:value></mapper:vertice><mapper:vertice id="1583163108" sourcePath="$CaseDecision/tns:decision" targetedBy="352202338-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
+                                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_9qDgkLwLEee_aqBavMEZDg" bpdm:targetDisplayName="[Case Type? - DROP]">
+                                    <bpel:condition>"DROP" = $CaseDecision<mapper:mapperLink><mapper:vertice id="17472884" targetPath="$condition" targetedBy="991469363-arg1"></mapper:vertice><mapper:vertice id="991469363" dimension="79x24" location="372,48"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="765791727" dimension="79x24" location="228,108" targetedBy="991469363-arg0"><mapper:value>"DROP"</mapper:value></mapper:vertice><mapper:vertice id="1770681248" sourcePath="$CaseDecision" targetedBy="991469363-arg2"></mapper:vertice></mapper:mapperLink></bpel:condition>
+                                </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_VZeHYKDdEeeW6fy7N0wOvg" bpdm:targetDisplayName="[Case Type? - Handle ISO Case]">
                                     <bpel:condition>"ISO" = $CaseDecision/tns:decision<mapper:mapperLink><mapper:vertice id="2059566571" targetPath="$condition" targetedBy="2093051403-arg1"></mapper:vertice><mapper:vertice id="2093051403" dimension="79x24" location="264,60"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="477784719" dimension="79x24" location="120,120" targetedBy="2093051403-arg0"><mapper:value>"ISO"</mapper:value></mapper:vertice><mapper:vertice id="690626041" sourcePath="$CaseDecision/tns:decision" targetedBy="2093051403-arg2"></mapper:vertice></mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_meLFQLwKEee_aqBavMEZDg" bpdm:targetDisplayName="default"></bpdm:linkset>
-                                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_9qDgkLwLEee_aqBavMEZDg" bpdm:targetDisplayName="[Case Type? - DROP]">
-                                    <bpel:condition>"DROP" = $CaseDecision<mapper:mapperLink><mapper:vertice id="17472884" targetPath="$condition" targetedBy="991469363-arg1"></mapper:vertice><mapper:vertice id="991469363" dimension="79x24" location="372,48"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="765791727" dimension="79x24" location="228,108" targetedBy="991469363-arg0"><mapper:value>"DROP"</mapper:value></mapper:vertice><mapper:vertice id="1770681248" sourcePath="$CaseDecision" targetedBy="991469363-arg2"></mapper:vertice></mapper:mapperLink></bpel:condition>
-                                </bpdm:linkset>
                                 <bpel:sequence>
                                     <bpdm:messagingtask operation="EventStartMessage" partnerLink="case_ManagerimplicitPartnerAndCase_ManagerForCanonicPortPlk1Var" portType="ProcessIQCase-Process_IQ_Case:ForCase_Manager" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Handle IQ Case" bpdm:ID="_PNg3oLwJEee_aqBavMEZDg" bpdm:isHeaderAuthorizationAware="no">
                                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="processIQCase-Process_IQ_CaseEventStartMessage1" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Process_IQ_Case:EventStartMessageRequest" bpdm:binding="ProcessIQCase-Process_IQ_Case:Process_IQ_CaseAndCase_ManagerServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_PNg3oLwJEee_aqBavMEZDgOutgoing"></bpdm:linkset>
@@ -500,6 +500,14 @@
                                                 <bpel:from>$Batch/tns:ClientId</bpel:from>
                                                 <bpel:to>$processISOCase-Process_ISO_CaseReceive_ISO1Msg.body/tns:clientId</bpel:to><mapper:mapperLink><mapper:vertice id="1015413072" targetPath="$processISOCase-Process_ISO_CaseReceive_ISO1Msg.body/tns:clientId" targetedBy="2037700765-arg0"></mapper:vertice><mapper:vertice id="2037700765" sourcePath="$Batch/tns:ClientId"></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
+                                            <bpel:copy>
+                                                <bpel:from>$Batch/tns:EnvironmentId</bpel:from>
+                                                <bpel:to>$processISOCase-Process_ISO_CaseReceive_ISO1Msg.body/tns:environmentId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1359875538" targetPath="$processISOCase-Process_ISO_CaseReceive_ISO1Msg.body/tns:environmentId" targetedBy="1163704025-arg0"></mapper:vertice>
+  <mapper:vertice id="1163704025" sourcePath="$Batch/tns:EnvironmentId"></mapper:vertice>
+</mapper:mapperLink>
+                                            </bpel:copy>
                                         </bpdm:linkset>
                                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="processISOCase-Process_ISO_CaseReceive_ISO1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOCase-Process_ISO_Case:Receive_ISORequest" bpdm:binding="ProcessISOCase-Process_ISO_Case:Process_ISO_CaseAndCase_ManagerServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_4v1G0LAZEee2ap8-imiIywOutgoing"></bpdm:linkset>
                                         <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processISOCase-Process_ISO_CaseReceive_ISOResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOCase-Process_ISO_Case:Receive_ISOResponse" bpdm:binding="ProcessISOCase-Process_ISO_Case:Process_ISO_CaseAndCase_ManagerServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_4v1G0LAZEee2ap8-imiIywIncoming"></bpdm:linkset>
@@ -507,7 +515,7 @@
                                     <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="ISO" bpdm:ID="_n7n0oJ_EEeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
                                 </bpel:sequence>
                                 <bpel:sequence>
-                                    <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Unknow case type" bpdm:ID="_md7NoLwKEee_aqBavMEZDg" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                    <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Unknown case type" bpdm:ID="_md7NoLwKEee_aqBavMEZDg" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
                                 </bpel:sequence>
                             </bpdm:gateway>
                         </bpel:sequence>
