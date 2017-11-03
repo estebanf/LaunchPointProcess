@@ -87,9 +87,6 @@
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0bGqoLALEee2ap8-imiIyw" key="defaultDeclarationName" value="CaseTracking"/>
         </eAnnotations>
       </artifacts>
-      <artifacts xmi:type="bpmn:TextAnnotation" xmi:id="_C9IV4aoHEeePLraKJIm5PA" iD="_C9IV4KoHEeePLraKJIm5PA" name="Track case read">
-        <associations xmi:type="bpmn:Association" xmi:id="_C9aCsKoHEeePLraKJIm5PA"/>
-      </artifacts>
       <artifacts xmi:type="bpmn:DataObject" xmi:id="_2MPFmrAVEee2ap8-imiIyw" iD="_2MF7lrAVEee2ap8-imiIyw" name="CaseDecision">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2MPFm7AVEee2ap8-imiIyw" source="attachedDataobject">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2MPFnLAVEee2ap8-imiIyw" key="douri" value="project:///Schemas/Launchpoint.xsd?xsdelement={http://www.example.org/Launchpoint}CaseDecision"/>
@@ -97,20 +94,25 @@
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2MPFnrAVEee2ap8-imiIyw" key="defaultDeclarationName" value="CaseDecision"/>
         </eAnnotations>
       </artifacts>
+      <artifacts xmi:type="bpmn:DataObject" xmi:id="_UrD5sMDQEeeeWusQfOROOA" iD="_Uq5hoMDQEeeeWusQfOROOA" name="">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_UrD5scDQEeeeWusQfOROOA" source="attachedDataobject">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_UrD5ssDQEeeeWusQfOROOA" key="douri" value="project:///Schemas/Tracking.xsd?xsdtype={http://www.example.org/Tracking}CaseTrackingType"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_UrD5s8DQEeeeWusQfOROOA" key="isBpelDeclaration" value="true"/>
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_UrKAUMDQEeeeWusQfOROOA" key="defaultDeclarationName" value="CaseTrackingType"/>
+        </eAnnotations>
+      </artifacts>
       <vertices xmi:type="bpmn:SubProcess" xmi:id="_GovagaceEee5f7pDYw9XWA" iD="_GovagKceEee5f7pDYw9XWA" outgoingEdges="_NQ8BoaeOEeegibFn-dU-wQ" name="Extract cases">
-        <vertices xmi:type="bpmn:Activity" xmi:id="_rQ8BEZ-4Eeee0o7jDg0-OQ" iD="_rQ8BEJ-4Eeee0o7jDg0-OQ" outgoingEdges="_kdoLOrAUEee2ap8-imiIyw" name="Extract case"/>
-        <vertices xmi:type="bpmn:ActivityService" xmi:id="_ck3yRqcsEeeL58NlVk-uQQ" iD="_ckuoUKcsEeeL58NlVk-uQQ" incomingEdges="_k5Ms4bAUEee2ap8-imiIyw" name="Log extract case" activityType="ServiceTask">
-          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ck3yR6csEeeL58NlVk-uQQ" source="attachedDataobject">
-            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ck3ySKcsEeeL58NlVk-uQQ" key="douri" value="project:///Services/REST/Logging.wsdl?invokerequestresponsebound={http://bpms.everteam.com/Services/REST/Logging.rest}restService/httpPort/send_log"/>
-            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ck3ySacsEeeL58NlVk-uQQ" key="blackbox" value="true"/>
-            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ck3ySqcsEeeL58NlVk-uQQ" key="canonic_invoker" value="true"/>
+        <vertices xmi:type="bpmn:Activity" xmi:id="_rQ8BEZ-4Eeee0o7jDg0-OQ" iD="_rQ8BEJ-4Eeee0o7jDg0-OQ" outgoingEdges="_9si6EcDQEeeeWusQfOROOA" name="Extract case"/>
+        <vertices xmi:type="bpmn:Activity" xmi:id="__O6XsKoGEeePLraKJIm5PA" iD="__O5woKoGEeePLraKJIm5PA" outgoingEdges="_-CKkwcDQEeeeWusQfOROOA" incomingEdges="_9si6EcDQEeeeWusQfOROOA" activityType="EventIntermediateEmpty"/>
+        <vertices xmi:type="bpmn:Activity" xmi:id="_ut6XkMDQEeeeWusQfOROOA" iD="_utuKUMDQEeeeWusQfOROOA" incomingEdges="_-CKkwcDQEeeeWusQfOROOA" name="Log extract case" activityType="Task">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ut6XkcDQEeeeWusQfOROOA" source="attachedDataobject">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ut6XksDQEeeeWusQfOROOA" key="blackbox" value="true"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ut6Xk8DQEeeeWusQfOROOA" key="douri" value="project:///Processes/Core/Logging-Log_and_Track.wsdl?invokerequestresponsebound={http://thisproject/Processes/Core/Logging/Log_and_Track}CanonicServiceForCaller/canonicPort/Receive_Log"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ut6XlMDQEeeeWusQfOROOA" key="douri2" value="project:///Processes/Core/Logging.bpm/_iNIqMLrTEeeXvN5-4F7N5g.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Send Log"/>
           </eAnnotations>
         </vertices>
-        <vertices xmi:type="bpmn:Activity" xmi:id="__O6XsKoGEeePLraKJIm5PA" iD="__O5woKoGEeePLraKJIm5PA" associations="_C9aCsKoHEeePLraKJIm5PA" incomingEdges="_muUbcbAUEee2ap8-imiIyw" activityType="EventIntermediateEmpty"/>
-        <vertices xmi:type="bpmn:Activity" xmi:id="_kdoLMbAUEee2ap8-imiIyw" iD="_kdoLMLAUEee2ap8-imiIyw" outgoingEdges="_k5Ms4bAUEee2ap8-imiIyw _muUbcbAUEee2ap8-imiIyw" incomingEdges="_kdoLOrAUEee2ap8-imiIyw" activityType="GatewayParallel"/>
-        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_kdoLOrAUEee2ap8-imiIyw" iD="_kdoLObAUEee2ap8-imiIyw"/>
-        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_k5Ms4bAUEee2ap8-imiIyw" iD="_k5Ms4LAUEee2ap8-imiIyw"/>
-        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_muUbcbAUEee2ap8-imiIyw" iD="_muUbcLAUEee2ap8-imiIyw"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_9si6EcDQEeeeWusQfOROOA" iD="_9si6EMDQEeeeWusQfOROOA"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_-CKkwcDQEeeeWusQfOROOA" iD="_-CKkwMDQEeeeWusQfOROOA"/>
       </vertices>
       <vertices xmi:type="bpmn:SubProcess" xmi:id="_GXFY8bAVEee2ap8-imiIyw" iD="_GXFY8LAVEee2ap8-imiIyw" outgoingEdges="_Atzaka7IEee8meOENvr0_g" incomingEdges="_NQ8BoaeOEeegibFn-dU-wQ" name="Evaluate Case">
         <vertices xmi:type="bpmn:ActivityService" xmi:id="_D4aVYK7IEee8meOENvr0_g" iD="_D4IBgK7IEee8meOENvr0_g" incomingEdges="_Mm4jEbAVEee2ap8-imiIyw" name="Log case identification" activityType="ServiceTask">

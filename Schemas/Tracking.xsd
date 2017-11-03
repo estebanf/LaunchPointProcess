@@ -6,11 +6,12 @@
     		<element name="BatchId" type="string"></element>
     		<element name="EnvironmentId" type="string"></element>
     		<element name="ClientId" type="string"></element>
-    		<element name="TotalCaseCount" type="int"></element>
+            <element name="Cases" type="tns:CaseTrackingType" maxOccurs="unbounded" minOccurs="1"></element>
+            <element name="TotalCaseCount" type="int"></element>
     		<element name="BatchProcessingBegan" type="boolean"></element>
     		<element name="BatchProcessingEnded" type="boolean"></element>
     		<element name="BatchProcessingBeganAt" type="dateTime"></element>
-    		<element name="BatchProcessingEndedAt" type="dateTime"></element>
+    		<element name="BatchProcessingEndedAt" type="dateTime"></element>
     	</sequence>
     </complexType>
 
@@ -33,8 +34,31 @@
     		<element name="type" type="string"></element>
     		<element name="Logging" type="tns:LoggingType"></element>
     		<element name="Batch" type="tns:BatchTrackingType"></element>
+    		<element name="Case" type="tns:CaseTrackingType"></element>
     	</sequence>
     </complexType>
 
     <element name="Tracking" type="tns:TrackingType"></element>
+
+    <complexType name="CaseTrackingType">
+    	<sequence>
+    		<element name="CaseId" type="int"></element>
+    		<element name="IsoIndicator" type="int"></element>
+    		<element name="Score" type="int"></element>
+    		<element name="AccidentDate" type="dateTime"></element>
+    		<element name="BenefitAmount" type="int"></element>
+    		<element name="FundingSource" type="string"></element>
+    		<element name="LOB" type="string"></element>
+    		<element name="State" type="string"></element>
+    		<element name="WorkComp" type="string"></element>
+    		<element name="CaseStatus" type="string"></element>
+    		<element name="CaseSource" type="string"></element>
+    		<element name="CaseType" type="string"></element>
+    		<element name="BatchId" type="int"></element>
+    		<element name="CaseReceived" type="boolean"></element>
+    		<element name="CaseIdentified" type="boolean"></element>
+    		<element name="CaseReceivedAt" type="dateTime"></element>
+    		<element name="CaseIdentifiedAt" type="dateTime"></element>
+    	</sequence>
+    </complexType>
 </schema>
