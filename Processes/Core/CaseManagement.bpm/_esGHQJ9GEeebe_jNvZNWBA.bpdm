@@ -35,12 +35,12 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_esGHQJ9GEeebe_jNvZNWBAimplicitPartner" bpdm:label="Case ManagerimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOCase-Process_ISO_Case.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessIQCase-Process_IQ_Case.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/Logging-Log_and_Track.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Tracking.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/Logging.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Logging.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOCase-Process_ISO_Case.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -225,27 +225,11 @@
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>$BatchTrackingType/Tracking:Cases[$emptyCounter]</bpel:from>
-                                        <bpel:to>$CaseTrackingType</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="675199364" targetPath="$CaseTrackingType" targetedBy="477251927-arg2"></mapper:vertice>
-  <mapper:vertice id="477251927" dimension="79x24" location="432,54">
-    <mapper:value>[]</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="216931148" sourcePath="$BatchTrackingType/Tracking:Cases" targetedBy="477251927-arg0"></mapper:vertice>
-  <mapper:vertice id="387608529" sourcePath="$emptyCounter" targetedBy="477251927-arg1"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$CaseTrackingType</bpel:to><mapper:mapperLink><mapper:vertice id="675199364" targetPath="$CaseTrackingType" targetedBy="477251927-arg2"></mapper:vertice><mapper:vertice id="477251927" dimension="79x24" location="432,54"><mapper:value>[]</mapper:value></mapper:vertice><mapper:vertice id="216931148" sourcePath="$BatchTrackingType/Tracking:Cases" targetedBy="477251927-arg0"></mapper:vertice><mapper:vertice id="387608529" sourcePath="$emptyCounter" targetedBy="477251927-arg1"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$Batch/tns:Cases[$emptyCounter]</bpel:from>
-                                        <bpel:to>$BatchCase</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="464246030" targetPath="$BatchCase" targetedBy="1000630508-arg2"></mapper:vertice>
-  <mapper:vertice id="1000630508" dimension="79x24" location="463,113">
-    <mapper:value>[]</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1452065221" sourcePath="$Batch/tns:Cases" targetedBy="1000630508-arg0"></mapper:vertice>
-  <mapper:vertice id="540406256" sourcePath="$emptyCounter" targetedBy="1000630508-arg1"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$BatchCase</bpel:to><mapper:mapperLink><mapper:vertice id="464246030" targetPath="$BatchCase" targetedBy="1000630508-arg2"></mapper:vertice><mapper:vertice id="1000630508" dimension="79x24" location="463,113"><mapper:value>[]</mapper:value></mapper:vertice><mapper:vertice id="1452065221" sourcePath="$Batch/tns:Cases" targetedBy="1000630508-arg0"></mapper:vertice><mapper:vertice id="540406256" sourcePath="$emptyCounter" targetedBy="1000630508-arg1"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
@@ -253,23 +237,11 @@
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>true()</bpel:from>
-                                        <bpel:to>$CaseTrackingType/Tracking:CaseReceived</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1669303041" targetPath="$CaseTrackingType/Tracking:CaseReceived" targetedBy="845354266-arg0"></mapper:vertice>
-  <mapper:vertice id="845354266" dimension="79x24" location="527,112">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$CaseTrackingType/Tracking:CaseReceived</bpel:to><mapper:mapperLink><mapper:vertice id="1669303041" targetPath="$CaseTrackingType/Tracking:CaseReceived" targetedBy="845354266-arg0"></mapper:vertice><mapper:vertice id="845354266" dimension="79x24" location="527,112"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>current-dateTime()</bpel:from>
-                                        <bpel:to>$CaseTrackingType/Tracking:CaseReceivedAt</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1598973752" targetPath="$CaseTrackingType/Tracking:CaseReceivedAt" targetedBy="1563408461-arg0"></mapper:vertice>
-  <mapper:vertice id="1563408461" dimension="109x24" location="531,171">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$CaseTrackingType/Tracking:CaseReceivedAt</bpel:to><mapper:mapperLink><mapper:vertice id="1598973752" targetPath="$CaseTrackingType/Tracking:CaseReceivedAt" targetedBy="1563408461-arg0"></mapper:vertice><mapper:vertice id="1563408461" dimension="109x24" location="531,171"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
@@ -277,76 +249,31 @@
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("RECEIVED_CASE")</bpel:from>
-                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:StepId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1916567343" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:StepId" targetedBy="2093514959-arg1"></mapper:vertice>
-  <mapper:vertice id="2093514959" dimension="139x24" location="528,156">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1359881741" dimension="102x24" location="288,156" targetedBy="2093514959-arg0">
-    <mapper:value>"RECEIVED_CASE"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:StepId</bpel:to><mapper:mapperLink><mapper:vertice id="1916567343" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:StepId" targetedBy="2093514959-arg1"></mapper:vertice><mapper:vertice id="2093514959" dimension="139x24" location="528,156"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1359881741" dimension="102x24" location="288,156" targetedBy="2093514959-arg0"><mapper:value>"RECEIVED_CASE"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("LOG_LEVEL_INFO")</bpel:from>
-                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:LogType</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1063215373" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:LogType" targetedBy="235754376-arg1"></mapper:vertice>
-  <mapper:vertice id="235754376" dimension="139x24" location="528,180">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1650171715" dimension="109x24" location="288,180" targetedBy="235754376-arg0">
-    <mapper:value>"LOG_LEVEL_INFO"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:LogType</bpel:to><mapper:mapperLink><mapper:vertice id="1063215373" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:LogType" targetedBy="235754376-arg1"></mapper:vertice><mapper:vertice id="235754376" dimension="139x24" location="528,180"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1650171715" dimension="109x24" location="288,180" targetedBy="235754376-arg0"><mapper:value>"LOG_LEVEL_INFO"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("RECEIVED_CASE_DESCRIPTION")</bpel:from>
-                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:Description</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="295057087" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:Description" targetedBy="1039236683-arg1"></mapper:vertice>
-  <mapper:vertice id="1039236683" dimension="139x24" location="528,204">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="2067495195" dimension="180x24" location="288,204" targetedBy="1039236683-arg0">
-    <mapper:value>"RECEIVED_CASE_DESCRIPTION"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:Description</bpel:to><mapper:mapperLink><mapper:vertice id="295057087" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:Description" targetedBy="1039236683-arg1"></mapper:vertice><mapper:vertice id="1039236683" dimension="139x24" location="528,204"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="2067495195" dimension="180x24" location="288,204" targetedBy="1039236683-arg0"><mapper:value>"RECEIVED_CASE_DESCRIPTION"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>"case"</bpel:from>
-                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:type</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1935123758" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:type" targetedBy="3555716-arg0"></mapper:vertice>
-  <mapper:vertice id="3555716" dimension="79x24" location="423,34">
-    <mapper:value>"case"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:type</bpel:to><mapper:mapperLink><mapper:vertice id="1935123758" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:type" targetedBy="3555716-arg0"></mapper:vertice><mapper:vertice id="3555716" dimension="79x24" location="423,34"><mapper:value>"case"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$CaseTrackingType</bpel:from>
-                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Case</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1610426856" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Case" targetedBy="1674200270-arg0"></mapper:vertice>
-  <mapper:vertice id="1674200270" sourcePath="$CaseTrackingType"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Case</bpel:to><mapper:mapperLink><mapper:vertice id="1610426856" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Case" targetedBy="1674200270-arg0"></mapper:vertice><mapper:vertice id="1674200270" sourcePath="$CaseTrackingType"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$CaseTrackingType/Tracking:CaseId</bpel:from>
-                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:CaseId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="511297721" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:CaseId" targetedBy="1767019945-arg0"></mapper:vertice>
-  <mapper:vertice id="1767019945" sourcePath="$CaseTrackingType/Tracking:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="511297721" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:CaseId" targetedBy="1767019945-arg0"></mapper:vertice><mapper:vertice id="1767019945" sourcePath="$CaseTrackingType/Tracking:CaseId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$ode:pid</bpel:from>
-                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:pid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1040397978" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:pid" targetedBy="2118675919-arg0"></mapper:vertice>
-  <mapper:vertice id="2118675919" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:pid</bpel:to><mapper:mapperLink><mapper:vertice id="1040397978" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:pid" targetedBy="2118675919-arg0"></mapper:vertice><mapper:vertice id="2118675919" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="logging-Log_and_TrackReceive_Log3Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging-Log_and_Track:Receive_LogRequest" bpdm:binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_utuKUMDQEeeeWusQfOROOAOutgoing"></bpdm:linkset>
