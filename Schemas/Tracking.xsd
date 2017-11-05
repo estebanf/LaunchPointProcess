@@ -6,8 +6,10 @@
     		<element name="BatchId" type="string"></element>
     		<element name="EnvironmentId" type="string"></element>
     		<element name="ClientId" type="string"></element>
-            <element name="Cases" type="tns:CaseTrackingType" maxOccurs="unbounded" minOccurs="1"></element>
-            <element name="TotalCaseCount" type="int"></element>
+    		<element name="Cases" type="tns:CasesTrackingType"
+    			maxOccurs="unbounded" minOccurs="1">
+    		</element>
+    		<element name="TotalCaseCount" type="int"></element>
     		<element name="BatchProcessingBegan" type="boolean"></element>
     		<element name="BatchProcessingEnded" type="boolean"></element>
     		<element name="BatchProcessingBeganAt" type="dateTime"></element>
@@ -59,6 +61,14 @@
     		<element name="CaseIdentified" type="boolean"></element>
     		<element name="CaseReceivedAt" type="dateTime"></element>
     		<element name="CaseIdentifiedAt" type="dateTime"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="CaseTracking" type="tns:CaseTrackingType"></element>
+
+    <complexType name="CasesTrackingType">
+    	<sequence>
+    		<element name="Case" type="tns:CaseTrackingType" maxOccurs="unbounded" minOccurs="1"></element>
     	</sequence>
     </complexType>
 </schema>
