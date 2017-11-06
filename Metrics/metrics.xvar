@@ -6,9 +6,9 @@
       <xjdbc:jdbc>
         <xjdbc:datasource-jndi>java:comp/env/jdbc/BAMDB</xjdbc:datasource-jndi>
         <xjdbc:table xbpms:isDefault="true">ISOResponseTracking</xjdbc:table>
-        <xjdbc:column key="yes" name="pid" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="yes" name="pid" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
         <xjdbc:column key="no" name="requestId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-        <xjdbc:column key="no" name="caseId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="caseId" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
         <xjdbc:column key="no" name="score" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
         <xjdbc:column key="no" name="responseState" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
         <xjdbc:column key="no" name="sentDCMResponse" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
@@ -29,7 +29,7 @@
         <xjdbc:datasource-jndi>java:comp/env/jdbc/BAMDB</xjdbc:datasource-jndi>
         <xjdbc:table xbpms:isDefault="true">ISOTracking</xjdbc:table>
         <xjdbc:column key="yes" name="pid" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-        <xjdbc:column key="no" name="caseId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="caseId" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
         <xjdbc:column key="no" name="requestId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
         <xjdbc:column key="no" name="caseState" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
         <xjdbc:column key="no" name="receivedISO" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
@@ -40,8 +40,8 @@
         <xjdbc:column generator="pid" key="no" name="pdid" xbpms:type-label="process-definition-id"/>
         <xjdbc:column generator="ctimestamp" key="no" name="createdAt" xbpms:type-label="creation-timestamp"/>
         <xjdbc:column generator="utimestamp" key="no" name="modifiedAt" xbpms:type-label="update-timestamp"/>
-        <xjdbc:column key="no" name="parentPid" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-        <xjdbc:column key="no" name="batchId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="parentPid" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
+        <xjdbc:column key="no" name="batchId" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
         <xjdbc:init mode="update-insert"/>
       </xjdbc:jdbc>
     </xbpms:binding>
@@ -52,12 +52,11 @@
       <xjdbc:jdbc>
         <xjdbc:datasource-jndi>java:comp/env/jdbc/BAMDB</xjdbc:datasource-jndi>
         <xjdbc:table xbpms:isDefault="true">CaseTracking</xjdbc:table>
-        <xjdbc:column key="yes" name="pid" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-        <xjdbc:column key="yes" name="caseId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="yes" name="caseId" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
         <xjdbc:column key="no" name="isoIndicator" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
         <xjdbc:column key="no" name="score" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
         <xjdbc:column key="no" name="accidentDate" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-        <xjdbc:column key="no" name="benefitAmount" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="benefitAmount" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
         <xjdbc:column key="no" name="fundingSource" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
         <xjdbc:column key="no" name="lob" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
         <xjdbc:column key="no" name="state" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
@@ -65,10 +64,12 @@
         <xjdbc:column key="no" name="caseStatus" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
         <xjdbc:column key="no" name="caseSource" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
         <xjdbc:column key="no" name="caseType" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-        <xjdbc:column key="no" name="batchId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-        <xjdbc:column key="no" name="caseState" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-        <xjdbc:column key="no" name="receivedCase" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-        <xjdbc:column key="no" name="identifiedCase" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
+        <xjdbc:column key="no" name="batchId" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
+        <xjdbc:column key="no" name="caseReceived" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="caseIdentified" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="caseReceivedAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
+        <xjdbc:column key="no" name="caseIdentifiedAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
+        <xjdbc:column key="no" name="pid" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
         <xjdbc:column generator="pid" key="no" name="pdid" xbpms:type-label="process-definition-id"/>
         <xjdbc:column generator="ctimestamp" key="no" name="createdAt" xbpms:type-label="creation-timestamp"/>
         <xjdbc:column generator="utimestamp" key="no" name="modifiedAt" xbpms:type-label="update-timestamp"/>
@@ -82,9 +83,9 @@
       <xjdbc:jdbc>
         <xjdbc:datasource-jndi>java:comp/env/jdbc/BAMDB</xjdbc:datasource-jndi>
         <xjdbc:table xbpms:isDefault="true">BatchTracking</xjdbc:table>
-        <xjdbc:column key="yes" name="batchId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="yes" name="batchId" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
         <xjdbc:column key="no" name="environmentId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-        <xjdbc:column key="no" name="clientId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="clientId" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
         <xjdbc:column key="no" name="caseCount" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
         <xjdbc:column key="no" name="batchProcessingBegan" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
         <xjdbc:column key="no" name="BatchProcessingEnded" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
