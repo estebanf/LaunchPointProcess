@@ -1,76 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Tracking" xmlns:tns="http://www.example.org/Tracking" elementFormDefault="qualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Tracking"
+	xmlns:tns="http://www.example.org/Tracking" elementFormDefault="qualified">
 
-    <complexType name="BatchTrackingType">
-    	<sequence>
-    		<element name="BatchId" type="string"></element>
-    		<element name="EnvironmentId" type="string"></element>
-    		<element name="ClientId" type="string"></element>
-    		<element name="Cases" type="tns:CasesTrackingType"
-    			maxOccurs="unbounded" minOccurs="1">
-    		</element>
-    		<element name="TotalCaseCount" type="int"></element>
-    		<element name="BatchProcessingBegan" type="boolean"></element>
-    		<element name="BatchProcessingEnded" type="boolean"></element>
-    		<element name="BatchProcessingBeganAt" type="dateTime"></element>
-    		<element name="BatchProcessingEndedAt" type="dateTime"></element>
-    	</sequence>
-    </complexType>
+	<complexType name="BatchTrackingType">
+		<sequence>
+			<element name="BatchId" type="string"></element>
+			<element name="EnvironmentId" type="string"></element>
+			<element name="ClientId" type="string"></element>
+			<element name="Cases" type="tns:CasesTrackingType" maxOccurs="unbounded"
+				minOccurs="1">
+			</element>
+			<element name="TotalCaseCount" type="int"></element>
+			<element name="BatchProcessingBegan" type="boolean"></element>
+			<element name="BatchProcessingEnded" type="boolean"></element>
+			<element name="BatchProcessingBeganAt" type="dateTime"></element>
+			<element name="BatchProcessingEndedAt" type="dateTime"></element>
+		</sequence>
+	</complexType>
 
 
 
-    
-    <complexType name="LoggingType">
-    	<sequence>
-    		<element name="pid" type="string"></element>
-    		<element name="BatchId" type="string"></element>
-    		<element name="CaseId" type="string"></element>
-    		<element name="StepId" type="string"></element>
-    		<element name="LogType" type="string"></element>
-    		<element name="Description" type="string"></element>
-    	</sequence>
-    </complexType>
 
-    <complexType name="TrackingType">
-    	<sequence>
-    		<element name="type" type="string"></element>
-    		<element name="Logging" type="tns:LoggingType"></element>
-    		<element name="Batch" type="tns:BatchTrackingType"></element>
-    		<element name="Case" type="tns:CaseTrackingType"></element>
-    	</sequence>
-    </complexType>
+	<complexType name="LoggingType">
+		<sequence>
+			<element name="pid" type="string"></element>
+			<element name="BatchId" type="string"></element>
+			<element name="CaseId" type="string"></element>
+			<element name="StepId" type="string"></element>
+			<element name="LogType" type="string"></element>
+			<element name="Description" type="string"></element>
+		</sequence>
+	</complexType>
 
-    <element name="Tracking" type="tns:TrackingType"></element>
+	<complexType name="TrackingType">
+		<sequence>
+			<element name="type" type="string"></element>
+			<element name="Logging" type="tns:LoggingType"></element>
+			<element name="Batch" type="tns:BatchTrackingType"></element>
+			<element name="Case" type="tns:CaseTrackingType"></element>
+		</sequence>
+	</complexType>
 
-    <complexType name="CaseTrackingType">
-    	<sequence>
-    		<element name="CaseId" type="int"></element>
-    		<element name="IsoIndicator" type="int"></element>
-    		<element name="Score" type="int"></element>
-    		<element name="AccidentDate" type="dateTime"></element>
-    		<element name="BenefitAmount" type="int"></element>
-    		<element name="FundingSource" type="string"></element>
-    		<element name="LOB" type="string"></element>
-    		<element name="State" type="string"></element>
-    		<element name="WorkComp" type="string"></element>
-    		<element name="CaseStatus" type="string"></element>
-    		<element name="CaseSource" type="string"></element>
-    		<element name="SkipDuplicateCheck" type="boolean"></element>
-    		<element name="CaseType" type="string"></element>
-    		<element name="BatchId" type="int"></element>
-    		<element name="CaseReceived" type="boolean"></element>
-    		<element name="CaseIdentified" type="boolean"></element>
-    		<element name="CaseReceivedAt" type="dateTime"></element>
-    		<element name="CaseIdentifiedAt" type="dateTime"></element>
-    		<element name="Pid" type="int"></element>
-    	</sequence>
-    </complexType>
+	<element name="Tracking" type="tns:TrackingType"></element>
 
-    <element name="CaseTracking" type="tns:CaseTrackingType"></element>
+	<complexType name="CaseTrackingType">
+		<sequence>
+			<element name="CaseId" type="int"></element>
+			<element name="IsoIndicator" type="int"></element>
+			<element name="Score" type="int"></element>
+			<element name="AccidentDate" type="dateTime"></element>
+			<element name="BenefitAmount" type="int"></element>
+			<element name="FundingSource" type="string"></element>
+			<element name="LOB" type="string"></element>
+			<element name="State" type="string"></element>
+			<element name="WorkComp" type="string"></element>
+			<element name="CaseStatus" type="string"></element>
+			<element name="CaseSource" type="string"></element>
+			<element name="SkipDuplicateCheck" type="boolean"></element>
+			<element name="CaseType" type="string"></element>
+			<element name="BatchId" type="int"></element>
+			<element name="CaseReceived" type="boolean"></element>
+			<element name="CaseIdentified" type="boolean"></element>
+			<element name="CaseReceivedAt" type="dateTime"></element>
+			<element name="CaseIdentifiedAt" type="dateTime"></element>
+			<element name="Pid" type="int"></element>
+		</sequence>
+	</complexType>
 
-    <complexType name="CasesTrackingType">
-    	<sequence>
-    		<element name="Case" type="tns:CaseTrackingType" maxOccurs="unbounded" minOccurs="1"></element>
-    	</sequence>
-    </complexType>
+	<element name="CaseTracking" type="tns:CaseTrackingType"></element>
+
+	<complexType name="CasesTrackingType">
+		<sequence>
+			<element name="Case" type="tns:CaseTrackingType" maxOccurs="unbounded"
+				minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="ISORequestTrackingType">
+		<sequence>
+			<element name="ClientId" type="int"></element>
+			<element name="EnvironmentId" type="string"></element>
+			<element name="RequestId" type="string"></element>
+			<element name="Pid" type="int"></element>
+			<element name="Case" type="tns:CaseTrackingType"></element>
+			<element name="IsoReceived" type="boolean"></element>
+			<element name="IsoProcessingBegan" type="boolean"></element>
+			<element name="IsoDuplicateFound" type="boolean"></element>
+			<element name="IsoDataFetched" type="boolean"></element>
+			<element name="IsoSent" type="boolean"></element>
+			<element name="IsoReceivedAt" type="dateTime"></element>
+			<element name="IsoProcessingBeganAt" type="dateTime"></element>
+			<element name="IsoDuplicateFoundAt" type="dateTime"></element>
+			<element name="IsoDataFetchedAt" type="dateTime"></element>
+			<element name="IsoSentAt" type="dateTime"></element>
+		</sequence>
+	</complexType>
 </schema>
