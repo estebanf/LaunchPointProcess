@@ -64,11 +64,11 @@
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/GenerateFileService.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/GenerateFile.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/check_duplicates.sql/check_duplicates.sql.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/check_duplicates.sql/check_duplicates.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/SendToISOService.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/CreateActivityService.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/CreateActivity.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/SendToISOService.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/check_duplicates.sql/check_duplicates.sql.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/check_duplicates.sql/check_duplicates.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Logging.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
@@ -588,10 +588,6 @@
                             </bpdm:messagingtask>
                             <bpdm:messagingtask operation="Create_Activity" partnerLink="process_ISO_CaseimplicitPartnerAndProcess_ISO_CaseForHttpPortPlk0Var" portType="CreateActivityService:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Create Activity" bpdm:ID="_ytI5YL2zEeeqyKUwJG4wfw" bpdm:isHeaderAuthorizationAware="no">
                                 <bpdm:linkset bpdm:type="assignments">
-                                    <bpel:copy>
-                                        <bpel:from>current-dateTime()</bpel:from>
-                                        <bpel:to>$createActivityServiceCreate_ActivityRequest2Msg.body/CreateDate</bpel:to><mapper:mapperLink><mapper:vertice id="432039778" targetPath="$createActivityServiceCreate_ActivityRequest2Msg.body/CreateDate" targetedBy="1288794477-arg0"></mapper:vertice><mapper:vertice id="1288794477" dimension="109x24" location="528,180"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("ACTIVITY_CREATED_BY")</bpel:from>
                                         <bpel:to>$createActivityServiceCreate_ActivityRequest2Msg.body/CreatedBy</bpel:to><mapper:mapperLink><mapper:vertice id="1217002426" targetPath="$createActivityServiceCreate_ActivityRequest2Msg.body/CreatedBy" targetedBy="2059474463-arg1"></mapper:vertice><mapper:vertice id="2059474463" dimension="139x24" location="600,216"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1507557910" dimension="142x24" location="408,216" targetedBy="2059474463-arg0"><mapper:value>"ACTIVITY_CREATED_BY"</mapper:value></mapper:vertice></mapper:mapperLink>

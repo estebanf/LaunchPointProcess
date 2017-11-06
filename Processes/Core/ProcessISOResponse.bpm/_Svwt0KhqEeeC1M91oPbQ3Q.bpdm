@@ -68,13 +68,13 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_Ir-wwLA2EeeytYusscoK1g" bpdm:label="DB"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/SendISOResponseToDCM.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Rules/ISOScoringAction.bre/dtws_launchpointprocess_rules_isoscoringaction/META-INF/dtws_launchpointprocess_rules_isoscoringaction.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/CreateActivityService.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Schemas/CreateActivity.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/CreateDiaryService.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Schemas/CreateDiary.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/Logging.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Logging.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/CreateActivityService.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/CreateActivity.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Rules/ISOScoringAction.bre/dtws_launchpointprocess_rules_isoscoringaction/META-INF/dtws_launchpointprocess_rules_isoscoringaction.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/CreateDiaryService.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/CreateDiary.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/load_scored_iso.sql/load_scored_iso.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/load_scored_iso.sql/load_scored_iso.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -533,10 +533,6 @@
                                                         <bpel:to>$createDiaryServiceCreate_DiaryRequest1Msg.body/ClientId</bpel:to><mapper:mapperLink><mapper:vertice id="1584060492" targetPath="$createDiaryServiceCreate_DiaryRequest1Msg.body/ClientId" targetedBy="859363078-arg0"></mapper:vertice><mapper:vertice id="859363078" sourcePath="$ISOResponseCanonical/Launchpoint:clientid"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
-                                                        <bpel:from>current-dateTime()</bpel:from>
-                                                        <bpel:to>$createDiaryServiceCreate_DiaryRequest1Msg.body/CreateDate</bpel:to><mapper:mapperLink><mapper:vertice id="1978865375" targetPath="$createDiaryServiceCreate_DiaryRequest1Msg.body/CreateDate" targetedBy="568055377-arg0"></mapper:vertice><mapper:vertice id="568055377" dimension="109x24" location="384,144"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
-                                                    </bpel:copy>
-                                                    <bpel:copy>
                                                         <bpel:from>ode:get-property-value("DIARY_CREATED_BY")</bpel:from>
                                                         <bpel:to>$createDiaryServiceCreate_DiaryRequest1Msg.body/CreatedBy</bpel:to><mapper:mapperLink><mapper:vertice id="1048133811" targetPath="$createDiaryServiceCreate_DiaryRequest1Msg.body/CreatedBy" targetedBy="1658329286-arg1"></mapper:vertice><mapper:vertice id="1658329286" dimension="139x24" location="564,180"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="423039171" dimension="125x24" location="384,180" targetedBy="1658329286-arg0"><mapper:value>"DIARY_CREATED_BY"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
@@ -547,10 +543,6 @@
                                                     <bpel:copy>
                                                         <bpel:from>ode:get-property-value("DIARY_STATUS_OPEN")</bpel:from>
                                                         <bpel:to>$createDiaryServiceCreate_DiaryRequest1Msg.body/DiaryStatus</bpel:to><mapper:mapperLink><mapper:vertice id="328041976" targetPath="$createDiaryServiceCreate_DiaryRequest1Msg.body/DiaryStatus" targetedBy="1263831315-arg1"></mapper:vertice><mapper:vertice id="1263831315" dimension="139x24" location="564,252"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1457883621" dimension="134x24" location="384,252" targetedBy="1263831315-arg0"><mapper:value>"DIARY_STATUS_OPEN"</mapper:value></mapper:vertice></mapper:mapperLink>
-                                                    </bpel:copy>
-                                                    <bpel:copy>
-                                                        <bpel:from>ode:get-property-value("DIARY_FROM")</bpel:from>
-                                                        <bpel:to>$createDiaryServiceCreate_DiaryRequest1Msg.body/DiaryFrom</bpel:to><mapper:mapperLink><mapper:vertice id="1233191588" targetPath="$createDiaryServiceCreate_DiaryRequest1Msg.body/DiaryFrom" targetedBy="838162443-arg1"></mapper:vertice><mapper:vertice id="838162443" dimension="139x24" location="564,288"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1850813823" dimension="89x24" location="384,288" targetedBy="838162443-arg0"><mapper:value>"DIARY_FROM"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
                                                         <bpel:from>$ISOResponseCanonical/Launchpoint:environmentId</bpel:from>
@@ -652,10 +644,6 @@
                                                     <bpel:copy>
                                                         <bpel:from>$ISOResponseCanonical/Launchpoint:caseId</bpel:from>
                                                         <bpel:to>$createActivityServiceCreate_ActivityRequest1Msg.body/CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="1899393079" targetPath="$createActivityServiceCreate_ActivityRequest1Msg.body/CaseId" targetedBy="1926978534-arg0"></mapper:vertice><mapper:vertice id="1926978534" sourcePath="$ISOResponseCanonical/Launchpoint:caseId"></mapper:vertice></mapper:mapperLink>
-                                                    </bpel:copy>
-                                                    <bpel:copy>
-                                                        <bpel:from>current-dateTime()</bpel:from>
-                                                        <bpel:to>$createActivityServiceCreate_ActivityRequest1Msg.body/CreateDate</bpel:to><mapper:mapperLink><mapper:vertice id="1954061579" targetPath="$createActivityServiceCreate_ActivityRequest1Msg.body/CreateDate" targetedBy="194795902-arg0"></mapper:vertice><mapper:vertice id="194795902" dimension="109x24" location="480,36"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
                                                         <bpel:from>ode:get-property-value("ACTIVITY_CREATED_BY")</bpel:from>
