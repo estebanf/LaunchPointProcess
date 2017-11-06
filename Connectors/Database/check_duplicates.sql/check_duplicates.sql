@@ -1,1 +1,1 @@
-select * from isotracking where caseid=? and senttoiso is not null order by modifiedat desc limit 1;
+select * from isotracking where caseid=? and isosent is not null order by modifiedat desc limit 1;

@@ -16,38 +16,29 @@
 	<!--No parameters are currently passed to doXslTransform. -->
 	<xsl:template match="/this:Receive_LogRequest">
 		<Tracking:Tracking>
-			<xsl:for-each select="child::node()">
-				<xsl:choose>
-					<xsl:when test="*">
-						<xsl:element name="{name()}">
-							<xsl:for-each select="child::node()">
-								<xsl:call-template name="entry">
-									<xsl:with-param name="itemName" select="name()" />
-									<xsl:with-param name="itemValue" select="text()" />
-								</xsl:call-template>
-							</xsl:for-each>
-						</xsl:element>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:call-template name="entry">
-							<xsl:with-param name="itemName" select="name()" />
-							<xsl:with-param name="itemValue" select="text()" />
-						</xsl:call-template>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:for-each>
+			<xsl:call-template name="entry"/>
 		</Tracking:Tracking>
 	</xsl:template>
+
 	<xsl:template name="entry">
-		<xsl:param name="itemName" />
-		<xsl:param name="itemValue" />
-		<xsl:variable name="nItemName">
-			<xsl:value-of select="$itemName" />
-		</xsl:variable>
-		<xsl:if test="$itemValue != ''">
-			<xsl:element name="{$itemName}">
-				<xsl:value-of select="$itemValue" />
-			</xsl:element>
-		</xsl:if>
+		<xsl:for-each select="child::node()">
+			<xsl:choose>
+				<xsl:when test="*">
+					<xsl:element name="{name()}">
+						<xsl:call-template name="entry"/>
+					</xsl:element>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:variable name="nItemName">
+						<xsl:value-of select="name()" />
+					</xsl:variable>
+					<xsl:if test="$nItemName != ''">
+						<xsl:element name="{$nItemName}">
+							<xsl:value-of select="text()" />
+						</xsl:element>
+					</xsl:if>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:for-each>
 	</xsl:template>
 </xsl:stylesheet>
