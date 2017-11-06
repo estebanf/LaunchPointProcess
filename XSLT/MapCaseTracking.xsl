@@ -27,7 +27,7 @@
   <xsl:template match="/Tracking:Cases">
     <Tracking:CaseTracking>
       <Tracking:CaseId><xsl:value-of select="tns:Case[position()=$pos]/tns:CaseId"/></Tracking:CaseId>
-      <Tracking:IsoIndicator><xsl:value-of select="tns:Case[position()=$pos]/tns:IsoIndicator"/></Tracking:IsoIndicator>
+      <Tracking:IsoIndicator><xsl:value-of select="tns:Case[position()=$pos]/tns:ISOIndicator"/></Tracking:IsoIndicator>
       <Tracking:Score><xsl:value-of select="tns:Case[position()=$pos]/tns:Score"/></Tracking:Score>
       <Tracking:AccidentDate><xsl:value-of select="tns:Case[position()=$pos]/tns:AccidentDate"/></Tracking:AccidentDate>
       <Tracking:BenefitAmount><xsl:value-of select="tns:Case[position()=$pos]/tns:BenefitAmount"/></Tracking:BenefitAmount>
@@ -36,6 +36,7 @@
       <Tracking:State><xsl:value-of select="tns:Case[position()=$pos]/tns:State"/></Tracking:State>
       <Tracking:WorkComp><xsl:value-of select="tns:Case[position()=$pos]/tns:WorkComp"/></Tracking:WorkComp>
       <Tracking:CaseStatus><xsl:value-of select="tns:Case[position()=$pos]/tns:CaseStatus"/></Tracking:CaseStatus>
+      <Tracking:SkipDuplicateCheck><xsl:value-of select="tns:Case[position()=$pos]/tns:SkipDuplicateCheck"/></Tracking:SkipDuplicateCheck>
       <Tracking:CaseSource><xsl:value-of select="tns:Case[position()=$pos]/tns:CaseSource"/></Tracking:CaseSource>
       <Tracking:CaseType><xsl:value-of select="tns:Case[position()=$pos]/tns:CaseType"/></Tracking:CaseType>
       <Tracking:BatchId></Tracking:BatchId>
@@ -43,6 +44,7 @@
       <Tracking:CaseIdentified></Tracking:CaseIdentified>
       <Tracking:CaseReceivedAt></Tracking:CaseReceivedAt>
       <Tracking:CaseIdentifiedAt></Tracking:CaseIdentifiedAt>
+      <Tracking:Pid></Tracking:Pid>
     </Tracking:CaseTracking>
   </xsl:template>
 </xsl:stylesheet>
