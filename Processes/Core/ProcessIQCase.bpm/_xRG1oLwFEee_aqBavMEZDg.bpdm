@@ -1,4 +1,4 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:Logging="http://bpms.everteam.com/Services/REST/Logging.rest" xmlns:diag="http://thisdiagram" xmlns:Logging1="__project:///Schemas/Logging.xsd" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Process_IQ_CaseimplicitPartner="http://thisdiagram/Process_IQ_CaseimplicitPartner" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/Process_IQ_Case" xmlns:Case_Manager="http://thisdiagram/Case_Manager" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Process_IQ_Case">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:Logging="http://bpms.everteam.com/Services/REST/Logging.rest" xmlns:diag="http://thisdiagram" xmlns:Logging1="__project:///Schemas/Logging.xsd" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Process_IQ_CaseimplicitPartner="http://thisdiagram/Process_IQ_CaseimplicitPartner" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:IQ_Response_Received="http://thisdiagram/IQ_Response_Received" xmlns:this="http://thisdiagram/Process_IQ_Case" xmlns:Case_Manager="http://thisdiagram/Case_Manager" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Process_IQ_Case">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/Services/REST/Logging.rest" bpdm:prefix="Logging" bpdm:comment="contrib=&apos;project:///Services/REST/Logging.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_0uuMALwFEee_aqBavMEZDg"></bpdm:namespaceDefinition>
@@ -8,6 +8,7 @@
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Process_IQ_CaseimplicitPartner" bpdm:prefix="Process_IQ_CaseimplicitPartner" bpdm:comment="contrib=&apos;partner-pool:///_xRG1oLwFEee_aqBavMEZDgimplicitPartner"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/IQ_Response_Received" bpdm:prefix="IQ_Response_Received" bpdm:comment="contrib=&apos;partner-pool:///_I21REMQaEeeCeKutDTEvdw"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Process_IQ_Case" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Case_Manager" bpdm:prefix="Case_Manager" bpdm:comment="contrib=&apos;partner-pool:///_0uuMALwFEee_aqBavMEZDg"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
@@ -18,6 +19,12 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForCase_Manager" type="this:ForCase_Manager" bpdm:isSynchronized="true"/>
+            <wsdl:portType name="ForIQ_Response_Received">
+                <wsdl:operation name="EventIntermediateMessage" bpdm:source="partner-pool:///_I21REMQaEeeCeKutDTEvdw">
+                    <wsdl:input message="this:EventIntermediateMessageRequest" name="EventIntermediateMessage"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForIQ_Response_Received" type="this:ForIQ_Response_Received" bpdm:isSynchronized="true"/>
             <xs:element name="EventStartMessageRequest" type="xs:string" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
             <wsdl:message name="EventStartMessageRequest" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
                 <wsdl:part name="body" element="this:EventStartMessageRequest"/>
@@ -26,9 +33,14 @@
             <wsdl:message name="EventStartMessageResponse" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
                 <wsdl:part name="body" element="this:EventStartMessageResponse"/>
             </wsdl:message>
+            <xs:element name="EventIntermediateMessageRequest" type="xs:string" bpdm:source="partner-pool:///_I21REMQaEeeCeKutDTEvdw"/>
+            <wsdl:message name="EventIntermediateMessageRequest" bpdm:source="partner-pool:///_I21REMQaEeeCeKutDTEvdw">
+                <wsdl:part name="body" element="this:EventIntermediateMessageRequest"/>
+            </wsdl:message>
         </bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_0uuMALwFEee_aqBavMEZDg" bpdm:label="Case Manager"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_xRG1oLwFEee_aqBavMEZDgimplicitPartner" bpdm:label="Process IQ CaseimplicitPartner"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_I21REMQaEeeCeKutDTEvdw" bpdm:label="IQ Response Received"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/Logging.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Logging.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -38,6 +50,7 @@
         <bpel:partnerLinks>
             <bpel:partnerLink name="process_IQ_CaseAndCase_ManagerPlkVar" partnerLinkType="diag:Process_IQ_CaseAndCase_Manager" myRole="Process_IQ_Case_for_Case_Manager" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForCase_Manager" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_IQ_Case/Case_Manager" bpdm:providedIsDefault="true" bpdm:clientTasks="_xRG1oLwFEee_aqBavMEZDg:_FHX1cLwGEee_aqBavMEZDg" bpdm:isManaged="true" bpdm:otherPoolId="_0uuMALwFEee_aqBavMEZDg"/>
             <bpel:partnerLink name="process_IQ_CaseimplicitPartnerAndProcess_IQ_CaseForHttpPortPlkVar" partnerLinkType="diag:Process_IQ_CaseimplicitPartnerAndProcess_IQ_CaseForHttpPortPlk" initializePartnerRole="yes" partnerRole="Process_IQ_CaseimplicitPartner_for_Process_IQ_Case" bpdm:invokedService="Logging:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:3002/api/logs" bpdm:invokedIsDefault="true" bpdm:clientTasks="_9G9I0LwyEeeTv952wF_hAw:_9WeWELwzEeeTv952wF_hAw, _zAD84LwoEeeTv952wF_hAw:_q0digLwqEeeTv952wF_hAw, _jKysULwzEeeTv952wF_hAw:_Axay8Lw0EeeTv952wF_hAw, _UT3VULwoEeeTv952wF_hAw:__Uj-8LwpEeeTv952wF_hAw, _jnjaQLwGEee_aqBavMEZDg:_wVDAkLwGEee_aqBavMEZDg" bpdm:isManaged="true" bpdm:otherPoolId="_xRG1oLwFEee_aqBavMEZDgimplicitPartner"/>
+            <bpel:partnerLink name="process_IQ_CaseAndIQ_Response_ReceivedPlkVar" partnerLinkType="diag:Process_IQ_CaseAndIQ_Response_Received" myRole="Process_IQ_Case_for_IQ_Response_Received" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForIQ_Response_Received" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_IQ_Case/IQ_Response_Received" bpdm:providedIsDefault="true" bpdm:clientTasks="_QyjkwMQKEeeCeKutDTEvdw:_cqaGEMQWEeeCeKutDTEvdw" bpdm:isManaged="true" bpdm:otherPoolId="_I21REMQaEeeCeKutDTEvdw"/>
         </bpel:partnerLinks>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
             <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_xan-ALwFEee_aqBavMEZDg" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_xan-ALwFEee_aqBavMEZDg"/>
@@ -47,6 +60,7 @@
                     <bpel:literal bpdm:linkedMessageType="this:EventStartMessageResponse" bpdm:linkedPart="body"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
+            <bpel:variable name="thisEventIntermediateMessageRequest1" messageType="this:EventIntermediateMessageRequest" bpdm:messageIds="inc:_Yyh4wMQaEeeCeKutDTEvdw"/>
         </bpel:variables>
         <bpel:sequence>
             <bpdm:messagingtask eventType="start: message" operation="EventStartMessage" partnerLink="process_IQ_CaseAndCase_ManagerPlkVar" portType="this:ForCase_Manager" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_Start_Event" bpdm:ID="_FHX1cLwGEee_aqBavMEZDg" bpdm:isHeaderAuthorizationAware="yes">
@@ -84,11 +98,7 @@
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>$ode:pid</bpel:from>
-                                <bpel:to>$loggingSend_logRequest1Msg.body/process_instance_id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1800110642" targetPath="$loggingSend_logRequest1Msg.body/process_instance_id" targetedBy="1756670527-arg0"></mapper:vertice>
-  <mapper:vertice id="1756670527" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$loggingSend_logRequest1Msg.body/process_instance_id</bpel:to><mapper:mapperLink><mapper:vertice id="1800110642" targetPath="$loggingSend_logRequest1Msg.body/process_instance_id" targetedBy="1756670527-arg0"></mapper:vertice><mapper:vertice id="1756670527" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggingSend_logRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_input" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_wVDAkLwGEee_aqBavMEZDgOutgoing"></bpdm:linkset>
@@ -112,63 +122,23 @@
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>ode:get-property-value("LOG_SERVICE_URL")</bpel:from>
-                                <bpel:to endpointReference="partnerRole"/>
-<mapper:mapperLink>
-  <mapper:vertice id="393353552" targetPath="$endpoint" targetedBy="308228845-arg1"></mapper:vertice>
-  <mapper:vertice id="308228845" dimension="139x24" location="528,192">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1142608417" dimension="115x24" location="384,192" targetedBy="308228845-arg0">
-    <mapper:value>"LOG_SERVICE_URL"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="393353552" targetPath="$endpoint" targetedBy="308228845-arg1"></mapper:vertice><mapper:vertice id="308228845" dimension="139x24" location="528,192"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1142608417" dimension="115x24" location="384,192" targetedBy="308228845-arg0"><mapper:value>"LOG_SERVICE_URL"</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>ode:get-property-value("RETRIEVED_ADDITIONAL_DATA_DESCRIPTION")</bpel:from>
-                                <bpel:to>$loggingSend_logRequest2Msg.body/description</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="32687614" targetPath="$loggingSend_logRequest2Msg.body/description" targetedBy="146092805-arg1"></mapper:vertice>
-  <mapper:vertice id="146092805" dimension="139x24" location="504,144">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1726856297" dimension="263x24" location="216,144" targetedBy="146092805-arg0">
-    <mapper:value>"RETRIEVED_ADDITIONAL_DATA_DESCRIPTION"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$loggingSend_logRequest2Msg.body/description</bpel:to><mapper:mapperLink><mapper:vertice id="32687614" targetPath="$loggingSend_logRequest2Msg.body/description" targetedBy="146092805-arg1"></mapper:vertice><mapper:vertice id="146092805" dimension="139x24" location="504,144"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1726856297" dimension="263x24" location="216,144" targetedBy="146092805-arg0"><mapper:value>"RETRIEVED_ADDITIONAL_DATA_DESCRIPTION"</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>ode:get-property-value("LOG_LEVEL_INFO")</bpel:from>
-                                <bpel:to>$loggingSend_logRequest2Msg.body/log_type</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1466024377" targetPath="$loggingSend_logRequest2Msg.body/log_type" targetedBy="251611882-arg1"></mapper:vertice>
-  <mapper:vertice id="251611882" dimension="139x24" location="504,108">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1797622670" dimension="109x24" location="324,108" targetedBy="251611882-arg0">
-    <mapper:value>"LOG_LEVEL_INFO"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$loggingSend_logRequest2Msg.body/log_type</bpel:to><mapper:mapperLink><mapper:vertice id="1466024377" targetPath="$loggingSend_logRequest2Msg.body/log_type" targetedBy="251611882-arg1"></mapper:vertice><mapper:vertice id="251611882" dimension="139x24" location="504,108"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1797622670" dimension="109x24" location="324,108" targetedBy="251611882-arg0"><mapper:value>"LOG_LEVEL_INFO"</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>ode:get-property-value("RETRIEVED_ADDITIONAL_DATA")</bpel:from>
-                                <bpel:to>$loggingSend_logRequest2Msg.body/step_id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2011755097" targetPath="$loggingSend_logRequest2Msg.body/step_id" targetedBy="1407185674-arg1"></mapper:vertice>
-  <mapper:vertice id="1407185674" dimension="139x24" location="504,72">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1403120497" dimension="185x24" location="288,72" targetedBy="1407185674-arg0">
-    <mapper:value>"RETRIEVED_ADDITIONAL_DATA"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$loggingSend_logRequest2Msg.body/step_id</bpel:to><mapper:mapperLink><mapper:vertice id="2011755097" targetPath="$loggingSend_logRequest2Msg.body/step_id" targetedBy="1407185674-arg1"></mapper:vertice><mapper:vertice id="1407185674" dimension="139x24" location="504,72"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1403120497" dimension="185x24" location="288,72" targetedBy="1407185674-arg0"><mapper:value>"RETRIEVED_ADDITIONAL_DATA"</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>$ode:pid</bpel:from>
-                                <bpel:to>$loggingSend_logRequest2Msg.body/process_instance_id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1164677010" targetPath="$loggingSend_logRequest2Msg.body/process_instance_id" targetedBy="2100403160-arg0"></mapper:vertice>
-  <mapper:vertice id="2100403160" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$loggingSend_logRequest2Msg.body/process_instance_id</bpel:to><mapper:mapperLink><mapper:vertice id="1164677010" targetPath="$loggingSend_logRequest2Msg.body/process_instance_id" targetedBy="2100403160-arg0"></mapper:vertice><mapper:vertice id="2100403160" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggingSend_logRequest2Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_input" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="__Uj-8LwpEeeTv952wF_hAwOutgoing"></bpdm:linkset>
@@ -192,63 +162,23 @@
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>ode:get-property-value("LOG_SERVICE_URL")</bpel:from>
-                                <bpel:to endpointReference="partnerRole"/>
-<mapper:mapperLink>
-  <mapper:vertice id="409984964" targetPath="$endpoint" targetedBy="850249490-arg1"></mapper:vertice>
-  <mapper:vertice id="850249490" dimension="139x24" location="504,216">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="983829248" dimension="115x24" location="360,216" targetedBy="850249490-arg0">
-    <mapper:value>"LOG_SERVICE_URL"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="409984964" targetPath="$endpoint" targetedBy="850249490-arg1"></mapper:vertice><mapper:vertice id="850249490" dimension="139x24" location="504,216"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="983829248" dimension="115x24" location="360,216" targetedBy="850249490-arg0"><mapper:value>"LOG_SERVICE_URL"</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>ode:get-property-value("SEND_CASE_RESULT_DESCRIPTION")</bpel:from>
-                                <bpel:to>$loggingSend_logRequest3Msg.body/description</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="216443001" targetPath="$loggingSend_logRequest3Msg.body/description" targetedBy="631745760-arg1"></mapper:vertice>
-  <mapper:vertice id="631745760" dimension="139x24" location="480,168">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1343267975" dimension="203x24" location="240,168" targetedBy="631745760-arg0">
-    <mapper:value>"SEND_CASE_RESULT_DESCRIPTION"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$loggingSend_logRequest3Msg.body/description</bpel:to><mapper:mapperLink><mapper:vertice id="216443001" targetPath="$loggingSend_logRequest3Msg.body/description" targetedBy="631745760-arg1"></mapper:vertice><mapper:vertice id="631745760" dimension="139x24" location="480,168"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1343267975" dimension="203x24" location="240,168" targetedBy="631745760-arg0"><mapper:value>"SEND_CASE_RESULT_DESCRIPTION"</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>ode:get-property-value("LOG_LEVEL_INFO")</bpel:from>
-                                <bpel:to>$loggingSend_logRequest3Msg.body/log_type</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1380969215" targetPath="$loggingSend_logRequest3Msg.body/log_type" targetedBy="1621049647-arg1"></mapper:vertice>
-  <mapper:vertice id="1621049647" dimension="139x24" location="480,132">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1565665551" dimension="109x24" location="300,132" targetedBy="1621049647-arg0">
-    <mapper:value>"LOG_LEVEL_INFO"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$loggingSend_logRequest3Msg.body/log_type</bpel:to><mapper:mapperLink><mapper:vertice id="1380969215" targetPath="$loggingSend_logRequest3Msg.body/log_type" targetedBy="1621049647-arg1"></mapper:vertice><mapper:vertice id="1621049647" dimension="139x24" location="480,132"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1565665551" dimension="109x24" location="300,132" targetedBy="1621049647-arg0"><mapper:value>"LOG_LEVEL_INFO"</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>ode:get-property-value("SEND_CASE_RESULT")</bpel:from>
-                                <bpel:to>$loggingSend_logRequest3Msg.body/step_id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1860082354" targetPath="$loggingSend_logRequest3Msg.body/step_id" targetedBy="788190406-arg1"></mapper:vertice>
-  <mapper:vertice id="788190406" dimension="139x24" location="480,96">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="910371959" dimension="125x24" location="300,96" targetedBy="788190406-arg0">
-    <mapper:value>"SEND_CASE_RESULT"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$loggingSend_logRequest3Msg.body/step_id</bpel:to><mapper:mapperLink><mapper:vertice id="1860082354" targetPath="$loggingSend_logRequest3Msg.body/step_id" targetedBy="788190406-arg1"></mapper:vertice><mapper:vertice id="788190406" dimension="139x24" location="480,96"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="910371959" dimension="125x24" location="300,96" targetedBy="788190406-arg0"><mapper:value>"SEND_CASE_RESULT"</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>$ode:pid</bpel:from>
-                                <bpel:to>$loggingSend_logRequest3Msg.body/process_instance_id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="343391987" targetPath="$loggingSend_logRequest3Msg.body/process_instance_id" targetedBy="2120695790-arg0"></mapper:vertice>
-  <mapper:vertice id="2120695790" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$loggingSend_logRequest3Msg.body/process_instance_id</bpel:to><mapper:mapperLink><mapper:vertice id="343391987" targetPath="$loggingSend_logRequest3Msg.body/process_instance_id" targetedBy="2120695790-arg0"></mapper:vertice><mapper:vertice id="2120695790" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggingSend_logRequest3Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_input" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_q0digLwqEeeTv952wF_hAwOutgoing"></bpdm:linkset>
@@ -259,13 +189,7 @@
             <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_U4JU0LwtEeeTv952wF_hAw" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                 <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_WCTa0LwtEeeTv952wF_hAw" bpdm:targetDisplayName="default"></bpdm:linkset>
                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_aaLaALwtEeeTv952wF_hAw" bpdm:targetDisplayName="[GatewayDataBasedExclusive - EventEndEmpty]">
-                    <bpel:condition>false()
-<mapper:mapperLink>
-  <mapper:vertice id="1254084885" targetPath="$condition" targetedBy="1219700717-arg0"></mapper:vertice>
-  <mapper:vertice id="1219700717" dimension="79x24" location="431,166">
-    <mapper:value>false()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                    <bpel:condition>false()<mapper:mapperLink><mapper:vertice id="1254084885" targetPath="$condition" targetedBy="1219700717-arg0"></mapper:vertice><mapper:vertice id="1219700717" dimension="79x24" location="431,166"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
                 </bpdm:linkset>
                 <bpel:sequence>
                     <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Call LGE for PDF Generation" bpdm:ID="_WCExULwtEeeTv952wF_hAw" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
@@ -284,63 +208,23 @@
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("LOG_SERVICE_URL")</bpel:from>
-                                        <bpel:to endpointReference="partnerRole"/>
-<mapper:mapperLink>
-  <mapper:vertice id="1222627978" targetPath="$endpoint" targetedBy="699703293-arg1"></mapper:vertice>
-  <mapper:vertice id="699703293" dimension="139x24" location="564,240">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="769786088" dimension="115x24" location="420,240" targetedBy="699703293-arg0">
-    <mapper:value>"LOG_SERVICE_URL"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="1222627978" targetPath="$endpoint" targetedBy="699703293-arg1"></mapper:vertice><mapper:vertice id="699703293" dimension="139x24" location="564,240"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="769786088" dimension="115x24" location="420,240" targetedBy="699703293-arg0"><mapper:value>"LOG_SERVICE_URL"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("GENERATED_LETTER")</bpel:from>
-                                        <bpel:to>$loggingSend_logRequest4Msg.body/step_id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1323466053" targetPath="$loggingSend_logRequest4Msg.body/step_id" targetedBy="1121758025-arg1"></mapper:vertice>
-  <mapper:vertice id="1121758025" dimension="139x24" location="540,120">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1483067407" dimension="127x24" location="360,120" targetedBy="1121758025-arg0">
-    <mapper:value>"GENERATED_LETTER"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$loggingSend_logRequest4Msg.body/step_id</bpel:to><mapper:mapperLink><mapper:vertice id="1323466053" targetPath="$loggingSend_logRequest4Msg.body/step_id" targetedBy="1121758025-arg1"></mapper:vertice><mapper:vertice id="1121758025" dimension="139x24" location="540,120"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1483067407" dimension="127x24" location="360,120" targetedBy="1121758025-arg0"><mapper:value>"GENERATED_LETTER"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("LOG_LEVEL_INFO")</bpel:from>
-                                        <bpel:to>$loggingSend_logRequest4Msg.body/log_type</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="292936414" targetPath="$loggingSend_logRequest4Msg.body/log_type" targetedBy="869198409-arg1"></mapper:vertice>
-  <mapper:vertice id="869198409" dimension="139x24" location="540,156">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1183270734" dimension="109x24" location="360,156" targetedBy="869198409-arg0">
-    <mapper:value>"LOG_LEVEL_INFO"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$loggingSend_logRequest4Msg.body/log_type</bpel:to><mapper:mapperLink><mapper:vertice id="292936414" targetPath="$loggingSend_logRequest4Msg.body/log_type" targetedBy="869198409-arg1"></mapper:vertice><mapper:vertice id="869198409" dimension="139x24" location="540,156"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1183270734" dimension="109x24" location="360,156" targetedBy="869198409-arg0"><mapper:value>"LOG_LEVEL_INFO"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("GENERATED_LETTER_DESCRIPTION")</bpel:from>
-                                        <bpel:to>$loggingSend_logRequest4Msg.body/description</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="415469302" targetPath="$loggingSend_logRequest4Msg.body/description" targetedBy="330008026-arg1"></mapper:vertice>
-  <mapper:vertice id="330008026" dimension="139x24" location="540,192">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1042466638" dimension="205x24" location="300,192" targetedBy="330008026-arg0">
-    <mapper:value>"GENERATED_LETTER_DESCRIPTION"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$loggingSend_logRequest4Msg.body/description</bpel:to><mapper:mapperLink><mapper:vertice id="415469302" targetPath="$loggingSend_logRequest4Msg.body/description" targetedBy="330008026-arg1"></mapper:vertice><mapper:vertice id="330008026" dimension="139x24" location="540,192"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1042466638" dimension="205x24" location="300,192" targetedBy="330008026-arg0"><mapper:value>"GENERATED_LETTER_DESCRIPTION"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$ode:pid</bpel:from>
-                                        <bpel:to>$loggingSend_logRequest4Msg.body/process_instance_id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="739550075" targetPath="$loggingSend_logRequest4Msg.body/process_instance_id" targetedBy="1368507733-arg0"></mapper:vertice>
-  <mapper:vertice id="1368507733" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$loggingSend_logRequest4Msg.body/process_instance_id</bpel:to><mapper:mapperLink><mapper:vertice id="739550075" targetPath="$loggingSend_logRequest4Msg.body/process_instance_id" targetedBy="1368507733-arg0"></mapper:vertice><mapper:vertice id="1368507733" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggingSend_logRequest4Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_input" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_9WeWELwzEeeTv952wF_hAwOutgoing"></bpdm:linkset>
@@ -364,63 +248,23 @@
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("LOG_SERVICE_URL")</bpel:from>
-                                        <bpel:to endpointReference="partnerRole"/>
-<mapper:mapperLink>
-  <mapper:vertice id="103602017" targetPath="$endpoint" targetedBy="1090283304-arg1"></mapper:vertice>
-  <mapper:vertice id="1090283304" dimension="139x24" location="600,240">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1365131273" dimension="115x24" location="456,240" targetedBy="1090283304-arg0">
-    <mapper:value>"LOG_SERVICE_URL"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="103602017" targetPath="$endpoint" targetedBy="1090283304-arg1"></mapper:vertice><mapper:vertice id="1090283304" dimension="139x24" location="600,240"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1365131273" dimension="115x24" location="456,240" targetedBy="1090283304-arg0"><mapper:value>"LOG_SERVICE_URL"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("QUEUED_LETTER_DESCRIPTION")</bpel:from>
-                                        <bpel:to>$loggingSend_logRequest5Msg.body/description</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="898919221" targetPath="$loggingSend_logRequest5Msg.body/description" targetedBy="1498193678-arg1"></mapper:vertice>
-  <mapper:vertice id="1498193678" dimension="139x24" location="576,192">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="858253294" dimension="185x24" location="336,192" targetedBy="1498193678-arg0">
-    <mapper:value>"QUEUED_LETTER_DESCRIPTION"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$loggingSend_logRequest5Msg.body/description</bpel:to><mapper:mapperLink><mapper:vertice id="898919221" targetPath="$loggingSend_logRequest5Msg.body/description" targetedBy="1498193678-arg1"></mapper:vertice><mapper:vertice id="1498193678" dimension="139x24" location="576,192"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="858253294" dimension="185x24" location="336,192" targetedBy="1498193678-arg0"><mapper:value>"QUEUED_LETTER_DESCRIPTION"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("LOG_LEVEL_INFO")</bpel:from>
-                                        <bpel:to>$loggingSend_logRequest5Msg.body/log_type</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1619458421" targetPath="$loggingSend_logRequest5Msg.body/log_type" targetedBy="341270218-arg1"></mapper:vertice>
-  <mapper:vertice id="341270218" dimension="139x24" location="576,156">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="878747306" dimension="109x24" location="396,156" targetedBy="341270218-arg0">
-    <mapper:value>"LOG_LEVEL_INFO"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$loggingSend_logRequest5Msg.body/log_type</bpel:to><mapper:mapperLink><mapper:vertice id="1619458421" targetPath="$loggingSend_logRequest5Msg.body/log_type" targetedBy="341270218-arg1"></mapper:vertice><mapper:vertice id="341270218" dimension="139x24" location="576,156"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="878747306" dimension="109x24" location="396,156" targetedBy="341270218-arg0"><mapper:value>"LOG_LEVEL_INFO"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("QUEUED_LETTER")</bpel:from>
-                                        <bpel:to>$loggingSend_logRequest5Msg.body/step_id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1305497099" targetPath="$loggingSend_logRequest5Msg.body/step_id" targetedBy="1996734424-arg1"></mapper:vertice>
-  <mapper:vertice id="1996734424" dimension="139x24" location="576,120">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1677577756" dimension="107x24" location="396,120" targetedBy="1996734424-arg0">
-    <mapper:value>"QUEUED_LETTER"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$loggingSend_logRequest5Msg.body/step_id</bpel:to><mapper:mapperLink><mapper:vertice id="1305497099" targetPath="$loggingSend_logRequest5Msg.body/step_id" targetedBy="1996734424-arg1"></mapper:vertice><mapper:vertice id="1996734424" dimension="139x24" location="576,120"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1677577756" dimension="107x24" location="396,120" targetedBy="1996734424-arg0"><mapper:value>"QUEUED_LETTER"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$ode:pid</bpel:from>
-                                        <bpel:to>$loggingSend_logRequest5Msg.body/process_instance_id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1873855912" targetPath="$loggingSend_logRequest5Msg.body/process_instance_id" targetedBy="1596461515-arg0"></mapper:vertice>
-  <mapper:vertice id="1596461515" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$loggingSend_logRequest5Msg.body/process_instance_id</bpel:to><mapper:mapperLink><mapper:vertice id="1873855912" targetPath="$loggingSend_logRequest5Msg.body/process_instance_id" targetedBy="1596461515-arg0"></mapper:vertice><mapper:vertice id="1596461515" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggingSend_logRequest5Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging:send_log_input" bpdm:binding="Logging:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Axay8Lw0EeeTv952wF_hAwOutgoing"></bpdm:linkset>
@@ -428,7 +272,34 @@
                             </bpdm:messagingtask>
                         </bpel:sequence>
                     </bpel:scope>
-                    <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_yMph8LwzEeeTv952wF_hAw" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_QyjkwMQKEeeCeKutDTEvdw">
+                        <bpel:eventHandlers>
+                            <bpel:onEvent bpdm:interrupt="true">
+                                <bpdm:eventHandler bpdm:label="Message_Intermediate_Event" bpdm:ID="_cqaGEMQWEeeCeKutDTEvdw" bpdm:type="event" operation="EventIntermediateMessage" partnerLink="process_IQ_CaseAndIQ_Response_ReceivedPlkVar" portType="this:ForIQ_Response_Received" isMyRole="true" enableSharing="false">
+                                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisEventIntermediateMessageRequest1" bpdm:variableIsManaged="true" bpdm:messageType="this:EventIntermediateMessageRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_Yyh4wMQaEeeCeKutDTEvdw"></bpdm:linkset>
+                                </bpdm:eventHandler>
+                                <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_ASJ3EMQWEeeCeKutDTEvdw">
+                                    <bpel:sequence>
+                                        <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Response Received" bpdm:ID="_rrpHEMQKEeeCeKutDTEvdw" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                    </bpel:sequence>
+                                </bpel:scope>
+                            </bpel:onEvent>
+                        </bpel:eventHandlers>
+                        <bpel:sequence>
+                            <bpdm:messagingtask eventType="intermediate: timer" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Timer_Intermediate_Event" bpdm:ID="_i36AkMQKEeeCeKutDTEvdw" bpdm:isHeaderAuthorizationAware="no">
+                                <bpdm:linkset bpdm:type="timer">
+                                    <bpel:for>"PT3M"
+<mapper:mapperLink>
+  <mapper:vertice id="1862188190" targetPath="$duration" targetedBy="582666319-arg0"></mapper:vertice>
+  <mapper:vertice id="582666319" dimension="79x24" location="646,55">
+    <mapper:value>"PT3M"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink></bpel:for>
+                                </bpdm:linkset>
+                            </bpdm:messagingtask>
+                            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Reevaluate " bpdm:ID="_Qy7_QMQKEeeCeKutDTEvdw" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                        </bpel:sequence>
+                    </bpel:scope>
                 </bpel:sequence>
                 <bpel:sequence>
                     <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_aZ9-oLwtEeeTv952wF_hAw" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>

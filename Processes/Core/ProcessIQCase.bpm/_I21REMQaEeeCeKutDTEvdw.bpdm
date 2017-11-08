@@ -1,0 +1,30 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/IQ_Response_Received" xmlns:Process_IQ_Case="http://thisdiagram/Process_IQ_Case" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/IQ_Response_Received">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_xRG1oLwFEee_aqBavMEZDg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/IQ_Response_Received" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Process_IQ_Case" bpdm:prefix="Process_IQ_Case" bpdm:comment="contrib=&apos;partner-pool:///_xRG1oLwFEee_aqBavMEZDg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_xRG1oLwFEee_aqBavMEZDg" bpdm:label="Process IQ Case"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="IQ Response Received" bpdm:ID="_I21REMQaEeeCeKutDTEvdw">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="process_IQ_CaseAndIQ_Response_ReceivedPlkVar" partnerLinkType="diag:Process_IQ_CaseAndIQ_Response_Received" initializePartnerRole="yes" partnerRole="Process_IQ_Case_for_IQ_Response_Received" bpdm:invokedService="Process_IQ_Case:CanonicServiceForIQ_Response_Received" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_IQ_Case/IQ_Response_Received" bpdm:invokedIsDefault="true" bpdm:clientTasks="_I21REMQaEeeCeKutDTEvdw:_X4AKMMQaEeeCeKutDTEvdw" bpdm:isManaged="true" bpdm:otherPoolId="_xRG1oLwFEee_aqBavMEZDg"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="process_IQ_CaseEventIntermediateMessageRequest" messageType="Process_IQ_Case:EventIntermediateMessageRequest" bpdm:messageIds=" out:_Yyh4wMQaEeeCeKutDTEvdw">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="Process_IQ_Case:EventIntermediateMessageRequest" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask eventType="start: message" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_Start_Event" bpdm:ID="_REX6QMQaEeeCeKutDTEvdw" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+            <bpdm:messagingtask operation="EventIntermediateMessage" partnerLink="process_IQ_CaseAndIQ_Response_ReceivedPlkVar" portType="Process_IQ_Case:ForIQ_Response_Received" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Task" bpdm:ID="_X4AKMMQaEeeCeKutDTEvdw" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="process_IQ_CaseEventIntermediateMessageRequest" bpdm:variableIsManaged="true" bpdm:messageType="Process_IQ_Case:EventIntermediateMessageRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Yyh4wMQaEeeCeKutDTEvdw"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>
