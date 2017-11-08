@@ -5,6 +5,7 @@
 	xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:Tracking="http://www.example.org/Tracking">
 	<xsl:template match="/this:Receive_ISO_ResponseRequest">
 		<Tracking:ISOResponseTrackingType>
+			<Tracking:Pid></Tracking:Pid>
 			<Tracking:RequestId>
 				<xsl:value-of select="Launchpoint:content/ClaimInvestigationAddRs/RqUID" />
 			</Tracking:RequestId>
