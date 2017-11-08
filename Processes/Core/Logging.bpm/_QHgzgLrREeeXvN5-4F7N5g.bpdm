@@ -66,6 +66,7 @@
             </bpel:variable>
             <bpel:variable name="CaseTracking" element="metrics:CaseTracking" xvar:id="CaseTracking-_ix5Z0MGGEeexoeGJrBevXQ" xvar:relates-to="CaseTracking-keys" bpdm:xvarType="metrics:CaseTracking" bpdm:id="_ix5Z0MGGEeexoeGJrBevXQ"/>
             <bpel:variable name="ISOTracking" element="metrics:ISOTracking" xvar:id="ISOTracking-_UeMu8MMsEeeWcIrnjZ6sJg" xvar:relates-to="ISOTracking-keys" bpdm:xvarType="metrics:ISOTracking" bpdm:id="_UeMu8MMsEeeWcIrnjZ6sJg"/>
+            <bpel:variable name="ISOResponseTracking" element="metrics:ISOResponseTracking" xvar:id="ISOResponseTracking-_UAKCwMTGEeeVsvNrQg5AOQ" xvar:relates-to="ISOResponseTracking-keys" bpdm:xvarType="metrics:ISOResponseTracking" bpdm:id="_UAKCwMTGEeeVsvNrQg5AOQ"/>
         </bpel:variables>
         <bpel:sequence>
             <bpdm:messagingtask operation="Receive_Log" partnerLink="callerAndLog_and_TrackPlkVar" portType="this:ForCaller" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive Log" bpdm:ID="_QHhakLrREeeXvN5-4F7N5g" bpdm:isHeaderAuthorizationAware="yes">
@@ -92,7 +93,20 @@
                         <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_-gtj8MMrEeeWcIrnjZ6sJg" bpdm:targetDisplayName="Map ISO Request">
                             <bpel:condition>"isoRequest" = $ReducedTracking/Tracking:type<mapper:mapperLink><mapper:vertice id="1000428697" targetPath="$condition" targetedBy="939022949-arg2"></mapper:vertice><mapper:vertice id="939022949" dimension="79x24" location="492,48"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="260251320" dimension="79x24" location="384,12" targetedBy="939022949-arg0"><mapper:value>"isoRequest"</mapper:value></mapper:vertice><mapper:vertice id="1932505292" sourcePath="$ReducedTracking/Tracking:type" targetedBy="939022949-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                         </bpdm:linkset>
-                        <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_HQq5MLrSEeeXvN5-4F7N5g" bpdm:targetDisplayName="default"></bpdm:linkset>
+                        <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_HQq5MLrSEeeXvN5-4F7N5g" bpdm:targetDisplayName="Map ISO Response">
+                            <bpel:condition>$ReducedTracking/Tracking:type = "isoResponse"
+<mapper:mapperLink>
+  <mapper:vertice id="1593561447" targetPath="$condition" targetedBy="353023689-arg2"></mapper:vertice>
+  <mapper:vertice id="353023689" dimension="79x24" location="334,91">
+    <mapper:value>=</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="806650548" sourcePath="$ReducedTracking/Tracking:type" targetedBy="353023689-arg0"></mapper:vertice>
+  <mapper:vertice id="130326162" dimension="83x24" location="316,130" targetedBy="353023689-arg1">
+    <mapper:value>"isoResponse"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink></bpel:condition>
+                        </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_FNHsQMTGEeeVsvNrQg5AOQ" bpdm:targetDisplayName="default"></bpdm:linkset>
                         <bpel:sequence>
                             <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_7W3ZoLrREeeXvN5-4F7N5g" bpdm:isHeaderAuthorizationAware="no">
                                 <bpdm:linkset bpdm:type="assignments">
@@ -284,7 +298,237 @@
                             </bpdm:messagingtask>
                         </bpel:sequence>
                         <bpel:sequence>
-                            <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_-6OysLrREeeXvN5-4F7N5g" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                            <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_-6OysLrREeeXvN5-4F7N5g" bpdm:isHeaderAuthorizationAware="no">
+                                <bpdm:linkset bpdm:type="assignments">
+                                    <bpel:copy>
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:Pid</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1006688852" targetPath="$ISOResponseTracking/metrics:pid" targetedBy="334972648-arg0"></mapper:vertice>
+  <mapper:vertice id="334972648" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:Pid"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:RequestId</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:requestId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="504659225" targetPath="$ISOResponseTracking/metrics:requestId" targetedBy="1490280677-arg0"></mapper:vertice>
+  <mapper:vertice id="1490280677" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:RequestId"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:CaseId</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:caseId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1801635005" targetPath="$ISOResponseTracking/metrics:caseId" targetedBy="239361783-arg0"></mapper:vertice>
+  <mapper:vertice id="239361783" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:CaseId"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:Score</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:score</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1741736932" targetPath="$ISOResponseTracking/metrics:score" targetedBy="2061245564-arg0"></mapper:vertice>
+  <mapper:vertice id="2061245564" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:Score"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:IsoResponseReceived</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:isoResponseReceived</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="312530753" targetPath="$ISOResponseTracking/metrics:isoResponseReceived" targetedBy="1494503864-arg0"></mapper:vertice>
+  <mapper:vertice id="1494503864" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:IsoResponseReceived"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:PreviousScoreRetrieved</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:previousScoreRetrieved</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="590541837" targetPath="$ISOResponseTracking/metrics:previousScoreRetrieved" targetedBy="1661722695-arg0"></mapper:vertice>
+  <mapper:vertice id="1661722695" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:PreviousScoreRetrieved"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:IsoResponseSent</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:isoResponseSent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1186849347" targetPath="$ISOResponseTracking/metrics:isoResponseSent" targetedBy="450012025-arg0"></mapper:vertice>
+  <mapper:vertice id="450012025" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:IsoResponseSent"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:ScoreReceived</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:scoreReceived</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="640590484" targetPath="$ISOResponseTracking/metrics:scoreReceived" targetedBy="1668825919-arg0"></mapper:vertice>
+  <mapper:vertice id="1668825919" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:ScoreReceived"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:DiaryCreated</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:diaryCreated</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1801482048" targetPath="$ISOResponseTracking/metrics:diaryCreated" targetedBy="1101639832-arg0"></mapper:vertice>
+  <mapper:vertice id="1101639832" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:DiaryCreated"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:ActivityCreated</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:activityCreated</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1886163966" targetPath="$ISOResponseTracking/metrics:activityCreated" targetedBy="1839093988-arg0"></mapper:vertice>
+  <mapper:vertice id="1839093988" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:ActivityCreated"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:IqCancelled</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:iqCancelled</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="911029140" targetPath="$ISOResponseTracking/metrics:iqCancelled" targetedBy="1715016055-arg0"></mapper:vertice>
+  <mapper:vertice id="1715016055" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:IqCancelled"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:IsoCancelled</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:isoCancelled</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1632870286" targetPath="$ISOResponseTracking/metrics:isoCancelled" targetedBy="110173520-arg0"></mapper:vertice>
+  <mapper:vertice id="110173520" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:IsoCancelled"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:CaseClosed</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:caseClosed</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="545258951" targetPath="$ISOResponseTracking/metrics:caseClosed" targetedBy="1768595017-arg0"></mapper:vertice>
+  <mapper:vertice id="1768595017" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:CaseClosed"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:ExceptionCreated</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:exceptionCreated</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="832034297" targetPath="$ISOResponseTracking/metrics:exceptionCreated" targetedBy="1118098290-arg0"></mapper:vertice>
+  <mapper:vertice id="1118098290" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:ExceptionCreated"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:CaseReopened</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:caseReopened</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1600259089" targetPath="$ISOResponseTracking/metrics:caseReopened" targetedBy="750690811-arg0"></mapper:vertice>
+  <mapper:vertice id="750690811" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:CaseReopened"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:IqSent</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:iqSent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1280398747" targetPath="$ISOResponseTracking/metrics:iqSent" targetedBy="179429233-arg0"></mapper:vertice>
+  <mapper:vertice id="179429233" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:IqSent"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:IsoResponseReceivedAt</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:isoResponseReceivedAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="401135047" targetPath="$ISOResponseTracking/metrics:isoResponseReceivedAt" targetedBy="586231125-arg0"></mapper:vertice>
+  <mapper:vertice id="586231125" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:IsoResponseReceivedAt"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:IsoResponseSentAt</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:isoResponseSentAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="958792774" targetPath="$ISOResponseTracking/metrics:isoResponseSentAt" targetedBy="486289497-arg0"></mapper:vertice>
+  <mapper:vertice id="486289497" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:IsoResponseSentAt"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:PreviousScoreRetrievedAt</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:previousScoreRetrievedAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="620801536" targetPath="$ISOResponseTracking/metrics:previousScoreRetrievedAt" targetedBy="1229749871-arg0"></mapper:vertice>
+  <mapper:vertice id="1229749871" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:PreviousScoreRetrievedAt"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:ScoreReceivedAt</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:scoreReceivedAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="3749321" targetPath="$ISOResponseTracking/metrics:scoreReceivedAt" targetedBy="209329427-arg0"></mapper:vertice>
+  <mapper:vertice id="209329427" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:ScoreReceivedAt"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:DiaryCreatedAt</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:diaryCreatedAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1969183260" targetPath="$ISOResponseTracking/metrics:diaryCreatedAt" targetedBy="1789264954-arg0"></mapper:vertice>
+  <mapper:vertice id="1789264954" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:DiaryCreatedAt"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:ActivityCreatedAt</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:activityCreatedAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="363233389" targetPath="$ISOResponseTracking/metrics:activityCreatedAt" targetedBy="661002545-arg0"></mapper:vertice>
+  <mapper:vertice id="661002545" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:ActivityCreatedAt"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:IqCancelledAt</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:iqCancelledAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="124110659" targetPath="$ISOResponseTracking/metrics:iqCancelledAt" targetedBy="1851481206-arg0"></mapper:vertice>
+  <mapper:vertice id="1851481206" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:IqCancelledAt"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:CaseClosedAt</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:caseClosedAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="781934329" targetPath="$ISOResponseTracking/metrics:caseClosedAt" targetedBy="28079619-arg0"></mapper:vertice>
+  <mapper:vertice id="28079619" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:CaseClosedAt"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:IsoCancelledAt</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:isoCancelledAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="2045031397" targetPath="$ISOResponseTracking/metrics:isoCancelledAt" targetedBy="1376419364-arg0"></mapper:vertice>
+  <mapper:vertice id="1376419364" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:IsoCancelledAt"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:ExceptionCreatedAt</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:exceptionCreatedAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="393304556" targetPath="$ISOResponseTracking/metrics:exceptionCreatedAt" targetedBy="452485529-arg0"></mapper:vertice>
+  <mapper:vertice id="452485529" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:ExceptionCreatedAt"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:CaseReopenedAt</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:caseReopenedAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1174186959" targetPath="$ISOResponseTracking/metrics:caseReopenedAt" targetedBy="156485348-arg0"></mapper:vertice>
+  <mapper:vertice id="156485348" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:CaseReopenedAt"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IsoResponse/Tracking:IqSentAt</bpel:from>
+                                        <bpel:to>$ISOResponseTracking/metrics:iqSentAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="191553771" targetPath="$ISOResponseTracking/metrics:iqSentAt" targetedBy="1717570708-arg0"></mapper:vertice>
+  <mapper:vertice id="1717570708" sourcePath="$ReducedTracking/Tracking:IsoResponse/Tracking:IqSentAt"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                </bpdm:linkset>
+                            </bpdm:messagingtask>
+                        </bpel:sequence>
+                        <bpel:sequence>
+                            <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_FMrnYMTGEeeVsvNrQg5AOQ" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
                         </bpel:sequence>
                     </bpdm:gateway>
                 </bpel:sequence>

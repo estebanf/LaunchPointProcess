@@ -33,8 +33,16 @@
   	<xsl:variable name="doc">
   		<xsl:copy-of select="$isoresponse" />
   	</xsl:variable>
+  	
+  	<xsl:comment>Got here</xsl:comment>
+  	<xsl:comment><xsl:copy-of select="$doc"/></xsl:comment>
+  	<xsl:comment><xsl:copy-of select="$isoresponse"/></xsl:comment>
+  	
+  	<!-- /Tracking:ISOResponseTrackingType/Tracking:Pid -->
+  	
     <Tracking:ISOResponseTrackingType>
-      <Tracking:RequestId><xsl:value-of select="$doc/Tracking:ISOResponseTrackingType/Tracking:RequestId" /></Tracking:RequestId>
+      <Tracking:Pid><xsl:value-of select="$isoresponse/Pid"/></Tracking:Pid>
+      <Tracking:RequestId><xsl:value-of select="$doc/Tracking:RequestId" /></Tracking:RequestId>
       <Tracking:CaseId><xsl:value-of select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:caseid"/></Tracking:CaseId>
       <Tracking:ClientId><xsl:value-of select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:clientid"/></Tracking:ClientId>
       <Tracking:BatchId><xsl:value-of select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:batchid"/></Tracking:BatchId>
@@ -58,7 +66,32 @@
         <xsl:copy-of select="$doc/Tracking:ISOResponseTrackingType/Tracking:content/ClaimInvestigationAddRs" />
       </Tracking:Content>
       <Tracking:Status></Tracking:Status>
-      <Tracking:Score></Tracking:Score>
+	<Tracking:Score></Tracking:Score>
+	<Tracking:IsoResponseReceived></Tracking:IsoResponseReceived>
+	<Tracking:PreviousScoreRetrieved></Tracking:PreviousScoreRetrieved>
+	<Tracking:IsoResponseSent></Tracking:IsoResponseSent>
+	<Tracking:ScoreReceived></Tracking:ScoreReceived>
+	<Tracking:DiaryCreated></Tracking:DiaryCreated>
+	<Tracking:ActivityCreated></Tracking:ActivityCreated>
+	<Tracking:IqCancelled></Tracking:IqCancelled>
+	<Tracking:IsoCancelled></Tracking:IsoCancelled>
+	<Tracking:CaseClosed></Tracking:CaseClosed>
+	<Tracking:ExceptionCreated></Tracking:ExceptionCreated>
+	<Tracking:CaseReopened></Tracking:CaseReopened>
+	<Tracking:IqSent></Tracking:IqSent>
+	<Tracking:IsoResponseReceivedAt></Tracking:IsoResponseReceivedAt>
+	<Tracking:PreviousScoreRetrievedAt></Tracking:PreviousScoreRetrievedAt>
+	<Tracking:IsoResponseSentAt></Tracking:IsoResponseSentAt>
+	<Tracking:ScoreReceivedAt></Tracking:ScoreReceivedAt>
+	<Tracking:DiaryCreatedAt></Tracking:DiaryCreatedAt>
+	<Tracking:ActivityCreatedAt></Tracking:ActivityCreatedAt>
+	<Tracking:IqCancelledAt></Tracking:IqCancelledAt>
+	<Tracking:IsoCancelledAt></Tracking:IsoCancelledAt>
+	<Tracking:CaseClosedAt></Tracking:CaseClosedAt>
+	<Tracking:ExceptionCreatedAt></Tracking:ExceptionCreatedAt>
+	<Tracking:CaseReopenedAt></Tracking:CaseReopenedAt>
+	<Tracking:IqSentAt></Tracking:IqSentAt>
+      
     </Tracking:ISOResponseTrackingType>
   </xsl:template>
 </xsl:stylesheet>

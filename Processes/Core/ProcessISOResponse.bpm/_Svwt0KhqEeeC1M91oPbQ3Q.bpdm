@@ -233,21 +233,7 @@
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>bpel:doXslTransform("../../XSLT/AppendIsoCaseToISoResponse.xslt", $load_scored_isoLoad_scored_isoResponse2Msg.parameters, "isoresponse", $ISOResponseTrackingType)</bpel:from>
-                                <bpel:to>$ISOResponseTrackingType</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="791193326" targetPath="$ISOResponseTrackingType" targetedBy="1692951994-arg4"></mapper:vertice>
-  <mapper:vertice id="1692951994" dimension="126x24" location="480,96">
-    <mapper:value>bpel:doXslTransform()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="467063956" dimension="253x24" location="312,24" targetedBy="1692951994-arg0">
-    <mapper:value>"../../XSLT/AppendIsoCaseToISoResponse.xslt"</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1281289828" sourcePath="$load_scored_isoLoad_scored_isoResponse2Msg.parameters" targetedBy="1692951994-arg1"></mapper:vertice>
-  <mapper:vertice id="731281102" dimension="80x24" location="290,131" targetedBy="1692951994-arg2">
-    <mapper:value>"isoresponse"</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1499131188" sourcePath="$ISOResponseTrackingType" targetedBy="1692951994-arg3"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$ISOResponseTrackingType</bpel:to><mapper:mapperLink><mapper:vertice id="791193326" targetPath="$ISOResponseTrackingType" targetedBy="1692951994-arg4"></mapper:vertice><mapper:vertice id="1692951994" dimension="126x24" location="480,96"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="467063956" dimension="253x24" location="312,24" targetedBy="1692951994-arg0"><mapper:value>"../../XSLT/AppendIsoCaseToISoResponse.xslt"</mapper:value></mapper:vertice><mapper:vertice id="1281289828" sourcePath="$load_scored_isoLoad_scored_isoResponse2Msg.parameters" targetedBy="1692951994-arg1"></mapper:vertice><mapper:vertice id="731281102" dimension="80x24" location="290,131" targetedBy="1692951994-arg2"><mapper:value>"isoresponse"</mapper:value></mapper:vertice><mapper:vertice id="1499131188" sourcePath="$ISOResponseTrackingType" targetedBy="1692951994-arg3"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>
@@ -255,11 +241,57 @@
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>ode:get-property-value("RETRIEVED_PREVIOUS_SCORE")</bpel:from>
-                                <bpel:to>$LoggingType/Tracking:StepId</bpel:to><mapper:mapperLink><mapper:vertice id="86166083" targetPath="$LoggingType/Tracking:StepId" targetedBy="1954639222-arg1"></mapper:vertice><mapper:vertice id="1954639222" dimension="139x24" location="600,192"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1217358061" dimension="174x24" location="372,192" targetedBy="1954639222-arg0"><mapper:value>"RETRIEVED_PREVIOUS_SCORE"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                <bpel:to>$LoggingType/Tracking:StepId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1797839428" targetPath="$LoggingType/Tracking:StepId" targetedBy="992568946-arg1"></mapper:vertice>
+  <mapper:vertice id="992568946" dimension="139x24" location="600,48">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="853599782" dimension="174x24" location="372,48" targetedBy="992568946-arg0">
+    <mapper:value>"RETRIEVED_PREVIOUS_SCORE"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>ode:get-property-value("RETRIEVED_PREVIOUS_SCORE_DESCRIPTION")</bpel:from>
-                                <bpel:to>$LoggingType/Tracking:Description</bpel:to><mapper:mapperLink><mapper:vertice id="254881127" targetPath="$LoggingType/Tracking:Description" targetedBy="1393132500-arg1"></mapper:vertice><mapper:vertice id="1393132500" dimension="139x24" location="600,228"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="747035509" dimension="252x24" location="300,228" targetedBy="1393132500-arg0"><mapper:value>"RETRIEVED_PREVIOUS_SCORE_DESCRIPTION"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                <bpel:to>$LoggingType/Tracking:Description</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="664175884" targetPath="$LoggingType/Tracking:Description" targetedBy="800991787-arg1"></mapper:vertice>
+  <mapper:vertice id="800991787" dimension="139x24" location="600,84">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="598429700" dimension="252x24" location="300,84" targetedBy="800991787-arg0">
+    <mapper:value>"RETRIEVED_PREVIOUS_SCORE_DESCRIPTION"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>true()</bpel:from>
+                                <bpel:to>$ISOResponseTrackingType/Tracking:IsoResponseReceived</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1331422740" targetPath="$ISOResponseTrackingType/Tracking:IsoResponseReceived" targetedBy="1187405316-arg0"></mapper:vertice>
+  <mapper:vertice id="1187405316" dimension="79x24" location="456,168">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>""</bpel:from>
+                                <bpel:to>$ISOResponseTrackingType/Tracking:PreviousScoreRetrievedAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="443887555" targetPath="$ISOResponseTrackingType/Tracking:PreviousScoreRetrievedAt" targetedBy="1265141860-arg0"></mapper:vertice>
+  <mapper:vertice id="1265141860" dimension="78x24" location="455,211">
+    <mapper:value>""</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$ode:pid</bpel:from>
+                                <bpel:to>$ISOResponseTrackingType/Tracking:Pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="734942169" targetPath="$ISOResponseTrackingType/Tracking:Pid" targetedBy="1359395832-arg0"></mapper:vertice>
+  <mapper:vertice id="1359395832" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>
@@ -332,11 +364,39 @@
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("SENT_ISO_RESPONSE")</bpel:from>
-                                        <bpel:to>$LoggingType/Tracking:StepId</bpel:to><mapper:mapperLink><mapper:vertice id="911959802" targetPath="$LoggingType/Tracking:StepId" targetedBy="1751666320-arg1"></mapper:vertice><mapper:vertice id="1751666320" dimension="139x24" location="444,132"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="168716046" dimension="130x24" location="192,132" targetedBy="1751666320-arg0"><mapper:value>"SENT_ISO_RESPONSE"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                        <bpel:to>$LoggingType/Tracking:StepId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1683148319" targetPath="$LoggingType/Tracking:StepId" targetedBy="1206399165-arg1"></mapper:vertice>
+  <mapper:vertice id="1206399165" dimension="139x24" location="444,60">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1880762373" dimension="130x24" location="192,60" targetedBy="1206399165-arg0">
+    <mapper:value>"SENT_ISO_RESPONSE"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("SENT_ISO_RESPONSE_DESCRIPTION")</bpel:from>
-                                        <bpel:to>$LoggingType/Tracking:Description</bpel:to><mapper:mapperLink><mapper:vertice id="803099617" targetPath="$LoggingType/Tracking:Description" targetedBy="1134254195-arg1"></mapper:vertice><mapper:vertice id="1134254195" dimension="139x24" location="444,156"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="360180891" dimension="208x24" location="192,156" targetedBy="1134254195-arg0"><mapper:value>"SENT_ISO_RESPONSE_DESCRIPTION"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                        <bpel:to>$LoggingType/Tracking:Description</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="956343630" targetPath="$LoggingType/Tracking:Description" targetedBy="1188098020-arg1"></mapper:vertice>
+  <mapper:vertice id="1188098020" dimension="139x24" location="444,84">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="950362754" dimension="208x24" location="192,84" targetedBy="1188098020-arg0">
+    <mapper:value>"SENT_ISO_RESPONSE_DESCRIPTION"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>true()</bpel:from>
+                                        <bpel:to>$ISOResponseTrackingType/Tracking:IsoResponseSent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1961704420" targetPath="$ISOResponseTrackingType/Tracking:IsoResponseSent" targetedBy="1297259456-arg0"></mapper:vertice>
+  <mapper:vertice id="1297259456" dimension="79x24" location="480,192">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
@@ -344,29 +404,15 @@
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>$LoggingType</bpel:from>
-                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="652256273" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging" targetedBy="795461880-arg0"></mapper:vertice>
-  <mapper:vertice id="795461880" sourcePath="$LoggingType"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging</bpel:to><mapper:mapperLink><mapper:vertice id="652256273" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging" targetedBy="795461880-arg0"></mapper:vertice><mapper:vertice id="795461880" sourcePath="$LoggingType"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$ISOResponseTrackingType</bpel:from>
-                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:IsoResponse</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1448484000" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:IsoResponse" targetedBy="491415665-arg0"></mapper:vertice>
-  <mapper:vertice id="491415665" sourcePath="$ISOResponseTrackingType"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:IsoResponse</bpel:to><mapper:mapperLink><mapper:vertice id="1448484000" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:IsoResponse" targetedBy="491415665-arg0"></mapper:vertice><mapper:vertice id="491415665" sourcePath="$ISOResponseTrackingType"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>"isoResponse"</bpel:from>
-                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:type</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="938879279" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:type" targetedBy="2004204969-arg0"></mapper:vertice>
-  <mapper:vertice id="2004204969" dimension="83x24" location="482,69">
-    <mapper:value>"isoResponse"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:type</bpel:to><mapper:mapperLink><mapper:vertice id="938879279" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:type" targetedBy="2004204969-arg0"></mapper:vertice><mapper:vertice id="2004204969" dimension="83x24" location="482,69"><mapper:value>"isoResponse"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="logging-Log_and_TrackReceive_Log3Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging-Log_and_Track:Receive_LogRequest" bpdm:binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_NIa94MQhEeeCeKutDTEvdwOutgoing"></bpdm:linkset>
