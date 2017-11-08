@@ -20,7 +20,7 @@
 	xmlns:ISO_Response_ManagerimplicitPartner="http://bpms.everteam.com/Processes/Core/ProcessISOResponse/ISO_Response_ManagerimplicitPartner"
 	xmlns:tns="http://everteam.com/xvar/example" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:ax213="http://isoscoringaction.rules.launchpointprocess/xsd"
-	xmlsn:Tracking="http://www.example.org/Tracking">
+	xmlns:Tracking="http://www.example.org/Tracking">
   <!--XSL Skeleton generated on Sun Oct 15 04:41:37 EDT 2017
  for F/LaunchPointProcess/Processes/Core/ProcessISOResponse.bpm
    pool:ISO Response Manager
