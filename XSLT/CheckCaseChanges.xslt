@@ -23,5 +23,8 @@ xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:ns="http://caseiden
   	<xsl:element name="Launchpoint:statusChanged">
   		<xsl:value-of select="$status != checkCaseExistance:status" />
   	</xsl:element>
+  	<xsl:element name="Launchpoint:hasChanges">
+  		<xsl:value-of select="($status != checkCaseExistance:status) or ($score != checkCaseExistance:score)" />
+  	</xsl:element>
   </xsl:template>  
 </xsl:stylesheet>
