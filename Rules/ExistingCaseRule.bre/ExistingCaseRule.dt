@@ -8,8 +8,13 @@
   <decisionheader expression="Existing.type" returntype="String" nodetype="Condition"/>
   <decisionheader expression="Current.type" returntype="String" nodetype="Condition"/>
   <decisionheader expression="Existing.status" returntype="String" nodetype="Condition"/>
-  <decisionheader expression="Decision.iso = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="Record.score" returntype="Integer" nodetype="Condition"/>
+  <decisionheader expression="Existing.returnMail" returntype="Boolean" nodetype="Condition"/>
   <decisionheader expression="Decision.drop = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="Decision.iso = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="Decision.activity = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="Decision.activityDesc = {value}" returntype="String" nodetype="Action"/>
+  <decisionheader expression="Decision.activityText = {value}" returntype="String" nodetype="Action"/>
   <decisionheader expression="Effective Date" returntype="Date" nodetype="Options"/>
   <decisionheader expression="Expiration Date" returntype="Date" nodetype="Options"/>
   <decisionheader expression="Salience" returntype="Integer" nodetype="Options"/>
@@ -19,28 +24,67 @@
       <decisionnode expression="== &quot;IQ&quot;" headerid="1">
         <decisionnode expression="== &quot;ISO&quot;" headerid="2">
           <decisionnode expression="== &quot;ResponseReceived&quot;" headerid="3">
-            <decisionnode expression="false" headerid="4">
-              <decisionnode expression="true" headerid="5">
-                <optionnode expression="" headerid="6">
-                  <optionnode expression="" headerid="7">
-                    <optionnode expression="0" headerid="8">
-                      <optionnode expression="" headerid="9"/>
-                    </optionnode>
-                  </optionnode>
-                </optionnode>
+            <decisionnode expression=">= 40" headerid="4">
+              <decisionnode expression="== false" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="false" headerid="7">
+                    <decisionnode expression="false" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="&quot;&quot;" headerid="10">
+                          <optionnode expression="" headerid="11">
+                            <optionnode expression="" headerid="12">
+                              <optionnode expression="0" headerid="13">
+                                <optionnode expression="" headerid="14"/>
+                              </optionnode>
+                            </optionnode>
+                          </optionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+              <decisionnode expression="== true" headerid="5">
+                <decisionnode expression="false" headerid="6">
+                  <decisionnode expression="true" headerid="7">
+                    <decisionnode expression="false" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="&quot;&quot;" headerid="10">
+                          <optionnode expression="" headerid="11">
+                            <optionnode expression="" headerid="12">
+                              <optionnode expression="0" headerid="13">
+                                <optionnode expression="" headerid="14"/>
+                              </optionnode>
+                            </optionnode>
+                          </optionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
               </decisionnode>
             </decisionnode>
           </decisionnode>
           <decisionnode expression="!= &quot;ResponseReceived&quot;" headerid="3">
-            <decisionnode expression="true" headerid="4">
-              <decisionnode expression="false" headerid="5">
-                <optionnode expression="" headerid="6">
-                  <optionnode expression="" headerid="7">
-                    <optionnode expression="0" headerid="8">
-                      <optionnode expression="" headerid="9"/>
-                    </optionnode>
-                  </optionnode>
-                </optionnode>
+            <decisionnode expression=">= 40" headerid="4">
+              <decisionnode expression="== *" headerid="5">
+                <decisionnode expression="false" headerid="6">
+                  <decisionnode expression="true" headerid="7">
+                    <decisionnode expression="true" headerid="8">
+                      <decisionnode expression="&quot;IQ on hold&quot;" headerid="9">
+                        <decisionnode expression="&quot;ISO Submitted. IQ on hold&quot;" headerid="10">
+                          <optionnode expression="" headerid="11">
+                            <optionnode expression="" headerid="12">
+                              <optionnode expression="0" headerid="13">
+                                <optionnode expression="" headerid="14"/>
+                              </optionnode>
+                            </optionnode>
+                          </optionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
               </decisionnode>
             </decisionnode>
           </decisionnode>
@@ -51,28 +95,48 @@
       <decisionnode expression="== &quot;IQ&quot;" headerid="1">
         <decisionnode expression="== &quot;ISO&quot;" headerid="2">
           <decisionnode expression="== &quot;ResponseReceived&quot;" headerid="3">
-            <decisionnode expression="false" headerid="4">
-              <decisionnode expression="true" headerid="5">
-                <optionnode expression="" headerid="6">
-                  <optionnode expression="" headerid="7">
-                    <optionnode expression="0" headerid="8">
-                      <optionnode expression="" headerid="9"/>
-                    </optionnode>
-                  </optionnode>
-                </optionnode>
+            <decisionnode expression="== *" headerid="4">
+              <decisionnode expression="== *" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="false" headerid="7">
+                    <decisionnode expression="false" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="&quot;&quot;" headerid="10">
+                          <optionnode expression="" headerid="11">
+                            <optionnode expression="" headerid="12">
+                              <optionnode expression="0" headerid="13">
+                                <optionnode expression="" headerid="14"/>
+                              </optionnode>
+                            </optionnode>
+                          </optionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
               </decisionnode>
             </decisionnode>
           </decisionnode>
           <decisionnode expression="!= &quot;ResponseReceived&quot;" headerid="3">
-            <decisionnode expression="true" headerid="4">
-              <decisionnode expression="false" headerid="5">
-                <optionnode expression="" headerid="6">
-                  <optionnode expression="" headerid="7">
-                    <optionnode expression="0" headerid="8">
-                      <optionnode expression="" headerid="9"/>
-                    </optionnode>
-                  </optionnode>
-                </optionnode>
+            <decisionnode expression="== *" headerid="4">
+              <decisionnode expression="== *" headerid="5">
+                <decisionnode expression="false" headerid="6">
+                  <decisionnode expression="true" headerid="7">
+                    <decisionnode expression="false" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="&quot;&quot;" headerid="10">
+                          <optionnode expression="" headerid="11">
+                            <optionnode expression="" headerid="12">
+                              <optionnode expression="0" headerid="13">
+                                <optionnode expression="" headerid="14"/>
+                              </optionnode>
+                            </optionnode>
+                          </optionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
               </decisionnode>
             </decisionnode>
           </decisionnode>
