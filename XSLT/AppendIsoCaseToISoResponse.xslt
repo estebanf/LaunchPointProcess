@@ -28,20 +28,13 @@
  Complete doXslTransform: bpel:doXslTransform("../../XSLT/AppendIsoCaseToISoResponse.xslt", $load_scored_isoLoad_scored_isoResponse2Msg.parameters, "isoresponse", $ISOResponseCanonical)
  Input document as defined in the mapper: $load_scored_isoLoad_scored_isoResponse2Msg.parameters-->
   <xsl:output/>
-  <xsl:param name="isoresponse"></xsl:param>
+  <xsl:param name="isoresponse" select="/.."></xsl:param>
   <xsl:template match="/load_scored_iso:load_scored_isoResultSet">
-  	<xsl:variable name="doc">
-  		<xsl:copy-of select="$isoresponse" />
+  	<xsl:variable name="doc" select="$isoresponse/.">
   	</xsl:variable>
   	
-  	<xsl:comment>Got here</xsl:comment>
-  	<xsl:comment><xsl:copy-of select="$doc"/></xsl:comment>
-  	<xsl:comment><xsl:copy-of select="$isoresponse"/></xsl:comment>
-  	
-  	<!-- /Tracking:ISOResponseTrackingType/Tracking:Pid -->
-  	
     <Tracking:ISOResponseTrackingType>
-      <Tracking:Pid><xsl:value-of select="$isoresponse/Pid"/></Tracking:Pid>
+      <Tracking:Pid><xsl:value-of select="$doc/Tracking:Pid"/></Tracking:Pid>
       <Tracking:RequestId><xsl:value-of select="$doc/Tracking:RequestId" /></Tracking:RequestId>
       <Tracking:CaseId><xsl:value-of select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:caseid"/></Tracking:CaseId>
       <Tracking:ClientId><xsl:value-of select="load_scored_iso:rows/load_scored_iso:row[1]/load_scored_iso:clientid"/></Tracking:ClientId>
@@ -63,11 +56,11 @@
       
       <Tracking:PreviousScore><xsl:value-of select="$previousScore"/></Tracking:PreviousScore>
       <Tracking:Content>
-        <xsl:copy-of select="$doc/Tracking:ISOResponseTrackingType/Tracking:content/ClaimInvestigationAddRs" />
+        <xsl:copy-of select="$doc/Tracking:Content/ClaimInvestigationAddRs" />
       </Tracking:Content>
       <Tracking:Status></Tracking:Status>
 	<Tracking:Score></Tracking:Score>
-	<Tracking:IsoResponseReceived></Tracking:IsoResponseReceived>
+	<Tracking:IsoResponseReceived><xsl:value-of select="$doc/Tracking:IsoResponseReceived" /></Tracking:IsoResponseReceived>
 	<Tracking:PreviousScoreRetrieved></Tracking:PreviousScoreRetrieved>
 	<Tracking:IsoResponseSent></Tracking:IsoResponseSent>
 	<Tracking:ScoreReceived></Tracking:ScoreReceived>
@@ -79,7 +72,7 @@
 	<Tracking:ExceptionCreated></Tracking:ExceptionCreated>
 	<Tracking:CaseReopened></Tracking:CaseReopened>
 	<Tracking:IqSent></Tracking:IqSent>
-	<Tracking:IsoResponseReceivedAt></Tracking:IsoResponseReceivedAt>
+	<Tracking:IsoResponseReceivedAt><xsl:value-of select="$doc/Tracking:IsoResponseReceivedAt" /></Tracking:IsoResponseReceivedAt>
 	<Tracking:PreviousScoreRetrievedAt></Tracking:PreviousScoreRetrievedAt>
 	<Tracking:IsoResponseSentAt></Tracking:IsoResponseSentAt>
 	<Tracking:ScoreReceivedAt></Tracking:ScoreReceivedAt>
