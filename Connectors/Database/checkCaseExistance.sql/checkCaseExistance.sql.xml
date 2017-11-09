@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jdbc:descriptor wsdlLocation="check_duplicates.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:check_duplicatesservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
-    <jdbc:service name="check_duplicatesService">
-        <jdbc:operation name="urn:check_duplicates" sqlStatement="select * from isotracking where caseid=? and isosent is not null order by modifiedat desc limit 1;" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:check_duplicatesservice">
+<jdbc:descriptor wsdlLocation="checkCaseExistance.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:checkcaseexistanceservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
+    <jdbc:service name="checkCaseExistanceService">
+        <jdbc:operation name="urn:checkCaseExistance" sqlStatement="select caseid,casetype,isoindicator,score,accidentdate,benefitamount,fundingsource,lob,state,workcomp,casestatus,casesource from casetracking where caseid=?;" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:checkcaseexistanceservice">
             <jdbc:input>
                 <jdbc:parameter>
                     <jdbc:mode>1</jdbc:mode>
@@ -12,6 +12,7 @@
                     <jdbc:precision>15</jdbc:precision>
                     <jdbc:scale>2</jdbc:scale>
                     <jdbc:nullable>false</jdbc:nullable>
+                    <jdbc:value>0</jdbc:value>
                     <jdbc:index>0</jdbc:index>
                 </jdbc:parameter>
             </jdbc:input>
@@ -21,7 +22,7 @@
             <jdbc:output/>
         </jdbc:operation>
         <jdbc:port>
-            <jdbc:address location="http://bpms.everteam.us:8080/everteam/ode/processes/check_duplicatesService"/>
+            <jdbc:address location="http://bpms.everteam.us:8080/everteam/ode/processes/checkCaseExistanceService"/>
         </jdbc:port>
         <jdbc:connection jndiName="java:comp/env/jdbc/BAMDB">
             <jdbc:databaseProductName>Generic JDBC</jdbc:databaseProductName>
@@ -30,7 +31,7 @@
             <jdbc:databaseUrl>jdbc:postgresql://bpms.everteam.us:5432/bamdb</jdbc:databaseUrl>
             <jdbc:databaseName>BAMDB</jdbc:databaseName>
             <jdbc:userName>bam</jdbc:userName>
-            <jdbc:password>decrypt[YPzTsHsSawPrZSpwTs2l8XbRuYnfBRtD]</jdbc:password>
+            <jdbc:password>decrypt[dM29qatu9wET3oQHbdogPL3HfWH1mIEN]</jdbc:password>
         </jdbc:connection>
     </jdbc:service>
 </jdbc:descriptor>

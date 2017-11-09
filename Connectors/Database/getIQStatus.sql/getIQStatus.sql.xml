@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jdbc:descriptor wsdlLocation="getIQStatus.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:getiqstatusservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
+    <jdbc:service name="getIQStatusService">
+        <jdbc:operation name="urn:getIQStatus" sqlStatement="select 
+	casetracking.caseid,
+	case 
+		when (iqtracking.iqenqueued is null) or  (iqtracking.iqenqueued = false) THEN 'Processing'
+		when iqtracking.iqenqueued = true then
+			case 
+				when (iqtracking.iqsent is null) or (iqtracking.iqsent = false) THEN 'Waiting'
+				when iqtracking.iqsent = true then
+					case
+						when (iqtracking.iqresponsereceived is null) or (iqtracking.iqresponsereceived = false) then 'Sent'
+						when (iqtracking.iqresponsereceived = true) then 'ResponseReceived'
+					end
+			end
+		end as Status
+from 
+	casetracking 
+	inner join iqtracking on (casetracking.caseid = iqtracking.caseid)
+where
+	casetracking.casetype='IQ' and casetracking.caseid = ?" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:getiqstatusservice">
+            <jdbc:input>
+                <jdbc:parameter>
+                    <jdbc:mode>1</jdbc:mode>
+                    <jdbc:name>casetracking.caseid</jdbc:name>
+                    <jdbc:type>20</jdbc:type>
+                    <jdbc:length>0</jdbc:length>
+                    <jdbc:typeName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <jdbc:precision>15</jdbc:precision>
+                    <jdbc:scale>2</jdbc:scale>
+                    <jdbc:nullable>false</jdbc:nullable>
+                    <jdbc:value>0</jdbc:value>
+                    <jdbc:index>0</jdbc:index>
+                </jdbc:parameter>
+            </jdbc:input>
+            <jdbc:filter rowsToSendService="1" rowsToFetch="-1" duration="-PT1S">
+                <jdbc:unique scope="none"/>
+            </jdbc:filter>
+            <jdbc:output/>
+        </jdbc:operation>
+        <jdbc:port>
+            <jdbc:address location="http://bpms.everteam.us:8080/everteam/ode/processes/getIQStatusService"/>
+        </jdbc:port>
+        <jdbc:connection jndiName="java:comp/env/jdbc/BAMDB">
+            <jdbc:databaseProductName>Generic JDBC</jdbc:databaseProductName>
+            <jdbc:databaseProductVersion>1.0</jdbc:databaseProductVersion>
+            <jdbc:driverClass>org.postgresql.Driver</jdbc:driverClass>
+            <jdbc:databaseUrl>jdbc:postgresql://bpms.everteam.us:5432/bamdb</jdbc:databaseUrl>
+            <jdbc:databaseName>BAMDB</jdbc:databaseName>
+            <jdbc:userName>bam</jdbc:userName>
+            <jdbc:password>decrypt[/UtcndEhw2XdPw3IsP+c3KNcaCoGa16g]</jdbc:password>
+        </jdbc:connection>
+    </jdbc:service>
+</jdbc:descriptor>

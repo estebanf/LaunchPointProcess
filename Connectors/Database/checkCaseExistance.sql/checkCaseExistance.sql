@@ -1,0 +1,1 @@
+select caseid,casetype,isoindicator,score,accidentdate,benefitamount,fundingsource,lob,state,workcomp,casestatus,casesource from casetracking where caseid=?;

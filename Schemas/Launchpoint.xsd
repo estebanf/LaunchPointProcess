@@ -193,7 +193,8 @@
 
     <complexType name="CaseDiscriminationDecisionType">
     	<sequence>
-    		<element name="drop" type="boolean"></element>
+            <element name="ignore" type="boolean"></element>
+            <element name="drop" type="boolean"></element>
     		<element name="IQ" type="boolean"></element>
     		<element name="ISO" type="boolean"></element>
     		<element name="closeCase" type="boolean"></element>
@@ -212,4 +213,18 @@
     		<element name="Case" type="tns:CaseType"></element>
     	</sequence>
     </complexType>
+
+    <complexType name="CaseChangesTrackerType">
+    	<sequence>
+    		<element name="scoreChanged" type="boolean"></element>
+    		<element name="statusChanged" type="boolean"></element>
+    		<element name="previousQualification" type="string"></element>
+    		<element name="currentQualification" type="string"></element>
+            <element name="previousStatus" type="string"></element>
+        </sequence>
+    </complexType>
+    
+    <element name="CaseChangesTracker"
+    	type="tns:CaseChangesTrackerType">
+    </element>
 </schema>

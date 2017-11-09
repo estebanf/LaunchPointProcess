@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jdbc:descriptor wsdlLocation="check_duplicates.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:check_duplicatesservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
-    <jdbc:service name="check_duplicatesService">
-        <jdbc:operation name="urn:check_duplicates" sqlStatement="select * from isotracking where caseid=? and isosent is not null order by modifiedat desc limit 1;" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:check_duplicatesservice">
+<jdbc:descriptor wsdlLocation="getISOStatus.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:getisostatusservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
+    <jdbc:service name="getISOStatusService">
+        <jdbc:operation name="urn:getISOStatus" sqlStatement="select 
+	casetracking.caseid,
+	case 
+		when (isotracking.isosent is null)or (isotracking.isosent = false) then 'WAITING'
+		else 'SENT'
+	end as ISOStatus
+from 
+	casetracking 
+	inner join isotracking on (casetracking.caseid = isotracking.caseid)
+where 
+	casetracking.casetype = 'ISO' and
+	casetracking.caseid = ?" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:getisostatusservice">
             <jdbc:input>
                 <jdbc:parameter>
                     <jdbc:mode>1</jdbc:mode>
-                    <jdbc:name>caseid</jdbc:name>
+                    <jdbc:name>casetracking.caseid</jdbc:name>
                     <jdbc:type>20</jdbc:type>
                     <jdbc:length>0</jdbc:length>
                     <jdbc:typeName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
                     <jdbc:precision>15</jdbc:precision>
                     <jdbc:scale>2</jdbc:scale>
                     <jdbc:nullable>false</jdbc:nullable>
+                    <jdbc:value>0</jdbc:value>
                     <jdbc:index>0</jdbc:index>
                 </jdbc:parameter>
             </jdbc:input>
@@ -21,7 +33,7 @@
             <jdbc:output/>
         </jdbc:operation>
         <jdbc:port>
-            <jdbc:address location="http://bpms.everteam.us:8080/everteam/ode/processes/check_duplicatesService"/>
+            <jdbc:address location="http://bpms.everteam.us:8080/everteam/ode/processes/getISOStatusService"/>
         </jdbc:port>
         <jdbc:connection jndiName="java:comp/env/jdbc/BAMDB">
             <jdbc:databaseProductName>Generic JDBC</jdbc:databaseProductName>
@@ -30,7 +42,7 @@
             <jdbc:databaseUrl>jdbc:postgresql://bpms.everteam.us:5432/bamdb</jdbc:databaseUrl>
             <jdbc:databaseName>BAMDB</jdbc:databaseName>
             <jdbc:userName>bam</jdbc:userName>
-            <jdbc:password>decrypt[YPzTsHsSawPrZSpwTs2l8XbRuYnfBRtD]</jdbc:password>
+            <jdbc:password>decrypt[dRIYQEXLAelbNdejhqnxkg8vQtrMA837]</jdbc:password>
         </jdbc:connection>
     </jdbc:service>
 </jdbc:descriptor>
