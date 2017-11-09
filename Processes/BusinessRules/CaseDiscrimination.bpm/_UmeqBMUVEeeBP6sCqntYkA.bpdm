@@ -1,0 +1,165 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:processimplicitPartner="http://thisdiagram/processimplicitPartner" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:ns="http://caseidentificationrule.rules.launchpointprocess" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax286="http://caseidentificationrule.rules.launchpointprocess/bre" xmlns:Case_Management="http://thisdiagram/Case_Management" xmlns:ax285="http://caseidentificationrule.rules.launchpointprocess/xsd" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_Yd_HEMUVEeeBP6sCqntYkA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/processimplicitPartner" bpdm:prefix="processimplicitPartner" bpdm:comment="contrib=&apos;partner-pool:///_UmeqBMUVEeeBP6sCqntYkAimplicitPartner"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://caseidentificationrule.rules.launchpointprocess" bpdm:prefix="ns" bpdm:comment="contrib=&apos;project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://caseidentificationrule.rules.launchpointprocess/bre" bpdm:prefix="ax286" bpdm:comment="contrib=&apos;project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Case_Management" bpdm:prefix="Case_Management" bpdm:comment="contrib=&apos;partner-pool:///_Yd_HEMUVEeeBP6sCqntYkA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://caseidentificationrule.rules.launchpointprocess/xsd" bpdm:prefix="ax285" bpdm:comment="contrib=&apos;project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <wsdl:portType name="ForCase_Management">
+                <wsdl:operation name="Receive_case" bpdm:source="partner-pool:///_Yd_HEMUVEeeBP6sCqntYkA">
+                    <wsdl:input message="this:Receive_caseRequest" name="Receive_case"/>
+                    <wsdl:output message="this:Receive_caseResponse" name="Receive_caseResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForCase_Management" type="this:ForCase_Management" bpdm:isSynchronized="true"/>
+            <xs:element name="Receive_caseRequest" type="Launchpoint:BatchCaseType" bpdm:source="partner-pool:///_Yd_HEMUVEeeBP6sCqntYkA"/>
+            <wsdl:message name="Receive_caseRequest" bpdm:source="partner-pool:///_Yd_HEMUVEeeBP6sCqntYkA">
+                <wsdl:part name="body" element="this:Receive_caseRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_caseResponse" type="Launchpoint:CaseDiscriminationDecisionType" bpdm:source="partner-pool:///_Yd_HEMUVEeeBP6sCqntYkA"/>
+            <wsdl:message name="Receive_caseResponse" bpdm:source="partner-pool:///_Yd_HEMUVEeeBP6sCqntYkA">
+                <wsdl:part name="body" element="this:Receive_caseResponse"/>
+            </wsdl:message>
+        </bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_Yd_HEMUVEeeBP6sCqntYkA" bpdm:label="Case Management"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_UmeqBMUVEeeBP6sCqntYkAimplicitPartner" bpdm:label="processimplicitPartner"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="process" bpdm:ID="_UmeqBMUVEeeBP6sCqntYkA">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="case_ManagementAndProcessPlkVar" partnerLinkType="diag:Case_ManagementAndProcess" myRole="process_for_Case_Management" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForCase_Management" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/Case_Management" bpdm:providedIsDefault="true" bpdm:clientTasks="_UmeqBMUVEeeBP6sCqntYkA:_fb1qAMUVEeeBP6sCqntYkA, _UmeqBMUVEeeBP6sCqntYkA:_a7bH8MUXEeeBP6sCqntYkA" bpdm:isManaged="true" bpdm:otherPoolId="_Yd_HEMUVEeeBP6sCqntYkA"/>
+            <bpel:partnerLink name="processimplicitPartnerAndProcessForPortDtws_launchpointprocess_rules_caseidentificationruleHttpSoap11EndpointPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForPortDtws_launchpointprocess_rules_caseidentificationruleHttpSoap11EndpointPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="ns:dtws_launchpointprocess_rules_caseidentificationrule" bpdm:invokedPort="dtws_launchpointprocess_rules_caseidentificationruleHttpSoap11Endpoint" bpdm:invokedSOAPAddress="http://localhost:8080/everteam/ode/processes/dtws_launchpointprocess_rules_caseidentificationrule" bpdm:invokedIsDefault="true" bpdm:clientTasks="_UmeqBMUVEeeBP6sCqntYkA:_-soMZsUVEeeBP6sCqntYkA" bpdm:isManaged="true" bpdm:otherPoolId="_UmeqBMUVEeeBP6sCqntYkAimplicitPartner"/>
+        </bpel:partnerLinks>
+        <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
+            <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_U0epwcUVEeeBP6sCqntYkA" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_U0epwcUVEeeBP6sCqntYkA"/>
+            <bpel:variable name="thisReceive_caseRequest2Msg" messageType="this:Receive_caseRequest" bpdm:id="_fckp0MUVEeeBP6sCqntYkA" bpdm:messageIds="inc:_fb-M4MUVEeeBP6sCqntYkA"/>
+            <bpel:variable name="nsInvokeDecisionTableResponse1Msg" messageType="ns:invokeDecisionTableResponse" binding="ns:dtws_launchpointprocess_rules_caseidentificationruleSoap11Binding" operation="invokeDecisionTable" opMsgType="1" bpdm:messageIds="inc:_-soMZsUVEeeBP6sCqntYkAIncoming"/>
+            <bpel:variable name="nsInvokeDecisionTableRequest1Msg" messageType="ns:invokeDecisionTableRequest" binding="ns:dtws_launchpointprocess_rules_caseidentificationruleSoap11Binding" operation="invokeDecisionTable" opMsgType="0" bpdm:messageIds=" out:_-soMZsUVEeeBP6sCqntYkAOutgoing">
+                <bpel:from bpdm:toPart="parameters">
+                    <bpel:literal bpdm:linkedMessageType="ns:invokeDecisionTableRequest" bpdm:linkedPart="parameters" bpdm:binding="ns:dtws_launchpointprocess_rules_caseidentificationruleSoap11Binding" bpdm:opMsgType="0" bpdm:operation="invokeDecisionTable"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="thisReceive_caseResponse1Msg" messageType="this:Receive_caseResponse" bpdm:id="_byi9MMUXEeeBP6sCqntYkA" bpdm:messageIds=" out:_byPbMMUXEeeBP6sCqntYkA">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="this:Receive_caseResponse" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask eventType="start: message" operation="Receive_case" partnerLink="case_ManagementAndProcessPlkVar" portType="this:ForCase_Management" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive case" bpdm:ID="_fb1qAMUVEeeBP6sCqntYkA" bpdm:isHeaderAuthorizationAware="yes">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_caseRequest2Msg" bpdm:msgVarScopeId="_UmeqBMUVEeeBP6sCqntYkA" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_caseRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_fb-M4MUVEeeBP6sCqntYkA"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="invokeDecisionTable" partnerLink="processimplicitPartnerAndProcessForPortDtws_launchpointprocess_rules_caseidentificationruleHttpSoap11EndpointPlkVar" portType="ns:dtws_launchpointprocess_rules_caseidentificationrulePortType" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="CaseIdentificationRule" bpdm:ID="_-soMZsUVEeeBP6sCqntYkA" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>true()</bpel:from>
+                        <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:newCase</bpel:to><mapper:mapperLink><mapper:vertice id="2027998824" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:newCase" targetedBy="366987645-arg0"></mapper:vertice><mapper:vertice id="366987645" dimension="79x24" location="263,196"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisReceive_caseRequest2Msg.body/Launchpoint:ClientId</bpel:from>
+                        <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:clientId</bpel:to><mapper:mapperLink><mapper:vertice id="1713007327" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:clientId" targetedBy="2084460177-arg0"></mapper:vertice><mapper:vertice id="2084460177" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:ClientId"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:ISOIndicator</bpel:from>
+                        <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:iso1Indicator</bpel:to><mapper:mapperLink><mapper:vertice id="1539812589" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:iso1Indicator" targetedBy="423481594-arg0"></mapper:vertice><mapper:vertice id="423481594" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:ISOIndicator"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:Score</bpel:from>
+                        <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:score</bpel:to><mapper:mapperLink><mapper:vertice id="1140028291" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:score" targetedBy="1198780751-arg0"></mapper:vertice><mapper:vertice id="1198780751" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:Score"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:BenefitAmount</bpel:from>
+                        <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:amount</bpel:to><mapper:mapperLink><mapper:vertice id="253233476" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:amount" targetedBy="1465377071-arg0"></mapper:vertice><mapper:vertice id="1465377071" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:BenefitAmount"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:FundingSource</bpel:from>
+                        <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:fundingSource</bpel:to><mapper:mapperLink><mapper:vertice id="471959943" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:fundingSource" targetedBy="737778804-arg0"></mapper:vertice><mapper:vertice id="737778804" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:FundingSource"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:LOB</bpel:from>
+                        <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:lob</bpel:to><mapper:mapperLink><mapper:vertice id="1373621360" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:lob" targetedBy="1626334437-arg0"></mapper:vertice><mapper:vertice id="1626334437" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:LOB"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:CaseStatus</bpel:from>
+                        <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:status</bpel:to><mapper:mapperLink><mapper:vertice id="989504089" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:status" targetedBy="363491861-arg0"></mapper:vertice><mapper:vertice id="363491861" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:CaseStatus"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:CaseSource</bpel:from>
+                        <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:source</bpel:to><mapper:mapperLink><mapper:vertice id="739699280" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax285:record/ax286:source" targetedBy="1688876688-arg0"></mapper:vertice><mapper:vertice id="1688876688" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:CaseSource"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="nsInvokeDecisionTableRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:invokeDecisionTableRequest" bpdm:binding="ns:dtws_launchpointprocess_rules_caseidentificationruleSoap11Binding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_-soMZsUVEeeBP6sCqntYkAOutgoing"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="nsInvokeDecisionTableResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:invokeDecisionTableResponse" bpdm:binding="ns:dtws_launchpointprocess_rules_caseidentificationruleSoap11Binding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_-soMZsUVEeeBP6sCqntYkAIncoming"></bpdm:linkset>
+                <bpdm:thrownFault msgFaultNcName="Exception" msgFaultTypeQname="ns:Exception"/>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask eventType="end: message" operation="Receive_case" partnerLink="case_ManagementAndProcessPlkVar" portType="this:ForCase_Management" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Reply" bpdm:ID="_a7bH8MUXEeeBP6sCqntYkA" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax285:decision/ax286:drop</bpel:from>
+                        <bpel:to>$thisReceive_caseResponse1Msg.body/Launchpoint:drop</bpel:to><mapper:mapperLink><mapper:vertice id="553259897" targetPath="$thisReceive_caseResponse1Msg.body/Launchpoint:drop" targetedBy="1870866050-arg0"></mapper:vertice><mapper:vertice id="1870866050" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax285:decision/ax286:drop"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax285:decision/ax286:iq</bpel:from>
+                        <bpel:to>$thisReceive_caseResponse1Msg.body/Launchpoint:IQ</bpel:to><mapper:mapperLink><mapper:vertice id="1424211099" targetPath="$thisReceive_caseResponse1Msg.body/Launchpoint:IQ" targetedBy="1585333668-arg0"></mapper:vertice><mapper:vertice id="1585333668" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax285:decision/ax286:iq"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax285:decision/ax286:iso</bpel:from>
+                        <bpel:to>$thisReceive_caseResponse1Msg.body/Launchpoint:ISO</bpel:to><mapper:mapperLink><mapper:vertice id="416131050" targetPath="$thisReceive_caseResponse1Msg.body/Launchpoint:ISO" targetedBy="1727951837-arg0"></mapper:vertice><mapper:vertice id="1727951837" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax285:decision/ax286:iso"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax285:decision/ax286:closeCase</bpel:from>
+                        <bpel:to>$thisReceive_caseResponse1Msg.body/Launchpoint:closeCase</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1346702226" targetPath="$thisReceive_caseResponse1Msg.body/Launchpoint:closeCase" targetedBy="1229569451-arg0"></mapper:vertice>
+  <mapper:vertice id="1229569451" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax285:decision/ax286:closeCase"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax285:decision/ax286:closeCaseStatus</bpel:from>
+                        <bpel:to>$thisReceive_caseResponse1Msg.body/Launchpoint:closeCaseStatus</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="6634337" targetPath="$thisReceive_caseResponse1Msg.body/Launchpoint:closeCaseStatus" targetedBy="1182350232-arg0"></mapper:vertice>
+  <mapper:vertice id="1182350232" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax285:decision/ax286:closeCaseStatus"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax285:decision/ax286:updateLifecycle</bpel:from>
+                        <bpel:to>$thisReceive_caseResponse1Msg.body/Launchpoint:updateLifecycle</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1492573730" targetPath="$thisReceive_caseResponse1Msg.body/Launchpoint:updateLifecycle" targetedBy="1688088707-arg0"></mapper:vertice>
+  <mapper:vertice id="1688088707" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax285:decision/ax286:updateLifecycle"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax285:decision/ax286:updateLifecycleDes</bpel:from>
+                        <bpel:to>$thisReceive_caseResponse1Msg.body/Launchpoint:updateLifecycleDesc</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="2042152826" targetPath="$thisReceive_caseResponse1Msg.body/Launchpoint:updateLifecycleDesc" targetedBy="1525763817-arg0"></mapper:vertice>
+  <mapper:vertice id="1525763817" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax285:decision/ax286:updateLifecycleDes"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax285:decision/ax286:closeCaseReason</bpel:from>
+                        <bpel:to>$thisReceive_caseResponse1Msg.body/Launchpoint:closeCaseReason</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1960730830" targetPath="$thisReceive_caseResponse1Msg.body/Launchpoint:closeCaseReason" targetedBy="1638366686-arg0"></mapper:vertice>
+  <mapper:vertice id="1638366686" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax285:decision/ax286:closeCaseReason"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_caseResponse1Msg" bpdm:msgVarScopeId="_UmeqBMUVEeeBP6sCqntYkA" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_caseResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_byPbMMUXEeeBP6sCqntYkA"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>
