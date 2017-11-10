@@ -38,14 +38,14 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_Yd_HEMUVEeeBP6sCqntYkA" bpdm:label="Case Management"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_UmeqBMUVEeeBP6sCqntYkAimplicitPartner" bpdm:label="processimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/checkCaseExistance.sql/checkCaseExistance.sql.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/checkCaseExistance.sql/checkCaseExistance.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Rules/ExistingCaseRule.bre/dtws_launchpointprocess_rules_existingcaserule/META-INF/dtws_launchpointprocess_rules_existingcaserule.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getIQStatus.sql/getIQStatus.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getIQStatus.sql/getIQStatus.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getISOStatus.sql/getISOStatus.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getISOStatus.sql/getISOStatus.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Rules/ExistingCaseRule.bre/dtws_launchpointprocess_rules_existingcaserule/META-INF/dtws_launchpointprocess_rules_existingcaserule.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/checkCaseExistance.sql/checkCaseExistance.sql.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/checkCaseExistance.sql/checkCaseExistance.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
     </bpdm:dependencies>
@@ -146,17 +146,7 @@
                     <bpdm:gateway bpdm:label="Case changed" bpdm:ID="_YkKhYMUyEeeBP6sCqntYkA" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                         <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_ZysKAMUyEeeBP6sCqntYkA" bpdm:targetDisplayName="default"></bpdm:linkset>
                         <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_eXfx-cUyEeeBP6sCqntYkA" bpdm:targetDisplayName="[Case changed - Signal evaluate business rules]">
-                            <bpel:condition>true() = $CaseChangesTracker/Launchpoint:hasChanges
-<mapper:mapperLink>
-  <mapper:vertice id="1862356474" targetPath="$condition" targetedBy="769090523-arg1"></mapper:vertice>
-  <mapper:vertice id="769090523" dimension="79x24" location="453,117">
-    <mapper:value>=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="480622535" dimension="79x24" location="288,84" targetedBy="769090523-arg0">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="233079826" sourcePath="$CaseChangesTracker/Launchpoint:hasChanges" targetedBy="769090523-arg2"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                            <bpel:condition>true() = $CaseChangesTracker/Launchpoint:hasChanges<mapper:mapperLink><mapper:vertice id="1862356474" targetPath="$condition" targetedBy="769090523-arg1"></mapper:vertice><mapper:vertice id="769090523" dimension="79x24" location="453,117"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="480622535" dimension="79x24" location="288,84" targetedBy="769090523-arg0"><mapper:value>true()</mapper:value></mapper:vertice><mapper:vertice id="233079826" sourcePath="$CaseChangesTracker/Launchpoint:hasChanges" targetedBy="769090523-arg2"></mapper:vertice></mapper:mapperLink></bpel:condition>
                         </bpdm:linkset>
                         <bpel:sequence>
                             <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Reply ignore" bpdm:ID="_2ojGkMUoEeeBP6sCqntYkA" bpdm:isHeaderAuthorizationAware="no">

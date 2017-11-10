@@ -1,0 +1,56 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:IQ_Processing="http://thisdiagram/IQ_Processing" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_eDUfkMYgEeeAtomsGYjH3A"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/IQ_Processing" bpdm:prefix="IQ_Processing" bpdm:comment="contrib=&apos;partner-pool:///_eDUfkMYgEeeAtomsGYjH3A"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <wsdl:portType name="ForIQ_Processing">
+                <wsdl:operation name="Receive_case" bpdm:source="partner-pool:///_eDUfkMYgEeeAtomsGYjH3A">
+                    <wsdl:input message="this:Receive_caseRequest" name="Receive_case"/>
+                    <wsdl:output message="this:Receive_caseResponse" name="Receive_caseResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForIQ_Processing" type="this:ForIQ_Processing" bpdm:isSynchronized="true"/>
+            <xs:element name="Receive_caseRequest" type="Launchpoint:IQRuleInputType" bpdm:source="partner-pool:///_eDUfkMYgEeeAtomsGYjH3A"/>
+            <wsdl:message name="Receive_caseRequest" bpdm:source="partner-pool:///_eDUfkMYgEeeAtomsGYjH3A">
+                <wsdl:part name="body" element="this:Receive_caseRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_caseResponse" type="Launchpoint:IQRuleOutputType" bpdm:source="partner-pool:///_eDUfkMYgEeeAtomsGYjH3A"/>
+            <wsdl:message name="Receive_caseResponse" bpdm:source="partner-pool:///_eDUfkMYgEeeAtomsGYjH3A">
+                <wsdl:part name="body" element="this:Receive_caseResponse"/>
+            </wsdl:message>
+        </bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_eDUfkMYgEeeAtomsGYjH3A" bpdm:label="IQ Processing"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="process" bpdm:ID="_CYwdAMYgEeeAtomsGYjH3A">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="iQ_ProcessingAndProcessPlkVar" partnerLinkType="diag:IQ_ProcessingAndProcess" myRole="process_for_IQ_Processing" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForIQ_Processing" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/IQ_Processing" bpdm:providedIsDefault="true" bpdm:clientTasks="_CYwdAMYgEeeAtomsGYjH3A:_YeaIsMYkEeeAtomsGYjH3A, _CYwdAMYgEeeAtomsGYjH3A:_V--R0MYkEeeAtomsGYjH3A" bpdm:isManaged="true" bpdm:otherPoolId="_eDUfkMYgEeeAtomsGYjH3A"/>
+        </bpel:partnerLinks>
+        <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
+            <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_ellfJsYgEeeAtomsGYjH3A" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_ellfJsYgEeeAtomsGYjH3A"/>
+            <bpel:variable name="thisReceive_caseRequest1Msg" messageType="this:Receive_caseRequest" bpdm:id="_bIlP8MYkEeeAtomsGYjH3A" bpdm:messageIds="inc:_bIIkAMYkEeeAtomsGYjH3A"/>
+            <bpel:variable name="thisReceive_caseResponse2Msg" messageType="this:Receive_caseResponse" bpdm:id="_cP9uwMYkEeeAtomsGYjH3A" bpdm:messageIds=" out:_cPz9wMYkEeeAtomsGYjH3A">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="this:Receive_caseResponse" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask eventType="start: message" operation="Receive_case" partnerLink="iQ_ProcessingAndProcessPlkVar" portType="this:ForIQ_Processing" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive case" bpdm:ID="_V--R0MYkEeeAtomsGYjH3A" bpdm:isHeaderAuthorizationAware="yes">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_caseRequest1Msg" bpdm:msgVarScopeId="_CYwdAMYgEeeAtomsGYjH3A" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_caseRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_bIIkAMYkEeeAtomsGYjH3A"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Rule" bpdm:ID="_XbNmUMYkEeeAtomsGYjH3A" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+            <bpdm:messagingtask eventType="end: message" operation="Receive_case" partnerLink="iQ_ProcessingAndProcessPlkVar" portType="this:ForIQ_Processing" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Reply" bpdm:ID="_YeaIsMYkEeeAtomsGYjH3A" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_caseResponse2Msg" bpdm:msgVarScopeId="_CYwdAMYgEeeAtomsGYjH3A" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_caseResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_cPz9wMYkEeeAtomsGYjH3A"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>

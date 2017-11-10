@@ -1,13 +1,13 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ProcessISOResponse="http://thisdiagram/ProcessISOResponse" xmlns:this="http://thisdiagram/ISO_Scoring_Business_rule" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/ISO_Scoring_Business_rule">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:tns="http://everteam.com/xvar/example" xmlns:this="http://thisdiagram/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ProcessISOResponse="http://thisdiagram/ProcessISOResponse" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_XDf7AMFwEeexiLYNQOqruQ"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/ProcessISOResponse" bpdm:prefix="ProcessISOResponse" bpdm:comment="contrib=&apos;partner-pool:///_XDf7AMFwEeexiLYNQOqruQ"></bpdm:namespaceDefinition>
-        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/ISO_Scoring_Business_rule" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
             <wsdl:portType name="ForProcessISOResponse">
                 <wsdl:operation name="Receive_Business_rule_request" bpdm:source="partner-pool:///_XDf7AMFwEeexiLYNQOqruQ">
@@ -16,11 +16,11 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForProcessISOResponse" type="this:ForProcessISOResponse" bpdm:isSynchronized="true"/>
-            <xs:element name="Receive_Business_rule_requestRequest" type="Launchpoint:ISOScoringType" bpdm:source="partner-pool:///_XDf7AMFwEeexiLYNQOqruQ"/>
+            <xs:element name="Receive_Business_rule_requestRequest" type="Launchpoint:ISORuleInputType" bpdm:source="partner-pool:///_XDf7AMFwEeexiLYNQOqruQ"/>
             <wsdl:message name="Receive_Business_rule_requestRequest" bpdm:source="partner-pool:///_XDf7AMFwEeexiLYNQOqruQ">
                 <wsdl:part name="body" element="this:Receive_Business_rule_requestRequest"/>
             </wsdl:message>
-            <xs:element name="Receive_Business_rule_requestResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_XDf7AMFwEeexiLYNQOqruQ"/>
+            <xs:element name="Receive_Business_rule_requestResponse" type="Launchpoint:ISORuleOutputType" bpdm:source="partner-pool:///_XDf7AMFwEeexiLYNQOqruQ"/>
             <wsdl:message name="Receive_Business_rule_requestResponse" bpdm:source="partner-pool:///_XDf7AMFwEeexiLYNQOqruQ">
                 <wsdl:part name="body" element="this:Receive_Business_rule_requestResponse"/>
             </wsdl:message>
@@ -30,9 +30,9 @@
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
     </bpdm:dependencies>
-    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="ISO Scoring Business rule" bpdm:ID="_kwIqIMFwEeexiLYNQOqruQ">
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="process" bpdm:ID="_kwIqIMFwEeexiLYNQOqruQ">
         <bpel:partnerLinks>
-            <bpel:partnerLink name="iSO_Scoring_Business_ruleAndProcessISOResponsePlkVar" partnerLinkType="diag:ISO_Scoring_Business_ruleAndProcessISOResponse" myRole="ISO_Scoring_Business_rule_for_ProcessISOResponse" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForProcessISOResponse" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/ISO_Scoring_Business_rule/ProcessISOResponse" bpdm:providedIsDefault="true" bpdm:clientTasks="_kwIqIMFwEeexiLYNQOqruQ:_pHFcQMFwEeexiLYNQOqruQ" bpdm:isManaged="true" bpdm:otherPoolId="_XDf7AMFwEeexiLYNQOqruQ"/>
+            <bpel:partnerLink name="processAndProcessISOResponsePlkVar" partnerLinkType="diag:processAndProcessISOResponse" myRole="process_for_ProcessISOResponse" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForProcessISOResponse" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/ProcessISOResponse" bpdm:providedIsDefault="true" bpdm:clientTasks="_kwIqIMFwEeexiLYNQOqruQ:_AplBkMYkEeeAtomsGYjH3A, _kwIqIMFwEeexiLYNQOqruQ:_pHFcQMFwEeexiLYNQOqruQ" bpdm:isManaged="true" bpdm:otherPoolId="_XDf7AMFwEeexiLYNQOqruQ"/>
         </bpel:partnerLinks>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
             <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_kwa-BsFwEeexiLYNQOqruQ" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_kwa-BsFwEeexiLYNQOqruQ"/>
@@ -44,11 +44,13 @@
             </bpel:variable>
         </bpel:variables>
         <bpel:sequence>
-            <bpdm:messagingtask eventType="start: message" operation="Receive_Business_rule_request" partnerLink="iSO_Scoring_Business_ruleAndProcessISOResponsePlkVar" portType="this:ForProcessISOResponse" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive Business rule request" bpdm:ID="_pHFcQMFwEeexiLYNQOqruQ" bpdm:isHeaderAuthorizationAware="yes">
+            <bpdm:messagingtask eventType="start: message" operation="Receive_Business_rule_request" partnerLink="processAndProcessISOResponsePlkVar" portType="this:ForProcessISOResponse" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive Business rule request" bpdm:ID="_pHFcQMFwEeexiLYNQOqruQ" bpdm:isHeaderAuthorizationAware="yes">
                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_Business_rule_requestRequest2Msg" bpdm:msgVarScopeId="_kwIqIMFwEeexiLYNQOqruQ" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_Business_rule_requestRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_pHOmMMFwEeexiLYNQOqruQ"></bpdm:linkset>
-                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_Business_rule_requestResponse2Msg" bpdm:msgVarScopeId="_kwIqIMFwEeexiLYNQOqruQ" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_Business_rule_requestResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_qvFU0MFwEeexiLYNQOqruQ"></bpdm:linkset>
             </bpdm:messagingtask>
             <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get Case Extra data" bpdm:ID="_OyZyEMFxEeexiLYNQOqruQ" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+            <bpdm:messagingtask eventType="end: message" operation="Receive_Business_rule_request" partnerLink="processAndProcessISOResponsePlkVar" portType="this:ForProcessISOResponse" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Reply" bpdm:ID="_AplBkMYkEeeAtomsGYjH3A" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_Business_rule_requestResponse2Msg" bpdm:msgVarScopeId="_kwIqIMFwEeexiLYNQOqruQ" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_Business_rule_requestResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_qvFU0MFwEeexiLYNQOqruQ"></bpdm:linkset>
+            </bpdm:messagingtask>
         </bpel:sequence>
     </bpel:scope>
 </bpel:process>
