@@ -56,14 +56,6 @@
             <wsdl:message name="Receive_IQ_ResponseResponse" bpdm:source="partner-pool:///_HpYswMWqEeeln8BfPiHQNA">
                 <wsdl:part name="body" element="this:Receive_IQ_ResponseResponse"/>
             </wsdl:message>
-            <xs:element name="Receive_IQRequest" type="Launchpoint:IQCaseType" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
-            <wsdl:message name="Receive_IQRequest" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
-                <wsdl:part name="body" element="this:Receive_IQRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_IQResponse" type="xs:string" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
-            <wsdl:message name="Receive_IQResponse" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
-                <wsdl:part name="body" element="this:Receive_IQResponse"/>
-            </wsdl:message>
             <xs:element name="Hold_IQRequest" type="xs:string" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
             <wsdl:message name="Hold_IQRequest" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
                 <wsdl:part name="body" element="this:Hold_IQRequest"/>
@@ -72,6 +64,14 @@
             <wsdl:message name="Hold_IQResponse" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
                 <wsdl:part name="body" element="this:Hold_IQResponse"/>
             </wsdl:message>
+            <xs:element name="Receive_IQRequest" type="Launchpoint:IQCaseType" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
+            <wsdl:message name="Receive_IQRequest" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
+                <wsdl:part name="body" element="this:Receive_IQRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_IQResponse" type="xs:string" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
+            <wsdl:message name="Receive_IQResponse" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
+                <wsdl:part name="body" element="this:Receive_IQResponse"/>
+            </wsdl:message>
         </bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_vbqkgMWpEeeln8BfPiHQNA" bpdm:label="IQ Queue manager"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_HpYswMWqEeeln8BfPiHQNA" bpdm:label="IQ Response monitor"/>
@@ -79,8 +79,8 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_xRG1oLwFEee_aqBavMEZDgimplicitPartner" bpdm:label="Process IQ CaseimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Tracking.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/BusinessRules/IQProcessingRules-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/Logging-Log_and_Track.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/BusinessRules/IQProcessingRules-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
     </bpdm:dependencies>
@@ -124,40 +124,19 @@
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$ode:pid</bpel:from>
-                        <bpel:to>$LoggingType/Tracking:pid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1452011775" targetPath="$LoggingType/Tracking:pid" targetedBy="2118844645-arg0"></mapper:vertice>
-  <mapper:vertice id="2118844645" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$LoggingType/Tracking:pid</bpel:to><mapper:mapperLink><mapper:vertice id="1452011775" targetPath="$LoggingType/Tracking:pid" targetedBy="2118844645-arg0"></mapper:vertice><mapper:vertice id="2118844645" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>$thisEventStartMessageRequest1.body/Launchpoint:BatchId</bpel:from>
-                        <bpel:to>$LoggingType/Tracking:BatchId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2146629598" targetPath="$LoggingType/Tracking:BatchId" targetedBy="1514158327-arg0"></mapper:vertice>
-  <mapper:vertice id="1514158327" sourcePath="$thisEventStartMessageRequest1.body/Launchpoint:BatchId"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$LoggingType/Tracking:BatchId</bpel:to><mapper:mapperLink><mapper:vertice id="2146629598" targetPath="$LoggingType/Tracking:BatchId" targetedBy="1514158327-arg0"></mapper:vertice><mapper:vertice id="1514158327" sourcePath="$thisEventStartMessageRequest1.body/Launchpoint:BatchId"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>$thisEventStartMessageRequest1.body/Launchpoint:CaseId</bpel:from>
-                        <bpel:to>$LoggingType/Tracking:CaseId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="274565346" targetPath="$LoggingType/Tracking:CaseId" targetedBy="439032570-arg0"></mapper:vertice>
-  <mapper:vertice id="439032570" sourcePath="$thisEventStartMessageRequest1.body/Launchpoint:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$LoggingType/Tracking:CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="274565346" targetPath="$LoggingType/Tracking:CaseId" targetedBy="439032570-arg0"></mapper:vertice><mapper:vertice id="439032570" sourcePath="$thisEventStartMessageRequest1.body/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>ode:get-property-value("LOG_LEVEL_INFO")</bpel:from>
-                        <bpel:to>$LoggingType/Tracking:LogType</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="408302027" targetPath="$LoggingType/Tracking:LogType" targetedBy="2121442454-arg1"></mapper:vertice>
-  <mapper:vertice id="2121442454" dimension="139x24" location="588,36">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1636540895" dimension="109x24" location="408,36" targetedBy="2121442454-arg0">
-    <mapper:value>"LOG_LEVEL_INFO"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$LoggingType/Tracking:LogType</bpel:to><mapper:mapperLink><mapper:vertice id="408302027" targetPath="$LoggingType/Tracking:LogType" targetedBy="2121442454-arg1"></mapper:vertice><mapper:vertice id="2121442454" dimension="139x24" location="588,36"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1636540895" dimension="109x24" location="408,36" targetedBy="2121442454-arg0"><mapper:value>"LOG_LEVEL_INFO"</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisEventStartMessageResponse1" bpdm:msgVarScopeId="_xRG1oLwFEee_aqBavMEZDg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_IQResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_IHSjMLwGEee_aqBavMEZDg"></bpdm:linkset>
@@ -166,102 +145,43 @@
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>ode:get-property-value("LOG_LEVEL_INFO")</bpel:from>
-                        <bpel:to>$LoggingType/Tracking:LogType</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="353182815" targetPath="$LoggingType/Tracking:LogType" targetedBy="220170537-arg1"></mapper:vertice>
-  <mapper:vertice id="220170537" dimension="139x24" location="480,300">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1752226188" dimension="109x24" location="300,300" targetedBy="220170537-arg0">
-    <mapper:value>"LOG_LEVEL_INFO"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$LoggingType/Tracking:LogType</bpel:to><mapper:mapperLink><mapper:vertice id="353182815" targetPath="$LoggingType/Tracking:LogType" targetedBy="220170537-arg1"></mapper:vertice><mapper:vertice id="220170537" dimension="139x24" location="480,300"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1752226188" dimension="109x24" location="300,300" targetedBy="220170537-arg0"><mapper:value>"LOG_LEVEL_INFO"</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>ode:get-property-value("RECEIVED_IQ")</bpel:from>
-                        <bpel:to>$LoggingType/Tracking:StepId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="38801301" targetPath="$LoggingType/Tracking:StepId" targetedBy="1170197859-arg1"></mapper:vertice>
-  <mapper:vertice id="1170197859" dimension="139x24" location="480,252">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1721396928" dimension="86x24" location="300,252" targetedBy="1170197859-arg0">
-    <mapper:value>"RECEIVED_IQ"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$LoggingType/Tracking:StepId</bpel:to><mapper:mapperLink><mapper:vertice id="38801301" targetPath="$LoggingType/Tracking:StepId" targetedBy="1170197859-arg1"></mapper:vertice><mapper:vertice id="1170197859" dimension="139x24" location="480,252"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1721396928" dimension="86x24" location="300,252" targetedBy="1170197859-arg0"><mapper:value>"RECEIVED_IQ"</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>ode:get-property-value("RECEIVED_IQ_DESCRIPTION")</bpel:from>
-                        <bpel:to>$LoggingType/Tracking:Description</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="317448214" targetPath="$LoggingType/Tracking:Description" targetedBy="2085184007-arg1"></mapper:vertice>
-  <mapper:vertice id="2085184007" dimension="139x24" location="480,348">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="876187928" dimension="164x24" location="300,348" targetedBy="2085184007-arg0">
-    <mapper:value>"RECEIVED_IQ_DESCRIPTION"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$LoggingType/Tracking:Description</bpel:to><mapper:mapperLink><mapper:vertice id="317448214" targetPath="$LoggingType/Tracking:Description" targetedBy="2085184007-arg1"></mapper:vertice><mapper:vertice id="2085184007" dimension="139x24" location="480,348"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="876187928" dimension="164x24" location="300,348" targetedBy="2085184007-arg0"><mapper:value>"RECEIVED_IQ_DESCRIPTION"</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>$thisEventStartMessageRequest1.body/Launchpoint:BatchId</bpel:from>
-                        <bpel:to>$LoggingType/Tracking:BatchId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1371633606" targetPath="$LoggingType/Tracking:BatchId" targetedBy="124806653-arg0"></mapper:vertice>
-  <mapper:vertice id="124806653" sourcePath="$thisEventStartMessageRequest1.body/Launchpoint:BatchId"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$LoggingType/Tracking:BatchId</bpel:to><mapper:mapperLink><mapper:vertice id="1371633606" targetPath="$LoggingType/Tracking:BatchId" targetedBy="124806653-arg0"></mapper:vertice><mapper:vertice id="124806653" sourcePath="$thisEventStartMessageRequest1.body/Launchpoint:BatchId"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>$thisEventStartMessageRequest1.body/Launchpoint:CaseId</bpel:from>
-                        <bpel:to>$LoggingType/Tracking:CaseId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1586725529" targetPath="$LoggingType/Tracking:CaseId" targetedBy="1573849266-arg0"></mapper:vertice>
-  <mapper:vertice id="1573849266" sourcePath="$thisEventStartMessageRequest1.body/Launchpoint:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$LoggingType/Tracking:CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="1586725529" targetPath="$LoggingType/Tracking:CaseId" targetedBy="1573849266-arg0"></mapper:vertice><mapper:vertice id="1573849266" sourcePath="$thisEventStartMessageRequest1.body/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>$ode:pid</bpel:from>
-                        <bpel:to>$LoggingType/Tracking:pid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="910189698" targetPath="$LoggingType/Tracking:pid" targetedBy="1982890616-arg0"></mapper:vertice>
-  <mapper:vertice id="1982890616" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$LoggingType/Tracking:pid</bpel:to><mapper:mapperLink><mapper:vertice id="910189698" targetPath="$LoggingType/Tracking:pid" targetedBy="1982890616-arg0"></mapper:vertice><mapper:vertice id="1982890616" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>$ode:pid</bpel:from>
-                        <bpel:to>$IQTrackingType/Tracking:Pid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2086480652" targetPath="$IQTrackingType/Tracking:Pid" targetedBy="847070010-arg0"></mapper:vertice>
-  <mapper:vertice id="847070010" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$IQTrackingType/Tracking:Pid</bpel:to><mapper:mapperLink><mapper:vertice id="2086480652" targetPath="$IQTrackingType/Tracking:Pid" targetedBy="847070010-arg0"></mapper:vertice><mapper:vertice id="847070010" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>$thisEventStartMessageRequest1.body/Launchpoint:CaseId</bpel:from>
-                        <bpel:to>$IQTrackingType/Tracking:CaseId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="365885261" targetPath="$IQTrackingType/Tracking:CaseId" targetedBy="1695448724-arg0"></mapper:vertice>
-  <mapper:vertice id="1695448724" sourcePath="$thisEventStartMessageRequest1.body/Launchpoint:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$IQTrackingType/Tracking:CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="365885261" targetPath="$IQTrackingType/Tracking:CaseId" targetedBy="1695448724-arg0"></mapper:vertice><mapper:vertice id="1695448724" sourcePath="$thisEventStartMessageRequest1.body/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>true()</bpel:from>
-                        <bpel:to>$IQTrackingType/Tracking:IQReceived</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1688626577" targetPath="$IQTrackingType/Tracking:IQReceived" targetedBy="296450260-arg0"></mapper:vertice>
-  <mapper:vertice id="296450260" dimension="79x24" location="541,135">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$IQTrackingType/Tracking:IQReceived</bpel:to><mapper:mapperLink><mapper:vertice id="1688626577" targetPath="$IQTrackingType/Tracking:IQReceived" targetedBy="296450260-arg0"></mapper:vertice><mapper:vertice id="296450260" dimension="79x24" location="541,135"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>current-dateTime()</bpel:from>
-                        <bpel:to>$IQTrackingType/Tracking:IQReceivedAt</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="144960374" targetPath="$IQTrackingType/Tracking:IQReceivedAt" targetedBy="212992180-arg0"></mapper:vertice>
-  <mapper:vertice id="212992180" dimension="109x24" location="540,168">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$IQTrackingType/Tracking:IQReceivedAt</bpel:to><mapper:mapperLink><mapper:vertice id="144960374" targetPath="$IQTrackingType/Tracking:IQReceivedAt" targetedBy="212992180-arg0"></mapper:vertice><mapper:vertice id="212992180" dimension="109x24" location="540,168"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
             </bpdm:messagingtask>
@@ -269,29 +189,15 @@
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>"iq"</bpel:from>
-                        <bpel:to>$logging-Log_and_TrackReceive_Log1Msg.body/Tracking:type</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="63249167" targetPath="$logging-Log_and_TrackReceive_Log1Msg.body/Tracking:type" targetedBy="1424751605-arg0"></mapper:vertice>
-  <mapper:vertice id="1424751605" dimension="79x24" location="456,36">
-    <mapper:value>"iq"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$logging-Log_and_TrackReceive_Log1Msg.body/Tracking:type</bpel:to><mapper:mapperLink><mapper:vertice id="63249167" targetPath="$logging-Log_and_TrackReceive_Log1Msg.body/Tracking:type" targetedBy="1424751605-arg0"></mapper:vertice><mapper:vertice id="1424751605" dimension="79x24" location="456,36"><mapper:value>"iq"</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>$LoggingType</bpel:from>
-                        <bpel:to>$logging-Log_and_TrackReceive_Log1Msg.body/Tracking:Logging</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1301349917" targetPath="$logging-Log_and_TrackReceive_Log1Msg.body/Tracking:Logging" targetedBy="1547501425-arg0"></mapper:vertice>
-  <mapper:vertice id="1547501425" sourcePath="$LoggingType"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$logging-Log_and_TrackReceive_Log1Msg.body/Tracking:Logging</bpel:to><mapper:mapperLink><mapper:vertice id="1301349917" targetPath="$logging-Log_and_TrackReceive_Log1Msg.body/Tracking:Logging" targetedBy="1547501425-arg0"></mapper:vertice><mapper:vertice id="1547501425" sourcePath="$LoggingType"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>$IQTrackingType</bpel:from>
-                        <bpel:to>$logging-Log_and_TrackReceive_Log1Msg.body/Tracking:IQ</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1976187970" targetPath="$logging-Log_and_TrackReceive_Log1Msg.body/Tracking:IQ" targetedBy="1797709113-arg0"></mapper:vertice>
-  <mapper:vertice id="1797709113" sourcePath="$IQTrackingType"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$logging-Log_and_TrackReceive_Log1Msg.body/Tracking:IQ</bpel:to><mapper:mapperLink><mapper:vertice id="1976187970" targetPath="$logging-Log_and_TrackReceive_Log1Msg.body/Tracking:IQ" targetedBy="1797709113-arg0"></mapper:vertice><mapper:vertice id="1797709113" sourcePath="$IQTrackingType"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="logging-Log_and_TrackReceive_Log1Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging-Log_and_Track:Receive_LogRequest" bpdm:binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_ZmLP8MZOEeeHyoPVok3Y1QOutgoing"></bpdm:linkset>
