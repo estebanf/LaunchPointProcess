@@ -41,7 +41,11 @@
 			<element name="IsoRequest"
 				type="tns:ISORequestTrackingType">
 			</element>
-			<element name="IsoResponse" type="tns:ISOResponseTrackingType"></element>
+			<element name="IsoResponse"
+				type="tns:ISOResponseTrackingType">
+			</element>
+			<element name="IQ" type="tns:IQTrackingType"></element>
+			<element name="IQLetter" type="tns:IQLetterTrackingType"></element>
 		</sequence>
 	</complexType>
 
@@ -138,6 +142,33 @@
 			<element name="IqSentAt" type="dateTime"></element>
 
 
+		</sequence>
+	</complexType>
+
+	<complexType name="IQTrackingType">
+		<sequence>
+			<element name="Pid" type="int"></element>
+			<element name="CaseId" type="int"></element>
+			<element name="IQReceived" type="boolean"></element>
+			<element name="IQHold" type="boolean"></element>
+			<element name="IQCompleted" type="boolean"></element>
+			<element name="IQReceivedAt" type="dateTime"></element>
+			<element name="IQHoldAt" type="dateTime"></element>
+			<element name="IQCompletedAt" type="dateTime"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="IQLetterTrackingType">
+		<sequence>
+			<element name="Pid" type="int"></element>
+			<element name="CaseId" type="int"></element>
+			<element name="IQEnqueued" type="boolean"></element>
+			<element name="IQSent" type="boolean"></element>
+			<element name="IQResponseReceived" type="boolean"></element>
+			<element name="IQResponse" type="string"></element>
+			<element name="IQEnqueuedAt" type="dateTime"></element>
+			<element name="IQSentAt" type="dateTime"></element>
+			<element name="IQResponseReceivedAt" type="dateTime"></element>
 		</sequence>
 	</complexType>
 </schema>
