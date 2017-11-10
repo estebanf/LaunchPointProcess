@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/IQ" xmlns:tns="http://www.example.org/IQ" elementFormDefault="qualified">
+
+    <complexType name="IQsType">
+    	<sequence>
+    		<element name="IQs" type="tns:IQType"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="IQType"></complexType>
+
+    <complexType name="ActivityType">
+    	<sequence>
+    		<element name="ActivityType" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="ActivitiesType">
+    	<sequence>
+    		<element name="Activities" type="tns:ActivityType" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="Activities" type="tns:ActivitiesType"></element>
+
+    <element name="IQs" type="tns:IQsType"></element>
+
+    <element name="Activity" type="tns:ActivityType"></element>
+</schema>
