@@ -1,0 +1,64 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/IQ_Queue_manager" xmlns:Process_IQ_Case="http://thisdiagram/Process_IQ_Case" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/IQ_Queue_manager">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_xRG1oLwFEee_aqBavMEZDg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/IQ_Queue_manager" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Process_IQ_Case" bpdm:prefix="Process_IQ_Case" bpdm:comment="contrib=&apos;partner-pool:///_xRG1oLwFEee_aqBavMEZDg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <wsdl:portType name="ForProcess_IQ_Case">
+                <wsdl:operation name="Receive_IQ" bpdm:source="partner-pool:///_xRG1oLwFEee_aqBavMEZDg">
+                    <wsdl:input message="this:Receive_IQRequest" name="Receive_IQ"/>
+                    <wsdl:output message="this:Receive_IQResponse" name="Receive_IQResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForProcess_IQ_Case" type="this:ForProcess_IQ_Case" bpdm:isSynchronized="true"/>
+            <xs:element name="Receive_IQRequest" type="xs:string" bpdm:source="partner-pool:///_xRG1oLwFEee_aqBavMEZDg"/>
+            <wsdl:message name="Receive_IQRequest" bpdm:source="partner-pool:///_xRG1oLwFEee_aqBavMEZDg">
+                <wsdl:part name="body" element="this:Receive_IQRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_IQResponse" type="xs:string" bpdm:source="partner-pool:///_xRG1oLwFEee_aqBavMEZDg"/>
+            <wsdl:message name="Receive_IQResponse" bpdm:source="partner-pool:///_xRG1oLwFEee_aqBavMEZDg">
+                <wsdl:part name="body" element="this:Receive_IQResponse"/>
+            </wsdl:message>
+        </bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_xRG1oLwFEee_aqBavMEZDg" bpdm:label="Process IQ Case"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="IQ Queue manager" bpdm:ID="_vbqkgMWpEeeln8BfPiHQNA">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="process_IQ_CaseAndIQ_Queue_managerPlkVar" partnerLinkType="diag:Process_IQ_CaseAndIQ_Queue_manager" initializePartnerRole="yes" myRole="IQ_Queue_manager_for_Process_IQ_Case" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForProcess_IQ_Case" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/IQ_Queue_manager/Process_IQ_Case" bpdm:providedIsDefault="true" partnerRole="Process_IQ_Case_for_IQ_Queue_manager" bpdm:invokedService="Process_IQ_Case:CanonicServiceForIQ_Queue_manager" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_IQ_Case/IQ_Queue_manager" bpdm:invokedIsDefault="true" bpdm:clientTasks="_vbqkgMWpEeeln8BfPiHQNA:_ysuFkMWpEeeln8BfPiHQNA, _vbqkgMWpEeeln8BfPiHQNA:_3cQ94MWpEeeln8BfPiHQNA" bpdm:isManaged="true" bpdm:otherPoolId="_xRG1oLwFEee_aqBavMEZDg"/>
+        </bpel:partnerLinks>
+        <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
+            <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_vb9fdsWpEeeln8BfPiHQNA" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_vb9fdsWpEeeln8BfPiHQNA"/>
+            <bpel:variable name="thisReceive_IQRequest2Msg" messageType="this:Receive_IQRequest" bpdm:id="_ytndcMWpEeeln8BfPiHQNA" bpdm:messageIds="inc:_ys32kMWpEeeln8BfPiHQNA"/>
+            <bpel:variable name="thisReceive_IQResponse2Msg" messageType="this:Receive_IQResponse" bpdm:id="_zgSQhMWpEeeln8BfPiHQNA" bpdm:messageIds=" out:_zgIfgMWpEeeln8BfPiHQNA">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="this:Receive_IQResponse" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="process_IQ_CaseReceive_send_signalRequest2Msg" messageType="Process_IQ_Case:Receive_send_signalRequest" bpdm:id="_5m1_EMWpEeeln8BfPiHQNA" bpdm:messageIds=" out:_5ms1IMWpEeeln8BfPiHQNA">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="Process_IQ_Case:Receive_send_signalRequest" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="process_IQ_CaseReceive_send_signalResponse2Msg" messageType="Process_IQ_Case:Receive_send_signalResponse" bpdm:id="_7zzl4MWpEeeln8BfPiHQNA" bpdm:messageIds="inc:_7zNwAMWpEeeln8BfPiHQNA"/>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask eventType="start: message" operation="Receive_IQ" partnerLink="process_IQ_CaseAndIQ_Queue_managerPlkVar" portType="this:ForProcess_IQ_Case" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive IQ" bpdm:ID="_ysuFkMWpEeeln8BfPiHQNA" bpdm:isHeaderAuthorizationAware="yes">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_IQRequest2Msg" bpdm:msgVarScopeId="_vbqkgMWpEeeln8BfPiHQNA" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_IQRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_ys32kMWpEeeln8BfPiHQNA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_IQResponse2Msg" bpdm:msgVarScopeId="_vbqkgMWpEeeln8BfPiHQNA" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_IQResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_zgIfgMWpEeeln8BfPiHQNA"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask eventType="intermediate: timer" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Wait" bpdm:ID="_1U9TIMWpEeeln8BfPiHQNA" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="timer"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask eventType="end: message" operation="Receive_send_signal" partnerLink="process_IQ_CaseAndIQ_Queue_managerPlkVar" portType="Process_IQ_Case:ForIQ_Queue_manager" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_End_Event" bpdm:ID="_3cQ94MWpEeeln8BfPiHQNA" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="process_IQ_CaseReceive_send_signalRequest2Msg" bpdm:variableIsManaged="true" bpdm:messageType="Process_IQ_Case:Receive_send_signalRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_5ms1IMWpEeeln8BfPiHQNA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="process_IQ_CaseReceive_send_signalResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="Process_IQ_Case:Receive_send_signalResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_7zNwAMWpEeeln8BfPiHQNA"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>
