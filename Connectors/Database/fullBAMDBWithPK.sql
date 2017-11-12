@@ -90,8 +90,9 @@ create
 
 
 CREATE TABLE public.iqtracking (
-	pid int4 NOT NULL,
+	pid int4 NULL,
 	caseid int4 NULL,
+	parentid varchar(250) NULL,
 	iqreceived bool NULL,
 	iqreceivedat timestamp NULL,
 	iqhold varchar(250) NULL,
@@ -100,8 +101,7 @@ CREATE TABLE public.iqtracking (
 	iqcompletedat timestamp NULL,
 	createdat timestamp NULL,
 	modifiedat timestamp NULL,
-	pdid varchar(250) NULL,
-	CONSTRAINT iqtracking_pk PRIMARY KEY (pid)
+	pdid varchar(250) NULL
 )
 WITH (
 	OIDS=FALSE
@@ -170,7 +170,7 @@ CREATE TABLE public.isotracking (
 	isoduplicatefoundat timestamp NULL,
 	isodatafetchedat timestamp NULL,
 	isosentat timestamp NULL,
-	parentpid int4 NULL,
+	parentpid varchar(250) NULL,
 	pdid varchar(250) NULL,
 	createdat timestamp NULL,
 	modifiedat timestamp NULL,
@@ -217,4 +217,4 @@ CREATE OR REPLACE VIEW public."ISOCases" AS
     isotracking.isosentat
    FROM casetracking
      JOIN isotracking ON casetracking.caseid = isotracking.caseid
-  WHERE isotracking.parentpid = casetracking.pid AND casetracking.casetype::text = 'ISO'::text;
+  WHERE isotracking.parentpid = casetracking.pid::text AND casetracking.casetype::text = 'ISO'::text;
