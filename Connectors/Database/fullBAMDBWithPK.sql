@@ -1,10 +1,10 @@
-drop view public."ISOCases";
-drop table public.batchtracking;
-drop table public.casetracking;
-drop table public.iqlettertracking;
-drop table public.iqtracking;
-drop table public.isoresponsetracking;
-drop table public.isotracking;
+drop view IF EXISTS public."ISOCases";
+drop table IF EXISTS public.batchtracking;
+drop table IF EXISTS public.casetracking;
+drop table IF EXISTS public.iqlettertracking;
+drop table IF EXISTS public.iqtracking;
+drop table IF EXISTS public.isoresponsetracking;
+drop table IF EXISTS public.isotracking;
 
 CREATE TABLE public.batchtracking (
 	batchid int4 NOT NULL,
@@ -30,7 +30,7 @@ create
         using btree(batchid) ;
 
 CREATE TABLE public.casetracking (
-	pid int4 NOT NULL,
+	casetrackingid varchar(250) NOT NULL,
 	caseid int4 NULL,
 	isoindicator int4 NULL,
 	score int4 NULL,
@@ -48,10 +48,11 @@ CREATE TABLE public.casetracking (
 	caseidentified bool NULL,
 	casereceivedat timestamp NULL,
 	caseidentifiedat timestamp NULL,
+	pid int4 NULL,
 	pdid varchar(250) NULL,
 	createdat timestamp NULL,
 	modifiedat timestamp NULL,
-	CONSTRAINT casetracking_pk PRIMARY KEY (pid)
+	CONSTRAINT casetracking_pk PRIMARY KEY (casetrackingid)
 )
 WITH (
 	OIDS=FALSE
@@ -59,11 +60,13 @@ WITH (
 create
     index casetracking_keys on
     casetracking
-        using btree(pid) ;
+        using btree(casetrackingid) ;
+
 
 CREATE TABLE public.iqlettertracking (
-	pid int4 NOT NULL,
-	letternumber int4 NOT NULL,
+	iqlettertrackingid varchar(250) NOT NULL,
+	pid int4 NULL,
+	letternumber int4 NULL,
 	caseid varchar(250) NULL,
 	iqenqueued bool NULL,
 	iqenqueuedat varchar(250) NULL,
@@ -75,7 +78,7 @@ CREATE TABLE public.iqlettertracking (
 	ppid varchar(250) NULL,
 	createdat timestamp NULL,
 	modifiedat timestamp NULL,
-	CONSTRAINT iqlettertracking_pk PRIMARY KEY (pid,letternumber)
+	CONSTRAINT iqlettertracking_pk PRIMARY KEY (iqlettertrackingid)
 )
 WITH (
 	OIDS=FALSE
@@ -83,10 +86,8 @@ WITH (
 create
     index iqlettertracking_keys on
     iqlettertracking
-        using btree(
-        pid,
-        letternumber
-    ) ;
+        using btree(iqlettertrackingid) ;
+
 
 CREATE TABLE public.iqtracking (
 	pid int4 NOT NULL,
