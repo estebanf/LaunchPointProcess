@@ -11,6 +11,7 @@ xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:ns="http://caseiden
 		<xsl:element name="Launchpoint:previousQualification" />
 		<xsl:element name="Launchpoint:currentQualification" />
 		<xsl:element name="Launchpoint:previousStatus" />
+		<xsl:element name="Launchpoint:returnMail" />
 	</xsl:element>
   </xsl:template>
   <xsl:template match="checkCaseExistance:rows">

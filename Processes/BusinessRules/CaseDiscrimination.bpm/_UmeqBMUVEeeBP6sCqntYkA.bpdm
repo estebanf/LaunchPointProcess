@@ -39,13 +39,13 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_UmeqBMUVEeeBP6sCqntYkAimplicitPartner" bpdm:label="processimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getIQStatus.sql/getIQStatus.sql.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getIQStatus.sql/getIQStatus.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/checkCaseExistance.sql/checkCaseExistance.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/checkCaseExistance.sql/checkCaseExistance.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Rules/ExistingCaseRule.bre/dtws_launchpointprocess_rules_existingcaserule/META-INF/dtws_launchpointprocess_rules_existingcaserule.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getIQStatus.sql/getIQStatus.sql.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getIQStatus.sql/getIQStatus.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getISOStatus.sql/getISOStatus.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getISOStatus.sql/getISOStatus.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Rules/ExistingCaseRule.bre/dtws_launchpointprocess_rules_existingcaserule/META-INF/dtws_launchpointprocess_rules_existingcaserule.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
     </bpdm:dependencies>
@@ -246,7 +246,11 @@
                                         <bpdm:linkset bpdm:type="assignments">
                                             <bpel:copy>
                                                 <bpel:from>$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:CaseId</bpel:from>
-                                                <bpel:to>$getIQStatusGetIQStatusRequest1Msg.parameters/getIQStatus:execute/getIQStatus:parameters/getIQStatus:casetracking.caseid</bpel:to><mapper:mapperLink><mapper:vertice id="327607459" targetPath="$getIQStatusGetIQStatusRequest1Msg.parameters/getIQStatus:execute/getIQStatus:parameters/getIQStatus:casetracking.caseid" targetedBy="1675121697-arg0"></mapper:vertice><mapper:vertice id="1675121697" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
+                                                <bpel:to>$getIQStatusGetIQStatusRequest1Msg.parameters/getIQStatus:execute/getIQStatus:parameters/getIQStatus:caseid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="716774245" targetPath="$getIQStatusGetIQStatusRequest1Msg.parameters/getIQStatus:execute/getIQStatus:parameters/getIQStatus:caseid" targetedBy="1090360152-arg0"></mapper:vertice>
+  <mapper:vertice id="1090360152" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:CaseId"></mapper:vertice>
+</mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="getIQStatusGetIQStatusRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getIQStatus:getIQStatusInput" bpdm:binding="getIQStatus:getIQStatusPortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_YtqQFsU8EeeBP6sCqntYkAOutgoing"></bpdm:linkset>
@@ -256,12 +260,8 @@
                                     <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="map IQ status" bpdm:ID="_P1p4IMU9EeeBP6sCqntYkA" bpdm:isHeaderAuthorizationAware="no">
                                         <bpdm:linkset bpdm:type="assignments">
                                             <bpel:copy>
-                                                <bpel:from>"IQ"</bpel:from>
-                                                <bpel:to>$CaseChangesTracker/Launchpoint:previousQualification</bpel:to><mapper:mapperLink><mapper:vertice id="1053858371" targetPath="$CaseChangesTracker/Launchpoint:previousQualification" targetedBy="1342090291-arg0"></mapper:vertice><mapper:vertice id="1342090291" dimension="79x24" location="612,168"><mapper:value>"IQ"</mapper:value></mapper:vertice></mapper:mapperLink>
-                                            </bpel:copy>
-                                            <bpel:copy>
-                                                <bpel:from>$getIQStatusGetIQStatusResponse1Msg.parameters/getIQStatus:rows/getIQStatus:row[1]/getIQStatus:status</bpel:from>
-                                                <bpel:to>$CaseChangesTracker/Launchpoint:previousStatus</bpel:to><mapper:mapperLink><mapper:vertice id="1911413009" targetPath="$CaseChangesTracker/Launchpoint:previousStatus" targetedBy="185333119-arg0"></mapper:vertice><mapper:vertice id="185333119" dimension="70x20" location="20,352"><mapper:value>$getIQStatusGetIQStatusResponse1Msg.parameters</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                <bpel:from>bpel:doXslTransform("../../XSLT/getIQStatus.xslt", $CaseChangesTracker, "tracking", $getIQStatusGetIQStatusResponse1Msg.parameters)</bpel:from>
+                                                <bpel:to>$CaseChangesTracker</bpel:to><mapper:mapperLink><mapper:vertice id="1899965586" targetPath="$CaseChangesTracker" targetedBy="490531454-arg4"></mapper:vertice><mapper:vertice id="490531454" dimension="126x24" location="408,152"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="1525167528" dimension="152x24" location="168,96" targetedBy="490531454-arg0"><mapper:value>"../../XSLT/getIQStatus.xslt"</mapper:value></mapper:vertice><mapper:vertice id="1314779341" sourcePath="$CaseChangesTracker" targetedBy="490531454-arg1"></mapper:vertice><mapper:vertice id="911186098" dimension="79x24" location="177,187" targetedBy="490531454-arg2"><mapper:value>"tracking"</mapper:value></mapper:vertice><mapper:vertice id="1043679704" sourcePath="$getIQStatusGetIQStatusResponse1Msg.parameters" targetedBy="490531454-arg3"></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                     </bpdm:messagingtask>
@@ -310,6 +310,22 @@
                                     <bpel:copy>
                                         <bpel:from>$thisReceive_caseRequest2Msg.body/Launchpoint:ClientId</bpel:from>
                                         <bpel:to>$dtws_launchpointprocess_rules_existiInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_existi:param0/ax2973:record/ax2974:clientId</bpel:to><mapper:mapperLink><mapper:vertice id="1039606400" targetPath="$dtws_launchpointprocess_rules_existiInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_existi:param0/ax2973:record/ax2974:clientId" targetedBy="1841953582-arg0"></mapper:vertice><mapper:vertice id="1841953582" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:ClientId"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$CaseChangesTracker/Launchpoint:returnMail</bpel:from>
+                                        <bpel:to>$dtws_launchpointprocess_rules_existiInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_existi:param0/ax2973:existing/ax2974:returnMail</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="930358741" targetPath="$dtws_launchpointprocess_rules_existiInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_existi:param0/ax2973:existing/ax2974:returnMail" targetedBy="745452187-arg0"></mapper:vertice>
+  <mapper:vertice id="745452187" sourcePath="$CaseChangesTracker/Launchpoint:returnMail"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:Score</bpel:from>
+                                        <bpel:to>$dtws_launchpointprocess_rules_existiInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_existi:param0/ax2973:record/ax2974:score</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1054594792" targetPath="$dtws_launchpointprocess_rules_existiInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_existi:param0/ax2973:record/ax2974:score" targetedBy="1126756725-arg0"></mapper:vertice>
+  <mapper:vertice id="1126756725" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:Score"></mapper:vertice>
+</mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dtws_launchpointprocess_rules_existiInvokeDecisionTableRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="dtws_launchpointprocess_rules_existi:invokeDecisionTableRequest" bpdm:binding="dtws_launchpointprocess_rules_existi:dtws_launchpointprocess_rules_existingcaseruleSoap11Binding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_RAWkJsVSEeeBP6sCqntYkAOutgoing"></bpdm:linkset>

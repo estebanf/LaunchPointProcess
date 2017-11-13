@@ -1,20 +1,29 @@
-select 
+select
 	casetracking.caseid,
+	letterNumber,
 	case 
-		when (iqtracking.iqenqueued is null) or  (iqtracking.iqenqueued = false) THEN 'Processing'
-		when iqtracking.iqenqueued = true then
+		when (iqlettertracking.iqenqueued is null) or  (iqlettertracking.iqenqueued = false) THEN 'Processing'
+		when iqlettertracking.iqenqueued = true then
 			case 
-				when (iqtracking.iqsent is null) or (iqtracking.iqsent = false) THEN 'Waiting'
-				when iqtracking.iqsent = true then
+				when (iqlettertracking.iqsent is null) or (iqlettertracking.iqsent = false) THEN 'Waiting'
+				when iqlettertracking.iqsent = true then
 					case
-						when (iqtracking.iqresponsereceived is null) or (iqtracking.iqresponsereceived = false) then 'Sent'
-						when (iqtracking.iqresponsereceived = true) then 'ResponseReceived'
+						when (iqlettertracking.iqresponsereceived is null) or (iqlettertracking.iqresponsereceived = false) then 'Sent'
+						when (iqlettertracking.iqresponsereceived = true) then 'ResponseReceived'
 					end
 			end
-		end as Status
+		end as Status,
+	iqlettertracking.iqresponse
 from 
 	casetracking 
 	inner join iqtracking on (casetracking.caseid = iqtracking.caseid)
+	inner join iqlettertracking on (iqtracking.caseid= iqlettertracking.caseid)
 where
 	casetracking.casetype='IQ' and casetracking.caseid = ?
+group by
+	casetracking.caseid,iqlettertracking.letternumber,Status,iqlettertracking.iqresponse
+order by
+	iqlettertracking.letternumber desc
+limit 1
+
 	
