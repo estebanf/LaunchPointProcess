@@ -1,4 +1,4 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:getOpenIqs="urn:intalio.com:connectors:database:launchpointprocess:getopeniqsservice" xmlns:IQ="http://www.example.org/IQ" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/IQ_Response_monitor" xmlns:IQ_Response_monitorimplicitPartner="http://thisdiagram/IQ_Response_monitorimplicitPartner" xmlns:diag="http://thisdiagram" xmlns:GetActivityService="http://bpms.everteam.com/Services/REST/GetActivityService.rest" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns="http://bpms.everteam.com/LaunchPointProcess" xmlns:Process_IQ_Case="http://thisdiagram/Process_IQ_Case" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/IQ_Response_monitor">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:getOpenIqs="urn:intalio.com:connectors:database:launchpointprocess:getopeniqsservice" xmlns:IQ="http://www.example.org/IQ" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/IQ_Response_monitor" xmlns:IQ_Response_monitorimplicitPartner="http://thisdiagram/IQ_Response_monitorimplicitPartner" xmlns:diag="http://thisdiagram" xmlns:GetActivityService="http://bpms.everteam.com/Services/REST/GetActivityService.rest" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns="http://bpms.everteam.com/LaunchPointProcess" xmlns:GetActivity="__project:///Schemas/GetActivity.xsd" xmlns:Process_IQ_Case="http://thisdiagram/Process_IQ_Case" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/IQ_Response_monitor">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:launchpointprocess:getopeniqsservice" bpdm:prefix="getOpenIqs" bpdm:comment="contrib=&apos;project:///Connectors/Database/getOpenIqs.sql/getOpenIqs.sql.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/IQ" bpdm:prefix="IQ" bpdm:comment="contrib=&apos;project:///Schemas/IQ.xsd"></bpdm:namespaceDefinition>
@@ -11,6 +11,7 @@
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/LaunchPointProcess" bpdm:prefix="ns" bpdm:comment="contrib=&apos;project:///Processes/Core/ProcessIQCase-IQ_Response_monitor.startEvent.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/GetActivity.xsd" bpdm:prefix="GetActivity" bpdm:comment="contrib=&apos;project:///Schemas/GetActivity.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Process_IQ_Case" bpdm:prefix="Process_IQ_Case" bpdm:comment="contrib=&apos;partner-pool:///_xRG1oLwFEee_aqBavMEZDg"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
             <wsdl:service name="IQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForStartTimer_PortPlkService">
@@ -24,6 +25,7 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_HpYswMWqEeeln8BfPiHQNAimplicitPartner" bpdm:label="IQ Response monitorimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/IQ.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/GetActivityService.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/GetActivity.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getOpenIqs.sql/getOpenIqs.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getOpenIqs.sql/getOpenIqs.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -33,15 +35,15 @@
         <bpel:partnerLinks>
             <bpel:partnerLink name="iQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForStartTimer_PortPlkVar" partnerLinkType="diag:IQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForStartTimer_PortPlk" myRole="IQ_Response_monitor_for_IQ_Response_monitorimplicitPartner" bpdm:enableSharing="false" bpdm:providedService="this:IQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForStartTimer_PortPlkService" bpdm:providedPort="IQ_Response_monitor_for_IQ_Response_monitorimplicitPartnerPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/IQ_Response_monitor/IQ_Response_monitorimplicitPartner/IQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForStartTimer_PortPlk" bpdm:providedIsDefault="true" bpdm:clientTasks="_HpYswMWqEeeln8BfPiHQNA:_Jp1hkMWqEeeln8BfPiHQNA" bpdm:isManaged="true" bpdm:otherPoolId="_HpYswMWqEeeln8BfPiHQNAimplicitPartner"/>
             <bpel:partnerLink name="process_IQ_CaseAndIQ_Response_monitorPlkVar" partnerLinkType="diag:Process_IQ_CaseAndIQ_Response_monitor" initializePartnerRole="yes" partnerRole="Process_IQ_Case_for_IQ_Response_monitor" bpdm:invokedService="Process_IQ_Case:CanonicServiceForIQ_Response_monitor" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_IQ_Case/IQ_Response_monitor" bpdm:invokedIsDefault="true" bpdm:clientTasks="_XImz0MWqEeeln8BfPiHQNA:_SAV5gMWqEeeln8BfPiHQNA" bpdm:isManaged="true" bpdm:otherPoolId="_xRG1oLwFEee_aqBavMEZDg"/>
-            <bpel:partnerLink name="iQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForHttpPortPlkVar" partnerLinkType="diag:IQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForHttpPortPlk" initializePartnerRole="yes" partnerRole="IQ_Response_monitorimplicitPartner_for_IQ_Response_monitor" bpdm:invokedService="GetActivityService:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://localhost:3001/api/activities/{case-id}" bpdm:invokedIsDefault="true" bpdm:clientTasks="_BDsvwMY6EeeJfIQOc9wrsg:_1IBTQMguEee4C6xcyhcDOQ" bpdm:isManaged="true" bpdm:otherPoolId="_HpYswMWqEeeln8BfPiHQNAimplicitPartner"/>
-            <bpel:partnerLink name="iQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForGetOpenIqsPortPlkVar" partnerLinkType="diag:IQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForGetOpenIqsPortPlk" initializePartnerRole="yes" partnerRole="IQ_Response_monitorimplicitPartner_for_IQ_Response_monitor" bpdm:invokedService="getOpenIqs:getOpenIqsService" bpdm:invokedPort="getOpenIqsPort" bpdm:invokedSOAPAddress="http://192.168.241.207:8080/everteam/ode/processes/LaunchPointProcess/Connectors/Database/getOpenIqs" bpdm:invokedIsDefault="true" bpdm:clientTasks="_HpYswMWqEeeln8BfPiHQNA:_FYQqwcgzEee4C6xcyhcDOQ" bpdm:isManaged="true" bpdm:otherPoolId="_HpYswMWqEeeln8BfPiHQNAimplicitPartner"/>
+            <bpel:partnerLink name="iQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForGetOpenIqsPortPlkVar" partnerLinkType="diag:IQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForGetOpenIqsPortPlk" initializePartnerRole="yes" partnerRole="IQ_Response_monitorimplicitPartner_for_IQ_Response_monitor" bpdm:invokedService="getOpenIqs:getOpenIqsService" bpdm:invokedPort="getOpenIqsPort" bpdm:invokedSOAPAddress="http://192.168.241.208:8080/everteam/ode/processes/LaunchPointProcess/Connectors/Database/getOpenIqs" bpdm:invokedIsDefault="true" bpdm:clientTasks="_HpYswMWqEeeln8BfPiHQNA:_FYQqwcgzEee4C6xcyhcDOQ" bpdm:isManaged="true" bpdm:otherPoolId="_HpYswMWqEeeln8BfPiHQNAimplicitPartner"/>
+            <bpel:partnerLink name="iQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForHttpPortPlkVar" partnerLinkType="diag:IQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForHttpPortPlk" initializePartnerRole="yes" partnerRole="IQ_Response_monitorimplicitPartner_for_IQ_Response_monitor" bpdm:invokedService="GetActivityService:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://localhost:3001/api/activities/{case-id}" bpdm:invokedIsDefault="true" bpdm:clientTasks="_BDsvwMY6EeeJfIQOc9wrsg:_0RnPEMiDEee3gbUvnyzVyw" bpdm:isManaged="true" bpdm:otherPoolId="_HpYswMWqEeeln8BfPiHQNAimplicitPartner"/>
         </bpel:partnerLinks>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
             <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_HprntsWqEeeln8BfPiHQNA" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_HprntsWqEeeln8BfPiHQNA"/>
             <bpel:variable name="nsStartTimerRequest1Msg" messageType="ns:StartTimer_Input" bpdm:messageIds="inc:_Jp1hkMWqEeeln8BfPiHQNAIncoming"/>
             <bpel:variable name="IQs" element="IQ:IQs" bpdm:id="_ordkIMY6EeeJfIQOc9wrsg">
                 <bpel:from>
-                    <bpel:literal bpdm:linkedElement="IQ:IQs" bpdm:linkedFile="IQs-_HpYswMWqEeeln8BfPiHQNA-1-literal.xml"></bpel:literal>
+                    <bpel:literal bpdm:linkedElement="IQ:IQs" bpdm:linkedFile="IQs-_HpYswMWqEeeln8BfPiHQNA-0-literal.xml"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
             <bpel:variable name="getOpenIqsGetOpenIqsResponse1Msg" messageType="getOpenIqs:getOpenIqsOutput" binding="getOpenIqs:getOpenIqsPortSoapBinding" operation="getOpenIqs" opMsgType="1" bpdm:messageIds="inc:_FYQqwcgzEee4C6xcyhcDOQIncoming"/>
@@ -64,37 +66,14 @@
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>bpel:doXslTransform("../../XSLT/MapIQs.xsl", $getOpenIqsGetOpenIqsResponse1Msg.parameters/getOpenIqs:rows)</bpel:from>
-                        <bpel:to>$IQs</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1655811001" targetPath="$IQs" targetedBy="1721690430-arg2"></mapper:vertice>
-  <mapper:vertice id="1721690430" dimension="126x24" location="524,131">
-    <mapper:value>bpel:doXslTransform()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1707519328" dimension="128x24" location="434,26" targetedBy="1721690430-arg0">
-    <mapper:value>"../../XSLT/MapIQs.xsl"</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="894166917" sourcePath="$getOpenIqsGetOpenIqsResponse1Msg.parameters/getOpenIqs:rows" targetedBy="1721690430-arg1"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$IQs</bpel:to><mapper:mapperLink><mapper:vertice id="1655811001" targetPath="$IQs" targetedBy="1721690430-arg2"></mapper:vertice><mapper:vertice id="1721690430" dimension="126x24" location="524,131"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="1707519328" dimension="128x24" location="434,26" targetedBy="1721690430-arg0"><mapper:value>"../../XSLT/MapIQs.xsl"</mapper:value></mapper:vertice><mapper:vertice id="894166917" sourcePath="$getOpenIqsGetOpenIqsResponse1Msg.parameters/getOpenIqs:rows" targetedBy="1721690430-arg1"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
             </bpdm:messagingtask>
             <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_BDsvwMY6EeeJfIQOc9wrsg">
                 <bpdm:linkset bpdm:type="loop" bpdm:loopType="forEach" bpdm:backEdgeParticipantType="none" parallel="no" counterName="emptyCounter" bpdm:isBackEdgeContributor="no">
-                    <bpel:condition bpdm:loopType="forEachFinalCounter">count($IQs)
-<mapper:mapperLink>
-  <mapper:vertice id="737187137" targetPath="$Final counter" targetedBy="1589174224-arg1"></mapper:vertice>
-  <mapper:vertice id="1589174224" dimension="79x24" location="627,100">
-    <mapper:value>count()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="667953797" sourcePath="$IQs" targetedBy="1589174224-arg0"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
-                    <bpel:condition bpdm:loopType="forEachStartCounter">1
-<mapper:mapperLink>
-  <mapper:vertice id="478815058" targetPath="$Start counter" targetedBy="934999594-arg0"></mapper:vertice>
-  <mapper:vertice id="934999594" dimension="79x24" location="612,36">
-    <mapper:value>1</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                    <bpel:condition bpdm:loopType="forEachFinalCounter">count($IQs/IQ:tests)<mapper:mapperLink><mapper:vertice id="197313233" targetPath="$Final counter" targetedBy="1054539203-arg0"></mapper:vertice><mapper:vertice id="1054539203" dimension="79x24" location="627,100"><mapper:value>count()</mapper:value></mapper:vertice><mapper:vertice id="1276746638" sourcePath="$IQs/IQ:tests" targetedBy="1054539203-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
+                    <bpel:condition bpdm:loopType="forEachStartCounter">1<mapper:mapperLink><mapper:vertice id="478815058" targetPath="$Start counter" targetedBy="934999594-arg0"></mapper:vertice><mapper:vertice id="934999594" dimension="79x24" location="612,36"><mapper:value>1</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
                 </bpdm:linkset>
                 <bpel:variables>
                     <bpel:variable name="Activities" element="IQ:Activities" bpdm:id="_rIrNcMY6EeeJfIQOc9wrsg">
@@ -107,10 +86,10 @@
                             <bpel:literal bpdm:linkedElement="IQ:IQ"></bpel:literal>
                         </bpel:from>
                     </bpel:variable>
-                    <bpel:variable name="getActivityServiceGETResponse1Msg" messageType="GetActivityService:GET_output" binding="GetActivityService:restBinding" operation="GET" opMsgType="1" bpdm:messageIds="inc:_1IBTQMguEee4C6xcyhcDOQIncoming"/>
-                    <bpel:variable name="getActivityServiceGETRequest1Msg" messageType="GetActivityService:GET_input" binding="GetActivityService:restBinding" operation="GET" opMsgType="0" bpdm:messageIds=" out:_1IBTQMguEee4C6xcyhcDOQOutgoing">
+                    <bpel:variable name="getActivityServiceGET_ActivitiesResponse1Msg" messageType="GetActivityService:GET_Activities_output" binding="GetActivityService:restBinding" operation="GET_Activities" opMsgType="1" bpdm:messageIds="inc:_0RnPEMiDEee3gbUvnyzVywIncoming"/>
+                    <bpel:variable name="getActivityServiceGET_ActivitiesRequest1Msg" messageType="GetActivityService:GET_Activities_input" binding="GetActivityService:restBinding" operation="GET_Activities" opMsgType="0" bpdm:messageIds=" out:_0RnPEMiDEee3gbUvnyzVywOutgoing">
                         <bpel:from bpdm:toPart="case-id">
-                            <bpel:literal bpdm:linkedMessageType="GetActivityService:GET_input" bpdm:linkedPart="case-id" bpdm:binding="GetActivityService:restBinding" bpdm:opMsgType="0" bpdm:operation="GET"></bpel:literal>
+                            <bpel:literal bpdm:linkedMessageType="GetActivityService:GET_Activities_input" bpdm:linkedPart="case-id" bpdm:binding="GetActivityService:restBinding" bpdm:opMsgType="0" bpdm:operation="GET_Activities"></bpel:literal>
                         </bpel:from>
                     </bpel:variable>
                 </bpel:variables>
@@ -118,54 +97,39 @@
                     <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Extract IQ" bpdm:ID="_2CnA4MY5EeeJfIQOc9wrsg" bpdm:isHeaderAuthorizationAware="no">
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
-                                <bpel:from>$IQs[$emptyCounter]</bpel:from>
-                                <bpel:to>$IQ</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2113449539" targetPath="$IQ" targetedBy="1546445549-arg2"></mapper:vertice>
-  <mapper:vertice id="1546445549" dimension="79x24" location="312,48">
-    <mapper:value>[]</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1560414622" sourcePath="$IQs" targetedBy="1546445549-arg0"></mapper:vertice>
-  <mapper:vertice id="1739163017" sourcePath="$emptyCounter" targetedBy="1546445549-arg1"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:from>$IQs/IQ:tests[$emptyCounter]</bpel:from>
+                                <bpel:to>$IQ</bpel:to><mapper:mapperLink><mapper:vertice id="49610831" targetPath="$IQ" targetedBy="1943888330-arg2"></mapper:vertice><mapper:vertice id="1943888330" dimension="79x24" location="312,48"><mapper:value>[]</mapper:value></mapper:vertice><mapper:vertice id="62779359" sourcePath="$IQs/IQ:tests" targetedBy="1943888330-arg0"></mapper:vertice><mapper:vertice id="1950398419" sourcePath="$emptyCounter" targetedBy="1943888330-arg1"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>
-                    <bpdm:messagingtask operation="GET" partnerLink="iQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForHttpPortPlkVar" portType="GetActivityService:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get activities for case" bpdm:ID="_1IBTQMguEee4C6xcyhcDOQ" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:messagingtask operation="GET_Activities" partnerLink="iQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForHttpPortPlkVar" portType="GetActivityService:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="GET_Activities" bpdm:ID="_0RnPEMiDEee3gbUvnyzVyw" bpdm:isHeaderAuthorizationAware="no">
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>ode:get-property-value("GET_ACTIVITY_SERVICE_URL")</bpel:from>
-                                <bpel:to endpointReference="partnerRole"/>
-<mapper:mapperLink>
-  <mapper:vertice id="696532888" targetPath="$endpoint" targetedBy="75766455-arg1"></mapper:vertice>
-  <mapper:vertice id="75766455" dimension="139x24" location="624,144">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1453081679" dimension="168x24" location="360,144" targetedBy="75766455-arg0">
-    <mapper:value>"GET_ACTIVITY_SERVICE_URL"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="1789183433" targetPath="$endpoint" targetedBy="726070711-arg1"></mapper:vertice><mapper:vertice id="726070711" dimension="139x24" location="516,204"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1329226283" dimension="168x24" location="288,204" targetedBy="726070711-arg0"><mapper:value>"GET_ACTIVITY_SERVICE_URL"</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>$IQ/IQ:CaseId</bpel:from>
-                                <bpel:to>$getActivityServiceGETRequest1Msg.case-id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="287792377" targetPath="$getActivityServiceGETRequest1Msg.case-id" targetedBy="574214089-arg0"></mapper:vertice>
-  <mapper:vertice id="574214089" sourcePath="$IQ/IQ:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$getActivityServiceGET_ActivitiesRequest1Msg.case-id</bpel:to><mapper:mapperLink><mapper:vertice id="1376711631" targetPath="$getActivityServiceGET_ActivitiesRequest1Msg.case-id" targetedBy="480667742-arg0"></mapper:vertice><mapper:vertice id="480667742" sourcePath="$IQ/IQ:CaseId"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
-                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="getActivityServiceGETRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="GetActivityService:GET_input" bpdm:binding="GetActivityService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_1IBTQMguEee4C6xcyhcDOQOutgoing"></bpdm:linkset>
-                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="getActivityServiceGETResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="GetActivityService:GET_output" bpdm:binding="GetActivityService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_1IBTQMguEee4C6xcyhcDOQIncoming"></bpdm:linkset>
+                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="getActivityServiceGET_ActivitiesRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="GetActivityService:GET_Activities_input" bpdm:binding="GetActivityService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_0RnPEMiDEee3gbUvnyzVywOutgoing"></bpdm:linkset>
+                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="getActivityServiceGET_ActivitiesResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="GetActivityService:GET_Activities_output" bpdm:binding="GetActivityService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_0RnPEMiDEee3gbUvnyzVywIncoming"></bpdm:linkset>
                     </bpdm:messagingtask>
                     <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_EnjjYMgvEee4C6xcyhcDOQ" bpdm:isHeaderAuthorizationAware="no">
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
-                                <bpel:from>$getActivityServiceGETResponse1Msg.response</bpel:from>
-                                <bpel:to>$Activities</bpel:to>
+                                <bpel:from>bpel:doXslTransform("../../XSLT/MapActivitiesResponse.xslt", $getActivityServiceGET_ActivitiesResponse1Msg.response)</bpel:from>
+                                <bpel:to>$Activities/IQ:Activities</bpel:to>
 <mapper:mapperLink>
-  <mapper:vertice id="1339555871" targetPath="$Activities" targetedBy="2015955471-arg0"></mapper:vertice>
-  <mapper:vertice id="2015955471" sourcePath="$getActivityServiceGETResponse1Msg.response"></mapper:vertice>
+  <mapper:vertice id="1235193859" targetPath="$Activities/IQ:Activities" targetedBy="1986703963-arg1"></mapper:vertice>
+  <mapper:vertice id="1986703963" dimension="126x24" location="502,142">
+    <mapper:value>bpel:doXslTransform()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="346008447" dimension="213x24" location="396,60" targetedBy="1986703963-arg0">
+    <mapper:value>"../../XSLT/MapActivitiesResponse.xslt"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1774457847" sourcePath="$getActivityServiceGET_ActivitiesResponse1Msg.response" targetedBy="1986703963-arg2"></mapper:vertice>
 </mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
@@ -173,7 +137,7 @@
                     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_XImz0MWqEeeln8BfPiHQNA">
                         <bpdm:linkset bpdm:type="loop" bpdm:loopType="forEach" bpdm:backEdgeParticipantType="none" parallel="no" counterName="emptyCounter" bpdm:isBackEdgeContributor="no">
                             <bpel:condition bpdm:loopType="forEachStartCounter">1<mapper:mapperLink><mapper:vertice id="1109389517" targetPath="$Start counter" targetedBy="296522997-arg0"></mapper:vertice><mapper:vertice id="296522997" dimension="79x24" location="659,77"><mapper:value>1</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
-                            <bpel:condition bpdm:loopType="forEachFinalCounter">count($Activities)<mapper:mapperLink><mapper:vertice id="712391750" targetPath="$Final counter" targetedBy="1132196075-arg1"></mapper:vertice><mapper:vertice id="1132196075" dimension="79x24" location="636,120"><mapper:value>count()</mapper:value></mapper:vertice><mapper:vertice id="305182685" sourcePath="$Activities" targetedBy="1132196075-arg0"></mapper:vertice></mapper:mapperLink></bpel:condition>
+                            <bpel:condition bpdm:loopType="forEachFinalCounter">count($Activities/IQ:Activities)<mapper:mapperLink><mapper:vertice id="1635580854" targetPath="$Final counter" targetedBy="914309093-arg0"></mapper:vertice><mapper:vertice id="914309093" dimension="79x24" location="636,120"><mapper:value>count()</mapper:value></mapper:vertice><mapper:vertice id="2057301567" sourcePath="$Activities/IQ:Activities" targetedBy="914309093-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                         </bpdm:linkset>
                         <bpel:variables>
                             <bpel:variable name="process_IQ_CaseReceive_IQ_ResponseRequest1Msg" messageType="Process_IQ_Case:Receive_IQ_ResponseRequest" bpdm:id="_UUwMIMWqEeeln8BfPiHQNA" bpdm:messageIds=" out:_UUnCMMWqEeeln8BfPiHQNA">
@@ -192,16 +156,8 @@
                             <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Extract Activity" bpdm:ID="_OEquIMWqEeeln8BfPiHQNA" bpdm:isHeaderAuthorizationAware="no">
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
-                                        <bpel:from>$Activities[$emptyCounter]</bpel:from>
-                                        <bpel:to>$Activity</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1155300965" targetPath="$Activity" targetedBy="1631116379-arg2"></mapper:vertice>
-  <mapper:vertice id="1631116379" dimension="79x24" location="396,72">
-    <mapper:value>[]</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1287658601" sourcePath="$Activities" targetedBy="1631116379-arg0"></mapper:vertice>
-  <mapper:vertice id="1530734998" sourcePath="$emptyCounter" targetedBy="1631116379-arg1"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:from>$Activities/IQ:Activities[$emptyCounter]</bpel:from>
+                                        <bpel:to>$Activity</bpel:to><mapper:mapperLink><mapper:vertice id="1731206695" targetPath="$Activity" targetedBy="271643393-arg2"></mapper:vertice><mapper:vertice id="271643393" dimension="79x24" location="396,72"><mapper:value>[]</mapper:value></mapper:vertice><mapper:vertice id="1789811240" sourcePath="$Activities/IQ:Activities" targetedBy="271643393-arg0"></mapper:vertice><mapper:vertice id="323960563" sourcePath="$emptyCounter" targetedBy="271643393-arg1"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
