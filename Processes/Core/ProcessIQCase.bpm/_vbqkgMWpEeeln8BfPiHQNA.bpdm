@@ -1,13 +1,15 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/IQ_Queue_manager" xmlns:Process_IQ_Case="http://thisdiagram/Process_IQ_Case" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/IQ_Queue_manager">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/IQ_Queue_manager" xmlns:Process_IQ_Case="http://thisdiagram/Process_IQ_Case" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/IQ_Queue_manager">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_xRG1oLwFEee_aqBavMEZDg"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/IQ_Queue_manager" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Process_IQ_Case" bpdm:prefix="Process_IQ_Case" bpdm:comment="contrib=&apos;partner-pool:///_xRG1oLwFEee_aqBavMEZDg"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <vprop:property name="CaseId" type="xs:int"/>
             <wsdl:portType name="ForProcess_IQ_Case">
                 <wsdl:operation name="Receive_IQ" bpdm:source="partner-pool:///_xRG1oLwFEee_aqBavMEZDg">
                     <wsdl:input message="this:Receive_IQRequest" name="Receive_IQ"/>
@@ -15,7 +17,7 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForProcess_IQ_Case" type="this:ForProcess_IQ_Case" bpdm:isSynchronized="true"/>
-            <xs:element name="Receive_IQRequest" type="xs:string" bpdm:source="partner-pool:///_xRG1oLwFEee_aqBavMEZDg"/>
+            <xs:element name="Receive_IQRequest" type="Launchpoint:IQRuleInputType" bpdm:source="partner-pool:///_xRG1oLwFEee_aqBavMEZDg"/>
             <wsdl:message name="Receive_IQRequest" bpdm:source="partner-pool:///_xRG1oLwFEee_aqBavMEZDg">
                 <wsdl:part name="body" element="this:Receive_IQRequest"/>
             </wsdl:message>
@@ -25,6 +27,7 @@
             </wsdl:message>
         </bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_xRG1oLwFEee_aqBavMEZDg" bpdm:label="Process IQ Case"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
     </bpdm:dependencies>
@@ -49,8 +52,8 @@
         </bpel:variables>
         <bpel:sequence>
             <bpdm:messagingtask eventType="start: message" operation="Receive_IQ" partnerLink="process_IQ_CaseAndIQ_Queue_managerPlkVar" portType="this:ForProcess_IQ_Case" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive IQ" bpdm:ID="_ysuFkMWpEeeln8BfPiHQNA" bpdm:isHeaderAuthorizationAware="yes">
-                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_IQRequest2Msg" bpdm:msgVarScopeId="_vbqkgMWpEeeln8BfPiHQNA" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_IQRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_ys32kMWpEeeln8BfPiHQNA"></bpdm:linkset>
-                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_IQResponse2Msg" bpdm:msgVarScopeId="_vbqkgMWpEeeln8BfPiHQNA" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_IQResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_zgIfgMWpEeeln8BfPiHQNA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_IQRequest2Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_IQRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_ys32kMWpEeeln8BfPiHQNA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_IQResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_IQResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_zgIfgMWpEeeln8BfPiHQNA"></bpdm:linkset>
             </bpdm:messagingtask>
             <bpdm:messagingtask eventType="intermediate: timer" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Wait" bpdm:ID="_1U9TIMWpEeeln8BfPiHQNA" bpdm:isHeaderAuthorizationAware="no">
                 <bpdm:linkset bpdm:type="timer">
