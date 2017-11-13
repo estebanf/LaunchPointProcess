@@ -7,7 +7,7 @@ drop table IF EXISTS public.isoresponsetracking;
 drop table IF EXISTS public.isotracking;
 
 CREATE TABLE public.batchtracking (
-	batchid int4 NOT NULL,
+	batchid int4 NULL,
 	environmentid varchar(250) NULL,
 	clientid int4 NULL,
 	casecount int4 NULL,
@@ -30,7 +30,7 @@ create
         using btree(batchid) ;
 
 CREATE TABLE public.casetracking (
-	casetrackingid varchar(250) NOT NULL,
+	casetrackingid varchar(250) NULL,
 	caseid int4 NULL,
 	isoindicator int4 NULL,
 	score int4 NULL,
@@ -64,16 +64,16 @@ create
 
 
 CREATE TABLE public.iqlettertracking (
-	iqlettertrackingid varchar(250) NOT NULL,
+	iqlettertrackingid varchar(250) NULL,
 	pid int4 NULL,
 	letternumber int4 NULL,
 	caseid int4 NULL,
 	iqenqueued bool NULL,
-	iqenqueuedat int4 NULL,
+	iqenqueuedat timestamp NULL,
 	iqsent bool NULL,
-	iqsentat varchar(250) NULL,
+	iqsentat timestamp NULL,
 	iqresponsereceived bool NULL,
-	iqresponsereceivedat varchar(250) NULL,
+	iqresponsereceivedat timestamp NULL,
 	iqresponse varchar(250) NULL,
 	ppid varchar(250) NULL,
 	createdat timestamp NULL,
@@ -90,8 +90,8 @@ create
 
 
 CREATE TABLE iqtracking (
-	pid int4 NOT NULL,
-	batchId int4 NULL,
+	pid int4 NULL,
+	batchid int4 NULL,
 	caseid int4 NULL,
 	parentid varchar(250) NULL,
 	iqreceived bool NULL,
@@ -115,7 +115,7 @@ create
 
 
 CREATE TABLE public.isoresponsetracking (
-	pid int4 NOT NULL,
+	pid int4 NULL,
 	requestid varchar(250) NULL,
 	caseid int4 NULL,
 	score varchar(250) NULL,
@@ -157,7 +157,7 @@ create
         using btree(pid) ;
 
 CREATE TABLE public.isotracking (
-	pid int4 NOT NULL,
+	pid int4 NULL,
 	caseid int4 NULL,
 	batchid int4 NULL,
 	clientid int4 NULL,
