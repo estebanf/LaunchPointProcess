@@ -99,30 +99,10 @@
                             <bpel:condition>$ReducedTracking/Tracking:type = "isoResponse"<mapper:mapperLink><mapper:vertice id="1593561447" targetPath="$condition" targetedBy="353023689-arg2"></mapper:vertice><mapper:vertice id="353023689" dimension="79x24" location="334,91"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="806650548" sourcePath="$ReducedTracking/Tracking:type" targetedBy="353023689-arg0"></mapper:vertice><mapper:vertice id="130326162" dimension="83x24" location="316,130" targetedBy="353023689-arg1"><mapper:value>"isoResponse"</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
                         </bpdm:linkset>
                         <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_t2crMMZOEeeHyoPVok3Y1Q" bpdm:targetDisplayName="[GatewayDataBasedExclusive - Map IQ]">
-                            <bpel:condition>$ReducedTracking/Tracking:type = "iq"
-<mapper:mapperLink>
-  <mapper:vertice id="1003159274" targetPath="$condition" targetedBy="1806858044-arg2"></mapper:vertice>
-  <mapper:vertice id="1806858044" dimension="79x24" location="517,123">
-    <mapper:value>=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1401159494" sourcePath="$ReducedTracking/Tracking:type" targetedBy="1806858044-arg0"></mapper:vertice>
-  <mapper:vertice id="1011543354" dimension="79x24" location="484,62" targetedBy="1806858044-arg1">
-    <mapper:value>"iq"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                            <bpel:condition>$ReducedTracking/Tracking:type = "iq"<mapper:mapperLink><mapper:vertice id="1003159274" targetPath="$condition" targetedBy="1806858044-arg2"></mapper:vertice><mapper:vertice id="1806858044" dimension="79x24" location="517,123"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1401159494" sourcePath="$ReducedTracking/Tracking:type" targetedBy="1806858044-arg0"></mapper:vertice><mapper:vertice id="1011543354" dimension="79x24" location="484,62" targetedBy="1806858044-arg1"><mapper:value>"iq"</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
                         </bpdm:linkset>
                         <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_xCIkEMZOEeeHyoPVok3Y1Q" bpdm:targetDisplayName="[GatewayDataBasedExclusive - Map IQ Letter]">
-                            <bpel:condition>$ReducedTracking/Tracking:type = "iqLetter"
-<mapper:mapperLink>
-  <mapper:vertice id="2101776305" targetPath="$condition" targetedBy="560466889-arg2"></mapper:vertice>
-  <mapper:vertice id="560466889" dimension="79x24" location="595,109">
-    <mapper:value>=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="920999414" sourcePath="$ReducedTracking/Tracking:type" targetedBy="560466889-arg0"></mapper:vertice>
-  <mapper:vertice id="399543696" dimension="79x24" location="408,36" targetedBy="560466889-arg1">
-    <mapper:value>"iqLetter"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                            <bpel:condition>$ReducedTracking/Tracking:type = "iqLetter"<mapper:mapperLink><mapper:vertice id="2101776305" targetPath="$condition" targetedBy="560466889-arg2"></mapper:vertice><mapper:vertice id="560466889" dimension="79x24" location="595,109"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="920999414" sourcePath="$ReducedTracking/Tracking:type" targetedBy="560466889-arg0"></mapper:vertice><mapper:vertice id="399543696" dimension="79x24" location="408,36" targetedBy="560466889-arg1"><mapper:value>"iqLetter"</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
                         </bpdm:linkset>
                         <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_FNHsQMTGEeeVsvNrQg5AOQ" bpdm:targetDisplayName="default"></bpdm:linkset>
                         <bpel:sequence>
@@ -474,11 +454,7 @@
                                     </bpel:copy>
                                     <bpel:copy ignoreMissingFromData="yes">
                                         <bpel:from>$ReducedTracking/Tracking:IQ/Tracking:BatchId</bpel:from>
-                                        <bpel:to>$IQTracking/metrics:batchId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="34928769" targetPath="$IQTracking/metrics:batchId" targetedBy="928238834-arg0"></mapper:vertice>
-  <mapper:vertice id="928238834" sourcePath="$ReducedTracking/Tracking:IQ/Tracking:BatchId"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$IQTracking/metrics:batchId</bpel:to><mapper:mapperLink><mapper:vertice id="34928769" targetPath="$IQTracking/metrics:batchId" targetedBy="928238834-arg0"></mapper:vertice><mapper:vertice id="928238834" sourcePath="$ReducedTracking/Tracking:IQ/Tracking:BatchId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
@@ -524,22 +500,7 @@
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>concat($ReducedTracking/Tracking:IQLetter/Tracking:Pid, "-", $ReducedTracking/Tracking:IQLetter/Tracking:CaseId, "-", $ReducedTracking/Tracking:IQLetter/Tracking:letterNumber)</bpel:from>
-                                        <bpel:to>$IQLetterTracking/metrics:iqLetterTrackingId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="913298044" targetPath="$IQLetterTracking/metrics:iqLetterTrackingId" targetedBy="887710557-arg5"></mapper:vertice>
-  <mapper:vertice id="887710557" dimension="79x24" location="444,120">
-    <mapper:value>concat()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="385028611" sourcePath="$ReducedTracking/Tracking:IQLetter/Tracking:Pid" targetedBy="887710557-arg0"></mapper:vertice>
-  <mapper:vertice id="1056305079" dimension="79x24" location="156,72" targetedBy="887710557-arg1">
-    <mapper:value>"-"</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1350798935" sourcePath="$ReducedTracking/Tracking:IQLetter/Tracking:CaseId" targetedBy="887710557-arg2"></mapper:vertice>
-  <mapper:vertice id="1718509341" dimension="79x24" location="245,183" targetedBy="887710557-arg3">
-    <mapper:value>"-"</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="57729855" sourcePath="$ReducedTracking/Tracking:IQLetter/Tracking:letterNumber" targetedBy="887710557-arg4"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$IQLetterTracking/metrics:iqLetterTrackingId</bpel:to><mapper:mapperLink><mapper:vertice id="913298044" targetPath="$IQLetterTracking/metrics:iqLetterTrackingId" targetedBy="887710557-arg5"></mapper:vertice><mapper:vertice id="887710557" dimension="79x24" location="444,120"><mapper:value>concat()</mapper:value></mapper:vertice><mapper:vertice id="385028611" sourcePath="$ReducedTracking/Tracking:IQLetter/Tracking:Pid" targetedBy="887710557-arg0"></mapper:vertice><mapper:vertice id="1056305079" dimension="79x24" location="156,72" targetedBy="887710557-arg1"><mapper:value>"-"</mapper:value></mapper:vertice><mapper:vertice id="1350798935" sourcePath="$ReducedTracking/Tracking:IQLetter/Tracking:CaseId" targetedBy="887710557-arg2"></mapper:vertice><mapper:vertice id="1718509341" dimension="79x24" location="245,183" targetedBy="887710557-arg3"><mapper:value>"-"</mapper:value></mapper:vertice><mapper:vertice id="57729855" sourcePath="$ReducedTracking/Tracking:IQLetter/Tracking:letterNumber" targetedBy="887710557-arg4"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
