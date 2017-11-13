@@ -38,10 +38,10 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_Yd_HEMUVEeeBP6sCqntYkA" bpdm:label="Case Management"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_UmeqBMUVEeeBP6sCqntYkAimplicitPartner" bpdm:label="processimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Rules/ExistingCaseRule.bre/dtws_launchpointprocess_rules_existingcaserule/META-INF/dtws_launchpointprocess_rules_existingcaserule.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Rules/CaseIdentificationRule.bre/dtws_launchpointprocess_rules_caseidentificationrule/META-INF/dtws_launchpointprocess_rules_caseidentificationrule.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/checkCaseExistance.sql/checkCaseExistance.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/checkCaseExistance.sql/checkCaseExistance.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Rules/ExistingCaseRule.bre/dtws_launchpointprocess_rules_existingcaserule/META-INF/dtws_launchpointprocess_rules_existingcaserule.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getIQStatus.sql/getIQStatus.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getIQStatus.sql/getIQStatus.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getISOStatus.sql/getISOStatus.sql.wsdl"/>
@@ -246,11 +246,7 @@
                                         <bpdm:linkset bpdm:type="assignments">
                                             <bpel:copy>
                                                 <bpel:from>$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:CaseId</bpel:from>
-                                                <bpel:to>$getIQStatusGetIQStatusRequest1Msg.parameters/getIQStatus:execute/getIQStatus:parameters/getIQStatus:caseid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="716774245" targetPath="$getIQStatusGetIQStatusRequest1Msg.parameters/getIQStatus:execute/getIQStatus:parameters/getIQStatus:caseid" targetedBy="1090360152-arg0"></mapper:vertice>
-  <mapper:vertice id="1090360152" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                                                <bpel:to>$getIQStatusGetIQStatusRequest1Msg.parameters/getIQStatus:execute/getIQStatus:parameters/getIQStatus:caseid</bpel:to><mapper:mapperLink><mapper:vertice id="716774245" targetPath="$getIQStatusGetIQStatusRequest1Msg.parameters/getIQStatus:execute/getIQStatus:parameters/getIQStatus:caseid" targetedBy="1090360152-arg0"></mapper:vertice><mapper:vertice id="1090360152" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="getIQStatusGetIQStatusRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getIQStatus:getIQStatusInput" bpdm:binding="getIQStatus:getIQStatusPortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_YtqQFsU8EeeBP6sCqntYkAOutgoing"></bpdm:linkset>
@@ -313,18 +309,36 @@
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$CaseChangesTracker/Launchpoint:returnMail</bpel:from>
-                                        <bpel:to>$dtws_launchpointprocess_rules_existiInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_existi:param0/ax2973:existing/ax2974:returnMail</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="930358741" targetPath="$dtws_launchpointprocess_rules_existiInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_existi:param0/ax2973:existing/ax2974:returnMail" targetedBy="745452187-arg0"></mapper:vertice>
-  <mapper:vertice id="745452187" sourcePath="$CaseChangesTracker/Launchpoint:returnMail"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$dtws_launchpointprocess_rules_existiInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_existi:param0/ax2973:existing/ax2974:returnMail</bpel:to><mapper:mapperLink><mapper:vertice id="930358741" targetPath="$dtws_launchpointprocess_rules_existiInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_existi:param0/ax2973:existing/ax2974:returnMail" targetedBy="745452187-arg0"></mapper:vertice><mapper:vertice id="745452187" sourcePath="$CaseChangesTracker/Launchpoint:returnMail"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:Score</bpel:from>
-                                        <bpel:to>$dtws_launchpointprocess_rules_existiInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_existi:param0/ax2973:record/ax2974:score</bpel:to>
+                                        <bpel:to>$dtws_launchpointprocess_rules_existiInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_existi:param0/ax2973:record/ax2974:score</bpel:to><mapper:mapperLink><mapper:vertice id="1054594792" targetPath="$dtws_launchpointprocess_rules_existiInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_existi:param0/ax2973:record/ax2974:score" targetedBy="1126756725-arg0"></mapper:vertice><mapper:vertice id="1126756725" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:Score"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>days-from-duration(xs:duration(xs:date(current-date()) - xs:date($thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:AccidentDate)))</bpel:from>
+                                        <bpel:to>$dtws_launchpointprocess_rules_existiInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_existi:param0/ax2973:record/ax2974:daysFromAccident</bpel:to>
 <mapper:mapperLink>
-  <mapper:vertice id="1054594792" targetPath="$dtws_launchpointprocess_rules_existiInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_existi:param0/ax2973:record/ax2974:score" targetedBy="1126756725-arg0"></mapper:vertice>
-  <mapper:vertice id="1126756725" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:Score"></mapper:vertice>
+  <mapper:vertice id="479853815" targetPath="$dtws_launchpointprocess_rules_existiInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_existi:param0/ax2973:record/ax2974:daysFromAccident" targetedBy="1694926482-arg0"></mapper:vertice>
+  <mapper:vertice id="1694926482" dimension="121x24" location="552,84">
+    <mapper:value>days-from-duration()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1149341802" dimension="79x24" location="420,60" targetedBy="1694926482-arg1">
+    <mapper:value>xs:duration()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="811410552" dimension="79x24" location="313,98" targetedBy="1149341802-arg0">
+    <mapper:value>-</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1421909268" dimension="79x24" location="209,63" targetedBy="811410552-arg0">
+    <mapper:value>xs:date()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="82932082" dimension="82x24" location="57,54" targetedBy="1421909268-arg0">
+    <mapper:value>current-date()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1226093975" dimension="79x24" location="132,132" targetedBy="811410552-arg1">
+    <mapper:value>xs:date()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="2116486444" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:Case/Launchpoint:AccidentDate" targetedBy="1226093975-arg0"></mapper:vertice>
 </mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
