@@ -240,7 +240,7 @@
     <complexType name="ISORuleOutputType">
     	<sequence>
     		<element name="caseid" type="string"></element>
-    		<element name="reopenCase" type="boolean"></element>
+    		<element name="exception" type="boolean"></element>
     		<element name="reopenCaseStatus" type="string"></element>
     		<element name="createDiary" type="boolean"></element>
     		<element name="diaryType" type="string"></element>
@@ -300,6 +300,23 @@
     		<element name="CaseId" type="int"></element>
     		<element name="ClientId" type="int"></element>
     		<element name="EnvironmentId" type="int"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="ISORuleInput">
+    	<complexType>
+    		<sequence>
+    			<element name="highestScore" type="string"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+
+    <complexType name="CaseRefreshmentType">
+    	<sequence>
+    		<element name="batchId" type="int"></element>
+    		<element name="clientid" type="int"></element>
+    		<element name="environmentid" type="int"></element>
+    		<element name="case" type="tns:CaseType"></element>
     	</sequence>
     </complexType>
 </schema>
