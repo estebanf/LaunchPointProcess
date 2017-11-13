@@ -119,6 +119,7 @@ CREATE TABLE public.isoresponsetracking (
 	requestid varchar(250) NULL,
 	caseid int4 NULL,
 	score varchar(250) NULL,
+	scorevalue int4 NULL,
 	isoresponsereceived bool NULL,
 	previousscoreretrieved bool NULL,
 	isoresponsesent bool NULL,

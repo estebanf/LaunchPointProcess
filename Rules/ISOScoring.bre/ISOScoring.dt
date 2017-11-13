@@ -1,85 +1,59 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
 <decisiontable name="ISOScoring">
+  <import>bre.ISO</import>
   <import>bre.IsoScoringRuleInput</import>
   <import>bre.IsoScoringRuleOutput</import>
-  <import>bre.ISO</import>
-  <decisionheader expression="IsoScoringRuleInput.clientId" returntype="Integer" nodetype="Condition"/>
+  <decisionheader expression="IsoScoringRuleInput.caseStatus" returntype="String" nodetype="Condition"/>
+  <decisionheader expression="IsoScoringRuleInput.curentIsoScoring" returntype="String" nodetype="Condition"/>
   <decisionheader expression="IsoScoringRuleInput.highestIsoResponse" returntype="String" nodetype="Condition"/>
-  <decisionheader expression="IsoScoringRuleInput.predictiveScore" returntype="Integer" nodetype="Condition"/>
-  <decisionheader expression="IsoScoringRuleInput.daysSinceFirstIsoResponse" returntype="Integer" nodetype="Condition"/>
-  <decisionheader expression="IsoScoringRuleOutput.sendToIQ = {value}" returntype="Boolean" nodetype="Action"/>
-  <decisionheader expression="IsoScoringRuleOutput.closeCase = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="IsoScoringRuleOutput.exception = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="IsoScoringRuleOutput.activity = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="IsoScoringRuleOutput.activityDesc = {value}" returntype="String" nodetype="Action"/>
+  <decisionheader expression="IsoScoringRuleOutput.activityOwner = {value}" returntype="String" nodetype="Action"/>
+  <decisionheader expression="IsoScoringRuleOutput.activityText = {value}" returntype="String" nodetype="Action"/>
   <decisionheader expression="Effective Date" returntype="Date" nodetype="Options"/>
   <decisionheader expression="Expiration Date" returntype="Date" nodetype="Options"/>
   <decisionheader expression="Salience" returntype="Integer" nodetype="Options"/>
   <decisionheader expression="XOR Rule Group" returntype="String" nodetype="Options"/>
   <decisionnode headerid="-1">
     <decisionnode expression="*" headerid="0">
-      <decisionnode expression="== &quot;MISS&quot;" headerid="1">
-        <decisionnode expression=">= 70" headerid="2">
-          <decisionnode expression="== *" headerid="3">
+      <decisionnode expression="== &quot;ERROR&quot;" headerid="1">
+        <decisionnode expression="== *" headerid="2">
+          <decisionnode expression="true" headerid="3">
             <decisionnode expression="true" headerid="4">
-              <decisionnode expression="false" headerid="5">
-                <optionnode expression="" headerid="6">
-                  <optionnode expression="" headerid="7">
-                    <optionnode expression="0" headerid="8">
-                      <optionnode expression="" headerid="9"/>
+              <decisionnode expression="&quot;ISO Index Received: Error&quot;" headerid="5">
+                <decisionnode expression="&quot;DHP&quot;" headerid="6">
+                  <decisionnode expression="&quot;&quot;" headerid="7">
+                    <optionnode expression="" headerid="8">
+                      <optionnode expression="" headerid="9">
+                        <optionnode expression="0" headerid="10">
+                          <optionnode expression="" headerid="11"/>
+                        </optionnode>
+                      </optionnode>
                     </optionnode>
-                  </optionnode>
-                </optionnode>
+                  </decisionnode>
+                </decisionnode>
               </decisionnode>
             </decisionnode>
           </decisionnode>
         </decisionnode>
-        <decisionnode expression="&lt; 70" headerid="2">
-          <decisionnode expression=">= 60" headerid="3">
+      </decisionnode>
+      <decisionnode expression="== IsoScoringRuleInput.highestIsoResponse" headerid="1">
+        <decisionnode expression="== *" headerid="2">
+          <decisionnode expression="false" headerid="3">
             <decisionnode expression="false" headerid="4">
-              <decisionnode expression="true" headerid="5">
-                <optionnode expression="" headerid="6">
-                  <optionnode expression="" headerid="7">
-                    <optionnode expression="0" headerid="8">
-                      <optionnode expression="" headerid="9"/>
+              <decisionnode expression="&quot;&quot;" headerid="5">
+                <decisionnode expression="&quot;&quot;" headerid="6">
+                  <decisionnode expression="&quot;&quot;" headerid="7">
+                    <optionnode expression="" headerid="8">
+                      <optionnode expression="" headerid="9">
+                        <optionnode expression="0" headerid="10">
+                          <optionnode expression="" headerid="11"/>
+                        </optionnode>
+                      </optionnode>
                     </optionnode>
-                  </optionnode>
-                </optionnode>
-              </decisionnode>
-            </decisionnode>
-          </decisionnode>
-        </decisionnode>
-      </decisionnode>
-    </decisionnode>
-    <decisionnode expression="== 31" headerid="0">
-      <decisionnode expression="== &quot;MISS&quot;" headerid="1">
-        <decisionnode expression="*" headerid="2">
-          <decisionnode expression="== *" headerid="3">
-            <decisionnode expression="true" headerid="4">
-              <decisionnode expression="false" headerid="5">
-                <optionnode expression="" headerid="6">
-                  <optionnode expression="" headerid="7">
-                    <optionnode expression="0" headerid="8">
-                      <optionnode expression="" headerid="9"/>
-                    </optionnode>
-                  </optionnode>
-                </optionnode>
-              </decisionnode>
-            </decisionnode>
-          </decisionnode>
-        </decisionnode>
-      </decisionnode>
-    </decisionnode>
-    <decisionnode expression="== 32" headerid="0">
-      <decisionnode expression="== &quot;MISS&quot;" headerid="1">
-        <decisionnode expression="*" headerid="2">
-          <decisionnode expression="== *" headerid="3">
-            <decisionnode expression="true" headerid="4">
-              <decisionnode expression="false" headerid="5">
-                <optionnode expression="" headerid="6">
-                  <optionnode expression="" headerid="7">
-                    <optionnode expression="0" headerid="8">
-                      <optionnode expression="" headerid="9"/>
-                    </optionnode>
-                  </optionnode>
-                </optionnode>
+                  </decisionnode>
+                </decisionnode>
               </decisionnode>
             </decisionnode>
           </decisionnode>
