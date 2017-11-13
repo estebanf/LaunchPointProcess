@@ -1189,13 +1189,13 @@ declare namespace ns1='http://www.example.org/Launchpoint';
 declare namespace ns2='http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process';
 //ns2:Receive_caseRequest/ns1:Case/ns1:CaseId
 </con:targetPath><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>BatchId</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomBatchId</con:sourceStep><con:sourcePath/><con:targetType>Request</con:targetType><con:targetStep>CreateBatch</con:targetStep><con:targetPath>batchid</con:targetPath><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="true" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>casetrackingid</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomCaseId</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>CreateCase</con:targetStep><con:targetPath>casetrackingid</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="restrequest" name="CreateBatch" id="ea5027e6-1a32-49a2-8c16-3b01b5d75b92"><con:settings/><con:config service="LaunchPointMonitorAPI" resourcePath="/api/batchtrackings" methodName="batchtracking.create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="CreateBatch" id="73c8daed-5e45-4aba-9214-015cc38188e3" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
-   "batchid": "42968",
    "clientid": 1,
+   "batchid": "50300",
    "environmentid": "1"
 }</con:request><con:originalUri>http://bpms.everteam.us/api/batchtrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="CreateCase" id="bdbb79d4-1d20-43fe-83db-537803042a54"><con:settings/><con:config service="LaunchPointMonitorAPI" resourcePath="/api/casetrackings" methodName="casetracking.create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="CreateCase" id="3b01c26c-86c9-49bf-8159-2eb2374f0a19" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
    "batchid": 1,
    "workcomp": "yes",
-   "casetrackingid": "59447",
+   "casetrackingid": "13919",
    "state": "FL",
    "score": 30,
    "lob": "Case",
@@ -1204,7 +1204,7 @@ declare namespace ns2='http://bpms.everteam.com/Processes/BusinessRules/CaseDisc
    "isoindicator": 1,
    "fundingsource": "string",
    "benefitamount": 1000,
-   "caseid": "59447",
+   "caseid": "13919",
    "casesource": "EDI"
 }</con:request><con:originalUri>http://bpms.everteam.us/api/casetrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="request" name="ExistingCase" id="9fc9e11c-8681-413e-af3e-70b411168d11"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CanonicBindingForCase_Management</con:interface><con:operation>Receive_case</con:operation><con:request name="ExistingCase" id="670f039e-4535-4439-8dc7-e9fdca78a2de"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://bpms.everteam.us:8080/everteam/ode/processes/LaunchPointProcess_Processes_BusinessRules_CaseDiscrimination_process_Case_Management</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process" xmlns:laun="http://www.example.org/Launchpoint">
    <soapenv:Header/>
@@ -1214,7 +1214,7 @@ declare namespace ns2='http://bpms.everteam.com/Processes/BusinessRules/CaseDisc
          <laun:EnvironmentId>1</laun:EnvironmentId>
          <laun:ClientId>0</laun:ClientId>
          <laun:Case>
-            <laun:CaseId>59447</laun:CaseId>
+            <laun:CaseId>13919</laun:CaseId>
             <laun:ISOIndicator>1</laun:ISOIndicator>
             <laun:Score>30</laun:Score>
             <laun:AccidentDate>2017-10-10</laun:AccidentDate>
@@ -1257,13 +1257,13 @@ declare namespace ns1='http://www.example.org/Launchpoint';
 declare namespace ns2='http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process';
 //ns2:Receive_caseRequest/ns1:BatchId
 </con:targetPath><con:type>XPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>ReturnLetterId</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomIQResponseID2</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>CreateFirstIQResponseReturn</con:targetStep><con:targetPath>iqlettertrackingid</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>ReturnLetterCaseid</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomCaseId</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>CreateFirstIQResponseReturn</con:targetStep><con:targetPath>caseid</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>ThriedLetterCaseid</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomCaseId</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>CreateSecondIQResponse</con:targetStep><con:targetPath>caseid</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>ThirdLetterID</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomIQResponseID3</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>CreateFirstIQResponseReturn</con:targetStep><con:targetPath>iqlettertrackingid</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="restrequest" name="CreateBatch" id="62c13132-8e71-49f8-9765-d5611d180ff8"><con:settings/><con:config service="LaunchPointMonitorAPI" resourcePath="/api/batchtrackings" methodName="batchtracking.create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="CreateBatch" id="73c8daed-5e45-4aba-9214-015cc38188e3" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
-   "batchid": "2374",
    "clientid": 32,
+   "batchid": "8409",
    "environmentid": "1"
 }</con:request><con:originalUri>http://bpms.everteam.us/api/batchtrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="CreateCase" id="f930f0f9-f359-4c7a-9e1f-125b8a87aa58"><con:settings/><con:config service="LaunchPointMonitorAPI" resourcePath="/api/casetrackings" methodName="casetracking.create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="CreateCase" id="3b01c26c-86c9-49bf-8159-2eb2374f0a19" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
    "batchid": 1,
    "workcomp": "yes",
-   "casetrackingid": "67700",
+   "casetrackingid": "55798",
    "state": "FL",
    "score": 30,
    "lob": "Case",
@@ -1273,30 +1273,30 @@ declare namespace ns2='http://bpms.everteam.com/Processes/BusinessRules/CaseDisc
    "casetype": "IQ",
    "fundingsource": "string",
    "benefitamount": 1000,
-   "caseid": "67700",
+   "caseid": "55798",
    "casesource": "EDI"
 }</con:request><con:originalUri>http://bpms.everteam.us/api/casetrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="Create IQ Tracking" id="7e1999b3-11df-4e41-8c11-3f69e08ec517"><con:settings/><con:config service="LaunchPointMonitorAPI" methodName="iqtracking.create" resourcePath="/api/iqtrackings" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Create IQ Tracking" id="a22bc4d0-4ff3-4af0-802a-b0a70c39d113" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
    "iqhold": false,
-   "pid": "11455",
+   "pid": "62143",
    "iqcompleted": true,
-   "caseid": "67700",
+   "caseid": "55798",
    "iqreceived": true
 }</con:request><con:originalUri>http://bpms.everteam.us/api/iqlettertrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="CreateFirstIQResponse" id="fb4880e0-07d3-41f8-b545-2c95d792613a"><con:settings/><con:config service="LaunchPointMonitorAPI" resourcePath="/api/iqlettertrackings" methodName="iqlettertracking.create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="CreateFirstIQResponse" id="6ff64cef-1fd6-497e-aba9-85c7ad30f299" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
    "iqresponsereceived": false,
    "iqsent": true,
    "iqenqueued": true,
-   "iqlettertrackingid": "415",
+   "iqlettertrackingid": "4001",
    "letternumber": 1,
-   "caseid": "67700"
+   "caseid": "55798"
 }</con:request><con:originalUri>http://bpms.everteam.us/api/iqlettertrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="request" name="ExistingCase" id="0e7ed142-8c9c-4b89-afa9-45d9bfde5130"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CanonicBindingForCase_Management</con:interface><con:operation>Receive_case</con:operation><con:request name="ExistingCase" id="670f039e-4535-4439-8dc7-e9fdca78a2de"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://bpms.everteam.us:8080/everteam/ode/processes/LaunchPointProcess_Processes_BusinessRules_CaseDiscrimination_process_Case_Management</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process" xmlns:laun="http://www.example.org/Launchpoint">
    <soapenv:Header/>
    <soapenv:Body>
       <proc:Receive_caseRequest>
-         <laun:BatchId>2374</laun:BatchId>
+         <laun:BatchId>8409</laun:BatchId>
          <laun:EnvironmentId>1</laun:EnvironmentId>
          <laun:ClientId>32</laun:ClientId>
          <laun:Case>
-            <laun:CaseId>67700</laun:CaseId>
+            <laun:CaseId>55798</laun:CaseId>
             <laun:ISOIndicator>1</laun:ISOIndicator>
             <laun:Score>50</laun:Score>
             <laun:AccidentDate>2017-10-10</laun:AccidentDate>
@@ -1319,21 +1319,21 @@ declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
 declare namespace ns1='http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process';
 //ns1:Receive_caseResponse/Launchpoint:ISO/text()</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="restrequest" name="CreateFirstIQResponseReturn" id="1c355a4f-1696-49e0-a4f5-806fc53eec96"><con:settings/><con:config service="LaunchPointMonitorAPI" resourcePath="/api/iqlettertrackings" methodName="iqlettertracking.create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="CreateFirstIQResponseReturn" id="6ff64cef-1fd6-497e-aba9-85c7ad30f299" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
    "iqresponsereceived": true,
-   "iqresponse": "ReturnMail",
    "iqsent": true,
-   "iqlettertrackingid": "49566",
+   "iqresponse": "ReturnMail",
    "iqenqueued": true,
+   "iqlettertrackingid": "98514",
    "letternumber": 1,
-   "caseid": "67700"
+   "caseid": "55798"
 }</con:request><con:originalUri>http://bpms.everteam.us/api/iqlettertrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="request" name="ExistingCaseReturnMail" id="c2f179c4-15d9-40bd-868e-7699dcc4548c" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CanonicBindingForCase_Management</con:interface><con:operation>Receive_case</con:operation><con:request name="ExistingCaseReturnMail" id="670f039e-4535-4439-8dc7-e9fdca78a2de"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://bpms.everteam.us:8080/everteam/ode/processes/LaunchPointProcess_Processes_BusinessRules_CaseDiscrimination_process_Case_Management</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process" xmlns:laun="http://www.example.org/Launchpoint">
    <soapenv:Header/>
    <soapenv:Body>
       <proc:Receive_caseRequest>
-         <laun:BatchId>2374</laun:BatchId>
+         <laun:BatchId>8409</laun:BatchId>
          <laun:EnvironmentId>1</laun:EnvironmentId>
          <laun:ClientId>32</laun:ClientId>
          <laun:Case>
-            <laun:CaseId>67700</laun:CaseId>
+            <laun:CaseId>55798</laun:CaseId>
             <laun:ISOIndicator>1</laun:ISOIndicator>
             <laun:Score>50</laun:Score>
             <laun:AccidentDate>2017-10-10</laun:AccidentDate>
@@ -1357,19 +1357,19 @@ declare namespace ns1='http://bpms.everteam.com/Processes/BusinessRules/CaseDisc
 //ns1:Receive_caseResponse/Launchpoint:ISO/text()</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="restrequest" name="CreateSecondIQResponse" id="d91c59bc-f6af-4e46-8205-dc30e379215f"><con:settings/><con:config service="LaunchPointMonitorAPI" resourcePath="/api/iqlettertrackings" methodName="iqlettertracking.create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="CreateSecondIQResponse" id="6ff64cef-1fd6-497e-aba9-85c7ad30f299" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
    "iqresponsereceived": true,
    "iqsent": true,
-   "iqlettertrackingid": "16936",
    "iqenqueued": true,
+   "iqlettertrackingid": "16936",
    "letternumber": 3,
-   "caseid": "67700"
+   "caseid": "55798"
 }</con:request><con:originalUri>http://bpms.everteam.us/api/iqlettertrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="request" name="ExistingCase2" id="e6c1ab6e-1f11-45aa-90bb-86b1900ac79d"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CanonicBindingForCase_Management</con:interface><con:operation>Receive_case</con:operation><con:request name="ExistingCase2" id="670f039e-4535-4439-8dc7-e9fdca78a2de"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://bpms.everteam.us:8080/everteam/ode/processes/LaunchPointProcess_Processes_BusinessRules_CaseDiscrimination_process_Case_Management</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process" xmlns:laun="http://www.example.org/Launchpoint">
    <soapenv:Header/>
    <soapenv:Body>
       <proc:Receive_caseRequest>
-         <laun:BatchId>2374</laun:BatchId>
+         <laun:BatchId>8409</laun:BatchId>
          <laun:EnvironmentId>1</laun:EnvironmentId>
          <laun:ClientId>32</laun:ClientId>
          <laun:Case>
-            <laun:CaseId>67700</laun:CaseId>
+            <laun:CaseId>55798</laun:CaseId>
             <laun:ISOIndicator>1</laun:ISOIndicator>
             <laun:Score>50</laun:Score>
             <laun:AccidentDate>2017-10-10</laun:AccidentDate>
@@ -1415,13 +1415,13 @@ declare namespace ns1='http://www.example.org/Launchpoint';
 declare namespace ns2='http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process';
 //ns2:Receive_caseRequest/ns1:BatchId
 </con:targetPath><con:type>XPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>ReturnLetterId</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomIQResponseID2</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>CreateFirstIQResponseReturn</con:targetStep><con:targetPath>iqlettertrackingid</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>ReturnLetterCaseid</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomCaseId</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>CreateFirstIQResponseReturn</con:targetStep><con:targetPath>caseid</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>ThriedLetterCaseid</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomCaseId</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>CreateSecondIQResponse</con:targetStep><con:targetPath>caseid</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>ThirdLetterID</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomIQResponseID3</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>CreateSecondIQResponse</con:targetStep><con:targetPath>iqlettertrackingid</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="restrequest" name="CreateBatch" id="db009431-e4d2-4d45-83f7-1d87133fe46e"><con:settings/><con:config service="LaunchPointMonitorAPI" resourcePath="/api/batchtrackings" methodName="batchtracking.create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="CreateBatch" id="73c8daed-5e45-4aba-9214-015cc38188e3" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
+   "batchid": "34200",
    "clientid": 13,
-   "batchid": "63529",
    "environmentid": "1"
 }</con:request><con:originalUri>http://bpms.everteam.us/api/batchtrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="CreateCase" id="9557971e-5b5a-4dce-92b5-ba42c004d804"><con:settings/><con:config service="LaunchPointMonitorAPI" resourcePath="/api/casetrackings" methodName="casetracking.create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="CreateCase" id="3b01c26c-86c9-49bf-8159-2eb2374f0a19" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
    "batchid": 1,
    "workcomp": "yes",
-   "casetrackingid": "51257",
+   "casetrackingid": "74275",
    "state": "FL",
    "score": 30,
    "lob": "Case",
@@ -1431,30 +1431,30 @@ declare namespace ns2='http://bpms.everteam.com/Processes/BusinessRules/CaseDisc
    "casetype": "IQ",
    "fundingsource": "string",
    "benefitamount": 1000,
-   "caseid": "51257",
+   "caseid": "74275",
    "casesource": "EDI"
 }</con:request><con:originalUri>http://bpms.everteam.us/api/casetrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="Create IQ Tracking" id="6ae334db-3f05-431e-a2ea-59592bcaaa4d"><con:settings/><con:config service="LaunchPointMonitorAPI" methodName="iqtracking.create" resourcePath="/api/iqtrackings" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Create IQ Tracking" id="a22bc4d0-4ff3-4af0-802a-b0a70c39d113" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
    "iqhold": false,
-   "pid": "85112",
+   "pid": "30569",
    "iqcompleted": true,
-   "caseid": "51257",
+   "caseid": "74275",
    "iqreceived": true
 }</con:request><con:originalUri>http://bpms.everteam.us/api/iqlettertrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="CreateFirstIQResponse" id="ddd5aa49-8457-4844-9d81-f9335e301972"><con:settings/><con:config service="LaunchPointMonitorAPI" resourcePath="/api/iqlettertrackings" methodName="iqlettertracking.create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="CreateFirstIQResponse" id="6ff64cef-1fd6-497e-aba9-85c7ad30f299" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
    "iqresponsereceived": false,
    "iqsent": true,
    "iqenqueued": true,
-   "iqlettertrackingid": "68044",
+   "iqlettertrackingid": "54949",
    "letternumber": 1,
-   "caseid": "51257"
+   "caseid": "74275"
 }</con:request><con:originalUri>http://bpms.everteam.us/api/iqlettertrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="request" name="ExistingCase" id="f8347da5-01ff-4b1b-b080-b06c279dbdfe"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CanonicBindingForCase_Management</con:interface><con:operation>Receive_case</con:operation><con:request name="ExistingCase" id="670f039e-4535-4439-8dc7-e9fdca78a2de"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://bpms.everteam.us:8080/everteam/ode/processes/LaunchPointProcess_Processes_BusinessRules_CaseDiscrimination_process_Case_Management</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process" xmlns:laun="http://www.example.org/Launchpoint">
    <soapenv:Header/>
    <soapenv:Body>
       <proc:Receive_caseRequest>
-         <laun:BatchId>63529</laun:BatchId>
+         <laun:BatchId>34200</laun:BatchId>
          <laun:EnvironmentId>1</laun:EnvironmentId>
          <laun:ClientId>13</laun:ClientId>
          <laun:Case>
-            <laun:CaseId>51257</laun:CaseId>
+            <laun:CaseId>74275</laun:CaseId>
             <laun:ISOIndicator>1</laun:ISOIndicator>
             <laun:Score>50</laun:Score>
             <laun:AccidentDate>2017-10-10</laun:AccidentDate>
@@ -1479,19 +1479,19 @@ declare namespace ns1='http://bpms.everteam.com/Processes/BusinessRules/CaseDisc
    "iqresponsereceived": true,
    "iqresponse": "ReturnMail",
    "iqsent": true,
-   "iqlettertrackingid": "44935",
+   "iqlettertrackingid": "6737",
    "iqenqueued": true,
    "letternumber": 2,
-   "caseid": "51257"
+   "caseid": "74275"
 }</con:request><con:originalUri>http://bpms.everteam.us/api/iqlettertrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="request" name="ExistingCaseReturnMail" id="d3d219d6-e9b9-4f9a-b1ad-7d8d281acb9c"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CanonicBindingForCase_Management</con:interface><con:operation>Receive_case</con:operation><con:request name="ExistingCaseReturnMail" id="670f039e-4535-4439-8dc7-e9fdca78a2de"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://bpms.everteam.us:8080/everteam/ode/processes/LaunchPointProcess_Processes_BusinessRules_CaseDiscrimination_process_Case_Management</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process" xmlns:laun="http://www.example.org/Launchpoint">
    <soapenv:Header/>
    <soapenv:Body>
       <proc:Receive_caseRequest>
-         <laun:BatchId>63529</laun:BatchId>
+         <laun:BatchId>34200</laun:BatchId>
          <laun:EnvironmentId>1</laun:EnvironmentId>
          <laun:ClientId>13</laun:ClientId>
          <laun:Case>
-            <laun:CaseId>51257</laun:CaseId>
+            <laun:CaseId>74275</laun:CaseId>
             <laun:ISOIndicator>1</laun:ISOIndicator>
             <laun:Score>50</laun:Score>
             <laun:AccidentDate>2017-10-10</laun:AccidentDate>
@@ -1516,18 +1516,18 @@ declare namespace ns1='http://bpms.everteam.com/Processes/BusinessRules/CaseDisc
    "iqresponsereceived": true,
    "iqsent": true,
    "iqenqueued": true,
-   "iqlettertrackingid": "94313",
+   "iqlettertrackingid": "62340",
    "letternumber": 3,
-   "caseid": "51257"
+   "caseid": "74275"
 }</con:request><con:originalUri>http://bpms.everteam.us/api/iqlettertrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="request" name="ExistingCase2" id="e9ce5d0a-415a-4db3-b2bc-8e8ee9425db3"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CanonicBindingForCase_Management</con:interface><con:operation>Receive_case</con:operation><con:request name="ExistingCase2" id="670f039e-4535-4439-8dc7-e9fdca78a2de"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://bpms.everteam.us:8080/everteam/ode/processes/LaunchPointProcess_Processes_BusinessRules_CaseDiscrimination_process_Case_Management</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process" xmlns:laun="http://www.example.org/Launchpoint">
    <soapenv:Header/>
    <soapenv:Body>
       <proc:Receive_caseRequest>
-         <laun:BatchId>63529</laun:BatchId>
+         <laun:BatchId>34200</laun:BatchId>
          <laun:EnvironmentId>1</laun:EnvironmentId>
          <laun:ClientId>13</laun:ClientId>
          <laun:Case>
-            <laun:CaseId>51257</laun:CaseId>
+            <laun:CaseId>74275</laun:CaseId>
             <laun:ISOIndicator>1</laun:ISOIndicator>
             <laun:Score>50</laun:Score>
             <laun:AccidentDate>2017-10-10</laun:AccidentDate>
@@ -1572,14 +1572,22 @@ declare namespace ns2='http://bpms.everteam.com/Processes/BusinessRules/CaseDisc
 declare namespace ns1='http://www.example.org/Launchpoint';
 declare namespace ns2='http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process';
 //ns2:Receive_caseRequest/ns1:BatchId
-</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>ReturnLetterId</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomIQResponseID2</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>CreateFirstIQResponseReturn</con:targetStep><con:targetPath>iqlettertrackingid</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>ReturnLetterCaseid</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomCaseId</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>CreateFirstIQResponseReturn</con:targetStep><con:targetPath>caseid</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>ThriedLetterCaseid</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomCaseId</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>CreateSecondIQResponse</con:targetStep><con:targetPath>caseid</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>ThirdLetterID</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomIQResponseID3</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>CreateFirstIQResponseReturn</con:targetStep><con:targetPath>iqlettertrackingid</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="restrequest" name="CreateBatch" id="41546ede-28c9-4b00-b807-f308b8844ea6"><con:settings/><con:config service="LaunchPointMonitorAPI" resourcePath="/api/batchtrackings" methodName="batchtracking.create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="CreateBatch" id="73c8daed-5e45-4aba-9214-015cc38188e3" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
+</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>ReturnLetterId</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomIQResponseID2</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>CreateFirstIQResponseReturn</con:targetStep><con:targetPath>iqlettertrackingid</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>ReturnLetterCaseid</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomCaseId</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>CreateFirstIQResponseReturn</con:targetStep><con:targetPath>caseid</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>ThriedLetterCaseid</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomCaseId</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>CreateSecondIQResponse</con:targetStep><con:targetPath>caseid</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>ThirdLetterID</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomIQResponseID3</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>CreateFirstIQResponseReturn</con:targetStep><con:targetPath>iqlettertrackingid</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>JSONPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>CaseIdSOAPOld</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomCaseId</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>ExistingCaseMoreThen30Days</con:targetStep><con:targetPath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.example.org/Launchpoint';
+declare namespace ns2='http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process';
+//ns2:Receive_caseRequest/ns1:Case/ns1:CaseId
+</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>BatchIDSoapOld</con:name><con:sourceType>result</con:sourceType><con:sourceStep>RandomBatchId</con:sourceStep><con:sourcePath xsi:nil="true"/><con:targetType>Request</con:targetType><con:targetStep>ExistingCaseMoreThen30Days</con:targetStep><con:targetPath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.example.org/Launchpoint';
+declare namespace ns2='http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process';
+//ns2:Receive_caseRequest/ns1:BatchId
+</con:targetPath><con:type>XPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="restrequest" name="CreateBatch" id="41546ede-28c9-4b00-b807-f308b8844ea6"><con:settings/><con:config service="LaunchPointMonitorAPI" resourcePath="/api/batchtrackings" methodName="batchtracking.create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="CreateBatch" id="73c8daed-5e45-4aba-9214-015cc38188e3" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
    "clientid": 1,
-   "batchid": "7473",
+   "batchid": "50376",
    "environmentid": "1"
 }</con:request><con:originalUri>http://bpms.everteam.us/api/batchtrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="CreateCase" id="1bbde473-4104-4d17-975f-7538bb56de9f"><con:settings/><con:config service="LaunchPointMonitorAPI" resourcePath="/api/casetrackings" methodName="casetracking.create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="CreateCase" id="3b01c26c-86c9-49bf-8159-2eb2374f0a19" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
    "batchid": 1,
    "workcomp": "yes",
-   "casetrackingid": "89686",
+   "casetrackingid": "55760",
    "state": "FL",
    "score": 30,
    "lob": "Case",
@@ -1589,30 +1597,30 @@ declare namespace ns2='http://bpms.everteam.com/Processes/BusinessRules/CaseDisc
    "casetype": "IQ",
    "fundingsource": "string",
    "benefitamount": 1000,
-   "caseid": "89686",
+   "caseid": "55760",
    "casesource": "EDI"
 }</con:request><con:originalUri>http://bpms.everteam.us/api/casetrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="Create IQ Tracking" id="2b2d76d4-0977-4457-a8aa-a7ba45bd7e68"><con:settings/><con:config service="LaunchPointMonitorAPI" methodName="iqtracking.create" resourcePath="/api/iqtrackings" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Create IQ Tracking" id="a22bc4d0-4ff3-4af0-802a-b0a70c39d113" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
    "iqhold": false,
-   "pid": "14922",
+   "pid": "49542",
    "iqcompleted": true,
-   "caseid": "89686",
+   "caseid": "55760",
    "iqreceived": true
 }</con:request><con:originalUri>http://bpms.everteam.us/api/iqlettertrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="CreateFirstIQResponse" id="2593ca28-e251-4b9c-9ad9-d7228018b90c"><con:settings/><con:config service="LaunchPointMonitorAPI" resourcePath="/api/iqlettertrackings" methodName="iqlettertracking.create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="CreateFirstIQResponse" id="6ff64cef-1fd6-497e-aba9-85c7ad30f299" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
    "iqresponsereceived": false,
    "iqsent": true,
    "iqenqueued": true,
-   "iqlettertrackingid": "75954",
+   "iqlettertrackingid": "15326",
    "letternumber": 1,
-   "caseid": "89686"
+   "caseid": "55760"
 }</con:request><con:originalUri>http://bpms.everteam.us/api/iqlettertrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="request" name="ExistingCase" id="725a1248-6f8b-478f-a6e6-eaa5b5dcf96e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CanonicBindingForCase_Management</con:interface><con:operation>Receive_case</con:operation><con:request name="ExistingCase" id="670f039e-4535-4439-8dc7-e9fdca78a2de"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://bpms.everteam.us:8080/everteam/ode/processes/LaunchPointProcess_Processes_BusinessRules_CaseDiscrimination_process_Case_Management</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process" xmlns:laun="http://www.example.org/Launchpoint">
    <soapenv:Header/>
    <soapenv:Body>
       <proc:Receive_caseRequest>
-         <laun:BatchId>7473</laun:BatchId>
+         <laun:BatchId>50376</laun:BatchId>
          <laun:EnvironmentId>1</laun:EnvironmentId>
          <laun:ClientId>1</laun:ClientId>
          <laun:Case>
-            <laun:CaseId>89686</laun:CaseId>
+            <laun:CaseId>55760</laun:CaseId>
             <laun:ISOIndicator>1</laun:ISOIndicator>
             <laun:Score>50</laun:Score>
             <laun:AccidentDate>2017-11-10</laun:AccidentDate>
@@ -1637,11 +1645,11 @@ declare namespace ns1='http://bpms.everteam.com/Processes/BusinessRules/CaseDisc
    <soapenv:Header/>
    <soapenv:Body>
       <proc:Receive_caseRequest>
-         <laun:BatchId>8997</laun:BatchId>
+         <laun:BatchId>50376</laun:BatchId>
          <laun:EnvironmentId>1</laun:EnvironmentId>
          <laun:ClientId>1</laun:ClientId>
          <laun:Case>
-            <laun:CaseId>82017</laun:CaseId>
+            <laun:CaseId>55760</laun:CaseId>
             <laun:ISOIndicator>1</laun:ISOIndicator>
             <laun:Score>50</laun:Score>
             <laun:AccidentDate>2017-08-10</laun:AccidentDate>
@@ -1659,26 +1667,26 @@ declare namespace ns1='http://bpms.everteam.com/Processes/BusinessRules/CaseDisc
 </soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="008392b7-574b-4d82-9eb0-6ec45efbee28"/><con:assertion type="XPath Match" id="c1680cdf-32fc-477c-a7b2-89305c09c88a" name="Ignore"><con:configuration><path>declare namespace Launchpoint='http://www.example.org/Launchpoint';
 declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
 declare namespace ns1='http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process';
-//ns1:Receive_caseResponse/Launchpoint:ignore/text()</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="c1680cdf-32fc-477c-a7b2-89305c09c88a" name="ISO"><con:configuration><path>declare namespace Launchpoint='http://www.example.org/Launchpoint';
+//ns1:Receive_caseResponse/Launchpoint:ignore/text()</path><content>false</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" id="c1680cdf-32fc-477c-a7b2-89305c09c88a" name="ISO"><con:configuration><path>declare namespace Launchpoint='http://www.example.org/Launchpoint';
 declare namespace soapenv='http://schemas.xmlsoap.org/soap/envelope/';
 declare namespace ns1='http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process';
-//ns1:Receive_caseResponse/Launchpoint:ISO/text()</path><content>false</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="restrequest" name="CreateFirstIQResponseReturn" id="e568b1c6-ed36-4ff1-b030-3c79ca00606c"><con:settings/><con:config service="LaunchPointMonitorAPI" resourcePath="/api/iqlettertrackings" methodName="iqlettertracking.create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="CreateFirstIQResponseReturn" id="6ff64cef-1fd6-497e-aba9-85c7ad30f299" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
+//ns1:Receive_caseResponse/Launchpoint:ISO/text()</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="restrequest" name="CreateFirstIQResponseReturn" id="e568b1c6-ed36-4ff1-b030-3c79ca00606c"><con:settings/><con:config service="LaunchPointMonitorAPI" resourcePath="/api/iqlettertrackings" methodName="iqlettertracking.create" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="CreateFirstIQResponseReturn" id="6ff64cef-1fd6-497e-aba9-85c7ad30f299" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://bpms.everteam.us:3005</con:endpoint><con:request>{
    "iqresponsereceived": true,
    "iqsent": true,
    "iqresponse": "ReturnMail",
    "iqenqueued": true,
-   "iqlettertrackingid": "45688",
+   "iqlettertrackingid": "48390",
    "letternumber": 1,
-   "caseid": "89686"
+   "caseid": "55760"
 }</con:request><con:originalUri>http://bpms.everteam.us/api/iqlettertrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="request" name="ExistingCaseReturnMail" id="3bcab72f-e1ea-46d1-b31c-370ef89f81d3" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CanonicBindingForCase_Management</con:interface><con:operation>Receive_case</con:operation><con:request name="ExistingCaseReturnMail" id="670f039e-4535-4439-8dc7-e9fdca78a2de"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://bpms.everteam.us:8080/everteam/ode/processes/LaunchPointProcess_Processes_BusinessRules_CaseDiscrimination_process_Case_Management</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process" xmlns:laun="http://www.example.org/Launchpoint">
    <soapenv:Header/>
    <soapenv:Body>
       <proc:Receive_caseRequest>
-         <laun:BatchId>7473</laun:BatchId>
+         <laun:BatchId>50376</laun:BatchId>
          <laun:EnvironmentId>1</laun:EnvironmentId>
          <laun:ClientId>32</laun:ClientId>
          <laun:Case>
-            <laun:CaseId>89686</laun:CaseId>
+            <laun:CaseId>55760</laun:CaseId>
             <laun:ISOIndicator>1</laun:ISOIndicator>
             <laun:Score>50</laun:Score>
             <laun:AccidentDate>2017-10-10</laun:AccidentDate>
@@ -1705,16 +1713,16 @@ declare namespace ns1='http://bpms.everteam.com/Processes/BusinessRules/CaseDisc
    "iqenqueued": true,
    "iqlettertrackingid": "16936",
    "letternumber": 3,
-   "caseid": "89686"
+   "caseid": "55760"
 }</con:request><con:originalUri>http://bpms.everteam.us/api/iqlettertrackings</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="request" name="ExistingCase2" id="d4972532-a54c-4a26-a840-2f7f57fb0c76"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CanonicBindingForCase_Management</con:interface><con:operation>Receive_case</con:operation><con:request name="ExistingCase2" id="670f039e-4535-4439-8dc7-e9fdca78a2de"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://bpms.everteam.us:8080/everteam/ode/processes/LaunchPointProcess_Processes_BusinessRules_CaseDiscrimination_process_Case_Management</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://bpms.everteam.com/Processes/BusinessRules/CaseDiscrimination/process" xmlns:laun="http://www.example.org/Launchpoint">
    <soapenv:Header/>
    <soapenv:Body>
       <proc:Receive_caseRequest>
-         <laun:BatchId>7473</laun:BatchId>
+         <laun:BatchId>50376</laun:BatchId>
          <laun:EnvironmentId>1</laun:EnvironmentId>
          <laun:ClientId>1</laun:ClientId>
          <laun:Case>
-            <laun:CaseId>89686</laun:CaseId>
+            <laun:CaseId>55760</laun:CaseId>
             <laun:ISOIndicator>1</laun:ISOIndicator>
             <laun:Score>50</laun:Score>
             <laun:AccidentDate>2017-10-10</laun:AccidentDate>

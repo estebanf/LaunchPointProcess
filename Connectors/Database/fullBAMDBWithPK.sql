@@ -91,6 +91,7 @@ create
 
 CREATE TABLE iqtracking (
 	pid int4 NOT NULL,
+	batchId int4 NULL,
 	caseid int4 NULL,
 	parentid varchar(250) NULL,
 	iqreceived bool NULL,
