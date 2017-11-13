@@ -67,9 +67,9 @@ CREATE TABLE public.iqlettertracking (
 	iqlettertrackingid varchar(250) NOT NULL,
 	pid int4 NULL,
 	letternumber int4 NULL,
-	caseid varchar(250) NULL,
+	caseid int4 NULL,
 	iqenqueued bool NULL,
-	iqenqueuedat varchar(250) NULL,
+	iqenqueuedat int4 NULL,
 	iqsent bool NULL,
 	iqsentat varchar(250) NULL,
 	iqresponsereceived bool NULL,
@@ -89,19 +89,20 @@ create
         using btree(iqlettertrackingid) ;
 
 
-CREATE TABLE public.iqtracking (
-	pid int4 NULL,
+CREATE TABLE iqtracking (
+	pid int4 NOT NULL,
 	caseid int4 NULL,
 	parentid varchar(250) NULL,
 	iqreceived bool NULL,
 	iqreceivedat timestamp NULL,
-	iqhold varchar(250) NULL,
+	iqhold bool NULL,
 	iqholdat timestamp NULL,
-	iqcompleted varchar(250) NULL,
+	iqcompleted bool NULL,
 	iqcompletedat timestamp NULL,
 	createdat timestamp NULL,
 	modifiedat timestamp NULL,
-	pdid varchar(250) NULL
+	pdid varchar(250) NULL,
+	CONSTRAINT iqtracking_pk PRIMARY KEY (pid)
 )
 WITH (
 	OIDS=FALSE
@@ -110,6 +111,7 @@ create
     index iqtracking_keys on
     iqtracking
         using btree(pid) ;
+
 
 CREATE TABLE public.isoresponsetracking (
 	pid int4 NOT NULL,
