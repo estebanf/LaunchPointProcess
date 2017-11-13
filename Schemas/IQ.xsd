@@ -3,15 +3,23 @@
 
     <complexType name="IQsType">
     	<sequence>
-    		<element name="IQs" type="tns:IQType"></element>
+    		<element name="IQs" type="tns:IQType" maxOccurs="unbounded" minOccurs="1"></element>
     	</sequence>
     </complexType>
     
-    <complexType name="IQType"></complexType>
+    <complexType name="IQType">
+    	<sequence>
+    		<element name="CaseId" type="int"></element>
+    	</sequence>
+    </complexType>
 
     <complexType name="ActivityType">
     	<sequence>
+    		<element name="ClientId" type="int"></element>
+    		<element name="CaseId" type="int"></element>
     		<element name="ActivityType" type="string"></element>
+    		<element name="ActivityCode" type="string"></element>
+    		<element name="Description" type="string"></element>
     	</sequence>
     </complexType>
     
@@ -26,4 +34,6 @@
     <element name="IQs" type="tns:IQsType"></element>
 
     <element name="Activity" type="tns:ActivityType"></element>
+
+    <element name="IQ" type="tns:IQType"></element>
 </schema>

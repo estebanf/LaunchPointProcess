@@ -1,0 +1,1 @@
+select caseid from iqtracking where not iqcompleted or iqcompleted is NULL;
