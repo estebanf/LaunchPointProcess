@@ -6,11 +6,22 @@
   <decisionheader expression="IsoScoringRuleInput.caseStatus" returntype="String" nodetype="Condition"/>
   <decisionheader expression="IsoScoringRuleInput.curentIsoScoring" returntype="String" nodetype="Condition"/>
   <decisionheader expression="IsoScoringRuleInput.highestIsoResponse" returntype="String" nodetype="Condition"/>
+  <decisionheader expression="IsoScoringRuleInput.predictiveScore" returntype="Integer" nodetype="Condition"/>
+  <decisionheader expression="IsoScoringRuleInput.daysSinceFirstIsoResponse" returntype="Integer" nodetype="Condition"/>
   <decisionheader expression="IsoScoringRuleOutput.exception = {value}" returntype="Boolean" nodetype="Action"/>
   <decisionheader expression="IsoScoringRuleOutput.activity = {value}" returntype="Boolean" nodetype="Action"/>
   <decisionheader expression="IsoScoringRuleOutput.activityDesc = {value}" returntype="String" nodetype="Action"/>
   <decisionheader expression="IsoScoringRuleOutput.activityOwner = {value}" returntype="String" nodetype="Action"/>
   <decisionheader expression="IsoScoringRuleOutput.activityText = {value}" returntype="String" nodetype="Action"/>
+  <decisionheader expression="IsoScoringRuleOutput.diary = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="IsoScoringRuleOutput.diaryText = {value}" returntype="String" nodetype="Action"/>
+  <decisionheader expression="IsoScoringRuleOutput.diaryOwner = {value}" returntype="String" nodetype="Action"/>
+  <decisionheader expression="IsoScoringRuleOutput.sendToIQ = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="IsoScoringRuleOutput.closeCase = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="IsoScoringRuleOutput.closeCaseStatus = {value}" returntype="String" nodetype="Action"/>
+  <decisionheader expression="IsoScoringRuleOutput.closeCaseReason = {value}" returntype="String" nodetype="Action"/>
+  <decisionheader expression="IsoScoringRuleOutput.updateLifeCycle = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="IsoScoringRuleOutput.updateLifeCycleDescription = {value}" returntype="String" nodetype="Action"/>
   <decisionheader expression="Effective Date" returntype="Date" nodetype="Options"/>
   <decisionheader expression="Expiration Date" returntype="Date" nodetype="Options"/>
   <decisionheader expression="Salience" returntype="Integer" nodetype="Options"/>
@@ -18,19 +29,41 @@
   <decisionnode headerid="-1">
     <decisionnode expression="*" headerid="0">
       <decisionnode expression="== &quot;ERROR&quot;" headerid="1">
-        <decisionnode expression="== *" headerid="2">
-          <decisionnode expression="true" headerid="3">
-            <decisionnode expression="true" headerid="4">
-              <decisionnode expression="&quot;ISO Index Received: Error&quot;" headerid="5">
-                <decisionnode expression="&quot;DHP&quot;" headerid="6">
-                  <decisionnode expression="&quot;&quot;" headerid="7">
-                    <optionnode expression="" headerid="8">
-                      <optionnode expression="" headerid="9">
-                        <optionnode expression="0" headerid="10">
-                          <optionnode expression="" headerid="11"/>
-                        </optionnode>
-                      </optionnode>
-                    </optionnode>
+        <decisionnode expression="*" headerid="2">
+          <decisionnode expression="== *" headerid="3">
+            <decisionnode expression="== *" headerid="4">
+              <decisionnode expression="true" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="&quot;ISO Index Received: Error&quot;" headerid="7">
+                    <decisionnode expression="&quot;DHP&quot;" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="false" headerid="10">
+                          <decisionnode expression="&quot;&quot;" headerid="11">
+                            <decisionnode expression="&quot;&quot;" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <decisionnode expression="false" headerid="14">
+                                  <decisionnode expression="&quot;&quot;" headerid="15">
+                                    <decisionnode expression="&quot;&quot;" headerid="16">
+                                      <decisionnode expression="false" headerid="17">
+                                        <decisionnode expression="&quot;&quot;" headerid="18">
+                                          <optionnode expression="" headerid="19">
+                                            <optionnode expression="" headerid="20">
+                                              <optionnode expression="0" headerid="21">
+                                                <optionnode expression="" headerid="22"/>
+                                              </optionnode>
+                                            </optionnode>
+                                          </optionnode>
+                                        </decisionnode>
+                                      </decisionnode>
+                                    </decisionnode>
+                                  </decisionnode>
+                                </decisionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
                   </decisionnode>
                 </decisionnode>
               </decisionnode>
@@ -39,19 +72,617 @@
         </decisionnode>
       </decisionnode>
       <decisionnode expression="== IsoScoringRuleInput.highestIsoResponse" headerid="1">
-        <decisionnode expression="== *" headerid="2">
-          <decisionnode expression="false" headerid="3">
-            <decisionnode expression="false" headerid="4">
-              <decisionnode expression="&quot;&quot;" headerid="5">
-                <decisionnode expression="&quot;&quot;" headerid="6">
+        <decisionnode expression="*" headerid="2">
+          <decisionnode expression="== *" headerid="3">
+            <decisionnode expression="== *" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="false" headerid="6">
                   <decisionnode expression="&quot;&quot;" headerid="7">
-                    <optionnode expression="" headerid="8">
-                      <optionnode expression="" headerid="9">
-                        <optionnode expression="0" headerid="10">
-                          <optionnode expression="" headerid="11"/>
-                        </optionnode>
-                      </optionnode>
-                    </optionnode>
+                    <decisionnode expression="&quot;&quot;" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="false" headerid="10">
+                          <decisionnode expression="&quot;&quot;" headerid="11">
+                            <decisionnode expression="&quot;&quot;" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <decisionnode expression="false" headerid="14">
+                                  <decisionnode expression="&quot;&quot;" headerid="15">
+                                    <decisionnode expression="&quot;&quot;" headerid="16">
+                                      <decisionnode expression="false" headerid="17">
+                                        <decisionnode expression="&quot;&quot;" headerid="18">
+                                          <optionnode expression="" headerid="19">
+                                            <optionnode expression="" headerid="20">
+                                              <optionnode expression="0" headerid="21">
+                                                <optionnode expression="" headerid="22"/>
+                                              </optionnode>
+                                            </optionnode>
+                                          </optionnode>
+                                        </decisionnode>
+                                      </decisionnode>
+                                    </decisionnode>
+                                  </decisionnode>
+                                </decisionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+      </decisionnode>
+    </decisionnode>
+    <decisionnode expression="== &quot;Investigation&quot;" headerid="0">
+      <decisionnode expression="== &quot;MISS&quot;" headerid="1">
+        <decisionnode expression="== &quot;NONE&quot;" headerid="2">
+          <decisionnode expression="== *" headerid="3">
+            <decisionnode expression="== *" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="&quot;ISO Index Received: Miss&quot;" headerid="7">
+                    <decisionnode expression="&quot;DHP&quot;" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="true" headerid="10">
+                          <decisionnode expression="&quot;??&quot;" headerid="11">
+                            <decisionnode expression="&quot;BPM&quot;" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <decisionnode expression="false" headerid="14">
+                                  <decisionnode expression="&quot;&quot;" headerid="15">
+                                    <decisionnode expression="&quot;&quot;" headerid="16">
+                                      <decisionnode expression="false" headerid="17">
+                                        <decisionnode expression="&quot;&quot;" headerid="18">
+                                          <optionnode expression="" headerid="19">
+                                            <optionnode expression="" headerid="20">
+                                              <optionnode expression="0" headerid="21">
+                                                <optionnode expression="" headerid="22"/>
+                                              </optionnode>
+                                            </optionnode>
+                                          </optionnode>
+                                        </decisionnode>
+                                      </decisionnode>
+                                    </decisionnode>
+                                  </decisionnode>
+                                </decisionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+        <decisionnode expression="== &quot;MISS&quot;" headerid="2">
+          <decisionnode expression=">= 70" headerid="3">
+            <decisionnode expression="== *" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="&quot;ISO Index Received: Miss&quot;" headerid="7">
+                    <decisionnode expression="&quot;DHP&quot;" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="false" headerid="10">
+                          <decisionnode expression="&quot;&quot;" headerid="11">
+                            <decisionnode expression="&quot;&quot;" headerid="12">
+                              <decisionnode expression="true" headerid="13">
+                                <decisionnode expression="false" headerid="14">
+                                  <decisionnode expression="&quot;&quot;" headerid="15">
+                                    <decisionnode expression="&quot;&quot;" headerid="16">
+                                      <decisionnode expression="false" headerid="17">
+                                        <decisionnode expression="&quot;&quot;" headerid="18">
+                                          <optionnode expression="" headerid="19">
+                                            <optionnode expression="" headerid="20">
+                                              <optionnode expression="0" headerid="21">
+                                                <optionnode expression="" headerid="22"/>
+                                              </optionnode>
+                                            </optionnode>
+                                          </optionnode>
+                                        </decisionnode>
+                                      </decisionnode>
+                                    </decisionnode>
+                                  </decisionnode>
+                                </decisionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+          <decisionnode expression="&lt; 70" headerid="3">
+            <decisionnode expression=">= 60" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="&quot;ISO Index Received: Miss&quot;" headerid="7">
+                    <decisionnode expression="&quot;DHP&quot;" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="false" headerid="10">
+                          <decisionnode expression="&quot;&quot;" headerid="11">
+                            <decisionnode expression="&quot;&quot;" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <decisionnode expression="true" headerid="14">
+                                  <decisionnode expression="&quot;CWOC&quot;" headerid="15">
+                                    <decisionnode expression="&quot;CWOC: Closed pending ISO Update&quot;" headerid="16">
+                                      <decisionnode expression="true" headerid="17">
+                                        <decisionnode expression="&quot;CWOC: Closed pending ISO Update&quot;" headerid="18">
+                                          <optionnode expression="" headerid="19">
+                                            <optionnode expression="" headerid="20">
+                                              <optionnode expression="0" headerid="21">
+                                                <optionnode expression="" headerid="22"/>
+                                              </optionnode>
+                                            </optionnode>
+                                          </optionnode>
+                                        </decisionnode>
+                                      </decisionnode>
+                                    </decisionnode>
+                                  </decisionnode>
+                                </decisionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+            <decisionnode expression="&lt; 60" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="&quot;ISO Index Received: Miss&quot;" headerid="7">
+                    <decisionnode expression="&quot;DHP&quot;" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="false" headerid="10">
+                          <decisionnode expression="&quot;&quot;" headerid="11">
+                            <decisionnode expression="&quot;&quot;" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <decisionnode expression="false" headerid="14">
+                                  <decisionnode expression="&quot;&quot;" headerid="15">
+                                    <decisionnode expression="&quot;&quot;" headerid="16">
+                                      <decisionnode expression="false" headerid="17">
+                                        <decisionnode expression="&quot;&quot;" headerid="18">
+                                          <optionnode expression="" headerid="19">
+                                            <optionnode expression="" headerid="20">
+                                              <optionnode expression="0" headerid="21">
+                                                <optionnode expression="" headerid="22"/>
+                                              </optionnode>
+                                            </optionnode>
+                                          </optionnode>
+                                        </decisionnode>
+                                      </decisionnode>
+                                    </decisionnode>
+                                  </decisionnode>
+                                </decisionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+        <decisionnode expression="== &quot;HIT&quot;" headerid="2">
+          <decisionnode expression="== *" headerid="3">
+            <decisionnode expression="== *" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="&quot;ISO Index Received: Miss&quot;" headerid="7">
+                    <decisionnode expression="&quot;DHP&quot;" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="false" headerid="10">
+                          <decisionnode expression="&quot;&quot;" headerid="11">
+                            <decisionnode expression="&quot;&quot;" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <decisionnode expression="false" headerid="14">
+                                  <decisionnode expression="&quot;&quot;" headerid="15">
+                                    <decisionnode expression="&quot;&quot;" headerid="16">
+                                      <decisionnode expression="false" headerid="17">
+                                        <decisionnode expression="&quot;&quot;" headerid="18">
+                                          <optionnode expression="" headerid="19">
+                                            <optionnode expression="" headerid="20">
+                                              <optionnode expression="0" headerid="21">
+                                                <optionnode expression="" headerid="22"/>
+                                              </optionnode>
+                                            </optionnode>
+                                          </optionnode>
+                                        </decisionnode>
+                                      </decisionnode>
+                                    </decisionnode>
+                                  </decisionnode>
+                                </decisionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+        <decisionnode expression="== &quot;MATCH&quot;" headerid="2">
+          <decisionnode expression="== *" headerid="3">
+            <decisionnode expression="== *" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="&quot;ISO Index Received: Miss&quot;" headerid="7">
+                    <decisionnode expression="&quot;DHP&quot;" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="false" headerid="10">
+                          <decisionnode expression="&quot;&quot;" headerid="11">
+                            <decisionnode expression="&quot;&quot;" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <decisionnode expression="false" headerid="14">
+                                  <decisionnode expression="&quot;&quot;" headerid="15">
+                                    <decisionnode expression="&quot;&quot;" headerid="16">
+                                      <decisionnode expression="false" headerid="17">
+                                        <decisionnode expression="&quot;&quot;" headerid="18">
+                                          <optionnode expression="" headerid="19">
+                                            <optionnode expression="" headerid="20">
+                                              <optionnode expression="0" headerid="21">
+                                                <optionnode expression="" headerid="22"/>
+                                              </optionnode>
+                                            </optionnode>
+                                          </optionnode>
+                                        </decisionnode>
+                                      </decisionnode>
+                                    </decisionnode>
+                                  </decisionnode>
+                                </decisionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+      </decisionnode>
+      <decisionnode expression="== &quot;HIT&quot;" headerid="1">
+        <decisionnode expression="== &quot;NONE&quot;" headerid="2">
+          <decisionnode expression="== *" headerid="3">
+            <decisionnode expression="== *" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="&quot;ISO Index Received: Hit&quot;" headerid="7">
+                    <decisionnode expression="&quot;DHP&quot;" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="true" headerid="10">
+                          <decisionnode expression="&quot;??&quot;" headerid="11">
+                            <decisionnode expression="&quot;BPM&quot;" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <decisionnode expression="false" headerid="14">
+                                  <decisionnode expression="&quot;&quot;" headerid="15">
+                                    <decisionnode expression="&quot;&quot;" headerid="16">
+                                      <decisionnode expression="true" headerid="17">
+                                        <decisionnode expression="&quot;ISO Index Received: HIT Within/Ourside x days&quot;" headerid="18">
+                                          <optionnode expression="" headerid="19">
+                                            <optionnode expression="" headerid="20">
+                                              <optionnode expression="0" headerid="21">
+                                                <optionnode expression="" headerid="22"/>
+                                              </optionnode>
+                                            </optionnode>
+                                          </optionnode>
+                                        </decisionnode>
+                                      </decisionnode>
+                                    </decisionnode>
+                                  </decisionnode>
+                                </decisionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+        <decisionnode expression="== &quot;MISS&quot;" headerid="2">
+          <decisionnode expression="*" headerid="3">
+            <decisionnode expression="== *" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="&quot;ISO Index Received: Hit&quot;" headerid="7">
+                    <decisionnode expression="&quot;DHP&quot;" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="true" headerid="10">
+                          <decisionnode expression="&quot;??&quot;" headerid="11">
+                            <decisionnode expression="&quot;BPM&quot;" headerid="12">
+                              <decisionnode expression="true" headerid="13">
+                                <decisionnode expression="false" headerid="14">
+                                  <decisionnode expression="&quot;&quot;" headerid="15">
+                                    <decisionnode expression="&quot;&quot;" headerid="16">
+                                      <decisionnode expression="true" headerid="17">
+                                        <decisionnode expression="&quot;ISO Index Received: HIT Within/Ourside x days&quot;" headerid="18">
+                                          <optionnode expression="" headerid="19">
+                                            <optionnode expression="" headerid="20">
+                                              <optionnode expression="0" headerid="21">
+                                                <optionnode expression="" headerid="22"/>
+                                              </optionnode>
+                                            </optionnode>
+                                          </optionnode>
+                                        </decisionnode>
+                                      </decisionnode>
+                                    </decisionnode>
+                                  </decisionnode>
+                                </decisionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+        <decisionnode expression="== &quot;HIT&quot;" headerid="2">
+          <decisionnode expression="== *" headerid="3">
+            <decisionnode expression="== *" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="&quot;ISO Index Received: Hit&quot;" headerid="7">
+                    <decisionnode expression="&quot;DHP&quot;" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="false" headerid="10">
+                          <decisionnode expression="&quot;&quot;" headerid="11">
+                            <decisionnode expression="&quot;&quot;" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <decisionnode expression="false" headerid="14">
+                                  <decisionnode expression="&quot;&quot;" headerid="15">
+                                    <decisionnode expression="&quot;&quot;" headerid="16">
+                                      <decisionnode expression="false" headerid="17">
+                                        <decisionnode expression="&quot;&quot;" headerid="18">
+                                          <optionnode expression="" headerid="19">
+                                            <optionnode expression="" headerid="20">
+                                              <optionnode expression="0" headerid="21">
+                                                <optionnode expression="" headerid="22"/>
+                                              </optionnode>
+                                            </optionnode>
+                                          </optionnode>
+                                        </decisionnode>
+                                      </decisionnode>
+                                    </decisionnode>
+                                  </decisionnode>
+                                </decisionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+        <decisionnode expression="== &quot;MATCH&quot;" headerid="2">
+          <decisionnode expression="== *" headerid="3">
+            <decisionnode expression="== *" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="&quot;ISO Index Received: Hit&quot;" headerid="7">
+                    <decisionnode expression="&quot;DHP&quot;" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="false" headerid="10">
+                          <decisionnode expression="&quot;&quot;" headerid="11">
+                            <decisionnode expression="&quot;&quot;" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <decisionnode expression="false" headerid="14">
+                                  <decisionnode expression="&quot;&quot;" headerid="15">
+                                    <decisionnode expression="&quot;&quot;" headerid="16">
+                                      <decisionnode expression="false" headerid="17">
+                                        <decisionnode expression="&quot;&quot;" headerid="18">
+                                          <optionnode expression="" headerid="19">
+                                            <optionnode expression="" headerid="20">
+                                              <optionnode expression="0" headerid="21">
+                                                <optionnode expression="" headerid="22"/>
+                                              </optionnode>
+                                            </optionnode>
+                                          </optionnode>
+                                        </decisionnode>
+                                      </decisionnode>
+                                    </decisionnode>
+                                  </decisionnode>
+                                </decisionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+      </decisionnode>
+      <decisionnode expression="== &quot;MATCH&quot;" headerid="1">
+        <decisionnode expression="== &quot;NONE&quot;" headerid="2">
+          <decisionnode expression="== *" headerid="3">
+            <decisionnode expression="== *" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="&quot;ISO Index Received: Match&quot;" headerid="7">
+                    <decisionnode expression="&quot;DHP&quot;" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="true" headerid="10">
+                          <decisionnode expression="&quot;??&quot;" headerid="11">
+                            <decisionnode expression="&quot;BPM&quot;" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <decisionnode expression="false" headerid="14">
+                                  <decisionnode expression="&quot;&quot;" headerid="15">
+                                    <decisionnode expression="&quot;&quot;" headerid="16">
+                                      <decisionnode expression="true" headerid="17">
+                                        <decisionnode expression="&quot;ISO Index Received: HIT Within/Ourside x days&quot;" headerid="18">
+                                          <optionnode expression="" headerid="19">
+                                            <optionnode expression="" headerid="20">
+                                              <optionnode expression="0" headerid="21">
+                                                <optionnode expression="" headerid="22"/>
+                                              </optionnode>
+                                            </optionnode>
+                                          </optionnode>
+                                        </decisionnode>
+                                      </decisionnode>
+                                    </decisionnode>
+                                  </decisionnode>
+                                </decisionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+        <decisionnode expression="== &quot;MISS&quot;" headerid="2">
+          <decisionnode expression="*" headerid="3">
+            <decisionnode expression="== *" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="&quot;ISO Index Received: Match&quot;" headerid="7">
+                    <decisionnode expression="&quot;DHP&quot;" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="true" headerid="10">
+                          <decisionnode expression="&quot;??&quot;" headerid="11">
+                            <decisionnode expression="&quot;BPM&quot;" headerid="12">
+                              <decisionnode expression="true" headerid="13">
+                                <decisionnode expression="false" headerid="14">
+                                  <decisionnode expression="&quot;&quot;" headerid="15">
+                                    <decisionnode expression="&quot;&quot;" headerid="16">
+                                      <decisionnode expression="true" headerid="17">
+                                        <decisionnode expression="&quot;ISO Index Received: HIT Within/Ourside x days&quot;" headerid="18">
+                                          <optionnode expression="" headerid="19">
+                                            <optionnode expression="" headerid="20">
+                                              <optionnode expression="0" headerid="21">
+                                                <optionnode expression="" headerid="22"/>
+                                              </optionnode>
+                                            </optionnode>
+                                          </optionnode>
+                                        </decisionnode>
+                                      </decisionnode>
+                                    </decisionnode>
+                                  </decisionnode>
+                                </decisionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+        <decisionnode expression="== &quot;HIT&quot;" headerid="2">
+          <decisionnode expression="== *" headerid="3">
+            <decisionnode expression="== *" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="&quot;ISO Index Received: Match&quot;" headerid="7">
+                    <decisionnode expression="&quot;DHP&quot;" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="true" headerid="10">
+                          <decisionnode expression="&quot;??&quot;" headerid="11">
+                            <decisionnode expression="&quot;BPM&quot;" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <decisionnode expression="false" headerid="14">
+                                  <decisionnode expression="&quot;&quot;" headerid="15">
+                                    <decisionnode expression="&quot;&quot;" headerid="16">
+                                      <decisionnode expression="false" headerid="17">
+                                        <decisionnode expression="&quot;&quot;" headerid="18">
+                                          <optionnode expression="" headerid="19">
+                                            <optionnode expression="" headerid="20">
+                                              <optionnode expression="0" headerid="21">
+                                                <optionnode expression="" headerid="22"/>
+                                              </optionnode>
+                                            </optionnode>
+                                          </optionnode>
+                                        </decisionnode>
+                                      </decisionnode>
+                                    </decisionnode>
+                                  </decisionnode>
+                                </decisionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+        <decisionnode expression="== &quot;MATCH&quot;" headerid="2">
+          <decisionnode expression="== *" headerid="3">
+            <decisionnode expression="== *" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="&quot;ISO Index Received: Match&quot;" headerid="7">
+                    <decisionnode expression="&quot;DHP&quot;" headerid="8">
+                      <decisionnode expression="&quot;&quot;" headerid="9">
+                        <decisionnode expression="false" headerid="10">
+                          <decisionnode expression="&quot;&quot;" headerid="11">
+                            <decisionnode expression="&quot;&quot;" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <decisionnode expression="false" headerid="14">
+                                  <decisionnode expression="&quot;&quot;" headerid="15">
+                                    <decisionnode expression="&quot;&quot;" headerid="16">
+                                      <decisionnode expression="false" headerid="17">
+                                        <decisionnode expression="&quot;&quot;" headerid="18">
+                                          <optionnode expression="" headerid="19">
+                                            <optionnode expression="" headerid="20">
+                                              <optionnode expression="0" headerid="21">
+                                                <optionnode expression="" headerid="22"/>
+                                              </optionnode>
+                                            </optionnode>
+                                          </optionnode>
+                                        </decisionnode>
+                                      </decisionnode>
+                                    </decisionnode>
+                                  </decisionnode>
+                                </decisionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
                   </decisionnode>
                 </decisionnode>
               </decisionnode>

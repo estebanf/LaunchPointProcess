@@ -4,7 +4,8 @@
         <jdbc:operation name="urn:getIsoHighestScore" sqlStatement="select 
 	isotracking.caseid,
 	isotracking.requestid,
-	isoresponsetracking.score
+	isoresponsetracking.score,
+	COALESCE((EXTRACT(epoch from age(now(),isoresponsereceivedat)) / 86400)::int,0) as daysSinceResponse
 from isotracking
 	inner join isoresponsetracking on (isotracking.caseid = isoresponsetracking.caseid and isotracking.requestid = isoresponsetracking.requestid)
 where
@@ -24,6 +25,7 @@ limit 1" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:conn
                     <jdbc:precision>15</jdbc:precision>
                     <jdbc:scale>2</jdbc:scale>
                     <jdbc:nullable>false</jdbc:nullable>
+                    <jdbc:value>0</jdbc:value>
                     <jdbc:index>0</jdbc:index>
                 </jdbc:parameter>
             </jdbc:input>
@@ -42,7 +44,7 @@ limit 1" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:conn
             <jdbc:databaseUrl>jdbc:postgresql://bpms.everteam.us:5432/bamdb</jdbc:databaseUrl>
             <jdbc:databaseName>BAMDB</jdbc:databaseName>
             <jdbc:userName>bam</jdbc:userName>
-            <jdbc:password>decrypt[IPp20maGSiH5FOu7MlRB8WHdSVnqpsfH]</jdbc:password>
+            <jdbc:password>decrypt[kiAsjmxAQU18vEvSOHR9M91zr3oQEsMW]</jdbc:password>
         </jdbc:connection>
     </jdbc:service>
 </jdbc:descriptor>
