@@ -17,6 +17,19 @@
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
             <vprop:property name="props" type="xs:int"/>
             <vprop:property name="CaseId" type="xs:int"/>
+            <wsdl:portType name="ForIQ_Queue_manager">
+                <wsdl:operation name="Receive_send_signal" bpdm:source="partner-pool:///_vbqkgMWpEeeln8BfPiHQNA">
+                    <wsdl:input message="this:Receive_send_signalRequest" name="Receive_send_signal"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForIQ_Queue_manager" type="this:ForIQ_Queue_manager" bpdm:isSynchronized="true"/>
+            <wsdl:portType name="ForIQ_Response_monitor">
+                <wsdl:operation name="Receive_IQ_Response" bpdm:source="partner-pool:///_HpYswMWqEeeln8BfPiHQNA">
+                    <wsdl:input message="this:Receive_IQ_ResponseRequest" name="Receive_IQ_Response"/>
+                    <wsdl:output message="this:Receive_IQ_ResponseResponse" name="Receive_IQ_ResponseResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForIQ_Response_monitor" type="this:ForIQ_Response_monitor" bpdm:isSynchronized="true"/>
             <wsdl:portType name="ForCase_Manager">
                 <wsdl:operation name="Hold_IQ" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
                     <wsdl:input message="this:Hold_IQRequest" name="Hold_IQ"/>
@@ -28,20 +41,10 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForCase_Manager" type="this:ForCase_Manager" bpdm:isSynchronized="true"/>
-            <wsdl:portType name="ForIQ_Queue_manager">
-                <wsdl:operation name="Receive_send_signal" bpdm:source="partner-pool:///_vbqkgMWpEeeln8BfPiHQNA">
-                    <wsdl:input message="this:Receive_send_signalRequest" name="Receive_send_signal"/>
-                </wsdl:operation>
-            </wsdl:portType>
-            <bpel:binding name="CanonicBindingForIQ_Queue_manager" type="this:ForIQ_Queue_manager" bpdm:isSynchronized="true"/>
-            <vprop:property name="CaseId" type="xs:int"/>
-            <wsdl:portType name="ForIQ_Response_monitor">
-                <wsdl:operation name="Receive_IQ_Response" bpdm:source="partner-pool:///_HpYswMWqEeeln8BfPiHQNA">
-                    <wsdl:input message="this:Receive_IQ_ResponseRequest" name="Receive_IQ_Response"/>
-                    <wsdl:output message="this:Receive_IQ_ResponseResponse" name="Receive_IQ_ResponseResponse"/>
-                </wsdl:operation>
-            </wsdl:portType>
-            <bpel:binding name="CanonicBindingForIQ_Response_monitor" type="this:ForIQ_Response_monitor" bpdm:isSynchronized="true"/>
+            <xs:element name="Receive_send_signalRequest" type="Launchpoint:IQRuleInputType" bpdm:source="partner-pool:///_vbqkgMWpEeeln8BfPiHQNA"/>
+            <wsdl:message name="Receive_send_signalRequest" bpdm:source="partner-pool:///_vbqkgMWpEeeln8BfPiHQNA">
+                <wsdl:part name="body" element="this:Receive_send_signalRequest"/>
+            </wsdl:message>
             <xs:element name="Receive_IQ_ResponseRequest" type="Launchpoint:IQRuleInputType" bpdm:source="partner-pool:///_HpYswMWqEeeln8BfPiHQNA"/>
             <wsdl:message name="Receive_IQ_ResponseRequest" bpdm:source="partner-pool:///_HpYswMWqEeeln8BfPiHQNA">
                 <wsdl:part name="body" element="this:Receive_IQ_ResponseRequest"/>
@@ -49,14 +52,6 @@
             <xs:element name="Receive_IQ_ResponseResponse" type="xs:string" bpdm:source="partner-pool:///_HpYswMWqEeeln8BfPiHQNA"/>
             <wsdl:message name="Receive_IQ_ResponseResponse" bpdm:source="partner-pool:///_HpYswMWqEeeln8BfPiHQNA">
                 <wsdl:part name="body" element="this:Receive_IQ_ResponseResponse"/>
-            </wsdl:message>
-            <xs:element name="Hold_IQRequest" type="xs:string" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
-            <wsdl:message name="Hold_IQRequest" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
-                <wsdl:part name="body" element="this:Hold_IQRequest"/>
-            </wsdl:message>
-            <xs:element name="Hold_IQResponse" type="xs:string" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
-            <wsdl:message name="Hold_IQResponse" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
-                <wsdl:part name="body" element="this:Hold_IQResponse"/>
             </wsdl:message>
             <xs:element name="Receive_IQRequest" type="Launchpoint:IQCaseType" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
             <wsdl:message name="Receive_IQRequest" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
@@ -66,9 +61,13 @@
             <wsdl:message name="Receive_IQResponse" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
                 <wsdl:part name="body" element="this:Receive_IQResponse"/>
             </wsdl:message>
-            <xs:element name="Receive_send_signalRequest" type="Launchpoint:IQRuleInputType" bpdm:source="partner-pool:///_vbqkgMWpEeeln8BfPiHQNA"/>
-            <wsdl:message name="Receive_send_signalRequest" bpdm:source="partner-pool:///_vbqkgMWpEeeln8BfPiHQNA">
-                <wsdl:part name="body" element="this:Receive_send_signalRequest"/>
+            <xs:element name="Hold_IQRequest" type="xs:string" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
+            <wsdl:message name="Hold_IQRequest" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
+                <wsdl:part name="body" element="this:Hold_IQRequest"/>
+            </wsdl:message>
+            <xs:element name="Hold_IQResponse" type="xs:string" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
+            <wsdl:message name="Hold_IQResponse" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
+                <wsdl:part name="body" element="this:Hold_IQResponse"/>
             </wsdl:message>
             <vprop:propertyAlias propertyName="this:CaseId" messageType="this:Receive_IQ_ResponseRequest" part="body">
                 <vprop:query>Launchpoint:caseid/text()</vprop:query>
@@ -80,14 +79,14 @@
                 <vprop:query>Launchpoint:caseid/text()</vprop:query>
             </vprop:propertyAlias>
         </bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_vbqkgMWpEeeln8BfPiHQNA" bpdm:label="IQ Queue manager"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_HpYswMWqEeeln8BfPiHQNA" bpdm:label="IQ Response monitor"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_0uuMALwFEee_aqBavMEZDg" bpdm:label="Case Manager"/>
-        <bpdm:namespaceContributor bpdm:url="partner-pool:///_vbqkgMWpEeeln8BfPiHQNA" bpdm:label="IQ Queue manager"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_xRG1oLwFEee_aqBavMEZDgimplicitPartner" bpdm:label="Process IQ CaseimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/BusinessRules/IQProcessingRules-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/Logging-Log_and_Track.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Tracking.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/BusinessRules/IQProcessingRules-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
     </bpdm:dependencies>
@@ -151,7 +150,7 @@
         <bpel:sequence>
             <bpdm:messagingtask eventType="start: message" operation="Receive_IQ" partnerLink="process_IQ_CaseAndCase_ManagerPlkVar" portType="this:ForCase_Manager" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive IQ" bpdm:ID="_FHX1cLwGEee_aqBavMEZDg" bpdm:isHeaderAuthorizationAware="yes">
                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisEventStartMessageRequest1" bpdm:msgVarScopeId="_xRG1oLwFEee_aqBavMEZDg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_IQRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_HPVAcLwGEee_aqBavMEZDg">
-                    <bpel:correlation set="iqMessages" initiate="join" pattern="response"></bpel:correlation>
+                    <bpel:correlation set="iqMessages" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
@@ -450,17 +449,7 @@
                                             </bpel:copy>
                                             <bpel:copy>
                                                 <bpel:from>1 + $letterNumber</bpel:from>
-                                                <bpel:to>$letterNumber</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1955618950" targetPath="$letterNumber" targetedBy="911758386-arg1"></mapper:vertice>
-  <mapper:vertice id="911758386" dimension="79x24" location="495,205">
-    <mapper:value>+</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="508996098" dimension="79x24" location="360,144" targetedBy="911758386-arg0">
-    <mapper:value>1</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1787551942" sourcePath="$letterNumber" targetedBy="911758386-arg2"></mapper:vertice>
-</mapper:mapperLink>
+                                                <bpel:to>$letterNumber</bpel:to><mapper:mapperLink><mapper:vertice id="1955618950" targetPath="$letterNumber" targetedBy="911758386-arg1"></mapper:vertice><mapper:vertice id="911758386" dimension="79x24" location="495,205"><mapper:value>+</mapper:value></mapper:vertice><mapper:vertice id="508996098" dimension="79x24" location="360,144" targetedBy="911758386-arg0"><mapper:value>1</mapper:value></mapper:vertice><mapper:vertice id="1787551942" sourcePath="$letterNumber" targetedBy="911758386-arg2"></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iQ_Queue_managerReceive_IQRequest2Msg" bpdm:msgVarScopeId="_bTff4MWqEeeln8BfPiHQNA" bpdm:variableIsManaged="true" bpdm:messageType="IQ_Queue_manager:Receive_IQRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_ys32kMWpEeeln8BfPiHQNA"></bpdm:linkset>
@@ -470,13 +459,7 @@
                                         <bpdm:linkset bpdm:type="assignments">
                                             <bpel:copy>
                                                 <bpel:from>true()</bpel:from>
-                                                <bpel:to>$IQLetterTrackingType/Tracking:IQEnqueued</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="771685860" targetPath="$IQLetterTrackingType/Tracking:IQEnqueued" targetedBy="1899377464-arg0"></mapper:vertice>
-  <mapper:vertice id="1899377464" dimension="79x24" location="612,180">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                <bpel:to>$IQLetterTrackingType/Tracking:IQEnqueued</bpel:to><mapper:mapperLink><mapper:vertice id="771685860" targetPath="$IQLetterTrackingType/Tracking:IQEnqueued" targetedBy="1899377464-arg0"></mapper:vertice><mapper:vertice id="1899377464" dimension="79x24" location="612,180"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                             <bpel:copy>
                                                 <bpel:from>current-dateTime()</bpel:from>
@@ -516,11 +499,7 @@
                                             </bpel:copy>
                                             <bpel:copy>
                                                 <bpel:from>$letterNumber</bpel:from>
-                                                <bpel:to>$IQLetterTrackingType/Tracking:letterNumber</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1988144523" targetPath="$IQLetterTrackingType/Tracking:letterNumber" targetedBy="523110607-arg0"></mapper:vertice>
-  <mapper:vertice id="523110607" sourcePath="$letterNumber"></mapper:vertice>
-</mapper:mapperLink>
+                                                <bpel:to>$IQLetterTrackingType/Tracking:letterNumber</bpel:to><mapper:mapperLink><mapper:vertice id="1988144523" targetPath="$IQLetterTrackingType/Tracking:letterNumber" targetedBy="523110607-arg0"></mapper:vertice><mapper:vertice id="523110607" sourcePath="$letterNumber"></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                     </bpdm:messagingtask>
@@ -544,7 +523,7 @@
                                     </bpdm:messagingtask>
                                     <bpdm:messagingtask operation="Receive_send_signal" partnerLink="process_IQ_CaseAndIQ_Queue_managerPlkVar" portType="this:ForIQ_Queue_manager" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive send signal" bpdm:ID="_3bvl8MjJEeeh-NIwmiM2OQ" bpdm:isHeaderAuthorizationAware="yes">
                                         <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_send_signalRequest1Msg" bpdm:msgVarScopeId="_bTff4MWqEeeln8BfPiHQNA" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_send_signalRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_6UvzYMjJEeeh-NIwmiM2OQ">
-                                            <bpel:correlation set="iqMessages" initiate="join" pattern="response"></bpel:correlation>
+                                            <bpel:correlation set="iqMessages" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
                                         </bpdm:linkset>
                                     </bpdm:messagingtask>
                                     <bpdm:messagingtask operation="Receive_Log" partnerLink="process_IQ_CaseimplicitPartnerAndProcess_IQ_CaseForCanonicPortPlk1Var" portType="Logging-Log_and_Track:ForCaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send Log" bpdm:ID="_9NSGwMjJEeeh-NIwmiM2OQ" bpdm:isHeaderAuthorizationAware="no">
@@ -687,23 +666,11 @@
                                                                 </bpel:copy>
                                                                 <bpel:copy>
                                                                     <bpel:from>true()</bpel:from>
-                                                                    <bpel:to>$IQLetterTrackingType/Tracking:IQAbandoned</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="43474959" targetPath="$IQLetterTrackingType/Tracking:IQAbandoned" targetedBy="1765339977-arg0"></mapper:vertice>
-  <mapper:vertice id="1765339977" dimension="79x24" location="480,48">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                                    <bpel:to>$IQLetterTrackingType/Tracking:IQAbandoned</bpel:to><mapper:mapperLink><mapper:vertice id="43474959" targetPath="$IQLetterTrackingType/Tracking:IQAbandoned" targetedBy="1765339977-arg0"></mapper:vertice><mapper:vertice id="1765339977" dimension="79x24" location="480,48"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                                 </bpel:copy>
                                                                 <bpel:copy>
                                                                     <bpel:from>current-dateTime()</bpel:from>
-                                                                    <bpel:to>$IQLetterTrackingType/Tracking:IQAbandonedAt</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2070431535" targetPath="$IQLetterTrackingType/Tracking:IQAbandonedAt" targetedBy="1766459929-arg0"></mapper:vertice>
-  <mapper:vertice id="1766459929" dimension="109x24" location="602,191">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                                    <bpel:to>$IQLetterTrackingType/Tracking:IQAbandonedAt</bpel:to><mapper:mapperLink><mapper:vertice id="2070431535" targetPath="$IQLetterTrackingType/Tracking:IQAbandonedAt" targetedBy="1766459929-arg0"></mapper:vertice><mapper:vertice id="1766459929" dimension="109x24" location="602,191"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                                 </bpel:copy>
                                                             </bpdm:linkset>
                                                         </bpdm:messagingtask>
@@ -744,7 +711,7 @@
                                         <bpel:sequence>
                                             <bpdm:messagingtask operation="Receive_IQ_Response" partnerLink="process_IQ_CaseAndIQ_Response_monitorPlkVar" portType="this:ForIQ_Response_monitor" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive IQ Response" bpdm:ID="_BDrkEMWqEeeln8BfPiHQNA" bpdm:isHeaderAuthorizationAware="yes">
                                                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_IQ_ResponseRequest1Msg" bpdm:msgVarScopeId="_nd2nsMiOEeeUOaXEAXWQ6A" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_IQ_ResponseRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_UUnCMMWqEeeln8BfPiHQNA">
-                                                    <bpel:correlation set="iqMessages" initiate="join" pattern="response"></bpel:correlation>
+                                                    <bpel:correlation set="iqMessages" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_IQ_ResponseResponse2Msg" bpdm:msgVarScopeId="_nd2nsMiOEeeUOaXEAXWQ6A" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_IQ_ResponseResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_Uqz7sMWqEeeln8BfPiHQNA"></bpdm:linkset>
                                             </bpdm:messagingtask>

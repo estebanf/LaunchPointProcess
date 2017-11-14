@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jdbc:descriptor wsdlLocation="checkForReceivingIQs.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:checkforreceivingiqsservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
     <jdbc:service name="checkForReceivingIQsService">
-        <jdbc:operation name="urn:checkForReceivingIQs" sqlStatement="select count(iqletter.*) from iqtracking iq join iqlettertracking iqletter 
+        <jdbc:operation name="urn:checkForReceivingIQs" sqlStatement="select iqletter.iqlettertrackingid from iqtracking iq join iqlettertracking iqletter 
 on iq.caseid = iqletter.caseid where iq.caseid = ? and (iq.iqhold = false or iq.iqhold is NULL)
 and iqletter.iqenqueued = true and iqletter.iqsent = true 
 and (iqletter.iqabandoned = false or iqletter.iqabandoned is NULL)
@@ -28,14 +28,14 @@ and (iqletter.iqresponsereceived = false or iqletter.iqresponsereceived is NULL)
         <jdbc:port>
             <jdbc:address location="http://192.168.241.208:8080/everteam/ode/processes/checkForReceivingIQsService"/>
         </jdbc:port>
-        <jdbc:connection jndiName="java:comp/env/jdbc/">
+        <jdbc:connection jndiName="java:comp/env/jdbc/BAMDB">
             <jdbc:databaseProductName>Generic JDBC</jdbc:databaseProductName>
             <jdbc:databaseProductVersion>1.0</jdbc:databaseProductVersion>
             <jdbc:driverClass>org.postgresql.Driver</jdbc:driverClass>
             <jdbc:databaseUrl>jdbc:postgresql://192.168.241.208/postgres</jdbc:databaseUrl>
             <jdbc:databaseName>postgres</jdbc:databaseName>
             <jdbc:userName>postgres</jdbc:userName>
-            <jdbc:password>decrypt[uj59LxRht2AQxQqyqWqMBrJyCkwY72O9]</jdbc:password>
+            <jdbc:password>decrypt[0ei+XCPYqavxQukd7+bsw4rC/ZQyYb+w]</jdbc:password>
         </jdbc:connection>
     </jdbc:service>
 </jdbc:descriptor>
