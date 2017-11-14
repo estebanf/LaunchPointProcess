@@ -1,10 +1,11 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:getOpenIqs="urn:intalio.com:connectors:database:launchpointprocess:getopeniqsservice" xmlns:IQ="http://www.example.org/IQ" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/IQ_Response_monitor" xmlns:IQ_Response_monitorimplicitPartner="http://thisdiagram/IQ_Response_monitorimplicitPartner" xmlns:diag="http://thisdiagram" xmlns:GetActivityService="http://bpms.everteam.com/Services/REST/GetActivityService.rest" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns="http://bpms.everteam.com/LaunchPointProcess" xmlns:GetActivity="__project:///Schemas/GetActivity.xsd" xmlns:checkForReceivingIQs="urn:intalio.com:connectors:database:launchpointprocess:checkforreceivingiqsservice" xmlns:Process_IQ_Case="http://thisdiagram/Process_IQ_Case" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/IQ_Response_monitor">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:getOpenIqs="urn:intalio.com:connectors:database:launchpointprocess:getopeniqsservice" xmlns:IQ="http://www.example.org/IQ" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/IQ_Response_monitor" xmlns:Logging-Log_and_Track="http://thisproject/Processes/Core/Logging/Log_and_Track" xmlns:IQ_Response_monitorimplicitPartner="http://thisdiagram/IQ_Response_monitorimplicitPartner" xmlns:diag="http://thisdiagram" xmlns:GetActivityService="http://bpms.everteam.com/Services/REST/GetActivityService.rest" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns="http://bpms.everteam.com/LaunchPointProcess" xmlns:GetActivity="__project:///Schemas/GetActivity.xsd" xmlns:Tracking="http://www.example.org/Tracking" xmlns:checkForReceivingIQs="urn:intalio.com:connectors:database:launchpointprocess:checkforreceivingiqsservice" xmlns:Process_IQ_Case="http://thisdiagram/Process_IQ_Case" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/IQ_Response_monitor">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:launchpointprocess:getopeniqsservice" bpdm:prefix="getOpenIqs" bpdm:comment="contrib=&apos;project:///Connectors/Database/getOpenIqs.sql/getOpenIqs.sql.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/IQ" bpdm:prefix="IQ" bpdm:comment="contrib=&apos;project:///Schemas/IQ.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/IQ_Response_monitor" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/Logging/Log_and_Track" bpdm:prefix="Logging-Log_and_Track" bpdm:comment="contrib=&apos;project:///Processes/Core/Logging-Log_and_Track.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/IQ_Response_monitorimplicitPartner" bpdm:prefix="IQ_Response_monitorimplicitPartner" bpdm:comment="contrib=&apos;partner-pool:///_HpYswMWqEeeln8BfPiHQNAimplicitPartner"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_xRG1oLwFEee_aqBavMEZDg"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/Services/REST/GetActivityService.rest" bpdm:prefix="GetActivityService" bpdm:comment="contrib=&apos;project:///Services/REST/GetActivityService.wsdl"></bpdm:namespaceDefinition>
@@ -13,6 +14,7 @@
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/LaunchPointProcess" bpdm:prefix="ns" bpdm:comment="contrib=&apos;project:///Processes/Core/ProcessIQCase-IQ_Response_monitor.startEvent.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/GetActivity.xsd" bpdm:prefix="GetActivity" bpdm:comment="contrib=&apos;project:///Schemas/GetActivity.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Tracking" bpdm:prefix="Tracking" bpdm:comment="contrib=&apos;project:///Schemas/Tracking.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:launchpointprocess:checkforreceivingiqsservice" bpdm:prefix="checkForReceivingIQs" bpdm:comment="contrib=&apos;project:///Connectors/Database/checkForReceivingIQs.sql/checkForReceivingIQs.sql.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Process_IQ_Case" bpdm:prefix="Process_IQ_Case" bpdm:comment="contrib=&apos;partner-pool:///_xRG1oLwFEee_aqBavMEZDg"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
@@ -31,6 +33,8 @@
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/checkForReceivingIQs.sql/checkForReceivingIQs.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/GetActivityService.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/GetActivity.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/Logging-Log_and_Track.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Tracking.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getOpenIqs.sql/getOpenIqs.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getOpenIqs.sql/getOpenIqs.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -43,6 +47,7 @@
             <bpel:partnerLink name="iQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForGetOpenIqsPortPlkVar" partnerLinkType="diag:IQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForGetOpenIqsPortPlk" initializePartnerRole="yes" partnerRole="IQ_Response_monitorimplicitPartner_for_IQ_Response_monitor" bpdm:invokedService="getOpenIqs:getOpenIqsService" bpdm:invokedPort="getOpenIqsPort" bpdm:invokedSOAPAddress="http://192.168.241.208:8080/everteam/ode/processes/LaunchPointProcess/Connectors/Database/getOpenIqs" bpdm:invokedIsDefault="true" bpdm:clientTasks="_HpYswMWqEeeln8BfPiHQNA:_FYQqwcgzEee4C6xcyhcDOQ" bpdm:isManaged="true" bpdm:otherPoolId="_HpYswMWqEeeln8BfPiHQNAimplicitPartner"/>
             <bpel:partnerLink name="iQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForHttpPortPlkVar" partnerLinkType="diag:IQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForHttpPortPlk" initializePartnerRole="yes" partnerRole="IQ_Response_monitorimplicitPartner_for_IQ_Response_monitor" bpdm:invokedService="GetActivityService:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://localhost:3001/api/activities/{case-id}" bpdm:invokedIsDefault="true" bpdm:clientTasks="_BDsvwMY6EeeJfIQOc9wrsg:_0RnPEMiDEee3gbUvnyzVyw" bpdm:isManaged="true" bpdm:otherPoolId="_HpYswMWqEeeln8BfPiHQNAimplicitPartner"/>
             <bpel:partnerLink name="iQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForCheckForReceivingIQsPortPlkVar" partnerLinkType="diag:IQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForCheckForReceivingIQsPortPlk" initializePartnerRole="yes" partnerRole="IQ_Response_monitorimplicitPartner_for_IQ_Response_monitor" bpdm:invokedService="checkForReceivingIQs:checkForReceivingIQsService" bpdm:invokedPort="checkForReceivingIQsPort" bpdm:invokedSOAPAddress="http://192.168.241.208:8080/everteam/ode/processes/LaunchPointProcess/Connectors/Database/checkForReceivingIQs" bpdm:invokedIsDefault="true" bpdm:clientTasks="_XImz0MWqEeeln8BfPiHQNA:_9JEqcMjwEee_XvwCwhoGFw" bpdm:isManaged="true" bpdm:otherPoolId="_HpYswMWqEeeln8BfPiHQNAimplicitPartner"/>
+            <bpel:partnerLink name="iQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForCanonicPortPlkVar" partnerLinkType="diag:IQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForCanonicPortPlk" initializePartnerRole="yes" partnerRole="IQ_Response_monitorimplicitPartner_for_IQ_Response_monitor" bpdm:invokedService="Logging-Log_and_Track:CanonicServiceForCaller" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_XImz0MWqEeeln8BfPiHQNA:_3BOrkMl2EeeQIqbLZsn1KQ, _XImz0MWqEeeln8BfPiHQNA:_QzyVkMl1EeeQIqbLZsn1KQ, _XImz0MWqEeeln8BfPiHQNA:_CiLmQMl3EeeQIqbLZsn1KQ" bpdm:isManaged="true" bpdm:otherPoolId="_HpYswMWqEeeln8BfPiHQNAimplicitPartner"/>
         </bpel:partnerLinks>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
             <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_HprntsWqEeeln8BfPiHQNA" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_HprntsWqEeeln8BfPiHQNA"/>
@@ -76,8 +81,8 @@
                     </bpel:copy>
                 </bpdm:linkset>
             </bpdm:messagingtask>
-            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_BDsvwMY6EeeJfIQOc9wrsg">
-                <bpdm:linkset bpdm:type="loop" bpdm:loopType="forEach" bpdm:backEdgeParticipantType="none" parallel="no" counterName="emptyCounter" bpdm:isBackEdgeContributor="no">
+            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Extract IQ" bpdm:ID="_BDsvwMY6EeeJfIQOc9wrsg">
+                <bpdm:linkset bpdm:type="loop" bpdm:loopType="forEach" bpdm:backEdgeParticipantType="none" parallel="no" counterName="Extract_IQCounter" bpdm:isBackEdgeContributor="no">
                     <bpel:condition bpdm:loopType="forEachFinalCounter">count($IQs/IQ:tests)<mapper:mapperLink><mapper:vertice id="197313233" targetPath="$Final counter" targetedBy="1054539203-arg0"></mapper:vertice><mapper:vertice id="1054539203" dimension="79x24" location="627,100"><mapper:value>count()</mapper:value></mapper:vertice><mapper:vertice id="1276746638" sourcePath="$IQs/IQ:tests" targetedBy="1054539203-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                     <bpel:condition bpdm:loopType="forEachStartCounter">1<mapper:mapperLink><mapper:vertice id="478815058" targetPath="$Start counter" targetedBy="934999594-arg0"></mapper:vertice><mapper:vertice id="934999594" dimension="79x24" location="612,36"><mapper:value>1</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
                 </bpdm:linkset>
@@ -103,8 +108,8 @@
                     <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Extract IQ" bpdm:ID="_2CnA4MY5EeeJfIQOc9wrsg" bpdm:isHeaderAuthorizationAware="no">
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
-                                <bpel:from>$IQs/IQ:tests[$emptyCounter]</bpel:from>
-                                <bpel:to>$IQ</bpel:to><mapper:mapperLink><mapper:vertice id="49610831" targetPath="$IQ" targetedBy="1943888330-arg2"></mapper:vertice><mapper:vertice id="1943888330" dimension="79x24" location="312,48"><mapper:value>[]</mapper:value></mapper:vertice><mapper:vertice id="62779359" sourcePath="$IQs/IQ:tests" targetedBy="1943888330-arg0"></mapper:vertice><mapper:vertice id="1950398419" sourcePath="$emptyCounter" targetedBy="1943888330-arg1"></mapper:vertice></mapper:mapperLink>
+                                <bpel:from>$IQs/IQ:tests[$Extract_IQCounter]</bpel:from>
+                                <bpel:to>$IQ</bpel:to><mapper:mapperLink><mapper:vertice id="49610831" targetPath="$IQ" targetedBy="1943888330-arg2"></mapper:vertice><mapper:vertice id="1943888330" dimension="79x24" location="312,48"><mapper:value>[]</mapper:value></mapper:vertice><mapper:vertice id="62779359" sourcePath="$IQs/IQ:tests" targetedBy="1943888330-arg0"></mapper:vertice><mapper:vertice id="1950398419" sourcePath="$Extract_IQCounter" targetedBy="1943888330-arg1"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>
@@ -126,12 +131,12 @@
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>bpel:doXslTransform("../../XSLT/MapActivitiesResponse.xslt", $getActivityServiceGET_ActivitiesResponse1Msg.response)</bpel:from>
-                                <bpel:to>$Activities/IQ:Activities</bpel:to><mapper:mapperLink><mapper:vertice id="1235193859" targetPath="$Activities/IQ:Activities" targetedBy="1986703963-arg1"></mapper:vertice><mapper:vertice id="1986703963" dimension="126x24" location="502,142"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="346008447" dimension="213x24" location="396,60" targetedBy="1986703963-arg0"><mapper:value>"../../XSLT/MapActivitiesResponse.xslt"</mapper:value></mapper:vertice><mapper:vertice id="1774457847" sourcePath="$getActivityServiceGET_ActivitiesResponse1Msg.response" targetedBy="1986703963-arg2"></mapper:vertice></mapper:mapperLink>
+                                <bpel:to>$Activities</bpel:to><mapper:mapperLink><mapper:vertice id="1613097298" targetPath="$Activities" targetedBy="671852806-arg2"></mapper:vertice><mapper:vertice id="671852806" dimension="126x24" location="502,142"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="104935727" dimension="213x24" location="396,60" targetedBy="671852806-arg0"><mapper:value>"../../XSLT/MapActivitiesResponse.xslt"</mapper:value></mapper:vertice><mapper:vertice id="1239482708" sourcePath="$getActivityServiceGET_ActivitiesResponse1Msg.response" targetedBy="671852806-arg1"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>
-                    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_XImz0MWqEeeln8BfPiHQNA">
-                        <bpdm:linkset bpdm:type="loop" bpdm:loopType="forEach" bpdm:backEdgeParticipantType="none" parallel="no" counterName="emptyCounter" bpdm:isBackEdgeContributor="no">
+                    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Extract Activity" bpdm:ID="_XImz0MWqEeeln8BfPiHQNA">
+                        <bpdm:linkset bpdm:type="loop" bpdm:loopType="forEach" bpdm:backEdgeParticipantType="none" parallel="no" counterName="Extract_ActivityCounter" bpdm:isBackEdgeContributor="no">
                             <bpel:condition bpdm:loopType="forEachStartCounter">1<mapper:mapperLink><mapper:vertice id="1109389517" targetPath="$Start counter" targetedBy="296522997-arg0"></mapper:vertice><mapper:vertice id="296522997" dimension="79x24" location="659,77"><mapper:value>1</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
                             <bpel:condition bpdm:loopType="forEachFinalCounter">count($Activities/IQ:Activities)<mapper:mapperLink><mapper:vertice id="1635580854" targetPath="$Final counter" targetedBy="914309093-arg0"></mapper:vertice><mapper:vertice id="914309093" dimension="79x24" location="636,120"><mapper:value>count()</mapper:value></mapper:vertice><mapper:vertice id="2057301567" sourcePath="$Activities/IQ:Activities" targetedBy="914309093-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                         </bpdm:linkset>
@@ -153,13 +158,31 @@
                                     <bpel:literal bpdm:linkedMessageType="checkForReceivingIQs:checkForReceivingIQsInput" bpdm:linkedPart="parameters" bpdm:binding="checkForReceivingIQs:checkForReceivingIQsPortSoapBinding" bpdm:opMsgType="0" bpdm:operation="checkForReceivingIQs"></bpel:literal>
                                 </bpel:from>
                             </bpel:variable>
+                            <bpel:variable name="logging-Log_and_TrackReceive_LogResponse1Msg" messageType="Logging-Log_and_Track:Receive_LogResponse" binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" operation="Receive_Log" opMsgType="1" bpdm:messageIds="inc:_QzyVkMl1EeeQIqbLZsn1KQIncoming"/>
+                            <bpel:variable name="logging-Log_and_TrackReceive_Log1Msg" messageType="Logging-Log_and_Track:Receive_LogRequest" binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" operation="Receive_Log" opMsgType="0" bpdm:messageIds=" out:_QzyVkMl1EeeQIqbLZsn1KQOutgoing">
+                                <bpel:from bpdm:toPart="body">
+                                    <bpel:literal bpdm:linkedMessageType="Logging-Log_and_Track:Receive_LogRequest" bpdm:linkedPart="body" bpdm:binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" bpdm:opMsgType="0" bpdm:operation="Receive_Log"></bpel:literal>
+                                </bpel:from>
+                            </bpel:variable>
+                            <bpel:variable name="logging-Log_and_TrackReceive_LogResponse2Msg" messageType="Logging-Log_and_Track:Receive_LogResponse" binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" operation="Receive_Log" opMsgType="1" bpdm:messageIds="inc:_3BOrkMl2EeeQIqbLZsn1KQIncoming"/>
+                            <bpel:variable name="logging-Log_and_TrackReceive_Log2Msg" messageType="Logging-Log_and_Track:Receive_LogRequest" binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" operation="Receive_Log" opMsgType="0" bpdm:messageIds=" out:_3BOrkMl2EeeQIqbLZsn1KQOutgoing">
+                                <bpel:from bpdm:toPart="body">
+                                    <bpel:literal bpdm:linkedMessageType="Logging-Log_and_Track:Receive_LogRequest" bpdm:linkedPart="body" bpdm:binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" bpdm:opMsgType="0" bpdm:operation="Receive_Log"></bpel:literal>
+                                </bpel:from>
+                            </bpel:variable>
+                            <bpel:variable name="logging-Log_and_TrackReceive_LogResponse3Msg" messageType="Logging-Log_and_Track:Receive_LogResponse" binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" operation="Receive_Log" opMsgType="1" bpdm:messageIds="inc:_CiLmQMl3EeeQIqbLZsn1KQIncoming"/>
+                            <bpel:variable name="logging-Log_and_TrackReceive_Log3Msg" messageType="Logging-Log_and_Track:Receive_LogRequest" binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" operation="Receive_Log" opMsgType="0" bpdm:messageIds=" out:_CiLmQMl3EeeQIqbLZsn1KQOutgoing">
+                                <bpel:from bpdm:toPart="body">
+                                    <bpel:literal bpdm:linkedMessageType="Logging-Log_and_Track:Receive_LogRequest" bpdm:linkedPart="body" bpdm:binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" bpdm:opMsgType="0" bpdm:operation="Receive_Log"></bpel:literal>
+                                </bpel:from>
+                            </bpel:variable>
                         </bpel:variables>
                         <bpel:sequence>
                             <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Extract Activity" bpdm:ID="_OEquIMWqEeeln8BfPiHQNA" bpdm:isHeaderAuthorizationAware="no">
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
-                                        <bpel:from>$Activities/IQ:Activities[$emptyCounter]</bpel:from>
-                                        <bpel:to>$Activity</bpel:to><mapper:mapperLink><mapper:vertice id="1731206695" targetPath="$Activity" targetedBy="271643393-arg2"></mapper:vertice><mapper:vertice id="271643393" dimension="79x24" location="396,72"><mapper:value>[]</mapper:value></mapper:vertice><mapper:vertice id="1789811240" sourcePath="$Activities/IQ:Activities" targetedBy="271643393-arg0"></mapper:vertice><mapper:vertice id="323960563" sourcePath="$emptyCounter" targetedBy="271643393-arg1"></mapper:vertice></mapper:mapperLink>
+                                        <bpel:from>$Activities/IQ:Activities[$Extract_ActivityCounter]</bpel:from>
+                                        <bpel:to>$Activity</bpel:to><mapper:mapperLink><mapper:vertice id="1731206695" targetPath="$Activity" targetedBy="271643393-arg2"></mapper:vertice><mapper:vertice id="271643393" dimension="79x24" location="396,72"><mapper:value>[]</mapper:value></mapper:vertice><mapper:vertice id="1789811240" sourcePath="$Activities/IQ:Activities" targetedBy="271643393-arg0"></mapper:vertice><mapper:vertice id="323960563" sourcePath="$Extract_ActivityCounter" targetedBy="271643393-arg1"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
@@ -169,6 +192,30 @@
                                     <bpel:condition>(((((((("IQ hold and resume activities" = $Activity/IQ:ActivityType) or ("IQ return mail activities" = $Activity/IQ:ActivityType)) or ("IQ Incoming Phone Call: IQ Response" = $Activity/IQ:ActivityType)) or ("IQ received via mail" = $Activity/IQ:ActivityType)) or ("IQ received via phone" = $Activity/IQ:ActivityType)) or ("IQ received via fax" = $Activity/IQ:ActivityType)) or ("IQ received via web" = $Activity/IQ:ActivityType)) or ("IQ Received Via Mail" = $Activity/IQ:ActivityType)) or ("IQ Received via Mail, Missing Information" = $Activity/IQ:ActivityType)<mapper:mapperLink><mapper:vertice id="1255881728" targetPath="$condition" targetedBy="1403454834-arg2"></mapper:vertice><mapper:vertice id="1403454834" dimension="79x24" location="336,552"><mapper:value>or</mapper:value></mapper:vertice><mapper:vertice id="619698067" dimension="79x24" location="336,480" targetedBy="1403454834-arg0"><mapper:value>or</mapper:value></mapper:vertice><mapper:vertice id="1332454125" dimension="79x24" location="336,408" targetedBy="619698067-arg0"><mapper:value>or</mapper:value></mapper:vertice><mapper:vertice id="1493524058" dimension="79x24" location="336,336" targetedBy="1332454125-arg0"><mapper:value>or</mapper:value></mapper:vertice><mapper:vertice id="1894342702" dimension="79x24" location="336,264" targetedBy="1493524058-arg0"><mapper:value>or</mapper:value></mapper:vertice><mapper:vertice id="92806715" dimension="79x24" location="336,204" targetedBy="1894342702-arg0"><mapper:value>or</mapper:value></mapper:vertice><mapper:vertice id="1510847467" dimension="79x24" location="336,132" targetedBy="92806715-arg0"><mapper:value>or</mapper:value></mapper:vertice><mapper:vertice id="1054598836" dimension="79x24" location="335,49" targetedBy="1510847467-arg0"><mapper:value>or</mapper:value></mapper:vertice><mapper:vertice id="1875230272" dimension="79x24" location="36,48" targetedBy="1054598836-arg0"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1685132461" dimension="171x24" location="36,12" targetedBy="1875230272-arg0"><mapper:value>"IQ hold and resume activities"</mapper:value></mapper:vertice><mapper:vertice id="1346947293" sourcePath="$Activity/IQ:ActivityType" targetedBy="1875230272-arg1"></mapper:vertice><mapper:vertice id="1954451571" dimension="79x24" location="36,120" targetedBy="1054598836-arg1"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1888787271" dimension="140x24" location="36,84" targetedBy="1954451571-arg0"><mapper:value>"IQ return mail activities"</mapper:value></mapper:vertice><mapper:vertice id="1199419919" sourcePath="$Activity/IQ:ActivityType" targetedBy="1954451571-arg1"></mapper:vertice><mapper:vertice id="1823873053" dimension="79x24" location="36,192" targetedBy="1510847467-arg1"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1360194045" dimension="215x24" location="36,156" targetedBy="1823873053-arg0"><mapper:value>"IQ Incoming Phone Call: IQ Response"</mapper:value></mapper:vertice><mapper:vertice id="251983070" sourcePath="$Activity/IQ:ActivityType" targetedBy="1823873053-arg1"></mapper:vertice><mapper:vertice id="1665433146" dimension="79x24" location="36,264" targetedBy="92806715-arg1"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="320958007" dimension="121x24" location="36,228" targetedBy="1665433146-arg0"><mapper:value>"IQ received via mail"</mapper:value></mapper:vertice><mapper:vertice id="811889246" sourcePath="$Activity/IQ:ActivityType" targetedBy="1665433146-arg1"></mapper:vertice><mapper:vertice id="225311929" dimension="79x24" location="36,336" targetedBy="1894342702-arg1"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="239736699" dimension="132x24" location="36,300" targetedBy="225311929-arg0"><mapper:value>"IQ received via phone"</mapper:value></mapper:vertice><mapper:vertice id="625643124" sourcePath="$Activity/IQ:ActivityType" targetedBy="225311929-arg1"></mapper:vertice><mapper:vertice id="1587047188" dimension="79x24" location="36,408" targetedBy="1493524058-arg1"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="912693709" dimension="113x24" location="36,372" targetedBy="1587047188-arg0"><mapper:value>"IQ received via fax"</mapper:value></mapper:vertice><mapper:vertice id="1437074996" sourcePath="$Activity/IQ:ActivityType" targetedBy="1587047188-arg1"></mapper:vertice><mapper:vertice id="231529143" dimension="79x24" location="36,480" targetedBy="1332454125-arg1"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="29436449" dimension="120x24" location="36,444" targetedBy="231529143-arg0"><mapper:value>"IQ received via web"</mapper:value></mapper:vertice><mapper:vertice id="635570420" sourcePath="$Activity/IQ:ActivityType" targetedBy="231529143-arg1"></mapper:vertice><mapper:vertice id="757030553" dimension="79x24" location="36,552" targetedBy="619698067-arg1"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1428722476" dimension="125x24" location="36,516" targetedBy="757030553-arg0"><mapper:value>"IQ Received Via Mail"</mapper:value></mapper:vertice><mapper:vertice id="301981736" sourcePath="$Activity/IQ:ActivityType" targetedBy="757030553-arg1"></mapper:vertice><mapper:vertice id="1570509859" dimension="79x24" location="36,624" targetedBy="1403454834-arg1"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1066760763" dimension="237x24" location="36,588" targetedBy="1570509859-arg0"><mapper:value>"IQ Received via Mail, Missing Information"</mapper:value></mapper:vertice><mapper:vertice id="703938532" sourcePath="$Activity/IQ:ActivityType" targetedBy="1570509859-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
                                 <bpel:sequence>
+                                    <bpdm:messagingtask operation="Receive_Log" partnerLink="iQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForCanonicPortPlkVar" portType="Logging-Log_and_Track:ForCaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send Log" bpdm:ID="_3BOrkMl2EeeQIqbLZsn1KQ" bpdm:isHeaderAuthorizationAware="no">
+                                        <bpdm:linkset bpdm:type="assignments">
+                                            <bpel:copy>
+                                                <bpel:from>"Didn't find any matching activities"</bpel:from>
+                                                <bpel:to>$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Logging/Tracking:StepId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1479055309" targetPath="$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Logging/Tracking:StepId" targetedBy="651127138-arg0"></mapper:vertice>
+  <mapper:vertice id="651127138" dimension="199x24" location="384,84">
+    <mapper:value>"Didn't find any matching activities"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                            </bpel:copy>
+                                            <bpel:copy>
+                                                <bpel:from>$Activity/IQ:CaseId</bpel:from>
+                                                <bpel:to>$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Logging/Tracking:CaseId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="694288339" targetPath="$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Logging/Tracking:CaseId" targetedBy="845133552-arg0"></mapper:vertice>
+  <mapper:vertice id="845133552" sourcePath="$Activity/IQ:CaseId"></mapper:vertice>
+</mapper:mapperLink>
+                                            </bpel:copy>
+                                        </bpdm:linkset>
+                                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="logging-Log_and_TrackReceive_Log2Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging-Log_and_Track:Receive_LogRequest" bpdm:binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_3BOrkMl2EeeQIqbLZsn1KQOutgoing"></bpdm:linkset>
+                                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="logging-Log_and_TrackReceive_LogResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging-Log_and_Track:Receive_LogResponse" bpdm:binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_3BOrkMl2EeeQIqbLZsn1KQIncoming"></bpdm:linkset>
+                                    </bpdm:messagingtask>
                                     <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_RgmpgMWqEeeln8BfPiHQNA" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
                                 </bpel:sequence>
                                 <bpel:sequence>
@@ -176,11 +223,7 @@
                                         <bpdm:linkset bpdm:type="assignments">
                                             <bpel:copy>
                                                 <bpel:from>$Activity/IQ:CaseId</bpel:from>
-                                                <bpel:to>$checkForReceivingIQsCheckForReceivingIQsRequest1Msg.parameters/checkForReceivingIQs:execute/checkForReceivingIQs:parameters/checkForReceivingIQs:iq.caseid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1873149031" targetPath="$checkForReceivingIQsCheckForReceivingIQsRequest1Msg.parameters/checkForReceivingIQs:execute/checkForReceivingIQs:parameters/checkForReceivingIQs:iq.caseid" targetedBy="825134767-arg0"></mapper:vertice>
-  <mapper:vertice id="825134767" sourcePath="$Activity/IQ:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                                                <bpel:to>$checkForReceivingIQsCheckForReceivingIQsRequest1Msg.parameters/checkForReceivingIQs:execute/checkForReceivingIQs:parameters/checkForReceivingIQs:iq.caseid</bpel:to><mapper:mapperLink><mapper:vertice id="1873149031" targetPath="$checkForReceivingIQsCheckForReceivingIQsRequest1Msg.parameters/checkForReceivingIQs:execute/checkForReceivingIQs:parameters/checkForReceivingIQs:iq.caseid" targetedBy="825134767-arg0"></mapper:vertice><mapper:vertice id="825134767" sourcePath="$Activity/IQ:CaseId"></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="checkForReceivingIQsCheckForReceivingIQsRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="checkForReceivingIQs:checkForReceivingIQsInput" bpdm:binding="checkForReceivingIQs:checkForReceivingIQsPortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_9JEqcMjwEee_XvwCwhoGFwOutgoing"></bpdm:linkset>
@@ -189,31 +232,74 @@
                                     </bpdm:messagingtask>
                                     <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_DH3kIMjxEee_XvwCwhoGFw" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                                         <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_ILfPAMjxEee_XvwCwhoGFw" bpdm:targetDisplayName="default"></bpdm:linkset>
-                                        <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_ETPLEMjxEee_XvwCwhoGFw" bpdm:targetDisplayName="[GatewayDataBasedExclusive - Notify IQ Manager]">
-                                            <bpel:condition>count($checkForReceivingIQsCheckForReceivingIQsResponse1Msg.parameters/checkForReceivingIQs:rows/checkForReceivingIQs:row/checkForReceivingIQs:iqlettertrackingid) &gt; 0
-<mapper:mapperLink>
-  <mapper:vertice id="9334474" targetPath="$condition" targetedBy="756658461-arg2"></mapper:vertice>
-  <mapper:vertice id="756658461" dimension="79x24" location="665,55">
-    <mapper:value>&gt;</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1776330864" dimension="79x24" location="455,60" targetedBy="756658461-arg0">
-    <mapper:value>count()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="266575409" sourcePath="$checkForReceivingIQsCheckForReceivingIQsResponse1Msg.parameters/checkForReceivingIQs:rows/checkForReceivingIQs:row/checkForReceivingIQs:iqlettertrackingid" targetedBy="1776330864-arg0"></mapper:vertice>
-  <mapper:vertice id="412131048" dimension="79x24" location="646,156" targetedBy="756658461-arg1">
-    <mapper:value>0</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                                        <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_ETPLEMjxEee_XvwCwhoGFw" bpdm:targetDisplayName="[GatewayDataBasedExclusive - Send Log]">
+                                            <bpel:condition>count($checkForReceivingIQsCheckForReceivingIQsResponse1Msg.parameters/checkForReceivingIQs:rows/checkForReceivingIQs:row/checkForReceivingIQs:iqlettertrackingid)&gt; 0<mapper:mapperLink><mapper:vertice id="9334474" targetPath="$condition" targetedBy="756658461-arg2"></mapper:vertice><mapper:vertice id="756658461" dimension="79x24" location="665,55"><mapper:value>&gt;</mapper:value></mapper:vertice><mapper:vertice id="1776330864" dimension="79x24" location="455,60" targetedBy="756658461-arg0"><mapper:value>count()</mapper:value></mapper:vertice><mapper:vertice id="266575409" sourcePath="$checkForReceivingIQsCheckForReceivingIQsResponse1Msg.parameters/checkForReceivingIQs:rows/checkForReceivingIQs:row/checkForReceivingIQs:iqlettertrackingid" targetedBy="1776330864-arg0"></mapper:vertice><mapper:vertice id="412131048" dimension="79x24" location="646,156" targetedBy="756658461-arg1"><mapper:value>0</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
                                         </bpdm:linkset>
                                         <bpel:sequence>
+                                            <bpdm:messagingtask operation="Receive_Log" partnerLink="iQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForCanonicPortPlkVar" portType="Logging-Log_and_Track:ForCaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send Log" bpdm:ID="_CiLmQMl3EeeQIqbLZsn1KQ" bpdm:isHeaderAuthorizationAware="no">
+                                                <bpdm:linkset bpdm:type="assignments">
+                                                    <bpel:copy>
+                                                        <bpel:from>"Didn't find any listening processes"</bpel:from>
+                                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:StepId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1752536991" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:StepId" targetedBy="16862150-arg0"></mapper:vertice>
+  <mapper:vertice id="16862150" dimension="198x24" location="468,108">
+    <mapper:value>"Didn't find any listening processes"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>$Activity/IQ:CaseId</bpel:from>
+                                                        <bpel:to>$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:CaseId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1716641469" targetPath="$logging-Log_and_TrackReceive_Log3Msg.body/Tracking:Logging/Tracking:CaseId" targetedBy="1532616178-arg0"></mapper:vertice>
+  <mapper:vertice id="1532616178" sourcePath="$Activity/IQ:CaseId"></mapper:vertice>
+</mapper:mapperLink>
+                                                    </bpel:copy>
+                                                </bpdm:linkset>
+                                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="logging-Log_and_TrackReceive_Log3Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging-Log_and_Track:Receive_LogRequest" bpdm:binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_CiLmQMl3EeeQIqbLZsn1KQOutgoing"></bpdm:linkset>
+                                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="logging-Log_and_TrackReceive_LogResponse3Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging-Log_and_Track:Receive_LogResponse" bpdm:binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_CiLmQMl3EeeQIqbLZsn1KQIncoming"></bpdm:linkset>
+                                            </bpdm:messagingtask>
                                             <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_RgmpgMWqEeeln8BfPiHQNA" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
                                         </bpel:sequence>
                                         <bpel:sequence>
+                                            <bpdm:messagingtask operation="Receive_Log" partnerLink="iQ_Response_monitorimplicitPartnerAndIQ_Response_monitorForCanonicPortPlkVar" portType="Logging-Log_and_Track:ForCaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send Log" bpdm:ID="_QzyVkMl1EeeQIqbLZsn1KQ" bpdm:isHeaderAuthorizationAware="no">
+                                                <bpdm:linkset bpdm:type="assignments">
+                                                    <bpel:copy>
+                                                        <bpel:from>$Activity/IQ:CaseId</bpel:from>
+                                                        <bpel:to>$logging-Log_and_TrackReceive_Log1Msg.body/Tracking:Logging/Tracking:CaseId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1839119752" targetPath="$logging-Log_and_TrackReceive_Log1Msg.body/Tracking:Logging/Tracking:CaseId" targetedBy="488680164-arg0"></mapper:vertice>
+  <mapper:vertice id="488680164" sourcePath="$Activity/IQ:CaseId"></mapper:vertice>
+</mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>concat("Found the IQ response", $Activity/IQ:ActivityType)</bpel:from>
+                                                        <bpel:to>$logging-Log_and_TrackReceive_Log1Msg.body/Tracking:Logging/Tracking:StepId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="971887900" targetPath="$logging-Log_and_TrackReceive_Log1Msg.body/Tracking:Logging/Tracking:StepId" targetedBy="680521071-arg2"></mapper:vertice>
+  <mapper:vertice id="680521071" dimension="79x24" location="573,182">
+    <mapper:value>concat()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1123024130" dimension="137x24" location="273,147" targetedBy="680521071-arg0">
+    <mapper:value>"Found the IQ response"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="375008700" sourcePath="$Activity/IQ:ActivityType" targetedBy="680521071-arg1"></mapper:vertice>
+</mapper:mapperLink>
+                                                    </bpel:copy>
+                                                </bpdm:linkset>
+                                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="logging-Log_and_TrackReceive_Log1Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging-Log_and_Track:Receive_LogRequest" bpdm:binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_QzyVkMl1EeeQIqbLZsn1KQOutgoing"></bpdm:linkset>
+                                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="logging-Log_and_TrackReceive_LogResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging-Log_and_Track:Receive_LogResponse" bpdm:binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_QzyVkMl1EeeQIqbLZsn1KQIncoming"></bpdm:linkset>
+                                            </bpdm:messagingtask>
                                             <bpdm:messagingtask operation="Receive_IQ_Response" partnerLink="process_IQ_CaseAndIQ_Response_monitorPlkVar" portType="Process_IQ_Case:ForIQ_Response_monitor" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Notify IQ Manager" bpdm:ID="_SAV5gMWqEeeln8BfPiHQNA" bpdm:isHeaderAuthorizationAware="no">
                                                 <bpdm:linkset bpdm:type="assignments">
                                                     <bpel:copy>
                                                         <bpel:from>$Activity/IQ:CaseId</bpel:from>
-                                                        <bpel:to>$process_IQ_CaseReceive_IQ_ResponseRequest1Msg.body/Launchpoint:caseid</bpel:to><mapper:mapperLink><mapper:vertice id="2079462856" targetPath="$process_IQ_CaseReceive_IQ_ResponseRequest1Msg.body/Launchpoint:caseid" targetedBy="566245638-arg0"></mapper:vertice><mapper:vertice id="566245638" sourcePath="$Activity/IQ:CaseId"></mapper:vertice></mapper:mapperLink>
+                                                        <bpel:to>$process_IQ_CaseReceive_IQ_ResponseRequest1Msg.body/Launchpoint:caseid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1471092092" targetPath="$process_IQ_CaseReceive_IQ_ResponseRequest1Msg.body/Launchpoint:caseid" targetedBy="411872943-arg0"></mapper:vertice>
+  <mapper:vertice id="411872943" sourcePath="$Activity/IQ:CaseId"></mapper:vertice>
+</mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="process_IQ_CaseReceive_IQ_ResponseRequest1Msg" bpdm:msgVarScopeId="_XImz0MWqEeeln8BfPiHQNA" bpdm:variableIsManaged="true" bpdm:messageType="Process_IQ_Case:Receive_IQ_ResponseRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_UUnCMMWqEeeln8BfPiHQNA"></bpdm:linkset>

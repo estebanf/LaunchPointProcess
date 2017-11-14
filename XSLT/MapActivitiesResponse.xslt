@@ -20,11 +20,13 @@
 	<xsl:template match="/iob_response_root">
 		<IQ:Activities>
 			<xsl:for-each select="iob_element">
-				<IQ:ClientId><xsl:value-of select="ClientId"/></IQ:ClientId>
-				<IQ:CaseId><xsl:value-of select="CaseId"/></IQ:CaseId>
-				<IQ:ActivityType><xsl:value-of select="ActivityType"/></IQ:ActivityType>
-				<IQ:ActivityCode><xsl:value-of select="ActivityCode"/></IQ:ActivityCode>
-				<IQ:Description><xsl:value-of select="Description"/></IQ:Description>
+				<IQ:Activities>
+					<IQ:ClientId><xsl:value-of select="ClientId"/></IQ:ClientId>
+					<IQ:CaseId><xsl:value-of select="CaseId"/></IQ:CaseId>
+					<IQ:ActivityType><xsl:value-of select="ActivityType"/></IQ:ActivityType>
+					<IQ:ActivityCode><xsl:value-of select="ActivityCode"/></IQ:ActivityCode>
+					<IQ:Description><xsl:value-of select="Description"/></IQ:Description>
+				</IQ:Activities>
 			</xsl:for-each>
 		</IQ:Activities>
 	</xsl:template>

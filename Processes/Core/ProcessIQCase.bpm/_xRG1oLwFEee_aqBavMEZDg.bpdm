@@ -53,6 +53,14 @@
             <wsdl:message name="Receive_IQ_ResponseResponse" bpdm:source="partner-pool:///_HpYswMWqEeeln8BfPiHQNA">
                 <wsdl:part name="body" element="this:Receive_IQ_ResponseResponse"/>
             </wsdl:message>
+            <xs:element name="Hold_IQRequest" type="Launchpoint:IQRuleInputType" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
+            <wsdl:message name="Hold_IQRequest" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
+                <wsdl:part name="body" element="this:Hold_IQRequest"/>
+            </wsdl:message>
+            <xs:element name="Hold_IQResponse" type="xs:string" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
+            <wsdl:message name="Hold_IQResponse" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
+                <wsdl:part name="body" element="this:Hold_IQResponse"/>
+            </wsdl:message>
             <xs:element name="Receive_IQRequest" type="Launchpoint:IQCaseType" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
             <wsdl:message name="Receive_IQRequest" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
                 <wsdl:part name="body" element="this:Receive_IQRequest"/>
@@ -61,14 +69,6 @@
             <wsdl:message name="Receive_IQResponse" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
                 <wsdl:part name="body" element="this:Receive_IQResponse"/>
             </wsdl:message>
-            <xs:element name="Hold_IQRequest" type="xs:string" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
-            <wsdl:message name="Hold_IQRequest" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
-                <wsdl:part name="body" element="this:Hold_IQRequest"/>
-            </wsdl:message>
-            <xs:element name="Hold_IQResponse" type="xs:string" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
-            <wsdl:message name="Hold_IQResponse" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
-                <wsdl:part name="body" element="this:Hold_IQResponse"/>
-            </wsdl:message>
             <vprop:propertyAlias propertyName="this:CaseId" messageType="this:Receive_IQ_ResponseRequest" part="body">
                 <vprop:query>Launchpoint:caseid/text()</vprop:query>
             </vprop:propertyAlias>
@@ -76,6 +76,9 @@
                 <vprop:query>Launchpoint:CaseId/text()</vprop:query>
             </vprop:propertyAlias>
             <vprop:propertyAlias propertyName="this:CaseId" messageType="this:Receive_send_signalRequest" part="body">
+                <vprop:query>Launchpoint:caseid/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:CaseId" messageType="this:Hold_IQRequest" part="body">
                 <vprop:query>Launchpoint:caseid/text()</vprop:query>
             </vprop:propertyAlias>
         </bpdm:namespaceContributor>
@@ -139,11 +142,6 @@
             <bpel:variable name="letterNumber" type="xs:int" bpdm:id="_64Dm4MjsEeeZU-azLx029A">
                 <bpel:from>
                     <bpel:literal bpdm:linkedType="xs:int" bpdm:linkedFile="int-_xRG1oLwFEee_aqBavMEZDg-0-literal.xml"></bpel:literal>
-                </bpel:from>
-            </bpel:variable>
-            <bpel:variable name="IQLetterTrackingType" type="Tracking:IQLetterTrackingType" bpdm:id="_CTxjoMZSEeeHyoPVok3Y1Q">
-                <bpel:from>
-                    <bpel:literal bpdm:linkedType="Tracking:IQLetterTrackingType"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
         </bpel:variables>
@@ -295,11 +293,18 @@
                             <bpel:literal bpdm:linkedMessageType="Logging-Log_and_Track:Receive_LogRequest" bpdm:linkedPart="body" bpdm:binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" bpdm:opMsgType="0" bpdm:operation="Receive_Log"></bpel:literal>
                         </bpel:from>
                     </bpel:variable>
+                    <bpel:variable name="IQLetterTrackingType" type="Tracking:IQLetterTrackingType" bpdm:id="_CTxjoMZSEeeHyoPVok3Y1Q">
+                        <bpel:from>
+                            <bpel:literal bpdm:linkedType="Tracking:IQLetterTrackingType"></bpel:literal>
+                        </bpel:from>
+                    </bpel:variable>
                 </bpel:variables>
                 <bpel:eventHandlers>
                     <bpel:onEvent bpdm:interrupt="true">
                         <bpdm:eventHandler bpdm:label="Hold IQ" bpdm:ID="_uSPB0MWqEeeln8BfPiHQNA" bpdm:type="event" operation="Hold_IQ" partnerLink="process_IQ_CaseAndCase_ManagerPlkVar" portType="this:ForCase_Manager" isMyRole="true" enableSharing="false">
-                            <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisHold_IQRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Hold_IQRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_0wCywMWqEeeln8BfPiHQNA"></bpdm:linkset>
+                            <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisHold_IQRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Hold_IQRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_0wCywMWqEeeln8BfPiHQNA">
+                                <bpel:correlation set="iqMessages" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
+                            </bpdm:linkset>
                         </bpdm:eventHandler>
                         <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_wiVcMMWqEeeln8BfPiHQNA">
                             <bpel:variables>
@@ -368,6 +373,12 @@
                                     <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="logging-Log_and_TrackReceive_LogResponse4Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging-Log_and_Track:Receive_LogResponse" bpdm:binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Qu1RMMcREeem7JLi28uNhgIncoming"></bpdm:linkset>
                                 </bpdm:messagingtask>
                                 <bpdm:messagingtask operation="Hold_IQ" partnerLink="process_IQ_CaseAndCase_ManagerPlkVar" portType="this:ForCase_Manager" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Reply" bpdm:ID="_9J0hIMWqEeeln8BfPiHQNA" bpdm:isHeaderAuthorizationAware="no">
+                                    <bpdm:linkset bpdm:type="assignments">
+                                        <bpel:copy>
+                                            <bpel:from>concat("IQ hold placed for case ", $thisHold_IQRequest1Msg.body/Launchpoint:caseid)</bpel:from>
+                                            <bpel:to>$thisHold_IQResponse1Msg.body/text()</bpel:to><mapper:mapperLink><mapper:vertice id="517455568" targetPath="$thisHold_IQResponse1Msg.body/text()" targetedBy="502202985-arg2"></mapper:vertice><mapper:vertice id="502202985" dimension="79x24" location="577,55"><mapper:value>concat()</mapper:value></mapper:vertice><mapper:vertice id="418403583" dimension="142x24" location="408,108" targetedBy="502202985-arg0"><mapper:value>"IQ hold placed for case "</mapper:value></mapper:vertice><mapper:vertice id="1887021195" sourcePath="$thisHold_IQRequest1Msg.body/Launchpoint:caseid" targetedBy="502202985-arg1"></mapper:vertice></mapper:mapperLink>
+                                        </bpel:copy>
+                                    </bpdm:linkset>
                                     <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisHold_IQResponse1Msg" bpdm:msgVarScopeId="_wiVcMMWqEeeln8BfPiHQNA" bpdm:variableIsManaged="true" bpdm:messageType="this:Hold_IQResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_93uI8MWqEeeln8BfPiHQNA"></bpdm:linkset>
                                 </bpdm:messagingtask>
                             </bpel:sequence>
@@ -601,6 +612,14 @@
                                                 <bpel:from>$ode:pid</bpel:from>
                                                 <bpel:to>$LoggingType/Tracking:pid</bpel:to><mapper:mapperLink><mapper:vertice id="592322641" targetPath="$LoggingType/Tracking:pid" targetedBy="795977566-arg0"></mapper:vertice><mapper:vertice id="795977566" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
+                                            <bpel:copy>
+                                                <bpel:from>$letterNumber</bpel:from>
+                                                <bpel:to>$IQLetterTrackingType/Tracking:letterNumber</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="506667359" targetPath="$IQLetterTrackingType/Tracking:letterNumber" targetedBy="1483435044-arg0"></mapper:vertice>
+  <mapper:vertice id="1483435044" sourcePath="$letterNumber"></mapper:vertice>
+</mapper:mapperLink>
+                                            </bpel:copy>
                                         </bpdm:linkset>
                                     </bpdm:messagingtask>
                                     <bpdm:messagingtask operation="Receive_Log" partnerLink="process_IQ_CaseimplicitPartnerAndProcess_IQ_CaseForCanonicPortPlk1Var" portType="Logging-Log_and_Track:ForCaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log sent IQ" bpdm:ID="_1DplkMb6EeeyvN3OB4eqnQ" bpdm:isHeaderAuthorizationAware="no">
@@ -661,16 +680,20 @@
                                                                     <bpel:to>$IQLetterTrackingType/Tracking:IQResponseReceived</bpel:to><mapper:mapperLink><mapper:vertice id="1104038034" targetPath="$IQLetterTrackingType/Tracking:IQResponseReceived" targetedBy="692194073-arg0"></mapper:vertice><mapper:vertice id="692194073" dimension="79x24" location="480,0"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                                 </bpel:copy>
                                                                 <bpel:copy>
-                                                                    <bpel:from>"No response received for IQ"</bpel:from>
-                                                                    <bpel:to>$LoggingType/Tracking:StepId</bpel:to><mapper:mapperLink><mapper:vertice id="37144314" targetPath="$LoggingType/Tracking:StepId" targetedBy="1660407105-arg0"></mapper:vertice><mapper:vertice id="1660407105" dimension="164x24" location="325,119"><mapper:value>"No response received for IQ"</mapper:value></mapper:vertice></mapper:mapperLink>
-                                                                </bpel:copy>
-                                                                <bpel:copy>
                                                                     <bpel:from>true()</bpel:from>
                                                                     <bpel:to>$IQLetterTrackingType/Tracking:IQAbandoned</bpel:to><mapper:mapperLink><mapper:vertice id="43474959" targetPath="$IQLetterTrackingType/Tracking:IQAbandoned" targetedBy="1765339977-arg0"></mapper:vertice><mapper:vertice id="1765339977" dimension="79x24" location="480,48"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                                 </bpel:copy>
                                                                 <bpel:copy>
                                                                     <bpel:from>current-dateTime()</bpel:from>
                                                                     <bpel:to>$IQLetterTrackingType/Tracking:IQAbandonedAt</bpel:to><mapper:mapperLink><mapper:vertice id="2070431535" targetPath="$IQLetterTrackingType/Tracking:IQAbandonedAt" targetedBy="1766459929-arg0"></mapper:vertice><mapper:vertice id="1766459929" dimension="109x24" location="602,191"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                                </bpel:copy>
+                                                                <bpel:copy>
+                                                                    <bpel:from>ode:get-property-value("RECEIVED_NO_IQ_RESPONSE")</bpel:from>
+                                                                    <bpel:to>$LoggingType/Tracking:StepId</bpel:to><mapper:mapperLink><mapper:vertice id="1638110398" targetPath="$LoggingType/Tracking:StepId" targetedBy="1825181728-arg1"></mapper:vertice><mapper:vertice id="1825181728" dimension="139x24" location="612,120"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1651656533" dimension="170x24" location="325,119" targetedBy="1825181728-arg0"><mapper:value>"RECEIVED_NO_IQ_RESPONSE"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                                </bpel:copy>
+                                                                <bpel:copy>
+                                                                    <bpel:from>ode:get-property-value("RECEIVED_NO_IQ_RESPONSE_DESCRIPTION")</bpel:from>
+                                                                    <bpel:to>$LoggingType/Tracking:Description</bpel:to><mapper:mapperLink><mapper:vertice id="2056110230" targetPath="$LoggingType/Tracking:Description" targetedBy="1512242286-arg1"></mapper:vertice><mapper:vertice id="1512242286" dimension="139x24" location="624,156"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="513080861" dimension="248x24" location="264,168" targetedBy="1512242286-arg0"><mapper:value>"RECEIVED_NO_IQ_RESPONSE_DESCRIPTION"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                                 </bpel:copy>
                                                             </bpdm:linkset>
                                                         </bpdm:messagingtask>
@@ -719,19 +742,49 @@
                                                 <bpdm:linkset bpdm:type="assignments">
                                                     <bpel:copy>
                                                         <bpel:from>true()</bpel:from>
-                                                        <bpel:to>$IQLetterTrackingType/Tracking:IQResponseReceived</bpel:to><mapper:mapperLink><mapper:vertice id="521307390" targetPath="$IQLetterTrackingType/Tracking:IQResponseReceived" targetedBy="585424617-arg0"></mapper:vertice><mapper:vertice id="585424617" dimension="79x24" location="540,24"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        <bpel:to>$IQLetterTrackingType/Tracking:IQResponseReceived</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1391857551" targetPath="$IQLetterTrackingType/Tracking:IQResponseReceived" targetedBy="881699825-arg0"></mapper:vertice>
+  <mapper:vertice id="881699825" dimension="79x24" location="540,108">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
                                                         <bpel:from>current-dateTime()</bpel:from>
-                                                        <bpel:to>$IQLetterTrackingType/Tracking:IQResponse</bpel:to><mapper:mapperLink><mapper:vertice id="522234453" targetPath="$IQLetterTrackingType/Tracking:IQResponse" targetedBy="1559816748-arg0"></mapper:vertice><mapper:vertice id="1559816748" dimension="109x24" location="536,62"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        <bpel:to>$IQLetterTrackingType/Tracking:IQResponse</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1952671276" targetPath="$IQLetterTrackingType/Tracking:IQResponse" targetedBy="2092499041-arg0"></mapper:vertice>
+  <mapper:vertice id="2092499041" dimension="109x24" location="536,146">
+    <mapper:value>current-dateTime()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
                                                         <bpel:from>ode:get-property-value("RECEIVED_IQ_RESPONSE_DESCRIPTION")</bpel:from>
-                                                        <bpel:to>$LoggingType/Tracking:Description</bpel:to><mapper:mapperLink><mapper:vertice id="2005048139" targetPath="$LoggingType/Tracking:Description" targetedBy="1965301649-arg1"></mapper:vertice><mapper:vertice id="1965301649" dimension="139x24" location="600,180"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1756202906" dimension="225x24" location="300,180" targetedBy="1965301649-arg0"><mapper:value>"RECEIVED_IQ_RESPONSE_DESCRIPTION"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        <bpel:to>$LoggingType/Tracking:Description</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="701241498" targetPath="$LoggingType/Tracking:Description" targetedBy="1417096301-arg1"></mapper:vertice>
+  <mapper:vertice id="1417096301" dimension="139x24" location="600,264">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1201445888" dimension="225x24" location="300,264" targetedBy="1417096301-arg0">
+    <mapper:value>"RECEIVED_IQ_RESPONSE_DESCRIPTION"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
                                                         <bpel:from>ode:get-property-value("RECEIVED_IQ_RESPONSE")</bpel:from>
-                                                        <bpel:to>$LoggingType/Tracking:StepId</bpel:to><mapper:mapperLink><mapper:vertice id="1581702700" targetPath="$LoggingType/Tracking:StepId" targetedBy="39986267-arg1"></mapper:vertice><mapper:vertice id="39986267" dimension="139x24" location="600,132"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1861426924" dimension="147x24" location="396,132" targetedBy="39986267-arg0"><mapper:value>"RECEIVED_IQ_RESPONSE"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        <bpel:to>$LoggingType/Tracking:StepId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1111696283" targetPath="$LoggingType/Tracking:StepId" targetedBy="305947272-arg1"></mapper:vertice>
+  <mapper:vertice id="305947272" dimension="139x24" location="600,216">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1436542603" dimension="147x24" location="396,216" targetedBy="305947272-arg0">
+    <mapper:value>"RECEIVED_IQ_RESPONSE"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                             </bpdm:messagingtask>
