@@ -502,6 +502,22 @@
                                         <bpel:from>concat($ReducedTracking/Tracking:IQLetter/Tracking:Pid, "-", $ReducedTracking/Tracking:IQLetter/Tracking:CaseId, "-", $ReducedTracking/Tracking:IQLetter/Tracking:letterNumber)</bpel:from>
                                         <bpel:to>$IQLetterTracking/metrics:iqLetterTrackingId</bpel:to><mapper:mapperLink><mapper:vertice id="913298044" targetPath="$IQLetterTracking/metrics:iqLetterTrackingId" targetedBy="887710557-arg5"></mapper:vertice><mapper:vertice id="887710557" dimension="79x24" location="444,120"><mapper:value>concat()</mapper:value></mapper:vertice><mapper:vertice id="385028611" sourcePath="$ReducedTracking/Tracking:IQLetter/Tracking:Pid" targetedBy="887710557-arg0"></mapper:vertice><mapper:vertice id="1056305079" dimension="79x24" location="156,72" targetedBy="887710557-arg1"><mapper:value>"-"</mapper:value></mapper:vertice><mapper:vertice id="1350798935" sourcePath="$ReducedTracking/Tracking:IQLetter/Tracking:CaseId" targetedBy="887710557-arg2"></mapper:vertice><mapper:vertice id="1718509341" dimension="79x24" location="245,183" targetedBy="887710557-arg3"><mapper:value>"-"</mapper:value></mapper:vertice><mapper:vertice id="57729855" sourcePath="$ReducedTracking/Tracking:IQLetter/Tracking:letterNumber" targetedBy="887710557-arg4"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IQLetter/Tracking:IQAbandoned</bpel:from>
+                                        <bpel:to>$IQLetterTracking/metrics:iqAbandoned</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1539203910" targetPath="$IQLetterTracking/metrics:iqAbandoned" targetedBy="1139723312-arg0"></mapper:vertice>
+  <mapper:vertice id="1139723312" sourcePath="$ReducedTracking/Tracking:IQLetter/Tracking:IQAbandoned"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$ReducedTracking/Tracking:IQLetter/Tracking:IQAbandonedAt</bpel:from>
+                                        <bpel:to>$IQLetterTracking/metrics:iqAbandonedAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="55758620" targetPath="$IQLetterTracking/metrics:iqAbandonedAt" targetedBy="555379945-arg0"></mapper:vertice>
+  <mapper:vertice id="555379945" sourcePath="$ReducedTracking/Tracking:IQLetter/Tracking:IQAbandonedAt"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
                         </bpel:sequence>

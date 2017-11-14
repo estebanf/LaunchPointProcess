@@ -1,7 +1,8 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:getOpenIqs="urn:intalio.com:connectors:database:launchpointprocess:getopeniqsservice" xmlns:IQ="http://www.example.org/IQ" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/IQ_Response_monitor" xmlns:IQ_Response_monitorimplicitPartner="http://thisdiagram/IQ_Response_monitorimplicitPartner" xmlns:diag="http://thisdiagram" xmlns:GetActivityService="http://bpms.everteam.com/Services/REST/GetActivityService.rest" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns="http://bpms.everteam.com/LaunchPointProcess" xmlns:GetActivity="__project:///Schemas/GetActivity.xsd" xmlns:Process_IQ_Case="http://thisdiagram/Process_IQ_Case" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/IQ_Response_monitor">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:getOpenIqs="urn:intalio.com:connectors:database:launchpointprocess:getopeniqsservice" xmlns:IQ="http://www.example.org/IQ" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/IQ_Response_monitor" xmlns:IQ_Response_monitorimplicitPartner="http://thisdiagram/IQ_Response_monitorimplicitPartner" xmlns:diag="http://thisdiagram" xmlns:GetActivityService="http://bpms.everteam.com/Services/REST/GetActivityService.rest" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns="http://bpms.everteam.com/LaunchPointProcess" xmlns:GetActivity="__project:///Schemas/GetActivity.xsd" xmlns:Process_IQ_Case="http://thisdiagram/Process_IQ_Case" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/IQ_Response_monitor">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:launchpointprocess:getopeniqsservice" bpdm:prefix="getOpenIqs" bpdm:comment="contrib=&apos;project:///Connectors/Database/getOpenIqs.sql/getOpenIqs.sql.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/IQ" bpdm:prefix="IQ" bpdm:comment="contrib=&apos;project:///Schemas/IQ.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/IQ_Response_monitor" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/IQ_Response_monitorimplicitPartner" bpdm:prefix="IQ_Response_monitorimplicitPartner" bpdm:comment="contrib=&apos;partner-pool:///_HpYswMWqEeeln8BfPiHQNAimplicitPartner"></bpdm:namespaceDefinition>
@@ -24,10 +25,11 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_xRG1oLwFEee_aqBavMEZDg" bpdm:label="Process IQ Case"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_HpYswMWqEeeln8BfPiHQNAimplicitPartner" bpdm:label="IQ Response monitorimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/IQ.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/GetActivityService.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Schemas/GetActivity.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getOpenIqs.sql/getOpenIqs.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getOpenIqs.sql/getOpenIqs.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/GetActivityService.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/GetActivity.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
     </bpdm:dependencies>
@@ -161,6 +163,16 @@
                                 </bpel:sequence>
                                 <bpel:sequence>
                                     <bpdm:messagingtask operation="Receive_IQ_Response" partnerLink="process_IQ_CaseAndIQ_Response_monitorPlkVar" portType="Process_IQ_Case:ForIQ_Response_monitor" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Notify IQ Manager" bpdm:ID="_SAV5gMWqEeeln8BfPiHQNA" bpdm:isHeaderAuthorizationAware="no">
+                                        <bpdm:linkset bpdm:type="assignments">
+                                            <bpel:copy>
+                                                <bpel:from>$Activity/IQ:CaseId</bpel:from>
+                                                <bpel:to>$process_IQ_CaseReceive_IQ_ResponseRequest1Msg.body/Launchpoint:caseid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="2079462856" targetPath="$process_IQ_CaseReceive_IQ_ResponseRequest1Msg.body/Launchpoint:caseid" targetedBy="566245638-arg0"></mapper:vertice>
+  <mapper:vertice id="566245638" sourcePath="$Activity/IQ:CaseId"></mapper:vertice>
+</mapper:mapperLink>
+                                            </bpel:copy>
+                                        </bpdm:linkset>
                                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="process_IQ_CaseReceive_IQ_ResponseRequest1Msg" bpdm:msgVarScopeId="_XImz0MWqEeeln8BfPiHQNA" bpdm:variableIsManaged="true" bpdm:messageType="Process_IQ_Case:Receive_IQ_ResponseRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_UUnCMMWqEeeln8BfPiHQNA"></bpdm:linkset>
                                         <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="process_IQ_CaseReceive_IQ_ResponseResponse2Msg" bpdm:msgVarScopeId="_XImz0MWqEeeln8BfPiHQNA" bpdm:variableIsManaged="true" bpdm:messageType="Process_IQ_Case:Receive_IQ_ResponseResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Uqz7sMWqEeeln8BfPiHQNA"></bpdm:linkset>
                                     </bpdm:messagingtask>
