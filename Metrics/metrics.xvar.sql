@@ -1,5 +1,5 @@
 ﻿-- External variable database definition for PostGres 
--- Generated 11/13/17 7:46 AM
+-- Generated 11/13/17 1:50 PM
 -- Descriptor: Metrics/metrics.xvar (currently edited)
 -- External variable IQLetterTracking
 DROP TABLE IF EXISTS IQLetterTracking;
