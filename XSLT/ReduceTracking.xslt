@@ -32,7 +32,7 @@
 					<xsl:variable name="nItemName">
 						<xsl:value-of select="name()" />
 					</xsl:variable>
-					<xsl:if test="$nItemName != ''">
+					<xsl:if test="text() != ''">
 						<xsl:element name="{$nItemName}">
 							<xsl:value-of select="text()" />
 						</xsl:element>
