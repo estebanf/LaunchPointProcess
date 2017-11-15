@@ -1,7 +1,8 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:CaseRefresh-process="http://thisproject/Processes/Integrations/CaseRefresh/process" xmlns:ProcessISOResponse="http://thisdiagram/ProcessISOResponse" xmlns:diag="http://thisdiagram" xmlns:processimplicitPartner="http://thisdiagram/processimplicitPartner" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns="urn:intalio.com:connectors:database:launchpointprocess:getisohighestscoreservice" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax254="http://isoscoring.rules.launchpointprocess/bre" xmlns:CaseRefresh-process="http://thisproject/Processes/Integrations/CaseRefresh/process" xmlns:ProcessISOResponse="http://thisdiagram/ProcessISOResponse" xmlns:diag="http://thisdiagram" xmlns:processimplicitPartner="http://thisdiagram/processimplicitPartner" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns="urn:intalio.com:connectors:database:launchpointprocess:getisohighestscoreservice" xmlns:ax253="http://isoscoring.rules.launchpointprocess/xsd" xmlns:dtws_launchpointprocess_rules_isosco="http://isoscoring.rules.launchpointprocess" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://isoscoring.rules.launchpointprocess/bre" bpdm:prefix="ax254" bpdm:comment="contrib=&apos;project:///Rules/ISOScoring.bre/dtws_launchpointprocess_rules_isoscoring/META-INF/dtws_launchpointprocess_rules_isoscoring.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Integrations/CaseRefresh/process" bpdm:prefix="CaseRefresh-process" bpdm:comment="contrib=&apos;project:///Processes/Integrations/CaseRefresh-process.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/ProcessISOResponse" bpdm:prefix="ProcessISOResponse" bpdm:comment="contrib=&apos;partner-pool:///_XDf7AMFwEeexiLYNQOqruQ"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_XDf7AMFwEeexiLYNQOqruQ"></bpdm:namespaceDefinition>
@@ -11,6 +12,8 @@
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:launchpointprocess:getisohighestscoreservice" bpdm:prefix="ns" bpdm:comment="contrib=&apos;project:///Connectors/Database/getIsoHighestScore.sql/getIsoHighestScore.sql.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://isoscoring.rules.launchpointprocess/xsd" bpdm:prefix="ax253" bpdm:comment="contrib=&apos;project:///Rules/ISOScoring.bre/dtws_launchpointprocess_rules_isoscoring/META-INF/dtws_launchpointprocess_rules_isoscoring.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://isoscoring.rules.launchpointprocess" bpdm:prefix="dtws_launchpointprocess_rules_isosco" bpdm:comment="contrib=&apos;project:///Rules/ISOScoring.bre/dtws_launchpointprocess_rules_isoscoring/META-INF/dtws_launchpointprocess_rules_isoscoring.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
             <wsdl:portType name="ForProcessISOResponse">
                 <wsdl:operation name="Receive_Business_rule_request" bpdm:source="partner-pool:///_XDf7AMFwEeexiLYNQOqruQ">
@@ -32,6 +35,7 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_kwIqIMFwEeexiLYNQOqruQimplicitPartner" bpdm:label="processimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/CaseRefresh-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Rules/ISOScoring.bre/dtws_launchpointprocess_rules_isoscoring/META-INF/dtws_launchpointprocess_rules_isoscoring.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getIsoHighestScore.sql/getIsoHighestScore.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getIsoHighestScore.sql/getIsoHighestScore.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -42,6 +46,7 @@
             <bpel:partnerLink name="processAndProcessISOResponsePlkVar" partnerLinkType="diag:processAndProcessISOResponse" myRole="process_for_ProcessISOResponse" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForProcessISOResponse" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/ProcessISOResponse" bpdm:providedIsDefault="true" bpdm:clientTasks="_kwIqIMFwEeexiLYNQOqruQ:_AplBkMYkEeeAtomsGYjH3A, _kwIqIMFwEeexiLYNQOqruQ:_pHFcQMFwEeexiLYNQOqruQ" bpdm:isManaged="true" bpdm:otherPoolId="_XDf7AMFwEeexiLYNQOqruQ"/>
             <bpel:partnerLink name="processimplicitPartnerAndProcessForGetIsoHighestScorePortPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForGetIsoHighestScorePortPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="ns:getIsoHighestScoreService" bpdm:invokedPort="getIsoHighestScorePort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:8080/everteam/ode/processes/LaunchPointProcess/Connectors/Database/getIsoHighestScore" bpdm:invokedIsDefault="true" bpdm:clientTasks="_kwIqIMFwEeexiLYNQOqruQ:_WuFoJch1EeecC9CSWI9fbw" bpdm:isManaged="true" bpdm:otherPoolId="_kwIqIMFwEeexiLYNQOqruQimplicitPartner"/>
             <bpel:partnerLink name="processimplicitPartnerAndProcessForCanonicPortPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForCanonicPortPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="CaseRefresh-process:CanonicServiceForcaller" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_kwIqIMFwEeexiLYNQOqruQ:_il1OBsh8EeecC9CSWI9fbw" bpdm:isManaged="true" bpdm:otherPoolId="_kwIqIMFwEeexiLYNQOqruQimplicitPartner"/>
+            <bpel:partnerLink name="processimplicitPartnerAndProcessForPortDtws_launchpointprocess_rules_isoscoringHttpSoap11EndpointPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForPortDtws_launchpointprocess_rules_isoscoringHttpSoap11EndpointPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="dtws_launchpointprocess_rules_isosco:dtws_launchpointprocess_rules_isoscoring" bpdm:invokedPort="dtws_launchpointprocess_rules_isoscoringHttpSoap11Endpoint" bpdm:invokedSOAPAddress="http://localhost:8080/everteam/ode/processes/dtws_launchpointprocess_rules_isoscoring" bpdm:invokedIsDefault="true" bpdm:clientTasks="_kwIqIMFwEeexiLYNQOqruQ:_4mnUZsnLEeeRevv2nFedFQ" bpdm:isManaged="true" bpdm:otherPoolId="_kwIqIMFwEeexiLYNQOqruQimplicitPartner"/>
         </bpel:partnerLinks>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
             <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_kwa-BsFwEeexiLYNQOqruQ" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_kwa-BsFwEeexiLYNQOqruQ"/>
@@ -66,6 +71,12 @@
             <bpel:variable name="caseRefresh-processQuery1Msg" messageType="CaseRefresh-process:QueryRequest" binding="CaseRefresh-process:callerAndProcessServiceBinding" operation="Query" opMsgType="0" bpdm:messageIds=" out:_il1OBsh8EeecC9CSWI9fbwOutgoing">
                 <bpel:from bpdm:toPart="body">
                     <bpel:literal bpdm:linkedMessageType="CaseRefresh-process:QueryRequest" bpdm:linkedPart="body" bpdm:binding="CaseRefresh-process:callerAndProcessServiceBinding" bpdm:opMsgType="0" bpdm:operation="Query"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="dtws_launchpointprocess_rules_isoscoInvokeDecisionTableResponse1Msg" messageType="dtws_launchpointprocess_rules_isosco:invokeDecisionTableResponse" binding="dtws_launchpointprocess_rules_isosco:dtws_launchpointprocess_rules_isoscoringSoap11Binding" operation="invokeDecisionTable" opMsgType="1" bpdm:messageIds="inc:_4mnUZsnLEeeRevv2nFedFQIncoming"/>
+            <bpel:variable name="dtws_launchpointprocess_rules_isoscoInvokeDecisionTableRequest1Msg" messageType="dtws_launchpointprocess_rules_isosco:invokeDecisionTableRequest" binding="dtws_launchpointprocess_rules_isosco:dtws_launchpointprocess_rules_isoscoringSoap11Binding" operation="invokeDecisionTable" opMsgType="0" bpdm:messageIds=" out:_4mnUZsnLEeeRevv2nFedFQOutgoing">
+                <bpel:from bpdm:toPart="parameters">
+                    <bpel:literal bpdm:linkedMessageType="dtws_launchpointprocess_rules_isosco:invokeDecisionTableRequest" bpdm:linkedPart="parameters" bpdm:binding="dtws_launchpointprocess_rules_isosco:dtws_launchpointprocess_rules_isoscoringSoap11Binding" bpdm:opMsgType="0" bpdm:operation="invokeDecisionTable"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
         </bpel:variables>
@@ -116,6 +127,61 @@
                     </bpdm:messagingtask>
                 </bpel:sequence>
             </bpdm:gateway>
+            <bpdm:messagingtask operation="invokeDecisionTable" partnerLink="processimplicitPartnerAndProcessForPortDtws_launchpointprocess_rules_isoscoringHttpSoap11EndpointPlkVar" portType="dtws_launchpointprocess_rules_isosco:dtws_launchpointprocess_rules_isoscoringPortType" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="ISOScoring" bpdm:ID="_4mnUZsnLEeeRevv2nFedFQ" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$thisReceive_Business_rule_requestRequest2Msg.body/Launchpoint:currentScore</bpel:from>
+                        <bpel:to>$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_isosco:param0/ax253:isoScoringRuleInput/ax254:curentIsoScoring</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="441768985" targetPath="$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_isosco:param0/ax253:isoScoringRuleInput/ax254:curentIsoScoring" targetedBy="1834340566-arg0"></mapper:vertice>
+  <mapper:vertice id="1834340566" sourcePath="$thisReceive_Business_rule_requestRequest2Msg.body/Launchpoint:currentScore"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$ISORuleInput/Launchpoint:highestScore</bpel:from>
+                        <bpel:to>$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_isosco:param0/ax253:isoScoringRuleInput/ax254:highestIsoResponse</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="957285334" targetPath="$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_isosco:param0/ax253:isoScoringRuleInput/ax254:highestIsoResponse" targetedBy="65412589-arg0"></mapper:vertice>
+  <mapper:vertice id="65412589" sourcePath="$ISORuleInput/Launchpoint:highestScore"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$ISORuleInput/Launchpoint:daysSinceResponse</bpel:from>
+                        <bpel:to>$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_isosco:param0/ax253:isoScoringRuleInput/ax254:daysSinceFirstIsoResponse</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1762249739" targetPath="$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_isosco:param0/ax253:isoScoringRuleInput/ax254:daysSinceFirstIsoResponse" targetedBy="1679940060-arg0"></mapper:vertice>
+  <mapper:vertice id="1679940060" sourcePath="$ISORuleInput/Launchpoint:daysSinceResponse"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$caseRefresh-processQueryResponse1Msg.body/Launchpoint:case/Launchpoint:Score</bpel:from>
+                        <bpel:to>$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_isosco:param0/ax253:isoScoringRuleInput/ax254:predictiveScore</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="788506883" targetPath="$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_isosco:param0/ax253:isoScoringRuleInput/ax254:predictiveScore" targetedBy="532768163-arg0"></mapper:vertice>
+  <mapper:vertice id="532768163" sourcePath="$caseRefresh-processQueryResponse1Msg.body/Launchpoint:case/Launchpoint:Score"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$caseRefresh-processQueryResponse1Msg.body/Launchpoint:clientid</bpel:from>
+                        <bpel:to>$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_isosco:param0/ax253:isoScoringRuleInput/ax254:clientId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1710864133" targetPath="$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_isosco:param0/ax253:isoScoringRuleInput/ax254:clientId" targetedBy="2052913507-arg0"></mapper:vertice>
+  <mapper:vertice id="2052913507" sourcePath="$caseRefresh-processQueryResponse1Msg.body/Launchpoint:clientid"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$caseRefresh-processQueryResponse1Msg.body/Launchpoint:case/Launchpoint:CaseStatus</bpel:from>
+                        <bpel:to>$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_isosco:param0/ax253:isoScoringRuleInput/ax254:caseStatus</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1402976323" targetPath="$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableRequest1Msg.parameters/dtws_launchpointprocess_rules_isosco:param0/ax253:isoScoringRuleInput/ax254:caseStatus" targetedBy="1211207791-arg0"></mapper:vertice>
+  <mapper:vertice id="1211207791" sourcePath="$caseRefresh-processQueryResponse1Msg.body/Launchpoint:case/Launchpoint:CaseStatus"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dtws_launchpointprocess_rules_isoscoInvokeDecisionTableRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="dtws_launchpointprocess_rules_isosco:invokeDecisionTableRequest" bpdm:binding="dtws_launchpointprocess_rules_isosco:dtws_launchpointprocess_rules_isoscoringSoap11Binding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_4mnUZsnLEeeRevv2nFedFQOutgoing"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="dtws_launchpointprocess_rules_isoscoInvokeDecisionTableResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="dtws_launchpointprocess_rules_isosco:invokeDecisionTableResponse" bpdm:binding="dtws_launchpointprocess_rules_isosco:dtws_launchpointprocess_rules_isoscoringSoap11Binding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_4mnUZsnLEeeRevv2nFedFQIncoming"></bpdm:linkset>
+                <bpdm:thrownFault msgFaultNcName="Exception" msgFaultTypeQname="dtws_launchpointprocess_rules_isosco:Exception"/>
+            </bpdm:messagingtask>
             <bpdm:messagingtask eventType="end: message" operation="Receive_Business_rule_request" partnerLink="processAndProcessISOResponsePlkVar" portType="this:ForProcessISOResponse" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Reply" bpdm:ID="_AplBkMYkEeeAtomsGYjH3A" bpdm:isHeaderAuthorizationAware="no">
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
@@ -133,6 +199,72 @@
                     <bpel:copy>
                         <bpel:from>0</bpel:from>
                         <bpel:to>$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:diaryDays</bpel:to><mapper:mapperLink><mapper:vertice id="1867080630" targetPath="$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:diaryDays" targetedBy="259996728-arg0"></mapper:vertice><mapper:vertice id="259996728" dimension="79x24" location="454,308"><mapper:value>0</mapper:value></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableResponse1Msg.parameters/dtws_launchpointprocess_rules_isosco:return/ax253:isoScoringRuleOutput/ax254:activity</bpel:from>
+                        <bpel:to>$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:isoActivity</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1694131512" targetPath="$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:isoActivity" targetedBy="212934557-arg0"></mapper:vertice>
+  <mapper:vertice id="212934557" sourcePath="$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableResponse1Msg.parameters/dtws_launchpointprocess_rules_isosco:return/ax253:isoScoringRuleOutput/ax254:activity"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableResponse1Msg.parameters/dtws_launchpointprocess_rules_isosco:return/ax253:isoScoringRuleOutput/ax254:closeCase</bpel:from>
+                        <bpel:to>$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:closeCase</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="292254279" targetPath="$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:closeCase" targetedBy="336716772-arg0"></mapper:vertice>
+  <mapper:vertice id="336716772" sourcePath="$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableResponse1Msg.parameters/dtws_launchpointprocess_rules_isosco:return/ax253:isoScoringRuleOutput/ax254:closeCase"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableResponse1Msg.parameters/dtws_launchpointprocess_rules_isosco:return/ax253:isoScoringRuleOutput/ax254:diary</bpel:from>
+                        <bpel:to>$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:createDiary</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1626541210" targetPath="$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:createDiary" targetedBy="173102693-arg0"></mapper:vertice>
+  <mapper:vertice id="173102693" sourcePath="$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableResponse1Msg.parameters/dtws_launchpointprocess_rules_isosco:return/ax253:isoScoringRuleOutput/ax254:diary"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableResponse1Msg.parameters/dtws_launchpointprocess_rules_isosco:return/ax253:isoScoringRuleOutput/ax254:exception</bpel:from>
+                        <bpel:to>$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:exception</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="174505802" targetPath="$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:exception" targetedBy="493112785-arg0"></mapper:vertice>
+  <mapper:vertice id="493112785" sourcePath="$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableResponse1Msg.parameters/dtws_launchpointprocess_rules_isosco:return/ax253:isoScoringRuleOutput/ax254:exception"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableResponse1Msg.parameters/dtws_launchpointprocess_rules_isosco:return/ax253:isoScoringRuleOutput/ax254:sendToIQ</bpel:from>
+                        <bpel:to>$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:sendToIQ</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="339677602" targetPath="$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:sendToIQ" targetedBy="168764944-arg0"></mapper:vertice>
+  <mapper:vertice id="168764944" sourcePath="$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableResponse1Msg.parameters/dtws_launchpointprocess_rules_isosco:return/ax253:isoScoringRuleOutput/ax254:sendToIQ"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableResponse1Msg.parameters/dtws_launchpointprocess_rules_isosco:return/ax253:isoScoringRuleOutput/ax254:updateLifeCycle</bpel:from>
+                        <bpel:to>$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:lifecycleActivity</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1544468393" targetPath="$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:lifecycleActivity" targetedBy="295273437-arg0"></mapper:vertice>
+  <mapper:vertice id="295273437" sourcePath="$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableResponse1Msg.parameters/dtws_launchpointprocess_rules_isosco:return/ax253:isoScoringRuleOutput/ax254:updateLifeCycle"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>false()</bpel:from>
+                        <bpel:to>$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:caseReopenActivity</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1495217839" targetPath="$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:caseReopenActivity" targetedBy="579045650-arg0"></mapper:vertice>
+  <mapper:vertice id="579045650" dimension="79x24" location="387,464">
+    <mapper:value>false()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableResponse1Msg.parameters/dtws_launchpointprocess_rules_isosco:return/ax253:isoScoringRuleOutput/ax254:closeCase</bpel:from>
+                        <bpel:to>$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:closeCaseActivity</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1773978523" targetPath="$thisReceive_Business_rule_requestResponse2Msg.body/Launchpoint:closeCaseActivity" targetedBy="2090711592-arg0"></mapper:vertice>
+  <mapper:vertice id="2090711592" sourcePath="$dtws_launchpointprocess_rules_isoscoInvokeDecisionTableResponse1Msg.parameters/dtws_launchpointprocess_rules_isosco:return/ax253:isoScoringRuleOutput/ax254:closeCase"></mapper:vertice>
+</mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_Business_rule_requestResponse2Msg" bpdm:msgVarScopeId="_kwIqIMFwEeexiLYNQOqruQ" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_Business_rule_requestResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_qvFU0MFwEeexiLYNQOqruQ"></bpdm:linkset>
