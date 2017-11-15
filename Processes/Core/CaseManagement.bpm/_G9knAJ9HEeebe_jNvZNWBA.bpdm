@@ -21,11 +21,13 @@
                     <bpel:literal bpdm:linkedMessageType="Case_Manager:Read_case_batchRequest" bpdm:linkedPart="body"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
+            <bpel:variable name="case_ManagerRead_case_batchResponse2Msg" messageType="Case_Manager:Read_case_batchResponse" bpdm:id="_OQdtUMmuEeea1ay7b7CFuw" bpdm:messageIds="inc:_OPxw0MmuEeea1ay7b7CFuw"/>
         </bpel:variables>
         <bpel:sequence>
             <bpdm:messagingtask eventType="start: message" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_Start_Event" bpdm:ID="_PgtFsJ9HEeebe_jNvZNWBA" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
             <bpdm:messagingtask operation="Read_case_batch" partnerLink="case_ManagerAndQueue_ServicePlkVar" portType="Case_Manager:ForQueue_Service" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Read from queue" bpdm:ID="_S_Q3QJ9HEeebe_jNvZNWBA" bpdm:isHeaderAuthorizationAware="no">
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="case_ManagerRead_case_batchRequest1Msg" bpdm:msgVarScopeId="_G9knAJ9HEeebe_jNvZNWBA" bpdm:variableIsManaged="true" bpdm:messageType="Case_Manager:Read_case_batchRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_9VylEKISEeeW6fy7N0wOvg"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="case_ManagerRead_case_batchResponse2Msg" bpdm:msgVarScopeId="_G9knAJ9HEeebe_jNvZNWBA" bpdm:variableIsManaged="true" bpdm:messageType="Case_Manager:Read_case_batchResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_OPxw0MmuEeea1ay7b7CFuw"></bpdm:linkset>
             </bpdm:messagingtask>
             <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_VQEcQJ9HEeebe_jNvZNWBA" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
         </bpel:sequence>

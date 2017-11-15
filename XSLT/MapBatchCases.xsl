@@ -19,42 +19,39 @@
 		Input document as defined in the mapper: $case_ManagerRead_case_batchRequest1Msg.body -->
 	<xsl:output />
 	<!--No parameters are currently passed to doXslTransform. -->
-	<xsl:template match="/this:Read_case_batchRequest">
+	<xsl:template match="this:Read_case_batchRequest">
 		<Tracking:BatchTracking>
 			<Tracking:BatchId><xsl:value-of select="tns:BatchId" /></Tracking:BatchId>
 			<Tracking:EnvironmentId><xsl:value-of select="tns:EnvironmentId" /></Tracking:EnvironmentId>
 			<Tracking:ClientId><xsl:value-of select="tns:ClientId" /></Tracking:ClientId>
-			
 			<Tracking:TotalCaseCount><xsl:value-of select="tns:TotalCaseCount" /></Tracking:TotalCaseCount>
+			<xsl:for-each select="tns:Cases">
+			<Tracking:Cases>	
+				<Tracking:CaseId><xsl:value-of select="tns:CaseId"/></Tracking:CaseId>
+				<Tracking:IsoIndicator><xsl:value-of select="tns:ISOIndicator"/></Tracking:IsoIndicator>
+				<Tracking:Score><xsl:value-of select="tns:Score"/></Tracking:Score>
+				<Tracking:AccidentDate><xsl:value-of select="tns:AccidentDate"/></Tracking:AccidentDate>
+				<Tracking:BenefitAmount><xsl:value-of select="tns:BenefitAmount"/></Tracking:BenefitAmount>
+				<Tracking:FundingSource><xsl:value-of select="tns:FundingSource"/></Tracking:FundingSource>
+				<Tracking:LOB><xsl:value-of select="tns:LOB"/></Tracking:LOB>
+				<Tracking:State><xsl:value-of select="tns:State"/></Tracking:State>
+				<Tracking:WorkComp><xsl:value-of select="tns:WorkComp"/></Tracking:WorkComp>
+				<Tracking:CaseStatus><xsl:value-of select="tns:CaseStatus"/></Tracking:CaseStatus>
+				<Tracking:CaseSource><xsl:value-of select="tns:CaseSource"/></Tracking:CaseSource>
+				<Tracking:SkipDuplicateCheck><xsl:value-of select="tns:SkipDuplicateCheck"/></Tracking:SkipDuplicateCheck>
+				<Tracking:CaseType><xsl:value-of select="tns:CaseType"/></Tracking:CaseType>
+				<Tracking:BatchId></Tracking:BatchId>
+				<Tracking:CaseReceived></Tracking:CaseReceived>
+				<Tracking:CaseIdentified></Tracking:CaseIdentified>
+				<Tracking:CaseReceivedAt></Tracking:CaseReceivedAt>
+				<Tracking:CaseIdentifiedAt></Tracking:CaseIdentifiedAt>
+				<Tracking:Pid></Tracking:Pid>
+			</Tracking:Cases>	
+			</xsl:for-each>
 			<Tracking:BatchProcessingBegan></Tracking:BatchProcessingBegan>
 			<Tracking:BatchProcessingEnded></Tracking:BatchProcessingEnded>
 			<Tracking:BatchProcessingBeganAt></Tracking:BatchProcessingBeganAt>
 			<Tracking:BatchProcessingEndedAt></Tracking:BatchProcessingEndedAt>
-			<xsl:apply-templates />
 		</Tracking:BatchTracking>
-	</xsl:template>
-
-	<xsl:template match="/this:Read_case_batchRequest/tns:Cases">
-		<Tracking:Cases>	
-			<Tracking:CaseId><xsl:value-of select="tns:CaseId"/></Tracking:CaseId>
-			<Tracking:IsoIndicator><xsl:value-of select="tns:ISOIndicator"/></Tracking:IsoIndicator>
-			<Tracking:Score><xsl:value-of select="tns:Score"/></Tracking:Score>
-			<Tracking:AccidentDate><xsl:value-of select="tns:AccidentDate"/></Tracking:AccidentDate>
-			<Tracking:BenefitAmount><xsl:value-of select="tns:BenefitAmount"/></Tracking:BenefitAmount>
-			<Tracking:FundingSource><xsl:value-of select="tns:FundingSource"/></Tracking:FundingSource>
-			<Tracking:LOB><xsl:value-of select="tns:LOB"/></Tracking:LOB>
-			<Tracking:State><xsl:value-of select="tns:State"/></Tracking:State>
-			<Tracking:WorkComp><xsl:value-of select="tns:WorkComp"/></Tracking:WorkComp>
-			<Tracking:CaseStatus><xsl:value-of select="tns:CaseStatus"/></Tracking:CaseStatus>
-			<Tracking:CaseSource><xsl:value-of select="tns:CaseSource"/></Tracking:CaseSource>
-			<Tracking:SkipDuplicateCheck><xsl:value-of select="tns:SkipDuplicateCheck"/></Tracking:SkipDuplicateCheck>
-			<Tracking:CaseType><xsl:value-of select="tns:CaseType"/></Tracking:CaseType>
-			<Tracking:BatchId></Tracking:BatchId>
-			<Tracking:CaseReceived></Tracking:CaseReceived>
-			<Tracking:CaseIdentified></Tracking:CaseIdentified>
-			<Tracking:CaseReceivedAt></Tracking:CaseReceivedAt>
-			<Tracking:CaseIdentifiedAt></Tracking:CaseIdentifiedAt>
-			<Tracking:Pid></Tracking:Pid>
-		</Tracking:Cases>	
 	</xsl:template>
 </xsl:stylesheet>

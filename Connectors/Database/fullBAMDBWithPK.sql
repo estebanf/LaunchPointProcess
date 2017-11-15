@@ -72,6 +72,8 @@ CREATE TABLE public.iqlettertracking (
 	iqenqueuedat timestamp NULL,
 	iqsent bool NULL,
 	iqsentat timestamp NULL,
+	iqabandoned bool NULL,
+	iqabandonedat timestamp NULL,
 	iqresponsereceived bool NULL,
 	iqresponsereceivedat timestamp NULL,
 	iqresponse varchar(250) NULL,
