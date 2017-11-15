@@ -192,6 +192,7 @@ create
 
 CREATE OR REPLACE VIEW public."ISOCases" AS
  SELECT DISTINCT casetracking.batchid,
+ 	casetracking.caseTrackingId as id,
     casetracking.pid AS parentpid,
     isotracking.pid AS isopid,
     casetracking.caseid,
