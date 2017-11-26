@@ -321,4 +321,75 @@
     		<element name="case" type="tns:CaseType"></element>
     	</sequence>
     </complexType>
+
+    <complexType name="CaseExistanceType">
+    	<sequence>
+    		<element name="caseid" type="string"></element>
+    		<element name="exists" type="boolean"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="LaunchpointCase" type="tns:CaseType"></element>
+
+    <complexType name="listCasesType">
+    	<sequence>
+    		<element name="caseid" type="int" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="LaunchpointCaseType">
+    	<sequence>
+    		<element name="CaseId" type="string"></element>
+    		<element name="ISOIndicator" type="int"></element>
+    		<element name="Score" type="int"></element>
+    		<element name="AccidentDate" type="date"></element>
+    		<element name="BenefitAmount" type="double"></element>
+    		<element name="FundingSource" type="string"></element>
+    		<element name="LOB" type="string"></element>
+    		<element name="WorkComp" type="boolean"></element>
+    		<element name="CaseStatus" type="string"></element>
+    		<element name="CaseSource" type="string"></element>
+    		<element name="ClientId" type="int"></element>
+    		<element name="EnvironmentId" type="int"></element>
+    		<element name="LifeCycle" type="string"></element>
+    		<element name="CloseReason" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="ActivityType">
+    	<sequence>
+    		<element name="ActivityId" type="string"></element>
+    		<element name="ActivityType" type="string"></element>
+    		<element name="ActivityCode" type="string"></element>
+    		<element name="ActivityDescription" type="string"></element>
+    		<element name="CreatedDate" type="dateTime"></element>
+    		<element name="CreatedBy" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="DiaryType">
+    	<sequence>
+    		<element name="DiaryId" type="string"></element>
+    		<element name="DiaryType" type="string"></element>
+    		<element name="DiaryStatus" type="string"></element>
+    		<element name="DiaryDueDate" type="date"></element>
+    		<element name="Description" type="string"></element>
+    		<element name="CreatedDate" type="dateTime"></element>
+    		<element name="CreatedBy" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="CaseActivitiesType">
+    	<sequence>
+    		<element name="caseId" type="string"></element>
+    		<element name="activities" type="tns:ActivityType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="CaseDiariesType">
+    	<sequence>
+    		<element name="caseId" type="string"></element>
+    		<element name="diaries" type="tns:DiaryType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
 </schema>

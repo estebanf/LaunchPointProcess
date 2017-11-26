@@ -102,6 +102,8 @@ CREATE TABLE iqtracking (
 	iqholdat timestamp NULL,
 	iqcompleted bool NULL,
 	iqcompletedat timestamp NULL,
+	keyemployee bool NULL,
+	invalidaddress bool NULL,
 	createdat timestamp NULL,
 	modifiedat timestamp NULL,
 	pdid varchar(250) NULL,

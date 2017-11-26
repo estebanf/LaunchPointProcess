@@ -1,0 +1,132 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:client="http://thisdiagram/client" xmlns:processimplicitPartner="http://thisdiagram/processimplicitPartner" xmlns:tns="http://everteam.com/xvar/example" xmlns:this="http://thisdiagram/process" xmlns:CaseEvaluator-process="http://thisproject/Processes/Core/CaseEvaluator/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:getCaseDiaries1="__project:///Schemas/integrations/getCaseDiaries.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:getCaseDiaries="http://bpms.everteam.com/Services/REST/getCaseDiaries.rest" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_vhreYNIJEeeKlIzHx_g2Yg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/client" bpdm:prefix="client" bpdm:comment="contrib=&apos;partner-pool:///_vhreYNIJEeeKlIzHx_g2Yg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/processimplicitPartner" bpdm:prefix="processimplicitPartner" bpdm:comment="contrib=&apos;partner-pool:///_UQSw1tIJEeeKlIzHx_g2YgimplicitPartner"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/CaseEvaluator/process" bpdm:prefix="CaseEvaluator-process" bpdm:comment="contrib=&apos;project:///Processes/Core/CaseEvaluator-process.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/integrations/getCaseDiaries.xsd" bpdm:prefix="getCaseDiaries1" bpdm:comment="contrib=&apos;project:///Schemas/integrations/getCaseDiaries.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/Services/REST/getCaseDiaries.rest" bpdm:prefix="getCaseDiaries" bpdm:comment="contrib=&apos;project:///Services/REST/getCaseDiaries.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <wsdl:portType name="Forclient">
+                <wsdl:operation name="get_case_id" bpdm:source="partner-pool:///_vhreYNIJEeeKlIzHx_g2Yg">
+                    <wsdl:input message="this:get_case_idRequest" name="get_case_id"/>
+                    <wsdl:output message="this:get_case_idResponse" name="get_case_idResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForclient" type="this:Forclient" bpdm:isSynchronized="true"/>
+            <xs:element name="get_case_idRequest" type="xs:string" bpdm:source="partner-pool:///_vhreYNIJEeeKlIzHx_g2Yg"/>
+            <wsdl:message name="get_case_idRequest" bpdm:source="partner-pool:///_vhreYNIJEeeKlIzHx_g2Yg">
+                <wsdl:part name="body" element="this:get_case_idRequest"/>
+            </wsdl:message>
+            <xs:element name="get_case_idResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_vhreYNIJEeeKlIzHx_g2Yg"/>
+            <wsdl:message name="get_case_idResponse" bpdm:source="partner-pool:///_vhreYNIJEeeKlIzHx_g2Yg">
+                <wsdl:part name="body" element="this:get_case_idResponse"/>
+            </wsdl:message>
+        </bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_vhreYNIJEeeKlIzHx_g2Yg" bpdm:label="client"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_UQSw1tIJEeeKlIzHx_g2YgimplicitPartner" bpdm:label="processimplicitPartner"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/CaseEvaluator-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/getCaseDiaries.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/integrations/getCaseDiaries.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="process" bpdm:ID="_UQSw1tIJEeeKlIzHx_g2Yg">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="processimplicitPartnerAndProcessForHttpPortPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForHttpPortPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="getCaseDiaries:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:3005/api/LaunchpointCases/{caseid}/diaries" bpdm:invokedIsDefault="true" bpdm:clientTasks="_UQSw1tIJEeeKlIzHx_g2Yg:_-JwiFtIJEeeKlIzHx_g2Yg" bpdm:isManaged="true" bpdm:otherPoolId="_UQSw1tIJEeeKlIzHx_g2YgimplicitPartner"/>
+            <bpel:partnerLink name="clientAndProcessForCanonicPortPlkVar" partnerLinkType="diag:clientAndProcessForCanonicPortPlk" initializePartnerRole="yes" myRole="process_for_client" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForclient" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/client" bpdm:providedIsDefault="true" partnerRole="client_for_process" bpdm:invokedService="CaseEvaluator-process:CanonicServiceForDCM" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_UQSw1tIJEeeKlIzHx_g2Yg:_w8eiQNImEeeKlIzHx_g2Yg, _UQSw1tIJEeeKlIzHx_g2Yg:_zy9GUNIJEeeKlIzHx_g2Yg" bpdm:isManaged="true" bpdm:otherPoolId="_vhreYNIJEeeKlIzHx_g2Yg"/>
+        </bpel:partnerLinks>
+        <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
+            <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_UhbkJtIJEeeKlIzHx_g2Yg" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_UhbkJtIJEeeKlIzHx_g2Yg"/>
+            <bpel:variable name="thisGet_case_idRequest2Msg" messageType="this:get_case_idRequest" bpdm:id="_zzZyQNIJEeeKlIzHx_g2Yg" bpdm:messageIds="inc:_zzG3UNIJEeeKlIzHx_g2Yg"/>
+            <bpel:variable name="thisGet_case_idResponse2Msg" messageType="this:get_case_idResponse" bpdm:id="_0qr_ktIJEeeKlIzHx_g2Yg" bpdm:messageIds=" out:_0qr_kNIJEeeKlIzHx_g2Yg">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="this:get_case_idResponse" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="getCaseDiariesGetCaseDiariesResponse1Msg" messageType="getCaseDiaries:getCaseDiaries_output" binding="getCaseDiaries:restBinding" operation="getCaseDiaries" opMsgType="1" bpdm:messageIds="inc:_-JwiFtIJEeeKlIzHx_g2YgIncoming"/>
+            <bpel:variable name="getCaseDiariesGetCaseDiariesRequest1Msg" messageType="getCaseDiaries:getCaseDiaries_input" binding="getCaseDiaries:restBinding" operation="getCaseDiaries" opMsgType="0" bpdm:messageIds=" out:_-JwiFtIJEeeKlIzHx_g2YgOutgoing">
+                <bpel:from bpdm:toPart="caseid">
+                    <bpel:literal bpdm:linkedMessageType="getCaseDiaries:getCaseDiaries_input" bpdm:linkedPart="caseid" bpdm:binding="getCaseDiaries:restBinding" bpdm:opMsgType="0" bpdm:operation="getCaseDiaries"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="clientGet_diariesRequest1Msg" messageType="CaseEvaluator-process:Get_diariesRequest" binding="CaseEvaluator-process:processAndDCMServiceBinding" operation="Get_diaries" opMsgType="0" bpdm:id="_x6JrcNImEeeKlIzHx_g2Yg" bpdm:messageIds=" out:_x6AhgNImEeeKlIzHx_g2Yg">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="CaseEvaluator-process:Get_diariesRequest" bpdm:linkedPart="body" bpdm:binding="CaseEvaluator-process:processAndDCMServiceBinding" bpdm:opMsgType="0" bpdm:operation="Get_diaries"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="caseEvaluator-processGet_diariesResponse2Msg" messageType="CaseEvaluator-process:Get_diariesResponse" binding="CaseEvaluator-process:processAndDCMServiceBinding" operation="Get_diaries" opMsgType="1" bpdm:id="_yR2ZwNImEeeKlIzHx_g2Yg" bpdm:messageIds="inc:_yRaU4NImEeeKlIzHx_g2Yg"/>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask eventType="start: message" operation="get_case_id" partnerLink="clientAndProcessForCanonicPortPlkVar" portType="this:Forclient" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="get case id" bpdm:ID="_zy9GUNIJEeeKlIzHx_g2Yg" bpdm:isHeaderAuthorizationAware="yes">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisGet_case_idRequest2Msg" bpdm:msgVarScopeId="_UQSw1tIJEeeKlIzHx_g2Yg" bpdm:variableIsManaged="true" bpdm:messageType="this:get_case_idRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_zzG3UNIJEeeKlIzHx_g2Yg"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$ode:pid</bpel:from>
+                        <bpel:to>$thisGet_case_idResponse2Msg.body/Launchpoint:pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="2032976245" targetPath="$thisGet_case_idResponse2Msg.body/Launchpoint:pid" targetedBy="509507121-arg0"></mapper:vertice>
+  <mapper:vertice id="509507121" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>current-dateTime()</bpel:from>
+                        <bpel:to>$thisGet_case_idResponse2Msg.body/Launchpoint:timestamp</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1609937022" targetPath="$thisGet_case_idResponse2Msg.body/Launchpoint:timestamp" targetedBy="1118189099-arg0"></mapper:vertice>
+  <mapper:vertice id="1118189099" dimension="109x24" location="371,120">
+    <mapper:value>current-dateTime()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisGet_case_idResponse2Msg" bpdm:msgVarScopeId="_UQSw1tIJEeeKlIzHx_g2Yg" bpdm:variableIsManaged="true" bpdm:messageType="this:get_case_idResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_0qr_kNIJEeeKlIzHx_g2Yg"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="getCaseDiaries" partnerLink="processimplicitPartnerAndProcessForHttpPortPlkVar" portType="getCaseDiaries:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="getCaseDiaries" bpdm:ID="_-JwiFtIJEeeKlIzHx_g2Yg" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$thisGet_case_idRequest2Msg.body</bpel:from>
+                        <bpel:to>$getCaseDiariesGetCaseDiariesRequest1Msg.caseid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="704415506" targetPath="$getCaseDiariesGetCaseDiariesRequest1Msg.caseid" targetedBy="1953882818-arg0"></mapper:vertice>
+  <mapper:vertice id="1953882818" sourcePath="$thisGet_case_idRequest2Msg.body"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="getCaseDiariesGetCaseDiariesRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getCaseDiaries:getCaseDiaries_input" bpdm:binding="getCaseDiaries:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_-JwiFtIJEeeKlIzHx_g2YgOutgoing"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="getCaseDiariesGetCaseDiariesResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getCaseDiaries:getCaseDiaries_output" bpdm:binding="getCaseDiaries:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_-JwiFtIJEeeKlIzHx_g2YgIncoming"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask eventType="end: message" operation="Get_diaries" partnerLink="clientAndProcessForCanonicPortPlkVar" portType="CaseEvaluator-process:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send diaries" bpdm:ID="_w8eiQNImEeeKlIzHx_g2Yg" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>bpel:doXslTransform("../../XSLT/transformCaseDiaries.xslt", $getCaseDiariesGetCaseDiariesResponse1Msg.diaries, "caseid", $thisGet_case_idRequest2Msg.body)</bpel:from>
+                        <bpel:to>$clientGet_diariesRequest1Msg.body</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="203033519" targetPath="$clientGet_diariesRequest1Msg.body" targetedBy="796396683-arg4"></mapper:vertice>
+  <mapper:vertice id="796396683" dimension="126x24" location="336,120">
+    <mapper:value>bpel:doXslTransform()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="204947762" dimension="203x24" location="111,60" targetedBy="796396683-arg0">
+    <mapper:value>"../../XSLT/transformCaseDiaries.xslt"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="2027201727" sourcePath="$getCaseDiariesGetCaseDiariesResponse1Msg.diaries" targetedBy="796396683-arg1"></mapper:vertice>
+  <mapper:vertice id="1245290964" dimension="79x24" location="131,166" targetedBy="796396683-arg2">
+    <mapper:value>"caseid"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="806779836" sourcePath="$thisGet_case_idRequest2Msg.body" targetedBy="796396683-arg3"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="clientGet_diariesRequest1Msg" bpdm:msgVarScopeId="_UQSw1tIJEeeKlIzHx_g2Yg" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Get_diariesRequest" bpdm:binding="CaseEvaluator-process:processAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_x6AhgNImEeeKlIzHx_g2Yg"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="caseEvaluator-processGet_diariesResponse2Msg" bpdm:msgVarScopeId="_UQSw1tIJEeeKlIzHx_g2Yg" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Get_diariesResponse" bpdm:binding="CaseEvaluator-process:processAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_yRaU4NImEeeKlIzHx_g2Yg"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>

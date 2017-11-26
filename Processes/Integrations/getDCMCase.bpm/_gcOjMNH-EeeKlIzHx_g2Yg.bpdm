@@ -1,0 +1,45 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:this="http://thisdiagram/client" xmlns:CaseEvaluator-process="http://thisproject/Processes/Core/CaseEvaluator/process" xmlns:process="http://thisdiagram/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:tns="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/client">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_d0JGptH-EeeKlIzHx_g2Yg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/client" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/CaseEvaluator/process" bpdm:prefix="CaseEvaluator-process" bpdm:comment="contrib=&apos;project:///Processes/Core/CaseEvaluator-process.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="process" bpdm:comment="contrib=&apos;partner-pool:///_d0JGptH-EeeKlIzHx_g2Yg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_d0JGptH-EeeKlIzHx_g2Yg" bpdm:label="process"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/CaseEvaluator-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="client" bpdm:ID="_gcOjMNH-EeeKlIzHx_g2Yg">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="clientAndProcessForCanonicPortPlkVar" partnerLinkType="diag:clientAndProcessForCanonicPortPlk" initializePartnerRole="yes" myRole="client_for_process" bpdm:enableSharing="false" bpdm:providedService="CaseEvaluator-process:CanonicServiceForDCM" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="epr" bpdm:providedIsDefault="true" partnerRole="process_for_client" bpdm:invokedService="process:CanonicServiceForclient" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/client" bpdm:invokedIsDefault="true" bpdm:clientTasks="_gcOjMNH-EeeKlIzHx_g2Yg:_h3bV4NH-EeeKlIzHx_g2Yg, _gcOjMNH-EeeKlIzHx_g2Yg:_dhlFFtIAEeeKlIzHx_g2Yg" bpdm:isManaged="true" bpdm:otherPoolId="_d0JGptH-EeeKlIzHx_g2Yg"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="processGet_case_idRequest2Msg" messageType="process:Get_case_idRequest" bpdm:id="_kzLVWdH-EeeKlIzHx_g2Yg" bpdm:messageIds=" out:_kzBkUNH-EeeKlIzHx_g2Yg">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="process:Get_case_idRequest" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="processGet_case_idResponse2Msg" messageType="process:Get_case_idResponse" bpdm:id="_lhqzANH-EeeKlIzHx_g2Yg" bpdm:messageIds="inc:_lhXRANH-EeeKlIzHx_g2Yg"/>
+            <bpel:variable name="thisGet_DCM_infoRequest1Msg" messageType="CaseEvaluator-process:Get_DCM_infoRequest" binding="CaseEvaluator-process:processAndDCMForCanonicPortPlkServiceBinding" operation="Get_DCM_info" opMsgType="0" bpdm:id="_e5MYQNIAEeeKlIzHx_g2Yg" bpdm:messageIds="inc:_e4vsUNIAEeeKlIzHx_g2Yg"/>
+            <bpel:variable name="caseEvaluator-processGet_DCM_infoResponse2Msg" messageType="CaseEvaluator-process:Get_DCM_infoResponse" binding="CaseEvaluator-process:processAndDCMForCanonicPortPlkServiceBinding" operation="Get_DCM_info" opMsgType="1" bpdm:id="_fLYUedIAEeeKlIzHx_g2Yg" bpdm:messageIds=" out:_fLOjcNIAEeeKlIzHx_g2Yg">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="CaseEvaluator-process:Get_DCM_infoResponse" bpdm:linkedPart="body" bpdm:binding="CaseEvaluator-process:processAndDCMForCanonicPortPlkServiceBinding" bpdm:opMsgType="1" bpdm:operation="Get_DCM_info"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask operation="Get_case_id" partnerLink="clientAndProcessForCanonicPortPlkVar" portType="process:Forclient" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Request DCM Case" bpdm:ID="_h3bV4NH-EeeKlIzHx_g2Yg" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="processGet_case_idRequest2Msg" bpdm:msgVarScopeId="_gcOjMNH-EeeKlIzHx_g2Yg" bpdm:variableIsManaged="true" bpdm:messageType="process:Get_case_idRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_kzBkUNH-EeeKlIzHx_g2Yg"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processGet_case_idResponse2Msg" bpdm:msgVarScopeId="_gcOjMNH-EeeKlIzHx_g2Yg" bpdm:variableIsManaged="true" bpdm:messageType="process:Get_case_idResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_lhXRANH-EeeKlIzHx_g2Yg"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="Get_DCM_info" partnerLink="clientAndProcessForCanonicPortPlkVar" portType="CaseEvaluator-process:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get DCM info" bpdm:ID="_dhlFFtIAEeeKlIzHx_g2Yg" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisGet_DCM_infoRequest1Msg" bpdm:msgVarScopeId="_gcOjMNH-EeeKlIzHx_g2Yg" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Get_DCM_infoRequest" bpdm:binding="CaseEvaluator-process:processAndDCMForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_e4vsUNIAEeeKlIzHx_g2Yg"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="caseEvaluator-processGet_DCM_infoResponse2Msg" bpdm:msgVarScopeId="_gcOjMNH-EeeKlIzHx_g2Yg" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Get_DCM_infoResponse" bpdm:binding="CaseEvaluator-process:processAndDCMForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_fLOjcNIAEeeKlIzHx_g2Yg"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>

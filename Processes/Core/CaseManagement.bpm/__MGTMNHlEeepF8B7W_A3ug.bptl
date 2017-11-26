@@ -1,0 +1,16 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<bpt:template xmlns:bpt="http://www.intalio/designer/business-process-data-modeling/template" ID="__MGTMNHlEeepF8B7W_A3ug" displayName="receiveCaseExistsResults" ownerPoolId="_Vt5hoNHlEeepF8B7W_A3ug" ownerPoolNcName="Database" ownerPoolIsExecutable="false" version="6000089">
+    <bpt:partnerPool ID="_esGHQJ9GEeebe_jNvZNWBA" ncName="Case_Manager" isExecutable="true"/>
+    <bpt:container displayName="sequence" containerType="sequence">
+        <bpt:activity ID="_glDRYNHlEeepF8B7W_A3ug" displayName="Send results" activityType="Task" messaging="invokerequestresponsebound">
+            <bpt:generatedOperation providingPoolId="_esGHQJ9GEeebe_jNvZNWBA" generatedPartnerLinkTypeLocalName="Case_ManagerAndDatabaseForCanonicPortPlk" generatedService="CanonicServiceForDatabase" generatedOperation="Receive_results" generatedPort="canonicPort">
+                <bpt:input name="Receive_results" generatedMessageTypeLocalName="Receive_resultsRequest">
+                    <bpt:part name="body" attachedSchemaObject="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}CaseExistanceType" generatedElementLocalName="Receive_resultsRequest"/>
+                </bpt:input>
+                <bpt:output name="Receive_resultsResponse" generatedMessageTypeLocalName="Receive_resultsResponse">
+                    <bpt:part name="body" attachedSchemaObject="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType" generatedElementLocalName="Receive_resultsResponse"/>
+                </bpt:output>
+            </bpt:generatedOperation>
+        </bpt:activity>
+    </bpt:container>
+</bpt:template>

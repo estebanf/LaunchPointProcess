@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jdbc:descriptor wsdlLocation="getAllCases.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:getallcasesservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
+    <jdbc:service name="getAllCasesService">
+        <jdbc:operation name="urn:getAllCases" sqlStatement="SELECT caseid FROM launchpointcase;" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:getallcasesservice">
+            <jdbc:input/>
+            <jdbc:filter rowsToSendService="1" rowsToFetch="-1" duration="-PT1S">
+                <jdbc:unique scope="none"/>
+            </jdbc:filter>
+            <jdbc:output/>
+        </jdbc:operation>
+        <jdbc:port>
+            <jdbc:address location="http://bpms.everteam.us:8080/everteam/ode/processes/getAllCasesService"/>
+        </jdbc:port>
+        <jdbc:connection jndiName="java:comp/env/jdbc/">
+            <jdbc:databaseProductName>Generic JDBC</jdbc:databaseProductName>
+            <jdbc:databaseProductVersion>1.0</jdbc:databaseProductVersion>
+            <jdbc:driverClass>org.postgresql.Driver</jdbc:driverClass>
+            <jdbc:databaseUrl>jdbc:postgresql://bpms.everteam.us:5432/bamdb</jdbc:databaseUrl>
+            <jdbc:databaseName>BAMDB</jdbc:databaseName>
+            <jdbc:userName>bam</jdbc:userName>
+            <jdbc:password>decrypt[RQt/7mjfKKuGjKtBPh7xteSjSq99EbcP]</jdbc:password>
+        </jdbc:connection>
+    </jdbc:service>
+</jdbc:descriptor>

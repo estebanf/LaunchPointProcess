@@ -1,0 +1,45 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<wsdl:definitions xmlns:tns="http://everteam.com/xvar/example" xmlns:diag="http://thisdiagram" xmlns:client="http://thisdiagram/client" xmlns:process="http://thisdiagram/process" xmlns:processimplicitPartner="http://thisdiagram/processimplicitPartner" xmlns:CaseManagement-Case_Manager="http://thisproject/Processes/Core/CaseManagement/Case_Manager" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns="urn:intalio.com:connectors:database:launchpointprocess:getcaseservice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" targetNamespace="http://thisdiagram" bpdm:version="6000089" bpdm:canid="_R13m8M8CEeecbIAlY2LAug" bpdm:displayName="diag">
+  <pnlk:partnerLinkType name="clientAndProcess" bpdm:poolOneId="_R13m9s8CEeecbIAlY2LAug" bpdm:poolOneIsExecutable="true" bpdm:poolOneName="process" bpdm:poolTwoId="_UplEsM8CEeecbIAlY2LAug" bpdm:poolTwoIsExecutable="false" bpdm:poolTwoName="client">
+    <pnlk:role name="client_for_process" portType="client:Forprocess" bpdm:thisPoolId="_UplEsM8CEeecbIAlY2LAug">
+      <wsdl:portType name="Forprocess">
+        <wsdl:operation name="Send_results" bpdm:canid="_LOduUNHlEeepF8B7W_A3ug._NsTNRtHmEeepF8B7W_A3ug." bpdm:dataobjectPointer="project:///Processes/Core/CaseManagement-Case_Manager.wsdl?wsdloperationbound={http://thisproject/Processes/Core/CaseManagement/Case_Manager}CanonicServiceForDatabase/canonicPort/Receive_results">
+          <wsdl:input message="CaseManagement-Case_Manager:Receive_results" name="Send_results" bpdm:canid="_PDd0gNHmEeepF8B7W_A3ug" bpdm:senderId="_LOduUNHlEeepF8B7W_A3ug" bpdm:receiverId="_NsTNRtHmEeepF8B7W_A3ug" bpdm:senderName="EventEndMessage" bpdm:receiverName="Send results" bpdm:receiverPoolId="_UplEsM8CEeecbIAlY2LAug" bpdm:dataobjectPointer="project:///Processes/Core/CaseManagement-Case_Manager.wsdl?messageForBoundOperation={http://thisproject/Processes/Core/CaseManagement/Case_Manager}CanonicServiceForDatabase/canonicPort/Receive_results/input/Receive_results"></wsdl:input>
+          <wsdl:output message="CaseManagement-Case_Manager:Receive_resultsResponse" name="Send_resultsResponse" bpdm:canid="_PZ9o8NHmEeepF8B7W_A3ug" bpdm:senderId="_NsTNRtHmEeepF8B7W_A3ug" bpdm:receiverId="_LOduUNHlEeepF8B7W_A3ug" bpdm:senderName="Send results" bpdm:receiverName="EventEndMessage" bpdm:receiverPoolId="_R13m9s8CEeecbIAlY2LAug" bpdm:dataobjectPointer="project:///Processes/Core/CaseManagement-Case_Manager.wsdl?messageForBoundOperation={http://thisproject/Processes/Core/CaseManagement/Case_Manager}CanonicServiceForDatabase/canonicPort/Receive_results/output/Receive_resultsResponse"></wsdl:output>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
+    <pnlk:role name="process_for_client" portType="process:Forclient" bpdm:thisPoolId="_R13m9s8CEeecbIAlY2LAug">
+      <wsdl:portType name="Forclient">
+        <wsdl:operation name="Receive_case" bpdm:canid="_aUHloM8CEeecbIAlY2LAug._c0dbcM8CEeecbIAlY2LAug.">
+          <wsdl:input message="process:Receive_caseRequest" name="Receive_case" bpdm:canid="_c0nMcM8CEeecbIAlY2LAug" bpdm:senderId="_aUHloM8CEeecbIAlY2LAug" bpdm:receiverId="_c0dbcM8CEeecbIAlY2LAug" bpdm:senderName="Check if case exists" bpdm:receiverName="Receive case" bpdm:receiverPoolId="_R13m9s8CEeecbIAlY2LAug" bpdm:bodyPartElemName="Receive_caseRequest" bpdm:bodyPartElemType="xs:string"></wsdl:input>
+          <wsdl:output message="process:Receive_caseResponse" name="Receive_caseResponse" bpdm:canid="_fYhToM8CEeecbIAlY2LAug" bpdm:senderId="_c0dbcM8CEeecbIAlY2LAug" bpdm:receiverId="_aUHloM8CEeecbIAlY2LAug" bpdm:senderName="Receive case" bpdm:receiverName="Check if case exists" bpdm:receiverPoolId="_UplEsM8CEeecbIAlY2LAug" bpdm:dataobjectPointer="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType" bpdm:bodyPartElemName="Receive_caseResponse" bpdm:bodyPartElemType="{http://www.example.org/Launchpoint}BpmAckType"></wsdl:output>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
+  </pnlk:partnerLinkType>
+  <pnlk:partnerLinkType name="clientAndProcessForCanonicPortPlk" bpdm:canPlkId="_UplEsM8CEeecbIAlY2LAug-_R13m9s8CEeecbIAlY2LAug">
+    <pnlk:role name="client_for_process" portType="CaseManagement-Case_Manager:ForDatabase"></pnlk:role>
+    <pnlk:role name="process_for_client" portType="process:Forclient" bpdm:thisPoolId="_R13m9s8CEeecbIAlY2LAug">
+      <wsdl:portType name="Forclient">
+        <wsdl:operation name="Receive_case" bpdm:canid="_aUHloM8CEeecbIAlY2LAug._c0dbcM8CEeecbIAlY2LAug.">
+          <wsdl:input message="process:Receive_caseRequest" name="Receive_case" bpdm:canid="_c0nMcM8CEeecbIAlY2LAug" bpdm:senderId="_aUHloM8CEeecbIAlY2LAug" bpdm:receiverId="_c0dbcM8CEeecbIAlY2LAug" bpdm:senderName="Check if case exists" bpdm:receiverName="Receive case" bpdm:receiverPoolId="_R13m9s8CEeecbIAlY2LAug" bpdm:bodyPartElemName="Receive_caseRequest" bpdm:bodyPartElemType="xs:string"></wsdl:input>
+          <wsdl:output message="process:Receive_caseResponse" name="Receive_caseResponse" bpdm:canid="_fYhToM8CEeecbIAlY2LAug" bpdm:senderId="_c0dbcM8CEeecbIAlY2LAug" bpdm:receiverId="_aUHloM8CEeecbIAlY2LAug" bpdm:senderName="Receive case" bpdm:receiverName="Check if case exists" bpdm:receiverPoolId="_UplEsM8CEeecbIAlY2LAug" bpdm:dataobjectPointer="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType" bpdm:bodyPartElemName="Receive_caseResponse" bpdm:bodyPartElemType="{http://www.example.org/Launchpoint}BpmAckType"></wsdl:output>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
+  </pnlk:partnerLinkType>
+  <pnlk:partnerLinkType name="processimplicitPartnerAndProcess" bpdm:poolOneId="_R13m9s8CEeecbIAlY2LAugimplicitPartner" bpdm:poolOneIsExecutable="false" bpdm:poolOneName="processimplicitPartner" bpdm:poolTwoId="_R13m9s8CEeecbIAlY2LAug" bpdm:poolTwoIsExecutable="true" bpdm:poolTwoName="process">
+    <pnlk:role name="processimplicitPartner_for_process" portType="processimplicitPartner:Forprocess" bpdm:thisPoolId="_R13m9s8CEeecbIAlY2LAugimplicitPartner">
+      <wsdl:portType name="Forprocess">
+        <wsdl:operation name="Query_DB-implicitTask" bpdm:canid="__XaAxtHkEeepF8B7W_A3ug.__XaAxtHkEeepF8B7W_A3ugimplicitTask." bpdm:dataobjectPointer="project:///Connectors/Database/getCase.sql/getCase.sql.wsdl?wsdloperationbound={urn:intalio.com:connectors:database:launchpointprocess:getcaseservice}getCaseService/getCasePort/getCase">
+          <wsdl:input message="ns:getCaseRequest" name="Query_DB-implicitTask" bpdm:canid="__XaAxtHkEeepF8B7W_A3ugOutgoing" bpdm:senderId="__XaAxtHkEeepF8B7W_A3ug" bpdm:receiverId="__XaAxtHkEeepF8B7W_A3ugimplicitTask" bpdm:senderName="Query DB" bpdm:receiverName="Query DB-implicitTask" bpdm:receiverPoolId="_R13m9s8CEeecbIAlY2LAugimplicitPartner" bpdm:dataobjectPointer="project:///Connectors/Database/getCase.sql/getCase.sql.wsdl?messageForBoundOperation={urn:intalio.com:connectors:database:launchpointprocess:getcaseservice}getCaseService/getCasePort/getCase/input/getCaseRequest"></wsdl:input>
+          <wsdl:output message="ns:getCaseResponse" name="Query_DB-implicitTaskResponse" bpdm:canid="__XaAxtHkEeepF8B7W_A3ugIncoming" bpdm:senderId="__XaAxtHkEeepF8B7W_A3ugimplicitTask" bpdm:receiverId="__XaAxtHkEeepF8B7W_A3ug" bpdm:senderName="Query DB-implicitTask" bpdm:receiverName="Query DB" bpdm:receiverPoolId="_R13m9s8CEeecbIAlY2LAug" bpdm:dataobjectPointer="project:///Connectors/Database/getCase.sql/getCase.sql.wsdl?messageForBoundOperation={urn:intalio.com:connectors:database:launchpointprocess:getcaseservice}getCaseService/getCasePort/getCase/output/getCaseResponse"></wsdl:output>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
+  </pnlk:partnerLinkType>
+  <pnlk:partnerLinkType name="processimplicitPartnerAndProcessForGetCasePortPlk" bpdm:canPlkId="_R13m9s8CEeecbIAlY2LAugimplicitPartner-_R13m9s8CEeecbIAlY2LAug">
+    <pnlk:role name="processimplicitPartner_for_process" portType="ns:getCasePort"></pnlk:role>
+  </pnlk:partnerLinkType>
+</wsdl:definitions>

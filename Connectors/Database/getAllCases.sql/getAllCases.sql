@@ -1,0 +1,1 @@
+SELECT caseid FROM launchpointcase;

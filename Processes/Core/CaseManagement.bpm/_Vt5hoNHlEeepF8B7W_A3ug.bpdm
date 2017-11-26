@@ -1,0 +1,49 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:this="http://thisdiagram/Database" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:CheckCaseExistance-process="http://thisproject/Processes/Integrations/CheckCaseExistance/process" xmlns:Case_Manager="http://thisdiagram/Case_Manager" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Database">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_esGHQJ9GEeebe_jNvZNWBA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Database" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Integrations/CheckCaseExistance/process" bpdm:prefix="CheckCaseExistance-process" bpdm:comment="contrib=&apos;project:///Processes/Integrations/CheckCaseExistance-process.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Case_Manager" bpdm:prefix="Case_Manager" bpdm:comment="contrib=&apos;partner-pool:///_esGHQJ9GEeebe_jNvZNWBA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_esGHQJ9GEeebe_jNvZNWBA" bpdm:label="Case Manager"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/CheckCaseExistance-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Database" bpdm:ID="_Vt5hoNHlEeepF8B7W_A3ug">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="case_ManagerAndDatabaseForCanonicPortPlkVar" partnerLinkType="diag:Case_ManagerAndDatabaseForCanonicPortPlk" initializePartnerRole="yes" myRole="Database_for_Case_Manager" bpdm:enableSharing="false" bpdm:providedService="CheckCaseExistance-process:CanonicServiceForclient" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="epr" bpdm:providedIsDefault="true" partnerRole="Case_Manager_for_Database" bpdm:invokedService="Case_Manager:CanonicServiceForDatabase" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Case_Manager/Database" bpdm:invokedIsDefault="true" bpdm:clientTasks="_Vt5hoNHlEeepF8B7W_A3ug:_glDRYNHlEeepF8B7W_A3ug, _Vt5hoNHlEeepF8B7W_A3ug:_cNXfdtHlEeepF8B7W_A3ug" bpdm:isManaged="true" bpdm:otherPoolId="_esGHQJ9GEeebe_jNvZNWBA"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="thisCheck_if_case_existsRequest1Msg" messageType="CheckCaseExistance-process:Receive_caseRequest" binding="CheckCaseExistance-process:clientAndProcessServiceBinding" operation="Receive_case" opMsgType="0" bpdm:id="_dBqDMtHlEeepF8B7W_A3ug" bpdm:messageIds="inc:_dBWhINHlEeepF8B7W_A3ug"/>
+            <bpel:variable name="checkCaseExistance-processReceive_caseResponse2Msg" messageType="CheckCaseExistance-process:Receive_caseResponse" binding="CheckCaseExistance-process:clientAndProcessServiceBinding" operation="Receive_case" opMsgType="1" bpdm:id="_dg8nNNHlEeepF8B7W_A3ug" bpdm:messageIds=" out:_dgpFMNHlEeepF8B7W_A3ug">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="CheckCaseExistance-process:Receive_caseResponse" bpdm:linkedPart="body" bpdm:binding="CheckCaseExistance-process:clientAndProcessServiceBinding" bpdm:opMsgType="1" bpdm:operation="Receive_case"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="case_ManagerReceive_resultsRequest1Msg" messageType="Case_Manager:Receive_resultsRequest" bpdm:id="_k4kVANHlEeepF8B7W_A3ug" bpdm:messageIds=" out:_k4QzANHlEeepF8B7W_A3ug">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="Case_Manager:Receive_resultsRequest" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="case_ManagerReceive_resultsResponse2Msg" messageType="Case_Manager:Receive_resultsResponse" bpdm:id="_lPN6cNHlEeepF8B7W_A3ug" bpdm:messageIds="inc:_lOxOgNHlEeepF8B7W_A3ug"/>
+        </bpel:variables>
+        <bpel:flow>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="Receive_results" partnerLink="case_ManagerAndDatabaseForCanonicPortPlkVar" portType="Case_Manager:ForDatabase" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send results" bpdm:ID="_glDRYNHlEeepF8B7W_A3ug" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="case_ManagerReceive_resultsRequest1Msg" bpdm:msgVarScopeId="_Vt5hoNHlEeepF8B7W_A3ug" bpdm:variableIsManaged="true" bpdm:messageType="Case_Manager:Receive_resultsRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_k4QzANHlEeepF8B7W_A3ug"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="case_ManagerReceive_resultsResponse2Msg" bpdm:msgVarScopeId="_Vt5hoNHlEeepF8B7W_A3ug" bpdm:variableIsManaged="true" bpdm:messageType="Case_Manager:Receive_resultsResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_lOxOgNHlEeepF8B7W_A3ug"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="Receive_case" partnerLink="case_ManagerAndDatabaseForCanonicPortPlkVar" portType="CheckCaseExistance-process:Forclient" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Check if case exists" bpdm:ID="_cNXfdtHlEeepF8B7W_A3ug" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisCheck_if_case_existsRequest1Msg" bpdm:msgVarScopeId="_Vt5hoNHlEeepF8B7W_A3ug" bpdm:variableIsManaged="true" bpdm:messageType="CheckCaseExistance-process:Receive_caseRequest" bpdm:binding="CheckCaseExistance-process:clientAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_dBWhINHlEeepF8B7W_A3ug"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="checkCaseExistance-processReceive_caseResponse2Msg" bpdm:msgVarScopeId="_Vt5hoNHlEeepF8B7W_A3ug" bpdm:variableIsManaged="true" bpdm:messageType="CheckCaseExistance-process:Receive_caseResponse" bpdm:binding="CheckCaseExistance-process:clientAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_dgpFMNHlEeepF8B7W_A3ug"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+        </bpel:flow>
+    </bpel:scope>
+</bpel:process>

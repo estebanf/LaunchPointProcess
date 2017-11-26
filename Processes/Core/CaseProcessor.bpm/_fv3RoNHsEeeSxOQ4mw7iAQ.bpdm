@@ -1,0 +1,35 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:this="http://thisdiagram/client" xmlns:process="http://thisdiagram/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/client">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_ZHiSwNHsEeeSxOQ4mw7iAQ"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/client" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="process" bpdm:comment="contrib=&apos;partner-pool:///_ZHiSwNHsEeeSxOQ4mw7iAQ"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_ZHiSwNHsEeeSxOQ4mw7iAQ" bpdm:label="process"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="client" bpdm:ID="_fv3RoNHsEeeSxOQ4mw7iAQ">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="clientAndProcessPlkVar" partnerLinkType="diag:clientAndProcess" initializePartnerRole="yes" partnerRole="process_for_client" bpdm:invokedService="process:CanonicServiceForclient" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/client" bpdm:invokedIsDefault="true" bpdm:clientTasks="_fv3RoNHsEeeSxOQ4mw7iAQ:_oq0acNHsEeeSxOQ4mw7iAQ" bpdm:isManaged="true" bpdm:otherPoolId="_ZHiSwNHsEeeSxOQ4mw7iAQ"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="processReceive_caseRequest2Msg" messageType="process:Receive_caseRequest" bpdm:id="_qUZAUNHsEeeSxOQ4mw7iAQ" bpdm:messageIds=" out:_qUSSoNHsEeeSxOQ4mw7iAQ">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="process:Receive_caseRequest" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="processReceive_caseResponse2Msg" messageType="process:Receive_caseResponse" bpdm:id="_rVX8MNHsEeeSxOQ4mw7iAQ" bpdm:messageIds="inc:_rVAv0NHsEeeSxOQ4mw7iAQ"/>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask eventType="start: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Start_Event" bpdm:ID="_oLxuANHsEeeSxOQ4mw7iAQ" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+            <bpdm:messagingtask operation="Receive_case" partnerLink="clientAndProcessPlkVar" portType="process:Forclient" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send case" bpdm:ID="_oq0acNHsEeeSxOQ4mw7iAQ" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="processReceive_caseRequest2Msg" bpdm:msgVarScopeId="_fv3RoNHsEeeSxOQ4mw7iAQ" bpdm:variableIsManaged="true" bpdm:messageType="process:Receive_caseRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_qUSSoNHsEeeSxOQ4mw7iAQ"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processReceive_caseResponse2Msg" bpdm:msgVarScopeId="_fv3RoNHsEeeSxOQ4mw7iAQ" bpdm:variableIsManaged="true" bpdm:messageType="process:Receive_caseResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_rVAv0NHsEeeSxOQ4mw7iAQ"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_pergUNHsEeeSxOQ4mw7iAQ" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>
