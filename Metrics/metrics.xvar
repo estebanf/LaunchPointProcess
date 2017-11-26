@@ -1,5 +1,74 @@
 ﻿<xbpms:descriptor targetNamespace="http://test.com/xvar/example" xmlns:xbpms="http://bpms.intalio.com/externalVariables" xmlns:tns="http://test.com/xvar/example" xmlns:xjdbc="http://ode.apache.org/externalVariables/jdbc" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xvar="http://ode.apache.org/externalVariables">
   <xbpms:import namespace="http://test.com/xvar/example" schemaLocation="${currentFileName}.xsd"/>
+  <xbpms:externalVariable name="CaseTracking">
+    <xbpms:description>Track cases evaluation</xbpms:description>
+    <xbpms:binding>
+      <xjdbc:jdbc>
+        <xjdbc:datasource-jndi>java:comp/env/jdbc/BAMDB</xjdbc:datasource-jndi>
+        <xjdbc:table xbpms:isDefault="true">CaseTracking</xjdbc:table>
+        <xjdbc:column key="yes" name="id" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="CaseId" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
+        <xjdbc:column key="no" name="BeginProcessing" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="BeginProcessingAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
+        <xjdbc:column key="no" name="ISOIndicatorChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="ISOIndicatorPrevious" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
+        <xjdbc:column key="no" name="ISOIndicatorCurrent" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="ScoreChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="ScorePrevious" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
+        <xjdbc:column key="no" name="ScoreCurrent" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
+        <xjdbc:column key="no" name="AccidentDateChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="AccidentDatePrevious" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
+        <xjdbc:column key="no" name="AccidentDateCurrent" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
+        <xjdbc:column key="no" name="BenefitAmountChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="BenefitAmountPrevious" sql-type="NUMERIC" xbpms:ddl-precision="15" xbpms:ddl-scale="2" xbpms:ddl-size="250" xbpms:type-label="numeric" xsd-type="xs:decimal"/>
+        <xjdbc:column key="no" name="BenefitAmountCurrent" sql-type="NUMERIC" xbpms:ddl-precision="15" xbpms:ddl-scale="2" xbpms:ddl-size="250" xbpms:type-label="numeric" xsd-type="xs:decimal"/>
+        <xjdbc:column key="no" name="FundingSourceChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="FundingSourcePrevious" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="FundingSourceCurrent" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="LOBChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="LOBPrevious" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="LOBCurrent" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="WorkCompChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="WorkCompPrevious" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="WorkCompCurrent" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="CaseStatusChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="CaseStatusPrevious" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="CaseStatusCurrent" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="CaseSourceChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="caseSourcePrevious" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="caseSourceCurrent" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="LifeCycleChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="LifeCyclePrevious" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="LifeCycleCurrent" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="CloseReasonChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="CloseReasonPrevious" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="CloseReasonCurrent" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="IQResponseReceivedChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="IQResponseReceivedPrevious" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="IQResponseReceivedCurrent" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="CanCloseChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="CanClosePrevious" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="CanCloseCurrent" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="BelowCostEffectiveChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="BelowCostEffectivePrevious" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="BelowCostEffectiveCurrent" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="IQReturnMailChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="IQReturnMailPrevious" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="IQReturnMailCurrent" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="StateChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="StatePrevious" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="StateCurrent" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="no" name="sendToIso" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="sendToIQ" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="dropCase" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column generator="ctimestamp" key="no" name="created_at" xbpms:type-label="creation-timestamp"/>
+        <xjdbc:column generator="utimestamp" key="no" name="updated_at" xbpms:type-label="update-timestamp"/>
+        <xjdbc:column generator="pid" key="no" name="created_by_process" xbpms:type-label="process-definition-id"/>
+        <xjdbc:column generator="iid" key="no" name="created_by_instance" xbpms:type-label="process-instance-id"/>
+        <xjdbc:init mode="update-insert"/>
+      </xjdbc:jdbc>
+    </xbpms:binding>
+  </xbpms:externalVariable>
   <xbpms:externalVariable name="LaunchpointCase">
     <xbpms:description>Case business data</xbpms:description>
     <xbpms:binding>
@@ -33,53 +102,26 @@
       </xjdbc:jdbc>
     </xbpms:binding>
   </xbpms:externalVariable>
-  <xbpms:externalVariable name="IQLetterTracking">
-    <xbpms:description>default description</xbpms:description>
-    <xbpms:binding>
-      <xjdbc:jdbc>
-        <xjdbc:datasource-jndi>java:comp/env/jdbc/BAMDB</xjdbc:datasource-jndi>
-        <xjdbc:table xbpms:isDefault="true">IQLetterTracking</xjdbc:table>
-        <xjdbc:column key="yes" name="iqLetterTrackingId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-        <xjdbc:column key="no" name="pid" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
-        <xjdbc:column key="no" name="letterNumber" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
-        <xjdbc:column key="no" name="caseid" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
-        <xjdbc:column key="no" name="iqEnqueued" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-        <xjdbc:column key="no" name="iqEnqueuedAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-        <xjdbc:column key="no" name="iqSent" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-        <xjdbc:column key="no" name="iqSentAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-        <xjdbc:column key="no" name="iqAbandoned" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-        <xjdbc:column key="no" name="iqAbandonedAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-        <xjdbc:column key="no" name="iqResponseReceived" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-        <xjdbc:column key="no" name="iqResponseReceivedAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-        <xjdbc:column key="no" name="iqResponse" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-        <xjdbc:column generator="pid" key="no" name="ppid" xbpms:type-label="process-definition-id"/>
-        <xjdbc:column generator="ctimestamp" key="no" name="createdAt" xbpms:type-label="creation-timestamp"/>
-        <xjdbc:column generator="utimestamp" key="no" name="modifiedAt" xbpms:type-label="update-timestamp"/>
-        <xjdbc:init mode="update-insert"/>
-      </xjdbc:jdbc>
-    </xbpms:binding>
-  </xbpms:externalVariable>
   <xbpms:externalVariable name="IQTracking">
     <xbpms:description>default description</xbpms:description>
     <xbpms:binding>
       <xjdbc:jdbc>
         <xjdbc:datasource-jndi>java:comp/env/jdbc/BAMDB</xjdbc:datasource-jndi>
         <xjdbc:table xbpms:isDefault="true">IQTracking</xjdbc:table>
-        <xjdbc:column key="yes" name="pid" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
-        <xjdbc:column key="no" name="batchId" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
-        <xjdbc:column key="no" name="caseid" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
-        <xjdbc:column key="no" name="parentId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="yes" name="id" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
+        <xjdbc:column key="no" name="CaseId" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
         <xjdbc:column key="no" name="iqReceived" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
         <xjdbc:column key="no" name="iqReceivedAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-        <xjdbc:column key="no" name="iqHold" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-        <xjdbc:column key="no" name="iqHoldAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-        <xjdbc:column key="no" name="iqCompleted" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-        <xjdbc:column key="no" name="iqCompletedAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-        <xjdbc:column key="no" name="keyEmployee" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-        <xjdbc:column key="no" name="invalidAddress" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-        <xjdbc:column generator="ctimestamp" key="no" name="createdAt" xbpms:type-label="creation-timestamp"/>
-        <xjdbc:column generator="utimestamp" key="no" name="modifiedAt" xbpms:type-label="update-timestamp"/>
-        <xjdbc:column generator="pid" key="no" name="pDid" xbpms:type-label="process-definition-id"/>
+        <xjdbc:column key="no" name="iqEnqueued" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="iqEnqueuedAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
+        <xjdbc:column key="no" name="iqDequeued" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="iqDequeuedAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
+        <xjdbc:column key="no" name="iqSent" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="iqSentAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
+        <xjdbc:column generator="ctimestamp" key="no" name="created_at" sql-type="TIMESTAMP" xbpms:type-label="creation-timestamp" xsd-type="xs:dateTime"/>
+        <xjdbc:column generator="utimestamp" key="no" name="updated_at" sql-type="TIMESTAMP" xbpms:type-label="update-timestamp" xsd-type="xs:dateTime"/>
+        <xjdbc:column generator="pid" key="no" name="created_by_process" sql-type="VARCHAR" xbpms:type-label="process-definition-id" xsd-type="xs:string"/>
+        <xjdbc:column generator="iid" key="no" name="created_by_instance" sql-type="BIGINT" xbpms:type-label="process-instance-id" xsd-type="xs:long"/>
         <xjdbc:init mode="update-insert"/>
       </xjdbc:jdbc>
     </xbpms:binding>
@@ -132,91 +174,19 @@
       <xjdbc:jdbc>
         <xjdbc:datasource-jndi>java:comp/env/jdbc/BAMDB</xjdbc:datasource-jndi>
         <xjdbc:table xbpms:isDefault="true">ISOTracking</xjdbc:table>
-        <xjdbc:column key="yes" name="pid" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
-        <xjdbc:column key="no" name="caseId" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
-        <xjdbc:column key="no" name="batchId" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
-        <xjdbc:column key="no" name="clientId" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
-        <xjdbc:column key="no" name="environmentId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
+        <xjdbc:column key="yes" name="id" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
+        <xjdbc:column key="no" name="CaseId" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
         <xjdbc:column key="no" name="requestId" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
         <xjdbc:column key="no" name="isoReceived" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-        <xjdbc:column key="no" name="isoProcessingBegan" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-        <xjdbc:column key="no" name="isoDuplicateFound" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-        <xjdbc:column key="no" name="isoDataFetched" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-        <xjdbc:column key="no" name="isoSent" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
         <xjdbc:column key="no" name="isoReceivedAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-        <xjdbc:column key="no" name="isoProcessingBeganAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-        <xjdbc:column key="no" name="isoDuplicateFoundAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-        <xjdbc:column key="no" name="isoDataFetchedAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
+        <xjdbc:column key="no" name="isoQueryDCM" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="isoQueryDCMAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
+        <xjdbc:column key="no" name="isoRequestRecieved" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="isoRequestReceivedAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
+        <xjdbc:column key="no" name="isoSent" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
         <xjdbc:column key="no" name="isoSentAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-        <xjdbc:column key="no" name="parentPid" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-        <xjdbc:column generator="pid" key="no" name="pdid" xbpms:type-label="process-definition-id"/>
-        <xjdbc:column generator="ctimestamp" key="no" name="createdAt" xbpms:type-label="creation-timestamp"/>
-        <xjdbc:column generator="utimestamp" key="no" name="modifiedAt" xbpms:type-label="update-timestamp"/>
-        <xjdbc:init mode="update-insert"/>
-      </xjdbc:jdbc>
-    </xbpms:binding>
-  </xbpms:externalVariable>
-  <xbpms:externalVariable name="CaseTracking">
-    <xbpms:description>default description</xbpms:description>
-    <xbpms:binding>
-      <xjdbc:jdbc>
-        <xjdbc:datasource-jndi>java:comp/env/jdbc/BAMDB</xjdbc:datasource-jndi>
-	      <xjdbc:column key="yes" name="pid" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-	      <xjdbc:column key="no" name="CaseId" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
-	      <xjdbc:column key="no" name="BeginProcessing" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="BeginProcessingAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-	      <xjdbc:column key="no" name="ISOIndicatorChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="ISOIndicatorPrevious" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
-	      <xjdbc:column key="no" name="ISOIndicatorCurrent" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
-	      <xjdbc:column key="no" name="ScoreChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="ScorePrevious" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
-	      <xjdbc:column key="no" name="ScoreCurrent" sql-type="INTEGER" xbpms:type-label="integer" xsd-type="xs:integer"/>
-	      <xjdbc:column key="no" name="AccidentDateChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="AccidentDatePrevious" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-	      <xjdbc:column key="no" name="AccidentDateCurrent" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-	      <xjdbc:column key="no" name="BenefitAmountChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="BenefitAmountPrevious" sql-type="NUMERIC" xbpms:ddl-precision="15" xbpms:ddl-scale="2" xbpms:ddl-size="250" xbpms:type-label="numeric" xsd-type="xs:decimal"/>
-	      <xjdbc:column key="no" name="BenefitAmountCurrent" sql-type="NUMERIC" xbpms:ddl-precision="15" xbpms:ddl-scale="2" xbpms:ddl-size="250" xbpms:type-label="numeric" xsd-type="xs:decimal"/>
-	      <xjdbc:column key="no" name="FundingSourceChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="FundingSourcePrevious" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-	      <xjdbc:column key="no" name="FundingSourceCurrent" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-	      <xjdbc:column key="no" name="LOBChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="LOBPrevious" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-	      <xjdbc:column key="no" name="LOBCurrent" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-	      <xjdbc:column key="no" name="WorkCompChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="WorkCompPrevious" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="WorkCompCurrent" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="CaseStatusChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="CaseStatusPrevious" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-	      <xjdbc:column key="no" name="CaseStatusCurrent" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-	      <xjdbc:column key="no" name="CaseSourceChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="caseSourcePrevious" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-	      <xjdbc:column key="no" name="caseSourceCurrent" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-	      <xjdbc:column key="no" name="LifeCycleChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="LifeCyclePrevious" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-	      <xjdbc:column key="no" name="LifeCycleCurrent" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-	      <xjdbc:column key="no" name="CloseReasonChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="CloseReasonPrevious" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-	      <xjdbc:column key="no" name="CloseReasonCurrent" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-	      <xjdbc:column key="no" name="IQResponseReceivedChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="IQResponseReceivedPrevious" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="IQResponseReceivedCurrent" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="CanCloseChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="CanClosePrevious" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="CanCloseCurrent" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="BelowCostEffectivePursuitChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="BelowCostEffectivePursuitPrevious" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="BelowCostEffectivePursuitCurrent" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="IQReturnMailChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="IQReturnMailPrevious" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="IQReturnMailCurrent" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="StateChanged" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
-	      <xjdbc:column key="no" name="StatePrevious" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-	      <xjdbc:column key="no" name="StateCurrent" sql-type="VARCHAR" xbpms:ddl-size="250" xbpms:type-label="string" xsd-type="xs:string"/>
-	      <xjdbc:column generator="ctimestamp" key="no" name="created_at" xbpms:type-label="creation-timestamp"/>
-	      <xjdbc:column generator="utimestamp" key="no" name="updated_at" xbpms:type-label="update-timestamp"/>
-	      <xjdbc:column generator="pid" key="no" name="created_by_process" xbpms:type-label="process-definition-id"/>
-	      <xjdbc:column generator="iid" key="no" name="created_by_instance" xbpms:type-label="process-instance-id"/>
+        <xjdbc:column key="no" name="isoCompleted" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
+        <xjdbc:column key="no" name="isoCompletedAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
         <xjdbc:init mode="update-insert"/>
       </xjdbc:jdbc>
     </xbpms:binding>
@@ -235,10 +205,10 @@
         <xjdbc:column key="no" name="BatchProcessingEnded" sql-type="BOOLEAN" xbpms:type-label="boolean" xsd-type="xs:boolean"/>
         <xjdbc:column key="no" name="batchProcessingBeganAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
         <xjdbc:column key="no" name="batchProcessingEndedAt" sql-type="TIMESTAMP" xbpms:type-label="timestamp" xsd-type="xs:dateTime"/>
-        <xjdbc:column generator="ctimestamp" key="no" name="createdAt" xbpms:type-label="creation-timestamp"/>
-        <xjdbc:column generator="utimestamp" key="no" name="modifiedAt" xbpms:type-label="update-timestamp"/>
-        <xjdbc:column generator="iid" key="no" name="pid" xbpms:type-label="process-instance-id"/>
-        <xjdbc:column generator="pid" key="no" name="pdid" xbpms:type-label="process-definition-id"/>
+        <xjdbc:column generator="ctimestamp" key="no" name="created_at" xbpms:type-label="creation-timestamp"/>
+        <xjdbc:column generator="utimestamp" key="no" name="updated_at" xbpms:type-label="update-timestamp"/>
+        <xjdbc:column generator="pid" key="no" name="created_by_process" xbpms:type-label="process-definition-id"/>
+        <xjdbc:column generator="iid" key="no" name="created_by_instance" xbpms:type-label="process-instance-id"/>
         <xjdbc:init mode="update-insert"/>
       </xjdbc:jdbc>
     </xbpms:binding>

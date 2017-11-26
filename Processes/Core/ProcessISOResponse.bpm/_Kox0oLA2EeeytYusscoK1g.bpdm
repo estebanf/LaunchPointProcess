@@ -1,4 +1,4 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:this="http://thisdiagram/DCM" xmlns:ISO_Response_Manager="http://thisdiagram/ISO_Response_Manager" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:tns="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:SendISOResponseToDCM="http://bpms.everteam.com/Services/REST/SendISOResponseToDCM.rest" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/DCM">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:this="http://thisdiagram/DCM" xmlns:ISO_Response_Manager="http://thisdiagram/ISO_Response_Manager" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:tns="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/DCM">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_Svwt0KhqEeeC1M91oPbQ3Q"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/DCM" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
@@ -7,15 +7,13 @@
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
-        <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/Services/REST/SendISOResponseToDCM.rest" bpdm:prefix="SendISOResponseToDCM" bpdm:comment="contrib=&apos;project:///Services/REST/SendISOResponseToDCM.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_Svwt0KhqEeeC1M91oPbQ3Q" bpdm:label="ISO Response Manager"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/SendISOResponseToDCM.wsdl"/>
     </bpdm:dependencies>
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="DCM" bpdm:ID="_Kox0oLA2EeeytYusscoK1g">
         <bpel:partnerLinks>
-            <bpel:partnerLink name="iSO_Response_ManagerAndDCMForHttpPortPlkVar" partnerLinkType="diag:ISO_Response_ManagerAndDCMForHttpPortPlk" initializePartnerRole="yes" myRole="DCM_for_ISO_Response_Manager" bpdm:enableSharing="false" bpdm:providedService="SendISOResponseToDCM:restService" bpdm:providedPort="httpPort" bpdm:provideSOAPAddress="http://bpms.everteam.us:3002/api/dcm" bpdm:providedIsDefault="true" partnerRole="ISO_Response_Manager_for_DCM" bpdm:invokedService="ISO_Response_Manager:CanonicServiceForDCM" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/ISO_Response_Manager/DCM" bpdm:invokedIsDefault="true" bpdm:clientTasks="_Kox0oLA2EeeytYusscoK1g:_j1DUsLGHEee6aeEJgFykVw, _Kox0oLA2EeeytYusscoK1g:_076nILLIEeeVubP2zgehzQ" bpdm:isManaged="true" bpdm:otherPoolId="_Svwt0KhqEeeC1M91oPbQ3Q"/>
+            <bpel:partnerLink name="iSO_Response_ManagerAndDCMPlkVar" partnerLinkType="diag:ISO_Response_ManagerAndDCM" initializePartnerRole="yes" partnerRole="ISO_Response_Manager_for_DCM" bpdm:invokedService="ISO_Response_Manager:CanonicServiceForDCM" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/ISO_Response_Manager/DCM" bpdm:invokedIsDefault="true" bpdm:clientTasks="_Kox0oLA2EeeytYusscoK1g:_j1DUsLGHEee6aeEJgFykVw" bpdm:isManaged="true" bpdm:otherPoolId="_Svwt0KhqEeeC1M91oPbQ3Q"/>
         </bpel:partnerLinks>
         <bpel:variables>
             <bpel:variable name="iSO_Response_ManagerReceive_ScoringRequest1Msg" messageType="ISO_Response_Manager:Receive_ScoringRequest" bpdm:id="_kvF7ELGHEee6aeEJgFykVw" bpdm:messageIds=" out:_kuxyALGHEee6aeEJgFykVw">
@@ -24,26 +22,12 @@
                 </bpel:from>
             </bpel:variable>
             <bpel:variable name="iSO_Response_ManagerReceive_ScoringResponse2Msg" messageType="ISO_Response_Manager:Receive_ScoringResponse" bpdm:id="_lcqLsLGHEee6aeEJgFykVw" bpdm:messageIds="inc:_lcQjELGHEee6aeEJgFykVw"/>
-            <bpel:variable name="thisSendToDCMRequest1Msg" messageType="SendISOResponseToDCM:sendToDCM_input" binding="SendISOResponseToDCM:restBinding" operation="sendToDCM" opMsgType="0" bpdm:id="_2R_CMLLIEeeVubP2zgehzQ" bpdm:messageIds="inc:_2RiWQLLIEeeVubP2zgehzQ"/>
-            <bpel:variable name="sendISOResponseToDCMSendToDCMResponse2Msg" messageType="SendISOResponseToDCM:sendToDCM_output" binding="SendISOResponseToDCM:restBinding" operation="sendToDCM" opMsgType="1" bpdm:id="_2_g2kLLIEeeVubP2zgehzQ" bpdm:messageIds=" out:_2_N7oLLIEeeVubP2zgehzQ">
-                <bpel:from bpdm:toPart="response">
-                    <bpel:literal bpdm:linkedMessageType="SendISOResponseToDCM:sendToDCM_output" bpdm:linkedPart="response" bpdm:binding="SendISOResponseToDCM:restBinding" bpdm:opMsgType="1" bpdm:operation="sendToDCM"></bpel:literal>
-                </bpel:from>
-            </bpel:variable>
         </bpel:variables>
-        <bpel:flow>
-            <bpel:sequence>
-                <bpdm:messagingtask operation="Receive_Scoring" partnerLink="iSO_Response_ManagerAndDCMForHttpPortPlkVar" portType="ISO_Response_Manager:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send scoring" bpdm:ID="_j1DUsLGHEee6aeEJgFykVw" bpdm:isHeaderAuthorizationAware="no">
-                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iSO_Response_ManagerReceive_ScoringRequest1Msg" bpdm:msgVarScopeId="_Kox0oLA2EeeytYusscoK1g" bpdm:variableIsManaged="true" bpdm:messageType="ISO_Response_Manager:Receive_ScoringRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_kuxyALGHEee6aeEJgFykVw"></bpdm:linkset>
-                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="iSO_Response_ManagerReceive_ScoringResponse2Msg" bpdm:msgVarScopeId="_Kox0oLA2EeeytYusscoK1g" bpdm:variableIsManaged="true" bpdm:messageType="ISO_Response_Manager:Receive_ScoringResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_lcQjELGHEee6aeEJgFykVw"></bpdm:linkset>
-                </bpdm:messagingtask>
-            </bpel:sequence>
-            <bpel:sequence>
-                <bpdm:messagingtask operation="sendToDCM" partnerLink="iSO_Response_ManagerAndDCMForHttpPortPlkVar" portType="SendISOResponseToDCM:restInterface" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="sendToDCM" bpdm:ID="_076nILLIEeeVubP2zgehzQ" bpdm:isHeaderAuthorizationAware="no">
-                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisSendToDCMRequest1Msg" bpdm:msgVarScopeId="_Kox0oLA2EeeytYusscoK1g" bpdm:variableIsManaged="true" bpdm:messageType="SendISOResponseToDCM:sendToDCM_input" bpdm:binding="SendISOResponseToDCM:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_2RiWQLLIEeeVubP2zgehzQ"></bpdm:linkset>
-                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="sendISOResponseToDCMSendToDCMResponse2Msg" bpdm:msgVarScopeId="_Kox0oLA2EeeytYusscoK1g" bpdm:variableIsManaged="true" bpdm:messageType="SendISOResponseToDCM:sendToDCM_output" bpdm:binding="SendISOResponseToDCM:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_2_N7oLLIEeeVubP2zgehzQ"></bpdm:linkset>
-                </bpdm:messagingtask>
-            </bpel:sequence>
-        </bpel:flow>
+        <bpel:sequence>
+            <bpdm:messagingtask operation="Receive_Scoring" partnerLink="iSO_Response_ManagerAndDCMPlkVar" portType="ISO_Response_Manager:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send scoring" bpdm:ID="_j1DUsLGHEee6aeEJgFykVw" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iSO_Response_ManagerReceive_ScoringRequest1Msg" bpdm:msgVarScopeId="_Kox0oLA2EeeytYusscoK1g" bpdm:variableIsManaged="true" bpdm:messageType="ISO_Response_Manager:Receive_ScoringRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_kuxyALGHEee6aeEJgFykVw"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="iSO_Response_ManagerReceive_ScoringResponse2Msg" bpdm:msgVarScopeId="_Kox0oLA2EeeytYusscoK1g" bpdm:variableIsManaged="true" bpdm:messageType="ISO_Response_Manager:Receive_ScoringResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_lcQjELGHEee6aeEJgFykVw"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
     </bpel:scope>
 </bpel:process>
