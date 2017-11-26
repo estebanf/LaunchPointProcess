@@ -72,7 +72,7 @@
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Case Manager" bpdm:ID="_esGHQJ9GEeebe_jNvZNWBA">
         <bpel:partnerLinks>
             <bpel:partnerLink name="case_ManagerAndQueue_ServicePlkVar" partnerLinkType="diag:Case_ManagerAndQueue_Service" myRole="Case_Manager_for_Queue_Service" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForQueue_Service" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Case_Manager/Queue_Service" bpdm:providedIsDefault="true" bpdm:clientTasks="_esGHQJ9GEeebe_jNvZNWBA:_nBTX4J-4Eeee0o7jDg0-OQ" bpdm:isManaged="true" bpdm:otherPoolId="_G9knAJ9HEeebe_jNvZNWBA"/>
-            <bpel:partnerLink name="case_ManagerimplicitPartnerAndCase_ManagerForCanonicPortPlkVar" partnerLinkType="diag:Case_ManagerimplicitPartnerAndCase_ManagerForCanonicPortPlk" initializePartnerRole="yes" partnerRole="Case_ManagerimplicitPartner_for_Case_Manager" bpdm:invokedService="Logging-Log_and_Track:CanonicServiceForCaller" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_HXPMQM7_EeecbIAlY2LAug:_D4KdVs7_EeecbIAlY2LAug" bpdm:isManaged="true" bpdm:otherPoolId="_esGHQJ9GEeebe_jNvZNWBAimplicitPartner"/>
+            <bpel:partnerLink name="case_ManagerimplicitPartnerAndCase_ManagerForCanonicPortPlkVar" partnerLinkType="diag:Case_ManagerimplicitPartnerAndCase_ManagerForCanonicPortPlk" initializePartnerRole="yes" partnerRole="Case_ManagerimplicitPartner_for_Case_Manager" bpdm:invokedService="Logging-Log_and_Track:CanonicServiceForCaller" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_ICshkNLEEee0svt489vHig:_Fo6mwNLEEee0svt489vHig, _HXPMQM7_EeecbIAlY2LAug:_D4KdVs7_EeecbIAlY2LAug" bpdm:isManaged="true" bpdm:otherPoolId="_esGHQJ9GEeebe_jNvZNWBAimplicitPartner"/>
             <bpel:partnerLink name="case_ManagerAndDatabaseForCanonicPortPlkVar" partnerLinkType="diag:Case_ManagerAndDatabaseForCanonicPortPlk" initializePartnerRole="yes" myRole="Case_Manager_for_Database" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForDatabase" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Case_Manager/Database" bpdm:providedIsDefault="true" partnerRole="Database_for_Case_Manager" bpdm:invokedService="CheckCaseExistance-process:CanonicServiceForclient" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_jVr7ENHnEeepF8B7W_A3ug:_jjoiYNHlEeepF8B7W_A3ug, _jVr7ENHnEeepF8B7W_A3ug:_Hg07MM8BEeecbIAlY2LAug" bpdm:isManaged="true" bpdm:otherPoolId="_Vt5hoNHlEeepF8B7W_A3ug"/>
             <bpel:partnerLink name="case_ManagerAndCase_evaluatorForCanonicPortPlkVar" partnerLinkType="diag:Case_ManagerAndCase_evaluatorForCanonicPortPlk" initializePartnerRole="yes" partnerRole="Case_evaluator_for_Case_Manager" bpdm:invokedService="CaseEvaluator-process:CanonicServiceForclient" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_SRGm4M8BEeecbIAlY2LAug:_lRSOoNHzEeegkeOYmwRRMQ" bpdm:isManaged="true" bpdm:otherPoolId="_a8askNHzEeegkeOYmwRRMQ"/>
         </bpel:partnerLinks>
@@ -194,7 +194,7 @@
                     <bpel:variable name="caseEvaluator-processGet_caseResponse2Msg" messageType="CaseEvaluator-process:Get_caseResponse" binding="CaseEvaluator-process:processAndClientServiceBinding" operation="Get_case" opMsgType="1" bpdm:id="_m3WNhdHzEeegkeOYmwRRMQ" bpdm:messageIds="inc:_m3DSkNHzEeegkeOYmwRRMQ"/>
                 </bpel:variables>
                 <bpel:sequence>
-                    <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Extract case" bpdm:ID="_GCzeAM8BEeecbIAlY2LAug" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:messagingtask eventType="start: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Extract case" bpdm:ID="_GCzeAM8BEeecbIAlY2LAug" bpdm:isHeaderAuthorizationAware="no">
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>$case_ManagerRead_case_batchRequest1Msg.body/tns:Cases[$lpCaseCounter]</bpel:from>
@@ -269,52 +269,12 @@
                                         <bpel:to>$LaunchpointCase/metrics:CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="1951940233" targetPath="$LaunchpointCase/metrics:CaseId" targetedBy="96058865-arg0"></mapper:vertice><mapper:vertice id="96058865" sourcePath="$lpCase/tns:CaseId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
-                                        <bpel:from>$case_ManagerRead_case_batchRequest1Msg.body/tns:ClientId</bpel:from>
-                                        <bpel:to>$LaunchpointCase/metrics:ClientId</bpel:to><mapper:mapperLink><mapper:vertice id="1813750268" targetPath="$LaunchpointCase/metrics:ClientId" targetedBy="998218592-arg0"></mapper:vertice><mapper:vertice id="998218592" sourcePath="$case_ManagerRead_case_batchRequest1Msg.body/tns:ClientId"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>$lpCase/tns:ISOIndicator</bpel:from>
-                                        <bpel:to>$LaunchpointCase/metrics:ISOIndicator</bpel:to><mapper:mapperLink><mapper:vertice id="576247215" targetPath="$LaunchpointCase/metrics:ISOIndicator" targetedBy="1416085585-arg0"></mapper:vertice><mapper:vertice id="1416085585" sourcePath="$lpCase/tns:ISOIndicator"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>$lpCase/tns:Score</bpel:from>
-                                        <bpel:to>$LaunchpointCase/metrics:Score</bpel:to><mapper:mapperLink><mapper:vertice id="1528578734" targetPath="$LaunchpointCase/metrics:Score" targetedBy="114909555-arg0"></mapper:vertice><mapper:vertice id="114909555" sourcePath="$lpCase/tns:Score"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>$lpCase/tns:AccidentDate</bpel:from>
-                                        <bpel:to>$LaunchpointCase/metrics:AccidentDate</bpel:to><mapper:mapperLink><mapper:vertice id="1338736109" targetPath="$LaunchpointCase/metrics:AccidentDate" targetedBy="445123628-arg0"></mapper:vertice><mapper:vertice id="445123628" sourcePath="$lpCase/tns:AccidentDate"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>$lpCase/tns:BenefitAmount</bpel:from>
-                                        <bpel:to>$LaunchpointCase/metrics:BenefitAmount</bpel:to><mapper:mapperLink><mapper:vertice id="1340239961" targetPath="$LaunchpointCase/metrics:BenefitAmount" targetedBy="868983014-arg0"></mapper:vertice><mapper:vertice id="868983014" sourcePath="$lpCase/tns:BenefitAmount"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>$lpCase/tns:FundingSource</bpel:from>
-                                        <bpel:to>$LaunchpointCase/metrics:FundingSource</bpel:to><mapper:mapperLink><mapper:vertice id="1522578558" targetPath="$LaunchpointCase/metrics:FundingSource" targetedBy="578859601-arg0"></mapper:vertice><mapper:vertice id="578859601" sourcePath="$lpCase/tns:FundingSource"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>$lpCase/tns:LOB</bpel:from>
-                                        <bpel:to>$LaunchpointCase/metrics:LOB</bpel:to><mapper:mapperLink><mapper:vertice id="888850071" targetPath="$LaunchpointCase/metrics:LOB" targetedBy="468169216-arg0"></mapper:vertice><mapper:vertice id="468169216" sourcePath="$lpCase/tns:LOB"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>$lpCase/tns:WorkComp</bpel:from>
-                                        <bpel:to>$LaunchpointCase/metrics:WorkComp</bpel:to><mapper:mapperLink><mapper:vertice id="782144352" targetPath="$LaunchpointCase/metrics:WorkComp" targetedBy="1413951207-arg0"></mapper:vertice><mapper:vertice id="1413951207" sourcePath="$lpCase/tns:WorkComp"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>$lpCase/tns:CaseStatus</bpel:from>
-                                        <bpel:to>$LaunchpointCase/metrics:CaseStatus</bpel:to><mapper:mapperLink><mapper:vertice id="808043490" targetPath="$LaunchpointCase/metrics:CaseStatus" targetedBy="1867754746-arg0"></mapper:vertice><mapper:vertice id="1867754746" sourcePath="$lpCase/tns:CaseStatus"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>$lpCase/tns:State</bpel:from>
-                                        <bpel:to>$LaunchpointCase/metrics:State</bpel:to><mapper:mapperLink><mapper:vertice id="87968089" targetPath="$LaunchpointCase/metrics:State" targetedBy="1724347682-arg0"></mapper:vertice><mapper:vertice id="1724347682" sourcePath="$lpCase/tns:State"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
                                         <bpel:from>$case_ManagerRead_case_batchRequest1Msg.body/tns:EnvironmentId</bpel:from>
                                         <bpel:to>$LaunchpointCase/metrics:environmentid</bpel:to><mapper:mapperLink><mapper:vertice id="320087890" targetPath="$LaunchpointCase/metrics:environmentid" targetedBy="882309440-arg0"></mapper:vertice><mapper:vertice id="882309440" sourcePath="$case_ManagerRead_case_batchRequest1Msg.body/tns:EnvironmentId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
-                                        <bpel:from>$lpCase/tns:CaseSource</bpel:from>
-                                        <bpel:to>$LaunchpointCase/metrics:caseSource</bpel:to><mapper:mapperLink><mapper:vertice id="315977227" targetPath="$LaunchpointCase/metrics:caseSource" targetedBy="1585010235-arg0"></mapper:vertice><mapper:vertice id="1585010235" sourcePath="$lpCase/tns:CaseSource"></mapper:vertice></mapper:mapperLink>
+                                        <bpel:from>$case_ManagerRead_case_batchRequest1Msg.body/tns:ClientId</bpel:from>
+                                        <bpel:to>$LaunchpointCase/metrics:ClientId</bpel:to><mapper:mapperLink><mapper:vertice id="764932385" targetPath="$LaunchpointCase/metrics:ClientId" targetedBy="1084957199-arg0"></mapper:vertice><mapper:vertice id="1084957199" sourcePath="$case_ManagerRead_case_batchRequest1Msg.body/tns:ClientId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
@@ -322,11 +282,7 @@
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>$lpCase/tns:CaseId</bpel:from>
-                                        <bpel:to>$case_evaluatorGet_caseRequest1Msg.body</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1855245284" targetPath="$case_evaluatorGet_caseRequest1Msg.body" targetedBy="372847965-arg0"></mapper:vertice>
-  <mapper:vertice id="372847965" sourcePath="$lpCase/tns:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$case_evaluatorGet_caseRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="1855245284" targetPath="$case_evaluatorGet_caseRequest1Msg.body" targetedBy="372847965-arg0"></mapper:vertice><mapper:vertice id="372847965" sourcePath="$lpCase/tns:CaseId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="case_evaluatorGet_caseRequest1Msg" bpdm:msgVarScopeId="_SRGm4M8BEeecbIAlY2LAug" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Get_caseRequest" bpdm:binding="CaseEvaluator-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_mewuYNHzEeegkeOYmwRRMQ"></bpdm:linkset>
@@ -339,6 +295,99 @@
                     </bpdm:gateway>
                 </bpel:sequence>
             </bpel:scope>
+            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log batch complete" bpdm:ID="_ICshkNLEEee0svt489vHig">
+                <bpel:variables>
+                    <bpel:variable name="logging-Log_and_TrackReceive_LogResponse2Msg" messageType="Logging-Log_and_Track:Receive_LogResponse" binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" operation="Receive_Log" opMsgType="1" bpdm:messageIds="inc:_Fo6mwNLEEee0svt489vHigIncoming"/>
+                    <bpel:variable name="logging-Log_and_TrackReceive_Log2Msg" messageType="Logging-Log_and_Track:Receive_LogRequest" binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" operation="Receive_Log" opMsgType="0" bpdm:messageIds=" out:_Fo6mwNLEEee0svt489vHigOutgoing">
+                        <bpel:from bpdm:toPart="body">
+                            <bpel:literal bpdm:linkedMessageType="Logging-Log_and_Track:Receive_LogRequest" bpdm:linkedPart="body" bpdm:binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" bpdm:opMsgType="0" bpdm:operation="Receive_Log"></bpel:literal>
+                        </bpel:from>
+                    </bpel:variable>
+                </bpel:variables>
+                <bpel:sequence>
+                    <bpdm:messagingtask operation="Receive_Log" partnerLink="case_ManagerimplicitPartnerAndCase_ManagerForCanonicPortPlkVar" portType="Logging-Log_and_Track:ForCaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Log batch complete" bpdm:ID="_Fo6mwNLEEee0svt489vHig" bpdm:isHeaderAuthorizationAware="no">
+                        <bpdm:linkset bpdm:type="assignments">
+                            <bpel:copy>
+                                <bpel:from>"batch"</bpel:from>
+                                <bpel:to>$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:type</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="127390810" targetPath="$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:type" targetedBy="1735227318-arg0"></mapper:vertice>
+  <mapper:vertice id="1735227318" dimension="79x24" location="384,36">
+    <mapper:value>"batch"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$ode:pid</bpel:from>
+                                <bpel:to>$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Logging/Tracking:pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="284646138" targetPath="$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Logging/Tracking:pid" targetedBy="1383840583-arg0"></mapper:vertice>
+  <mapper:vertice id="1383840583" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$case_ManagerRead_case_batchRequest1Msg.body/tns:BatchId</bpel:from>
+                                <bpel:to>$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Logging/Tracking:BatchId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1182961183" targetPath="$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Logging/Tracking:BatchId" targetedBy="2061845762-arg0"></mapper:vertice>
+  <mapper:vertice id="2061845762" sourcePath="$case_ManagerRead_case_batchRequest1Msg.body/tns:BatchId"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>"INFO"</bpel:from>
+                                <bpel:to>$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Logging/Tracking:LogType</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1907854795" targetPath="$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Logging/Tracking:LogType" targetedBy="698422249-arg0"></mapper:vertice>
+  <mapper:vertice id="698422249" dimension="79x24" location="286,178">
+    <mapper:value>"INFO"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>"Batch completed"</bpel:from>
+                                <bpel:to>$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Logging/Tracking:Description</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="915035740" targetPath="$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Logging/Tracking:Description" targetedBy="391780955-arg0"></mapper:vertice>
+  <mapper:vertice id="391780955" dimension="108x24" location="288,228">
+    <mapper:value>"Batch completed"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$case_ManagerRead_case_batchRequest1Msg.body/tns:BatchId</bpel:from>
+                                <bpel:to>$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Batch/Tracking:BatchId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="284352414" targetPath="$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Batch/Tracking:BatchId" targetedBy="1992109864-arg0"></mapper:vertice>
+  <mapper:vertice id="1992109864" sourcePath="$case_ManagerRead_case_batchRequest1Msg.body/tns:BatchId"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>true()</bpel:from>
+                                <bpel:to>$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Batch/Tracking:BatchProcessingEnded</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="829061069" targetPath="$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Batch/Tracking:BatchProcessingEnded" targetedBy="1019817412-arg0"></mapper:vertice>
+  <mapper:vertice id="1019817412" dimension="79x24" location="348,300">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>current-dateTime()</bpel:from>
+                                <bpel:to>$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Batch/Tracking:BatchProcessingEndedAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1222536309" targetPath="$logging-Log_and_TrackReceive_Log2Msg.body/Tracking:Batch/Tracking:BatchProcessingEndedAt" targetedBy="688236870-arg0"></mapper:vertice>
+  <mapper:vertice id="688236870" dimension="109x24" location="348,348">
+    <mapper:value>current-dateTime()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                        </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="logging-Log_and_TrackReceive_Log2Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging-Log_and_Track:Receive_LogRequest" bpdm:binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Fo6mwNLEEee0svt489vHigOutgoing"></bpdm:linkset>
+                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="logging-Log_and_TrackReceive_LogResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="Logging-Log_and_Track:Receive_LogResponse" bpdm:binding="Logging-Log_and_Track:CallerAndLog_and_TrackServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Fo6mwNLEEee0svt489vHigIncoming"></bpdm:linkset>
+                    </bpdm:messagingtask>
+                </bpel:sequence>
+            </bpel:scope>
+            <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_Md9zANLEEee0svt489vHig" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
         </bpel:sequence>
     </bpel:scope>
 </bpel:process>

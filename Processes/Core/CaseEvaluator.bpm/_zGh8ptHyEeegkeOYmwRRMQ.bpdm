@@ -1,4 +1,4 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:getCaseActivities-process="http://thisproject/Processes/Integrations/getCaseActivities/process" xmlns:getCaseDiaries-process="http://thisproject/Processes/Integrations/getCaseDiaries/process" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:Database="http://thisdiagram/Database" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:diag="http://thisdiagram" xmlns:client="http://thisdiagram/client" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:DCM="http://thisdiagram/DCM" xmlns:getDCMCase-process="http://thisproject/Processes/Integrations/getDCMCase/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:getCaseDetails-process="http://thisproject/Processes/Integrations/getCaseDetails/process" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:getCaseActivities-process="http://thisproject/Processes/Integrations/getCaseActivities/process" xmlns:getCaseDiaries-process="http://thisproject/Processes/Integrations/getCaseDiaries/process" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:Database="http://thisdiagram/Database" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:diag="http://thisdiagram" xmlns:client="http://thisdiagram/client" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:DCM="http://thisdiagram/DCM" xmlns:getDCMCase-process="http://thisproject/Processes/Integrations/getDCMCase/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:getCaseDetails-process="http://thisproject/Processes/Integrations/getCaseDetails/process" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Integrations/getCaseActivities/process" bpdm:prefix="getCaseActivities-process" bpdm:comment="contrib=&apos;project:///Processes/Integrations/getCaseActivities-process.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Integrations/getCaseDiaries/process" bpdm:prefix="getCaseDiaries-process" bpdm:comment="contrib=&apos;project:///Processes/Integrations/getCaseDiaries-process.wsdl"></bpdm:namespaceDefinition>
@@ -13,6 +13,7 @@
         <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Integrations/getDCMCase/process" bpdm:prefix="getDCMCase-process" bpdm:comment="contrib=&apos;project:///Processes/Integrations/getDCMCase-process.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://test.com/xvar/example" bpdm:prefix="metrics" bpdm:comment="contrib=&apos;project:///Metrics/metrics.xvar"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Integrations/getCaseDetails/process" bpdm:prefix="getCaseDetails-process" bpdm:comment="contrib=&apos;project:///Processes/Integrations/getCaseDetails-process.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
             <vprop:property name="prop" type="xs:string"/>
@@ -54,13 +55,13 @@
             <wsdl:message name="Get_db_infoResponse" bpdm:source="partner-pool:///_3cJ04NH5EeeKlIzHx_g2Yg">
                 <wsdl:part name="body" element="this:Get_db_infoResponse"/>
             </wsdl:message>
-            <xs:element name="Get_caseRequest" type="xs:string" bpdm:source="partner-pool:///_5PxLwNHyEeegkeOYmwRRMQ"/>
-            <wsdl:message name="Get_caseRequest" bpdm:source="partner-pool:///_5PxLwNHyEeegkeOYmwRRMQ">
-                <wsdl:part name="body" element="this:Get_caseRequest"/>
+            <xs:element name="Get_activitiesRequest" type="Launchpoint:CaseActivitiesType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
+            <wsdl:message name="Get_activitiesRequest" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
+                <wsdl:part name="body" element="this:Get_activitiesRequest"/>
             </wsdl:message>
-            <xs:element name="Get_caseResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_5PxLwNHyEeegkeOYmwRRMQ"/>
-            <wsdl:message name="Get_caseResponse" bpdm:source="partner-pool:///_5PxLwNHyEeegkeOYmwRRMQ">
-                <wsdl:part name="body" element="this:Get_caseResponse"/>
+            <xs:element name="Get_activitiesResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
+            <wsdl:message name="Get_activitiesResponse" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
+                <wsdl:part name="body" element="this:Get_activitiesResponse"/>
             </wsdl:message>
             <xs:element name="Get_DCM_infoRequest" type="Launchpoint:LaunchpointCaseType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
             <wsdl:message name="Get_DCM_infoRequest" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
@@ -78,13 +79,13 @@
             <wsdl:message name="Get_diariesResponse" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
                 <wsdl:part name="body" element="this:Get_diariesResponse"/>
             </wsdl:message>
-            <xs:element name="Get_activitiesRequest" type="Launchpoint:CaseActivitiesType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
-            <wsdl:message name="Get_activitiesRequest" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
-                <wsdl:part name="body" element="this:Get_activitiesRequest"/>
+            <xs:element name="Get_caseRequest" type="xs:string" bpdm:source="partner-pool:///_5PxLwNHyEeegkeOYmwRRMQ"/>
+            <wsdl:message name="Get_caseRequest" bpdm:source="partner-pool:///_5PxLwNHyEeegkeOYmwRRMQ">
+                <wsdl:part name="body" element="this:Get_caseRequest"/>
             </wsdl:message>
-            <xs:element name="Get_activitiesResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
-            <wsdl:message name="Get_activitiesResponse" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
-                <wsdl:part name="body" element="this:Get_activitiesResponse"/>
+            <xs:element name="Get_caseResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_5PxLwNHyEeegkeOYmwRRMQ"/>
+            <wsdl:message name="Get_caseResponse" bpdm:source="partner-pool:///_5PxLwNHyEeegkeOYmwRRMQ">
+                <wsdl:part name="body" element="this:Get_caseResponse"/>
             </wsdl:message>
             <vprop:propertyAlias propertyName="this:caseid" messageType="this:Get_caseRequest" part="body">
                 <vprop:query>text()</vprop:query>
@@ -103,15 +104,17 @@
             </vprop:propertyAlias>
         </bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_3cJ04NH5EeeKlIzHx_g2Yg" bpdm:label="Database"/>
-        <bpdm:namespaceContributor bpdm:url="partner-pool:///_5PxLwNHyEeegkeOYmwRRMQ" bpdm:label="client"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg" bpdm:label="DCM"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_5PxLwNHyEeegkeOYmwRRMQ" bpdm:label="client"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseDetails-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getDCMCase-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseDiaries-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseActivities-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getDCMCase-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar.xsd"/>
     </bpdm:dependencies>
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="process" bpdm:ID="_zGh8ptHyEeegkeOYmwRRMQ">
         <bpel:partnerLinks>
@@ -133,16 +136,23 @@
                     <bpel:literal bpdm:linkedMessageType="this:Get_caseResponse" bpdm:linkedPart="body"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
-            <bpel:variable name="dbCase" type="Launchpoint:LaunchpointCaseType" bpdm:id="_IiG-UNH8EeeKlIzHx_g2Yg">
+            <bpel:variable name="dbCase" element="Launchpoint:LPCase" bpdm:id="_W35KJtKWEee0svt489vHig">
                 <bpel:from>
-                    <bpel:literal bpdm:linkedType="Launchpoint:LaunchpointCaseType"></bpel:literal>
+                    <bpel:literal bpdm:linkedElement="Launchpoint:LPCase"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
-            <bpel:variable name="dcmCase" type="Launchpoint:LaunchpointCaseType" bpdm:id="_Kp8JUNIDEeeKlIzHx_g2Yg">
+            <bpel:variable name="dcmCase" element="Launchpoint:LPCase" bpdm:id="_ooon5tKWEee0svt489vHig">
                 <bpel:from>
-                    <bpel:literal bpdm:linkedType="Launchpoint:LaunchpointCaseType"></bpel:literal>
+                    <bpel:literal bpdm:linkedElement="Launchpoint:LPCase"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
+            <bpel:variable name="lpCaseChangesTracker" element="Launchpoint:lpCaseChangesTracker" bpdm:id="_NIrP0dK3Eee0svt489vHig">
+                <bpel:from>
+                    <bpel:literal bpdm:linkedElement="Launchpoint:lpCaseChangesTracker"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="LaunchpointCase" element="metrics:LaunchpointCase" xvar:id="LaunchpointCase-_unj6FtK6Eee0svt489vHig" xvar:relates-to="LaunchpointCase-keys" bpdm:xvarType="metrics:LaunchpointCase" bpdm:id="_unj6FtK6Eee0svt489vHig"/>
+            <bpel:variable name="CaseTracking" element="metrics:CaseTracking" xvar:id="CaseTracking-_u278ZtLGEee0svt489vHig" xvar:relates-to="CaseTracking-keys" bpdm:xvarType="metrics:CaseTracking" bpdm:id="_u278ZtLGEee0svt489vHig"/>
         </bpel:variables>
         <bpel:links>
             <bpel:link name="_0G9K8NIKEeeKlIzHx_g2Yg_to__gwhjwNH0EeegkeOYmwRRMQ"/>
@@ -187,11 +197,7 @@
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>$thisGet_caseRequest1Msg.body</bpel:from>
-                                        <bpel:to>$databseGet_case_idRequest1Msg.body</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="60509013" targetPath="$databseGet_case_idRequest1Msg.body" targetedBy="1224243048-arg0"></mapper:vertice>
-  <mapper:vertice id="1224243048" sourcePath="$thisGet_caseRequest1Msg.body"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$databseGet_case_idRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="60509013" targetPath="$databseGet_case_idRequest1Msg.body" targetedBy="1224243048-arg0"></mapper:vertice><mapper:vertice id="1224243048" sourcePath="$thisGet_caseRequest1Msg.body"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="databseGet_case_idRequest1Msg" bpdm:msgVarScopeId="_Cvn78NH0EeegkeOYmwRRMQ" bpdm:variableIsManaged="true" bpdm:messageType="getCaseDetails-process:Get_case_idRequest" bpdm:binding="getCaseDetails-process:clientAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_CK8S0NH6EeeKlIzHx_g2Yg"></bpdm:linkset>
@@ -226,6 +232,22 @@
                 </bpel:sequence>
                 <bpel:sequence>
                     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get DCM Info" bpdm:ID="_0G9K8NIKEeeKlIzHx_g2Yg">
+                        <bpel:variables>
+                            <bpel:variable name="diaries" element="Launchpoint:CaseDiaries" bpdm:id="_tYd0FtKWEee0svt489vHig">
+                                <bpel:from>
+                                    <bpel:literal bpdm:linkedElement="Launchpoint:CaseDiaries"></bpel:literal>
+                                </bpel:from>
+                            </bpel:variable>
+                            <bpel:variable name="activities" element="Launchpoint:CaseActivities" bpdm:id="_vuXUdtKWEee0svt489vHig">
+                                <bpel:from>
+                                    <bpel:literal bpdm:linkedElement="Launchpoint:CaseActivities"></bpel:literal>
+                                </bpel:from>
+                            </bpel:variable>
+                        </bpel:variables>
+                        <bpel:links>
+                            <bpel:link name="_I1lNkNH0EeegkeOYmwRRMQ_to__r7fxsNKUEee0svt489vHig"/>
+                            <bpel:link name="_MvLVUNH0EeegkeOYmwRRMQ_to__r7fxsNKUEee0svt489vHig"/>
+                        </bpel:links>
                         <bpel:sequence>
                             <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get DCM Case" bpdm:ID="_Ev6_wNH0EeegkeOYmwRRMQ">
                                 <bpel:variables>
@@ -323,7 +345,18 @@
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisGet_diariesResponse2Msg" bpdm:msgVarScopeId="_I1lNkNH0EeegkeOYmwRRMQ" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_diariesResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_iB4b8NIKEeeKlIzHx_g2Yg"></bpdm:linkset>
                                             </bpdm:messagingtask>
-                                            <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_BZCjgNH0EeegkeOYmwRRMQ" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                            <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_BZCjgNH0EeegkeOYmwRRMQ" bpdm:isHeaderAuthorizationAware="no">
+                                                <bpdm:linkset bpdm:type="assignments">
+                                                    <bpel:copy>
+                                                        <bpel:from>$thisGet_diariesRequest1Msg.body</bpel:from>
+                                                        <bpel:to>$diaries</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="672322789" targetPath="$diaries" targetedBy="357028200-arg0"></mapper:vertice>
+  <mapper:vertice id="357028200" sourcePath="$thisGet_diariesRequest1Msg.body"></mapper:vertice>
+</mapper:mapperLink>
+                                                    </bpel:copy>
+                                                </bpdm:linkset>
+                                            </bpdm:messagingtask>
                                         </bpel:sequence>
                                     </bpel:scope>
                                 </bpel:sequence>
@@ -370,13 +403,671 @@
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisGet_activitiesResponse1Msg" bpdm:msgVarScopeId="_MvLVUNH0EeegkeOYmwRRMQ" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_activitiesResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_jGbCINIKEeeKlIzHx_g2Yg"></bpdm:linkset>
                                             </bpdm:messagingtask>
-                                            <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_-LQ_8NHzEeegkeOYmwRRMQ" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                            <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_-LQ_8NHzEeegkeOYmwRRMQ" bpdm:isHeaderAuthorizationAware="no">
+                                                <bpdm:linkset bpdm:type="assignments">
+                                                    <bpel:copy>
+                                                        <bpel:from>$thisGet_activitiesRequest1Msg.body</bpel:from>
+                                                        <bpel:to>$activities</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="185684610" targetPath="$activities" targetedBy="1994859530-arg0"></mapper:vertice>
+  <mapper:vertice id="1994859530" sourcePath="$thisGet_activitiesRequest1Msg.body"></mapper:vertice>
+</mapper:mapperLink>
+                                                    </bpel:copy>
+                                                </bpdm:linkset>
+                                            </bpdm:messagingtask>
                                         </bpel:sequence>
                                     </bpel:scope>
                                 </bpel:sequence>
                             </bpdm:gateway>
+                            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Evaluate diaries" bpdm:ID="_tYBaENKUEee0svt489vHig" bpdm:isHeaderAuthorizationAware="no">
+                                <bpdm:linkset bpdm:type="assignments">
+                                    <bpel:copy>
+                                        <bpel:from>bpel:doXslTransform("../../XSLT/evaluateCaseDiaries.xslt", $diaries, "dcmCase", $dcmCase)</bpel:from>
+                                        <bpel:to>$dcmCase</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="2020652851" targetPath="$dcmCase" targetedBy="1507487720-arg4"></mapper:vertice>
+  <mapper:vertice id="1507487720" dimension="126x24" location="288,96">
+    <mapper:value>bpel:doXslTransform()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1478243580" dimension="195x24" location="48,12" targetedBy="1507487720-arg0">
+    <mapper:value>"../../XSLT/evaluateCaseDiaries.xslt"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1628494807" sourcePath="$diaries" targetedBy="1507487720-arg1"></mapper:vertice>
+  <mapper:vertice id="780098813" dimension="79x24" location="70,124" targetedBy="1507487720-arg2">
+    <mapper:value>"dcmCase"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="278859475" sourcePath="$dcmCase" targetedBy="1507487720-arg3"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                </bpdm:linkset>
+                            </bpdm:messagingtask>
+                            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Evaluate Activities" bpdm:ID="_vtxwgNKUEee0svt489vHig" bpdm:isHeaderAuthorizationAware="no">
+                                <bpdm:linkset bpdm:type="assignments">
+                                    <bpel:copy>
+                                        <bpel:from>bpel:doXslTransform("../../XSLT/evaluateCaseActivities.xslt", $activities, "dcmCase", $dcmCase)</bpel:from>
+                                        <bpel:to>$dcmCase</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="301276735" targetPath="$dcmCase" targetedBy="1170263444-arg4"></mapper:vertice>
+  <mapper:vertice id="1170263444" dimension="126x24" location="360,96">
+    <mapper:value>bpel:doXslTransform()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1681946524" dimension="208x24" location="107,56" targetedBy="1170263444-arg0">
+    <mapper:value>"../../XSLT/evaluateCaseActivities.xslt"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="121290659" sourcePath="$activities" targetedBy="1170263444-arg1"></mapper:vertice>
+  <mapper:vertice id="2049268481" dimension="79x24" location="127,142" targetedBy="1170263444-arg2">
+    <mapper:value>"dcmCase"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1301055988" sourcePath="$dcmCase" targetedBy="1170263444-arg3"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                </bpdm:linkset>
+                            </bpdm:messagingtask>
                         </bpel:sequence>
                     </bpel:scope>
+                </bpel:sequence>
+            </bpdm:gateway>
+            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Evaluate changes" bpdm:ID="_P-niMNK3Eee0svt489vHig" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>bpel:doXslTransform("../../XSLT/evaluateCaseChanges.xslt", $dbCase, "dcmCase", $dcmCase)</bpel:from>
+                        <bpel:to>$lpCaseChangesTracker</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="433795645" targetPath="$lpCaseChangesTracker" targetedBy="2081285009-arg4"></mapper:vertice>
+  <mapper:vertice id="2081285009" dimension="126x24" location="324,108">
+    <mapper:value>bpel:doXslTransform()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1063852038" dimension="206x24" location="65,65" targetedBy="2081285009-arg0">
+    <mapper:value>"../../XSLT/evaluateCaseChanges.xslt"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="2109616063" sourcePath="$dbCase" targetedBy="2081285009-arg1"></mapper:vertice>
+  <mapper:vertice id="1299812832" dimension="79x24" location="98,165" targetedBy="2081285009-arg2">
+    <mapper:value>"dcmCase"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1043462466" sourcePath="$dcmCase" targetedBy="2081285009-arg3"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:gateway bpdm:label="Are changes?" bpdm:ID="_h6QhANK6Eee0svt489vHig" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
+                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_jzsu59K6Eee0svt489vHig" bpdm:targetDisplayName="Yes">
+                    <bpel:condition>true() = $lpCaseChangesTracker/Launchpoint:hasChanges
+<mapper:mapperLink>
+  <mapper:vertice id="119702658" targetPath="$condition" targetedBy="1323445883-arg2"></mapper:vertice>
+  <mapper:vertice id="1323445883" dimension="79x24" location="277,86">
+    <mapper:value>=</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="317620292" dimension="79x24" location="142,45" targetedBy="1323445883-arg0">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1555046971" sourcePath="$lpCaseChangesTracker/Launchpoint:hasChanges" targetedBy="1323445883-arg1"></mapper:vertice>
+</mapper:mapperLink></bpel:condition>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_ljAwYdK6Eee0svt489vHig" bpdm:targetDisplayName="default"></bpdm:linkset>
+                <bpel:sequence>
+                    <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Update database" bpdm:ID="_jzjk8NK6Eee0svt489vHig" bpdm:isHeaderAuthorizationAware="no">
+                        <bpdm:linkset bpdm:type="assignments">
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:CaseId</bpel:from>
+                                <bpel:to>$LaunchpointCase/metrics:CaseId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="2037149060" targetPath="$LaunchpointCase/metrics:CaseId" targetedBy="354692474-arg0"></mapper:vertice>
+  <mapper:vertice id="354692474" sourcePath="$dcmCase/Launchpoint:CaseId"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:ISOIndicator</bpel:from>
+                                <bpel:to>$LaunchpointCase/metrics:ISOIndicator</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="384673653" targetPath="$LaunchpointCase/metrics:ISOIndicator" targetedBy="1550854750-arg0"></mapper:vertice>
+  <mapper:vertice id="1550854750" sourcePath="$dcmCase/Launchpoint:ISOIndicator"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:Score</bpel:from>
+                                <bpel:to>$LaunchpointCase/metrics:Score</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1888788898" targetPath="$LaunchpointCase/metrics:Score" targetedBy="1846548171-arg0"></mapper:vertice>
+  <mapper:vertice id="1846548171" sourcePath="$dcmCase/Launchpoint:Score"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:AccidentDate</bpel:from>
+                                <bpel:to>$LaunchpointCase/metrics:AccidentDate</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="541959178" targetPath="$LaunchpointCase/metrics:AccidentDate" targetedBy="37744066-arg0"></mapper:vertice>
+  <mapper:vertice id="37744066" sourcePath="$dcmCase/Launchpoint:AccidentDate"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:BenefitAmount</bpel:from>
+                                <bpel:to>$LaunchpointCase/metrics:BenefitAmount</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1931772534" targetPath="$LaunchpointCase/metrics:BenefitAmount" targetedBy="1141317512-arg0"></mapper:vertice>
+  <mapper:vertice id="1141317512" sourcePath="$dcmCase/Launchpoint:BenefitAmount"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:FundingSource</bpel:from>
+                                <bpel:to>$LaunchpointCase/metrics:FundingSource</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="313977490" targetPath="$LaunchpointCase/metrics:FundingSource" targetedBy="639384823-arg0"></mapper:vertice>
+  <mapper:vertice id="639384823" sourcePath="$dcmCase/Launchpoint:FundingSource"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:LOB</bpel:from>
+                                <bpel:to>$LaunchpointCase/metrics:LOB</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="137963319" targetPath="$LaunchpointCase/metrics:LOB" targetedBy="1487201868-arg0"></mapper:vertice>
+  <mapper:vertice id="1487201868" sourcePath="$dcmCase/Launchpoint:LOB"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:WorkComp</bpel:from>
+                                <bpel:to>$LaunchpointCase/metrics:WorkComp</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="638810421" targetPath="$LaunchpointCase/metrics:WorkComp" targetedBy="1284450801-arg0"></mapper:vertice>
+  <mapper:vertice id="1284450801" sourcePath="$dcmCase/Launchpoint:WorkComp"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:CaseStatus</bpel:from>
+                                <bpel:to>$LaunchpointCase/metrics:CaseStatus</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="190308644" targetPath="$LaunchpointCase/metrics:CaseStatus" targetedBy="1457209097-arg0"></mapper:vertice>
+  <mapper:vertice id="1457209097" sourcePath="$dcmCase/Launchpoint:CaseStatus"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:CaseSource</bpel:from>
+                                <bpel:to>$LaunchpointCase/metrics:caseSource</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1527378317" targetPath="$LaunchpointCase/metrics:caseSource" targetedBy="354744171-arg0"></mapper:vertice>
+  <mapper:vertice id="354744171" sourcePath="$dcmCase/Launchpoint:CaseSource"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:LifeCycle</bpel:from>
+                                <bpel:to>$LaunchpointCase/metrics:LifeCycle</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1052081043" targetPath="$LaunchpointCase/metrics:LifeCycle" targetedBy="2064136486-arg0"></mapper:vertice>
+  <mapper:vertice id="2064136486" sourcePath="$dcmCase/Launchpoint:LifeCycle"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:CloseReason</bpel:from>
+                                <bpel:to>$LaunchpointCase/metrics:CloseReason</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="280061639" targetPath="$LaunchpointCase/metrics:CloseReason" targetedBy="1533433216-arg0"></mapper:vertice>
+  <mapper:vertice id="1533433216" sourcePath="$dcmCase/Launchpoint:CloseReason"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:IQResponseReceived</bpel:from>
+                                <bpel:to>$LaunchpointCase/metrics:IQResponseReceived</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="2103537205" targetPath="$LaunchpointCase/metrics:IQResponseReceived" targetedBy="1108851810-arg0"></mapper:vertice>
+  <mapper:vertice id="1108851810" sourcePath="$dcmCase/Launchpoint:IQResponseReceived"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:CanClose</bpel:from>
+                                <bpel:to>$LaunchpointCase/metrics:CanClose</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="539919578" targetPath="$LaunchpointCase/metrics:CanClose" targetedBy="1092046539-arg0"></mapper:vertice>
+  <mapper:vertice id="1092046539" sourcePath="$dcmCase/Launchpoint:CanClose"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:BelowCostEffectivePursuit</bpel:from>
+                                <bpel:to>$LaunchpointCase/metrics:BelowCostEffectivePursuit</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1853857580" targetPath="$LaunchpointCase/metrics:BelowCostEffectivePursuit" targetedBy="772299913-arg0"></mapper:vertice>
+  <mapper:vertice id="772299913" sourcePath="$dcmCase/Launchpoint:BelowCostEffectivePursuit"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:IQReturnMail</bpel:from>
+                                <bpel:to>$LaunchpointCase/metrics:IQReturnMail</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="933743136" targetPath="$LaunchpointCase/metrics:IQReturnMail" targetedBy="996449337-arg0"></mapper:vertice>
+  <mapper:vertice id="996449337" sourcePath="$dcmCase/Launchpoint:IQReturnMail"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:State</bpel:from>
+                                <bpel:to>$LaunchpointCase/metrics:State</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1204649179" targetPath="$LaunchpointCase/metrics:State" targetedBy="186670856-arg0"></mapper:vertice>
+  <mapper:vertice id="186670856" sourcePath="$dcmCase/Launchpoint:State"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>true()</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:BeginProcessing</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1876011306" targetPath="$CaseTracking/metrics:BeginProcessing" targetedBy="1082978664-arg0"></mapper:vertice>
+  <mapper:vertice id="1082978664" dimension="79x24" location="329,373">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>current-dateTime()</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:BeginProcessingAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1025170171" targetPath="$CaseTracking/metrics:BeginProcessingAt" targetedBy="894619084-arg0"></mapper:vertice>
+  <mapper:vertice id="894619084" dimension="109x24" location="333,414">
+    <mapper:value>current-dateTime()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$lpCaseChangesTracker/Launchpoint:caseid</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:CaseId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1815221832" targetPath="$CaseTracking/metrics:CaseId" targetedBy="1238517484-arg0"></mapper:vertice>
+  <mapper:vertice id="1238517484" sourcePath="$lpCaseChangesTracker/Launchpoint:caseid"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:ISOIndicatorChanged</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:ISOIndicatorChanged</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1836784892" targetPath="$CaseTracking/metrics:ISOIndicatorChanged" targetedBy="1133886745-arg0"></mapper:vertice>
+  <mapper:vertice id="1133886745" sourcePath="$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:ISOIndicatorChanged"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:AccidentDateChanged</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:AccidentDateChanged</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="74449555" targetPath="$CaseTracking/metrics:AccidentDateChanged" targetedBy="1693802763-arg0"></mapper:vertice>
+  <mapper:vertice id="1693802763" sourcePath="$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:AccidentDateChanged"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:BenefitAmountChanged</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:BenefitAmountChanged</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1525882436" targetPath="$CaseTracking/metrics:BenefitAmountChanged" targetedBy="1925531099-arg0"></mapper:vertice>
+  <mapper:vertice id="1925531099" sourcePath="$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:BenefitAmountChanged"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:FundingSourceChanged</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:FundingSourceChanged</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1356975791" targetPath="$CaseTracking/metrics:FundingSourceChanged" targetedBy="1166575697-arg0"></mapper:vertice>
+  <mapper:vertice id="1166575697" sourcePath="$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:FundingSourceChanged"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:LOBChanged</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:LOBChanged</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1246744998" targetPath="$CaseTracking/metrics:LOBChanged" targetedBy="1366380003-arg0"></mapper:vertice>
+  <mapper:vertice id="1366380003" sourcePath="$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:LOBChanged"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:CaseStatusChanged</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:CaseStatusChanged</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1762125066" targetPath="$CaseTracking/metrics:CaseStatusChanged" targetedBy="1885749774-arg0"></mapper:vertice>
+  <mapper:vertice id="1885749774" sourcePath="$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:CaseStatusChanged"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:CaseSourceChanged</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:CaseSourceChanged</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1094992678" targetPath="$CaseTracking/metrics:CaseSourceChanged" targetedBy="479740828-arg0"></mapper:vertice>
+  <mapper:vertice id="479740828" sourcePath="$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:CaseSourceChanged"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:LifeCycleChanged</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:LifeCycleChanged</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="255268812" targetPath="$CaseTracking/metrics:LifeCycleChanged" targetedBy="1785758049-arg0"></mapper:vertice>
+  <mapper:vertice id="1785758049" sourcePath="$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:LifeCycleChanged"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:CloseReasonChanged</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:CloseReasonChanged</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="2055091313" targetPath="$CaseTracking/metrics:CloseReasonChanged" targetedBy="1758366420-arg0"></mapper:vertice>
+  <mapper:vertice id="1758366420" sourcePath="$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:CloseReasonChanged"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:IQResponseReceivedChanged</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:IQResponseReceivedChanged</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="380198098" targetPath="$CaseTracking/metrics:IQResponseReceivedChanged" targetedBy="454092769-arg0"></mapper:vertice>
+  <mapper:vertice id="454092769" sourcePath="$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:IQResponseReceivedChanged"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:CanCloseChanged</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:CanCloseChanged</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="932041142" targetPath="$CaseTracking/metrics:CanCloseChanged" targetedBy="1351361374-arg0"></mapper:vertice>
+  <mapper:vertice id="1351361374" sourcePath="$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:CanCloseChanged"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:BelowCostEffectivePursuitChanged</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:BelowCostEffectivePursuitChanged</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="402482160" targetPath="$CaseTracking/metrics:BelowCostEffectivePursuitChanged" targetedBy="689340688-arg0"></mapper:vertice>
+  <mapper:vertice id="689340688" sourcePath="$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:BelowCostEffectivePursuitChanged"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:IQReturnMailChanged</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:IQReturnMailChanged</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="46702200" targetPath="$CaseTracking/metrics:IQReturnMailChanged" targetedBy="2005827041-arg0"></mapper:vertice>
+  <mapper:vertice id="2005827041" sourcePath="$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:IQReturnMailChanged"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:StateChanged</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:StateChanged</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1022952885" targetPath="$CaseTracking/metrics:StateChanged" targetedBy="993098485-arg0"></mapper:vertice>
+  <mapper:vertice id="993098485" sourcePath="$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:StateChanged"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:ScoreChanged</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:ScoreChanged</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1858425343" targetPath="$CaseTracking/metrics:ScoreChanged" targetedBy="161890809-arg0"></mapper:vertice>
+  <mapper:vertice id="161890809" sourcePath="$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:ScoreChanged"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:WorkCompChanged</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:WorkCompChanged</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="127576816" targetPath="$CaseTracking/metrics:WorkCompChanged" targetedBy="1874927871-arg0"></mapper:vertice>
+  <mapper:vertice id="1874927871" sourcePath="$lpCaseChangesTracker/Launchpoint:changes/Launchpoint:WorkCompChanged"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$ode:pid</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1541246587" targetPath="$CaseTracking/metrics:pid" targetedBy="493571654-arg0"></mapper:vertice>
+  <mapper:vertice id="493571654" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dbCase/Launchpoint:ISOIndicator</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:ISOIndicatorPrevious</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1548328387" targetPath="$CaseTracking/metrics:ISOIndicatorPrevious" targetedBy="1503787074-arg0"></mapper:vertice>
+  <mapper:vertice id="1503787074" sourcePath="$dbCase/Launchpoint:ISOIndicator"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:ISOIndicator</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:ISOIndicatorCurrent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="356013874" targetPath="$CaseTracking/metrics:ISOIndicatorCurrent" targetedBy="1658572964-arg0"></mapper:vertice>
+  <mapper:vertice id="1658572964" sourcePath="$dcmCase/Launchpoint:ISOIndicator"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dbCase/Launchpoint:Score</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:ScorePrevious</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="2077897308" targetPath="$CaseTracking/metrics:ScorePrevious" targetedBy="1013084952-arg0"></mapper:vertice>
+  <mapper:vertice id="1013084952" sourcePath="$dbCase/Launchpoint:Score"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:Score</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:ScoreCurrent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1981120509" targetPath="$CaseTracking/metrics:ScoreCurrent" targetedBy="1164881465-arg0"></mapper:vertice>
+  <mapper:vertice id="1164881465" sourcePath="$dcmCase/Launchpoint:Score"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dbCase/Launchpoint:AccidentDate</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:AccidentDatePrevious</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1311772938" targetPath="$CaseTracking/metrics:AccidentDatePrevious" targetedBy="429676921-arg0"></mapper:vertice>
+  <mapper:vertice id="429676921" sourcePath="$dbCase/Launchpoint:AccidentDate"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:AccidentDate</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:AccidentDateCurrent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1512655824" targetPath="$CaseTracking/metrics:AccidentDateCurrent" targetedBy="1130569366-arg0"></mapper:vertice>
+  <mapper:vertice id="1130569366" sourcePath="$dcmCase/Launchpoint:AccidentDate"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dbCase/Launchpoint:BenefitAmount</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:BenefitAmountPrevious</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1260350448" targetPath="$CaseTracking/metrics:BenefitAmountPrevious" targetedBy="89649535-arg0"></mapper:vertice>
+  <mapper:vertice id="89649535" sourcePath="$dbCase/Launchpoint:BenefitAmount"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:BenefitAmount</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:BenefitAmountCurrent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1857636499" targetPath="$CaseTracking/metrics:BenefitAmountCurrent" targetedBy="1136221186-arg0"></mapper:vertice>
+  <mapper:vertice id="1136221186" sourcePath="$dcmCase/Launchpoint:BenefitAmount"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dbCase/Launchpoint:FundingSource</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:FundingSourcePrevious</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1840413407" targetPath="$CaseTracking/metrics:FundingSourcePrevious" targetedBy="1900612327-arg0"></mapper:vertice>
+  <mapper:vertice id="1900612327" sourcePath="$dbCase/Launchpoint:FundingSource"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:FundingSource</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:FundingSourceCurrent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="72854352" targetPath="$CaseTracking/metrics:FundingSourceCurrent" targetedBy="574596435-arg0"></mapper:vertice>
+  <mapper:vertice id="574596435" sourcePath="$dcmCase/Launchpoint:FundingSource"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dbCase/Launchpoint:LOB</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:LOBPrevious</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="503492058" targetPath="$CaseTracking/metrics:LOBPrevious" targetedBy="868581012-arg0"></mapper:vertice>
+  <mapper:vertice id="868581012" sourcePath="$dbCase/Launchpoint:LOB"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:LOB</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:LOBCurrent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="995759004" targetPath="$CaseTracking/metrics:LOBCurrent" targetedBy="1888755543-arg0"></mapper:vertice>
+  <mapper:vertice id="1888755543" sourcePath="$dcmCase/Launchpoint:LOB"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dbCase/Launchpoint:WorkComp</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:WorkCompPrevious</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1767633200" targetPath="$CaseTracking/metrics:WorkCompPrevious" targetedBy="14631914-arg0"></mapper:vertice>
+  <mapper:vertice id="14631914" sourcePath="$dbCase/Launchpoint:WorkComp"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:WorkComp</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:WorkCompCurrent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="436429608" targetPath="$CaseTracking/metrics:WorkCompCurrent" targetedBy="559637610-arg0"></mapper:vertice>
+  <mapper:vertice id="559637610" sourcePath="$dcmCase/Launchpoint:WorkComp"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dbCase/Launchpoint:CaseStatus</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:CaseStatusPrevious</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1387409070" targetPath="$CaseTracking/metrics:CaseStatusPrevious" targetedBy="686684099-arg0"></mapper:vertice>
+  <mapper:vertice id="686684099" sourcePath="$dbCase/Launchpoint:CaseStatus"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:CaseStatus</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:CaseStatusCurrent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1838516469" targetPath="$CaseTracking/metrics:CaseStatusCurrent" targetedBy="1283079225-arg0"></mapper:vertice>
+  <mapper:vertice id="1283079225" sourcePath="$dcmCase/Launchpoint:CaseStatus"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dbCase/Launchpoint:CaseSource</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:caseSourcePrevious</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1535589510" targetPath="$CaseTracking/metrics:caseSourcePrevious" targetedBy="1404733722-arg0"></mapper:vertice>
+  <mapper:vertice id="1404733722" sourcePath="$dbCase/Launchpoint:CaseSource"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:CaseSource</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:caseSourceCurrent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="647247539" targetPath="$CaseTracking/metrics:caseSourceCurrent" targetedBy="1220737512-arg0"></mapper:vertice>
+  <mapper:vertice id="1220737512" sourcePath="$dcmCase/Launchpoint:CaseSource"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dbCase/Launchpoint:LifeCycle</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:LifeCyclePrevious</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="915753143" targetPath="$CaseTracking/metrics:LifeCyclePrevious" targetedBy="268988566-arg0"></mapper:vertice>
+  <mapper:vertice id="268988566" sourcePath="$dbCase/Launchpoint:LifeCycle"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:LifeCycle</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:LifeCycleCurrent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1917707439" targetPath="$CaseTracking/metrics:LifeCycleCurrent" targetedBy="2035957194-arg0"></mapper:vertice>
+  <mapper:vertice id="2035957194" sourcePath="$dcmCase/Launchpoint:LifeCycle"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dbCase/Launchpoint:CloseReason</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:CloseReasonPrevious</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1480001439" targetPath="$CaseTracking/metrics:CloseReasonPrevious" targetedBy="1116387731-arg0"></mapper:vertice>
+  <mapper:vertice id="1116387731" sourcePath="$dbCase/Launchpoint:CloseReason"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:CloseReason</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:CloseReasonCurrent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1083258019" targetPath="$CaseTracking/metrics:CloseReasonCurrent" targetedBy="1048892140-arg0"></mapper:vertice>
+  <mapper:vertice id="1048892140" sourcePath="$dcmCase/Launchpoint:CloseReason"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dbCase/Launchpoint:IQResponseReceived</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:IQResponseReceivedPrevious</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="150084501" targetPath="$CaseTracking/metrics:IQResponseReceivedPrevious" targetedBy="2133005768-arg0"></mapper:vertice>
+  <mapper:vertice id="2133005768" sourcePath="$dbCase/Launchpoint:IQResponseReceived"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dbCase/Launchpoint:CanClose</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:CanClosePrevious</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="2074987103" targetPath="$CaseTracking/metrics:CanClosePrevious" targetedBy="55781981-arg0"></mapper:vertice>
+  <mapper:vertice id="55781981" sourcePath="$dbCase/Launchpoint:CanClose"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dbCase/Launchpoint:BelowCostEffectivePursuit</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:BelowCostEffectivePursuitPrevious</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1997564105" targetPath="$CaseTracking/metrics:BelowCostEffectivePursuitPrevious" targetedBy="53686337-arg0"></mapper:vertice>
+  <mapper:vertice id="53686337" sourcePath="$dbCase/Launchpoint:BelowCostEffectivePursuit"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dbCase/Launchpoint:IQReturnMail</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:IQReturnMailPrevious</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="164080569" targetPath="$CaseTracking/metrics:IQReturnMailPrevious" targetedBy="644641948-arg0"></mapper:vertice>
+  <mapper:vertice id="644641948" sourcePath="$dbCase/Launchpoint:IQReturnMail"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dbCase/Launchpoint:State</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:StatePrevious</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="143220490" targetPath="$CaseTracking/metrics:StatePrevious" targetedBy="1875438867-arg0"></mapper:vertice>
+  <mapper:vertice id="1875438867" sourcePath="$dbCase/Launchpoint:State"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:IQResponseReceived</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:IQResponseReceivedCurrent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1472541823" targetPath="$CaseTracking/metrics:IQResponseReceivedCurrent" targetedBy="1629632617-arg0"></mapper:vertice>
+  <mapper:vertice id="1629632617" sourcePath="$dcmCase/Launchpoint:IQResponseReceived"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:CanClose</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:CanCloseCurrent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1230498100" targetPath="$CaseTracking/metrics:CanCloseCurrent" targetedBy="1079435768-arg0"></mapper:vertice>
+  <mapper:vertice id="1079435768" sourcePath="$dcmCase/Launchpoint:CanClose"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:BelowCostEffectivePursuit</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:BelowCostEffectivePursuitCurrent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="91777309" targetPath="$CaseTracking/metrics:BelowCostEffectivePursuitCurrent" targetedBy="204011809-arg0"></mapper:vertice>
+  <mapper:vertice id="204011809" sourcePath="$dcmCase/Launchpoint:BelowCostEffectivePursuit"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:IQReturnMail</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:IQReturnMailCurrent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="245516844" targetPath="$CaseTracking/metrics:IQReturnMailCurrent" targetedBy="331917978-arg0"></mapper:vertice>
+  <mapper:vertice id="331917978" sourcePath="$dcmCase/Launchpoint:IQReturnMail"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$dcmCase/Launchpoint:State</bpel:from>
+                                <bpel:to>$CaseTracking/metrics:StateCurrent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1156522663" targetPath="$CaseTracking/metrics:StateCurrent" targetedBy="98376923-arg0"></mapper:vertice>
+  <mapper:vertice id="98376923" sourcePath="$dcmCase/Launchpoint:State"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                        </bpdm:linkset>
+                    </bpdm:messagingtask>
+                </bpel:sequence>
+                <bpel:sequence>
+                    <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Stop processing" bpdm:ID="_li3mcNK6Eee0svt489vHig" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
                 </bpel:sequence>
             </bpdm:gateway>
         </bpel:sequence>

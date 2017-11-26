@@ -31,5 +31,10 @@
       <Launchpoint:EnvironmentId><xsl:value-of select="ns:environmentid" /></Launchpoint:EnvironmentId>
       <Launchpoint:LifeCycle><xsl:value-of select="ns:lifecycle" /></Launchpoint:LifeCycle>
       <Launchpoint:CloseReason><xsl:value-of select="ns:closereason" /></Launchpoint:CloseReason>
+      <Launchpoint:IQResponseReceived><xsl:value-of select="ns:iqresponsereceived" /></Launchpoint:IQResponseReceived>
+      <Launchpoint:CanClose><xsl:value-of select="ns:canclose" /></Launchpoint:CanClose>
+      <Launchpoint:BelowCostEffectivePursuit><xsl:value-of select="ns:belowcosteffectivepursuit" /></Launchpoint:BelowCostEffectivePursuit>
+      <Launchpoint:IQReturnMail><xsl:value-of select="ns:iqreturnmail" /></Launchpoint:IQReturnMail>
+      <Launchpoint:State><xsl:value-of select="ns:state" /></Launchpoint:State>
   </xsl:template>  
 </xsl:stylesheet>

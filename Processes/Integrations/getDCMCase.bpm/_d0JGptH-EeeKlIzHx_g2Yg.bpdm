@@ -1,12 +1,12 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:getLaunchpointCase="http://bpms.everteam.com/Services/REST/getLaunchpointCase.rest" xmlns:diag="http://thisdiagram" xmlns:getLaunchpointCase1="__project:///Schemas/integrations/getLaunchpointCase.xsd" xmlns:client="http://thisdiagram/client" xmlns:processimplicitPartner="http://thisdiagram/processimplicitPartner" xmlns:tns="http://everteam.com/xvar/example" xmlns:this="http://thisdiagram/process" xmlns:CaseEvaluator-process="http://thisproject/Processes/Core/CaseEvaluator/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:getLaunchpointCase="http://bpms.everteam.com/Services/REST/getLaunchpointCase.rest" xmlns:diag="http://thisdiagram" xmlns:getLaunchpointCase1="__project:///Schemas/integrations/getLaunchpointCase.xsd" xmlns:client="http://thisdiagram/client" xmlns:processimplicitPartner="http://thisdiagram/processimplicitPartner" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:CaseEvaluator-process="http://thisproject/Processes/Core/CaseEvaluator/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/Services/REST/getLaunchpointCase.rest" bpdm:prefix="getLaunchpointCase" bpdm:comment="contrib=&apos;project:///Services/REST/getLaunchpointCase.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_gcOjMNH-EeeKlIzHx_g2Yg"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/integrations/getLaunchpointCase.xsd" bpdm:prefix="getLaunchpointCase1" bpdm:comment="contrib=&apos;project:///Schemas/integrations/getLaunchpointCase.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/client" bpdm:prefix="client" bpdm:comment="contrib=&apos;partner-pool:///_gcOjMNH-EeeKlIzHx_g2Yg"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/processimplicitPartner" bpdm:prefix="processimplicitPartner" bpdm:comment="contrib=&apos;partner-pool:///_d0JGptH-EeeKlIzHx_g2YgimplicitPartner"></bpdm:namespaceDefinition>
-        <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/CaseEvaluator/process" bpdm:prefix="CaseEvaluator-process" bpdm:comment="contrib=&apos;project:///Processes/Core/CaseEvaluator-process.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
@@ -70,21 +70,11 @@
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$ode:pid</bpel:from>
-                        <bpel:to>$thisGet_case_idResponse2Msg.body/Launchpoint:pid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="12004448" targetPath="$thisGet_case_idResponse2Msg.body/Launchpoint:pid" targetedBy="78598199-arg0"></mapper:vertice>
-  <mapper:vertice id="78598199" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$thisGet_case_idResponse2Msg.body/Launchpoint:pid</bpel:to><mapper:mapperLink><mapper:vertice id="12004448" targetPath="$thisGet_case_idResponse2Msg.body/Launchpoint:pid" targetedBy="78598199-arg0"></mapper:vertice><mapper:vertice id="78598199" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>current-dateTime()</bpel:from>
-                        <bpel:to>$thisGet_case_idResponse2Msg.body/Launchpoint:timestamp</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1931207718" targetPath="$thisGet_case_idResponse2Msg.body/Launchpoint:timestamp" targetedBy="2258180-arg0"></mapper:vertice>
-  <mapper:vertice id="2258180" dimension="109x24" location="456,96">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$thisGet_case_idResponse2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="1931207718" targetPath="$thisGet_case_idResponse2Msg.body/Launchpoint:timestamp" targetedBy="2258180-arg0"></mapper:vertice><mapper:vertice id="2258180" dimension="109x24" location="456,96"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisGet_case_idResponse2Msg" bpdm:msgVarScopeId="_d0JGptH-EeeKlIzHx_g2Yg" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_case_idResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_lhXRANH-EeeKlIzHx_g2Yg"></bpdm:linkset>
@@ -93,11 +83,7 @@
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$thisGet_case_idRequest2Msg.body</bpel:from>
-                        <bpel:to>$getLaunchpointCaseGetCaseRequest1Msg.caseid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1736753840" targetPath="$getLaunchpointCaseGetCaseRequest1Msg.caseid" targetedBy="270285085-arg0"></mapper:vertice>
-  <mapper:vertice id="270285085" sourcePath="$thisGet_case_idRequest2Msg.body"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$getLaunchpointCaseGetCaseRequest1Msg.caseid</bpel:to><mapper:mapperLink><mapper:vertice id="1736753840" targetPath="$getLaunchpointCaseGetCaseRequest1Msg.caseid" targetedBy="270285085-arg0"></mapper:vertice><mapper:vertice id="270285085" sourcePath="$thisGet_case_idRequest2Msg.body"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="getLaunchpointCaseGetCaseRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getLaunchpointCase:getCase_input" bpdm:binding="getLaunchpointCase:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_zsaadtH-EeeKlIzHx_g2YgOutgoing"></bpdm:linkset>
@@ -107,17 +93,7 @@
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>bpel:doXslTransform("../../XSLT/transformCaseDetailsFromDCM.xslt", $getLaunchpointCaseGetCaseResponse1Msg.dcmCase)</bpel:from>
-                        <bpel:to>$clientGet_DCM_infoRequest1Msg.body</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2116492463" targetPath="$clientGet_DCM_infoRequest1Msg.body" targetedBy="804547702-arg2"></mapper:vertice>
-  <mapper:vertice id="804547702" dimension="126x24" location="348,72">
-    <mapper:value>bpel:doXslTransform()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="556455065" dimension="258x24" location="111,28" targetedBy="804547702-arg0">
-    <mapper:value>"../../XSLT/transformCaseDetailsFromDCM.xslt"</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1580651152" sourcePath="$getLaunchpointCaseGetCaseResponse1Msg.dcmCase" targetedBy="804547702-arg1"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$clientGet_DCM_infoRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="2116492463" targetPath="$clientGet_DCM_infoRequest1Msg.body" targetedBy="804547702-arg2"></mapper:vertice><mapper:vertice id="804547702" dimension="126x24" location="348,72"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="556455065" dimension="258x24" location="111,28" targetedBy="804547702-arg0"><mapper:value>"../../XSLT/transformCaseDetailsFromDCM.xslt"</mapper:value></mapper:vertice><mapper:vertice id="1580651152" sourcePath="$getLaunchpointCaseGetCaseResponse1Msg.dcmCase" targetedBy="804547702-arg1"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="clientGet_DCM_infoRequest1Msg" bpdm:msgVarScopeId="_d0JGptH-EeeKlIzHx_g2Yg" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Get_DCM_infoRequest" bpdm:binding="CaseEvaluator-process:processAndDCMForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_e4vsUNIAEeeKlIzHx_g2Yg"></bpdm:linkset>

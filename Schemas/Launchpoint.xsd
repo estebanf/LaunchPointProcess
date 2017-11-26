@@ -353,6 +353,11 @@
     		<element name="EnvironmentId" type="int"></element>
     		<element name="LifeCycle" type="string"></element>
     		<element name="CloseReason" type="string"></element>
+            <element name="State" type="string"></element>
+            <element name="IQResponseReceived" type="boolean"></element>
+    		<element name="CanClose" type="boolean"></element>
+    		<element name="BelowCostEffectivePursuit" type="boolean"></element>
+    		<element name="IQReturnMail" type="boolean"></element>
     	</sequence>
     </complexType>
 
@@ -392,4 +397,69 @@
     		<element name="diaries" type="tns:DiaryType" maxOccurs="unbounded" minOccurs="0"></element>
     	</sequence>
     </complexType>
+
+    <element name="CaseActivities" type="tns:CaseActivitiesType"></element>
+    
+    <element name="CaseDiaries" type="tns:CaseDiariesType"></element>
+
+    <element name="LPCase" type="tns:LaunchpointCaseType"></element>
+
+    <complexType name="LaunchpointCaseChangesTrackerType">
+    	<sequence>
+    		<element name="caseid" type="string"></element>
+    		<element name="hasChanges" type="boolean"></element>
+    		<element name="changes">
+    			<complexType>
+    				<sequence>
+    					<element name="ISOIndicatorChanged"
+    						type="boolean">
+    					</element>
+    					<element name="ScoreChanged" type="boolean"></element>
+    					<element name="AccidentDateChanged"
+    						type="boolean">
+    					</element>
+    					<element name="BenefitAmountChanged"
+    						type="boolean">
+    					</element>
+    					<element name="FundingSourceChanged"
+    						type="boolean">
+    					</element>
+    					<element name="LOBChanged" type="boolean"></element>
+    					<element name="WorkCompChanged"
+    						type="boolean">
+    					</element>
+    					<element name="CaseStatusChanged"
+    						type="boolean">
+    					</element>
+    					<element name="CaseSourceChanged"
+    						type="boolean">
+    					</element>
+    					<element name="LifeCycleChanged"
+    						type="boolean">
+    					</element>
+    					<element name="CloseReasonChanged"
+    						type="boolean">
+    					</element>
+    					<element name="IQResponseReceivedChanged"
+    						type="boolean">
+    					</element>
+    					<element name="CanCloseChanged"
+    						type="boolean">
+    					</element>
+    					<element name="BelowCostEffectivePursuitChanged"
+    						type="boolean">
+    					</element>
+    					<element name="IQReturnMailChanged"
+    						type="boolean">
+    					</element>
+    					<element name="StateChanged" type="boolean"></element>
+    				</sequence>
+    			</complexType>
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <element name="lpCaseChangesTracker"
+    	type="tns:LaunchpointCaseChangesTrackerType">
+    </element>
 </schema>
