@@ -39,8 +39,8 @@
     </bpdm:dependencies>
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="process" bpdm:ID="_R13m9s8CEeecbIAlY2LAug">
         <bpel:partnerLinks>
-            <bpel:partnerLink name="processimplicitPartnerAndProcessForGetCasePortPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForGetCasePortPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="ns:getCaseService" bpdm:invokedPort="getCasePort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:8080/everteam/ode/processes/LaunchPointProcess/Connectors/Database/getCase" bpdm:invokedIsDefault="true" bpdm:clientTasks="_R13m9s8CEeecbIAlY2LAug:__XaAxtHkEeepF8B7W_A3ug" bpdm:isManaged="true" bpdm:otherPoolId="_R13m9s8CEeecbIAlY2LAugimplicitPartner"/>
             <bpel:partnerLink name="clientAndProcessForCanonicPortPlkVar" partnerLinkType="diag:clientAndProcessForCanonicPortPlk" initializePartnerRole="yes" myRole="process_for_client" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForclient" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/client" bpdm:providedIsDefault="true" partnerRole="client_for_process" bpdm:invokedService="CaseManagement-Case_Manager:CanonicServiceForDatabase" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_R13m9s8CEeecbIAlY2LAug:_LOduUNHlEeepF8B7W_A3ug, _R13m9s8CEeecbIAlY2LAug:_c0dbcM8CEeecbIAlY2LAug" bpdm:isManaged="true" bpdm:otherPoolId="_UplEsM8CEeecbIAlY2LAug"/>
+            <bpel:partnerLink name="processimplicitPartnerAndProcessForGetCasePortPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForGetCasePortPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="ns:getCaseService" bpdm:invokedPort="getCasePort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:8080/everteam/ode/processes/LaunchPointProcess/Connectors/Database/getCase" bpdm:invokedIsDefault="true" bpdm:clientTasks="_1qRjYNRxEeePw9HWmNDN1w:__XaAxtHkEeepF8B7W_A3ug" bpdm:isManaged="true" bpdm:otherPoolId="_R13m9s8CEeecbIAlY2LAugimplicitPartner"/>
         </bpel:partnerLinks>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
             <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_SMhMZs8CEeecbIAlY2LAug" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_SMhMZs8CEeecbIAlY2LAug"/>
@@ -48,12 +48,6 @@
             <bpel:variable name="thisReceive_caseResponse2Msg" messageType="this:Receive_caseResponse" bpdm:id="_fYhTos8CEeecbIAlY2LAug" bpdm:messageIds=" out:_fYhToM8CEeecbIAlY2LAug">
                 <bpel:from bpdm:toPart="body">
                     <bpel:literal bpdm:linkedMessageType="this:Receive_caseResponse" bpdm:linkedPart="body"></bpel:literal>
-                </bpel:from>
-            </bpel:variable>
-            <bpel:variable name="nsGetCaseResponse1Msg" messageType="ns:getCaseOutput" binding="ns:getCasePortSoapBinding" operation="getCase" opMsgType="1" bpdm:messageIds="inc:__XaAxtHkEeepF8B7W_A3ugIncoming"/>
-            <bpel:variable name="nsGetCaseRequest1Msg" messageType="ns:getCaseInput" binding="ns:getCasePortSoapBinding" operation="getCase" opMsgType="0" bpdm:messageIds=" out:__XaAxtHkEeepF8B7W_A3ugOutgoing">
-                <bpel:from bpdm:toPart="parameters">
-                    <bpel:literal bpdm:linkedMessageType="ns:getCaseInput" bpdm:linkedPart="parameters" bpdm:binding="ns:getCasePortSoapBinding" bpdm:opMsgType="0" bpdm:operation="getCase"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
             <bpel:variable name="clientSend_resultsRequest1Msg" messageType="CaseManagement-Case_Manager:Receive_resultsRequest" binding="CaseManagement-Case_Manager:Case_ManagerAndDatabaseForCanonicPortPlkServiceBinding" operation="Receive_results" opMsgType="0" bpdm:id="_PDnlgNHmEeepF8B7W_A3ug" bpdm:messageIds=" out:_PDd0gNHmEeepF8B7W_A3ug">
@@ -78,17 +72,72 @@
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_caseResponse2Msg" bpdm:msgVarScopeId="_R13m9s8CEeecbIAlY2LAug" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_caseResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_fYhToM8CEeecbIAlY2LAug"></bpdm:linkset>
             </bpdm:messagingtask>
-            <bpdm:messagingtask operation="getCase" partnerLink="processimplicitPartnerAndProcessForGetCasePortPlkVar" portType="ns:getCasePort" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Query DB" bpdm:ID="__XaAxtHkEeepF8B7W_A3ug" bpdm:isHeaderAuthorizationAware="no">
-                <bpdm:linkset bpdm:type="assignments">
-                    <bpel:copy>
-                        <bpel:from>$thisReceive_caseRequest2Msg.body</bpel:from>
-                        <bpel:to>$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseid</bpel:to><mapper:mapperLink><mapper:vertice id="1820124666" targetPath="$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseid" targetedBy="1156372053-arg0"></mapper:vertice><mapper:vertice id="1156372053" sourcePath="$thisReceive_caseRequest2Msg.body"></mapper:vertice></mapper:mapperLink>
-                    </bpel:copy>
-                </bpdm:linkset>
-                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="nsGetCaseRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:getCaseInput" bpdm:binding="ns:getCasePortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="__XaAxtHkEeepF8B7W_A3ugOutgoing"></bpdm:linkset>
-                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="nsGetCaseResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:getCaseOutput" bpdm:binding="ns:getCasePortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="__XaAxtHkEeepF8B7W_A3ugIncoming"></bpdm:linkset>
-                <bpdm:thrownFault msgFaultNcName="nsgetCaseFault" msgFaultTypeQname="ns:getCaseFault"/>
-            </bpdm:messagingtask>
+            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_Tx43MNRyEeePw9HWmNDN1w">
+                <bpdm:linkset bpdm:type="loop" bpdm:loopType="while" bpdm:backEdgeParticipantType="none" bpdm:isBackEdgeContributor="no"></bpdm:linkset>
+                <bpel:sequence>
+                    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_1qRjYNRxEeePw9HWmNDN1w">
+                        <bpel:variables>
+                            <bpel:variable name="nsGetCaseResponse1Msg" messageType="ns:getCaseOutput" binding="ns:getCasePortSoapBinding" operation="getCase" opMsgType="1" bpdm:messageIds="inc:__XaAxtHkEeepF8B7W_A3ugIncoming"/>
+                            <bpel:variable name="nsGetCaseRequest1Msg" messageType="ns:getCaseInput" binding="ns:getCasePortSoapBinding" operation="getCase" opMsgType="0" bpdm:messageIds=" out:__XaAxtHkEeepF8B7W_A3ugOutgoing">
+                                <bpel:from bpdm:toPart="parameters">
+                                    <bpel:literal bpdm:linkedMessageType="ns:getCaseInput" bpdm:linkedPart="parameters" bpdm:binding="ns:getCasePortSoapBinding" bpdm:opMsgType="0" bpdm:operation="getCase"></bpel:literal>
+                                </bpel:from>
+                            </bpel:variable>
+                        </bpel:variables>
+                        <bpel:faultHandlers>
+                            <bpel:catch>
+                                <bpdm:eventHandler bpdm:label="Error_Intermediate_Event" bpdm:ID="_2xzzMNRxEeePw9HWmNDN1w" bpdm:type="error"></bpdm:eventHandler>
+                                <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_8qy_0NRxEeePw9HWmNDN1w">
+                                    <bpel:sequence>
+                                        <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_35fM8NRxEeePw9HWmNDN1w" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                        <bpdm:gateway bpdm:label="Times it failed or data issue" bpdm:ID="_-QlR4NRxEeePw9HWmNDN1w" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
+                                            <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_CIq9wNRyEeePw9HWmNDN1w" bpdm:targetDisplayName="Not enough"></bpdm:linkset>
+                                            <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_I8FyWdRyEeePw9HWmNDN1w" bpdm:targetDisplayName="[Times it failed or data issue - Signal problem]"></bpdm:linkset>
+                                            <bpel:sequence>
+                                                <bpdm:messagingtask eventType="intermediate: timer" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Timer_Intermediate_Event" bpdm:ID="_CIjB8NRyEeePw9HWmNDN1w" bpdm:isHeaderAuthorizationAware="no">
+                                                    <bpdm:linkset bpdm:type="timer"></bpdm:linkset>
+                                                </bpdm:messagingtask>
+                                                <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Try again" bpdm:ID="_HfkJ8NRyEeePw9HWmNDN1w" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                            </bpel:sequence>
+                                            <bpel:sequence>
+                                                <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Signal problem" bpdm:ID="_I8FyUNRyEeePw9HWmNDN1w" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                                <bpdm:messagingtask eventType="intermediate: message" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Wait for action signal" bpdm:ID="_Nm3fYNRyEeePw9HWmNDN1w" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                                <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Try again" bpdm:ID="_RjSRoNRyEeePw9HWmNDN1w" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                            </bpel:sequence>
+                                        </bpdm:gateway>
+                                    </bpel:sequence>
+                                </bpel:scope>
+                            </bpel:catch>
+                        </bpel:faultHandlers>
+                        <bpel:sequence>
+                            <bpdm:messagingtask operation="getCase" partnerLink="processimplicitPartnerAndProcessForGetCasePortPlkVar" portType="ns:getCasePort" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Query DB" bpdm:ID="__XaAxtHkEeepF8B7W_A3ug" bpdm:isHeaderAuthorizationAware="no">
+                                <bpdm:linkset bpdm:type="assignments">
+                                    <bpel:copy>
+                                        <bpel:from>$thisReceive_caseRequest2Msg.body</bpel:from>
+                                        <bpel:to>$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseid</bpel:to><mapper:mapperLink><mapper:vertice id="1820124666" targetPath="$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseid" targetedBy="1156372053-arg0"></mapper:vertice><mapper:vertice id="1156372053" sourcePath="$thisReceive_caseRequest2Msg.body"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                </bpdm:linkset>
+                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="nsGetCaseRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:getCaseInput" bpdm:binding="ns:getCasePortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="__XaAxtHkEeepF8B7W_A3ugOutgoing"></bpdm:linkset>
+                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="nsGetCaseResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:getCaseOutput" bpdm:binding="ns:getCasePortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="__XaAxtHkEeepF8B7W_A3ugIncoming"></bpdm:linkset>
+                                <bpdm:thrownFault msgFaultNcName="nsgetCaseFault" msgFaultTypeQname="ns:getCaseFault"/>
+                            </bpdm:messagingtask>
+                            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Validate response" bpdm:ID="_nad1wNRxEeePw9HWmNDN1w" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                            <bpdm:gateway bpdm:label="Data valid" bpdm:ID="_qwUXQNRxEeePw9HWmNDN1w" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
+                                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_ua_5QNRxEeePw9HWmNDN1w" bpdm:targetDisplayName="[Data valid - EventIntermediateEmpty]"></bpdm:linkset>
+                                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_wHU4MNRxEeePw9HWmNDN1w" bpdm:targetDisplayName="[Data valid - There&apos;s a problem]"></bpdm:linkset>
+                                <bpel:sequence>
+                                    <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_ua2vUNRxEeePw9HWmNDN1w" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                </bpel:sequence>
+                                <bpel:sequence>
+                                    <bpdm:messagingtask eventType="intermediate: error" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="There&apos;s a problem" bpdm:ID="_wHLuQNRxEeePw9HWmNDN1w" bpdm:isHeaderAuthorizationAware="no">
+                                        <bpdm:thrownFault faultName="this:There&apos;s a problem"/>
+                                    </bpdm:messagingtask>
+                                </bpel:sequence>
+                            </bpdm:gateway>
+                        </bpel:sequence>
+                    </bpel:scope>
+                </bpel:sequence>
+            </bpel:scope>
             <bpdm:messagingtask eventType="end: message" operation="Receive_results" partnerLink="clientAndProcessForCanonicPortPlkVar" portType="CaseManagement-Case_Manager:ForDatabase" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_End_Event" bpdm:ID="_LOduUNHlEeepF8B7W_A3ug" bpdm:isHeaderAuthorizationAware="no">
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>

@@ -1,0 +1,202 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<decisiontable name="ISOScoreProcessing">
+  <import>bre.IsoScoringRuleInput</import>
+  <import>bre.LPCase</import>
+  <import>bre.IsoScoreOut</import>
+  <import>bre.IsoScoreIn</import>
+  <decisionheader expression="IsoScoringRuleInput.caseStatus" returntype="String" nodetype="Condition"/>
+  <decisionheader expression="IsoScoreIn.current" returntype="Integer" nodetype="Condition"/>
+  <decisionheader expression="IsoScoreIn.highestPrevious" returntype="Integer" nodetype="Condition"/>
+  <decisionheader expression="LPCase.score" returntype="Integer" nodetype="Condition"/>
+  <decisionheader expression="IsoScoreOut.updateLifecycle = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="IsoScoreOut.diary = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="IsoScoreOut.forceIQ = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="IsoScoreOut.reopenCase = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="IsoScoreOut.holdIq = {value}" returntype="String" nodetype="Action"/>
+  <decisionheader expression="Effective Date" returntype="Date" nodetype="Options"/>
+  <decisionheader expression="Expiration Date" returntype="Date" nodetype="Options"/>
+  <decisionheader expression="Salience" returntype="Integer" nodetype="Options"/>
+  <decisionheader expression="XOR Rule Group" returntype="String" nodetype="Options"/>
+  <decisionnode headerid="-1">
+    <decisionnode expression="== &quot;Investigation&quot;" headerid="0">
+      <decisionnode expression="== IsoScoreIn.highestPrevious" headerid="1">
+        <decisionnode expression="== *" headerid="2">
+          <decisionnode expression="== *" headerid="3">
+            <decisionnode expression="false" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="false" headerid="6">
+                  <decisionnode expression="false" headerid="7">
+                    <decisionnode expression="false" headerid="8">
+                      <optionnode expression="" headerid="9">
+                        <optionnode expression="" headerid="10">
+                          <optionnode expression="0" headerid="11">
+                            <optionnode expression="" headerid="12"/>
+                          </optionnode>
+                        </optionnode>
+                      </optionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+      </decisionnode>
+      <decisionnode expression="== IsoScoreIn.miss" headerid="1">
+        <decisionnode expression="== IsoScoreIn.none" headerid="2">
+          <decisionnode expression=">= 70" headerid="3">
+            <decisionnode expression="true" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="true" headerid="6">
+                  <decisionnode expression="false" headerid="7">
+                    <decisionnode expression="false" headerid="8">
+                      <optionnode expression="" headerid="9">
+                        <optionnode expression="" headerid="10">
+                          <optionnode expression="0" headerid="11">
+                            <optionnode expression="" headerid="12"/>
+                          </optionnode>
+                        </optionnode>
+                      </optionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+          <decisionnode expression="&lt; 70" headerid="3">
+            <decisionnode expression="true" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="false" headerid="6">
+                  <decisionnode expression="false" headerid="7">
+                    <decisionnode expression="false" headerid="8">
+                      <optionnode expression="" headerid="9">
+                        <optionnode expression="" headerid="10">
+                          <optionnode expression="0" headerid="11">
+                            <optionnode expression="" headerid="12"/>
+                          </optionnode>
+                        </optionnode>
+                      </optionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+      </decisionnode>
+      <decisionnode expression="*" headerid="1">
+        <decisionnode expression=">= IsoScoreIn.current" headerid="2">
+          <decisionnode expression="*" headerid="3">
+            <decisionnode expression="false" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="false" headerid="6">
+                  <decisionnode expression="false" headerid="7">
+                    <decisionnode expression="false" headerid="8">
+                      <optionnode expression="" headerid="9">
+                        <optionnode expression="" headerid="10">
+                          <optionnode expression="0" headerid="11">
+                            <optionnode expression="" headerid="12"/>
+                          </optionnode>
+                        </optionnode>
+                      </optionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+        <decisionnode expression="&lt; IsoScoreIn.current" headerid="2">
+          <decisionnode expression="*" headerid="3">
+            <decisionnode expression="true" headerid="4">
+              <decisionnode expression="true" headerid="5">
+                <decisionnode expression="false" headerid="6">
+                  <decisionnode expression="false" headerid="7">
+                    <decisionnode expression="true" headerid="8">
+                      <optionnode expression="" headerid="9">
+                        <optionnode expression="" headerid="10">
+                          <optionnode expression="0" headerid="11">
+                            <optionnode expression="" headerid="12"/>
+                          </optionnode>
+                        </optionnode>
+                      </optionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+      </decisionnode>
+    </decisionnode>
+    <decisionnode expression="== &quot;CWOC&quot;" headerid="0">
+      <decisionnode expression="== IsoScoreIn.highestPrevious" headerid="1">
+        <decisionnode expression="== *" headerid="2">
+          <decisionnode expression="== *" headerid="3">
+            <decisionnode expression="false" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="false" headerid="6">
+                  <decisionnode expression="false" headerid="7">
+                    <decisionnode expression="false" headerid="8">
+                      <optionnode expression="" headerid="9">
+                        <optionnode expression="" headerid="10">
+                          <optionnode expression="0" headerid="11">
+                            <optionnode expression="" headerid="12"/>
+                          </optionnode>
+                        </optionnode>
+                      </optionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+      </decisionnode>
+      <decisionnode expression="*" headerid="1">
+        <decisionnode expression=">= IsoScoreIn.current" headerid="2">
+          <decisionnode expression="*" headerid="3">
+            <decisionnode expression="false" headerid="4">
+              <decisionnode expression="false" headerid="5">
+                <decisionnode expression="false" headerid="6">
+                  <decisionnode expression="false" headerid="7">
+                    <decisionnode expression="false" headerid="8">
+                      <optionnode expression="" headerid="9">
+                        <optionnode expression="" headerid="10">
+                          <optionnode expression="0" headerid="11">
+                            <optionnode expression="" headerid="12"/>
+                          </optionnode>
+                        </optionnode>
+                      </optionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+        <decisionnode expression="&lt; IsoScoreIn.current" headerid="2">
+          <decisionnode expression="*" headerid="3">
+            <decisionnode expression="false" headerid="4">
+              <decisionnode expression="true" headerid="5">
+                <decisionnode expression="false" headerid="6">
+                  <decisionnode expression="true" headerid="7">
+                    <decisionnode expression="false" headerid="8">
+                      <optionnode expression="" headerid="9">
+                        <optionnode expression="" headerid="10">
+                          <optionnode expression="0" headerid="11">
+                            <optionnode expression="" headerid="12"/>
+                          </optionnode>
+                        </optionnode>
+                      </optionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+      </decisionnode>
+    </decisionnode>
+  </decisionnode>
+</decisiontable>

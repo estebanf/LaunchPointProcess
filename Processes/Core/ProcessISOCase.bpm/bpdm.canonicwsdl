@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<wsdl:definitions xmlns:tns="http://everteam.com/xvar/example" xmlns:metrics="http://test.com/xvar/example" xmlns:diag="http://thisdiagram" xmlns:Case_Manager="http://thisdiagram/Case_Manager" xmlns:DCM="http://thisdiagram/DCM" xmlns:Process_ISO_Case="http://thisdiagram/Process_ISO_Case" xmlns:Process_ISO_CaseimplicitPartner="http://thisdiagram/Process_ISO_CaseimplicitPartner" xmlns:tns1="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" targetNamespace="http://thisdiagram" bpdm:version="6000089" bpdm:canid="_uuTQEJ_JEeee0o7jDg0-OQ" bpdm:displayName="diag">
+<wsdl:definitions xmlns:tns="http://everteam.com/xvar/example" xmlns:metrics="http://test.com/xvar/example" xmlns:diag="http://thisdiagram" xmlns:Case_Manager="http://thisdiagram/Case_Manager" xmlns:DCM="http://thisdiagram/DCM" xmlns:Process_ISO_Case="http://thisdiagram/Process_ISO_Case" xmlns:Process_ISO_CaseimplicitPartner="http://thisdiagram/Process_ISO_CaseimplicitPartner" xmlns:tns1="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" targetNamespace="http://thisdiagram" bpdm:version="6000089" bpdm:canid="_uuTQEJ_JEeee0o7jDg0-OQ" bpdm:displayName="diag">
   <pnlk:partnerLinkType name="Process_ISO_CaseAndCase_Manager" bpdm:poolOneId="_uuYIkJ_JEeee0o7jDg0-OQ" bpdm:poolOneIsExecutable="true" bpdm:poolOneName="Process ISO Case" bpdm:poolTwoId="_it804J_PEeee0o7jDg0-OQ" bpdm:poolTwoIsExecutable="false" bpdm:poolTwoName="Case Manager">
     <pnlk:role name="Process_ISO_Case_for_Case_Manager" portType="Process_ISO_Case:ForCase_Manager" bpdm:thisPoolId="_uuYIkJ_JEeee0o7jDg0-OQ">
       <wsdl:portType name="ForCase_Manager">
@@ -11,6 +11,14 @@
     </pnlk:role>
   </pnlk:partnerLinkType>
   <pnlk:partnerLinkType name="Process_ISO_CaseAndDCM" bpdm:poolOneId="_uuYIkJ_JEeee0o7jDg0-OQ" bpdm:poolOneIsExecutable="true" bpdm:poolOneName="Process ISO Case" bpdm:poolTwoId="_s6fdgLH7Eee6aeEJgFykVw" bpdm:poolTwoIsExecutable="false" bpdm:poolTwoName="DCM">
+    <pnlk:role name="DCM_for_Process_ISO_Case" portType="DCM:ForProcess_ISO_Case" bpdm:thisPoolId="_s6fdgLH7Eee6aeEJgFykVw">
+      <wsdl:portType name="ForProcess_ISO_Case">
+        <wsdl:operation name="Task" bpdm:canid="_9DHR0NR0EeePw9HWmNDN1w._BiLRYNRlEeePw9HWmNDN1w.">
+          <wsdl:input message="DCM:TaskRequest" name="Task" bpdm:canid="_9DQbwNR0EeePw9HWmNDN1w" bpdm:senderId="_BiLRYNRlEeePw9HWmNDN1w" bpdm:receiverId="_9DHR0NR0EeePw9HWmNDN1w" bpdm:senderName="Generate file" bpdm:receiverName="Task" bpdm:receiverPoolId="_s6fdgLH7Eee6aeEJgFykVw" bpdm:bodyPartElemName="TaskRequest" bpdm:bodyPartElemType="xs:string"></wsdl:input>
+          <wsdl:output message="DCM:TaskResponse" name="TaskResponse" bpdm:canid="_9ayyANR0EeePw9HWmNDN1w" bpdm:senderId="_9DHR0NR0EeePw9HWmNDN1w" bpdm:receiverId="_BiLRYNRlEeePw9HWmNDN1w" bpdm:senderName="Task" bpdm:receiverName="Generate file" bpdm:receiverPoolId="_uuYIkJ_JEeee0o7jDg0-OQ" bpdm:bodyPartElemName="TaskResponse" bpdm:bodyPartElemType="xs:string"></wsdl:output>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
     <pnlk:role name="Process_ISO_Case_for_DCM" portType="Process_ISO_Case:ForDCM" bpdm:thisPoolId="_uuYIkJ_JEeee0o7jDg0-OQ">
       <wsdl:portType name="ForDCM">
         <wsdl:operation name="Receive_ISO_Request" bpdm:canid="_nu8JMLH8Eee6aeEJgFykVw._rcRWkLH8Eee6aeEJgFykVw.">
