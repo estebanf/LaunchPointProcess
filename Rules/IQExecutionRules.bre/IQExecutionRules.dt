@@ -1,0 +1,934 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<decisiontable name="IQExecutionRules">
+  <import>bre.Exec</import>
+  <import>bre.Out</import>
+  <import>bre.LPCase</import>
+  <decisionheader expression="Exec.isoSent" returntype="Boolean" nodetype="Condition"/>
+  <decisionheader expression="Exec.isoResp" returntype="String" nodetype="Condition"/>
+  <decisionheader expression="LPCase.fundingSource" returntype="String" nodetype="Condition"/>
+  <decisionheader expression="LPCase.clientId" returntype="Integer" nodetype="Condition"/>
+  <decisionheader expression="Exec.letters" returntype="Integer" nodetype="Condition"/>
+  <decisionheader expression="LPCase.vip" returntype="Boolean" nodetype="Condition"/>
+  <decisionheader expression="LPCase.belowCost" returntype="Boolean" nodetype="Condition"/>
+  <decisionheader expression="LPCase.belowCostDueDatePassed" returntype="Boolean" nodetype="Condition"/>
+  <decisionheader expression="LPCase.benefitAmount" returntype="Double" nodetype="Condition"/>
+  <decisionheader expression="LPCase.score" returntype="Integer" nodetype="Condition"/>
+  <decisionheader expression="Exec.daysSinceLetter" returntype="Integer" nodetype="Condition"/>
+  <decisionheader expression="Out.stop = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="Out.closeCase = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="Out.sendIQ = {value}" returntype="Boolean" nodetype="Action"/>
+  <decisionheader expression="Effective Date" returntype="Date" nodetype="Options"/>
+  <decisionheader expression="Expiration Date" returntype="Date" nodetype="Options"/>
+  <decisionheader expression="Salience" returntype="Integer" nodetype="Options"/>
+  <decisionheader expression="XOR Rule Group" returntype="String" nodetype="Options"/>
+  <decisionnode headerid="-1">
+    <decisionnode expression="== true" headerid="0">
+      <decisionnode expression="== &quot;MISS&quot;" headerid="1">
+        <decisionnode expression="== *" headerid="2">
+          <decisionnode expression="== 32" headerid="3">
+            <decisionnode expression="== 4" headerid="4">
+              <decisionnode expression="== *" headerid="5">
+                <decisionnode expression="== *" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="== *" headerid="8">
+                      <decisionnode expression="*" headerid="9">
+                        <decisionnode expression=">= 60" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="true" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                        <decisionnode expression="&lt; 60" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+            <decisionnode expression="&lt;= 3" headerid="4">
+              <decisionnode expression="== *" headerid="5">
+                <decisionnode expression="== *" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="== *" headerid="8">
+                      <decisionnode expression="*" headerid="9">
+                        <decisionnode expression="&lt; 30" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                        <decisionnode expression=">= 30" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="true" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+          <decisionnode expression="== 31" headerid="3">
+            <decisionnode expression="== 4" headerid="4">
+              <decisionnode expression="== *" headerid="5">
+                <decisionnode expression="== *" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="== *" headerid="8">
+                      <decisionnode expression="*" headerid="9">
+                        <decisionnode expression=">= 60" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="true" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                        <decisionnode expression="&lt; 60" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+            <decisionnode expression="&lt;= 3" headerid="4">
+              <decisionnode expression="== *" headerid="5">
+                <decisionnode expression="== *" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="== *" headerid="8">
+                      <decisionnode expression="*" headerid="9">
+                        <decisionnode expression="&lt; 30" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                        <decisionnode expression=">= 30" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="true" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+          <decisionnode expression="*" headerid="3">
+            <decisionnode expression="== 4" headerid="4">
+              <decisionnode expression="== *" headerid="5">
+                <decisionnode expression="== *" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="== *" headerid="8">
+                      <decisionnode expression=">= 70" headerid="9">
+                        <decisionnode expression=">= 60" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="true" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                        <decisionnode expression="&lt; 60" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+            <decisionnode expression="&lt;= 3" headerid="4">
+              <decisionnode expression="== *" headerid="5">
+                <decisionnode expression="== *" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="== *" headerid="8">
+                      <decisionnode expression=">= 70" headerid="9">
+                        <decisionnode expression="&lt; 30" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                        <decisionnode expression=">= 30" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="true" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+        <decisionnode expression="*" headerid="2">
+          <decisionnode expression="*" headerid="3">
+            <decisionnode expression="*" headerid="4">
+              <decisionnode expression="== *" headerid="5">
+                <decisionnode expression="*" headerid="6">
+                  <decisionnode expression="*" headerid="7">
+                    <decisionnode expression="*" headerid="8">
+                      <decisionnode expression="&lt; 70" headerid="9">
+                        <decisionnode expression="*" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="true" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+      </decisionnode>
+    </decisionnode>
+    <decisionnode expression="== false" headerid="0">
+      <decisionnode expression="*" headerid="1">
+        <decisionnode expression="== &quot;Medicaid&quot;" headerid="2">
+          <decisionnode expression="*" headerid="3">
+            <decisionnode expression="== 0" headerid="4">
+              <decisionnode expression="== true" headerid="5">
+                <decisionnode expression="*" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="*" headerid="8">
+                      <decisionnode expression="*" headerid="9">
+                        <decisionnode expression="*" headerid="10">
+                          <decisionnode expression="true" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+              <decisionnode expression="== false" headerid="5">
+                <decisionnode expression="*" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="*" headerid="8">
+                      <decisionnode expression="*" headerid="9">
+                        <decisionnode expression="*" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="true" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+            <decisionnode expression="between 1 and 2" headerid="4">
+              <decisionnode expression="== *" headerid="5">
+                <decisionnode expression="*" headerid="6">
+                  <decisionnode expression="*" headerid="7">
+                    <decisionnode expression="*" headerid="8">
+                      <decisionnode expression="&lt; 70" headerid="9">
+                        <decisionnode expression="*" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="true" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+                <decisionnode expression="== true" headerid="6">
+                  <decisionnode expression="== false" headerid="7">
+                    <decisionnode expression="*" headerid="8">
+                      <decisionnode expression="*" headerid="9">
+                        <decisionnode expression="*" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                  <decisionnode expression="== true" headerid="7">
+                    <decisionnode expression="&lt; 750" headerid="8">
+                      <decisionnode expression=">= 70" headerid="9">
+                        <decisionnode expression="*" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="true" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                    <decisionnode expression=">= 750" headerid="8">
+                      <decisionnode expression=">= 70" headerid="9">
+                        <decisionnode expression="*" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="true" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+                <decisionnode expression="== false" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="*" headerid="8">
+                      <decisionnode expression=">= 70" headerid="9">
+                        <decisionnode expression=">= 30" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="true" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                        <decisionnode expression="&lt; 30" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+            <decisionnode expression="== 3" headerid="4">
+              <decisionnode expression="== *" headerid="5">
+                <decisionnode expression="== *" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="== *" headerid="8">
+                      <decisionnode expression="*" headerid="9">
+                        <decisionnode expression="&lt; 60" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                        <decisionnode expression=">= 60" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="true" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+        <decisionnode expression="== &quot;Medicare&quot;" headerid="2">
+          <decisionnode expression="*" headerid="3">
+            <decisionnode expression="== 0" headerid="4">
+              <decisionnode expression="== true" headerid="5">
+                <decisionnode expression="*" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="*" headerid="8">
+                      <decisionnode expression="*" headerid="9">
+                        <decisionnode expression="*" headerid="10">
+                          <decisionnode expression="true" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+              <decisionnode expression="== false" headerid="5">
+                <decisionnode expression="*" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="*" headerid="8">
+                      <decisionnode expression="*" headerid="9">
+                        <decisionnode expression="*" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="true" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+            <decisionnode expression="between 1 and 2" headerid="4">
+              <decisionnode expression="== *" headerid="5">
+                <decisionnode expression="*" headerid="6">
+                  <decisionnode expression="*" headerid="7">
+                    <decisionnode expression="*" headerid="8">
+                      <decisionnode expression="&lt; 70" headerid="9">
+                        <decisionnode expression="*" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="true" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+                <decisionnode expression="== true" headerid="6">
+                  <decisionnode expression="== false" headerid="7">
+                    <decisionnode expression="*" headerid="8">
+                      <decisionnode expression="*" headerid="9">
+                        <decisionnode expression="*" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                  <decisionnode expression="== true" headerid="7">
+                    <decisionnode expression="&lt; 750" headerid="8">
+                      <decisionnode expression=">= 70" headerid="9">
+                        <decisionnode expression="*" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="true" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                    <decisionnode expression=">= 750" headerid="8">
+                      <decisionnode expression=">= 70" headerid="9">
+                        <decisionnode expression="*" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="true" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+                <decisionnode expression="== false" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="*" headerid="8">
+                      <decisionnode expression=">= 70" headerid="9">
+                        <decisionnode expression=">= 30" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="true" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                        <decisionnode expression="&lt; 30" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+            <decisionnode expression="== 3" headerid="4">
+              <decisionnode expression="== *" headerid="5">
+                <decisionnode expression="== *" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="== *" headerid="8">
+                      <decisionnode expression="*" headerid="9">
+                        <decisionnode expression="&lt; 60" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                        <decisionnode expression=">= 60" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="true" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+        <decisionnode expression="*" headerid="2">
+          <decisionnode expression="*" headerid="3">
+            <decisionnode expression="between 0 and 1" headerid="4">
+              <decisionnode expression="== true" headerid="5">
+                <decisionnode expression="*" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="*" headerid="8">
+                      <decisionnode expression="*" headerid="9">
+                        <decisionnode expression="*" headerid="10">
+                          <decisionnode expression="true" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+              <decisionnode expression="== false" headerid="5">
+                <decisionnode expression="*" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="*" headerid="8">
+                      <decisionnode expression="*" headerid="9">
+                        <decisionnode expression="*" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="true" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+            <decisionnode expression="between 2 and 3" headerid="4">
+              <decisionnode expression="== *" headerid="5">
+                <decisionnode expression="== false" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="*" headerid="8">
+                      <decisionnode expression="&lt; 70" headerid="9">
+                        <decisionnode expression="*" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="true" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                      <decisionnode expression=">= 70" headerid="9">
+                        <decisionnode expression=">= 30" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="true" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                        <decisionnode expression="&lt; 30" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+            <decisionnode expression="== 4" headerid="4">
+              <decisionnode expression="== *" headerid="5">
+                <decisionnode expression="== *" headerid="6">
+                  <decisionnode expression="== *" headerid="7">
+                    <decisionnode expression="== *" headerid="8">
+                      <decisionnode expression="*" headerid="9">
+                        <decisionnode expression="&lt; 60" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="false" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                        <decisionnode expression=">= 60" headerid="10">
+                          <decisionnode expression="false" headerid="11">
+                            <decisionnode expression="true" headerid="12">
+                              <decisionnode expression="false" headerid="13">
+                                <optionnode expression="" headerid="14">
+                                  <optionnode expression="" headerid="15">
+                                    <optionnode expression="0" headerid="16">
+                                      <optionnode expression="" headerid="17"/>
+                                    </optionnode>
+                                  </optionnode>
+                                </optionnode>
+                              </decisionnode>
+                            </decisionnode>
+                          </decisionnode>
+                        </decisionnode>
+                      </decisionnode>
+                    </decisionnode>
+                  </decisionnode>
+                </decisionnode>
+              </decisionnode>
+            </decisionnode>
+          </decisionnode>
+        </decisionnode>
+      </decisionnode>
+    </decisionnode>
+  </decisionnode>
+</decisiontable>

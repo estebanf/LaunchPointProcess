@@ -59,14 +59,6 @@
             <wsdl:message name="Get_db_infoResponse" bpdm:source="partner-pool:///_3cJ04NH5EeeKlIzHx_g2Yg">
                 <wsdl:part name="body" element="this:Get_db_infoResponse"/>
             </wsdl:message>
-            <xs:element name="Get_DCM_infoRequest" type="Launchpoint:LaunchpointCaseType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
-            <wsdl:message name="Get_DCM_infoRequest" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
-                <wsdl:part name="body" element="this:Get_DCM_infoRequest"/>
-            </wsdl:message>
-            <xs:element name="Get_DCM_infoResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
-            <wsdl:message name="Get_DCM_infoResponse" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
-                <wsdl:part name="body" element="this:Get_DCM_infoResponse"/>
-            </wsdl:message>
             <xs:element name="Get_diariesRequest" type="Launchpoint:CaseDiariesType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
             <wsdl:message name="Get_diariesRequest" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
                 <wsdl:part name="body" element="this:Get_diariesRequest"/>
@@ -82,6 +74,14 @@
             <xs:element name="Get_activitiesResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
             <wsdl:message name="Get_activitiesResponse" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
                 <wsdl:part name="body" element="this:Get_activitiesResponse"/>
+            </wsdl:message>
+            <xs:element name="Get_DCM_infoRequest" type="Launchpoint:LaunchpointCaseType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
+            <wsdl:message name="Get_DCM_infoRequest" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
+                <wsdl:part name="body" element="this:Get_DCM_infoRequest"/>
+            </wsdl:message>
+            <xs:element name="Get_DCM_infoResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
+            <wsdl:message name="Get_DCM_infoResponse" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
+                <wsdl:part name="body" element="this:Get_DCM_infoResponse"/>
             </wsdl:message>
             <xs:element name="Get_caseRequest" type="xs:string" bpdm:source="partner-pool:///_5PxLwNHyEeegkeOYmwRRMQ"/>
             <wsdl:message name="Get_caseRequest" bpdm:source="partner-pool:///_5PxLwNHyEeegkeOYmwRRMQ">
@@ -113,8 +113,8 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_zGh8ptHyEeegkeOYmwRRMQimplicitPartner" bpdm:label="processimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseDetails-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseDiaries-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getDCMCase-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseDiaries-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseActivities-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Rules/ProcessingRule.bre/dtws_launchpointprocess_rules_processingrule/META-INF/dtws_launchpointprocess_rules_processingrule.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -742,59 +742,31 @@
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>$dcmCase/Launchpoint:ClientId</bpel:from>
-                                <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:clientId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="489771107" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:clientId" targetedBy="1089499678-arg0"></mapper:vertice>
-  <mapper:vertice id="1089499678" sourcePath="$dcmCase/Launchpoint:ClientId"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:clientId</bpel:to><mapper:mapperLink><mapper:vertice id="489771107" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:clientId" targetedBy="1089499678-arg0"></mapper:vertice><mapper:vertice id="1089499678" sourcePath="$dcmCase/Launchpoint:ClientId"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>$dcmCase/Launchpoint:BenefitAmount</bpel:from>
-                                <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:benefitAmount</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="672508885" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:benefitAmount" targetedBy="739785512-arg0"></mapper:vertice>
-  <mapper:vertice id="739785512" sourcePath="$dcmCase/Launchpoint:BenefitAmount"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:benefitAmount</bpel:to><mapper:mapperLink><mapper:vertice id="672508885" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:benefitAmount" targetedBy="739785512-arg0"></mapper:vertice><mapper:vertice id="739785512" sourcePath="$dcmCase/Launchpoint:BenefitAmount"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>$dcmCase/Launchpoint:FundingSource</bpel:from>
-                                <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:fundingSource</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="796098845" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:fundingSource" targetedBy="1311195915-arg0"></mapper:vertice>
-  <mapper:vertice id="1311195915" sourcePath="$dcmCase/Launchpoint:FundingSource"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:fundingSource</bpel:to><mapper:mapperLink><mapper:vertice id="796098845" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:fundingSource" targetedBy="1311195915-arg0"></mapper:vertice><mapper:vertice id="1311195915" sourcePath="$dcmCase/Launchpoint:FundingSource"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>$dcmCase/Launchpoint:ISOIndicator</bpel:from>
-                                <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:isoInd</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="209679172" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:isoInd" targetedBy="601938672-arg0"></mapper:vertice>
-  <mapper:vertice id="601938672" sourcePath="$dcmCase/Launchpoint:ISOIndicator"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:isoInd</bpel:to><mapper:mapperLink><mapper:vertice id="209679172" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:isoInd" targetedBy="601938672-arg0"></mapper:vertice><mapper:vertice id="601938672" sourcePath="$dcmCase/Launchpoint:ISOIndicator"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>$dcmCase/Launchpoint:Score</bpel:from>
-                                <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:score</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2143767658" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:score" targetedBy="884263017-arg0"></mapper:vertice>
-  <mapper:vertice id="884263017" sourcePath="$dcmCase/Launchpoint:Score"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:score</bpel:to><mapper:mapperLink><mapper:vertice id="2143767658" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:score" targetedBy="884263017-arg0"></mapper:vertice><mapper:vertice id="884263017" sourcePath="$dcmCase/Launchpoint:Score"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>$dcmCase/Launchpoint:CaseSource</bpel:from>
-                                <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:source</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="406752933" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:source" targetedBy="636691826-arg0"></mapper:vertice>
-  <mapper:vertice id="636691826" sourcePath="$dcmCase/Launchpoint:CaseSource"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:source</bpel:to><mapper:mapperLink><mapper:vertice id="406752933" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:source" targetedBy="636691826-arg0"></mapper:vertice><mapper:vertice id="636691826" sourcePath="$dcmCase/Launchpoint:CaseSource"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>$dcmCase/Launchpoint:CaseStatus</bpel:from>
-                                <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:status</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="646231000" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:status" targetedBy="1681279629-arg0"></mapper:vertice>
-  <mapper:vertice id="1681279629" sourcePath="$dcmCase/Launchpoint:CaseStatus"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:status</bpel:to><mapper:mapperLink><mapper:vertice id="646231000" targetPath="$nsInvokeDecisionTableRequest1Msg.parameters/ns:param0/ax249:LPCase/ax250:status" targetedBy="1681279629-arg0"></mapper:vertice><mapper:vertice id="1681279629" sourcePath="$dcmCase/Launchpoint:CaseStatus"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="nsInvokeDecisionTableRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:invokeDecisionTableRequest" bpdm:binding="ns:dtws_launchpointprocess_rules_processingruleSoap11Binding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Lf9tUdL-EeeuaKI6lBpbuQOutgoing"></bpdm:linkset>
@@ -805,35 +777,19 @@
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>$ode:pid</bpel:from>
-                                <bpel:to>$CaseTracking/metrics:id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="438389405" targetPath="$CaseTracking/metrics:id" targetedBy="486023625-arg0"></mapper:vertice>
-  <mapper:vertice id="486023625" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$CaseTracking/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="438389405" targetPath="$CaseTracking/metrics:id" targetedBy="486023625-arg0"></mapper:vertice><mapper:vertice id="486023625" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax249:processingOutput/ax250:drop</bpel:from>
-                                <bpel:to>$CaseTracking/metrics:dropCase</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="429016441" targetPath="$CaseTracking/metrics:dropCase" targetedBy="583754528-arg0"></mapper:vertice>
-  <mapper:vertice id="583754528" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax249:processingOutput/ax250:drop"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$CaseTracking/metrics:dropCase</bpel:to><mapper:mapperLink><mapper:vertice id="429016441" targetPath="$CaseTracking/metrics:dropCase" targetedBy="583754528-arg0"></mapper:vertice><mapper:vertice id="583754528" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax249:processingOutput/ax250:drop"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax249:processingOutput/ax250:iq</bpel:from>
-                                <bpel:to>$CaseTracking/metrics:sendToIQ</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="665028383" targetPath="$CaseTracking/metrics:sendToIQ" targetedBy="2119333592-arg0"></mapper:vertice>
-  <mapper:vertice id="2119333592" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax249:processingOutput/ax250:iq"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$CaseTracking/metrics:sendToIQ</bpel:to><mapper:mapperLink><mapper:vertice id="665028383" targetPath="$CaseTracking/metrics:sendToIQ" targetedBy="2119333592-arg0"></mapper:vertice><mapper:vertice id="2119333592" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax249:processingOutput/ax250:iq"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax249:processingOutput/ax250:iso</bpel:from>
-                                <bpel:to>$CaseTracking/metrics:sendToIso</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1451561495" targetPath="$CaseTracking/metrics:sendToIso" targetedBy="1884229082-arg0"></mapper:vertice>
-  <mapper:vertice id="1884229082" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax249:processingOutput/ax250:iso"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$CaseTracking/metrics:sendToIso</bpel:to><mapper:mapperLink><mapper:vertice id="1451561495" targetPath="$CaseTracking/metrics:sendToIso" targetedBy="1884229082-arg0"></mapper:vertice><mapper:vertice id="1884229082" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax249:processingOutput/ax250:iso"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>

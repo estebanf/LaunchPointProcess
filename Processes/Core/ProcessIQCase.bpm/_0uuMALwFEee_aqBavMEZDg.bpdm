@@ -13,7 +13,7 @@
     </bpdm:dependencies>
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Case Evaluator" bpdm:ID="_0uuMALwFEee_aqBavMEZDg">
         <bpel:partnerLinks>
-            <bpel:partnerLink name="process_IQ_CaseAndCase_ManagerPlkVar" partnerLinkType="diag:Process_IQ_CaseAndCase_Manager" initializePartnerRole="yes" partnerRole="Process_IQ_Case_for_Case_Manager" bpdm:invokedService="Process_IQ_Case:CanonicServiceForCase_Manager" bpdm:invokedPort="canonicPort" bpdm:invokedIsDefault="true" bpdm:clientTasks="_0uuMALwFEee_aqBavMEZDg:_8c28YLwFEee_aqBavMEZDg" bpdm:isManaged="true" bpdm:otherPoolId="_xRG1oLwFEee_aqBavMEZDg"/>
+            <bpel:partnerLink name="process_IQ_CaseAndCase_EvaluatorPlkVar" partnerLinkType="diag:Process_IQ_CaseAndCase_Evaluator" initializePartnerRole="yes" partnerRole="Process_IQ_Case_for_Case_Evaluator" bpdm:invokedService="Process_IQ_Case:CanonicServiceForCase_Evaluator" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_IQ_Case/Case_Evaluator" bpdm:invokedIsDefault="true" bpdm:clientTasks="_0uuMALwFEee_aqBavMEZDg:_8c28YLwFEee_aqBavMEZDg" bpdm:isManaged="true" bpdm:otherPoolId="_xRG1oLwFEee_aqBavMEZDg"/>
         </bpel:partnerLinks>
         <bpel:variables>
             <bpel:variable name="poolTaskRequest1Msg" messageType="Process_IQ_Case:Receive_IQRequest" bpdm:id="_HPZ48LwGEee_aqBavMEZDg" bpdm:messageIds=" out:_HPVAcLwGEee_aqBavMEZDg">
@@ -24,7 +24,7 @@
             <bpel:variable name="poolEventStartMessageResponse1" messageType="Process_IQ_Case:Receive_IQResponse" bpdm:id="_IHbGFbwGEee_aqBavMEZDg" bpdm:messageIds="inc:_IHSjMLwGEee_aqBavMEZDg"/>
         </bpel:variables>
         <bpel:sequence>
-            <bpdm:messagingtask operation="Receive_IQ" partnerLink="process_IQ_CaseAndCase_ManagerPlkVar" portType="Process_IQ_Case:ForCase_Manager" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Handle IQ Case" bpdm:ID="_8c28YLwFEee_aqBavMEZDg" bpdm:isHeaderAuthorizationAware="no">
+            <bpdm:messagingtask operation="Receive_IQ" partnerLink="process_IQ_CaseAndCase_EvaluatorPlkVar" portType="Process_IQ_Case:ForCase_Evaluator" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Handle IQ Case" bpdm:ID="_8c28YLwFEee_aqBavMEZDg" bpdm:isHeaderAuthorizationAware="no">
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="poolTaskRequest1Msg" bpdm:msgVarScopeId="_0uuMALwFEee_aqBavMEZDg" bpdm:variableIsManaged="true" bpdm:messageType="Process_IQ_Case:Receive_IQRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_HPVAcLwGEee_aqBavMEZDg"></bpdm:linkset>
                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="poolEventStartMessageResponse1" bpdm:msgVarScopeId="_0uuMALwFEee_aqBavMEZDg" bpdm:variableIsManaged="true" bpdm:messageType="Process_IQ_Case:Receive_IQResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_IHSjMLwGEee_aqBavMEZDg"></bpdm:linkset>
             </bpdm:messagingtask>
