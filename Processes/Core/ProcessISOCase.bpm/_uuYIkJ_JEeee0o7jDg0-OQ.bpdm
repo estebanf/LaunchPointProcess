@@ -12,13 +12,6 @@
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Process_ISO_Case" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Case_Manager" bpdm:prefix="Case_Manager" bpdm:comment="contrib=&apos;partner-pool:///_it804J_PEeee0o7jDg0-OQ"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
-            <wsdl:portType name="ForCase_Manager">
-                <wsdl:operation name="Receive_ISO" bpdm:source="partner-pool:///_it804J_PEeee0o7jDg0-OQ">
-                    <wsdl:input message="this:Receive_ISORequest" name="Receive_ISO"/>
-                    <wsdl:output message="this:Receive_ISOResponse" name="Receive_ISOResponse"/>
-                </wsdl:operation>
-            </wsdl:portType>
-            <bpel:binding name="CanonicBindingForCase_Manager" type="this:ForCase_Manager" bpdm:isSynchronized="true"/>
             <wsdl:portType name="ForDCM">
                 <wsdl:operation name="Receive_ISO_Request" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
                     <wsdl:input message="this:Receive_ISO_RequestRequest" name="Receive_ISO_Request"/>
@@ -26,13 +19,13 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForDCM" type="this:ForDCM" bpdm:isSynchronized="true"/>
-            <wsdl:message name="Receive_ISO_RequestRequest" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
-                <wsdl:part name="body" element="Launchpoint:DCMISORequestFile"/>
-            </wsdl:message>
-            <xs:element name="Receive_ISO_RequestResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw"/>
-            <wsdl:message name="Receive_ISO_RequestResponse" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
-                <wsdl:part name="body" element="this:Receive_ISO_RequestResponse"/>
-            </wsdl:message>
+            <wsdl:portType name="ForCase_Manager">
+                <wsdl:operation name="Receive_ISO" bpdm:source="partner-pool:///_it804J_PEeee0o7jDg0-OQ">
+                    <wsdl:input message="this:Receive_ISORequest" name="Receive_ISO"/>
+                    <wsdl:output message="this:Receive_ISOResponse" name="Receive_ISOResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForCase_Manager" type="this:ForCase_Manager" bpdm:isSynchronized="true"/>
             <xs:element name="Receive_ISORequest" type="Launchpoint:LaunchpointCaseType" bpdm:source="partner-pool:///_it804J_PEeee0o7jDg0-OQ"/>
             <wsdl:message name="Receive_ISORequest" bpdm:source="partner-pool:///_it804J_PEeee0o7jDg0-OQ">
                 <wsdl:part name="body" element="this:Receive_ISORequest"/>
@@ -41,9 +34,16 @@
             <wsdl:message name="Receive_ISOResponse" bpdm:source="partner-pool:///_it804J_PEeee0o7jDg0-OQ">
                 <wsdl:part name="body" element="this:Receive_ISOResponse"/>
             </wsdl:message>
+            <wsdl:message name="Receive_ISO_RequestRequest" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
+                <wsdl:part name="body" element="Launchpoint:DCMISORequestFile"/>
+            </wsdl:message>
+            <xs:element name="Receive_ISO_RequestResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw"/>
+            <wsdl:message name="Receive_ISO_RequestResponse" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
+                <wsdl:part name="body" element="this:Receive_ISO_RequestResponse"/>
+            </wsdl:message>
         </bpdm:namespaceContributor>
-        <bpdm:namespaceContributor bpdm:url="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw" bpdm:label="DCM"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_it804J_PEeee0o7jDg0-OQ" bpdm:label="Case Manager"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw" bpdm:label="DCM"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner" bpdm:label="Process ISO CaseimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -134,12 +134,12 @@
                             <bpel:literal bpdm:linkedMessageType="DCM:TaskRequest" bpdm:linkedPart="body"></bpel:literal>
                         </bpel:from>
                     </bpel:variable>
-                    <bpel:variable name="dCMTaskResponse2Msg" messageType="DCM:TaskResponse" bpdm:id="_9bPd8NR0EeePw9HWmNDN1w" bpdm:messageIds="inc:_9ayyANR0EeePw9HWmNDN1w"/>
+                    <bpel:variable name="dCMTaskResponse1Msg" messageType="DCM:TaskResponse" bpdm:id="_9bPd8NR0EeePw9HWmNDN1w" bpdm:messageIds="inc:_9ayyANR0EeePw9HWmNDN1w"/>
                 </bpel:variables>
                 <bpel:sequence>
                     <bpdm:messagingtask operation="Task" partnerLink="process_ISO_CaseAndDCMPlkVar" portType="DCM:ForProcess_ISO_Case" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Generate file" bpdm:ID="_BiLRYNRlEeePw9HWmNDN1w" bpdm:isHeaderAuthorizationAware="no">
                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMTaskRequest1Msg" bpdm:msgVarScopeId="_2X1dALDPEeeWxcgptknY3g" bpdm:variableIsManaged="true" bpdm:messageType="DCM:TaskRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_9DQbwNR0EeePw9HWmNDN1w"></bpdm:linkset>
-                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="dCMTaskResponse2Msg" bpdm:msgVarScopeId="_2X1dALDPEeeWxcgptknY3g" bpdm:variableIsManaged="true" bpdm:messageType="DCM:TaskResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_9ayyANR0EeePw9HWmNDN1w"></bpdm:linkset>
+                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="dCMTaskResponse1Msg" bpdm:msgVarScopeId="_2X1dALDPEeeWxcgptknY3g" bpdm:variableIsManaged="true" bpdm:messageType="DCM:TaskResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_9ayyANR0EeePw9HWmNDN1w"></bpdm:linkset>
                     </bpdm:messagingtask>
                     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_QvcSgNR1EeePw9HWmNDN1w">
                         <bpel:variables>
