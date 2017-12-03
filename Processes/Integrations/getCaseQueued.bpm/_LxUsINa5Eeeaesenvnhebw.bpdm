@@ -92,8 +92,18 @@
             <bpdm:messagingtask eventType="end: message" operation="Get_Results" partnerLink="processAndClientForCanonicPortPlkVar" portType="ProcessIQCase-Process_IQ_Case:ForDatabase" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send case" bpdm:ID="_6lTPkNa5Eeeaesenvnhebw" bpdm:isHeaderAuthorizationAware="no">
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
-                        <bpel:from>bpel:doXslTransform("../../XSLT/transformQueuedCases.xslt", $nsGetCaseQueuedResponse2Msg.parameters)</bpel:from>
-                        <bpel:to>$clientSend_ResultsRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="10126063" targetPath="$clientSend_ResultsRequest1Msg.body" targetedBy="252505459-arg2"></mapper:vertice><mapper:vertice id="252505459" dimension="126x24" location="348,60"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="830011651" dimension="215x24" location="68,8" targetedBy="252505459-arg0"><mapper:value>"../../XSLT/transformQueuedCases.xslt"</mapper:value></mapper:vertice><mapper:vertice id="702472670" sourcePath="$nsGetCaseQueuedResponse2Msg.parameters" targetedBy="252505459-arg1"></mapper:vertice></mapper:mapperLink>
+                        <bpel:from>bpel:doXslTransform("../../XSLT/transformQueuedCases.xsl", $nsGetCaseQueuedResponse2Msg.parameters)</bpel:from>
+                        <bpel:to>$clientSend_ResultsRequest1Msg.body</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="2114247752" targetPath="$clientSend_ResultsRequest1Msg.body" targetedBy="1593812122-arg2"></mapper:vertice>
+  <mapper:vertice id="1593812122" dimension="126x24" location="348,60">
+    <mapper:value>bpel:doXslTransform()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="191849854" dimension="211x24" location="68,8" targetedBy="1593812122-arg0">
+    <mapper:value>"../../XSLT/transformQueuedCases.xsl"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="711251249" sourcePath="$nsGetCaseQueuedResponse2Msg.parameters" targetedBy="1593812122-arg1"></mapper:vertice>
+</mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="clientSend_ResultsRequest1Msg" bpdm:msgVarScopeId="_LxUsINa5Eeeaesenvnhebw" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Process_IQ_Case:Get_ResultsRequest" bpdm:binding="ProcessIQCase-Process_IQ_Case:Process_IQ_CaseAndDatabaseForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_ExmQMNbVEeemJNz46KA2Dg"></bpdm:linkset>
