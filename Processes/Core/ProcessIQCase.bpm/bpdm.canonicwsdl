@@ -1,5 +1,34 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<wsdl:definitions xmlns:customVariable="http://everteam.com/xvar/example" xmlns:metrics="http://test.com/xvar/example" xmlns:diag="http://thisdiagram" xmlns:Case_Evaluator="http://thisdiagram/Case_Evaluator" xmlns:Database="http://thisdiagram/Database" xmlns:Process_IQ_Case="http://thisdiagram/Process_IQ_Case" xmlns:getCaseQueued-process="http://thisproject/Processes/Integrations/getCaseQueued/process" xmlns:tns="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" targetNamespace="http://thisdiagram" bpdm:version="6000089" bpdm:canid="_xQLokLwFEee_aqBavMEZDg" bpdm:displayName="diag">
+<wsdl:definitions xmlns:ns="http://bpms.everteam.com/LaunchPointProcess" xmlns:tns="http://everteam.com/xvar/example" xmlns:metrics="http://test.com/xvar/example" xmlns:diag="http://thisdiagram" xmlns:Case_Evaluator="http://thisdiagram/Case_Evaluator" xmlns:Database="http://thisdiagram/Database" xmlns:Process_IQ_Case="http://thisdiagram/Process_IQ_Case" xmlns:Queue_Monitor="http://thisdiagram/Queue_Monitor" xmlns:Queue_MonitorimplicitPartner="http://thisdiagram/Queue_MonitorimplicitPartner" xmlns:getCaseQueued-process="http://thisproject/Processes/Integrations/getCaseQueued/process" xmlns:getOldestQueuedCases-process="http://thisproject/Processes/Integrations/getOldestQueuedCases/process" xmlns:tns1="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" targetNamespace="http://thisdiagram" bpdm:version="6000089" bpdm:canid="_xQLokLwFEee_aqBavMEZDg" bpdm:displayName="diag">
+  <pnlk:partnerLinkType name="DatabaseAndQueue_Monitor" bpdm:poolOneId="_B8ixENZFEeeaesenvnhebw" bpdm:poolOneIsExecutable="false" bpdm:poolOneName="Database" bpdm:poolTwoId="_2mWjgNfGEee2L7fDC3rSXg" bpdm:poolTwoIsExecutable="true" bpdm:poolTwoName="Queue Monitor">
+    <pnlk:role name="Database_for_Queue_Monitor" portType="Database:ForQueue_Monitor" bpdm:thisPoolId="_B8ixENZFEeeaesenvnhebw">
+      <wsdl:portType name="ForQueue_Monitor">
+        <wsdl:operation name="Query_Database" bpdm:canid="_SXVXINfHEee2L7fDC3rSXg._fB1McNfKEee2L7fDC3rSXg." bpdm:dataobjectPointer="project:///Processes/Integrations/getOldestQueuedCases-process.wsdl?wsdloperationbound={http://thisproject/Processes/Integrations/getOldestQueuedCases/process}CanonicServiceForclient/canonicPort/Get_case_request">
+          <wsdl:input message="getOldestQueuedCases-process:Get_case_request" name="Query_Database" bpdm:canid="_AZQEINfLEee2L7fDC3rSXg" bpdm:senderId="_SXVXINfHEee2L7fDC3rSXg" bpdm:receiverId="_fB1McNfKEee2L7fDC3rSXg" bpdm:senderName="Select oldest 2500" bpdm:receiverName="Query Database" bpdm:receiverPoolId="_B8ixENZFEeeaesenvnhebw" bpdm:dataobjectPointer="project:///Processes/Integrations/getOldestQueuedCases-process.wsdl?messageForBoundOperation={http://thisproject/Processes/Integrations/getOldestQueuedCases/process}CanonicServiceForclient/canonicPort/Get_case_request/input/Get_case_request"></wsdl:input>
+          <wsdl:output message="getOldestQueuedCases-process:Get_case_requestResponse" name="Query_DatabaseResponse" bpdm:canid="_BFmMwNfLEee2L7fDC3rSXg" bpdm:senderId="_fB1McNfKEee2L7fDC3rSXg" bpdm:receiverId="_SXVXINfHEee2L7fDC3rSXg" bpdm:senderName="Query Database" bpdm:receiverName="Select oldest 2500" bpdm:receiverPoolId="_2mWjgNfGEee2L7fDC3rSXg" bpdm:dataobjectPointer="project:///Processes/Integrations/getOldestQueuedCases-process.wsdl?messageForBoundOperation={http://thisproject/Processes/Integrations/getOldestQueuedCases/process}CanonicServiceForclient/canonicPort/Get_case_request/output/Get_case_requestResponse"></wsdl:output>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
+    <pnlk:role name="Queue_Monitor_for_Database" portType="Queue_Monitor:ForDatabase" bpdm:thisPoolId="_2mWjgNfGEee2L7fDC3rSXg">
+      <wsdl:portType name="ForDatabase">
+        <wsdl:operation name="Get_results" bpdm:canid="_bonN4NfKEee2L7fDC3rSXg._j37YsNfKEee2L7fDC3rSXg.">
+          <wsdl:input message="Queue_Monitor:Get_resultsRequest" name="Get_results" bpdm:canid="_DfT2INfLEee2L7fDC3rSXg" bpdm:senderId="_j37YsNfKEee2L7fDC3rSXg" bpdm:receiverId="_bonN4NfKEee2L7fDC3rSXg" bpdm:senderName="Send Results" bpdm:receiverName="Get results" bpdm:receiverPoolId="_2mWjgNfGEee2L7fDC3rSXg" bpdm:dataobjectPointer="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}IQBatchesType" bpdm:bodyPartElemName="Get_resultsRequest" bpdm:bodyPartElemType="{http://www.example.org/Launchpoint}IQBatchesType"></wsdl:input>
+          <wsdl:output message="Queue_Monitor:Get_resultsResponse" name="Get_resultsResponse" bpdm:canid="_EeUcENfLEee2L7fDC3rSXg" bpdm:senderId="_bonN4NfKEee2L7fDC3rSXg" bpdm:receiverId="_j37YsNfKEee2L7fDC3rSXg" bpdm:senderName="Get results" bpdm:receiverName="Send Results" bpdm:receiverPoolId="_B8ixENZFEeeaesenvnhebw" bpdm:dataobjectPointer="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType" bpdm:bodyPartElemName="Get_resultsResponse" bpdm:bodyPartElemType="{http://www.example.org/Launchpoint}BpmAckType"></wsdl:output>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
+  </pnlk:partnerLinkType>
+  <pnlk:partnerLinkType name="DatabaseAndQueue_MonitorForCanonicPortPlk" bpdm:canPlkId="_B8ixENZFEeeaesenvnhebw-_2mWjgNfGEee2L7fDC3rSXg">
+    <pnlk:role name="Database_for_Queue_Monitor" portType="getOldestQueuedCases-process:Forclient"></pnlk:role>
+    <pnlk:role name="Queue_Monitor_for_Database" portType="Queue_Monitor:ForDatabase" bpdm:thisPoolId="_2mWjgNfGEee2L7fDC3rSXg">
+      <wsdl:portType name="ForDatabase">
+        <wsdl:operation name="Get_results" bpdm:canid="_bonN4NfKEee2L7fDC3rSXg._j37YsNfKEee2L7fDC3rSXg.">
+          <wsdl:input message="Queue_Monitor:Get_resultsRequest" name="Get_results" bpdm:canid="_DfT2INfLEee2L7fDC3rSXg" bpdm:senderId="_j37YsNfKEee2L7fDC3rSXg" bpdm:receiverId="_bonN4NfKEee2L7fDC3rSXg" bpdm:senderName="Send Results" bpdm:receiverName="Get results" bpdm:receiverPoolId="_2mWjgNfGEee2L7fDC3rSXg" bpdm:dataobjectPointer="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}IQBatchesType" bpdm:bodyPartElemName="Get_resultsRequest" bpdm:bodyPartElemType="{http://www.example.org/Launchpoint}IQBatchesType"></wsdl:input>
+          <wsdl:output message="Queue_Monitor:Get_resultsResponse" name="Get_resultsResponse" bpdm:canid="_EeUcENfLEee2L7fDC3rSXg" bpdm:senderId="_bonN4NfKEee2L7fDC3rSXg" bpdm:receiverId="_j37YsNfKEee2L7fDC3rSXg" bpdm:senderName="Get results" bpdm:receiverName="Send Results" bpdm:receiverPoolId="_B8ixENZFEeeaesenvnhebw" bpdm:dataobjectPointer="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType" bpdm:bodyPartElemName="Get_resultsResponse" bpdm:bodyPartElemType="{http://www.example.org/Launchpoint}BpmAckType"></wsdl:output>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
+  </pnlk:partnerLinkType>
   <pnlk:partnerLinkType name="Process_IQ_CaseAndCase_Evaluator" bpdm:poolOneId="_xRG1oLwFEee_aqBavMEZDg" bpdm:poolOneIsExecutable="true" bpdm:poolOneName="Process IQ Case" bpdm:poolTwoId="_0uuMALwFEee_aqBavMEZDg" bpdm:poolTwoIsExecutable="false" bpdm:poolTwoName="Case Evaluator">
     <pnlk:role name="Process_IQ_Case_for_Case_Evaluator" portType="Process_IQ_Case:ForCase_Evaluator" bpdm:thisPoolId="_xRG1oLwFEee_aqBavMEZDg">
       <wsdl:portType name="ForCase_Evaluator">
@@ -38,5 +67,17 @@
         </wsdl:operation>
       </wsdl:portType>
     </pnlk:role>
+  </pnlk:partnerLinkType>
+  <pnlk:partnerLinkType name="Queue_MonitorimplicitPartnerAndQueue_Monitor" bpdm:poolOneId="_2mWjgNfGEee2L7fDC3rSXg" bpdm:poolOneIsExecutable="true" bpdm:poolOneName="Queue Monitor" bpdm:poolTwoId="_2mWjgNfGEee2L7fDC3rSXgimplicitPartner" bpdm:poolTwoIsExecutable="false" bpdm:poolTwoName="Queue MonitorimplicitPartner">
+    <pnlk:role name="Queue_Monitor_for_Queue_MonitorimplicitPartner" portType="Queue_Monitor:ForQueue_MonitorimplicitPartner" bpdm:thisPoolId="_2mWjgNfGEee2L7fDC3rSXg">
+      <wsdl:portType name="ForQueue_MonitorimplicitPartner">
+        <wsdl:operation name="EventStartTimer" bpdm:canid="_NJxGENfHEee2L7fDC3rSXg._NJxGENfHEee2L7fDC3rSXgimplicitTask." bpdm:dataobjectPointer="project:///Processes/Core/ProcessIQCase-Queue_Monitor.startEvent.wsdl?wsdloperation={http://bpms.everteam.com/LaunchPointProcess}StartTimer_Port/StartTimer">
+          <wsdl:input message="ns:null" name="EventStartTimer" bpdm:canid="_NJxGENfHEee2L7fDC3rSXgIncoming" bpdm:senderId="_NJxGENfHEee2L7fDC3rSXgimplicitTask" bpdm:receiverId="_NJxGENfHEee2L7fDC3rSXg" bpdm:senderName="EventStartTimer-implicitTask" bpdm:receiverName="EventStartTimer" bpdm:receiverPoolId="_2mWjgNfGEee2L7fDC3rSXg" bpdm:dataobjectPointer="project:///Processes/Core/ProcessIQCase-Queue_Monitor.startEvent.wsdl?messageForOperation={http://bpms.everteam.com/LaunchPointProcess}StartTimer_Port/StartTimer/input/null"></wsdl:input>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
+  </pnlk:partnerLinkType>
+  <pnlk:partnerLinkType name="Queue_MonitorimplicitPartnerAndQueue_MonitorForStartTimer_PortPlk" bpdm:canPlkId="_2mWjgNfGEee2L7fDC3rSXgimplicitPartner-_2mWjgNfGEee2L7fDC3rSXg">
+    <pnlk:role name="Queue_Monitor_for_Queue_MonitorimplicitPartner" portType="ns:StartTimer_Port"></pnlk:role>
   </pnlk:partnerLinkType>
 </wsdl:definitions>

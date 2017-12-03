@@ -480,4 +480,25 @@
     	</sequence>
     </complexType>
     <element name="lpCases" type="tns:listCasesType"></element>
+
+    <complexType name="IQBatchType">
+    	<sequence>
+    		<element name="clientId" type="int"></element>
+    		<element name="cases" type="tns:IQDBCaseType" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="IQDBCaseType">
+    	<sequence>
+    		<element name="caseId" type="int"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="IQBatches" type="tns:IQBatchesType"></element>
+    
+    <complexType name="IQBatchesType">
+    	<sequence>
+    		<element name="batches" type="tns:IQBatchType" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
 </schema>

@@ -1,0 +1,45 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:this="http://thisdiagram/client" xmlns:process="http://thisdiagram/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:tns="http://www.example.org/Launchpoint" xmlns:ProcessIQCase-Queue_Monitor="http://thisproject/Processes/Core/ProcessIQCase/Queue_Monitor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/client">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_LxUsINa5Eeeaesenvnhebw"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/client" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="process" bpdm:comment="contrib=&apos;partner-pool:///_LxUsINa5Eeeaesenvnhebw"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/ProcessIQCase/Queue_Monitor" bpdm:prefix="ProcessIQCase-Queue_Monitor" bpdm:comment="contrib=&apos;project:///Processes/Core/ProcessIQCase-Queue_Monitor.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_LxUsINa5Eeeaesenvnhebw" bpdm:label="process"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessIQCase-Queue_Monitor.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="client" bpdm:ID="_KeUMINa5Eeeaesenvnhebw">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="processAndClientForCanonicPortPlkVar" partnerLinkType="diag:processAndClientForCanonicPortPlk" initializePartnerRole="yes" myRole="client_for_process" bpdm:enableSharing="false" bpdm:providedService="ProcessIQCase-Queue_Monitor:CanonicServiceForDatabase" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="epr" bpdm:providedIsDefault="true" partnerRole="process_for_client" bpdm:invokedService="process:CanonicServiceForclient" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/client" bpdm:invokedIsDefault="true" bpdm:clientTasks="_KeUMINa5Eeeaesenvnhebw:_KeVaQNa5Eeeaesenvnhebw, _KeUMINa5Eeeaesenvnhebw:_CicRANbVEeemJNz46KA2Dg" bpdm:isManaged="true" bpdm:otherPoolId="_LxUsINa5Eeeaesenvnhebw"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="processEventStartMessageRequest1" messageType="process:Get_case_requestRequest" bpdm:id="_y6Bl8Na5Eeeaesenvnhebw" bpdm:messageIds=" out:_y59UgNa5Eeeaesenvnhebw">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="process:Get_case_requestRequest" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="processEventStartMessageResponse1" messageType="process:Get_case_requestResponse" bpdm:id="_zlgL4Na5Eeeaesenvnhebw" bpdm:messageIds="inc:_zlUlsNa5Eeeaesenvnhebw"/>
+            <bpel:variable name="thisSend_ResultsRequest1Msg" messageType="ProcessIQCase-Queue_Monitor:Get_resultsRequest" binding="ProcessIQCase-Queue_Monitor:DatabaseAndQueue_MonitorForCanonicPortPlkServiceBinding" operation="Get_results" opMsgType="0" bpdm:id="_EyJp0NbVEeemJNz46KA2Dg" bpdm:messageIds="inc:_ExmQMNbVEeemJNz46KA2Dg"/>
+            <bpel:variable name="processIQCase-Process_IQ_CaseGet_ResultsResponse2Msg" messageType="ProcessIQCase-Queue_Monitor:Get_resultsResponse" binding="ProcessIQCase-Queue_Monitor:DatabaseAndQueue_MonitorForCanonicPortPlkServiceBinding" operation="Get_results" opMsgType="1" bpdm:id="_Ff4SgNbVEeemJNz46KA2Dg" bpdm:messageIds=" out:_FfjiYNbVEeemJNz46KA2Dg">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="ProcessIQCase-Queue_Monitor:Get_resultsResponse" bpdm:linkedPart="body" bpdm:binding="ProcessIQCase-Queue_Monitor:DatabaseAndQueue_MonitorForCanonicPortPlkServiceBinding" bpdm:opMsgType="1" bpdm:operation="Get_results"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask operation="Get_case_request" partnerLink="processAndClientForCanonicPortPlkVar" portType="process:Forclient" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Request oldest queued cases" bpdm:ID="_KeVaQNa5Eeeaesenvnhebw" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="processEventStartMessageRequest1" bpdm:msgVarScopeId="_KeUMINa5Eeeaesenvnhebw" bpdm:variableIsManaged="true" bpdm:messageType="process:Get_case_requestRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_y59UgNa5Eeeaesenvnhebw"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processEventStartMessageResponse1" bpdm:msgVarScopeId="_KeUMINa5Eeeaesenvnhebw" bpdm:variableIsManaged="true" bpdm:messageType="process:Get_case_requestResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_zlUlsNa5Eeeaesenvnhebw"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="Get_results" partnerLink="processAndClientForCanonicPortPlkVar" portType="ProcessIQCase-Queue_Monitor:ForDatabase" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send Results" bpdm:ID="_CicRANbVEeemJNz46KA2Dg" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisSend_ResultsRequest1Msg" bpdm:msgVarScopeId="_KeUMINa5Eeeaesenvnhebw" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Queue_Monitor:Get_resultsRequest" bpdm:binding="ProcessIQCase-Queue_Monitor:DatabaseAndQueue_MonitorForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_ExmQMNbVEeemJNz46KA2Dg"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="processIQCase-Process_IQ_CaseGet_ResultsResponse2Msg" bpdm:msgVarScopeId="_KeUMINa5Eeeaesenvnhebw" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Queue_Monitor:Get_resultsResponse" bpdm:binding="ProcessIQCase-Queue_Monitor:DatabaseAndQueue_MonitorForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_FfjiYNbVEeemJNz46KA2Dg"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>

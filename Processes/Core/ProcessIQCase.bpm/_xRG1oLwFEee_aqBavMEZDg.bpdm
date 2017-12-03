@@ -12,6 +12,7 @@
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Case_Evaluator" bpdm:prefix="Case_Evaluator" bpdm:comment="contrib=&apos;partner-pool:///_0uuMALwFEee_aqBavMEZDg"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Process_IQ_Case" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <vprop:property name="caseId" type="xs:int"/>
             <wsdl:portType name="ForDatabase">
                 <wsdl:operation name="Get_Results" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw">
                     <wsdl:input message="this:Get_ResultsRequest" name="Get_Results"/>
@@ -26,7 +27,6 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForCase_Evaluator" type="this:ForCase_Evaluator" bpdm:isSynchronized="true"/>
-            <vprop:property name="caseId" type="xs:int"/>
             <xs:element name="Get_ResultsRequest" type="tns:IQQueuedType" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw"/>
             <wsdl:message name="Get_ResultsRequest" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw">
                 <wsdl:part name="body" element="this:Get_ResultsRequest"/>
@@ -93,26 +93,16 @@
         <bpel:sequence>
             <bpdm:messagingtask eventType="start: message" operation="Receive_IQ" partnerLink="process_IQ_CaseAndCase_EvaluatorPlkVar" portType="this:ForCase_Evaluator" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive IQ" bpdm:ID="_FHX1cLwGEee_aqBavMEZDg" bpdm:isHeaderAuthorizationAware="yes">
                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisEventStartMessageRequest1" bpdm:msgVarScopeId="_xRG1oLwFEee_aqBavMEZDg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_IQRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_HPVAcLwGEee_aqBavMEZDg">
-                    <bpel:correlation set="caseCorrelationSet" initiate="join" pattern="response"></bpel:correlation>
+                    <bpel:correlation set="caseCorrelationSet" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$ode:pid</bpel:from>
-                        <bpel:to>$thisEventStartMessageResponse1.body/tns:pid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1778776272" targetPath="$thisEventStartMessageResponse1.body/tns:pid" targetedBy="281586660-arg0"></mapper:vertice>
-  <mapper:vertice id="281586660" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$thisEventStartMessageResponse1.body/tns:pid</bpel:to><mapper:mapperLink><mapper:vertice id="1778776272" targetPath="$thisEventStartMessageResponse1.body/tns:pid" targetedBy="281586660-arg0"></mapper:vertice><mapper:vertice id="281586660" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>current-dateTime()</bpel:from>
-                        <bpel:to>$thisEventStartMessageResponse1.body/tns:timestamp</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="857153604" targetPath="$thisEventStartMessageResponse1.body/tns:timestamp" targetedBy="1786050238-arg0"></mapper:vertice>
-  <mapper:vertice id="1786050238" dimension="109x24" location="576,84">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$thisEventStartMessageResponse1.body/tns:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="857153604" targetPath="$thisEventStartMessageResponse1.body/tns:timestamp" targetedBy="1786050238-arg0"></mapper:vertice><mapper:vertice id="1786050238" dimension="109x24" location="576,84"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisEventStartMessageResponse1" bpdm:msgVarScopeId="_xRG1oLwFEee_aqBavMEZDg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_IQResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_IHSjMLwGEee_aqBavMEZDg"></bpdm:linkset>
@@ -124,26 +114,16 @@
             </bpdm:messagingtask>
             <bpdm:messagingtask operation="Get_Results" partnerLink="process_IQ_CaseAndDatabaseForCanonicPortPlkVar" portType="this:ForDatabase" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get Results" bpdm:ID="_geaigNZGEeeaesenvnhebw" bpdm:isHeaderAuthorizationAware="yes">
                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisGet_ResultsRequest2Msg" bpdm:msgVarScopeId="_xRG1oLwFEee_aqBavMEZDg" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_ResultsRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_Kb-rANbTEeecXoBS3MwKtg">
-                    <bpel:correlation set="caseCorrelationSet" initiate="join" pattern="response"></bpel:correlation>
+                    <bpel:correlation set="caseCorrelationSet" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$ode:pid</bpel:from>
-                        <bpel:to>$thisGet_ResultsResponse2Msg.body/tns:pid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1579497902" targetPath="$thisGet_ResultsResponse2Msg.body/tns:pid" targetedBy="572890105-arg0"></mapper:vertice>
-  <mapper:vertice id="572890105" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$thisGet_ResultsResponse2Msg.body/tns:pid</bpel:to><mapper:mapperLink><mapper:vertice id="1579497902" targetPath="$thisGet_ResultsResponse2Msg.body/tns:pid" targetedBy="572890105-arg0"></mapper:vertice><mapper:vertice id="572890105" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>current-dateTime()</bpel:from>
-                        <bpel:to>$thisGet_ResultsResponse2Msg.body/tns:timestamp</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="661152705" targetPath="$thisGet_ResultsResponse2Msg.body/tns:timestamp" targetedBy="1341263751-arg0"></mapper:vertice>
-  <mapper:vertice id="1341263751" dimension="109x24" location="560,103">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$thisGet_ResultsResponse2Msg.body/tns:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="661152705" targetPath="$thisGet_ResultsResponse2Msg.body/tns:timestamp" targetedBy="1341263751-arg0"></mapper:vertice><mapper:vertice id="1341263751" dimension="109x24" location="560,103"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisGet_ResultsResponse2Msg" bpdm:msgVarScopeId="_xRG1oLwFEee_aqBavMEZDg" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_ResultsResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_LFN1QNbTEeecXoBS3MwKtg"></bpdm:linkset>
@@ -151,17 +131,7 @@
             <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_WbIVINZFEeeaesenvnhebw" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                 <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_dhJVkNZFEeeaesenvnhebw" bpdm:targetDisplayName="default"></bpdm:linkset>
                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_dGGYUNZFEeeaesenvnhebw" bpdm:targetDisplayName="Enqueue IQ">
-                    <bpel:condition>false() = $thisGet_ResultsRequest2Msg.body/tns:iqQueued
-<mapper:mapperLink>
-  <mapper:vertice id="400137743" targetPath="$condition" targetedBy="1531452791-arg2"></mapper:vertice>
-  <mapper:vertice id="1531452791" dimension="79x24" location="480,108">
-    <mapper:value>=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="2091990614" dimension="79x24" location="396,48" targetedBy="1531452791-arg0">
-    <mapper:value>false()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="297112209" sourcePath="$thisGet_ResultsRequest2Msg.body/tns:iqQueued" targetedBy="1531452791-arg1"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                    <bpel:condition>false() = $thisGet_ResultsRequest2Msg.body/tns:iqQueued<mapper:mapperLink><mapper:vertice id="400137743" targetPath="$condition" targetedBy="1531452791-arg2"></mapper:vertice><mapper:vertice id="1531452791" dimension="79x24" location="480,108"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="2091990614" dimension="79x24" location="396,48" targetedBy="1531452791-arg0"><mapper:value>false()</mapper:value></mapper:vertice><mapper:vertice id="297112209" sourcePath="$thisGet_ResultsRequest2Msg.body/tns:iqQueued" targetedBy="1531452791-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                 </bpdm:linkset>
                 <bpel:sequence></bpel:sequence>
                 <bpel:sequence>
@@ -169,21 +139,15 @@
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>$thisEventStartMessageRequest1.body/tns:CaseId</bpel:from>
-                                <bpel:to>$IQQueue/metrics:caseId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="877989416" targetPath="$IQQueue/metrics:caseId" targetedBy="711409363-arg0"></mapper:vertice>
-  <mapper:vertice id="711409363" sourcePath="$thisEventStartMessageRequest1.body/tns:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$IQQueue/metrics:caseId</bpel:to><mapper:mapperLink><mapper:vertice id="877989416" targetPath="$IQQueue/metrics:caseId" targetedBy="711409363-arg0"></mapper:vertice><mapper:vertice id="711409363" sourcePath="$thisEventStartMessageRequest1.body/tns:CaseId"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>current-dateTime()</bpel:from>
-                                <bpel:to>$IQQueue/metrics:enqueuedAt</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1145589483" targetPath="$IQQueue/metrics:enqueuedAt" targetedBy="1089828496-arg0"></mapper:vertice>
-  <mapper:vertice id="1089828496" dimension="109x24" location="519,172">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$IQQueue/metrics:enqueuedAt</bpel:to><mapper:mapperLink><mapper:vertice id="1145589483" targetPath="$IQQueue/metrics:enqueuedAt" targetedBy="1089828496-arg0"></mapper:vertice><mapper:vertice id="1089828496" dimension="109x24" location="519,172"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>$thisEventStartMessageRequest1.body/tns:ClientId</bpel:from>
+                                <bpel:to>$IQQueue/metrics:clientId</bpel:to><mapper:mapperLink><mapper:vertice id="1600769978" targetPath="$IQQueue/metrics:clientId" targetedBy="2068120955-arg0"></mapper:vertice><mapper:vertice id="2068120955" sourcePath="$thisEventStartMessageRequest1.body/tns:ClientId"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>

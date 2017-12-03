@@ -1,9 +1,9 @@
 ﻿-- External variable database definition for PostGres 
--- Generated 12/1/17 5:43 PM
+-- Generated 12/2/17 7:37 PM
 -- Descriptor: Metrics/metrics.xvar (currently edited)
 -- External variable IQQueue
 DROP TABLE IF EXISTS IQQueue;
-CREATE TABLE IQQueue (CASEID INTEGER, ENQUEUEDAT TIMESTAMP);
+CREATE TABLE IQQueue (CASEID INTEGER, ENQUEUEDAT TIMESTAMP, CLIENTID INTEGER);
 CREATE INDEX IQQueue_KEYS ON IQQueue (CASEID);
 -- External variable ExecutionError
 DROP TABLE IF EXISTS ExecutionError;
