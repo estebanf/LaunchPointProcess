@@ -38,13 +38,16 @@
 			<Launchpoint:clientId>
 				<xsl:value-of select="getOldestCases:clientid" />
 			</Launchpoint:clientId>
-			<Launchpoint:cases>
 				<xsl:for-each select="key('groups', $currentGroup)">
-					<Launchpoint:caseId>
-						<xsl:value-of select="getOldestCases:caseid" />
-					</Launchpoint:caseId>
+					<Launchpoint:cases>
+						<Launchpoint:caseId>
+							<xsl:value-of select="getOldestCases:caseid" />
+						</Launchpoint:caseId>
+						<Launchpoint:pid>
+							<xsl:value-of select="getOldestCases:id" />
+						</Launchpoint:pid>
+					</Launchpoint:cases>
 				</xsl:for-each>
-			</Launchpoint:cases>
 		</Launchpoint:batches>
 	</xsl:template>
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jdbc:descriptor wsdlLocation="getCaseQueued.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:getcasequeuedservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
     <jdbc:service name="getCaseQueuedService">
-        <jdbc:operation name="urn:getCaseQueued" sqlStatement="select * from iqqueue where caseid = ?;" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:getcasequeuedservice">
+        <jdbc:operation name="urn:getCaseQueued" sqlStatement="select * from iqtracking where caseid = ? and not iqenqueued;" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:getcasequeuedservice">
             <jdbc:input>
                 <jdbc:parameter>
                     <jdbc:mode>1</jdbc:mode>
@@ -31,7 +31,7 @@
             <jdbc:databaseUrl>jdbc:postgresql://192.168.241.208/postgres</jdbc:databaseUrl>
             <jdbc:databaseName>postgres</jdbc:databaseName>
             <jdbc:userName>postgres</jdbc:userName>
-            <jdbc:password>decrypt[R4I847FJ6hLH8tGQgiO4UJNw6WynYOk4]</jdbc:password>
+            <jdbc:password>decrypt[qvRORGiWRjTkMl9e16RdVuADLj1vQpwF]</jdbc:password>
         </jdbc:connection>
     </jdbc:service>
 </jdbc:descriptor>
