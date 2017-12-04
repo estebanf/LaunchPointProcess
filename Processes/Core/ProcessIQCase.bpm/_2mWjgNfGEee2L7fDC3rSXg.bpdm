@@ -75,40 +75,23 @@
                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="nsStartTimerRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:StartTimer_Input" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_NJxGENfHEee2L7fDC3rSXgIncoming"></bpdm:linkset>
             </bpdm:messagingtask>
             <bpdm:messagingtask operation="Get_case_request" partnerLink="databaseAndQueue_MonitorForCanonicPortPlkVar" portType="getOldestQueuedCases-process:Forclient" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Select oldest 2500" bpdm:ID="_SXVXINfHEee2L7fDC3rSXg" bpdm:isHeaderAuthorizationAware="no">
-                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="databaseQuery_DatabaseRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getOldestQueuedCases-process:Get_case_requestRequest" bpdm:binding="getOldestQueuedCases-process:processAndClientForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_AZQEINfLEee2L7fDC3rSXg"></bpdm:linkset>
-                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="databaseQuery_DatabaseResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="getOldestQueuedCases-process:Get_case_requestResponse" bpdm:binding="getOldestQueuedCases-process:processAndClientForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_BFmMwNfLEee2L7fDC3rSXg"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="databaseQuery_DatabaseRequest1Msg" bpdm:msgVarScopeId="_2mWjgNfGEee2L7fDC3rSXg" bpdm:variableIsManaged="true" bpdm:messageType="getOldestQueuedCases-process:Get_case_requestRequest" bpdm:binding="getOldestQueuedCases-process:processAndClientForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_AZQEINfLEee2L7fDC3rSXg"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="databaseQuery_DatabaseResponse2Msg" bpdm:msgVarScopeId="_2mWjgNfGEee2L7fDC3rSXg" bpdm:variableIsManaged="true" bpdm:messageType="getOldestQueuedCases-process:Get_case_requestResponse" bpdm:binding="getOldestQueuedCases-process:processAndClientForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_BFmMwNfLEee2L7fDC3rSXg"></bpdm:linkset>
             </bpdm:messagingtask>
             <bpdm:messagingtask operation="Get_results" partnerLink="databaseAndQueue_MonitorForCanonicPortPlkVar" portType="this:ForDatabase" isMyRole="true" enableSharing="false" route="all" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get results" bpdm:ID="_bonN4NfKEee2L7fDC3rSXg" bpdm:isHeaderAuthorizationAware="yes">
                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisGet_resultsRequest1Msg" bpdm:msgVarScopeId="_2mWjgNfGEee2L7fDC3rSXg" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_resultsRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_DfT2INfLEee2L7fDC3rSXg"></bpdm:linkset>
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$thisGet_resultsRequest1Msg.body</bpel:from>
-                        <bpel:to>$IQBatchesType</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1307979364" targetPath="$IQBatchesType" targetedBy="1294106929-arg0"></mapper:vertice>
-  <mapper:vertice id="1294106929" sourcePath="$thisGet_resultsRequest1Msg.body"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$IQBatchesType</bpel:to><mapper:mapperLink><mapper:vertice id="1307979364" targetPath="$IQBatchesType" targetedBy="1294106929-arg0"></mapper:vertice><mapper:vertice id="1294106929" sourcePath="$thisGet_resultsRequest1Msg.body"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisGet_resultsResponse2Msg" bpdm:msgVarScopeId="_2mWjgNfGEee2L7fDC3rSXg" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_resultsResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_EeUcENfLEee2L7fDC3rSXg"></bpdm:linkset>
             </bpdm:messagingtask>
             <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Iterate through clients" bpdm:ID="_xFaHkNiDEee2ItVqPC1yfA">
                 <bpdm:linkset bpdm:type="loop" bpdm:loopType="forEach" bpdm:backEdgeParticipantType="none" parallel="no" counterName="batchCounter" bpdm:isBackEdgeContributor="no">
-                    <bpel:condition bpdm:loopType="forEachStartCounter">1
-<mapper:mapperLink>
-  <mapper:vertice id="1077387780" targetPath="$Start counter" targetedBy="458845729-arg0"></mapper:vertice>
-  <mapper:vertice id="458845729" dimension="79x24" location="600,12">
-    <mapper:value>1</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink></bpel:condition>
-                    <bpel:condition bpdm:loopType="forEachFinalCounter">count($thisGet_resultsRequest1Msg.body/Launchpoint:batches)
-<mapper:mapperLink>
-  <mapper:vertice id="1295675429" targetPath="$Final counter" targetedBy="1878790819-arg1"></mapper:vertice>
-  <mapper:vertice id="1878790819" dimension="79x24" location="600,60">
-    <mapper:value>count()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="273179135" sourcePath="$thisGet_resultsRequest1Msg.body/Launchpoint:batches" targetedBy="1878790819-arg0"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                    <bpel:condition bpdm:loopType="forEachStartCounter">1<mapper:mapperLink><mapper:vertice id="1077387780" targetPath="$Start counter" targetedBy="458845729-arg0"></mapper:vertice><mapper:vertice id="458845729" dimension="79x24" location="600,12"><mapper:value>1</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
+                    <bpel:condition bpdm:loopType="forEachFinalCounter">count($thisGet_resultsRequest1Msg.body/Launchpoint:batches)<mapper:mapperLink><mapper:vertice id="1295675429" targetPath="$Final counter" targetedBy="1878790819-arg1"></mapper:vertice><mapper:vertice id="1878790819" dimension="79x24" location="600,60"><mapper:value>count()</mapper:value></mapper:vertice><mapper:vertice id="273179135" sourcePath="$thisGet_resultsRequest1Msg.body/Launchpoint:batches" targetedBy="1878790819-arg0"></mapper:vertice></mapper:mapperLink></bpel:condition>
                 </bpdm:linkset>
                 <bpel:variables>
                     <bpel:variable name="IQBatchType" type="Launchpoint:IQBatchType" bpdm:id="_Tp5vANiHEee2ItVqPC1yfA">
@@ -122,35 +105,14 @@
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>$IQBatchesType/Launchpoint:batches[$batchCounter]</bpel:from>
-                                <bpel:to>$IQBatchType</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="550062327" targetPath="$IQBatchType" targetedBy="1652249683-arg2"></mapper:vertice>
-  <mapper:vertice id="1652249683" dimension="79x24" location="346,50">
-    <mapper:value>[]</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="825479460" sourcePath="$IQBatchesType/Launchpoint:batches" targetedBy="1652249683-arg0"></mapper:vertice>
-  <mapper:vertice id="1226311560" sourcePath="$batchCounter" targetedBy="1652249683-arg1"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$IQBatchType</bpel:to><mapper:mapperLink><mapper:vertice id="550062327" targetPath="$IQBatchType" targetedBy="1652249683-arg2"></mapper:vertice><mapper:vertice id="1652249683" dimension="79x24" location="346,50"><mapper:value>[]</mapper:value></mapper:vertice><mapper:vertice id="825479460" sourcePath="$IQBatchesType/Launchpoint:batches" targetedBy="1652249683-arg0"></mapper:vertice><mapper:vertice id="1226311560" sourcePath="$batchCounter" targetedBy="1652249683-arg1"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>
                     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Iterate through cases" bpdm:ID="_cG87MNiEEee2ItVqPC1yfA">
                         <bpdm:linkset bpdm:type="loop" bpdm:loopType="forEach" bpdm:backEdgeParticipantType="none" parallel="no" counterName="caseCounter" bpdm:isBackEdgeContributor="no">
-                            <bpel:condition bpdm:loopType="forEachStartCounter">1
-<mapper:mapperLink>
-  <mapper:vertice id="272439332" targetPath="$Start counter" targetedBy="857679299-arg0"></mapper:vertice>
-  <mapper:vertice id="857679299" dimension="79x24" location="588,12">
-    <mapper:value>1</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink></bpel:condition>
-                            <bpel:condition bpdm:loopType="forEachFinalCounter">count($IQBatchType/Launchpoint:cases)
-<mapper:mapperLink>
-  <mapper:vertice id="1077409805" targetPath="$Final counter" targetedBy="1570826552-arg1"></mapper:vertice>
-  <mapper:vertice id="1570826552" dimension="79x24" location="552,73">
-    <mapper:value>count()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="2110566167" sourcePath="$IQBatchType/Launchpoint:cases" targetedBy="1570826552-arg0"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                            <bpel:condition bpdm:loopType="forEachStartCounter">1<mapper:mapperLink><mapper:vertice id="272439332" targetPath="$Start counter" targetedBy="857679299-arg0"></mapper:vertice><mapper:vertice id="857679299" dimension="79x24" location="588,12"><mapper:value>1</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
+                            <bpel:condition bpdm:loopType="forEachFinalCounter">count($IQBatchType/Launchpoint:cases)<mapper:mapperLink><mapper:vertice id="1077409805" targetPath="$Final counter" targetedBy="1570826552-arg1"></mapper:vertice><mapper:vertice id="1570826552" dimension="79x24" location="552,73"><mapper:value>count()</mapper:value></mapper:vertice><mapper:vertice id="2110566167" sourcePath="$IQBatchType/Launchpoint:cases" targetedBy="1570826552-arg0"></mapper:vertice></mapper:mapperLink></bpel:condition>
                         </bpdm:linkset>
                         <bpel:variables>
                             <bpel:variable name="IQDBCaseType" type="Launchpoint:IQDBCaseType" bpdm:id="_ozYi0NiKEee2ItVqPC1yfA">
@@ -164,15 +126,7 @@
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>$IQBatchType/Launchpoint:cases[$caseCounter]</bpel:from>
-                                        <bpel:to>$IQDBCaseType</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1324500818" targetPath="$IQDBCaseType" targetedBy="82777297-arg2"></mapper:vertice>
-  <mapper:vertice id="82777297" dimension="79x24" location="543,75">
-    <mapper:value>[]</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1315895691" sourcePath="$IQBatchType/Launchpoint:cases" targetedBy="82777297-arg0"></mapper:vertice>
-  <mapper:vertice id="529241227" sourcePath="$caseCounter" targetedBy="82777297-arg1"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$IQDBCaseType</bpel:to><mapper:mapperLink><mapper:vertice id="1324500818" targetPath="$IQDBCaseType" targetedBy="82777297-arg2"></mapper:vertice><mapper:vertice id="82777297" dimension="79x24" location="543,75"><mapper:value>[]</mapper:value></mapper:vertice><mapper:vertice id="1315895691" sourcePath="$IQBatchType/Launchpoint:cases" targetedBy="82777297-arg0"></mapper:vertice><mapper:vertice id="529241227" sourcePath="$caseCounter" targetedBy="82777297-arg1"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
@@ -182,28 +136,86 @@
                                         <bpel:from>true()</bpel:from>
                                         <bpel:to>$IQTracking/metrics:iqDequeued</bpel:to>
 <mapper:mapperLink>
-  <mapper:vertice id="740206179" targetPath="$IQTracking/metrics:iqDequeued" targetedBy="1220194136-arg0"></mapper:vertice>
-  <mapper:vertice id="1220194136" dimension="79x24" location="420,132">
+  <mapper:vertice id="442208119" targetPath="$IQTracking/metrics:iqDequeued" targetedBy="316752188-arg0"></mapper:vertice>
+  <mapper:vertice id="316752188" dimension="79x24" location="420,144">
     <mapper:value>true()</mapper:value>
   </mapper:vertice>
 </mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>current-dateTime()</bpel:from>
-                                        <bpel:to>$IQTracking/metrics:iqDequeuedAt</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1554384912" targetPath="$IQTracking/metrics:iqDequeuedAt" targetedBy="899832822-arg0"></mapper:vertice>
-  <mapper:vertice id="899832822" dimension="109x24" location="420,171">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$IQTracking/metrics:iqDequeuedAt</bpel:to><mapper:mapperLink><mapper:vertice id="1554384912" targetPath="$IQTracking/metrics:iqDequeuedAt" targetedBy="899832822-arg0"></mapper:vertice><mapper:vertice id="899832822" dimension="109x24" location="420,171"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
-                                        <bpel:from>$IQDBCaseType/Launchpoint:pid</bpel:from>
+                                        <bpel:from>$IQDBCaseType/Launchpoint:id</bpel:from>
                                         <bpel:to>$IQTracking/metrics:id</bpel:to>
 <mapper:mapperLink>
-  <mapper:vertice id="470525391" targetPath="$IQTracking/metrics:id" targetedBy="1234647250-arg0"></mapper:vertice>
-  <mapper:vertice id="1234647250" sourcePath="$IQDBCaseType/Launchpoint:pid"></mapper:vertice>
+  <mapper:vertice id="2084273532" targetPath="$IQTracking/metrics:id" targetedBy="1972511121-arg0"></mapper:vertice>
+  <mapper:vertice id="1972511121" sourcePath="$IQDBCaseType/Launchpoint:id"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$IQDBCaseType/Launchpoint:clientId</bpel:from>
+                                        <bpel:to>$IQTracking/metrics:clientId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1159249917" targetPath="$IQTracking/metrics:clientId" targetedBy="366868341-arg0"></mapper:vertice>
+  <mapper:vertice id="366868341" sourcePath="$IQDBCaseType/Launchpoint:clientId"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$IQDBCaseType/Launchpoint:caseId</bpel:from>
+                                        <bpel:to>$IQTracking/metrics:CaseId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="667714722" targetPath="$IQTracking/metrics:CaseId" targetedBy="1947473530-arg0"></mapper:vertice>
+  <mapper:vertice id="1947473530" sourcePath="$IQDBCaseType/Launchpoint:caseId"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$IQDBCaseType/Launchpoint:iqReceived</bpel:from>
+                                        <bpel:to>$IQTracking/metrics:iqReceived</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="713544719" targetPath="$IQTracking/metrics:iqReceived" targetedBy="1134735372-arg0"></mapper:vertice>
+  <mapper:vertice id="1134735372" sourcePath="$IQDBCaseType/Launchpoint:iqReceived"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$IQDBCaseType/Launchpoint:iqReceivedAt</bpel:from>
+                                        <bpel:to>$IQTracking/metrics:iqReceivedAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1659967748" targetPath="$IQTracking/metrics:iqReceivedAt" targetedBy="1186254299-arg0"></mapper:vertice>
+  <mapper:vertice id="1186254299" sourcePath="$IQDBCaseType/Launchpoint:iqReceivedAt"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$IQDBCaseType/Launchpoint:iqEnqueued</bpel:from>
+                                        <bpel:to>$IQTracking/metrics:iqEnqueued</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="521097942" targetPath="$IQTracking/metrics:iqEnqueued" targetedBy="75073629-arg0"></mapper:vertice>
+  <mapper:vertice id="75073629" sourcePath="$IQDBCaseType/Launchpoint:iqEnqueued"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$IQDBCaseType/Launchpoint:iqEnqueuedAt</bpel:from>
+                                        <bpel:to>$IQTracking/metrics:iqEnqueuedAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1476548395" targetPath="$IQTracking/metrics:iqEnqueuedAt" targetedBy="969417158-arg0"></mapper:vertice>
+  <mapper:vertice id="969417158" sourcePath="$IQDBCaseType/Launchpoint:iqEnqueuedAt"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$IQDBCaseType/Launchpoint:iqSent</bpel:from>
+                                        <bpel:to>$IQTracking/metrics:iqSent</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="228520483" targetPath="$IQTracking/metrics:iqSent" targetedBy="221023291-arg0"></mapper:vertice>
+  <mapper:vertice id="221023291" sourcePath="$IQDBCaseType/Launchpoint:iqSent"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy ignoreMissingFromData="yes">
+                                        <bpel:from>$IQDBCaseType/Launchpoint:iqSentAt</bpel:from>
+                                        <bpel:to>$IQTracking/metrics:iqSentAt</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="992063733" targetPath="$IQTracking/metrics:iqSentAt" targetedBy="2115119751-arg0"></mapper:vertice>
+  <mapper:vertice id="2115119751" sourcePath="$IQDBCaseType/Launchpoint:iqSentAt"></mapper:vertice>
 </mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
