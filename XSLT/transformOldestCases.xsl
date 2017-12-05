@@ -14,7 +14,7 @@
 		$nsGetCaseQueuedResponse2Msg.parameters) Input document as defined in the 
 		mapper: $nsGetCaseQueuedResponse2Msg.parameters -->
 	<xsl:output />
-	<!--No parameters are currently passed to doXslTransform. -->
+	 <xsl:param name="pid"></xsl:param>
 
 
 	<xsl:key name="groups"
@@ -23,6 +23,7 @@
 
 	<xsl:template match="/getOldestCases:getOldestCasesResultSet">
 		<ProcessIQCase-Queue_Monitor:Get_resultsRequest>
+			<Launchpoint:pid><xsl:value-of select="$pid"/></Launchpoint:pid>
 			<xsl:apply-templates
 				select="getOldestCases:rows/getOldestCases:row[generate-id() = generate-id(key('groups', getOldestCases:clientid)[1])]" />
 		</ProcessIQCase-Queue_Monitor:Get_resultsRequest>
@@ -41,16 +42,16 @@
 				<xsl:for-each select="key('groups', $currentGroup)">
 					<Launchpoint:cases>
 						<Launchpoint:id><xsl:value-of select="getOldestCases:id"/></Launchpoint:id>
-						<Launchpoint:clientid><xsl:value-of select="getOldestCases:clientid"/></Launchpoint:clientid>
-						<Launchpoint:caseid><xsl:value-of select="getOldestCases:caseid"/></Launchpoint:caseid>
-						<Launchpoint:iqreceived><xsl:value-of select="getOldestCases:iqreceived"/></Launchpoint:iqreceived>
-						<Launchpoint:iqreceivedat><xsl:value-of select="getOldestCases:iqreceivedat"/></Launchpoint:iqreceivedat>
-						<Launchpoint:iqenqueued><xsl:value-of select="getOldestCases:iqenqueued"/></Launchpoint:iqenqueued>
-						<Launchpoint:iqenqueuedat><xsl:value-of select="getOldestCases:iqenqueuedat"/></Launchpoint:iqenqueuedat>
-						<Launchpoint:iqdequeued><xsl:value-of select="getOldestCases:iqdequeued"/></Launchpoint:iqdequeued>
-						<Launchpoint:iqdequeuedat><xsl:value-of select="getOldestCases:iqdequeuedat"/></Launchpoint:iqdequeuedat>
-						<Launchpoint:iqsent><xsl:value-of select="getOldestCases:iqsent"/></Launchpoint:iqsent>
-						<Launchpoint:iqsentat><xsl:value-of select="getOldestCases:iqsentat"/></Launchpoint:iqsentat>
+						<Launchpoint:clientId><xsl:value-of select="getOldestCases:clientid"/></Launchpoint:clientId>
+						<Launchpoint:caseId><xsl:value-of select="getOldestCases:caseid"/></Launchpoint:caseId>
+						<Launchpoint:iqReceived><xsl:value-of select="getOldestCases:iqreceived"/></Launchpoint:iqReceived>
+						<Launchpoint:iqReceivedAt><xsl:value-of select="getOldestCases:iqreceivedat"/></Launchpoint:iqReceivedAt>
+						<Launchpoint:iqEnqueued><xsl:value-of select="getOldestCases:iqenqueued"/></Launchpoint:iqEnqueued>
+						<Launchpoint:iqEnqueuedAt><xsl:value-of select="getOldestCases:iqenqueuedat"/></Launchpoint:iqEnqueuedAt>
+						<Launchpoint:iqDequeued><xsl:value-of select="getOldestCases:iqdequeued"/></Launchpoint:iqDequeued>
+						<Launchpoint:iqDequeuedAt><xsl:value-of select="getOldestCases:iqdequeuedat"/></Launchpoint:iqDequeuedAt>
+						<Launchpoint:iqSent><xsl:value-of select="getOldestCases:iqsent"/></Launchpoint:iqSent>
+						<Launchpoint:iqSentAt><xsl:value-of select="getOldestCases:iqsentat"/></Launchpoint:iqSentAt>
 <!-- 						<Launchpoint:caseId>
 							<xsl:value-of select="getOldestCases:caseid" />
 						</Launchpoint:caseId>

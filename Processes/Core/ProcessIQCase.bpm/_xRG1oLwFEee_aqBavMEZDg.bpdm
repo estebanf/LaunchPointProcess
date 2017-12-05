@@ -1,6 +1,7 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:customVariable="http://everteam.com/xvar/example" xmlns:getCaseQueued-process="http://thisproject/Processes/Integrations/getCaseQueued/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:tns="http://www.example.org/Launchpoint" xmlns:Database="http://thisdiagram/Database" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Case_Evaluator="http://thisdiagram/Case_Evaluator" xmlns:this="http://thisdiagram/Process_IQ_Case" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Process_IQ_Case">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:Queue_Monitor="http://thisdiagram/Queue_Monitor" xmlns:customVariable="http://everteam.com/xvar/example" xmlns:getCaseQueued-process="http://thisproject/Processes/Integrations/getCaseQueued/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:tns="http://www.example.org/Launchpoint" xmlns:Database="http://thisdiagram/Database" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Case_Evaluator="http://thisdiagram/Case_Evaluator" xmlns:this="http://thisdiagram/Process_IQ_Case" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Process_IQ_Case">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_B8ixENZFEeeaesenvnhebw"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Queue_Monitor" bpdm:prefix="Queue_Monitor" bpdm:comment="contrib=&apos;partner-pool:///_2mWjgNfGEee2L7fDC3rSXg"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="customVariable" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Integrations/getCaseQueued/process" bpdm:prefix="getCaseQueued-process" bpdm:comment="contrib=&apos;project:///Processes/Integrations/getCaseQueued-process.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
@@ -27,6 +28,12 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForCase_Evaluator" type="this:ForCase_Evaluator" bpdm:isSynchronized="true"/>
+            <wsdl:portType name="ForQueue_Monitor">
+                <wsdl:operation name="Receive_sent_signal" bpdm:source="partner-pool:///_2mWjgNfGEee2L7fDC3rSXg">
+                    <wsdl:input message="this:Receive_sent_signalRequest" name="Receive_sent_signal"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForQueue_Monitor" type="this:ForQueue_Monitor" bpdm:isSynchronized="true"/>
             <xs:element name="Get_ResultsRequest" type="tns:IQQueuedType" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw"/>
             <wsdl:message name="Get_ResultsRequest" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw">
                 <wsdl:part name="body" element="this:Get_ResultsRequest"/>
@@ -43,6 +50,10 @@
             <wsdl:message name="Receive_IQResponse" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
                 <wsdl:part name="body" element="this:Receive_IQResponse"/>
             </wsdl:message>
+            <xs:element name="Receive_sent_signalRequest" type="xs:string" bpdm:source="partner-pool:///_2mWjgNfGEee2L7fDC3rSXg"/>
+            <wsdl:message name="Receive_sent_signalRequest" bpdm:source="partner-pool:///_2mWjgNfGEee2L7fDC3rSXg">
+                <wsdl:part name="body" element="this:Receive_sent_signalRequest"/>
+            </wsdl:message>
             <vprop:propertyAlias propertyName="this:caseId" messageType="this:Receive_IQRequest" part="body">
                 <vprop:query>tns:CaseId/text()</vprop:query>
             </vprop:propertyAlias>
@@ -52,6 +63,7 @@
         </bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_B8ixENZFEeeaesenvnhebw" bpdm:label="Database"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_0uuMALwFEee_aqBavMEZDg" bpdm:label="Case Evaluator"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_2mWjgNfGEee2L7fDC3rSXg" bpdm:label="Queue Monitor"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseQueued-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -63,6 +75,7 @@
         <bpel:partnerLinks>
             <bpel:partnerLink name="process_IQ_CaseAndCase_EvaluatorPlkVar" partnerLinkType="diag:Process_IQ_CaseAndCase_Evaluator" myRole="Process_IQ_Case_for_Case_Evaluator" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForCase_Evaluator" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_IQ_Case/Case_Evaluator" bpdm:providedIsDefault="true" bpdm:clientTasks="_xRG1oLwFEee_aqBavMEZDg:_FHX1cLwGEee_aqBavMEZDg" bpdm:isManaged="true" bpdm:otherPoolId="_0uuMALwFEee_aqBavMEZDg"/>
             <bpel:partnerLink name="process_IQ_CaseAndDatabaseForCanonicPortPlkVar" partnerLinkType="diag:Process_IQ_CaseAndDatabaseForCanonicPortPlk" initializePartnerRole="yes" myRole="Process_IQ_Case_for_Database" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForDatabase" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_IQ_Case/Database" bpdm:providedIsDefault="true" partnerRole="Database_for_Process_IQ_Case" bpdm:invokedService="getCaseQueued-process:CanonicServiceForclient" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_xRG1oLwFEee_aqBavMEZDg:_geaigNZGEeeaesenvnhebw, _xRG1oLwFEee_aqBavMEZDg:_A4FwYNbHEeecXoBS3MwKtg" bpdm:isManaged="true" bpdm:otherPoolId="_B8ixENZFEeeaesenvnhebw"/>
+            <bpel:partnerLink name="process_IQ_CaseAndQueue_MonitorPlkVar" partnerLinkType="diag:Process_IQ_CaseAndQueue_Monitor" myRole="Process_IQ_Case_for_Queue_Monitor" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForQueue_Monitor" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_IQ_Case/Queue_Monitor" bpdm:providedIsDefault="true" bpdm:clientTasks="_xRG1oLwFEee_aqBavMEZDg:_ggUcUNLrEeeydOmcLap9Ow" bpdm:isManaged="true" bpdm:otherPoolId="_2mWjgNfGEee2L7fDC3rSXg"/>
         </bpel:partnerLinks>
         <bpel:correlationSets>
             <bpel:correlationSet name="caseCorrelationSet" properties="this:caseId"/>
@@ -88,6 +101,7 @@
             </bpel:variable>
             <bpel:variable name="customVariable" element="customVariable:customVariable" xvar:id="customVariable-_xan-ALwFEee_aqBavMEZDg" xvar:relates-to="customVariable-keys" bpdm:xvarType="customVariable:customVariable" bpdm:id="_xan-ALwFEee_aqBavMEZDg"/>
             <bpel:variable name="IQTracking" element="metrics:IQTracking" xvar:id="IQTracking-_tE5esNZCEeeaesenvnhebw" xvar:relates-to="IQTracking-keys" bpdm:xvarType="metrics:IQTracking" bpdm:id="_tE5esNZCEeeaesenvnhebw"/>
+            <bpel:variable name="thisReceive_sent_signalRequest1Msg" messageType="this:Receive_sent_signalRequest" bpdm:id="_VqDQUNkgEeee0bCkMq0JVw" bpdm:messageIds="inc:_Vp108NkgEeee0bCkMq0JVw"/>
         </bpel:variables>
         <bpel:sequence>
             <bpdm:messagingtask eventType="start: message" operation="Receive_IQ" partnerLink="process_IQ_CaseAndCase_EvaluatorPlkVar" portType="this:ForCase_Evaluator" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive IQ" bpdm:ID="_FHX1cLwGEee_aqBavMEZDg" bpdm:isHeaderAuthorizationAware="yes">
@@ -182,7 +196,9 @@
                 </bpel:sequence>
             </bpdm:gateway>
             <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_WzHXUNZFEeeaesenvnhebw" bpdm:gatewayType="data_xor" bpdm:isMerge="true"></bpdm:gateway>
-            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive sent signal" bpdm:ID="_ggUcUNLrEeeydOmcLap9Ow" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+            <bpdm:messagingtask operation="Receive_sent_signal" partnerLink="process_IQ_CaseAndQueue_MonitorPlkVar" portType="this:ForQueue_Monitor" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive sent signal" bpdm:ID="_ggUcUNLrEeeydOmcLap9Ow" bpdm:isHeaderAuthorizationAware="yes">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_sent_signalRequest1Msg" bpdm:msgVarScopeId="_xRG1oLwFEee_aqBavMEZDg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_sent_signalRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_Vp108NkgEeee0bCkMq0JVw"></bpdm:linkset>
+            </bpdm:messagingtask>
             <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_j5RVINLrEeeydOmcLap9Ow" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
         </bpel:sequence>
     </bpel:scope>

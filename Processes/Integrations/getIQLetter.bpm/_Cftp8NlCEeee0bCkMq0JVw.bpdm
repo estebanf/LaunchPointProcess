@@ -1,0 +1,51 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:this="http://thisdiagram/client" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:ProcessIQCase-Queue_Monitor="http://thisproject/Processes/Core/ProcessIQCase/Queue_Monitor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dcm="http://thisdiagram/dcm" xmlns:GenerateFile="__project:///Schemas/GenerateFile.xsd" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/client">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_GdbcsNlCEeee0bCkMq0JVw"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/client" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/ProcessIQCase/Queue_Monitor" bpdm:prefix="ProcessIQCase-Queue_Monitor" bpdm:comment="contrib=&apos;project:///Processes/Core/ProcessIQCase-Queue_Monitor.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/dcm" bpdm:prefix="dcm" bpdm:comment="contrib=&apos;partner-pool:///_GdbcsNlCEeee0bCkMq0JVw"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/GenerateFile.xsd" bpdm:prefix="GenerateFile" bpdm:comment="contrib=&apos;project:///Schemas/GenerateFile.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_GdbcsNlCEeee0bCkMq0JVw" bpdm:label="dcm"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/GenerateFile.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessIQCase-Queue_Monitor.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="client" bpdm:ID="_Cftp8NlCEeee0bCkMq0JVw">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="dcmAndClientForCanonicPortPlkVar" partnerLinkType="diag:dcmAndClientForCanonicPortPlk" initializePartnerRole="yes" myRole="client_for_dcm" bpdm:enableSharing="false" bpdm:providedService="ProcessIQCase-Queue_Monitor:CanonicServiceForDCM" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="epr" bpdm:providedIsDefault="true" partnerRole="dcm_for_client" bpdm:invokedService="dcm:CanonicServiceForclient" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/dcm/client" bpdm:invokedIsDefault="true" bpdm:clientTasks="_Cftp8NlCEeee0bCkMq0JVw:_RS0R4NlCEeee0bCkMq0JVw, _Cftp8NlCEeee0bCkMq0JVw:_Cfu4ENlCEeee0bCkMq0JVw" bpdm:isManaged="true" bpdm:otherPoolId="_GdbcsNlCEeee0bCkMq0JVw"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="dcmEventStartMessageRequest1" messageType="dcm:EventStartMessageRequest" bpdm:id="_UTlUMNlCEeee0bCkMq0JVw" bpdm:messageIds=" out:_UTf0oNlCEeee0bCkMq0JVw">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="dcm:EventStartMessageRequest" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="dcmEventStartMessageResponse1" messageType="dcm:EventStartMessageResponse" bpdm:id="_UuKXYNlCEeee0bCkMq0JVw" bpdm:messageIds="inc:_UtxV0NlCEeee0bCkMq0JVw"/>
+            <bpel:variable name="thisSend_AckRequest1Msg" messageType="ProcessIQCase-Queue_Monitor:Get_DCM_Ack.Request" binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorForCanonicPortPlkServiceBinding" operation="Get_DCM_Ack." opMsgType="0" bpdm:id="_r5iR1dlCEeee0bCkMq0JVw" bpdm:messageIds="inc:_r5ZH4NlCEeee0bCkMq0JVw"/>
+            <bpel:variable name="processIQCase-Queue_MonitorGet_DCM_Ack_Response2Msg" messageType="ProcessIQCase-Queue_Monitor:Get_DCM_Ack.Response" binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorForCanonicPortPlkServiceBinding" operation="Get_DCM_Ack." opMsgType="1" bpdm:id="_sj1MANlCEeee0bCkMq0JVw" bpdm:messageIds=" out:_sja8UNlCEeee0bCkMq0JVw">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="ProcessIQCase-Queue_Monitor:Get_DCM_Ack.Response" bpdm:linkedPart="body" bpdm:binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorForCanonicPortPlkServiceBinding" bpdm:opMsgType="1" bpdm:operation="Get_DCM_Ack."></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:flow>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="Get_DCM_Ack." partnerLink="dcmAndClientForCanonicPortPlkVar" portType="ProcessIQCase-Queue_Monitor:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send Ack" bpdm:ID="_RS0R4NlCEeee0bCkMq0JVw" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisSend_AckRequest1Msg" bpdm:msgVarScopeId="_Cftp8NlCEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Queue_Monitor:Get_DCM_Ack.Request" bpdm:binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_r5ZH4NlCEeee0bCkMq0JVw"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="processIQCase-Queue_MonitorGet_DCM_Ack_Response2Msg" bpdm:msgVarScopeId="_Cftp8NlCEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Queue_Monitor:Get_DCM_Ack.Response" bpdm:binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_sja8UNlCEeee0bCkMq0JVw"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="EventStartMessage" partnerLink="dcmAndClientForCanonicPortPlkVar" portType="dcm:Forclient" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Request IQ letter generation" bpdm:ID="_Cfu4ENlCEeee0bCkMq0JVw" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dcmEventStartMessageRequest1" bpdm:msgVarScopeId="_Cftp8NlCEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="dcm:EventStartMessageRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_UTf0oNlCEeee0bCkMq0JVw"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="dcmEventStartMessageResponse1" bpdm:msgVarScopeId="_Cftp8NlCEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="dcm:EventStartMessageResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_UtxV0NlCEeee0bCkMq0JVw"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+        </bpel:flow>
+    </bpel:scope>
+</bpel:process>

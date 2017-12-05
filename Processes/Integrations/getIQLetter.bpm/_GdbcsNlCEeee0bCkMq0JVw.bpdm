@@ -1,0 +1,145 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:GenerateFileService="http://bpms.everteam.com/Services/REST/GenerateFileService.rest" xmlns:diag="http://thisdiagram" xmlns:client="http://thisdiagram/client" xmlns:dcmimplicitPartner="http://thisdiagram/dcmimplicitPartner" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:ProcessIQCase-Queue_Monitor="http://thisproject/Processes/Core/ProcessIQCase/Queue_Monitor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/dcm" xmlns:GenerateFile="__project:///Schemas/GenerateFile.xsd" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/dcm">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/Services/REST/GenerateFileService.rest" bpdm:prefix="GenerateFileService" bpdm:comment="contrib=&apos;project:///Services/REST/GenerateFileService.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_Cftp8NlCEeee0bCkMq0JVw"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/client" bpdm:prefix="client" bpdm:comment="contrib=&apos;partner-pool:///_Cftp8NlCEeee0bCkMq0JVw"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/dcmimplicitPartner" bpdm:prefix="dcmimplicitPartner" bpdm:comment="contrib=&apos;partner-pool:///_GdbcsNlCEeee0bCkMq0JVwimplicitPartner"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/ProcessIQCase/Queue_Monitor" bpdm:prefix="ProcessIQCase-Queue_Monitor" bpdm:comment="contrib=&apos;project:///Processes/Core/ProcessIQCase-Queue_Monitor.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/dcm" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/GenerateFile.xsd" bpdm:prefix="GenerateFile" bpdm:comment="contrib=&apos;project:///Schemas/GenerateFile.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <wsdl:portType name="Forclient">
+                <wsdl:operation name="EventStartMessage" bpdm:source="partner-pool:///_Cftp8NlCEeee0bCkMq0JVw">
+                    <wsdl:input message="this:EventStartMessageRequest" name="EventStartMessage"/>
+                    <wsdl:output message="this:EventStartMessageResponse" name="EventStartMessageResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForclient" type="this:Forclient" bpdm:isSynchronized="true"/>
+            <wsdl:message name="EventStartMessageRequest" bpdm:source="partner-pool:///_Cftp8NlCEeee0bCkMq0JVw">
+                <wsdl:part name="body" element="GenerateFile:iob_request_root"/>
+            </wsdl:message>
+            <xs:element name="EventStartMessageResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Cftp8NlCEeee0bCkMq0JVw"/>
+            <wsdl:message name="EventStartMessageResponse" bpdm:source="partner-pool:///_Cftp8NlCEeee0bCkMq0JVw">
+                <wsdl:part name="body" element="this:EventStartMessageResponse"/>
+            </wsdl:message>
+        </bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_Cftp8NlCEeee0bCkMq0JVw" bpdm:label="client"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_GdbcsNlCEeee0bCkMq0JVwimplicitPartner" bpdm:label="dcmimplicitPartner"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessIQCase-Queue_Monitor.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/GenerateFile.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/GenerateFileService.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="dcm" bpdm:ID="_GdbcsNlCEeee0bCkMq0JVw">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="dcmimplicitPartnerAndDcmForHttpPortPlkVar" partnerLinkType="diag:dcmimplicitPartnerAndDcmForHttpPortPlk" initializePartnerRole="yes" partnerRole="dcmimplicitPartner_for_dcm" bpdm:invokedService="GenerateFileService:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://192.168.241.209:9000/api/generateFile" bpdm:invokedIsDefault="true" bpdm:clientTasks="_GdbcsNlCEeee0bCkMq0JVw:_LG2e4NlCEeee0bCkMq0JVw" bpdm:isManaged="true" bpdm:otherPoolId="_GdbcsNlCEeee0bCkMq0JVwimplicitPartner"/>
+            <bpel:partnerLink name="dcmAndClientForCanonicPortPlkVar" partnerLinkType="diag:dcmAndClientForCanonicPortPlk" initializePartnerRole="yes" myRole="dcm_for_client" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForclient" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/dcm/client" bpdm:providedIsDefault="true" partnerRole="client_for_dcm" bpdm:invokedService="ProcessIQCase-Queue_Monitor:CanonicServiceForDCM" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_GdbcsNlCEeee0bCkMq0JVw:_OwNyQNlCEeee0bCkMq0JVw, _GdbcsNlCEeee0bCkMq0JVw:_InGe8NlCEeee0bCkMq0JVw" bpdm:isManaged="true" bpdm:otherPoolId="_Cftp8NlCEeee0bCkMq0JVw"/>
+        </bpel:partnerLinks>
+        <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
+            <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_Gdl0wdlCEeee0bCkMq0JVw" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_Gdl0wdlCEeee0bCkMq0JVw"/>
+            <bpel:variable name="thisEventStartMessageRequest1" messageType="this:EventStartMessageRequest" bpdm:id="_UTsB5dlCEeee0bCkMq0JVw" bpdm:messageIds="inc:_UTf0oNlCEeee0bCkMq0JVw"/>
+            <bpel:variable name="thisEventStartMessageResponse1" messageType="this:EventStartMessageResponse" bpdm:id="_Ut9jENlCEeee0bCkMq0JVw" bpdm:messageIds=" out:_UtxV0NlCEeee0bCkMq0JVw">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="this:EventStartMessageResponse" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="generateFileServiceGenerate_FileResponse1Msg" messageType="GenerateFileService:Generate_File_output" binding="GenerateFileService:restBinding" operation="Generate_File" opMsgType="1" bpdm:messageIds="inc:_LG2e4NlCEeee0bCkMq0JVwIncoming"/>
+            <bpel:variable name="generateFileServiceGenerate_FileRequest1Msg" messageType="GenerateFileService:Generate_File_input" binding="GenerateFileService:restBinding" operation="Generate_File" opMsgType="0" bpdm:messageIds=" out:_LG2e4NlCEeee0bCkMq0JVwOutgoing">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="GenerateFileService:Generate_File_input" bpdm:linkedPart="body" bpdm:binding="GenerateFileService:restBinding" bpdm:opMsgType="0" bpdm:operation="Generate_File"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="clientSend_AckRequest1Msg" messageType="ProcessIQCase-Queue_Monitor:Get_DCM_Ack.Request" binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorForCanonicPortPlkServiceBinding" operation="Get_DCM_Ack." opMsgType="0" bpdm:id="_r5encNlCEeee0bCkMq0JVw" bpdm:messageIds=" out:_r5ZH4NlCEeee0bCkMq0JVw">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="ProcessIQCase-Queue_Monitor:Get_DCM_Ack.Request" bpdm:linkedPart="body" bpdm:binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorForCanonicPortPlkServiceBinding" bpdm:opMsgType="0" bpdm:operation="Get_DCM_Ack."></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="processIQCase-Queue_MonitorGet_DCM_Ack_Response2Msg" messageType="ProcessIQCase-Queue_Monitor:Get_DCM_Ack.Response" binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorForCanonicPortPlkServiceBinding" operation="Get_DCM_Ack." opMsgType="1" bpdm:id="_skEckNlCEeee0bCkMq0JVw" bpdm:messageIds="inc:_sja8UNlCEeee0bCkMq0JVw"/>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask eventType="start: message" operation="EventStartMessage" partnerLink="dcmAndClientForCanonicPortPlkVar" portType="this:Forclient" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_Start_Event" bpdm:ID="_InGe8NlCEeee0bCkMq0JVw" bpdm:isHeaderAuthorizationAware="yes">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisEventStartMessageRequest1" bpdm:msgVarScopeId="_GdbcsNlCEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="this:EventStartMessageRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_UTf0oNlCEeee0bCkMq0JVw"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>current-dateTime()</bpel:from>
+                        <bpel:to>$thisEventStartMessageResponse1.body/Launchpoint:timestamp</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="588673073" targetPath="$thisEventStartMessageResponse1.body/Launchpoint:timestamp" targetedBy="1447798090-arg0"></mapper:vertice>
+  <mapper:vertice id="1447798090" dimension="109x24" location="635,98">
+    <mapper:value>current-dateTime()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$ode:pid</bpel:from>
+                        <bpel:to>$thisEventStartMessageResponse1.body/Launchpoint:pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1139125809" targetPath="$thisEventStartMessageResponse1.body/Launchpoint:pid" targetedBy="1484176492-arg0"></mapper:vertice>
+  <mapper:vertice id="1484176492" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisEventStartMessageResponse1" bpdm:msgVarScopeId="_GdbcsNlCEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="this:EventStartMessageResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_UtxV0NlCEeee0bCkMq0JVw"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="Generate_File" partnerLink="dcmimplicitPartnerAndDcmForHttpPortPlkVar" portType="GenerateFileService:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Post to DCM" bpdm:ID="_LG2e4NlCEeee0bCkMq0JVw" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$thisEventStartMessageRequest1.body/BatchId</bpel:from>
+                        <bpel:to>$generateFileServiceGenerate_FileRequest1Msg.body/BatchId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="204958972" targetPath="$generateFileServiceGenerate_FileRequest1Msg.body/BatchId" targetedBy="1882035725-arg0"></mapper:vertice>
+  <mapper:vertice id="1882035725" sourcePath="$thisEventStartMessageRequest1.body/BatchId"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisEventStartMessageRequest1.body/FileType</bpel:from>
+                        <bpel:to>$generateFileServiceGenerate_FileRequest1Msg.body/FileType</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="2069017194" targetPath="$generateFileServiceGenerate_FileRequest1Msg.body/FileType" targetedBy="262686492-arg0"></mapper:vertice>
+  <mapper:vertice id="262686492" sourcePath="$thisEventStartMessageRequest1.body/FileType"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisEventStartMessageRequest1.body/EnvironmentId</bpel:from>
+                        <bpel:to>$generateFileServiceGenerate_FileRequest1Msg.body/EnvironmentId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1796280997" targetPath="$generateFileServiceGenerate_FileRequest1Msg.body/EnvironmentId" targetedBy="339195978-arg0"></mapper:vertice>
+  <mapper:vertice id="339195978" sourcePath="$thisEventStartMessageRequest1.body/EnvironmentId"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisEventStartMessageRequest1.body/CaseId</bpel:from>
+                        <bpel:to>$generateFileServiceGenerate_FileRequest1Msg.body/CaseId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="784695414" targetPath="$generateFileServiceGenerate_FileRequest1Msg.body/CaseId" targetedBy="1022137121-arg0"></mapper:vertice>
+  <mapper:vertice id="1022137121" sourcePath="$thisEventStartMessageRequest1.body/CaseId"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="generateFileServiceGenerate_FileRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="GenerateFileService:Generate_File_input" bpdm:binding="GenerateFileService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_LG2e4NlCEeee0bCkMq0JVwOutgoing"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="generateFileServiceGenerate_FileResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="GenerateFileService:Generate_File_output" bpdm:binding="GenerateFileService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_LG2e4NlCEeee0bCkMq0JVwIncoming"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask eventType="end: message" operation="Get_DCM_Ack." partnerLink="dcmAndClientForCanonicPortPlkVar" portType="ProcessIQCase-Queue_Monitor:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send acknowledgement" bpdm:ID="_OwNyQNlCEeee0bCkMq0JVw" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$thisEventStartMessageRequest1.body/CaseId</bpel:from>
+                        <bpel:to>$clientSend_AckRequest1Msg.body/Launchpoint:caseId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1303386316" targetPath="$clientSend_AckRequest1Msg.body/Launchpoint:caseId" targetedBy="2087849262-arg0"></mapper:vertice>
+  <mapper:vertice id="2087849262" sourcePath="$thisEventStartMessageRequest1.body/CaseId"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="clientSend_AckRequest1Msg" bpdm:msgVarScopeId="_GdbcsNlCEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Queue_Monitor:Get_DCM_Ack.Request" bpdm:binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_r5ZH4NlCEeee0bCkMq0JVw"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processIQCase-Queue_MonitorGet_DCM_Ack_Response2Msg" bpdm:msgVarScopeId="_GdbcsNlCEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Queue_Monitor:Get_DCM_Ack.Response" bpdm:binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_sja8UNlCEeee0bCkMq0JVw"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>

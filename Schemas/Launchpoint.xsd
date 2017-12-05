@@ -508,7 +508,28 @@
     
     <complexType name="IQBatchesType">
     	<sequence>
-    		<element name="batches" type="tns:IQBatchType" maxOccurs="unbounded" minOccurs="1"></element>
+    		<element name="pid" type="int"></element>
+    		<element name="batches" type="tns:IQBatchType"
+    			maxOccurs="unbounded" minOccurs="1">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="IQLetterType">
+    	<sequence>
+    		<element name="BatchId" type="int"></element>
+    		<element name="ClientId" type="int"></element>
+    		<element name="CaseId" type="int"></element>
+    		<element name="FileId" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="PID" type="int"></element>
+
+    <complexType name="GenerateIQLetterAck">
+    	<sequence>
+    		<element name="caseId" type="int"></element>
+    		<element name="response" type="boolean"></element>
     	</sequence>
     </complexType>
 </schema>
