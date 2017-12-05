@@ -5,18 +5,11 @@
 		<complexType>
 			<sequence>
 				<element name="EnvironmentId" type="integer" />
-				<element name="IQBatchId" type="integer" />
+				<element name="IQBatchId" type="string" />
 				<element name="ClientId" type="integer" />
 				<element name="TotalLetterCount" type="integer" />
-				<element name="Cases" maxOccurs="unbounded">
-					<complexType>
-						<sequence>
-							<element name="CaseId" type="integer" />
-							<element name="FileId" type="string" />
-						</sequence>
-						<attribute name="isJsonArray" use="optional" default="true"
-							type="boolean" />
-					</complexType>
+				<element name="Cases" maxOccurs="unbounded"
+					type="tns:CasesType">
 				</element>
 			</sequence>
 		</complexType>

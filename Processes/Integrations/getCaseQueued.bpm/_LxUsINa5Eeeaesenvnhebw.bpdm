@@ -19,7 +19,7 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForclient" type="this:Forclient" bpdm:isSynchronized="true"/>
-            <xs:element name="Get_case_idRequest" type="xs:string" bpdm:source="partner-pool:///_KeUMINa5Eeeaesenvnhebw"/>
+            <xs:element name="Get_case_idRequest" type="xs:int" bpdm:source="partner-pool:///_KeUMINa5Eeeaesenvnhebw"/>
             <wsdl:message name="Get_case_idRequest" bpdm:source="partner-pool:///_KeUMINa5Eeeaesenvnhebw">
                 <wsdl:part name="body" element="this:Get_case_idRequest"/>
             </wsdl:message>
@@ -39,7 +39,7 @@
     </bpdm:dependencies>
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="process" bpdm:ID="_LxUsINa5Eeeaesenvnhebw">
         <bpel:partnerLinks>
-            <bpel:partnerLink name="processimplicitPartnerAndProcessForGetCaseQueuedPortPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForGetCaseQueuedPortPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="ns:getCaseQueuedService" bpdm:invokedPort="getCaseQueuedPort" bpdm:invokedSOAPAddress="http://192.168.241.208:8080/everteam/ode/processes/LaunchPointProcess/Connectors/Database/getCaseQueued" bpdm:invokedIsDefault="true" bpdm:clientTasks="_LxUsINa5Eeeaesenvnhebw:_XT76ENbBEeeaesenvnhebw" bpdm:isManaged="true" bpdm:otherPoolId="_LxUsINa5EeeaesenvnhebwimplicitPartner"/>
+            <bpel:partnerLink name="processimplicitPartnerAndProcessForGetCaseQueuedPortPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForGetCaseQueuedPortPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="ns:getCaseQueuedService" bpdm:invokedPort="getCaseQueuedPort" bpdm:invokedSOAPAddress="http://192.168.241.209:8080/everteam/ode/processes/LaunchPointProcess/Connectors/Database/getCaseQueued" bpdm:invokedIsDefault="true" bpdm:clientTasks="_LxUsINa5Eeeaesenvnhebw:_XT76ENbBEeeaesenvnhebw" bpdm:isManaged="true" bpdm:otherPoolId="_LxUsINa5EeeaesenvnhebwimplicitPartner"/>
             <bpel:partnerLink name="processAndClientForCanonicPortPlkVar" partnerLinkType="diag:processAndClientForCanonicPortPlk" initializePartnerRole="yes" myRole="process_for_client" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForclient" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/client" bpdm:providedIsDefault="true" partnerRole="client_for_process" bpdm:invokedService="ProcessIQCase-Process_IQ_Case:CanonicServiceForDatabase" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_LxUsINa5Eeeaesenvnhebw:_6lTPkNa5Eeeaesenvnhebw, _LxUsINa5Eeeaesenvnhebw:_vtLPcNa5Eeeaesenvnhebw" bpdm:isManaged="true" bpdm:otherPoolId="_KeUMINa5Eeeaesenvnhebw"/>
         </bpel:partnerLinks>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
@@ -92,8 +92,22 @@
             <bpdm:messagingtask eventType="end: message" operation="Get_Results" partnerLink="processAndClientForCanonicPortPlkVar" portType="ProcessIQCase-Process_IQ_Case:ForDatabase" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send case" bpdm:ID="_6lTPkNa5Eeeaesenvnhebw" bpdm:isHeaderAuthorizationAware="no">
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
-                        <bpel:from>bpel:doXslTransform("../../XSLT/transformQueuedCases.xsl", $nsGetCaseQueuedResponse2Msg.parameters)</bpel:from>
-                        <bpel:to>$clientSend_ResultsRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="2114247752" targetPath="$clientSend_ResultsRequest1Msg.body" targetedBy="1593812122-arg2"></mapper:vertice><mapper:vertice id="1593812122" dimension="126x24" location="348,60"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="191849854" dimension="211x24" location="68,8" targetedBy="1593812122-arg0"><mapper:value>"../../XSLT/transformQueuedCases.xsl"</mapper:value></mapper:vertice><mapper:vertice id="711251249" sourcePath="$nsGetCaseQueuedResponse2Msg.parameters" targetedBy="1593812122-arg1"></mapper:vertice></mapper:mapperLink>
+                        <bpel:from>bpel:doXslTransform("../../XSLT/transformQueuedCases.xsl", $nsGetCaseQueuedResponse2Msg.parameters, "caseId", $thisEventStartMessageRequest1.body/text())</bpel:from>
+                        <bpel:to>$clientSend_ResultsRequest1Msg.body</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="332761738" targetPath="$clientSend_ResultsRequest1Msg.body" targetedBy="395504936-arg2"></mapper:vertice>
+  <mapper:vertice id="395504936" dimension="126x24" location="348,60">
+    <mapper:value>bpel:doXslTransform()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="373960626" dimension="211x24" location="68,8" targetedBy="395504936-arg0">
+    <mapper:value>"../../XSLT/transformQueuedCases.xsl"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1303931508" sourcePath="$nsGetCaseQueuedResponse2Msg.parameters" targetedBy="395504936-arg1"></mapper:vertice>
+  <mapper:vertice id="1992384988" dimension="79x24" location="304,123" targetedBy="395504936-arg3">
+    <mapper:value>"caseId"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1679759971" sourcePath="$thisEventStartMessageRequest1.body/text()" targetedBy="395504936-arg4"></mapper:vertice>
+</mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="clientSend_ResultsRequest1Msg" bpdm:msgVarScopeId="_LxUsINa5Eeeaesenvnhebw" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Process_IQ_Case:Get_ResultsRequest" bpdm:binding="ProcessIQCase-Process_IQ_Case:Process_IQ_CaseAndDatabaseForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_ExmQMNbVEeemJNz46KA2Dg"></bpdm:linkset>

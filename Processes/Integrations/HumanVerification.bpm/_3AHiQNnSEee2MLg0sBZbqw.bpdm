@@ -1,0 +1,61 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:this="http://thisdiagram/client" xmlns:process="http://thisdiagram/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/client">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_5yLaMNnSEee2MLg0sBZbqw"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/client" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="process" bpdm:comment="contrib=&apos;partner-pool:///_5yLaMNnSEee2MLg0sBZbqw"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <wsdl:portType name="Forprocess">
+                <wsdl:operation name="Task" bpdm:source="partner-pool:///_5yLaMNnSEee2MLg0sBZbqw">
+                    <wsdl:input message="this:TaskRequest" name="Task"/>
+                    <wsdl:output message="this:TaskResponse" name="TaskResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <xs:element name="TaskRequest" type="xs:string" bpdm:source="partner-pool:///_5yLaMNnSEee2MLg0sBZbqw"/>
+            <wsdl:message name="TaskRequest" bpdm:source="partner-pool:///_5yLaMNnSEee2MLg0sBZbqw">
+                <wsdl:part name="body" element="this:TaskRequest"/>
+            </wsdl:message>
+            <xs:element name="TaskResponse" type="xs:string" bpdm:source="partner-pool:///_5yLaMNnSEee2MLg0sBZbqw"/>
+            <wsdl:message name="TaskResponse" bpdm:source="partner-pool:///_5yLaMNnSEee2MLg0sBZbqw">
+                <wsdl:part name="body" element="this:TaskResponse"/>
+            </wsdl:message>
+            <bpel:binding name="CanonicBindingForprocess" type="this:Forprocess" bpdm:isSynchronized="true"/>
+        </bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_5yLaMNnSEee2MLg0sBZbqw" bpdm:label="process"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="client" bpdm:ID="_3AHiQNnSEee2MLg0sBZbqw">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="processAndClientPlkVar" partnerLinkType="diag:processAndClient" initializePartnerRole="yes" myRole="client_for_process" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForprocess" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/client/process" bpdm:providedIsDefault="true" partnerRole="process_for_client" bpdm:invokedService="process:CanonicServiceForclient" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/client" bpdm:invokedIsDefault="true" bpdm:clientTasks="_3AHiQNnSEee2MLg0sBZbqw:_bOUZ0NnTEee2MLg0sBZbqw, _3AHiQNnSEee2MLg0sBZbqw:_3AIwYNnSEee2MLg0sBZbqw" bpdm:isManaged="true" bpdm:otherPoolId="_5yLaMNnSEee2MLg0sBZbqw"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="processEventStartMessageRequest1" messageType="process:EventStartMessageRequest" bpdm:id="_YWVgENnTEee2MLg0sBZbqw" bpdm:messageIds=" out:_YWLIANnTEee2MLg0sBZbqw">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="process:EventStartMessageRequest" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="processEventStartMessageResponse1" messageType="process:EventStartMessageResponse" bpdm:id="_Yz_scNnTEee2MLg0sBZbqw" bpdm:messageIds="inc:_Yzq8UNnTEee2MLg0sBZbqw"/>
+            <bpel:variable name="thisTaskRequest1Msg" messageType="this:TaskRequest" bpdm:id="_cO334NnTEee2MLg0sBZbqw" bpdm:messageIds="inc:_cOQz4NnTEee2MLg0sBZbqw"/>
+            <bpel:variable name="thisTaskResponse2Msg" messageType="this:TaskResponse" bpdm:id="_cowXgNnTEee2MLg0sBZbqw" bpdm:messageIds=" out:_conNkNnTEee2MLg0sBZbqw">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="this:TaskResponse" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:flow>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="EventStartMessage" partnerLink="processAndClientPlkVar" portType="process:Forclient" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Task" bpdm:ID="_3AIwYNnSEee2MLg0sBZbqw" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="processEventStartMessageRequest1" bpdm:msgVarScopeId="_3AHiQNnSEee2MLg0sBZbqw" bpdm:variableIsManaged="true" bpdm:messageType="process:EventStartMessageRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_YWLIANnTEee2MLg0sBZbqw"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processEventStartMessageResponse1" bpdm:msgVarScopeId="_3AHiQNnSEee2MLg0sBZbqw" bpdm:variableIsManaged="true" bpdm:messageType="process:EventStartMessageResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Yzq8UNnTEee2MLg0sBZbqw"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="Task" partnerLink="processAndClientPlkVar" portType="this:Forprocess" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Task" bpdm:ID="_bOUZ0NnTEee2MLg0sBZbqw" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisTaskRequest1Msg" bpdm:msgVarScopeId="_3AHiQNnSEee2MLg0sBZbqw" bpdm:variableIsManaged="true" bpdm:messageType="this:TaskRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_cOQz4NnTEee2MLg0sBZbqw"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisTaskResponse2Msg" bpdm:msgVarScopeId="_3AHiQNnSEee2MLg0sBZbqw" bpdm:variableIsManaged="true" bpdm:messageType="this:TaskResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_conNkNnTEee2MLg0sBZbqw"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+        </bpel:flow>
+    </bpel:scope>
+</bpel:process>

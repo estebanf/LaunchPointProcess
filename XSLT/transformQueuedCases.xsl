@@ -7,7 +7,8 @@
  Complete doXslTransform: bpel:doXslTransform("../../XSLT/transformQueuedCases.xsl", $nsGetCaseQueuedResponse2Msg.parameters)
  Input document as defined in the mapper: $nsGetCaseQueuedResponse2Msg.parameters-->
   <xsl:output/>
-  <!--No parameters are currently passed to doXslTransform.-->
+  <xsl:param name="caseId"/>
+
   <xsl:template match="/ns:getCaseQueuedResultSet">
     <ProcessIQCase-Process_IQ_Case:Get_ResultsRequest>
       	<xsl:choose>
@@ -16,7 +17,8 @@
 		    <Launchpoint:caseId><xsl:value-of select="ns:rows/ns:row[1]/ns:caseid" /></Launchpoint:caseId>
   		</xsl:when>
   		<xsl:otherwise>
-		    <Launchpoint:iqQueued><xsl:value-of select="false()"/></Launchpoint:iqQueued>		      		
+		    <Launchpoint:iqQueued><xsl:value-of select="false()"/></Launchpoint:iqQueued>
+		    <Launchpoint:caseId><xsl:value-of select="$caseId"/></Launchpoint:caseId>	      		
   		</xsl:otherwise>
   	</xsl:choose>
     </ProcessIQCase-Process_IQ_Case:Get_ResultsRequest>

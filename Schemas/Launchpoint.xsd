@@ -113,7 +113,7 @@
     	</sequence>
     </complexType>
 
-    <element name="caseId" type="string"></element>
+    <element name="caseId" type="int"></element>
 
     <element name="requestId" type="string"></element>
 
@@ -473,6 +473,19 @@
 
     <element name="ErrorRecoveryACK" type="tns:BpmAckType"></element>
 
+	<complexType name="IQBatchResponseType">
+		<sequence>
+			<element name="EnvironmentId" type="integer" />
+			<element name="IQBatchId" type="string" />
+			<element name="ClientId" type="integer" />
+			<element name="TotalLetterCount" type="integer" />
+			<element name="Cases" maxOccurs="unbounded"
+				type="tns:IQBatchResponseCaseType">
+
+			</element>
+		</sequence>
+	</complexType>
+
     <complexType name="IQQueuedType">
     	<sequence>
     		<element name="iqQueued" type="boolean"></element>
@@ -533,4 +546,19 @@
     	</sequence>
     </complexType>
 
+
+    <complexType name="IQBatchAckType">
+    	<sequence>
+    		<element name="iqBatchId" type="string"></element>
+    		<element name="pid" type="int"></element>
+    		<element name="timestamp" type="dateTime"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="IQBatchResponseCaseType">
+    	<sequence>
+    		<element name="CaseId" type="int"></element>
+    		<element name="success" type="boolean"></element>
+    	</sequence>
+    </complexType>
 </schema>
