@@ -1,1 +1,1 @@
-SELECT * FROM iqtracking order by iqenqueuedat asc limit 5;
+SELECT * FROM iqtracking where iqdequeued is NULL order by iqenqueuedat asc limit 5;
