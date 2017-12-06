@@ -43,14 +43,6 @@
             <wsdl:message name="Get_ResultsResponse" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw">
                 <wsdl:part name="body" element="this:Get_ResultsResponse"/>
             </wsdl:message>
-            <xs:element name="Receive_IQRequest" type="tns:IQCaseType" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
-            <wsdl:message name="Receive_IQRequest" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
-                <wsdl:part name="body" element="this:Receive_IQRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_IQResponse" type="tns:BpmAckType" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
-            <wsdl:message name="Receive_IQResponse" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
-                <wsdl:part name="body" element="this:Receive_IQResponse"/>
-            </wsdl:message>
             <xs:element name="Receive_sent_signalRequest" type="xs:int" bpdm:source="partner-pool:///_2mWjgNfGEee2L7fDC3rSXg"/>
             <wsdl:message name="Receive_sent_signalRequest" bpdm:source="partner-pool:///_2mWjgNfGEee2L7fDC3rSXg">
                 <wsdl:part name="body" element="this:Receive_sent_signalRequest"/>
@@ -58,6 +50,14 @@
             <xs:element name="Receive_sent_signalResponse" type="tns:BpmAckType" bpdm:source="partner-pool:///_2mWjgNfGEee2L7fDC3rSXg"/>
             <wsdl:message name="Receive_sent_signalResponse" bpdm:source="partner-pool:///_2mWjgNfGEee2L7fDC3rSXg">
                 <wsdl:part name="body" element="this:Receive_sent_signalResponse"/>
+            </wsdl:message>
+            <xs:element name="Receive_IQRequest" type="tns:IQCaseType" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
+            <wsdl:message name="Receive_IQRequest" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
+                <wsdl:part name="body" element="this:Receive_IQRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_IQResponse" type="tns:BpmAckType" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
+            <wsdl:message name="Receive_IQResponse" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
+                <wsdl:part name="body" element="this:Receive_IQResponse"/>
             </wsdl:message>
             <vprop:propertyAlias propertyName="this:caseId" messageType="this:Receive_IQRequest" part="body">
                 <vprop:query>tns:CaseId/text()</vprop:query>
@@ -73,8 +73,8 @@
             </vprop:propertyAlias>
         </bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_B8ixENZFEeeaesenvnhebw" bpdm:label="Database"/>
-        <bpdm:namespaceContributor bpdm:url="partner-pool:///_0uuMALwFEee_aqBavMEZDg" bpdm:label="Case Evaluator"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_2mWjgNfGEee2L7fDC3rSXg" bpdm:label="Queue Monitor"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_0uuMALwFEee_aqBavMEZDg" bpdm:label="Case Evaluator"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseQueued-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -153,10 +153,6 @@
                     <bpel:copy>
                         <bpel:from>$thisEventStartMessageRequest1.body/tns:CaseId</bpel:from>
                         <bpel:to>$IQTracking/metrics:CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="1763530886" targetPath="$IQTracking/metrics:CaseId" targetedBy="1516799234-arg0"></mapper:vertice><mapper:vertice id="1516799234" sourcePath="$thisEventStartMessageRequest1.body/tns:CaseId"></mapper:vertice></mapper:mapperLink>
-                    </bpel:copy>
-                    <bpel:copy>
-                        <bpel:from>$thisEventStartMessageRequest1.body/tns:ClientId</bpel:from>
-                        <bpel:to>$IQTracking/metrics:clientId</bpel:to><mapper:mapperLink><mapper:vertice id="1919502010" targetPath="$IQTracking/metrics:clientId" targetedBy="599053145-arg0"></mapper:vertice><mapper:vertice id="599053145" sourcePath="$thisEventStartMessageRequest1.body/tns:ClientId"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
             </bpdm:messagingtask>

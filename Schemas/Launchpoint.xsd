@@ -497,14 +497,17 @@
     <complexType name="IQBatchType">
     	<sequence>
     		<element name="clientId" type="int"></element>
-    		<element name="cases" type="tns:IQDBCaseType" maxOccurs="unbounded" minOccurs="1"></element>
+    		<element name="environmentId" type="string"></element>
+    		<element name="cases" type="tns:IQDBCaseType"
+    			maxOccurs="unbounded" minOccurs="1">
+    		</element>
     	</sequence>
     </complexType>
     
     <complexType name="IQDBCaseType">
     	<sequence>
     		<element name="id" type="int"></element>
-    		<element name="clientId" type="int"></element>
+    		<element name="batchId" type="int"></element>
     		<element name="caseId" type="int"></element>
     		<element name="iqReceived" type="boolean"></element>
     		<element name="iqReceivedAt" type="dateTime"></element>

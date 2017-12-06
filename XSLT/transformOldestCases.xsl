@@ -39,10 +39,11 @@
 			<Launchpoint:clientId>
 				<xsl:value-of select="getOldestCases:clientid" />
 			</Launchpoint:clientId>
+			<Launchpoint:environmentId><xsl:value-of select="getOldestCases:environmentid"/></Launchpoint:environmentId>
 				<xsl:for-each select="key('groups', $currentGroup)">
 					<Launchpoint:cases>
 						<Launchpoint:id><xsl:value-of select="getOldestCases:id"/></Launchpoint:id>
-						<Launchpoint:clientId><xsl:value-of select="getOldestCases:clientid"/></Launchpoint:clientId>
+						<Launchpoint:batchId><xsl:value-of select="getOldestCases:batchid"/></Launchpoint:batchId>
 						<Launchpoint:caseId><xsl:value-of select="getOldestCases:caseid"/></Launchpoint:caseId>
 						<Launchpoint:iqReceived><xsl:value-of select="getOldestCases:iqreceived"/></Launchpoint:iqReceived>
 						<Launchpoint:iqReceivedAt><xsl:value-of select="getOldestCases:iqreceivedat"/></Launchpoint:iqReceivedAt>
@@ -52,12 +53,6 @@
 						<Launchpoint:iqDequeuedAt><xsl:value-of select="getOldestCases:iqdequeuedat"/></Launchpoint:iqDequeuedAt>
 						<Launchpoint:iqSent><xsl:value-of select="getOldestCases:iqsent"/></Launchpoint:iqSent>
 						<Launchpoint:iqSentAt><xsl:value-of select="getOldestCases:iqsentat"/></Launchpoint:iqSentAt>
-<!-- 						<Launchpoint:caseId>
-							<xsl:value-of select="getOldestCases:caseid" />
-						</Launchpoint:caseId>
-						<Launchpoint:pid>
-							<xsl:value-of select="getOldestCases:id" />
-						</Launchpoint:pid> -->
 					</Launchpoint:cases>
 				</xsl:for-each>
 		</Launchpoint:batches>
