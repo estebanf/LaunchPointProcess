@@ -14,10 +14,10 @@
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_2mWjgNfGEee2L7fDC3rSXg" bpdm:label="Queue Monitor"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getIQLetter-dcm.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Schemas/GenerateFile.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getIQBatch-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/integrations/generateIQBatch.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getIQLetter-dcm.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/GenerateFile.xsd"/>
     </bpdm:dependencies>
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="DCM" bpdm:ID="_DJOeoNkOEeee0bCkMq0JVw">
         <bpel:partnerLinks>
@@ -65,9 +65,9 @@
         </bpel:variables>
         <bpel:flow>
             <bpel:sequence>
-                <bpdm:messagingtask operation="Receive_acknowledgement" partnerLink="dCmAndQueue_MonitorPlkVar" portType="Queue_Monitor:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send DCM acknowledgement" bpdm:ID="_cqO9MNneEee2MLg0sBZbqw" bpdm:isHeaderAuthorizationAware="no">
-                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="queue_MonitorReceive_acknowledgementRequest1Msg" bpdm:msgVarScopeId="_DJOeoNkOEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="Queue_Monitor:Receive_acknowledgementRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_b21qANnhEee2MLg0sBZbqw"></bpdm:linkset>
-                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="queue_MonitorReceive_acknowledgementResponse2Msg" bpdm:msgVarScopeId="_DJOeoNkOEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="Queue_Monitor:Receive_acknowledgementResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_caNc0NnhEee2MLg0sBZbqw"></bpdm:linkset>
+                <bpdm:messagingtask operation="Receive_results" partnerLink="dCmAndQueue_MonitorPlkVar" portType="Queue_Monitor:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send IQ Letter file id" bpdm:ID="_WHUgUNkOEeee0bCkMq0JVw" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="queue_MonitorReceive_resultsRequest1Msg" bpdm:msgVarScopeId="_DJOeoNkOEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="Queue_Monitor:Receive_resultsRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_j2zIENkOEeee0bCkMq0JVw"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="queue_MonitorReceive_resultsResponse2Msg" bpdm:msgVarScopeId="_DJOeoNkOEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="Queue_Monitor:Receive_resultsResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_kbODwNkOEeee0bCkMq0JVw"></bpdm:linkset>
                 </bpdm:messagingtask>
             </bpel:sequence>
             <bpel:sequence>
@@ -83,9 +83,9 @@
                 </bpdm:messagingtask>
             </bpel:sequence>
             <bpel:sequence>
-                <bpdm:messagingtask operation="EventStartMessage" partnerLink="dCmAndQueue_MonitorForCanonicPortPlk1Var" portType="getIQLetter-dcm:Forclient" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Request IQ letter generation" bpdm:ID="_DEqUoNlDEeee0bCkMq0JVw" bpdm:isHeaderAuthorizationAware="no">
-                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisTaskRequest1Msg" bpdm:msgVarScopeId="_DJOeoNkOEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="getIQLetter-dcm:EventStartMessageRequest" bpdm:binding="getIQLetter-dcm:dcmAndClientForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_hifwENlDEeee0bCkMq0JVw"></bpdm:linkset>
-                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="getIQLetter-dcmEventStartMessageResponse1" bpdm:msgVarScopeId="_DJOeoNkOEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="getIQLetter-dcm:EventStartMessageResponse" bpdm:binding="getIQLetter-dcm:dcmAndClientForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_iKjOkNlDEeee0bCkMq0JVw"></bpdm:linkset>
+                <bpdm:messagingtask operation="Receive_acknowledgement" partnerLink="dCmAndQueue_MonitorPlkVar" portType="Queue_Monitor:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send DCM acknowledgement" bpdm:ID="_cqO9MNneEee2MLg0sBZbqw" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="queue_MonitorReceive_acknowledgementRequest1Msg" bpdm:msgVarScopeId="_DJOeoNkOEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="Queue_Monitor:Receive_acknowledgementRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_b21qANnhEee2MLg0sBZbqw"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="queue_MonitorReceive_acknowledgementResponse2Msg" bpdm:msgVarScopeId="_DJOeoNkOEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="Queue_Monitor:Receive_acknowledgementResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_caNc0NnhEee2MLg0sBZbqw"></bpdm:linkset>
                 </bpdm:messagingtask>
             </bpel:sequence>
             <bpel:sequence>
@@ -95,9 +95,9 @@
                 </bpdm:messagingtask>
             </bpel:sequence>
             <bpel:sequence>
-                <bpdm:messagingtask operation="Receive_results" partnerLink="dCmAndQueue_MonitorPlkVar" portType="Queue_Monitor:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send IQ Letter file id" bpdm:ID="_WHUgUNkOEeee0bCkMq0JVw" bpdm:isHeaderAuthorizationAware="no">
-                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="queue_MonitorReceive_resultsRequest1Msg" bpdm:msgVarScopeId="_DJOeoNkOEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="Queue_Monitor:Receive_resultsRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_j2zIENkOEeee0bCkMq0JVw"></bpdm:linkset>
-                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="queue_MonitorReceive_resultsResponse2Msg" bpdm:msgVarScopeId="_DJOeoNkOEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="Queue_Monitor:Receive_resultsResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_kbODwNkOEeee0bCkMq0JVw"></bpdm:linkset>
+                <bpdm:messagingtask operation="EventStartMessage" partnerLink="dCmAndQueue_MonitorForCanonicPortPlk1Var" portType="getIQLetter-dcm:Forclient" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Request IQ letter generation" bpdm:ID="_DEqUoNlDEeee0bCkMq0JVw" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisTaskRequest1Msg" bpdm:msgVarScopeId="_DJOeoNkOEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="getIQLetter-dcm:EventStartMessageRequest" bpdm:binding="getIQLetter-dcm:dcmAndClientForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_hifwENlDEeee0bCkMq0JVw"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="getIQLetter-dcmEventStartMessageResponse1" bpdm:msgVarScopeId="_DJOeoNkOEeee0bCkMq0JVw" bpdm:variableIsManaged="true" bpdm:messageType="getIQLetter-dcm:EventStartMessageResponse" bpdm:binding="getIQLetter-dcm:dcmAndClientForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_iKjOkNlDEeee0bCkMq0JVw"></bpdm:linkset>
                 </bpdm:messagingtask>
             </bpel:sequence>
         </bpel:flow>
