@@ -1,0 +1,51 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:HumanVerification-process="http://thisproject/Processes/Integrations/HumanVerification/process" xmlns:diag="http://thisdiagram" xmlns:Queue_Monitor="http://thisdiagram/Queue_Monitor" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://www.example.org/generateIQBatch" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/User" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/User">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Integrations/HumanVerification/process" bpdm:prefix="HumanVerification-process" bpdm:comment="contrib=&apos;project:///Processes/Integrations/HumanVerification-process.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_2mWjgNfGEee2L7fDC3rSXg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Queue_Monitor" bpdm:prefix="Queue_Monitor" bpdm:comment="contrib=&apos;partner-pool:///_2mWjgNfGEee2L7fDC3rSXg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/generateIQBatch" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///Schemas/integrations/generateIQBatch.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/User" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_2mWjgNfGEee2L7fDC3rSXg" bpdm:label="Queue Monitor"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/HumanVerification-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/integrations/generateIQBatch.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="User" bpdm:ID="_n4WZkNrdEeeyFrQIgRvWZA">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="userAndQueue_MonitorForCanonicPortPlkVar" partnerLinkType="diag:UserAndQueue_MonitorForCanonicPortPlk" initializePartnerRole="yes" myRole="User_for_Queue_Monitor" bpdm:enableSharing="false" bpdm:providedService="HumanVerification-process:CanonicServiceForclient" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="epr" bpdm:providedIsDefault="true" partnerRole="Queue_Monitor_for_User" bpdm:invokedService="Queue_Monitor:CanonicServiceForUser" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Queue_Monitor/User" bpdm:invokedIsDefault="true" bpdm:clientTasks="_n4WZkNrdEeeyFrQIgRvWZA:_wDJQwNrdEeeyFrQIgRvWZA, _n4WZkNrdEeeyFrQIgRvWZA:_x0wYUNrdEeeyFrQIgRvWZA" bpdm:isManaged="true" bpdm:otherPoolId="_2mWjgNfGEee2L7fDC3rSXg"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="thisRequest_letter_validationRequest1Msg" messageType="HumanVerification-process:received_validation_requestRequest" binding="HumanVerification-process:processAndClientServiceBinding" operation="received_validation_request" opMsgType="0" bpdm:id="_P2PO8NreEeeyFrQIgRvWZA" bpdm:messageIds="inc:_P1Q-kNreEeeyFrQIgRvWZA"/>
+            <bpel:variable name="thisRequest_letter_validationResponse2Msg" messageType="HumanVerification-process:received_validation_requestResponse" binding="HumanVerification-process:processAndClientServiceBinding" operation="received_validation_request" opMsgType="1" bpdm:id="_QOeIwNreEeeyFrQIgRvWZA" bpdm:messageIds=" out:_QOSikNreEeeyFrQIgRvWZA">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="HumanVerification-process:received_validation_requestResponse" bpdm:linkedPart="body" bpdm:binding="HumanVerification-process:processAndClientServiceBinding" bpdm:opMsgType="1" bpdm:operation="received_validation_request"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="queue_MonitorReceive_validation_resultsRequest1Msg" messageType="Queue_Monitor:Receive_validation_resultsRequest" bpdm:id="_TGVGsNreEeeyFrQIgRvWZA" bpdm:messageIds=" out:_TGF2INreEeeyFrQIgRvWZA">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="Queue_Monitor:Receive_validation_resultsRequest" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="queue_MonitorReceive_validation_resultsResponse2Msg" messageType="Queue_Monitor:Receive_validation_resultsResponse" bpdm:id="_T2oiQNreEeeyFrQIgRvWZA" bpdm:messageIds="inc:_T19M0NreEeeyFrQIgRvWZA"/>
+        </bpel:variables>
+        <bpel:flow>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="received_validation_request" partnerLink="userAndQueue_MonitorForCanonicPortPlkVar" portType="HumanVerification-process:Forclient" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Request letter validation" bpdm:ID="_wDJQwNrdEeeyFrQIgRvWZA" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisRequest_letter_validationRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="HumanVerification-process:received_validation_requestRequest" bpdm:binding="HumanVerification-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_P1Q-kNreEeeyFrQIgRvWZA"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisRequest_letter_validationResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="HumanVerification-process:received_validation_requestResponse" bpdm:binding="HumanVerification-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_QOSikNreEeeyFrQIgRvWZA"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="Receive_validation_results" partnerLink="userAndQueue_MonitorForCanonicPortPlkVar" portType="Queue_Monitor:ForUser" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send validation results" bpdm:ID="_x0wYUNrdEeeyFrQIgRvWZA" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="queue_MonitorReceive_validation_resultsRequest1Msg" bpdm:msgVarScopeId="_n4WZkNrdEeeyFrQIgRvWZA" bpdm:variableIsManaged="true" bpdm:messageType="Queue_Monitor:Receive_validation_resultsRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_TGF2INreEeeyFrQIgRvWZA"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="queue_MonitorReceive_validation_resultsResponse2Msg" bpdm:msgVarScopeId="_n4WZkNrdEeeyFrQIgRvWZA" bpdm:variableIsManaged="true" bpdm:messageType="Queue_Monitor:Receive_validation_resultsResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_T19M0NreEeeyFrQIgRvWZA"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+        </bpel:flow>
+    </bpel:scope>
+</bpel:process>
