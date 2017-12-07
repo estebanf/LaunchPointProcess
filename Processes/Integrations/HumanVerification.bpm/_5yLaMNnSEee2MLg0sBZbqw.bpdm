@@ -70,26 +70,32 @@
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$ode:pid</bpel:from>
-                        <bpel:to>$thisEventStartMessageResponse1.body/Launchpoint:pid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2058829819" targetPath="$thisEventStartMessageResponse1.body/Launchpoint:pid" targetedBy="287651642-arg0"></mapper:vertice>
-  <mapper:vertice id="287651642" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$thisEventStartMessageResponse1.body/Launchpoint:pid</bpel:to><mapper:mapperLink><mapper:vertice id="2058829819" targetPath="$thisEventStartMessageResponse1.body/Launchpoint:pid" targetedBy="287651642-arg0"></mapper:vertice><mapper:vertice id="287651642" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>current-dateTime()</bpel:from>
-                        <bpel:to>$thisEventStartMessageResponse1.body/Launchpoint:timestamp</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="849535114" targetPath="$thisEventStartMessageResponse1.body/Launchpoint:timestamp" targetedBy="153778060-arg0"></mapper:vertice>
-  <mapper:vertice id="153778060" dimension="109x24" location="527,150">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$thisEventStartMessageResponse1.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="849535114" targetPath="$thisEventStartMessageResponse1.body/Launchpoint:timestamp" targetedBy="153778060-arg0"></mapper:vertice><mapper:vertice id="153778060" dimension="109x24" location="527,150"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisEventStartMessageResponse1" bpdm:msgVarScopeId="_5yLaMNnSEee2MLg0sBZbqw" bpdm:variableIsManaged="true" bpdm:messageType="this:received_validation_requestResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_Yzq8UNnTEee2MLg0sBZbqw"></bpdm:linkset>
             </bpdm:messagingtask>
             <bpdm:messagingtask operation="createTaskSingleActivity" partnerLink="wFmagic_TkKKgNnTEee2MLg0sBZbqwPlkVar" portType="formless:Workflow" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Create validation form" bpdm:ID="_GYy8cNnTEee2MLg0sBZbqw" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>concat("Review letters for client ", $thisEventStartMessageRequest1.body/generateIQBatch:ClientId)</bpel:from>
+                        <bpel:to>$humanHuman-create-and-completeRequest1Msg.root/formless:taskMetaData/formless:description</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="632473305" targetPath="$humanHuman-create-and-completeRequest1Msg.root/formless:taskMetaData/formless:description" targetedBy="1446978776-arg2"></mapper:vertice>
+  <mapper:vertice id="1446978776" dimension="79x24" location="432,72">
+    <mapper:value>concat()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="500335698" dimension="143x24" location="217,154" targetedBy="1446978776-arg0">
+    <mapper:value>"Review letters for client "</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1209830961" sourcePath="$thisEventStartMessageRequest1.body/generateIQBatch:ClientId" targetedBy="1446978776-arg1"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="humanHuman-create-and-completeRequest1Msg" bpdm:msgVarScopeId="_5yLaMNnSEee2MLg0sBZbqw" bpdm:variableIsManaged="true" bpdm:messageType="formless:createTaskSingleActivityRequest" bpdm:binding="formless:WorkflowSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_V13HYNnTEee2MLg0sBZbqw"></bpdm:linkset>
                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="formlessCreateTaskSingleActivityResponse2Msg" bpdm:msgVarScopeId="_5yLaMNnSEee2MLg0sBZbqw" bpdm:variableIsManaged="true" bpdm:messageType="formless:createTaskSingleActivityResponse" bpdm:binding="formless:WorkflowSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_WWP3oNnTEee2MLg0sBZbqw"></bpdm:linkset>
             </bpdm:messagingtask>
@@ -97,19 +103,11 @@
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$formlessCreateTaskSingleActivityResponse2Msg.root/formless:taskOutput/formless:FormModel/notesTextAreaInput/notesTextArea</bpel:from>
-                        <bpel:to>$clientTaskRequest1Msg.body/Launchpoint:validationResult</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="514796649" targetPath="$clientTaskRequest1Msg.body/Launchpoint:validationResult" targetedBy="654885993-arg0"></mapper:vertice>
-  <mapper:vertice id="654885993" sourcePath="$formlessCreateTaskSingleActivityResponse2Msg.root/formless:taskOutput/formless:FormModel/notesTextAreaInput/notesTextArea"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$clientTaskRequest1Msg.body/Launchpoint:validationResult</bpel:to><mapper:mapperLink><mapper:vertice id="514796649" targetPath="$clientTaskRequest1Msg.body/Launchpoint:validationResult" targetedBy="654885993-arg0"></mapper:vertice><mapper:vertice id="654885993" sourcePath="$formlessCreateTaskSingleActivityResponse2Msg.root/formless:taskOutput/formless:FormModel/notesTextAreaInput/notesTextArea"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>$thisEventStartMessageRequest1.body/generateIQBatch:IQBatchId</bpel:from>
-                        <bpel:to>$clientTaskRequest1Msg.body/Launchpoint:iqBatchId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="290468411" targetPath="$clientTaskRequest1Msg.body/Launchpoint:iqBatchId" targetedBy="1573029190-arg0"></mapper:vertice>
-  <mapper:vertice id="1573029190" sourcePath="$thisEventStartMessageRequest1.body/generateIQBatch:IQBatchId"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$clientTaskRequest1Msg.body/Launchpoint:iqBatchId</bpel:to><mapper:mapperLink><mapper:vertice id="290468411" targetPath="$clientTaskRequest1Msg.body/Launchpoint:iqBatchId" targetedBy="1573029190-arg0"></mapper:vertice><mapper:vertice id="1573029190" sourcePath="$thisEventStartMessageRequest1.body/generateIQBatch:IQBatchId"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="clientTaskRequest1Msg" bpdm:msgVarScopeId="_5yLaMNnSEee2MLg0sBZbqw" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Queue_Monitor:Receive_validation_resultsRequest" bpdm:binding="ProcessIQCase-Queue_Monitor:UserAndQueue_MonitorForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_dp4vkNrfEeeyFrQIgRvWZA"></bpdm:linkset>
