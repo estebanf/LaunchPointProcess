@@ -1,0 +1,16 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<bpt:template xmlns:bpt="http://www.intalio/designer/business-process-data-modeling/template" ID="_ztXi4Nk0EeeyAckJj3pjRg" displayName="getBreResults" ownerPoolId="_7cNTUNkzEeeyAckJj3pjRg" ownerPoolNcName="bre" ownerPoolIsExecutable="false" version="6000089">
+    <bpt:partnerPool ID="_zGh8ptHyEeegkeOYmwRRMQ" ncName="process" isExecutable="true"/>
+    <bpt:container displayName="sequence" containerType="sequence">
+        <bpt:activity ID="_k4UaMNk0EeeyAckJj3pjRg" displayName="Send BRE Results" activityType="Task" messaging="invokerequestresponsebound">
+            <bpt:generatedOperation providingPoolId="_zGh8ptHyEeegkeOYmwRRMQ" generatedPartnerLinkTypeLocalName="processAndBreForCanonicPortPlk" generatedService="CanonicServiceForbre" generatedOperation="Call_business_rule" generatedPort="canonicPort">
+                <bpt:input name="Call_business_rule" generatedMessageTypeLocalName="Call_business_ruleRequest">
+                    <bpt:part name="body" attachedSchemaObject="project:///Schemas/BusinessRule.xsd?xsdelement={http://www.example.org/NewXMLSchema}output"/>
+                </bpt:input>
+                <bpt:output name="Call_business_ruleResponse" generatedMessageTypeLocalName="Call_business_ruleResponse">
+                    <bpt:part name="body" attachedSchemaObject="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType" generatedElementLocalName="Call_business_ruleResponse"/>
+                </bpt:output>
+            </bpt:generatedOperation>
+        </bpt:activity>
+    </bpt:container>
+</bpt:template>

@@ -148,18 +148,6 @@
 				<xsl:otherwise>false</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-<!-- 	CloseReason -->
-		<xsl:variable name="chkCloseReason">
-			<xsl:choose>
-				<xsl:when test="CloseReason">
-					<xsl:call-template name="validator">
-						<xsl:with-param name="obj" select="CloseReason" />
-						<xsl:with-param name="dataType" select="'string'" />
-					</xsl:call-template>			
-				</xsl:when>
-				<xsl:otherwise>false</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
 <!-- 	CaseSource -->
 		<xsl:variable name="chkState">
 			<xsl:choose>
@@ -243,10 +231,6 @@
 				<xsl:when test="$chkLifeCycle = 'false'">
 		 			<Validation:isValid>false</Validation:isValid>
 					<Validation:element>LifeCycle</Validation:element>
-				</xsl:when>
-				<xsl:when test="$chkCloseReason = 'false'">
-		 			<Validation:isValid>false</Validation:isValid>
-					<Validation:element>CloseReason</Validation:element>
 				</xsl:when>
 				<xsl:when test="$chkState = 'false'">
 		 			<Validation:isValid>false</Validation:isValid>

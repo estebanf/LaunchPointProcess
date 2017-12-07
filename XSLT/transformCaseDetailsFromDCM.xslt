@@ -17,7 +17,7 @@
 			<Launchpoint:ClientId><xsl:value-of select="ClientId" /></Launchpoint:ClientId>
 			<Launchpoint:EnvironmentId><xsl:value-of select="EnvironmentId" /></Launchpoint:EnvironmentId>
 			<Launchpoint:LifeCycle><xsl:value-of select="LifeCycle" /></Launchpoint:LifeCycle>
-			<Launchpoint:CloseReason><xsl:value-of select="CloseReason" /></Launchpoint:CloseReason>
+			<Launchpoint:CloseReason></Launchpoint:CloseReason>
 			<Launchpoint:State><xsl:value-of select="State" /></Launchpoint:State>
 			<Launchpoint:IQHold />
 			<Launchpoint:IQResponseReceived />
