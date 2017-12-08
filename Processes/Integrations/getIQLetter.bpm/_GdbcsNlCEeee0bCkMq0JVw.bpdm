@@ -40,7 +40,7 @@
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="dcm" bpdm:ID="_GdbcsNlCEeee0bCkMq0JVw">
         <bpel:partnerLinks>
             <bpel:partnerLink name="dcmAndClientForCanonicPortPlkVar" partnerLinkType="diag:dcmAndClientForCanonicPortPlk" initializePartnerRole="yes" myRole="dcm_for_client" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForclient" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/dcm/client" bpdm:providedIsDefault="true" partnerRole="client_for_dcm" bpdm:invokedService="ProcessIQCase-Queue_Monitor:CanonicServiceForDCM" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_GdbcsNlCEeee0bCkMq0JVw:_OwNyQNlCEeee0bCkMq0JVw, _GdbcsNlCEeee0bCkMq0JVw:_InGe8NlCEeee0bCkMq0JVw" bpdm:isManaged="true" bpdm:otherPoolId="_Cftp8NlCEeee0bCkMq0JVw"/>
-            <bpel:partnerLink name="dcmimplicitPartnerAndDcmForHttpPortPlkVar" partnerLinkType="diag:dcmimplicitPartnerAndDcmForHttpPortPlk" initializePartnerRole="yes" partnerRole="dcmimplicitPartner_for_dcm" bpdm:invokedService="GenerateFileService:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://192.168.241.209:9000/api/generateFile" bpdm:invokedIsDefault="true" bpdm:clientTasks="_GdbcsNlCEeee0bCkMq0JVw:_LG2e4NlCEeee0bCkMq0JVw" bpdm:isManaged="true" bpdm:otherPoolId="_GdbcsNlCEeee0bCkMq0JVwimplicitPartner"/>
+            <bpel:partnerLink name="dcmimplicitPartnerAndDcmForHttpPortPlkVar" partnerLinkType="diag:dcmimplicitPartnerAndDcmForHttpPortPlk" initializePartnerRole="yes" partnerRole="dcmimplicitPartner_for_dcm" bpdm:invokedService="GenerateFileService:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://localhost:3000/api/generateFile/{EnvironmentId}" bpdm:invokedIsDefault="true" bpdm:clientTasks="_GdbcsNlCEeee0bCkMq0JVw:_LG2e4NlCEeee0bCkMq0JVw" bpdm:isManaged="true" bpdm:otherPoolId="_GdbcsNlCEeee0bCkMq0JVwimplicitPartner"/>
         </bpel:partnerLinks>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
             <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_Gdl0wdlCEeee0bCkMq0JVw" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_Gdl0wdlCEeee0bCkMq0JVw"/>
@@ -54,6 +54,9 @@
             <bpel:variable name="generateFileServiceGenerate_FileRequest1Msg" messageType="GenerateFileService:Generate_File_input" binding="GenerateFileService:restBinding" operation="Generate_File" opMsgType="0" bpdm:messageIds=" out:_LG2e4NlCEeee0bCkMq0JVwOutgoing">
                 <bpel:from bpdm:toPart="body">
                     <bpel:literal bpdm:linkedMessageType="GenerateFileService:Generate_File_input" bpdm:linkedPart="body" bpdm:binding="GenerateFileService:restBinding" bpdm:opMsgType="0" bpdm:operation="Generate_File"></bpel:literal>
+                </bpel:from>
+                <bpel:from bpdm:toPart="EnvironmentId">
+                    <bpel:literal bpdm:linkedMessageType="GenerateFileService:Generate_File_input" bpdm:linkedPart="EnvironmentId" bpdm:binding="GenerateFileService:restBinding" bpdm:opMsgType="0" bpdm:operation="Generate_File"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
             <bpel:variable name="clientSend_AckRequest1Msg" messageType="ProcessIQCase-Queue_Monitor:Get_DCM_Ack.Request" binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorServiceBinding" operation="Get_DCM_Ack." opMsgType="0" bpdm:id="_uBk5INoCEeeyB7mKr1x9lw" bpdm:messageIds=" out:_uBFJ4NoCEeeyB7mKr1x9lw">
@@ -89,12 +92,29 @@
                         <bpel:to>$generateFileServiceGenerate_FileRequest1Msg.body/FileType</bpel:to><mapper:mapperLink><mapper:vertice id="2069017194" targetPath="$generateFileServiceGenerate_FileRequest1Msg.body/FileType" targetedBy="262686492-arg0"></mapper:vertice><mapper:vertice id="262686492" sourcePath="$thisEventStartMessageRequest1.body/FileType"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
-                        <bpel:from>$thisEventStartMessageRequest1.body/EnvironmentId</bpel:from>
-                        <bpel:to>$generateFileServiceGenerate_FileRequest1Msg.body/EnvironmentId</bpel:to><mapper:mapperLink><mapper:vertice id="1796280997" targetPath="$generateFileServiceGenerate_FileRequest1Msg.body/EnvironmentId" targetedBy="339195978-arg0"></mapper:vertice><mapper:vertice id="339195978" sourcePath="$thisEventStartMessageRequest1.body/EnvironmentId"></mapper:vertice></mapper:mapperLink>
-                    </bpel:copy>
-                    <bpel:copy>
                         <bpel:from>$thisEventStartMessageRequest1.body/CaseId</bpel:from>
                         <bpel:to>$generateFileServiceGenerate_FileRequest1Msg.body/CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="784695414" targetPath="$generateFileServiceGenerate_FileRequest1Msg.body/CaseId" targetedBy="1022137121-arg0"></mapper:vertice><mapper:vertice id="1022137121" sourcePath="$thisEventStartMessageRequest1.body/CaseId"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisEventStartMessageRequest1.body/EnvironmentId</bpel:from>
+                        <bpel:to>$generateFileServiceGenerate_FileRequest1Msg.EnvironmentId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1261320173" targetPath="$generateFileServiceGenerate_FileRequest1Msg.EnvironmentId" targetedBy="1564215594-arg0"></mapper:vertice>
+  <mapper:vertice id="1564215594" sourcePath="$thisEventStartMessageRequest1.body/EnvironmentId"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>ode:get-property-value("GENERATE_FILE_SERVICE_URL")</bpel:from>
+                        <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="1829463411" targetPath="$endpoint" targetedBy="629097574-arg1"></mapper:vertice>
+  <mapper:vertice id="629097574" dimension="139x24" location="564,264">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1980974266" dimension="175x24" location="252,264" targetedBy="629097574-arg0">
+    <mapper:value>"GENERATE_FILE_SERVICE_URL"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="generateFileServiceGenerate_FileRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="GenerateFileService:Generate_File_input" bpdm:binding="GenerateFileService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_LG2e4NlCEeee0bCkMq0JVwOutgoing"></bpdm:linkset>
