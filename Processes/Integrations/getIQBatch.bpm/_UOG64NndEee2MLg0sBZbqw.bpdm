@@ -39,7 +39,7 @@
     </bpdm:dependencies>
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="process" bpdm:ID="_UOG64NndEee2MLg0sBZbqw">
         <bpel:partnerLinks>
-            <bpel:partnerLink name="processimplicitPartnerAndProcessForHttpPortPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForHttpPortPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="GenerateIQBatch:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://192.168.241.209:9000/api/generateIQBatch" bpdm:invokedIsDefault="true" bpdm:clientTasks="_UOG64NndEee2MLg0sBZbqw:_ZU51kNndEee2MLg0sBZbqw" bpdm:isManaged="true" bpdm:otherPoolId="_UOG64NndEee2MLg0sBZbqwimplicitPartner"/>
+            <bpel:partnerLink name="processimplicitPartnerAndProcessForHttpPortPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForHttpPortPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="GenerateIQBatch:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:3002/api/generateIQBatch" bpdm:invokedIsDefault="true" bpdm:clientTasks="_UOG64NndEee2MLg0sBZbqw:_ZU51kNndEee2MLg0sBZbqw" bpdm:isManaged="true" bpdm:otherPoolId="_UOG64NndEee2MLg0sBZbqwimplicitPartner"/>
             <bpel:partnerLink name="processAndClientForCanonicPortPlkVar" partnerLinkType="diag:processAndClientForCanonicPortPlk" initializePartnerRole="yes" myRole="process_for_client" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForclient" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/client" bpdm:providedIsDefault="true" partnerRole="client_for_process" bpdm:invokedService="ProcessIQCase-Queue_Monitor:CanonicServiceForDCM" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_UOG64NndEee2MLg0sBZbqw:_baqBINndEee2MLg0sBZbqw, _UOG64NndEee2MLg0sBZbqw:_Wc01MNndEee2MLg0sBZbqw" bpdm:isManaged="true" bpdm:otherPoolId="_RK62sNndEee2MLg0sBZbqw"/>
         </bpel:partnerLinks>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
@@ -54,6 +54,9 @@
             <bpel:variable name="generateIQBatchPOSTRequest1Msg" messageType="GenerateIQBatch:POST_input" binding="GenerateIQBatch:restBinding" operation="POST" opMsgType="0" bpdm:messageIds=" out:_ZU51kNndEee2MLg0sBZbqwOutgoing">
                 <bpel:from bpdm:toPart="body">
                     <bpel:literal bpdm:linkedMessageType="GenerateIQBatch:POST_input" bpdm:linkedPart="body" bpdm:binding="GenerateIQBatch:restBinding" bpdm:opMsgType="0" bpdm:operation="POST"></bpel:literal>
+                </bpel:from>
+                <bpel:from bpdm:toPart="EnvironmentId">
+                    <bpel:literal bpdm:linkedMessageType="GenerateIQBatch:POST_input" bpdm:linkedPart="EnvironmentId" bpdm:binding="GenerateIQBatch:restBinding" bpdm:opMsgType="0" bpdm:operation="POST"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
             <bpel:variable name="clientSend_batch_acknowledgementRequest1Msg" messageType="ProcessIQCase-Queue_Monitor:Receive_acknowledgementRequest" binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorServiceBinding" operation="Receive_acknowledgement" opMsgType="0" bpdm:id="_YFFMoNoCEeeyB7mKr1x9lw" bpdm:messageIds=" out:_YEvOYNoCEeeyB7mKr1x9lw">
@@ -83,6 +86,19 @@
                     <bpel:copy>
                         <bpel:from>$thisEventStartMessageRequest1.body</bpel:from>
                         <bpel:to>$generateIQBatchPOSTRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="1513164034" targetPath="$generateIQBatchPOSTRequest1Msg.body" targetedBy="2043288981-arg0"></mapper:vertice><mapper:vertice id="2043288981" sourcePath="$thisEventStartMessageRequest1.body"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>ode:get-property-value("GENERATE_IQ_BATCH_URL")</bpel:from>
+                        <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="1825249656" targetPath="$endpoint" targetedBy="1012745497-arg1"></mapper:vertice>
+  <mapper:vertice id="1012745497" dimension="139x24" location="528,132">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="886121022" dimension="162x24" location="288,132" targetedBy="1012745497-arg0">
+    <mapper:value>"GENERATE_IQ_BATCH_URL"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="generateIQBatchPOSTRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="GenerateIQBatch:POST_input" bpdm:binding="GenerateIQBatch:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_ZU51kNndEee2MLg0sBZbqwOutgoing"></bpdm:linkset>
