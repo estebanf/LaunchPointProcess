@@ -1,0 +1,16 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<bpt:template xmlns:bpt="http://www.intalio/designer/business-process-data-modeling/template" ID="_S2348NrfEeeyFrQIgRvWZA" displayName="getValidationResults" ownerPoolId="_n4WZkNrdEeeyFrQIgRvWZA" ownerPoolNcName="User" ownerPoolIsExecutable="false" version="6000089">
+    <bpt:partnerPool ID="_2mWjgNfGEee2L7fDC3rSXg" ncName="Queue_Monitor" isExecutable="true"/>
+    <bpt:container displayName="sequence" containerType="sequence">
+        <bpt:activity ID="_x0wYUNrdEeeyFrQIgRvWZA" displayName="Send validation results" activityType="Task" messaging="invokerequestresponsebound">
+            <bpt:generatedOperation providingPoolId="_2mWjgNfGEee2L7fDC3rSXg" generatedPartnerLinkTypeLocalName="UserAndQueue_MonitorForCanonicPortPlk" generatedService="CanonicServiceForUser" generatedOperation="Receive_validation_results" generatedPort="canonicPort">
+                <bpt:input name="Receive_validation_results" generatedMessageTypeLocalName="Receive_validation_resultsRequest">
+                    <bpt:part name="body" attachedSchemaObject="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}IQLetterValidationType" generatedElementLocalName="Receive_validation_resultsRequest"/>
+                </bpt:input>
+                <bpt:output name="Receive_validation_resultsResponse" generatedMessageTypeLocalName="Receive_validation_resultsResponse">
+                    <bpt:part name="body" attachedSchemaObject="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType" generatedElementLocalName="Receive_validation_resultsResponse"/>
+                </bpt:output>
+            </bpt:generatedOperation>
+        </bpt:activity>
+    </bpt:container>
+</bpt:template>

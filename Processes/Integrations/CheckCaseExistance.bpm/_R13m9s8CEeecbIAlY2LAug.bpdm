@@ -169,7 +169,7 @@
                                             </bpdm:linkset>
                                             <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_I8FyWdRyEeePw9HWmNDN1w" bpdm:targetDisplayName="default"></bpdm:linkset>
                                             <bpel:sequence>
-                                                <bpdm:messagingtask eventType="intermediate: timer" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Wait 1 minute" bpdm:ID="_CIjB8NRyEeePw9HWmNDN1w" bpdm:isHeaderAuthorizationAware="no">
+                                                <bpdm:messagingtask eventType="intermediate: timer" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Wait" bpdm:ID="_CIjB8NRyEeePw9HWmNDN1w" bpdm:isHeaderAuthorizationAware="no">
                                                     <bpdm:linkset bpdm:type="timer">
                                                         <bpel:for>ode:get-property-value("SERVICE_RETRY_WAIT")<mapper:mapperLink><mapper:vertice id="452214025" targetPath="$duration" targetedBy="1711857843-arg1"></mapper:vertice><mapper:vertice id="1711857843" dimension="139x24" location="280,168"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1636707442" dimension="134x24" location="101,120" targetedBy="1711857843-arg0"><mapper:value>"SERVICE_RETRY_WAIT"</mapper:value></mapper:vertice></mapper:mapperLink></bpel:for>
                                                     </bpdm:linkset>
@@ -178,10 +178,6 @@
                                             <bpel:sequence>
                                                 <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Signal problem" bpdm:ID="_I8FyUNRyEeePw9HWmNDN1w" bpdm:isHeaderAuthorizationAware="no">
                                                     <bpdm:linkset bpdm:type="assignments">
-                                                        <bpel:copy>
-                                                            <bpel:from>$ode:pid</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:pid</bpel:to><mapper:mapperLink><mapper:vertice id="1274325702" targetPath="$ExecutionError/metrics:pid" targetedBy="1016437937-arg0"></mapper:vertice><mapper:vertice id="1016437937" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
-                                                        </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>xs:int($thisReceive_caseRequest2Msg.body)</bpel:from>
                                                             <bpel:to>$ExecutionError/metrics:CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="944848455" targetPath="$ExecutionError/metrics:CaseId" targetedBy="741944302-arg1"></mapper:vertice><mapper:vertice id="741944302" dimension="79x24" location="278,125"><mapper:value>xs:int()</mapper:value></mapper:vertice><mapper:vertice id="1623749669" sourcePath="$thisReceive_caseRequest2Msg.body" targetedBy="741944302-arg0"></mapper:vertice></mapper:mapperLink>
@@ -210,6 +206,14 @@
                                                             <bpel:from>concat("Error evaluating existance of case ", $thisReceive_caseRequest2Msg.body)</bpel:from>
                                                             <bpel:to>$ExecutionError/metrics:message</bpel:to><mapper:mapperLink><mapper:vertice id="1567030013" targetPath="$ExecutionError/metrics:message" targetedBy="307479474-arg2"></mapper:vertice><mapper:vertice id="307479474" dimension="79x24" location="596,378"><mapper:value>concat()</mapper:value></mapper:vertice><mapper:vertice id="1853322320" dimension="195x24" location="369,347" targetedBy="307479474-arg0"><mapper:value>"Error evaluating existance of case "</mapper:value></mapper:vertice><mapper:vertice id="1239874859" sourcePath="$thisReceive_caseRequest2Msg.body" targetedBy="307479474-arg1"></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>$ode:pid</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="1901587200" targetPath="$ExecutionError/metrics:id" targetedBy="2074304989-arg0"></mapper:vertice><mapper:vertice id="2074304989" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
+                                                        </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>true()</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:technicalError</bpel:to><mapper:mapperLink><mapper:vertice id="1123494235" targetPath="$ExecutionError/metrics:technicalError" targetedBy="2064457709-arg0"></mapper:vertice><mapper:vertice id="2064457709" dimension="79x24" location="444,141"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        </bpel:copy>
                                                     </bpdm:linkset>
                                                 </bpdm:messagingtask>
                                                 <bpdm:messagingtask eventType="intermediate: message" operation="Receive_recover_signal" partnerLink="processAndExceptionManagementPlkVar" portType="this:ForExceptionManagement" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive recover signal" bpdm:ID="_Nm3fYNRyEeePw9HWmNDN1w" bpdm:isHeaderAuthorizationAware="yes">
@@ -226,12 +230,12 @@
                                                             <bpel:to>$thisReceive_recover_signalResponse2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="1968768647" targetPath="$thisReceive_recover_signalResponse2Msg.body/Launchpoint:timestamp" targetedBy="1797720350-arg0"></mapper:vertice><mapper:vertice id="1797720350" dimension="109x24" location="444,204"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
-                                                            <bpel:from>$ode:pid</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:pid</bpel:to><mapper:mapperLink><mapper:vertice id="1338755316" targetPath="$ExecutionError/metrics:pid" targetedBy="579698097-arg0"></mapper:vertice><mapper:vertice id="579698097" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
-                                                        </bpel:copy>
-                                                        <bpel:copy>
                                                             <bpel:from>true()</bpel:from>
                                                             <bpel:to>$ExecutionError/metrics:resolved</bpel:to><mapper:mapperLink><mapper:vertice id="594438009" targetPath="$ExecutionError/metrics:resolved" targetedBy="1152250051-arg0"></mapper:vertice><mapper:vertice id="1152250051" dimension="79x24" location="392,86"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>$ode:pid</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="1660364632" targetPath="$ExecutionError/metrics:id" targetedBy="1652648017-arg0"></mapper:vertice><mapper:vertice id="1652648017" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                     </bpdm:linkset>
                                                     <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_recover_signalResponse2Msg" bpdm:msgVarScopeId="_8qy_0NRxEeePw9HWmNDN1w" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_recover_signalResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_a0UjwNYVEeepBujdtGh4bw"></bpdm:linkset>

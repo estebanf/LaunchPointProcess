@@ -1,0 +1,16 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<bpt:template xmlns:bpt="http://www.intalio/designer/business-process-data-modeling/template" ID="_xpUe4NnhEee2MLg0sBZbqw" displayName="SendDCMAck" ownerPoolId="_DJOeoNkOEeee0bCkMq0JVw" ownerPoolNcName="DCM" ownerPoolIsExecutable="false" version="6000089">
+    <bpt:partnerPool ID="_2mWjgNfGEee2L7fDC3rSXg" ncName="Queue_Monitor" isExecutable="true"/>
+    <bpt:container displayName="sequence" containerType="sequence">
+        <bpt:activity ID="_cqO9MNneEee2MLg0sBZbqw" displayName="Send DCM acknowledgement" activityType="Task" messaging="invokerequestresponsebound">
+            <bpt:generatedOperation providingPoolId="_2mWjgNfGEee2L7fDC3rSXg" generatedPartnerLinkTypeLocalName="DCmAndQueue_Monitor" generatedService="CanonicServiceForDCM" generatedOperation="Receive_acknowledgement" generatedPort="canonicPort">
+                <bpt:input name="Receive_acknowledgement" generatedMessageTypeLocalName="Receive_acknowledgementRequest">
+                    <bpt:part name="body" attachedSchemaObject="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}IQBatchAckType" generatedElementLocalName="Receive_acknowledgementRequest"/>
+                </bpt:input>
+                <bpt:output name="Receive_acknowledgementResponse" generatedMessageTypeLocalName="Receive_acknowledgementResponse">
+                    <bpt:part name="body" attachedSchemaObject="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType" generatedElementLocalName="Receive_acknowledgementResponse"/>
+                </bpt:output>
+            </bpt:generatedOperation>
+        </bpt:activity>
+    </bpt:container>
+</bpt:template>

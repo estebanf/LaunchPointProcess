@@ -1,9 +1,10 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:getLaunchpointCase="http://bpms.everteam.com/Services/REST/getLaunchpointCase.rest" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Validation="http://www.example.org/Validation" xmlns:diag="http://thisdiagram" xmlns:BusinessRule="http://www.example.org/NewXMLSchema" xmlns:getLaunchpointCase1="__project:///Schemas/integrations/getLaunchpointCase.xsd" xmlns:client="http://thisdiagram/client" xmlns:processimplicitPartner="http://thisdiagram/processimplicitPartner" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:CaseEvaluator-process="http://thisproject/Processes/Core/CaseEvaluator/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:ExceptionManagement="http://thisdiagram/ExceptionManagement" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:getLaunchpointCase="http://bpms.everteam.com/Services/REST/getLaunchpointCase.rest" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Validation="http://www.example.org/Validation" xmlns:LaunchpointError="__project:///Schemas/integrations/LaunchpointError.xsd" xmlns:diag="http://thisdiagram" xmlns:BusinessRule="http://www.example.org/NewXMLSchema" xmlns:getLaunchpointCase1="__project:///Schemas/integrations/getLaunchpointCase.xsd" xmlns:client="http://thisdiagram/client" xmlns:processimplicitPartner="http://thisdiagram/processimplicitPartner" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:CaseEvaluator-process="http://thisproject/Processes/Core/CaseEvaluator/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:ExceptionManagement="http://thisdiagram/ExceptionManagement" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/Services/REST/getLaunchpointCase.rest" bpdm:prefix="getLaunchpointCase" bpdm:comment="contrib=&apos;project:///Services/REST/getLaunchpointCase.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Validation" bpdm:prefix="Validation" bpdm:comment="contrib=&apos;project:///Schemas/integrations/Validation.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/integrations/LaunchpointError.xsd" bpdm:prefix="LaunchpointError" bpdm:comment="contrib=&apos;project:///Schemas/integrations/LaunchpointError.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_gcOjMNH-EeeKlIzHx_g2Yg"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/NewXMLSchema" bpdm:prefix="BusinessRule" bpdm:comment="contrib=&apos;project:///Schemas/BusinessRule.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/integrations/getLaunchpointCase.xsd" bpdm:prefix="getLaunchpointCase1" bpdm:comment="contrib=&apos;project:///Schemas/integrations/getLaunchpointCase.xsd"></bpdm:namespaceDefinition>
@@ -18,13 +19,6 @@
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/ExceptionManagement" bpdm:prefix="ExceptionManagement" bpdm:comment="contrib=&apos;partner-pool:///_JEX8sNbEEeeDx7b0yj_szA"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
             <vprop:property name="prop" type="xs:string"/>
-            <wsdl:portType name="Forclient">
-                <wsdl:operation name="Get_case_id" bpdm:source="partner-pool:///_gcOjMNH-EeeKlIzHx_g2Yg">
-                    <wsdl:input message="this:Get_case_idRequest" name="Get_case_id"/>
-                    <wsdl:output message="this:Get_case_idResponse" name="Get_case_idResponse"/>
-                </wsdl:operation>
-            </wsdl:portType>
-            <bpel:binding name="CanonicBindingForclient" type="this:Forclient" bpdm:isSynchronized="true"/>
             <wsdl:portType name="ForExceptionManagement">
                 <wsdl:operation name="Receive_recover_signal" bpdm:source="partner-pool:///_JEX8sNbEEeeDx7b0yj_szA">
                     <wsdl:input message="this:Receive_recover_signalRequest" name="Receive_recover_signal"/>
@@ -32,7 +26,14 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForExceptionManagement" type="this:ForExceptionManagement" bpdm:isSynchronized="true"/>
-            <xs:element name="Get_case_idRequest" type="xs:string" bpdm:source="partner-pool:///_gcOjMNH-EeeKlIzHx_g2Yg"/>
+            <wsdl:portType name="Forclient">
+                <wsdl:operation name="Get_case_id" bpdm:source="partner-pool:///_gcOjMNH-EeeKlIzHx_g2Yg">
+                    <wsdl:input message="this:Get_case_idRequest" name="Get_case_id"/>
+                    <wsdl:output message="this:Get_case_idResponse" name="Get_case_idResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForclient" type="this:Forclient" bpdm:isSynchronized="true"/>
+            <xs:element name="Get_case_idRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_gcOjMNH-EeeKlIzHx_g2Yg"/>
             <wsdl:message name="Get_case_idRequest" bpdm:source="partner-pool:///_gcOjMNH-EeeKlIzHx_g2Yg">
                 <wsdl:part name="body" element="this:Get_case_idRequest"/>
             </wsdl:message>
@@ -63,6 +64,7 @@
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/BusinessRule.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/getLaunchpointCase.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/integrations/getLaunchpointCase.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/integrations/LaunchpointError.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/integrations/Validation.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar.xsd"/>
@@ -72,8 +74,9 @@
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="process" bpdm:ID="_d0JGptH-EeeKlIzHx_g2Yg">
         <bpel:partnerLinks>
             <bpel:partnerLink name="processAndExceptionManagementPlkVar" partnerLinkType="diag:processAndExceptionManagement" myRole="process_for_ExceptionManagement" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForExceptionManagement" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/ExceptionManagement" bpdm:providedIsDefault="true" bpdm:clientTasks="_iWo4sNakEeeDx7b0yj_szA:_Yzsi0NakEeeDx7b0yj_szA" bpdm:isManaged="true" bpdm:otherPoolId="_JEX8sNbEEeeDx7b0yj_szA"/>
-            <bpel:partnerLink name="processimplicitPartnerAndProcessForHttpPortPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForHttpPortPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="getLaunchpointCase:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:3005/api/LaunchpointCases/{caseid}" bpdm:invokedIsDefault="true" bpdm:clientTasks="_eGDpwNajEeeDx7b0yj_szA:_sGEVdtMBEeesf764mnQLPA" bpdm:isManaged="true" bpdm:otherPoolId="_d0JGptH-EeeKlIzHx_g2YgimplicitPartner"/>
-            <bpel:partnerLink name="clientAndProcessForCanonicPortPlkVar" partnerLinkType="diag:clientAndProcessForCanonicPortPlk" initializePartnerRole="yes" myRole="process_for_client" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForclient" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/client" bpdm:providedIsDefault="true" partnerRole="client_for_process" bpdm:invokedService="CaseEvaluator-process:CanonicServiceForDCM" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_d0JGptH-EeeKlIzHx_g2Yg:_ky5BcNH-EeeKlIzHx_g2Yg, _eGDpwNajEeeDx7b0yj_szA:_3IpQwNH-EeeKlIzHx_g2Yg" bpdm:isManaged="true" bpdm:otherPoolId="_gcOjMNH-EeeKlIzHx_g2Yg"/>
+            <bpel:partnerLink name="clientAndProcessPlkVar" partnerLinkType="diag:clientAndProcess" initializePartnerRole="yes" myRole="process_for_client" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForclient" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/client" bpdm:providedIsDefault="true" partnerRole="client_for_process" bpdm:invokedService="client:CanonicServiceForprocess" bpdm:invokedPort="canonicPort" bpdm:invokedIsDefault="true" bpdm:clientTasks="_d0JGptH-EeeKlIzHx_g2Yg:_ky5BcNH-EeeKlIzHx_g2Yg" bpdm:isManaged="true" bpdm:otherPoolId="_gcOjMNH-EeeKlIzHx_g2Yg"/>
+            <bpel:partnerLink name="processimplicitPartnerAndProcessForHttpPortPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForHttpPortPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="getLaunchpointCase:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:3005/api/LaunchpointCases/{caseid}?environmentid={environmentid}" bpdm:invokedIsDefault="true" bpdm:clientTasks="_eGDpwNajEeeDx7b0yj_szA:_34c5ddw4EeeU5oFZSJFCiA" bpdm:isManaged="true" bpdm:otherPoolId="_d0JGptH-EeeKlIzHx_g2YgimplicitPartner"/>
+            <bpel:partnerLink name="clientAndProcessForCanonicPortPlkVar" partnerLinkType="diag:clientAndProcessForCanonicPortPlk" initializePartnerRole="yes" myRole="process_for_client" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForclient" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/client" bpdm:providedIsDefault="true" partnerRole="client_for_process" bpdm:invokedService="CaseEvaluator-process:CanonicServiceForDCM" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_eGDpwNajEeeDx7b0yj_szA:_3IpQwNH-EeeKlIzHx_g2Yg" bpdm:isManaged="true" bpdm:otherPoolId="_gcOjMNH-EeeKlIzHx_g2Yg"/>
         </bpel:partnerLinks>
         <bpel:correlationSets>
             <bpel:correlationSet name="getDCMCaseCorr" properties="this:prop"/>
@@ -98,8 +101,8 @@
             </bpel:variable>
         </bpel:variables>
         <bpel:sequence>
-            <bpdm:messagingtask eventType="start: message" operation="Get_case_id" partnerLink="clientAndProcessForCanonicPortPlkVar" portType="this:Forclient" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get case id" bpdm:ID="_ky5BcNH-EeeKlIzHx_g2Yg" bpdm:isHeaderAuthorizationAware="yes">
-                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisGet_case_idRequest2Msg" bpdm:msgVarScopeId="_d0JGptH-EeeKlIzHx_g2Yg" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_case_idRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_kzBkUNH-EeeKlIzHx_g2Yg"></bpdm:linkset>
+            <bpdm:messagingtask eventType="start: message" operation="Get_case_id" partnerLink="clientAndProcessPlkVar" portType="this:Forclient" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get case id" bpdm:ID="_ky5BcNH-EeeKlIzHx_g2Yg" bpdm:isHeaderAuthorizationAware="yes">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisGet_case_idRequest2Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_case_idRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_kzBkUNH-EeeKlIzHx_g2Yg"></bpdm:linkset>
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$ode:pid</bpel:from>
@@ -118,7 +121,7 @@
                         <bpel:to>$failCount</bpel:to><mapper:mapperLink><mapper:vertice id="1291199913" targetPath="$failCount" targetedBy="1156346857-arg0"></mapper:vertice><mapper:vertice id="1156346857" dimension="79x24" location="207,172"><mapper:value>0</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
-                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisGet_case_idResponse2Msg" bpdm:msgVarScopeId="_d0JGptH-EeeKlIzHx_g2Yg" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_case_idResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_lhXRANH-EeeKlIzHx_g2Yg">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisGet_case_idResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_case_idResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_lhXRANH-EeeKlIzHx_g2Yg">
                     <bpel:correlation set="getDCMCaseCorr" initiate="join" pattern="request" bpdm:isSource="false"></bpel:correlation>
                 </bpdm:linkset>
             </bpdm:messagingtask>
@@ -136,18 +139,21 @@
                 <bpel:sequence>
                     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Invoke transaction" bpdm:ID="_eGDpwNajEeeDx7b0yj_szA" bpdm:faultOnFailure="true">
                         <bpel:variables>
-                            <bpel:variable name="getLaunchpointCaseGetCaseResponse1Msg" messageType="getLaunchpointCase:getCase_output" binding="getLaunchpointCase:restBinding" operation="getCase" opMsgType="1" bpdm:messageIds="inc:_sGEVdtMBEeesf764mnQLPAIncoming"/>
-                            <bpel:variable name="getLaunchpointCaseGetCaseRequest1Msg" messageType="getLaunchpointCase:getCase_input" binding="getLaunchpointCase:restBinding" operation="getCase" opMsgType="0" bpdm:messageIds=" out:_sGEVdtMBEeesf764mnQLPAOutgoing">
+                            <bpel:variable name="getLaunchpointCaseGetCaseResponse1Msg" messageType="getLaunchpointCase:getCase_output" binding="getLaunchpointCase:restBinding" operation="getCase" opMsgType="1" bpdm:messageIds="inc:_34c5ddw4EeeU5oFZSJFCiAIncoming"/>
+                            <bpel:variable name="getLaunchpointCaseGetCaseRequest1Msg" messageType="getLaunchpointCase:getCase_input" binding="getLaunchpointCase:restBinding" operation="getCase" opMsgType="0" bpdm:messageIds=" out:_34c5ddw4EeeU5oFZSJFCiAOutgoing">
                                 <bpel:from bpdm:toPart="caseid">
                                     <bpel:literal bpdm:linkedMessageType="getLaunchpointCase:getCase_input" bpdm:linkedPart="caseid" bpdm:binding="getLaunchpointCase:restBinding" bpdm:opMsgType="0" bpdm:operation="getCase"></bpel:literal>
                                 </bpel:from>
+                                <bpel:from bpdm:toPart="environmentid">
+                                    <bpel:literal bpdm:linkedMessageType="getLaunchpointCase:getCase_input" bpdm:linkedPart="environmentid" bpdm:binding="getLaunchpointCase:restBinding" bpdm:opMsgType="0" bpdm:operation="getCase"></bpel:literal>
+                                </bpel:from>
                             </bpel:variable>
-                            <bpel:variable name="clientGet_DCM_infoRequest1Msg" messageType="CaseEvaluator-process:Get_DCM_infoRequest" binding="CaseEvaluator-process:processAndDCMServiceBinding" operation="Get_DCM_info" opMsgType="0" bpdm:id="_6zqTUNbHEeeY-olbqRPfBw" bpdm:messageIds=" out:_6zNnYNbHEeeY-olbqRPfBw">
+                            <bpel:variable name="clientGet_DCM_infoRequest1Msg" messageType="CaseEvaluator-process:Get_DCM_infoRequest" binding="CaseEvaluator-process:processAndDCMServiceBinding" operation="Get_DCM_info" opMsgType="0" bpdm:id="__F7z0Nw4EeeU5oFZSJFCiA" bpdm:messageIds=" out:__Feg0Nw4EeeU5oFZSJFCiA">
                                 <bpel:from bpdm:toPart="body">
                                     <bpel:literal bpdm:linkedMessageType="CaseEvaluator-process:Get_DCM_infoRequest" bpdm:linkedPart="body" bpdm:binding="CaseEvaluator-process:processAndDCMServiceBinding" bpdm:opMsgType="0" bpdm:operation="Get_DCM_info"></bpel:literal>
                                 </bpel:from>
                             </bpel:variable>
-                            <bpel:variable name="caseEvaluator-processGet_DCM_infoResponse1Msg" messageType="CaseEvaluator-process:Get_DCM_infoResponse" binding="CaseEvaluator-process:processAndDCMServiceBinding" operation="Get_DCM_info" opMsgType="1" bpdm:id="_7M_ZVdbHEeeY-olbqRPfBw" bpdm:messageIds="inc:_7MPycNbHEeeY-olbqRPfBw"/>
+                            <bpel:variable name="caseEvaluator-processGet_DCM_infoResponse2Msg" messageType="CaseEvaluator-process:Get_DCM_infoResponse" binding="CaseEvaluator-process:processAndDCMServiceBinding" operation="Get_DCM_info" opMsgType="1" bpdm:id="__cujN9w4EeeU5oFZSJFCiA" bpdm:messageIds="inc:__cR3QNw4EeeU5oFZSJFCiA"/>
                         </bpel:variables>
                         <bpel:faultHandlers>
                             <bpel:catchAll>
@@ -193,10 +199,6 @@
                                                 <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Signal  problem" bpdm:ID="_VUep8NakEeeDx7b0yj_szA" bpdm:isHeaderAuthorizationAware="no">
                                                     <bpdm:linkset bpdm:type="assignments">
                                                         <bpel:copy>
-                                                            <bpel:from>$ode:pid</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:pid</bpel:to><mapper:mapperLink><mapper:vertice id="613110886" targetPath="$ExecutionError/metrics:pid" targetedBy="389756842-arg0"></mapper:vertice><mapper:vertice id="389756842" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
-                                                        </bpel:copy>
-                                                        <bpel:copy>
                                                             <bpel:from>$thisGet_case_idRequest2Msg.body</bpel:from>
                                                             <bpel:to>$ExecutionError/metrics:CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="1396066655" targetPath="$ExecutionError/metrics:CaseId" targetedBy="729589423-arg0"></mapper:vertice><mapper:vertice id="729589423" sourcePath="$thisGet_case_idRequest2Msg.body"></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
@@ -224,6 +226,14 @@
                                                             <bpel:from>if ($validationError) then ($DocumentValid/Validation:element) else ("Error calling Get Case")</bpel:from>
                                                             <bpel:to>$ExecutionError/metrics:message</bpel:to><mapper:mapperLink><mapper:vertice id="2012248927" targetPath="$ExecutionError/metrics:message" targetedBy="1249525027-arg3"></mapper:vertice><mapper:vertice id="1249525027" dimension="79x24" location="348,336"><mapper:value>if-then-else</mapper:value></mapper:vertice><mapper:vertice id="174664475" sourcePath="$validationError" targetedBy="1249525027-arg0"></mapper:vertice><mapper:vertice id="1349803233" sourcePath="$DocumentValid/Validation:element" targetedBy="1249525027-arg1"></mapper:vertice><mapper:vertice id="2113090775" dimension="130x24" location="108,384" targetedBy="1249525027-arg2"><mapper:value>"Error calling Get Case"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>$ode:pid</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="2093158706" targetPath="$ExecutionError/metrics:id" targetedBy="639855877-arg0"></mapper:vertice><mapper:vertice id="639855877" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
+                                                        </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>true()</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:technicalError</bpel:to><mapper:mapperLink><mapper:vertice id="77266142" targetPath="$ExecutionError/metrics:technicalError" targetedBy="1250686407-arg0"></mapper:vertice><mapper:vertice id="1250686407" dimension="79x24" location="472,140"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        </bpel:copy>
                                                     </bpdm:linkset>
                                                 </bpdm:messagingtask>
                                                 <bpdm:messagingtask eventType="intermediate: message" operation="Receive_recover_signal" partnerLink="processAndExceptionManagementPlkVar" portType="this:ForExceptionManagement" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive recover signal" bpdm:ID="_Yzsi0NakEeeDx7b0yj_szA" bpdm:isHeaderAuthorizationAware="yes">
@@ -231,10 +241,6 @@
                                                         <bpel:correlation set="getDCMCaseCorr" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
                                                     </bpdm:linkset>
                                                     <bpdm:linkset bpdm:type="assignments">
-                                                        <bpel:copy>
-                                                            <bpel:from>$ode:pid</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:pid</bpel:to><mapper:mapperLink><mapper:vertice id="2085961313" targetPath="$ExecutionError/metrics:pid" targetedBy="760715059-arg0"></mapper:vertice><mapper:vertice id="760715059" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
-                                                        </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>true()</bpel:from>
                                                             <bpel:to>$ExecutionError/metrics:resolved</bpel:to><mapper:mapperLink><mapper:vertice id="538691824" targetPath="$ExecutionError/metrics:resolved" targetedBy="400484857-arg0"></mapper:vertice><mapper:vertice id="400484857" dimension="79x24" location="112,80"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
@@ -246,6 +252,10 @@
                                                         <bpel:copy>
                                                             <bpel:from>current-dateTime()</bpel:from>
                                                             <bpel:to>$thisReceive_recover_signalResponse1Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="2090266270" targetPath="$thisReceive_recover_signalResponse1Msg.body/Launchpoint:timestamp" targetedBy="76293009-arg0"></mapper:vertice><mapper:vertice id="76293009" dimension="109x24" location="148,303"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>$ode:pid</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="1159721537" targetPath="$ExecutionError/metrics:id" targetedBy="351657397-arg0"></mapper:vertice><mapper:vertice id="351657397" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                     </bpdm:linkset>
                                                     <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_recover_signalResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_recover_signalResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_O6GZ8NbEEeeDx7b0yj_szA"></bpdm:linkset>
@@ -260,21 +270,13 @@
                                                             <bpel:from>""</bpel:from>
                                                             <bpel:to>$DocumentValid/Validation:element</bpel:to><mapper:mapperLink><mapper:vertice id="1847432094" targetPath="$DocumentValid/Validation:element" targetedBy="1698704934-arg0"></mapper:vertice><mapper:vertice id="1698704934" dimension="79x24" location="166,120"><mapper:value>""</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
-                                                        <bpel:copy>
-                                                            <bpel:from>$ode:pid</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:pid</bpel:to><mapper:mapperLink><mapper:vertice id="48480964" targetPath="$ExecutionError/metrics:pid" targetedBy="1393252982-arg0"></mapper:vertice><mapper:vertice id="1393252982" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
-                                                        </bpel:copy>
-                                                        <bpel:copy>
-                                                            <bpel:from>true()</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:resolved</bpel:to><mapper:mapperLink><mapper:vertice id="693932357" targetPath="$ExecutionError/metrics:resolved" targetedBy="1618356768-arg0"></mapper:vertice><mapper:vertice id="1618356768" dimension="79x24" location="379,92"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
-                                                        </bpel:copy>
                                                     </bpdm:linkset>
                                                 </bpdm:messagingtask>
                                             </bpel:sequence>
                                             <bpel:sequence>
                                                 <bpdm:messagingtask eventType="intermediate: timer" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Wait" bpdm:ID="_PFILwNakEeeDx7b0yj_szA" bpdm:isHeaderAuthorizationAware="no">
                                                     <bpdm:linkset bpdm:type="timer">
-                                                        <bpel:for>"PT10S"<mapper:mapperLink><mapper:vertice id="996472493" targetPath="$duration" targetedBy="1902862240-arg0"></mapper:vertice><mapper:vertice id="1902862240" dimension="79x24" location="396,54"><mapper:value>"PT10S"</mapper:value></mapper:vertice></mapper:mapperLink></bpel:for>
+                                                        <bpel:for>ode:get-property-value("SERVICE_RETRY_WAIT")<mapper:mapperLink><mapper:vertice id="685438284" targetPath="$duration" targetedBy="1702200759-arg1"></mapper:vertice><mapper:vertice id="1702200759" dimension="139x24" location="321,131"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1088897940" dimension="134x24" location="132,72" targetedBy="1702200759-arg0"><mapper:value>"SERVICE_RETRY_WAIT"</mapper:value></mapper:vertice></mapper:mapperLink></bpel:for>
                                                     </bpdm:linkset>
                                                 </bpdm:messagingtask>
                                                 <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Try again" bpdm:ID="_QoNvINakEeeDx7b0yj_szA" bpdm:isHeaderAuthorizationAware="no">
@@ -296,39 +298,55 @@
                             </bpel:catchAll>
                         </bpel:faultHandlers>
                         <bpel:sequence>
-                            <bpdm:messagingtask operation="getCase" partnerLink="processimplicitPartnerAndProcessForHttpPortPlkVar" portType="getLaunchpointCase:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="getCase" bpdm:ID="_sGEVdtMBEeesf764mnQLPA" bpdm:isHeaderAuthorizationAware="no">
+                            <bpdm:messagingtask operation="getCase" partnerLink="processimplicitPartnerAndProcessForHttpPortPlkVar" portType="getLaunchpointCase:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="getCase" bpdm:ID="_34c5ddw4EeeU5oFZSJFCiA" bpdm:isHeaderAuthorizationAware="no">
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
-                                        <bpel:from>$thisGet_case_idRequest2Msg.body</bpel:from>
-                                        <bpel:to>$getLaunchpointCaseGetCaseRequest1Msg.caseid</bpel:to><mapper:mapperLink><mapper:vertice id="358563285" targetPath="$getLaunchpointCaseGetCaseRequest1Msg.caseid" targetedBy="264198575-arg0"></mapper:vertice><mapper:vertice id="264198575" sourcePath="$thisGet_case_idRequest2Msg.body"></mapper:vertice></mapper:mapperLink>
+                                        <bpel:from>$thisGet_case_idRequest2Msg.body/Launchpoint:caseid</bpel:from>
+                                        <bpel:to>$getLaunchpointCaseGetCaseRequest1Msg.caseid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="131358717" targetPath="$getLaunchpointCaseGetCaseRequest1Msg.caseid" targetedBy="1494867303-arg0"></mapper:vertice>
+  <mapper:vertice id="1494867303" sourcePath="$thisGet_case_idRequest2Msg.body/Launchpoint:caseid"></mapper:vertice>
+</mapper:mapperLink>
                                     </bpel:copy>
-                                </bpdm:linkset>
-                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="getLaunchpointCaseGetCaseRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getLaunchpointCase:getCase_input" bpdm:binding="getLaunchpointCase:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_sGEVdtMBEeesf764mnQLPAOutgoing"></bpdm:linkset>
-                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="getLaunchpointCaseGetCaseResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getLaunchpointCase:getCase_output" bpdm:binding="getLaunchpointCase:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_sGEVdtMBEeesf764mnQLPAIncoming"></bpdm:linkset>
-                            </bpdm:messagingtask>
-                            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Validate data" bpdm:ID="_XBgo8NajEeeDx7b0yj_szA" bpdm:isHeaderAuthorizationAware="no">
-                                <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
-                                        <bpel:from>bpel:doXslTransform("../../XSLT/validations/validateGetCase.xslt", $getLaunchpointCaseGetCaseResponse1Msg.dcmCase)</bpel:from>
-                                        <bpel:to>$DocumentValid</bpel:to><mapper:mapperLink><mapper:vertice id="338288882" targetPath="$DocumentValid" targetedBy="866277581-arg2"></mapper:vertice><mapper:vertice id="866277581" dimension="126x24" location="216,120"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="1256805842" dimension="237x24" location="26,65" targetedBy="866277581-arg0"><mapper:value>"../../XSLT/validations/validateGetCase.xslt"</mapper:value></mapper:vertice><mapper:vertice id="743147479" sourcePath="$getLaunchpointCaseGetCaseResponse1Msg.dcmCase" targetedBy="866277581-arg1"></mapper:vertice></mapper:mapperLink>
+                                        <bpel:from>$thisGet_case_idRequest2Msg.body/Launchpoint:environmentid</bpel:from>
+                                        <bpel:to>$getLaunchpointCaseGetCaseRequest1Msg.environmentid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1089373458" targetPath="$getLaunchpointCaseGetCaseRequest1Msg.environmentid" targetedBy="1229869100-arg0"></mapper:vertice>
+  <mapper:vertice id="1229869100" sourcePath="$thisGet_case_idRequest2Msg.body/Launchpoint:environmentid"></mapper:vertice>
+</mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
+                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="getLaunchpointCaseGetCaseRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getLaunchpointCase:getCase_input" bpdm:binding="getLaunchpointCase:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_34c5ddw4EeeU5oFZSJFCiAOutgoing"></bpdm:linkset>
+                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="getLaunchpointCaseGetCaseResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getLaunchpointCase:getCase_output" bpdm:binding="getLaunchpointCase:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_34c5ddw4EeeU5oFZSJFCiAIncoming"></bpdm:linkset>
+                                <bpdm:thrownFault msgFaultNcName="getCaseFault" msgFaultTypeQname="getLaunchpointCase:getCase_fault"/>
                             </bpdm:messagingtask>
+                            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Validate data" bpdm:ID="_XBgo8NajEeeDx7b0yj_szA" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
                             <bpdm:gateway bpdm:label="Data is valid" bpdm:ID="_Ybhv4NajEeeDx7b0yj_szA" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_ZebXUNajEeeDx7b0yj_szA" bpdm:targetDisplayName="Yes">
-                                    <bpel:condition>true() = $DocumentValid/Validation:isValid<mapper:mapperLink><mapper:vertice id="1537471880" targetPath="$condition" targetedBy="1941316768-arg2"></mapper:vertice><mapper:vertice id="1941316768" dimension="79x24" location="195,83"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1191006357" dimension="79x24" location="38,40" targetedBy="1941316768-arg0"><mapper:value>true()</mapper:value></mapper:vertice><mapper:vertice id="2009141907" sourcePath="$DocumentValid/Validation:isValid" targetedBy="1941316768-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
+                                    <bpel:condition>true() = $DocumentValid/Validation:isValid
+<mapper:mapperLink>
+  <mapper:vertice id="1727498891" targetPath="$condition" targetedBy="465904941-arg2"></mapper:vertice>
+  <mapper:vertice id="465904941" dimension="79x24" location="203,65">
+    <mapper:value>=</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="2118588214" dimension="79x24" location="38,40" targetedBy="465904941-arg0">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1320237577" sourcePath="$DocumentValid/Validation:isValid" targetedBy="465904941-arg1"></mapper:vertice>
+</mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_aK1KUNajEeeDx7b0yj_szA" bpdm:targetDisplayName="default"></bpdm:linkset>
                                 <bpel:sequence>
-                                    <bpdm:messagingtask eventType="intermediate: message" operation="Get_DCM_info" partnerLink="clientAndProcessForCanonicPortPlkVar" portType="CaseEvaluator-process:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send  ase" bpdm:ID="_3IpQwNH-EeeKlIzHx_g2Yg" bpdm:isHeaderAuthorizationAware="no">
+                                    <bpdm:messagingtask eventType="intermediate: message" operation="Get_DCM_info" partnerLink="clientAndProcessForCanonicPortPlkVar" portType="CaseEvaluator-process:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send  case" bpdm:ID="_3IpQwNH-EeeKlIzHx_g2Yg" bpdm:isHeaderAuthorizationAware="no">
                                         <bpdm:linkset bpdm:type="assignments">
                                             <bpel:copy>
                                                 <bpel:from>bpel:doXslTransform("../../XSLT/transformCaseDetailsFromDCM.xslt", $getLaunchpointCaseGetCaseResponse1Msg.dcmCase)</bpel:from>
                                                 <bpel:to>$clientGet_DCM_infoRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="2123024091" targetPath="$clientGet_DCM_infoRequest1Msg.body" targetedBy="1706006356-arg1"></mapper:vertice><mapper:vertice id="1706006356" dimension="126x24" location="348,72"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="1054639959" dimension="258x24" location="111,28" targetedBy="1706006356-arg0"><mapper:value>"../../XSLT/transformCaseDetailsFromDCM.xslt"</mapper:value></mapper:vertice><mapper:vertice id="638189292" sourcePath="$getLaunchpointCaseGetCaseResponse1Msg.dcmCase" targetedBy="1706006356-arg2"></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
-                                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="clientGet_DCM_infoRequest1Msg" bpdm:msgVarScopeId="_eGDpwNajEeeDx7b0yj_szA" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Get_DCM_infoRequest" bpdm:binding="CaseEvaluator-process:processAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_6zNnYNbHEeeY-olbqRPfBw"></bpdm:linkset>
-                                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="caseEvaluator-processGet_DCM_infoResponse1Msg" bpdm:msgVarScopeId="_eGDpwNajEeeDx7b0yj_szA" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Get_DCM_infoResponse" bpdm:binding="CaseEvaluator-process:processAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_7MPycNbHEeeY-olbqRPfBw"></bpdm:linkset>
+                                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="clientGet_DCM_infoRequest1Msg" bpdm:msgVarScopeId="_eGDpwNajEeeDx7b0yj_szA" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Get_DCM_infoRequest" bpdm:binding="CaseEvaluator-process:processAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="__Feg0Nw4EeeU5oFZSJFCiA"></bpdm:linkset>
+                                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="caseEvaluator-processGet_DCM_infoResponse2Msg" bpdm:msgVarScopeId="_eGDpwNajEeeDx7b0yj_szA" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Get_DCM_infoResponse" bpdm:binding="CaseEvaluator-process:processAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="__cR3QNw4EeeU5oFZSJFCiA"></bpdm:linkset>
                                     </bpdm:messagingtask>
                                     <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_H8bD4NbJEeeY-olbqRPfBw" bpdm:isHeaderAuthorizationAware="no">
                                         <bpdm:linkset bpdm:type="assignments">

@@ -113,7 +113,7 @@
     	</sequence>
     </complexType>
 
-    <element name="caseId" type="string"></element>
+    <element name="caseId" type="int"></element>
 
     <element name="requestId" type="string"></element>
 
@@ -333,7 +333,7 @@
 
     <complexType name="listCasesType">
     	<sequence>
-    		<element name="caseid" type="int" maxOccurs="unbounded" minOccurs="0"></element>
+    		<element name="lpCase" type="tns:CaseIdentifierType" maxOccurs="unbounded" minOccurs="0"></element>
     	</sequence>
     </complexType>
 
@@ -473,5 +473,111 @@
 
     <element name="ErrorRecoveryACK" type="tns:BpmAckType"></element>
 
+	<complexType name="IQBatchResponseType">
+		<sequence>
+			<element name="EnvironmentId" type="integer" />
+			<element name="IQBatchId" type="string" />
+			<element name="ClientId" type="integer" />
+			<element name="TotalLetterCount" type="integer" />
+			<element name="Cases" maxOccurs="unbounded"
+				type="tns:IQBatchResponseCaseType">
+
+			</element>
+		</sequence>
+	</complexType>
+
+    <complexType name="IQQueuedType">
+    	<sequence>
+    		<element name="iqQueued" type="boolean"></element>
+    		<element name="caseId" type="int"></element>
+    	</sequence>
+    </complexType>
     <element name="lpCases" type="tns:listCasesType"></element>
+
+    <complexType name="IQBatchType">
+    	<sequence>
+    		<element name="clientId" type="int"></element>
+    		<element name="environmentId" type="string"></element>
+    		<element name="cases" type="tns:IQDBCaseType"
+    			maxOccurs="unbounded" minOccurs="1">
+    		</element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="IQDBCaseType">
+    	<sequence>
+    		<element name="id" type="int"></element>
+    		<element name="batchId" type="int"></element>
+    		<element name="caseId" type="int"></element>
+    		<element name="iqReceived" type="boolean"></element>
+    		<element name="iqReceivedAt" type="dateTime"></element>
+    		<element name="iqEnqueued" type="boolean"></element>
+    		<element name="iqEnqueuedAt" type="dateTime"></element>
+    		<element name="iqDequeued" type="boolean"></element>
+    		<element name="iqDequeuedAt" type="dateTime"></element>
+    		<element name="iqSent" type="boolean"></element>
+    		<element name="iqSentAt" type="dateTime"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="IQBatches" type="tns:IQBatchesType"></element>
+    
+    <complexType name="IQBatchesType">
+    	<sequence>
+    		<element name="pid" type="int"></element>
+    		<element name="batches" type="tns:IQBatchType"
+    			maxOccurs="unbounded" minOccurs="1">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="IQLetterType">
+    	<sequence>
+    		<element name="BatchId" type="int"></element>
+    		<element name="ClientId" type="int"></element>
+    		<element name="CaseId" type="int"></element>
+    		<element name="FileId" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="PID" type="int"></element>
+
+    <complexType name="GenerateIQLetterAck">
+    	<sequence>
+    		<element name="caseId" type="int"></element>
+    		<element name="response" type="boolean"></element>
+    	</sequence>
+    </complexType>
+
+
+    <complexType name="IQBatchAckType">
+    	<sequence>
+    		<element name="iqBatchId" type="string"></element>
+    		<element name="pid" type="int"></element>
+    		<element name="timestamp" type="dateTime"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="IQBatchResponseCaseType">
+    	<sequence>
+    		<element name="CaseId" type="int"></element>
+    		<element name="success" type="boolean"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="IQLetterValidationType">
+    	<sequence>
+    		<element name="iqBatchId" type="string"></element>
+    		<element name="validationResult" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="CaseIdentifierType">
+    	<sequence>
+    		<element name="caseid" type="string"></element>
+    		<element name="environmentid" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="CaseIdentifier" type="tns:CaseIdentifierType"></element>
 </schema>

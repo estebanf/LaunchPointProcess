@@ -1,0 +1,16 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<bpt:template xmlns:bpt="http://www.intalio/designer/business-process-data-modeling/template" ID="_Abc4sNa8Eeeaesenvnhebw" displayName="getQueuedCase" ownerPoolId="_B8ixENZFEeeaesenvnhebw" ownerPoolNcName="Database" ownerPoolIsExecutable="false" version="6000089">
+    <bpt:partnerPool ID="_xRG1oLwFEee_aqBavMEZDg" ncName="Process_IQ_Case" isExecutable="true"/>
+    <bpt:container displayName="sequence" containerType="sequence">
+        <bpt:activity ID="_MZml0NZFEeeaesenvnhebw" displayName="Send Results" activityType="Task" messaging="invokerequestresponsebound">
+            <bpt:generatedOperation providingPoolId="_xRG1oLwFEee_aqBavMEZDg" generatedPartnerLinkTypeLocalName="Process_IQ_CaseAndDatabaseForCanonicPortPlk" generatedService="CanonicServiceForDatabase" generatedOperation="Get_Results" generatedPort="canonicPort">
+                <bpt:input name="Get_Results" generatedMessageTypeLocalName="Get_ResultsRequest">
+                    <bpt:part name="body" attachedSchemaObject="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}IQQueuedType" generatedElementLocalName="Get_ResultsRequest"/>
+                </bpt:input>
+                <bpt:output name="Get_ResultsResponse" generatedMessageTypeLocalName="Get_ResultsResponse">
+                    <bpt:part name="body" attachedSchemaObject="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType" generatedElementLocalName="Get_ResultsResponse"/>
+                </bpt:output>
+            </bpt:generatedOperation>
+        </bpt:activity>
+    </bpt:container>
+</bpt:template>

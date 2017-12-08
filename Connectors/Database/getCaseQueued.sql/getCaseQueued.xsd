@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:getcasequeuedservice" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:intalio.com:connectors:database:launchpointprocess:getcasequeuedservice">
+  <xsd:element name="getCaseQueuedParameterSet">
+    <xsd:annotation>
+      <xsd:documentation>Main element in request message for operation - getCaseQueued</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="connection">
+          <xsd:annotation>
+            <xsd:documentation>The database credentials</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="user">
+                <xsd:annotation>
+                  <xsd:documentation>The type definition for  user</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="password">
+                <xsd:annotation>
+                  <xsd:documentation>The type definition for  password</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string"/>
+                </xsd:simpleType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="execute">
+          <xsd:annotation>
+            <xsd:documentation>Execution with input parameter</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element form="qualified" name="parameters">
+                <xsd:annotation>
+                  <xsd:documentation>The query parameters</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="caseid">
+                      <xsd:annotation>
+                        <xsd:documentation>The parameter value</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:decimal">
+                          <xsd:totalDigits value="15"/>
+                          <xsd:fractionDigits value="2"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getCaseQueuedFault">
+    <xsd:annotation>
+      <xsd:documentation>The fault element</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="errorMessage" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>The error message</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="getCaseQueuedResultSet">
+    <xsd:annotation>
+      <xsd:documentation>Main element in response message for operation - getCaseQueued</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="rows">
+          <xsd:annotation>
+            <xsd:documentation/>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element form="qualified" name="row" maxOccurs="unbounded">
+                <xsd:annotation>
+                  <xsd:documentation>The row taken from database query</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="id">
+                      <xsd:annotation>
+                        <xsd:documentation>The type definition for  id</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:decimal">
+                          <xsd:totalDigits value="10"/>
+                          <xsd:fractionDigits value="0"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="caseid">
+                      <xsd:annotation>
+                        <xsd:documentation>The type definition for  caseid</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:decimal">
+                          <xsd:totalDigits value="10"/>
+                          <xsd:fractionDigits value="0"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element nillable="true" name="iqreceived">
+                      <xsd:annotation>
+                        <xsd:documentation>The type definition for  iqreceived</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:boolean"/>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="iqreceivedat">
+                      <xsd:annotation>
+                        <xsd:documentation>The type definition for  iqreceivedat</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:dateTime"/>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element nillable="true" name="iqenqueued">
+                      <xsd:annotation>
+                        <xsd:documentation>The type definition for  iqenqueued</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:boolean"/>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="iqenqueuedat">
+                      <xsd:annotation>
+                        <xsd:documentation>The type definition for  iqenqueuedat</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:dateTime"/>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element nillable="true" name="iqdequeued">
+                      <xsd:annotation>
+                        <xsd:documentation>The type definition for  iqdequeued</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:boolean"/>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="iqdequeuedat">
+                      <xsd:annotation>
+                        <xsd:documentation>The type definition for  iqdequeuedat</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:dateTime"/>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element nillable="true" name="iqsent">
+                      <xsd:annotation>
+                        <xsd:documentation>The type definition for  iqsent</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:boolean"/>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="iqsentat">
+                      <xsd:annotation>
+                        <xsd:documentation>The type definition for  iqsentat</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:dateTime"/>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="created_at">
+                      <xsd:annotation>
+                        <xsd:documentation>The type definition for  created_at</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:dateTime"/>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="updated_at">
+                      <xsd:annotation>
+                        <xsd:documentation>The type definition for  updated_at</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:dateTime"/>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element nillable="true" name="created_by_process">
+                      <xsd:annotation>
+                        <xsd:documentation>The type definition for  created_by_process</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:maxLength value="2147483647"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="created_by_instance">
+                      <xsd:annotation>
+                        <xsd:documentation>The type definition for  created_by_instance</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:decimal">
+                          <xsd:totalDigits value="19"/>
+                          <xsd:fractionDigits value="0"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

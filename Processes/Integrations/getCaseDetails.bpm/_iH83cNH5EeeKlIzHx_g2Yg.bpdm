@@ -1,8 +1,9 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:diag="http://thisdiagram" xmlns:client="http://thisdiagram/client" xmlns:processimplicitPartner="http://thisdiagram/processimplicitPartner" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:CaseEvaluator-process="http://thisproject/Processes/Core/CaseEvaluator/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:ns="urn:intalio.com:connectors:database:launchpointprocess:getcaseservice" xmlns:ExceptionManagement="http://thisdiagram/ExceptionManagement" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:diag="http://thisdiagram" xmlns:BusinessRule="http://www.example.org/NewXMLSchema" xmlns:client="http://thisdiagram/client" xmlns:processimplicitPartner="http://thisdiagram/processimplicitPartner" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:CaseEvaluator-process="http://thisproject/Processes/Core/CaseEvaluator/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:ns="urn:intalio.com:connectors:database:launchpointprocess:getcaseservice" xmlns:ExceptionManagement="http://thisdiagram/ExceptionManagement" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_jrpe0NH5EeeKlIzHx_g2Yg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/NewXMLSchema" bpdm:prefix="BusinessRule" bpdm:comment="contrib=&apos;project:///Schemas/BusinessRule.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/client" bpdm:prefix="client" bpdm:comment="contrib=&apos;partner-pool:///_jrpe0NH5EeeKlIzHx_g2Yg"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/processimplicitPartner" bpdm:prefix="processimplicitPartner" bpdm:comment="contrib=&apos;partner-pool:///_iH83cNH5EeeKlIzHx_g2YgimplicitPartner"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
@@ -28,14 +29,6 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForclient" type="this:Forclient" bpdm:isSynchronized="true"/>
-            <xs:element name="Get_case_idRequest" type="xs:string" bpdm:source="partner-pool:///_jrpe0NH5EeeKlIzHx_g2Yg"/>
-            <wsdl:message name="Get_case_idRequest" bpdm:source="partner-pool:///_jrpe0NH5EeeKlIzHx_g2Yg">
-                <wsdl:part name="body" element="this:Get_case_idRequest"/>
-            </wsdl:message>
-            <xs:element name="Get_case_idResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_jrpe0NH5EeeKlIzHx_g2Yg"/>
-            <wsdl:message name="Get_case_idResponse" bpdm:source="partner-pool:///_jrpe0NH5EeeKlIzHx_g2Yg">
-                <wsdl:part name="body" element="this:Get_case_idResponse"/>
-            </wsdl:message>
             <xs:element name="Receive_recover_signalRequest" type="Launchpoint:ErrorRecoveryType" bpdm:source="partner-pool:///_nt-toNagEeevpLXkVWf6QA"/>
             <wsdl:message name="Receive_recover_signalRequest" bpdm:source="partner-pool:///_nt-toNagEeevpLXkVWf6QA">
                 <wsdl:part name="body" element="this:Receive_recover_signalRequest"/>
@@ -44,12 +37,21 @@
             <wsdl:message name="Receive_recover_signalResponse" bpdm:source="partner-pool:///_nt-toNagEeevpLXkVWf6QA">
                 <wsdl:part name="body" element="this:Receive_recover_signalResponse"/>
             </wsdl:message>
+            <xs:element name="Get_case_idRequest" type="xs:string" bpdm:source="partner-pool:///_jrpe0NH5EeeKlIzHx_g2Yg"/>
+            <wsdl:message name="Get_case_idRequest" bpdm:source="partner-pool:///_jrpe0NH5EeeKlIzHx_g2Yg">
+                <wsdl:part name="body" element="this:Get_case_idRequest"/>
+            </wsdl:message>
+            <xs:element name="Get_case_idResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_jrpe0NH5EeeKlIzHx_g2Yg"/>
+            <wsdl:message name="Get_case_idResponse" bpdm:source="partner-pool:///_jrpe0NH5EeeKlIzHx_g2Yg">
+                <wsdl:part name="body" element="this:Get_case_idResponse"/>
+            </wsdl:message>
         </bpdm:namespaceContributor>
-        <bpdm:namespaceContributor bpdm:url="partner-pool:///_jrpe0NH5EeeKlIzHx_g2Yg" bpdm:label="client"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_nt-toNagEeevpLXkVWf6QA" bpdm:label="ExceptionManagement "/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_jrpe0NH5EeeKlIzHx_g2Yg" bpdm:label="client"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_iH83cNH5EeeKlIzHx_g2YgimplicitPartner" bpdm:label="processimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/CaseEvaluator-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/BusinessRule.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getCase.sql/getCase.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getCase.sql/getCase.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>

@@ -22,10 +22,10 @@
         </bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_3lpv5tKNEeeKlIzHx_g2YgimplicitPartner" bpdm:label="process-monitorimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getAllCases.sql/getAllCases.sql.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getAllCases.sql/getAllCases.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/CaseEvaluator-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/BusinessRule.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getAllCases.sql/getAllCases.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
     </bpdm:dependencies>
@@ -79,9 +79,9 @@
                             <bpel:literal bpdm:linkedMessageType="CaseEvaluator-process:Get_caseRequest" bpdm:linkedPart="body" bpdm:binding="CaseEvaluator-process:processAndClientServiceBinding" bpdm:opMsgType="0" bpdm:operation="Get_case"></bpel:literal>
                         </bpel:from>
                     </bpel:variable>
-                    <bpel:variable name="CaseId" type="xs:string" bpdm:id="_66KbkNbVEeeY-olbqRPfBw">
+                    <bpel:variable name="CaseIdentifier" element="Launchpoint:CaseIdentifier" bpdm:id="_H28vxdw0Eee4AtODEMQkZA">
                         <bpel:from>
-                            <bpel:literal bpdm:linkedType="xs:string"></bpel:literal>
+                            <bpel:literal bpdm:linkedElement="Launchpoint:CaseIdentifier"></bpel:literal>
                         </bpel:from>
                     </bpel:variable>
                 </bpel:variables>
@@ -89,16 +89,28 @@
                     <bpdm:messagingtask eventType="start: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Start_Event" bpdm:ID="_AGA1YNbWEeeY-olbqRPfBw" bpdm:isHeaderAuthorizationAware="no">
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
-                                <bpel:from>$lpCases/Launchpoint:caseid[$emptyCounter]</bpel:from>
-                                <bpel:to>$CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="1187661650" targetPath="$CaseId" targetedBy="854167710-arg2"></mapper:vertice><mapper:vertice id="854167710" dimension="79x24" location="288,84"><mapper:value>[]</mapper:value></mapper:vertice><mapper:vertice id="1519775757" sourcePath="$lpCases/Launchpoint:caseid" targetedBy="854167710-arg0"></mapper:vertice><mapper:vertice id="440183512" sourcePath="$emptyCounter" targetedBy="854167710-arg1"></mapper:vertice></mapper:mapperLink>
+                                <bpel:from>$lpCases/Launchpoint:lpCase[$emptyCounter]</bpel:from>
+                                <bpel:to>$lpCases</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1753428795" targetPath="$lpCases" targetedBy="325614651-arg0"></mapper:vertice>
+  <mapper:vertice id="325614651" dimension="79x24" location="288,84">
+    <mapper:value>[]</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1159081742" sourcePath="$lpCases/Launchpoint:lpCase" targetedBy="325614651-arg1"></mapper:vertice>
+  <mapper:vertice id="1810955816" sourcePath="$emptyCounter" targetedBy="325614651-arg2"></mapper:vertice>
+</mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>
                     <bpdm:messagingtask operation="Get_case" partnerLink="process-monitorimplicitPartnerAndProcess-monitorForCanonicPortPlkVar" portType="CaseEvaluator-process:Forclient" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send case for evaluation" bpdm:ID="_zYk2BtKOEee0svt489vHig" bpdm:isHeaderAuthorizationAware="no">
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
-                                <bpel:from>$CaseId</bpel:from>
-                                <bpel:to>$caseEvaluator-processGet_case1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="1041274141" targetPath="$caseEvaluator-processGet_case1Msg.body" targetedBy="279963950-arg0"></mapper:vertice><mapper:vertice id="279963950" sourcePath="$CaseId"></mapper:vertice></mapper:mapperLink>
+                                <bpel:from>$CaseIdentifier</bpel:from>
+                                <bpel:to>$caseEvaluator-processGet_case1Msg.body</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1534780503" targetPath="$caseEvaluator-processGet_case1Msg.body" targetedBy="1917781047-arg0"></mapper:vertice>
+  <mapper:vertice id="1917781047" sourcePath="$CaseIdentifier"></mapper:vertice>
+</mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="caseEvaluator-processGet_case1Msg" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Get_caseRequest" bpdm:binding="CaseEvaluator-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_zYk2BtKOEee0svt489vHigOutgoing"></bpdm:linkset>

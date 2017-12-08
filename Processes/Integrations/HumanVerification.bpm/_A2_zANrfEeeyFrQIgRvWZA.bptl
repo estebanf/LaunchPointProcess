@@ -1,0 +1,16 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<bpt:template xmlns:bpt="http://www.intalio/designer/business-process-data-modeling/template" ID="_A2_zANrfEeeyFrQIgRvWZA" displayName="InitiateValidation" ownerPoolId="_3AHiQNnSEee2MLg0sBZbqw" ownerPoolNcName="client" ownerPoolIsExecutable="false" version="6000089">
+    <bpt:partnerPool ID="_5yLaMNnSEee2MLg0sBZbqw" ncName="process" isExecutable="true"/>
+    <bpt:container displayName="sequence" containerType="sequence">
+        <bpt:activity ID="_3AIwYNnSEee2MLg0sBZbqw" displayName="Initiate iq letter validation" activityType="Task" messaging="invokerequestresponsebound">
+            <bpt:generatedOperation providingPoolId="_5yLaMNnSEee2MLg0sBZbqw" generatedPartnerLinkTypeLocalName="processAndClientForCanonicPortPlk" generatedService="CanonicServiceForclient" generatedOperation="received_validation_request" generatedPort="canonicPort">
+                <bpt:input name="received_validation_request" generatedMessageTypeLocalName="received_validation_requestRequest">
+                    <bpt:part name="body" attachedSchemaObject="project:///Schemas/integrations/generateIQBatch.xsd?xsdelement={http://www.example.org/generateIQBatch}iob_request_root"/>
+                </bpt:input>
+                <bpt:output name="received_validation_requestResponse" generatedMessageTypeLocalName="received_validation_requestResponse">
+                    <bpt:part name="body" attachedSchemaObject="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType" generatedElementLocalName="received_validation_requestResponse"/>
+                </bpt:output>
+            </bpt:generatedOperation>
+        </bpt:activity>
+    </bpt:container>
+</bpt:template>

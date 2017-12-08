@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/generateIQBatch"
+	xmlns:tns="http://www.example.org/generateIQBatch" elementFormDefault="qualified">
+	<element name="iob_request_root">
+		<complexType>
+			<sequence>
+				<element name="EnvironmentId" type="integer" />
+				<element name="IQBatchId" type="string" />
+				<element name="ClientId" type="integer" />
+				<element name="TotalLetterCount" type="integer" />
+				<element name="Cases" maxOccurs="unbounded"
+					type="tns:CasesType">
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<complexType name="CasesType">
+		<sequence>
+			<element name="CaseId" type="int"></element>
+			<element name="FileId" type="string"></element>
+		</sequence>
+		<attribute name="isJsonArray" type="boolean"></attribute>
+	</complexType>
+
+	<element name="Cases" type="tns:CasesType"></element>
+</schema>
