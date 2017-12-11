@@ -1,4 +1,4 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:CaseCloseReopen="__project:///Schemas/integrations/CaseCloseReopen.xsd" xmlns:ProcessISOResponse-ISO_Response_Mana="http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager" xmlns:createActivity-process="http://thisproject/Processes/Integrations/createActivity/process" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Exception_Management="http://thisdiagram/Exception_Management" xmlns:caseCloseReopen="http://bpms.everteam.com/Services/REST/caseCloseReopen.rest" xmlns:db="http://thisdiagram/db" xmlns:ISOResponse="http://thisdiagram/ISOResponse" xmlns:diag="http://thisdiagram" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:DCM="http://thisdiagram/DCM" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:getCaseDetails-process="http://thisproject/Processes/Integrations/getCaseDetails/process" xmlns:caller="http://thisdiagram/caller" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:CaseCloseReopen="__project:///Schemas/integrations/CaseCloseReopen.xsd" xmlns:ProcessISOResponse-ISO_Response_Mana="http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager" xmlns:createActivity-process="http://thisproject/Processes/Integrations/createActivity/process" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Exception_Management="http://thisdiagram/Exception_Management" xmlns:caseCloseReopen="http://bpms.everteam.com/Services/REST/caseCloseReopen.rest" xmlns:db="http://thisdiagram/db" xmlns:ISOResponse="http://thisdiagram/ISOResponse" xmlns:Evaluator="http://thisdiagram/Evaluator" xmlns:diag="http://thisdiagram" xmlns:BusinessRule="http://www.example.org/NewXMLSchema" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:CaseEvaluator-process="http://thisproject/Processes/Core/CaseEvaluator/process" xmlns:DCM="http://thisdiagram/DCM" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:getCaseDetails-process="http://thisproject/Processes/Integrations/getCaseDetails/process" xmlns:caller="http://thisdiagram/caller" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/integrations/CaseCloseReopen.xsd" bpdm:prefix="CaseCloseReopen" bpdm:comment="contrib=&apos;project:///Schemas/integrations/CaseCloseReopen.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager" bpdm:prefix="ProcessISOResponse-ISO_Response_Mana" bpdm:comment="contrib=&apos;project:///Processes/Core/ProcessISOResponse-ISO_Response_Manager.wsdl"></bpdm:namespaceDefinition>
@@ -9,9 +9,12 @@
         <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/Services/REST/caseCloseReopen.rest" bpdm:prefix="caseCloseReopen" bpdm:comment="contrib=&apos;project:///Services/REST/caseCloseReopen.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/db" bpdm:prefix="db" bpdm:comment="contrib=&apos;partner-pool:///_-LGyoN5OEee5MfuigsCq1w"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/ISOResponse" bpdm:prefix="ISOResponse" bpdm:comment="contrib=&apos;partner-pool:///_DjLqkN5PEee5MfuigsCq1w"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Evaluator" bpdm:prefix="Evaluator" bpdm:comment="contrib=&apos;partner-pool:///_CViLsN5PEee5MfuigsCq1w"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_uR9clt42Eee0YMxeWbu2Dg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/NewXMLSchema" bpdm:prefix="BusinessRule" bpdm:comment="contrib=&apos;project:///Schemas/BusinessRule.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/CaseEvaluator/process" bpdm:prefix="CaseEvaluator-process" bpdm:comment="contrib=&apos;project:///Processes/Core/CaseEvaluator-process.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/DCM" bpdm:prefix="DCM" bpdm:comment="contrib=&apos;partner-pool:///_Aowg0N5PEee5MfuigsCq1w"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
@@ -30,13 +33,6 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForException_Management" type="this:ForException_Management" bpdm:isSynchronized="true"/>
-            <wsdl:portType name="Forcaller">
-                <wsdl:operation name="Receive_request" bpdm:source="partner-pool:///_uR9clt42Eee0YMxeWbu2Dg">
-                    <wsdl:input message="this:Receive_requestRequest" name="Receive_request"/>
-                    <wsdl:output message="this:Receive_requestResponse" name="Receive_requestResponse"/>
-                </wsdl:operation>
-            </wsdl:portType>
-            <bpel:binding name="CanonicBindingForcaller" type="this:Forcaller" bpdm:isSynchronized="true"/>
             <wsdl:portType name="Fordb">
                 <wsdl:operation name="Receive_case_details" bpdm:source="partner-pool:///_-LGyoN5OEee5MfuigsCq1w">
                     <wsdl:input message="this:Receive_case_detailsRequest" name="Receive_case_details"/>
@@ -44,6 +40,13 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingFordb" type="this:Fordb" bpdm:isSynchronized="true"/>
+            <wsdl:portType name="Forcaller">
+                <wsdl:operation name="Receive_request" bpdm:source="partner-pool:///_uR9clt42Eee0YMxeWbu2Dg">
+                    <wsdl:input message="this:Receive_requestRequest" name="Receive_request"/>
+                    <wsdl:output message="this:Receive_requestResponse" name="Receive_requestResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForcaller" type="this:Forcaller" bpdm:isSynchronized="true"/>
             <wsdl:portType name="ForDCM">
                 <wsdl:operation name="Receive_activity_confirmation_case_close_reason" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
                     <wsdl:input message="this:Receive_activity_confirmation_case_close_reasonRequest" name="Receive_activity_confirmation_case_close_reason"/>
@@ -83,14 +86,6 @@
             <wsdl:message name="Receive_case_detailsResponse" bpdm:source="partner-pool:///_-LGyoN5OEee5MfuigsCq1w">
                 <wsdl:part name="body" element="this:Receive_case_detailsResponse"/>
             </wsdl:message>
-            <xs:element name="Receive_activity_confirmation_case_statusRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
-            <wsdl:message name="Receive_activity_confirmation_case_statusRequest" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
-                <wsdl:part name="body" element="this:Receive_activity_confirmation_case_statusRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_activity_confirmation_case_statusResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
-            <wsdl:message name="Receive_activity_confirmation_case_statusResponse" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
-                <wsdl:part name="body" element="this:Receive_activity_confirmation_case_statusResponse"/>
-            </wsdl:message>
             <xs:element name="Receive_activity_confirmation_case_close_reasonRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
             <wsdl:message name="Receive_activity_confirmation_case_close_reasonRequest" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
                 <wsdl:part name="body" element="this:Receive_activity_confirmation_case_close_reasonRequest"/>
@@ -98,6 +93,14 @@
             <xs:element name="Receive_activity_confirmation_case_close_reasonResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
             <wsdl:message name="Receive_activity_confirmation_case_close_reasonResponse" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
                 <wsdl:part name="body" element="this:Receive_activity_confirmation_case_close_reasonResponse"/>
+            </wsdl:message>
+            <xs:element name="Receive_activity_confirmation_case_statusRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
+            <wsdl:message name="Receive_activity_confirmation_case_statusRequest" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
+                <wsdl:part name="body" element="this:Receive_activity_confirmation_case_statusRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_activity_confirmation_case_statusResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
+            <wsdl:message name="Receive_activity_confirmation_case_statusResponse" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
+                <wsdl:part name="body" element="this:Receive_activity_confirmation_case_statusResponse"/>
             </wsdl:message>
             <xs:element name="Receive_activity_confirmation_case_lifecycleRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
             <wsdl:message name="Receive_activity_confirmation_case_lifecycleRequest" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
@@ -164,12 +167,15 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_-LGyoN5OEee5MfuigsCq1w" bpdm:label="db"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_Aowg0N5PEee5MfuigsCq1w" bpdm:label="DCM"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_DjLqkN5PEee5MfuigsCq1w" bpdm:label="ISOResponse"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_CViLsN5PEee5MfuigsCq1w" bpdm:label="Evaluator"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseDetails-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createActivity-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/caseCloseReopen.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/integrations/CaseCloseReopen.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createActivity-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOResponse-ISO_Response_Manager.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/CaseEvaluator-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/BusinessRule.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -184,6 +190,7 @@
             <bpel:partnerLink name="dCmAndProcessForHttpPortPlkVar" partnerLinkType="diag:DCmAndProcessForHttpPortPlk" initializePartnerRole="yes" partnerRole="DCM_for_process" bpdm:invokedService="caseCloseReopen:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://192.168.241.200:3001/updatestatus" bpdm:invokedIsDefault="true" bpdm:clientTasks="_vCVpQN45Eee0YMxeWbu2Dg:_cJcuUN5SEee5MfuigsCq1w" bpdm:isManaged="true" bpdm:otherPoolId="_Aowg0N5PEee5MfuigsCq1w"/>
             <bpel:partnerLink name="dCmAndProcessPlkVar" partnerLinkType="diag:DCmAndProcess" myRole="process_for_DCM" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForDCM" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/DCM" bpdm:providedIsDefault="true" bpdm:clientTasks="_0Lkx8N5PEee5MfuigsCq1w:_xo3koN5PEee5MfuigsCq1w, _4g5zcN5PEee5MfuigsCq1w:_4hCWX95PEee5MfuigsCq1w, _2qRpAN5PEee5MfuigsCq1w:_2qRpEd5PEee5MfuigsCq1w" bpdm:isManaged="true" bpdm:otherPoolId="_Aowg0N5PEee5MfuigsCq1w"/>
             <bpel:partnerLink name="iSOResponseAndProcessForCanonicPortPlkVar" partnerLinkType="diag:ISOResponseAndProcessForCanonicPortPlk" initializePartnerRole="yes" partnerRole="ISOResponse_for_process" bpdm:invokedService="ProcessISOResponse-ISO_Response_Mana:CanonicServiceForDCM" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_sNQvAN44Eee0YMxeWbu2Dg:_qOc48N44Eee0YMxeWbu2Dg" bpdm:isManaged="true" bpdm:otherPoolId="_DjLqkN5PEee5MfuigsCq1w"/>
+            <bpel:partnerLink name="evaluatorAndProcessForCanonicPortPlkVar" partnerLinkType="diag:EvaluatorAndProcessForCanonicPortPlk" initializePartnerRole="yes" partnerRole="Evaluator_for_process" bpdm:invokedService="CaseEvaluator-process:CanonicServiceForDCM" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_VKMIEN5QEee5MfuigsCq1w:_VKMIId5QEee5MfuigsCq1w" bpdm:isManaged="true" bpdm:otherPoolId="_CViLsN5PEee5MfuigsCq1w"/>
         </bpel:partnerLinks>
         <bpel:correlationSets>
             <bpel:correlationSet name="exceptionCorr" properties="this:prop"/>
@@ -723,8 +730,29 @@
                                 </bpel:sequence>
                                 <bpel:sequence>
                                     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Evaluator" bpdm:ID="_VKMIEN5QEee5MfuigsCq1w">
+                                        <bpel:variables>
+                                            <bpel:variable name="evaluatorSend_confirmationRequest1Msg" messageType="CaseEvaluator-process:Receive_close_case_confirmationRequest" binding="CaseEvaluator-process:processAndDCMServiceBinding" operation="Receive_close_case_confirmation" opMsgType="0" bpdm:id="_Gy17id6yEeecAJzv8fWIEw" bpdm:messageIds=" out:_GysxkN6yEeecAJzv8fWIEw">
+                                                <bpel:from bpdm:toPart="body">
+                                                    <bpel:literal bpdm:linkedMessageType="CaseEvaluator-process:Receive_close_case_confirmationRequest" bpdm:linkedPart="body" bpdm:binding="CaseEvaluator-process:processAndDCMServiceBinding" bpdm:opMsgType="0" bpdm:operation="Receive_close_case_confirmation"></bpel:literal>
+                                                </bpel:from>
+                                            </bpel:variable>
+                                            <bpel:variable name="caseEvaluator-processReceive_close_case_confirmationResponse2Msg" messageType="CaseEvaluator-process:Receive_close_case_confirmationResponse" binding="CaseEvaluator-process:processAndDCMServiceBinding" operation="Receive_close_case_confirmation" opMsgType="1" bpdm:id="_J-Pgkt6yEeecAJzv8fWIEw" bpdm:messageIds="inc:_J-FvgN6yEeecAJzv8fWIEw"/>
+                                        </bpel:variables>
                                         <bpel:sequence>
-                                            <bpdm:messagingtask eventType="end: message" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Reply to evaluator" bpdm:ID="_VKMIId5QEee5MfuigsCq1w" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                            <bpdm:messagingtask eventType="end: message" operation="Receive_close_case_confirmation" partnerLink="evaluatorAndProcessForCanonicPortPlkVar" portType="CaseEvaluator-process:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Reply to evaluator" bpdm:ID="_VKMIId5QEee5MfuigsCq1w" bpdm:isHeaderAuthorizationAware="no">
+                                                <bpdm:linkset bpdm:type="assignments">
+                                                    <bpel:copy>
+                                                        <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Case</bpel:from>
+                                                        <bpel:to>$evaluatorSend_confirmationRequest1Msg.body</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1597615687" targetPath="$evaluatorSend_confirmationRequest1Msg.body" targetedBy="1300973034-arg0"></mapper:vertice>
+  <mapper:vertice id="1300973034" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Case"></mapper:vertice>
+</mapper:mapperLink>
+                                                    </bpel:copy>
+                                                </bpdm:linkset>
+                                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="evaluatorSend_confirmationRequest1Msg" bpdm:msgVarScopeId="_VKMIEN5QEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Receive_close_case_confirmationRequest" bpdm:binding="CaseEvaluator-process:processAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_GysxkN6yEeecAJzv8fWIEw"></bpdm:linkset>
+                                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="caseEvaluator-processReceive_close_case_confirmationResponse2Msg" bpdm:msgVarScopeId="_VKMIEN5QEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Receive_close_case_confirmationResponse" bpdm:binding="CaseEvaluator-process:processAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_J-FvgN6yEeecAJzv8fWIEw"></bpdm:linkset>
+                                            </bpdm:messagingtask>
                                         </bpel:sequence>
                                     </bpel:scope>
                                 </bpel:sequence>
