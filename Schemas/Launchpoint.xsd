@@ -340,7 +340,7 @@
 	<complexType name="IQBatchResponseType">
 		<sequence>
 			<element name="EnvironmentId" type="integer" />
-			<element name="IQBatchId" type="string" />
+			<element name="IQBatchId" type="int" />
 			<element name="ClientId" type="integer" />
 			<element name="TotalLetterCount" type="integer" />
 			<element name="Cases" maxOccurs="unbounded"
@@ -381,10 +381,10 @@
     </complexType>
     <complexType name="IQLetterType">
     	<sequence>
-    		<element name="BatchId" type="int"></element>
-    		<element name="ClientId" type="int"></element>
-    		<element name="CaseId" type="int"></element>
-    		<element name="EnvironmentId" type="int"></element>
+    		<element name="BatchId" type="string"></element>
+    		<element name="ClientId" type="string"></element>
+    		<element name="CaseId" type="string"></element>
+    		<element name="EnvironmentId" type="string"></element>
     		<element name="FileId" type="string"></element>
     	</sequence>
     </complexType>
@@ -396,7 +396,7 @@
     </complexType>
     <complexType name="IQBatchAckType">
     	<sequence>
-    		<element name="iqBatchId" type="string"></element>
+    		<element name="iqBatchId" type="int"></element>
     		<element name="pid" type="int"></element>
     		<element name="timestamp" type="dateTime"></element>
     	</sequence>
@@ -409,7 +409,7 @@
     </complexType>
     <complexType name="IQLetterValidationType">
     	<sequence>
-    		<element name="iqBatchId" type="string"></element>
+    		<element name="iqBatchId" type="int"></element>
     		<element name="validationResult" type="boolean"></element>
     	</sequence>
     </complexType>
@@ -520,4 +520,6 @@
     <element name="IQBatchItem" type="tns:IQBatchItemType"></element>
 
     <element name="IQBatch" type="tns:IQBatchType"></element>
+
+    <element name="IQDbCase" type="tns:IQDBCaseType"></element>
 </schema>
