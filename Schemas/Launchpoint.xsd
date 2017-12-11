@@ -1,120 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Launchpoint" xmlns:tns="http://www.example.org/Launchpoint" elementFormDefault="qualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Launchpoint"
+	xmlns:tns="http://www.example.org/Launchpoint" elementFormDefault="qualified">
 
-    <complexType name="CaseType">
-    	<sequence>
-    		<element name="CaseId" type="string"></element>
-    		<element name="ISOIndicator" type="string"></element>
-    		<element name="Score" type="string"></element>
-    		<element name="AccidentDate" type="dateTime"></element>
-    		<element name="BenefitAmount" type="string"></element>
-    		<element name="FundingSource" type="string"></element>
-    		<element name="LOB" type="string"></element>
-    		<element name="State" type="string"></element>
-    		<element name="WorkComp" type="string"></element>
-    		<element name="CaseStatus" type="string"></element>
-    		<element name="CaseSource">
-    			<simpleType>
-    				<restriction base="string">
-    					<enumeration value="system"></enumeration>
-    					<enumeration value="user"></enumeration>
-    				</restriction>
-    			</simpleType>
-    		</element>
-    		<element name="SkipDuplicateCheck" type="boolean"></element>
-    	</sequence>
-    </complexType>
-
-    <complexType name="BatchType">
-    	<sequence>
-    		<element name="BatchId" type="string"></element>
-            <element name="EnvironmentId" type="string"></element>
-            <element name="ClientId" type="string"></element>
-            <element name="TotalCaseCount" type="string"></element>
-    		<element name="Cases" type="tns:CaseType"
-    			maxOccurs="unbounded" minOccurs="1">
-    		</element>
-    	</sequence>
-    </complexType>
-
-
-
-
-
-    
-
-
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-
-
-    
-
-
-
-    <complexType name="BpmAckType">
-    	<sequence>
-    		<element name="pid" type="string"></element>
-    		<element name="timestamp" type="dateTime"></element>
-    	</sequence>
-    </complexType>
-
-    <complexType name="ISORequestType">
-    	<sequence>
-    		<element name="ClientID" type="int"></element>
-    		<element name="Environment" type="string"></element>
-    		<element name="Xml" type="string"></element>
-    		<element name="IsTest" type="boolean"></element>
-    		<element name="RequestID" type="int"></element>
-    	</sequence>
-    </complexType>
-
-    <element name="isDuplicate">
-    	<complexType>
-    		<sequence>
-    			<element name="duplicate" type="boolean"></element>
-    		</sequence>
-    	</complexType>
-    </element>
-
-    <complexType name="ISOCaseType">
-    	<sequence>
-    		<element name="case" type="tns:CaseType"></element>
-    		<element name="batchId" type="string"></element>
-    		<element name="parentPid" type="string"></element>
-    		<element name="clientId" type="string"></element>
-    		<element name="environmentId" type="string"></element>
-    	</sequence>
-    </complexType>
-
-    <element name="Batch" type="tns:BatchType"></element>
-    
-
-    <element name="CaseDecision" type="tns:CaseDecisionType"></element>
-    
-    <complexType name="CaseDecisionType">
-    	<sequence>
-    		<element name="decision" type="string"></element>
-    	</sequence>
-    </complexType>
-
-    <complexType name="GenerateFileResponseType">
-    	<sequence>
-    		<element name="Request" type="tns:ISORequestType"></element>
-    	</sequence>
-    </complexType>
-
-
-
-
+	<complexType name="CaseType">
+		<sequence>
+			<element name="CaseId" type="string"></element>
+			<element name="ISOIndicator" type="string"></element>
+			<element name="Score" type="string"></element>
+			<element name="AccidentDate" type="dateTime"></element>
+			<element name="BenefitAmount" type="string"></element>
+			<element name="FundingSource" type="string"></element>
+			<element name="LOB" type="string"></element>
+			<element name="State" type="string"></element>
+			<element name="WorkComp" type="string"></element>
+			<element name="CaseStatus" type="string"></element>
+			<element name="CaseSource">
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="system"></enumeration>
+						<enumeration value="user"></enumeration>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="SkipDuplicateCheck" type="boolean"></element>
+		</sequence>
+	</complexType>
+	<complexType name="BatchType">
+		<sequence>
+			<element name="BatchId" type="string"></element>
+			<element name="EnvironmentId" type="string"></element>
+			<element name="ClientId" type="string"></element>
+			<element name="TotalCaseCount" type="string"></element>
+			<element name="Cases" type="tns:CaseType" maxOccurs="unbounded"
+				minOccurs="1">
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="BpmAckType">
+		<sequence>
+			<element name="pid" type="string"></element>
+			<element name="timestamp" type="dateTime"></element>
+		</sequence>
+	</complexType>
+	<complexType name="ISORequestType">
+		<sequence>
+			<element name="ClientID" type="int"></element>
+			<element name="Environment" type="string"></element>
+			<element name="Xml" type="string"></element>
+			<element name="IsTest" type="boolean"></element>
+			<element name="RequestID" type="int"></element>
+		</sequence>
+	</complexType>
+	<complexType name="ISOCaseType">
+		<sequence>
+			<element name="case" type="tns:CaseType"></element>
+			<element name="batchId" type="string"></element>
+			<element name="parentPid" type="string"></element>
+			<element name="clientId" type="string"></element>
+			<element name="environmentId" type="string"></element>
+		</sequence>
+	</complexType>
+	<element name="Batch" type="tns:BatchType"></element>
+	<complexType name="GenerateFileResponseType">
+		<sequence>
+			<element name="Request" type="tns:ISORequestType"></element>
+		</sequence>
+	</complexType>
     <complexType name="ISOFileWrapperType">
     	<sequence>
     		<element name="content" type="anyType"></element>
@@ -533,23 +484,6 @@
 
     <element name="CaseIdentifier" type="tns:CaseIdentifierType"></element>
 
-    <complexType name="toBeDeletedTypes">
-    	<sequence>
-    		<element name="ISOResponseFileACK" type="string"></element>
-    		<element name="DCMISORequestFileACK" type="string"></element>
-    		<element name="ISOScoringACK" type="string"></element>
-    		<element name="Batch" type="string"></element>
-    		<element name="batchId" type="string"></element>
-    		<element name="CaseDecision" type="string"></element>
-    		<element name="ISOResponseFile" type="string"></element>
-    		<element name="isDuplicate" type="string"></element>
-    		<element name="GenerateFileResponseType" type="string"></element>
-    		<element name="IQRuleOutputType" type="string"></element>
-    		<element name="ISOCaseType" type="string"></element>
-    		<element name="CaseDecisionType" type="string"></element>
-    		<element name="ISORuleInputType" type="string"></element>
-    	</sequence>
-    </complexType>
 
 
 
