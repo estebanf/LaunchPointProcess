@@ -15,6 +15,7 @@
         <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:launchpointprocess:getcaseservice" bpdm:prefix="ns" bpdm:comment="contrib=&apos;project:///Connectors/Database/getCase.sql/getCase.sql.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/ExceptionManagement" bpdm:prefix="ExceptionManagement" bpdm:comment="contrib=&apos;partner-pool:///_nt-toNagEeevpLXkVWf6QA"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <vprop:property name="prop" type="xs:string"/>
             <wsdl:portType name="ForExceptionManagement">
                 <wsdl:operation name="Receive_recover_signal" bpdm:source="partner-pool:///_nt-toNagEeevpLXkVWf6QA">
                     <wsdl:input message="this:Receive_recover_signalRequest" name="Receive_recover_signal"/>
@@ -29,7 +30,6 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForclient" type="this:Forclient" bpdm:isSynchronized="true"/>
-            <vprop:property name="prop" type="xs:string"/>
             <xs:element name="Receive_recover_signalRequest" type="Launchpoint:ErrorRecoveryType" bpdm:source="partner-pool:///_nt-toNagEeevpLXkVWf6QA"/>
             <wsdl:message name="Receive_recover_signalRequest" bpdm:source="partner-pool:///_nt-toNagEeevpLXkVWf6QA">
                 <wsdl:part name="body" element="this:Receive_recover_signalRequest"/>
@@ -116,7 +116,7 @@
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisGet_case_idResponse2Msg" bpdm:msgVarScopeId="_iH83cNH5EeeKlIzHx_g2Yg" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_case_idResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_oKx8kNH5EeeKlIzHx_g2Yg">
-                    <bpel:correlation set="newCorrelationSet" initiate="join" pattern="request"></bpel:correlation>
+                    <bpel:correlation set="newCorrelationSet" initiate="join" pattern="request" bpdm:isSource="false"></bpel:correlation>
                 </bpdm:linkset>
             </bpdm:messagingtask>
             <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Query database" bpdm:ID="_8hjDMNagEeevpLXkVWf6QA">
@@ -220,7 +220,7 @@
                                                 </bpdm:messagingtask>
                                                 <bpdm:messagingtask eventType="intermediate: message" operation="Receive_recover_signal" partnerLink="exceptionManagement_AndProcessPlkVar" portType="this:ForExceptionManagement" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive recover signal" bpdm:ID="_UTN-ENagEeevpLXkVWf6QA" bpdm:isHeaderAuthorizationAware="yes">
                                                     <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_recover_signalRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_recover_signalRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_w2ZqsNagEeevpLXkVWf6QA">
-                                                        <bpel:correlation set="newCorrelationSet" initiate="join" pattern="response"></bpel:correlation>
+                                                        <bpel:correlation set="newCorrelationSet" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
                                                     </bpdm:linkset>
                                                     <bpdm:linkset bpdm:type="assignments">
                                                         <bpel:copy>

@@ -1,4 +1,4 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:tns="http://everteam.com/xvar/example" xmlns:DCM="http://thisdiagram/DCM" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Process_ISO_CaseimplicitPartner="http://thisdiagram/Process_ISO_CaseimplicitPartner" xmlns:this="http://thisdiagram/Process_ISO_Case" xmlns:Case_Manager="http://thisdiagram/Case_Manager" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Process_ISO_Case">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:tns="http://everteam.com/xvar/example" xmlns:DCM="http://thisdiagram/DCM" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:generateFile-process="http://thisproject/Processes/Integrations/generateFile/process" xmlns:Process_ISO_CaseimplicitPartner="http://thisdiagram/Process_ISO_CaseimplicitPartner" xmlns:this="http://thisdiagram/Process_ISO_Case" xmlns:Case_Manager="http://thisdiagram/Case_Manager" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Process_ISO_Case">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_it804J_PEeee0o7jDg0-OQ"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
@@ -8,17 +8,11 @@
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://test.com/xvar/example" bpdm:prefix="metrics" bpdm:comment="contrib=&apos;project:///Metrics/metrics.xvar"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Integrations/generateFile/process" bpdm:prefix="generateFile-process" bpdm:comment="contrib=&apos;project:///Processes/Integrations/generateFile-process.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Process_ISO_CaseimplicitPartner" bpdm:prefix="Process_ISO_CaseimplicitPartner" bpdm:comment="contrib=&apos;partner-pool:///_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Process_ISO_Case" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Case_Manager" bpdm:prefix="Case_Manager" bpdm:comment="contrib=&apos;partner-pool:///_it804J_PEeee0o7jDg0-OQ"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
-            <wsdl:portType name="ForDCM">
-                <wsdl:operation name="Receive_ISO_Request" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
-                    <wsdl:input message="this:Receive_ISO_RequestRequest" name="Receive_ISO_Request"/>
-                    <wsdl:output message="this:Receive_ISO_RequestResponse" name="Receive_ISO_RequestResponse"/>
-                </wsdl:operation>
-            </wsdl:portType>
-            <bpel:binding name="CanonicBindingForDCM" type="this:ForDCM" bpdm:isSynchronized="true"/>
             <wsdl:portType name="ForCase_Manager">
                 <wsdl:operation name="Receive_ISO" bpdm:source="partner-pool:///_it804J_PEeee0o7jDg0-OQ">
                     <wsdl:input message="this:Receive_ISORequest" name="Receive_ISO"/>
@@ -26,6 +20,28 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForCase_Manager" type="this:ForCase_Manager" bpdm:isSynchronized="true"/>
+            <wsdl:portType name="ForDCM">
+                <wsdl:operation name="Receive_ISO_Request" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
+                    <wsdl:input message="this:Receive_ISO_RequestRequest" name="Receive_ISO_Request"/>
+                    <wsdl:output message="this:Receive_ISO_RequestResponse" name="Receive_ISO_RequestResponse"/>
+                </wsdl:operation>
+                <wsdl:operation name="Receive_generate_file_response" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
+                    <wsdl:input message="this:Receive_generate_file_responseRequest" name="Receive_generate_file_response"/>
+                    <wsdl:output message="this:Receive_generate_file_responseResponse" name="Receive_generate_file_responseResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForDCM" type="this:ForDCM" bpdm:isSynchronized="true"/>
+            <vprop:property name="caseid" type="xs:string"/>
+            <vprop:property name="environmentid" type="xs:string"/>
+            <vprop:property name="clientid" type="xs:string"/>
+            <xs:element name="Receive_generate_file_responseRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw"/>
+            <wsdl:message name="Receive_generate_file_responseRequest" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
+                <wsdl:part name="body" element="this:Receive_generate_file_responseRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_generate_file_responseResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw"/>
+            <wsdl:message name="Receive_generate_file_responseResponse" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
+                <wsdl:part name="body" element="this:Receive_generate_file_responseResponse"/>
+            </wsdl:message>
             <wsdl:message name="Receive_ISO_RequestRequest" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
                 <wsdl:part name="body" element="Launchpoint:DCMISORequestFile"/>
             </wsdl:message>
@@ -33,7 +49,7 @@
             <wsdl:message name="Receive_ISO_RequestResponse" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
                 <wsdl:part name="body" element="this:Receive_ISO_RequestResponse"/>
             </wsdl:message>
-            <xs:element name="Receive_ISORequest" type="Launchpoint:LaunchpointCaseType" bpdm:source="partner-pool:///_it804J_PEeee0o7jDg0-OQ"/>
+            <xs:element name="Receive_ISORequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_it804J_PEeee0o7jDg0-OQ"/>
             <wsdl:message name="Receive_ISORequest" bpdm:source="partner-pool:///_it804J_PEeee0o7jDg0-OQ">
                 <wsdl:part name="body" element="this:Receive_ISORequest"/>
             </wsdl:message>
@@ -41,11 +57,39 @@
             <wsdl:message name="Receive_ISOResponse" bpdm:source="partner-pool:///_it804J_PEeee0o7jDg0-OQ">
                 <wsdl:part name="body" element="this:Receive_ISOResponse"/>
             </wsdl:message>
+            <vprop:propertyAlias propertyName="this:caseid" messageType="this:Receive_ISORequest" part="body">
+                <vprop:query>Launchpoint:CaseId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:clientid" messageType="this:Receive_generate_file_responseRequest" part="body">
+                <vprop:query>Launchpoint:ClientId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:environmentid" messageType="this:Receive_ISO_RequestRequest" part="body">
+                <vprop:query>Launchpoint:Case/Launchpoint:EnvironmentId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:caseid" messageType="this:Receive_ISO_RequestRequest" part="body">
+                <vprop:query>Launchpoint:Case/Launchpoint:CaseId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:caseid" messageType="this:Receive_generate_file_responseRequest" part="body">
+                <vprop:query>Launchpoint:CaseId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:clientid" messageType="this:Receive_ISO_RequestRequest" part="body">
+                <vprop:query>Launchpoint:Case/Launchpoint:ClientId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:environmentid" messageType="this:Receive_ISORequest" part="body">
+                <vprop:query>Launchpoint:EnvironmentId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:environmentid" messageType="this:Receive_generate_file_responseRequest" part="body">
+                <vprop:query>Launchpoint:EnvironmentId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:clientid" messageType="this:Receive_ISORequest" part="body">
+                <vprop:query>Launchpoint:ClientId/text()</vprop:query>
+            </vprop:propertyAlias>
         </bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw" bpdm:label="DCM"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_it804J_PEeee0o7jDg0-OQ" bpdm:label="Case Manager"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner" bpdm:label="Process ISO CaseimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/generateFile-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
@@ -54,8 +98,11 @@
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Process ISO Case" bpdm:ID="_uuYIkJ_JEeee0o7jDg0-OQ">
         <bpel:partnerLinks>
             <bpel:partnerLink name="process_ISO_CaseAndCase_ManagerPlkVar" partnerLinkType="diag:Process_ISO_CaseAndCase_Manager" myRole="Process_ISO_Case_for_Case_Manager" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForCase_Manager" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_ISO_Case/Case_Manager" bpdm:providedIsDefault="true" bpdm:clientTasks="_uuYIkJ_JEeee0o7jDg0-OQ:_1rwKYJ_JEeee0o7jDg0-OQ" bpdm:isManaged="true" bpdm:otherPoolId="_it804J_PEeee0o7jDg0-OQ"/>
-            <bpel:partnerLink name="process_ISO_CaseAndDCMPlkVar" partnerLinkType="diag:Process_ISO_CaseAndDCM" initializePartnerRole="yes" myRole="Process_ISO_Case_for_DCM" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForDCM" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_ISO_Case/DCM" bpdm:providedIsDefault="true" partnerRole="DCM_for_Process_ISO_Case" bpdm:invokedService="DCM:CanonicServiceForProcess_ISO_Case" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/DCM/Process_ISO_Case" bpdm:invokedIsDefault="true" bpdm:clientTasks="_QvcSgNR1EeePw9HWmNDN1w:_nu8JMLH8Eee6aeEJgFykVw, _2X1dALDPEeeWxcgptknY3g:_BiLRYNRlEeePw9HWmNDN1w" bpdm:isManaged="true" bpdm:otherPoolId="_s6fdgLH7Eee6aeEJgFykVw"/>
+            <bpel:partnerLink name="process_ISO_CaseAndDCMForCanonicPortPlkVar" partnerLinkType="diag:Process_ISO_CaseAndDCMForCanonicPortPlk" initializePartnerRole="yes" myRole="Process_ISO_Case_for_DCM" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForDCM" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_ISO_Case/DCM" bpdm:providedIsDefault="true" partnerRole="DCM_for_Process_ISO_Case" bpdm:invokedService="generateFile-process:CanonicServiceForcaller" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_pJCH0N4eEee0YMxeWbu2Dg:_nu8JMLH8Eee6aeEJgFykVw, _qtdvAN4eEee0YMxeWbu2Dg:_dNMn8N4eEee0YMxeWbu2Dg, _qtdvAN4eEee0YMxeWbu2Dg:_BiLRYNRlEeePw9HWmNDN1w" bpdm:isManaged="true" bpdm:otherPoolId="_s6fdgLH7Eee6aeEJgFykVw"/>
         </bpel:partnerLinks>
+        <bpel:correlationSets>
+            <bpel:correlationSet name="newCorrelationSet" properties="this:caseid this:environmentid this:clientid"/>
+        </bpel:correlationSets>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
             <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_k7S2Np_PEeee0o7jDg0-OQ" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_k7S2Np_PEeee0o7jDg0-OQ"/>
             <bpel:variable name="ISOTracking" element="metrics:ISOTracking" xvar:id="ISOTracking-_Of7Q4LAsEeePfL0rL8WrrQ" xvar:relates-to="ISOTracking-keys" bpdm:xvarType="metrics:ISOTracking" bpdm:id="_Of7Q4LAsEeePfL0rL8WrrQ"/>
@@ -78,7 +125,9 @@
         </bpel:variables>
         <bpel:sequence>
             <bpdm:messagingtask eventType="start: message" operation="Receive_ISO" partnerLink="process_ISO_CaseAndCase_ManagerPlkVar" portType="this:ForCase_Manager" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive ISO" bpdm:ID="_1rwKYJ_JEeee0o7jDg0-OQ" bpdm:isHeaderAuthorizationAware="yes">
-                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="iSOEventStartMessageRequest1" bpdm:msgVarScopeId="_uuYIkJ_JEeee0o7jDg0-OQ" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_ISORequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_u9NnEJ_PEeee0o7jDg0-OQ"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="iSOEventStartMessageRequest1" bpdm:msgVarScopeId="_uuYIkJ_JEeee0o7jDg0-OQ" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_ISORequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_u9NnEJ_PEeee0o7jDg0-OQ">
+                    <bpel:correlation set="newCorrelationSet" initiate="join" pattern="response"></bpel:correlation>
+                </bpdm:linkset>
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$ode:pid</bpel:from>
@@ -127,52 +176,110 @@
                     </bpel:copy>
                 </bpdm:linkset>
             </bpdm:messagingtask>
-            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Fetch ISO Data" bpdm:ID="_2X1dALDPEeeWxcgptknY3g">
+            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_pJCH0N4eEee0YMxeWbu2Dg">
                 <bpel:variables>
-                    <bpel:variable name="dCMTaskRequest1Msg" messageType="DCM:TaskRequest" bpdm:id="_9DivoNR0EeePw9HWmNDN1w" bpdm:messageIds=" out:_9DQbwNR0EeePw9HWmNDN1w">
+                    <bpel:variable name="thisReceive_ISO_RequestRequest1Msg" messageType="this:Receive_ISO_RequestRequest" bpdm:id="_sw61ULH8Eee6aeEJgFykVw" bpdm:messageIds="inc:_swf-kLH8Eee6aeEJgFykVw"/>
+                    <bpel:variable name="thisReceive_ISO_RequestResponse2Msg" messageType="this:Receive_ISO_RequestResponse" bpdm:id="_tHVKMLH8Eee6aeEJgFykVw" bpdm:messageIds=" out:_tHQRsLH8Eee6aeEJgFykVw">
                         <bpel:from bpdm:toPart="body">
-                            <bpel:literal bpdm:linkedMessageType="DCM:TaskRequest" bpdm:linkedPart="body"></bpel:literal>
+                            <bpel:literal bpdm:linkedMessageType="this:Receive_ISO_RequestResponse" bpdm:linkedPart="body"></bpel:literal>
                         </bpel:from>
                     </bpel:variable>
-                    <bpel:variable name="dCMTaskResponse1Msg" messageType="DCM:TaskResponse" bpdm:id="_9bPd8NR0EeePw9HWmNDN1w" bpdm:messageIds="inc:_9ayyANR0EeePw9HWmNDN1w"/>
                 </bpel:variables>
                 <bpel:sequence>
-                    <bpdm:messagingtask operation="Task" partnerLink="process_ISO_CaseAndDCMPlkVar" portType="DCM:ForProcess_ISO_Case" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Generate file" bpdm:ID="_BiLRYNRlEeePw9HWmNDN1w" bpdm:isHeaderAuthorizationAware="no">
-                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMTaskRequest1Msg" bpdm:msgVarScopeId="_2X1dALDPEeeWxcgptknY3g" bpdm:variableIsManaged="true" bpdm:messageType="DCM:TaskRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_9DQbwNR0EeePw9HWmNDN1w"></bpdm:linkset>
-                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="dCMTaskResponse1Msg" bpdm:msgVarScopeId="_2X1dALDPEeeWxcgptknY3g" bpdm:variableIsManaged="true" bpdm:messageType="DCM:TaskResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_9ayyANR0EeePw9HWmNDN1w"></bpdm:linkset>
-                    </bpdm:messagingtask>
-                    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_QvcSgNR1EeePw9HWmNDN1w">
+                    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Generate file" bpdm:ID="_qtdvAN4eEee0YMxeWbu2Dg">
                         <bpel:variables>
-                            <bpel:variable name="thisReceive_ISO_RequestRequest1Msg" messageType="this:Receive_ISO_RequestRequest" bpdm:id="_sw61ULH8Eee6aeEJgFykVw" bpdm:messageIds="inc:_swf-kLH8Eee6aeEJgFykVw"/>
-                            <bpel:variable name="thisReceive_ISO_RequestResponse2Msg" messageType="this:Receive_ISO_RequestResponse" bpdm:id="_tHVKMLH8Eee6aeEJgFykVw" bpdm:messageIds=" out:_tHQRsLH8Eee6aeEJgFykVw">
+                            <bpel:variable name="thisReceive_generate_file_responseRequest1Msg" messageType="this:Receive_generate_file_responseRequest" bpdm:id="_gqenKd4eEee0YMxeWbu2Dg" bpdm:messageIds="inc:_gqU2IN4eEee0YMxeWbu2Dg"/>
+                            <bpel:variable name="thisReceive_generate_file_responseResponse2Msg" messageType="this:Receive_generate_file_responseResponse" bpdm:id="_hH1RgN4eEee0YMxeWbu2Dg" bpdm:messageIds=" out:_hHrggN4eEee0YMxeWbu2Dg">
                                 <bpel:from bpdm:toPart="body">
-                                    <bpel:literal bpdm:linkedMessageType="this:Receive_ISO_RequestResponse" bpdm:linkedPart="body"></bpel:literal>
+                                    <bpel:literal bpdm:linkedMessageType="this:Receive_generate_file_responseResponse" bpdm:linkedPart="body"></bpel:literal>
                                 </bpel:from>
                             </bpel:variable>
+                            <bpel:variable name="dCMTaskRequest1Msg" messageType="generateFile-process:Recieve_RequestRequest" binding="generateFile-process:callerAndProcessServiceBinding" operation="Recieve_Request" opMsgType="0" bpdm:id="_Zwgeqd4eEee0YMxeWbu2Dg" bpdm:messageIds=" out:_ZwXUsN4eEee0YMxeWbu2Dg">
+                                <bpel:from bpdm:toPart="body">
+                                    <bpel:literal bpdm:linkedMessageType="generateFile-process:Recieve_RequestRequest" bpdm:linkedPart="body" bpdm:binding="generateFile-process:callerAndProcessServiceBinding" bpdm:opMsgType="0" bpdm:operation="Recieve_Request"></bpel:literal>
+                                </bpel:from>
+                            </bpel:variable>
+                            <bpel:variable name="generateFile-processRecieve_RequestResponse2Msg" messageType="generateFile-process:Recieve_RequestResponse" binding="generateFile-process:callerAndProcessServiceBinding" operation="Recieve_Request" opMsgType="1" bpdm:id="_aQ2LkN4eEee0YMxeWbu2Dg" bpdm:messageIds="inc:_aQZfoN4eEee0YMxeWbu2Dg"/>
                         </bpel:variables>
-                        <bpel:eventHandlers>
-                            <bpel:onEvent>
-                                <bpdm:eventHandler bpdm:label="Non-Int_Message_Intermediate_Event" bpdm:ID="_TQhLUNR5EeePw9HWmNDN1w" bpdm:type="event"></bpdm:eventHandler>
-                                <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Task" bpdm:ID="_TtRYwNR5EeePw9HWmNDN1w" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
-                            </bpel:onEvent>
-                        </bpel:eventHandlers>
                         <bpel:sequence>
-                            <bpdm:messagingtask operation="Receive_ISO_Request" partnerLink="process_ISO_CaseAndDCMPlkVar" portType="this:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive ISO Request" bpdm:ID="_nu8JMLH8Eee6aeEJgFykVw" bpdm:isHeaderAuthorizationAware="yes">
-                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_ISO_RequestRequest1Msg" bpdm:msgVarScopeId="_QvcSgNR1EeePw9HWmNDN1w" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_ISO_RequestRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_swf-kLH8Eee6aeEJgFykVw"></bpdm:linkset>
+                            <bpdm:messagingtask operation="Recieve_Request" partnerLink="process_ISO_CaseAndDCMForCanonicPortPlkVar" portType="generateFile-process:Forcaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Call generate file" bpdm:ID="_BiLRYNRlEeePw9HWmNDN1w" bpdm:isHeaderAuthorizationAware="no">
+                                <bpdm:linkset bpdm:type="assignments">
+                                    <bpel:copy>
+                                        <bpel:from>$iSOEventStartMessageRequest1.body</bpel:from>
+                                        <bpel:to>$dCMTaskRequest1Msg.body/Launchpoint:Case</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="136615752" targetPath="$dCMTaskRequest1Msg.body/Launchpoint:Case" targetedBy="438333453-arg0"></mapper:vertice>
+  <mapper:vertice id="438333453" sourcePath="$iSOEventStartMessageRequest1.body"></mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>"ISORequest"</bpel:from>
+                                        <bpel:to>$dCMTaskRequest1Msg.body/Launchpoint:fileType</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="633121836" targetPath="$dCMTaskRequest1Msg.body/Launchpoint:fileType" targetedBy="2019579616-arg0"></mapper:vertice>
+  <mapper:vertice id="2019579616" dimension="79x24" location="365,153">
+    <mapper:value>"ISORequest"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>"ISO"</bpel:from>
+                                        <bpel:to>$dCMTaskRequest1Msg.body/Launchpoint:source</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="917852285" targetPath="$dCMTaskRequest1Msg.body/Launchpoint:source" targetedBy="145091293-arg0"></mapper:vertice>
+  <mapper:vertice id="145091293" dimension="79x24" location="403,212">
+    <mapper:value>"ISO"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
+                                </bpdm:linkset>
+                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMTaskRequest1Msg" bpdm:msgVarScopeId="_qtdvAN4eEee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="generateFile-process:Recieve_RequestRequest" bpdm:binding="generateFile-process:callerAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_ZwXUsN4eEee0YMxeWbu2Dg"></bpdm:linkset>
+                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="generateFile-processRecieve_RequestResponse2Msg" bpdm:msgVarScopeId="_qtdvAN4eEee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="generateFile-process:Recieve_RequestResponse" bpdm:binding="generateFile-process:callerAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_aQZfoN4eEee0YMxeWbu2Dg"></bpdm:linkset>
+                            </bpdm:messagingtask>
+                            <bpdm:messagingtask operation="Receive_generate_file_response" partnerLink="process_ISO_CaseAndDCMForCanonicPortPlkVar" portType="this:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive generate file response" bpdm:ID="_dNMn8N4eEee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="yes">
+                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_generate_file_responseRequest1Msg" bpdm:msgVarScopeId="_qtdvAN4eEee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_generate_file_responseRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_gqU2IN4eEee0YMxeWbu2Dg">
+                                    <bpel:correlation set="newCorrelationSet" initiate="join" pattern="response"></bpel:correlation>
+                                </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>$ode:pid</bpel:from>
-                                        <bpel:to>$thisReceive_ISO_RequestResponse2Msg.body/Launchpoint:pid</bpel:to><mapper:mapperLink><mapper:vertice id="1607134086" targetPath="$thisReceive_ISO_RequestResponse2Msg.body/Launchpoint:pid" targetedBy="2029668318-arg0"></mapper:vertice><mapper:vertice id="2029668318" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
+                                        <bpel:to>$thisReceive_generate_file_responseResponse2Msg.body/Launchpoint:pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1776172005" targetPath="$thisReceive_generate_file_responseResponse2Msg.body/Launchpoint:pid" targetedBy="1315454288-arg0"></mapper:vertice>
+  <mapper:vertice id="1315454288" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>current-dateTime()</bpel:from>
-                                        <bpel:to>$thisReceive_ISO_RequestResponse2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="1875811497" targetPath="$thisReceive_ISO_RequestResponse2Msg.body/Launchpoint:timestamp" targetedBy="2080778508-arg0"></mapper:vertice><mapper:vertice id="2080778508" dimension="109x24" location="324,60"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                        <bpel:to>$thisReceive_generate_file_responseResponse2Msg.body/Launchpoint:timestamp</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1748786047" targetPath="$thisReceive_generate_file_responseResponse2Msg.body/Launchpoint:timestamp" targetedBy="1289424162-arg0"></mapper:vertice>
+  <mapper:vertice id="1289424162" dimension="109x24" location="455,79">
+    <mapper:value>current-dateTime()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
-                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_ISO_RequestResponse2Msg" bpdm:msgVarScopeId="_QvcSgNR1EeePw9HWmNDN1w" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_ISO_RequestResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_tHQRsLH8Eee6aeEJgFykVw"></bpdm:linkset>
+                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_generate_file_responseResponse2Msg" bpdm:msgVarScopeId="_qtdvAN4eEee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_generate_file_responseResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_hHrggN4eEee0YMxeWbu2Dg"></bpdm:linkset>
                             </bpdm:messagingtask>
                         </bpel:sequence>
                     </bpel:scope>
+                    <bpdm:messagingtask operation="Receive_ISO_Request" partnerLink="process_ISO_CaseAndDCMForCanonicPortPlkVar" portType="this:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive ISO Request" bpdm:ID="_nu8JMLH8Eee6aeEJgFykVw" bpdm:isHeaderAuthorizationAware="yes">
+                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_ISO_RequestRequest1Msg" bpdm:msgVarScopeId="_pJCH0N4eEee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_ISO_RequestRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_swf-kLH8Eee6aeEJgFykVw">
+                            <bpel:correlation set="newCorrelationSet" initiate="join" pattern="response"></bpel:correlation>
+                        </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="assignments">
+                            <bpel:copy>
+                                <bpel:from>$ode:pid</bpel:from>
+                                <bpel:to>$thisReceive_ISO_RequestResponse2Msg.body/Launchpoint:pid</bpel:to><mapper:mapperLink><mapper:vertice id="1607134086" targetPath="$thisReceive_ISO_RequestResponse2Msg.body/Launchpoint:pid" targetedBy="2029668318-arg0"></mapper:vertice><mapper:vertice id="2029668318" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>current-dateTime()</bpel:from>
+                                <bpel:to>$thisReceive_ISO_RequestResponse2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="1875811497" targetPath="$thisReceive_ISO_RequestResponse2Msg.body/Launchpoint:timestamp" targetedBy="2080778508-arg0"></mapper:vertice><mapper:vertice id="2080778508" dimension="109x24" location="324,60"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                        </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_ISO_RequestResponse2Msg" bpdm:msgVarScopeId="_pJCH0N4eEee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_ISO_RequestResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_tHQRsLH8Eee6aeEJgFykVw"></bpdm:linkset>
+                    </bpdm:messagingtask>
                     <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Extract ISO Request Fle" bpdm:ID="_yx-esLDREeeWxcgptknY3g" bpdm:isHeaderAuthorizationAware="no">
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>

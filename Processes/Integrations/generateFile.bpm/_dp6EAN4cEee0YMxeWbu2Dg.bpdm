@@ -1,0 +1,35 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:this="http://thisdiagram/ISO_Request" xmlns:process="http://thisdiagram/process" xmlns:ProcessISOCase-Process_ISO_Case="http://thisproject/Processes/Core/ProcessISOCase/Process_ISO_Case" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:tns="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/ISO_Request">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_S8OrRt4aEee0YMxeWbu2Dg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/ISO_Request" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="process" bpdm:comment="contrib=&apos;partner-pool:///_S8OrRt4aEee0YMxeWbu2Dg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/ProcessISOCase/Process_ISO_Case" bpdm:prefix="ProcessISOCase-Process_ISO_Case" bpdm:comment="contrib=&apos;project:///Processes/Core/ProcessISOCase-Process_ISO_Case.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_S8OrRt4aEee0YMxeWbu2Dg" bpdm:label="process"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOCase-Process_ISO_Case.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="ISO Request" bpdm:ID="_dp6EAN4cEee0YMxeWbu2Dg">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="iSO_RequestAndProcessForCanonicPortPlkVar" partnerLinkType="diag:ISO_RequestAndProcessForCanonicPortPlk" myRole="ISO_Request_for_process" bpdm:enableSharing="false" bpdm:providedService="ProcessISOCase-Process_ISO_Case:CanonicServiceForDCM" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="epr" bpdm:providedIsDefault="true" bpdm:clientTasks="_dp6EAN4cEee0YMxeWbu2Dg:_9OZ6pt4eEee0YMxeWbu2Dg" bpdm:isManaged="true" bpdm:otherPoolId="_S8OrRt4aEee0YMxeWbu2Dg"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="thisReceive_generate_responseRequest1Msg" messageType="ProcessISOCase-Process_ISO_Case:Receive_generate_file_responseRequest" binding="ProcessISOCase-Process_ISO_Case:Process_ISO_CaseAndDCMForCanonicPortPlkServiceBinding" operation="Receive_generate_file_response" opMsgType="0" bpdm:id="_B5nskN4fEee0YMxeWbu2Dg" bpdm:messageIds="inc:_B5LAoN4fEee0YMxeWbu2Dg"/>
+            <bpel:variable name="processISOCase-Process_ISO_CaseReceive_generate_file_responseResponse2Msg" messageType="ProcessISOCase-Process_ISO_Case:Receive_generate_file_responseResponse" binding="ProcessISOCase-Process_ISO_Case:Process_ISO_CaseAndDCMForCanonicPortPlkServiceBinding" operation="Receive_generate_file_response" opMsgType="1" bpdm:id="_CQRSCd4fEee0YMxeWbu2Dg" bpdm:messageIds=" out:_CQHhAN4fEee0YMxeWbu2Dg">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="ProcessISOCase-Process_ISO_Case:Receive_generate_file_responseResponse" bpdm:linkedPart="body" bpdm:binding="ProcessISOCase-Process_ISO_Case:Process_ISO_CaseAndDCMForCanonicPortPlkServiceBinding" bpdm:opMsgType="1" bpdm:operation="Receive_generate_file_response"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask operation="Receive_generate_file_response" partnerLink="iSO_RequestAndProcessForCanonicPortPlkVar" portType="ProcessISOCase-Process_ISO_Case:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive generate response" bpdm:ID="_9OZ6pt4eEee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_generate_responseRequest1Msg" bpdm:msgVarScopeId="_dp6EAN4cEee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOCase-Process_ISO_Case:Receive_generate_file_responseRequest" bpdm:binding="ProcessISOCase-Process_ISO_Case:Process_ISO_CaseAndDCMForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_B5LAoN4fEee0YMxeWbu2Dg"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="processISOCase-Process_ISO_CaseReceive_generate_file_responseResponse2Msg" bpdm:msgVarScopeId="_dp6EAN4cEee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOCase-Process_ISO_Case:Receive_generate_file_responseResponse" bpdm:binding="ProcessISOCase-Process_ISO_Case:Process_ISO_CaseAndDCMForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_CQHhAN4fEee0YMxeWbu2Dg"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>
