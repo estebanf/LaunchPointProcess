@@ -12,8 +12,10 @@
 	<xsl:template match="getAllCases:rows"><xsl:apply-templates /></xsl:template>
 	<xsl:template match="getAllCases:row">
       <Launchpoint:lpCase>
-        <Launchpoint:caseid><xsl:value-of select="getAllCases:caseid" /></Launchpoint:caseid>
-        <Launchpoint:environmentid><xsl:value-of select="getAllCases:environmentid" /></Launchpoint:environmentid>
+        <Launchpoint:CaseId><xsl:value-of select="getAllCases:caseid" /></Launchpoint:CaseId>
+        <Launchpoint:ClientId><xsl:value-of select="getAllCases:clientid" /></Launchpoint:ClientId>
+        <Launchpoint:EnvironmentId><xsl:value-of select="getAllCases:environmentid" /></Launchpoint:EnvironmentId>
+        <Launchpoint:BatchId><xsl:value-of select="getAllCases:batchid" /></Launchpoint:BatchId>
       </Launchpoint:lpCase>
 	</xsl:template>
 </xsl:stylesheet>

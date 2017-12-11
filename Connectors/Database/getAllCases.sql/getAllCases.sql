@@ -1,1 +1,1 @@
-SELECT caseid,environmentid FROM launchpointcase; 
+SELECT caseid, clientid, batchid, environmentid FROM launchpointcase; 

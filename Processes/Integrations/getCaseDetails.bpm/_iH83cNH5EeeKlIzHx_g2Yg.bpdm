@@ -29,6 +29,7 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForclient" type="this:Forclient" bpdm:isSynchronized="true"/>
+            <vprop:property name="prop" type="xs:string"/>
             <xs:element name="Receive_recover_signalRequest" type="Launchpoint:ErrorRecoveryType" bpdm:source="partner-pool:///_nt-toNagEeevpLXkVWf6QA"/>
             <wsdl:message name="Receive_recover_signalRequest" bpdm:source="partner-pool:///_nt-toNagEeevpLXkVWf6QA">
                 <wsdl:part name="body" element="this:Receive_recover_signalRequest"/>
@@ -37,7 +38,7 @@
             <wsdl:message name="Receive_recover_signalResponse" bpdm:source="partner-pool:///_nt-toNagEeevpLXkVWf6QA">
                 <wsdl:part name="body" element="this:Receive_recover_signalResponse"/>
             </wsdl:message>
-            <xs:element name="Get_case_idRequest" type="xs:string" bpdm:source="partner-pool:///_jrpe0NH5EeeKlIzHx_g2Yg"/>
+            <xs:element name="Get_case_idRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_jrpe0NH5EeeKlIzHx_g2Yg"/>
             <wsdl:message name="Get_case_idRequest" bpdm:source="partner-pool:///_jrpe0NH5EeeKlIzHx_g2Yg">
                 <wsdl:part name="body" element="this:Get_case_idRequest"/>
             </wsdl:message>
@@ -45,6 +46,12 @@
             <wsdl:message name="Get_case_idResponse" bpdm:source="partner-pool:///_jrpe0NH5EeeKlIzHx_g2Yg">
                 <wsdl:part name="body" element="this:Get_case_idResponse"/>
             </wsdl:message>
+            <vprop:propertyAlias propertyName="this:prop" messageType="this:Get_case_idResponse" part="body">
+                <vprop:query>Launchpoint:pid/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:prop" messageType="this:Receive_recover_signalRequest" part="body">
+                <vprop:query>Launchpoint:recoverId/text()</vprop:query>
+            </vprop:propertyAlias>
         </bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_nt-toNagEeevpLXkVWf6QA" bpdm:label="ExceptionManagement "/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_jrpe0NH5EeeKlIzHx_g2Yg" bpdm:label="client"/>
@@ -65,6 +72,9 @@
             <bpel:partnerLink name="processimplicitPartnerAndProcessForGetCasePortPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForGetCasePortPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="ns:getCaseService" bpdm:invokedPort="getCasePort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:8080/everteam/ode/processes/LaunchPointProcess/Connectors/Database/getCase" bpdm:invokedIsDefault="true" bpdm:clientTasks="_1y4BMNafEeevpLXkVWf6QA:_s7XWttH5EeeKlIzHx_g2Yg" bpdm:isManaged="true" bpdm:otherPoolId="_iH83cNH5EeeKlIzHx_g2YgimplicitPartner"/>
             <bpel:partnerLink name="exceptionManagement_AndProcessPlkVar" partnerLinkType="diag:ExceptionManagement_AndProcess" myRole="process_for_ExceptionManagement" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForExceptionManagement" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/ExceptionManagement" bpdm:providedIsDefault="true" bpdm:clientTasks="_1syx4NagEeevpLXkVWf6QA:_UTN-ENagEeevpLXkVWf6QA" bpdm:isManaged="true" bpdm:otherPoolId="_nt-toNagEeevpLXkVWf6QA"/>
         </bpel:partnerLinks>
+        <bpel:correlationSets>
+            <bpel:correlationSet name="newCorrelationSet" properties="this:prop"/>
+        </bpel:correlationSets>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
             <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_iaIMltH5EeeKlIzHx_g2Yg" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_iaIMltH5EeeKlIzHx_g2Yg"/>
             <bpel:variable name="thisGet_case_idRequest2Msg" messageType="this:Get_case_idRequest" bpdm:id="_nYargNH5EeeKlIzHx_g2Yg" bpdm:messageIds="inc:_nX01oNH5EeeKlIzHx_g2Yg"/>
@@ -105,7 +115,9 @@
                         <bpel:to>$success</bpel:to><mapper:mapperLink><mapper:vertice id="1130223063" targetPath="$success" targetedBy="2044868745-arg0"></mapper:vertice><mapper:vertice id="2044868745" dimension="79x24" location="208,179"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
-                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisGet_case_idResponse2Msg" bpdm:msgVarScopeId="_iH83cNH5EeeKlIzHx_g2Yg" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_case_idResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_oKx8kNH5EeeKlIzHx_g2Yg"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisGet_case_idResponse2Msg" bpdm:msgVarScopeId="_iH83cNH5EeeKlIzHx_g2Yg" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_case_idResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_oKx8kNH5EeeKlIzHx_g2Yg">
+                    <bpel:correlation set="newCorrelationSet" initiate="join" pattern="request"></bpel:correlation>
+                </bpdm:linkset>
             </bpdm:messagingtask>
             <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Query database" bpdm:ID="_8hjDMNagEeevpLXkVWf6QA">
                 <bpdm:linkset bpdm:type="loop" bpdm:loopType="repeatUntil" bpdm:backEdgeParticipantType="none" bpdm:isBackEdgeContributor="no">
@@ -207,7 +219,9 @@
                                                     </bpdm:linkset>
                                                 </bpdm:messagingtask>
                                                 <bpdm:messagingtask eventType="intermediate: message" operation="Receive_recover_signal" partnerLink="exceptionManagement_AndProcessPlkVar" portType="this:ForExceptionManagement" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive recover signal" bpdm:ID="_UTN-ENagEeevpLXkVWf6QA" bpdm:isHeaderAuthorizationAware="yes">
-                                                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_recover_signalRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_recover_signalRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_w2ZqsNagEeevpLXkVWf6QA"></bpdm:linkset>
+                                                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_recover_signalRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_recover_signalRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_w2ZqsNagEeevpLXkVWf6QA">
+                                                        <bpel:correlation set="newCorrelationSet" initiate="join" pattern="response"></bpel:correlation>
+                                                    </bpdm:linkset>
                                                     <bpdm:linkset bpdm:type="assignments">
                                                         <bpel:copy>
                                                             <bpel:from>true()</bpel:from>
@@ -240,8 +254,16 @@
                             <bpdm:messagingtask operation="getCase" partnerLink="processimplicitPartnerAndProcessForGetCasePortPlkVar" portType="ns:getCasePort" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Query DB" bpdm:ID="_s7XWttH5EeeKlIzHx_g2Yg" bpdm:isHeaderAuthorizationAware="no">
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
-                                        <bpel:from>$thisGet_case_idRequest2Msg.body</bpel:from>
-                                        <bpel:to>$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseid</bpel:to><mapper:mapperLink><mapper:vertice id="984141860" targetPath="$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseid" targetedBy="416280178-arg0"></mapper:vertice><mapper:vertice id="416280178" sourcePath="$thisGet_case_idRequest2Msg.body"></mapper:vertice></mapper:mapperLink>
+                                        <bpel:from>$thisGet_case_idRequest2Msg.body/Launchpoint:CaseId</bpel:from>
+                                        <bpel:to>$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseid</bpel:to><mapper:mapperLink><mapper:vertice id="1313559395" targetPath="$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseid" targetedBy="420341294-arg0"></mapper:vertice><mapper:vertice id="420341294" sourcePath="$thisGet_case_idRequest2Msg.body/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$thisGet_case_idRequest2Msg.body/Launchpoint:ClientId</bpel:from>
+                                        <bpel:to>$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:clientid</bpel:to><mapper:mapperLink><mapper:vertice id="204269518" targetPath="$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:clientid" targetedBy="2059620919-arg0"></mapper:vertice><mapper:vertice id="2059620919" sourcePath="$thisGet_case_idRequest2Msg.body/Launchpoint:ClientId"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$thisGet_case_idRequest2Msg.body/Launchpoint:EnvironmentId</bpel:from>
+                                        <bpel:to>$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:environmentid</bpel:to><mapper:mapperLink><mapper:vertice id="1674921186" targetPath="$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:environmentid" targetedBy="284897534-arg0"></mapper:vertice><mapper:vertice id="284897534" sourcePath="$thisGet_case_idRequest2Msg.body/Launchpoint:EnvironmentId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="nsGetCaseRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:getCaseInput" bpdm:binding="ns:getCasePortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_s7XWttH5EeeKlIzHx_g2YgOutgoing"></bpdm:linkset>

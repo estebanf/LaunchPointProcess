@@ -29,7 +29,7 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForExceptionManagement" type="this:ForExceptionManagement" bpdm:isSynchronized="true"/>
-            <xs:element name="Receive_caseRequest" type="xs:string" bpdm:source="partner-pool:///_UplEsM8CEeecbIAlY2LAug"/>
+            <xs:element name="Receive_caseRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_UplEsM8CEeecbIAlY2LAug"/>
             <wsdl:message name="Receive_caseRequest" bpdm:source="partner-pool:///_UplEsM8CEeecbIAlY2LAug">
                 <wsdl:part name="body" element="this:Receive_caseRequest"/>
             </wsdl:message>
@@ -252,8 +252,16 @@
                             <bpdm:messagingtask operation="getCase" partnerLink="processimplicitPartnerAndProcessForGetCasePortPlkVar" portType="ns:getCasePort" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Query DB" bpdm:ID="__XaAxtHkEeepF8B7W_A3ug" bpdm:isHeaderAuthorizationAware="no">
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
-                                        <bpel:from>$thisReceive_caseRequest2Msg.body</bpel:from>
-                                        <bpel:to>$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseid</bpel:to><mapper:mapperLink><mapper:vertice id="1820124666" targetPath="$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseid" targetedBy="1156372053-arg0"></mapper:vertice><mapper:vertice id="1156372053" sourcePath="$thisReceive_caseRequest2Msg.body"></mapper:vertice></mapper:mapperLink>
+                                        <bpel:from>$thisReceive_caseRequest2Msg.body/Launchpoint:CaseId</bpel:from>
+                                        <bpel:to>$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseid</bpel:to><mapper:mapperLink><mapper:vertice id="354729462" targetPath="$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:caseid" targetedBy="2040847671-arg0"></mapper:vertice><mapper:vertice id="2040847671" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$thisReceive_caseRequest2Msg.body/Launchpoint:ClientId</bpel:from>
+                                        <bpel:to>$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:clientid</bpel:to><mapper:mapperLink><mapper:vertice id="897265444" targetPath="$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:clientid" targetedBy="1077978005-arg0"></mapper:vertice><mapper:vertice id="1077978005" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:ClientId"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$thisReceive_caseRequest2Msg.body/Launchpoint:EnvironmentId</bpel:from>
+                                        <bpel:to>$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:environmentid</bpel:to><mapper:mapperLink><mapper:vertice id="283770102" targetPath="$nsGetCaseRequest1Msg.parameters/ns:execute/ns:parameters/ns:environmentid" targetedBy="1146279989-arg0"></mapper:vertice><mapper:vertice id="1146279989" sourcePath="$thisReceive_caseRequest2Msg.body/Launchpoint:EnvironmentId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="nsGetCaseRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:getCaseInput" bpdm:binding="ns:getCasePortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="__XaAxtHkEeepF8B7W_A3ugOutgoing"></bpdm:linkset>
@@ -263,16 +271,16 @@
                             <bpdm:messagingtask eventType="end: message" operation="Receive_results" partnerLink="clientAndProcessForCanonicPortPlkVar" portType="CaseManagement-Case_Manager:ForDatabase" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_End_Event" bpdm:ID="_LOduUNHlEeepF8B7W_A3ug" bpdm:isHeaderAuthorizationAware="no">
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
-                                        <bpel:from>$thisReceive_caseRequest2Msg.body</bpel:from>
-                                        <bpel:to>$clientSend_resultsRequest1Msg.body/Launchpoint:caseid</bpel:to><mapper:mapperLink><mapper:vertice id="834683752" targetPath="$clientSend_resultsRequest1Msg.body/Launchpoint:caseid" targetedBy="25966707-arg0"></mapper:vertice><mapper:vertice id="25966707" sourcePath="$thisReceive_caseRequest2Msg.body"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
                                         <bpel:from>count($nsGetCaseResponse1Msg.parameters/ns:rows/ns:row) = 1</bpel:from>
                                         <bpel:to>$clientSend_resultsRequest1Msg.body/Launchpoint:exists</bpel:to><mapper:mapperLink><mapper:vertice id="508449992" targetPath="$clientSend_resultsRequest1Msg.body/Launchpoint:exists" targetedBy="1510115884-arg2"></mapper:vertice><mapper:vertice id="1510115884" dimension="79x24" location="284,122"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="610322461" dimension="79x24" location="161,88" targetedBy="1510115884-arg0"><mapper:value>count()</mapper:value></mapper:vertice><mapper:vertice id="1499232487" sourcePath="$nsGetCaseResponse1Msg.parameters/ns:rows/ns:row" targetedBy="610322461-arg0"></mapper:vertice><mapper:vertice id="825647557" dimension="79x24" location="164,175" targetedBy="1510115884-arg1"><mapper:value>1</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>true()</bpel:from>
                                         <bpel:to>$success</bpel:to><mapper:mapperLink><mapper:vertice id="1243337529" targetPath="$success" targetedBy="870781317-arg0"></mapper:vertice><mapper:vertice id="870781317" dimension="79x24" location="386,236"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$thisReceive_caseRequest2Msg.body</bpel:from>
+                                        <bpel:to>$clientSend_resultsRequest1Msg.body/Launchpoint:Case/Launchpoint:CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="206882194" targetPath="$clientSend_resultsRequest1Msg.body/Launchpoint:Case/Launchpoint:CaseId" targetedBy="1774540503-arg0"></mapper:vertice><mapper:vertice id="1774540503" sourcePath="$thisReceive_caseRequest2Msg.body"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="clientSend_resultsRequest1Msg" bpdm:msgVarScopeId="_uEOD8NYREeepBujdtGh4bw" bpdm:variableIsManaged="true" bpdm:messageType="CaseManagement-Case_Manager:Receive_resultsRequest" bpdm:binding="CaseManagement-Case_Manager:Case_ManagerAndDatabaseForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_PDd0gNHmEeepF8B7W_A3ug"></bpdm:linkset>

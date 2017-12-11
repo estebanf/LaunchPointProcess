@@ -6,9 +6,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" >
 	<xsl:param name="caseid" />
+	<xsl:param name="clientid" />
+	<xsl:param name="environmentid" />
+	<xsl:param name="batchid" />
 	<xsl:template match="/iob_response_root">
 		<CaseEvaluator-process:Get_diariesRequest>
-			<Launchpoint:caseId><xsl:value-of select="$caseid" /></Launchpoint:caseId>
+			<Launchpoint:Case>
+				<Launchpoint:CaseId><xsl:value-of select="$caseid" /></Launchpoint:CaseId>
+				<Launchpoint:ClientId><xsl:value-of select="$clientid" /></Launchpoint:ClientId>
+				<Launchpoint:EnvironmentId><xsl:value-of select="$environmentid" /></Launchpoint:EnvironmentId>
+				<Launchpoint:BatchId><xsl:value-of select="$batchid" /></Launchpoint:BatchId>
+			</Launchpoint:Case>
 			<xsl:apply-templates />
 		</CaseEvaluator-process:Get_diariesRequest>
 	</xsl:template>

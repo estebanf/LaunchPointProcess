@@ -21,10 +21,10 @@
             <bpel:binding name="process-monitorimplicitPartnerAndProcess-monitorForStart_PortPlkServiceBinding" type="ns:Start_Port" bpdm:isSynchronized="true"/>
         </bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_3lpv5tKNEeeKlIzHx_g2YgimplicitPartner" bpdm:label="process-monitorimplicitPartner"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getAllCases.sql/getAllCases.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/CaseEvaluator-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/BusinessRule.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getAllCases.sql/getAllCases.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getAllCases.sql/getAllCases.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
@@ -90,15 +90,7 @@
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>$lpCases/Launchpoint:lpCase[$emptyCounter]</bpel:from>
-                                <bpel:to>$lpCases</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1753428795" targetPath="$lpCases" targetedBy="325614651-arg0"></mapper:vertice>
-  <mapper:vertice id="325614651" dimension="79x24" location="288,84">
-    <mapper:value>[]</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1159081742" sourcePath="$lpCases/Launchpoint:lpCase" targetedBy="325614651-arg1"></mapper:vertice>
-  <mapper:vertice id="1810955816" sourcePath="$emptyCounter" targetedBy="325614651-arg2"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$CaseIdentifier</bpel:to><mapper:mapperLink><mapper:vertice id="1920410130" targetPath="$CaseIdentifier" targetedBy="1963588526-arg2"></mapper:vertice><mapper:vertice id="1963588526" dimension="79x24" location="288,84"><mapper:value>[]</mapper:value></mapper:vertice><mapper:vertice id="689680737" sourcePath="$lpCases/Launchpoint:lpCase" targetedBy="1963588526-arg0"></mapper:vertice><mapper:vertice id="967739228" sourcePath="$emptyCounter" targetedBy="1963588526-arg1"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>
@@ -106,11 +98,7 @@
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>$CaseIdentifier</bpel:from>
-                                <bpel:to>$caseEvaluator-processGet_case1Msg.body</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1534780503" targetPath="$caseEvaluator-processGet_case1Msg.body" targetedBy="1917781047-arg0"></mapper:vertice>
-  <mapper:vertice id="1917781047" sourcePath="$CaseIdentifier"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$caseEvaluator-processGet_case1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="1534780503" targetPath="$caseEvaluator-processGet_case1Msg.body" targetedBy="1917781047-arg0"></mapper:vertice><mapper:vertice id="1917781047" sourcePath="$CaseIdentifier"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="caseEvaluator-processGet_case1Msg" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Get_caseRequest" bpdm:binding="CaseEvaluator-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_zYk2BtKOEee0svt489vHigOutgoing"></bpdm:linkset>

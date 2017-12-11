@@ -61,6 +61,8 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForbre" type="this:Forbre" bpdm:isSynchronized="true"/>
+            <vprop:property name="clientid" type="xs:string"/>
+            <vprop:property name="environmentid" type="xs:string"/>
             <xs:element name="Get_db_infoRequest" type="Launchpoint:LaunchpointCaseType" bpdm:source="partner-pool:///_3cJ04NH5EeeKlIzHx_g2Yg"/>
             <wsdl:message name="Get_db_infoRequest" bpdm:source="partner-pool:///_3cJ04NH5EeeKlIzHx_g2Yg">
                 <wsdl:part name="body" element="this:Get_db_infoRequest"/>
@@ -68,14 +70,6 @@
             <xs:element name="Get_db_infoResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_3cJ04NH5EeeKlIzHx_g2Yg"/>
             <wsdl:message name="Get_db_infoResponse" bpdm:source="partner-pool:///_3cJ04NH5EeeKlIzHx_g2Yg">
                 <wsdl:part name="body" element="this:Get_db_infoResponse"/>
-            </wsdl:message>
-            <xs:element name="Get_activitiesRequest" type="Launchpoint:CaseActivitiesType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
-            <wsdl:message name="Get_activitiesRequest" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
-                <wsdl:part name="body" element="this:Get_activitiesRequest"/>
-            </wsdl:message>
-            <xs:element name="Get_activitiesResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
-            <wsdl:message name="Get_activitiesResponse" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
-                <wsdl:part name="body" element="this:Get_activitiesResponse"/>
             </wsdl:message>
             <xs:element name="Get_diariesRequest" type="Launchpoint:CaseDiariesType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
             <wsdl:message name="Get_diariesRequest" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
@@ -93,6 +87,14 @@
             <wsdl:message name="Get_DCM_infoResponse" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
                 <wsdl:part name="body" element="this:Get_DCM_infoResponse"/>
             </wsdl:message>
+            <xs:element name="Get_activitiesRequest" type="Launchpoint:CaseActivitiesType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
+            <wsdl:message name="Get_activitiesRequest" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
+                <wsdl:part name="body" element="this:Get_activitiesRequest"/>
+            </wsdl:message>
+            <xs:element name="Get_activitiesResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
+            <wsdl:message name="Get_activitiesResponse" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
+                <wsdl:part name="body" element="this:Get_activitiesResponse"/>
+            </wsdl:message>
             <xs:element name="Get_caseRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_5PxLwNHyEeegkeOYmwRRMQ"/>
             <wsdl:message name="Get_caseRequest" bpdm:source="partner-pool:///_5PxLwNHyEeegkeOYmwRRMQ">
                 <wsdl:part name="body" element="this:Get_caseRequest"/>
@@ -109,7 +111,7 @@
                 <wsdl:part name="body" element="this:Receive_business_rules_resultsResponse"/>
             </wsdl:message>
             <vprop:propertyAlias propertyName="this:caseid" messageType="this:Get_caseRequest" part="body">
-                <vprop:query>Launchpoint:caseid/text()</vprop:query>
+                <vprop:query>Launchpoint:CaseId/text()</vprop:query>
             </vprop:propertyAlias>
             <vprop:propertyAlias propertyName="this:caseid" messageType="this:Get_db_infoRequest" part="body">
                 <vprop:query>Launchpoint:CaseId/text()</vprop:query>
@@ -118,13 +120,49 @@
                 <vprop:query>Launchpoint:CaseId/text()</vprop:query>
             </vprop:propertyAlias>
             <vprop:propertyAlias propertyName="this:caseid" messageType="this:Get_diariesRequest" part="body">
-                <vprop:query>Launchpoint:caseId/text()</vprop:query>
+                <vprop:query>Launchpoint:Case/Launchpoint:CaseId/text()</vprop:query>
             </vprop:propertyAlias>
             <vprop:propertyAlias propertyName="this:caseid" messageType="this:Get_activitiesRequest" part="body">
-                <vprop:query>Launchpoint:caseId/text()</vprop:query>
+                <vprop:query>Launchpoint:Case/Launchpoint:CaseId/text()</vprop:query>
             </vprop:propertyAlias>
             <vprop:propertyAlias propertyName="this:caseid" messageType="this:Receive_business_rules_resultsRequest" part="body">
-                <vprop:query>BusinessRule:caseid/text()</vprop:query>
+                <vprop:query>BusinessRule:Case/Launchpoint:CaseId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:environmentid" messageType="this:Get_caseRequest" part="body">
+                <vprop:query>Launchpoint:EnvironmentId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:clientid" messageType="this:Get_DCM_infoRequest" part="body">
+                <vprop:query>Launchpoint:ClientId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:environmentid" messageType="this:Get_db_infoRequest" part="body">
+                <vprop:query>Launchpoint:EnvironmentId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:environmentid" messageType="this:Get_DCM_infoRequest" part="body">
+                <vprop:query>Launchpoint:EnvironmentId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:clientid" messageType="this:Get_caseRequest" part="body">
+                <vprop:query>Launchpoint:ClientId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:clientid" messageType="this:Get_db_infoRequest" part="body">
+                <vprop:query>Launchpoint:ClientId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:clientid" messageType="this:Get_activitiesRequest" part="body">
+                <vprop:query>Launchpoint:Case/Launchpoint:ClientId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:environmentid" messageType="this:Get_activitiesRequest" part="body">
+                <vprop:query>Launchpoint:Case/Launchpoint:EnvironmentId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:environmentid" messageType="this:Get_diariesRequest" part="body">
+                <vprop:query>Launchpoint:Case/Launchpoint:EnvironmentId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:clientid" messageType="this:Get_diariesRequest" part="body">
+                <vprop:query>Launchpoint:Case/Launchpoint:ClientId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:clientid" messageType="this:Receive_business_rules_resultsRequest" part="body">
+                <vprop:query>BusinessRule:Case/Launchpoint:ClientId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:environmentid" messageType="this:Receive_business_rules_resultsRequest" part="body">
+                <vprop:query>BusinessRule:Case/Launchpoint:EnvironmentId/text()</vprop:query>
             </vprop:propertyAlias>
         </bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_3cJ04NH5EeeKlIzHx_g2Yg" bpdm:label="Database"/>
@@ -135,9 +173,9 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_tCoZcNzHEee2xbsk1VZIAA" bpdm:label="ISO Process"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseDetails-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseDiaries-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseActivities-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getDCMCase-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseDiaries-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/BusinessRules/ExecutionRules-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/BusinessRule.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessIQCase-Process_IQ_Case.wsdl"/>
@@ -160,7 +198,7 @@
             <bpel:partnerLink name="processAndISO_ProcessForCanonicPortPlkVar" partnerLinkType="diag:processAndISO_ProcessForCanonicPortPlk" initializePartnerRole="yes" partnerRole="ISO_Process_for_process" bpdm:invokedService="ProcessISOCase-Process_ISO_Case:CanonicServiceForCase_Manager" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_a5Gy0NzIEee2xbsk1VZIAA:_38Z00NzGEee2xbsk1VZIAA" bpdm:isManaged="true" bpdm:otherPoolId="_tCoZcNzHEee2xbsk1VZIAA"/>
         </bpel:partnerLinks>
         <bpel:correlationSets>
-            <bpel:correlationSet name="caseCorrelator" properties="this:caseid"/>
+            <bpel:correlationSet name="caseCorrelator" properties="this:caseid this:clientid this:environmentid"/>
         </bpel:correlationSets>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
             <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_zgc4htHyEeegkeOYmwRRMQ" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_zgc4htHyEeegkeOYmwRRMQ"/>
@@ -952,7 +990,7 @@
                             </bpdm:messagingtask>
                             <bpdm:messagingtask operation="Receive_business_rules_results" partnerLink="processAndBreForCanonicPortPlkVar" portType="this:Forbre" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive business rules results" bpdm:ID="_zk10INzFEee2xbsk1VZIAA" bpdm:isHeaderAuthorizationAware="yes">
                                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_business_rules_resultsRequest1Msg" bpdm:msgVarScopeId="_nj9mwNzGEee2xbsk1VZIAA" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_business_rules_resultsRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_37LiQNzFEee2xbsk1VZIAA">
-                                    <bpel:correlation set="caseCorrelator" initiate="join" pattern="response"></bpel:correlation>
+                                    <bpel:correlation set="caseCorrelator" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>

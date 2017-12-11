@@ -1,2 +1,2 @@
-SELECT caseid, clientid, batchid, environmentid, isoindicator, score, accidentdate, benefitamount, fundingsource, lob, workcomp, casestatus, casesource, lifecycle, closereason, state, iqresponsereceived, canclose, belowcosteffectivepursuit, iqreturnmail, invalidaddress, iqhold, isosent, isoresponse, vip, iqletters, dayssinceaccident, belowcosteffectivepursuitduedat, dayssincelastiqletter, created_at, updated_at, created_by_process, created_by_instance
-FROM launchpointcase where caseid = ?;
+SELECT caseid, clientid, batchid, environmentid
+FROM launchpointcase where caseid = ? and clientid = ? and environmentid = ?;
