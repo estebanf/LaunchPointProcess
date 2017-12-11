@@ -1,14 +1,56 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<wsdl:definitions xmlns:tns="http://everteam.com/xvar/example" xmlns:diag="http://thisdiagram" xmlns:R="http://thisdiagram/R" xmlns:caller="http://thisdiagram/caller" xmlns:process="http://thisdiagram/process" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" targetNamespace="http://thisdiagram" bpdm:version="6000089" bpdm:canid="_rO57QN42Eee0YMxeWbu2Dg" bpdm:displayName="diag">
-  <pnlk:partnerLinkType name="RAndProcess" bpdm:poolOneId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:poolOneIsExecutable="true" bpdm:poolOneName="process" bpdm:poolTwoId="_eHgDUN46Eee0YMxeWbu2Dg" bpdm:poolTwoIsExecutable="false" bpdm:poolTwoName="R">
-    <pnlk:role name="process_for_R" portType="process:ForR" bpdm:thisPoolId="_6CzX8N43Eee0YMxeWbu2Dg">
-      <wsdl:portType name="ForR">
+<wsdl:definitions xmlns:updateLifecycle="__project:///Schemas/integrations/updateLifecycle.xsd" xmlns:updateCaseLifeCycle="http://bpms.everteam.com/Services/REST/updateCaseLifeCycle.rest" xmlns:tns="http://everteam.com/xvar/example" xmlns:metrics="http://test.com/xvar/example" xmlns:diag="http://thisdiagram" xmlns:DCM="http://thisdiagram/DCM" xmlns:Exception_management="http://thisdiagram/Exception_management" xmlns:ISOResponse="http://thisdiagram/ISOResponse" xmlns:caller="http://thisdiagram/caller" xmlns:db="http://thisdiagram/db" xmlns:process="http://thisdiagram/process" xmlns:processimplicitPartner="http://thisdiagram/processimplicitPartner" xmlns:ProcessISOResponse-ISO_Response_Mana="http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager" xmlns:createActivity-process="http://thisproject/Processes/Integrations/createActivity/process" xmlns:getCaseDetails-process="http://thisproject/Processes/Integrations/getCaseDetails/process" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" targetNamespace="http://thisdiagram" bpdm:version="6000089" bpdm:canid="_rO57QN42Eee0YMxeWbu2Dg" bpdm:displayName="diag">
+  <pnlk:partnerLinkType name="DCmAndProcess" bpdm:poolOneId="_JIBa4N5JEee5MfuigsCq1w" bpdm:poolOneIsExecutable="false" bpdm:poolOneName="DCM" bpdm:poolTwoId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:poolTwoIsExecutable="true" bpdm:poolTwoName="process">
+    <pnlk:role name="DCM_for_process" portType="DCM:Forprocess" bpdm:thisPoolId="_JIBa4N5JEee5MfuigsCq1w">
+      <wsdl:portType name="Forprocess">
+        <wsdl:operation name="Receive_request" bpdm:canid="_Q1O-Nt5JEee5MfuigsCq1w._m9kjwN5IEee5MfuigsCq1w." bpdm:dataobjectPointer="project:///Processes/Integrations/createActivity-process.wsdl?wsdloperationbound={http://thisproject/Processes/Integrations/createActivity/process}CanonicServiceForcaller/canonicPort/Receive_request">
+          <wsdl:input message="createActivity-process:Receive_request" name="Receive_request" bpdm:canid="_ShRCMN5JEee5MfuigsCq1w" bpdm:senderId="_m9kjwN5IEee5MfuigsCq1w" bpdm:receiverId="_Q1O-Nt5JEee5MfuigsCq1w" bpdm:senderName="Request create Activity" bpdm:receiverName="Receive request" bpdm:receiverPoolId="_JIBa4N5JEee5MfuigsCq1w" bpdm:dataobjectPointer="project:///Processes/Integrations/createActivity-process.wsdl?messageForBoundOperation={http://thisproject/Processes/Integrations/createActivity/process}CanonicServiceForcaller/canonicPort/Receive_request/input/Receive_request"></wsdl:input>
+          <wsdl:output message="createActivity-process:Receive_requestResponse" name="Receive_requestResponse" bpdm:canid="_TC8L4N5JEee5MfuigsCq1w" bpdm:senderId="_Q1O-Nt5JEee5MfuigsCq1w" bpdm:receiverId="_m9kjwN5IEee5MfuigsCq1w" bpdm:senderName="Receive request" bpdm:receiverName="Request create Activity" bpdm:receiverPoolId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:dataobjectPointer="project:///Processes/Integrations/createActivity-process.wsdl?messageForBoundOperation={http://thisproject/Processes/Integrations/createActivity/process}CanonicServiceForcaller/canonicPort/Receive_request/output/Receive_requestResponse"></wsdl:output>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
+    <pnlk:role name="process_for_DCM" portType="process:ForDCM" bpdm:thisPoolId="_6CzX8N43Eee0YMxeWbu2Dg">
+      <wsdl:portType name="ForDCM">
+        <wsdl:operation name="Receive_create_activity" bpdm:canid="_VMxmMN5JEee5MfuigsCq1w._q64t4N5IEee5MfuigsCq1w.">
+          <wsdl:input message="process:Receive_create_activityRequest" name="Receive_create_activity" bpdm:canid="_Xo8GoN5JEee5MfuigsCq1w" bpdm:senderId="_VMxmMN5JEee5MfuigsCq1w" bpdm:receiverId="_q64t4N5IEee5MfuigsCq1w" bpdm:senderName="Receive Confirmation" bpdm:receiverName="Receive create activity" bpdm:receiverPoolId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:dataobjectPointer="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}CaseIdentifierType" bpdm:bodyPartElemName="Receive_create_activityRequest" bpdm:bodyPartElemType="{http://www.example.org/Launchpoint}CaseIdentifierType"></wsdl:input>
+          <wsdl:output message="process:Receive_create_activityResponse" name="Receive_create_activityResponse" bpdm:canid="_YBE50N5JEee5MfuigsCq1w" bpdm:senderId="_q64t4N5IEee5MfuigsCq1w" bpdm:receiverId="_VMxmMN5JEee5MfuigsCq1w" bpdm:senderName="Receive create activity" bpdm:receiverName="Receive Confirmation" bpdm:receiverPoolId="_JIBa4N5JEee5MfuigsCq1w" bpdm:dataobjectPointer="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType" bpdm:bodyPartElemName="Receive_create_activityResponse" bpdm:bodyPartElemType="{http://www.example.org/Launchpoint}BpmAckType"></wsdl:output>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
+  </pnlk:partnerLinkType>
+  <pnlk:partnerLinkType name="DCmAndProcessForCanonicPortPlk" bpdm:canPlkId="_JIBa4N5JEee5MfuigsCq1w-_6CzX8N43Eee0YMxeWbu2Dg">
+    <pnlk:role name="DCM_for_process" portType="createActivity-process:Forcaller"></pnlk:role>
+    <pnlk:role name="process_for_DCM" portType="process:ForDCM" bpdm:thisPoolId="_6CzX8N43Eee0YMxeWbu2Dg">
+      <wsdl:portType name="ForDCM">
+        <wsdl:operation name="Receive_create_activity" bpdm:canid="_VMxmMN5JEee5MfuigsCq1w._q64t4N5IEee5MfuigsCq1w.">
+          <wsdl:input message="process:Receive_create_activityRequest" name="Receive_create_activity" bpdm:canid="_Xo8GoN5JEee5MfuigsCq1w" bpdm:senderId="_VMxmMN5JEee5MfuigsCq1w" bpdm:receiverId="_q64t4N5IEee5MfuigsCq1w" bpdm:senderName="Receive Confirmation" bpdm:receiverName="Receive create activity" bpdm:receiverPoolId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:dataobjectPointer="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}CaseIdentifierType" bpdm:bodyPartElemName="Receive_create_activityRequest" bpdm:bodyPartElemType="{http://www.example.org/Launchpoint}CaseIdentifierType"></wsdl:input>
+          <wsdl:output message="process:Receive_create_activityResponse" name="Receive_create_activityResponse" bpdm:canid="_YBE50N5JEee5MfuigsCq1w" bpdm:senderId="_q64t4N5IEee5MfuigsCq1w" bpdm:receiverId="_VMxmMN5JEee5MfuigsCq1w" bpdm:senderName="Receive create activity" bpdm:receiverName="Receive Confirmation" bpdm:receiverPoolId="_JIBa4N5JEee5MfuigsCq1w" bpdm:dataobjectPointer="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType" bpdm:bodyPartElemName="Receive_create_activityResponse" bpdm:bodyPartElemType="{http://www.example.org/Launchpoint}BpmAckType"></wsdl:output>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
+  </pnlk:partnerLinkType>
+  <pnlk:partnerLinkType name="Exception_managementAndProcess" bpdm:poolOneId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:poolOneIsExecutable="true" bpdm:poolOneName="process" bpdm:poolTwoId="_eHgDUN46Eee0YMxeWbu2Dg" bpdm:poolTwoIsExecutable="false" bpdm:poolTwoName="Exception management">
+    <pnlk:role name="process_for_Exception_management" portType="process:ForException_management" bpdm:thisPoolId="_6CzX8N43Eee0YMxeWbu2Dg">
+      <wsdl:portType name="ForException_management">
         <wsdl:operation name="Receive_recover_signal" bpdm:canid="_Lhniz945Eee0YMxeWbu2Dg._g6UwQN46Eee0YMxeWbu2Dg.">
           <wsdl:input message="process:Receive_recover_signalRequest" name="Receive_recover_signal" bpdm:canid="_dI1JsN48Eee0YMxeWbu2Dg" bpdm:senderId="_g6UwQN46Eee0YMxeWbu2Dg" bpdm:receiverId="_Lhniz945Eee0YMxeWbu2Dg" bpdm:senderName="Recover" bpdm:receiverName="Receive recover signal" bpdm:receiverPoolId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:dataobjectPointer="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}ErrorRecoveryType" bpdm:bodyPartElemName="Receive_recover_signalRequest" bpdm:bodyPartElemType="{http://www.example.org/Launchpoint}ErrorRecoveryType"></wsdl:input>
           <wsdl:output message="process:Receive_recover_signalResponse" name="Receive_recover_signalResponse" bpdm:canid="_ddGJgN48Eee0YMxeWbu2Dg" bpdm:senderId="_Lhniz945Eee0YMxeWbu2Dg" bpdm:receiverId="_g6UwQN46Eee0YMxeWbu2Dg" bpdm:senderName="Receive recover signal" bpdm:receiverName="Recover" bpdm:receiverPoolId="_eHgDUN46Eee0YMxeWbu2Dg" bpdm:dataobjectPointer="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType" bpdm:bodyPartElemName="Receive_recover_signalResponse" bpdm:bodyPartElemType="{http://www.example.org/Launchpoint}BpmAckType"></wsdl:output>
         </wsdl:operation>
       </wsdl:portType>
     </pnlk:role>
+  </pnlk:partnerLinkType>
+  <pnlk:partnerLinkType name="ISOResponseAndProcess" bpdm:poolOneId="_dGwIQN5LEee5MfuigsCq1w" bpdm:poolOneIsExecutable="false" bpdm:poolOneName="ISOResponse" bpdm:poolTwoId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:poolTwoIsExecutable="true" bpdm:poolTwoName="process">
+    <pnlk:role name="ISOResponse_for_process" portType="ISOResponse:Forprocess" bpdm:thisPoolId="_dGwIQN5LEee5MfuigsCq1w">
+      <wsdl:portType name="Forprocess">
+        <wsdl:operation name="Receive_confirmation" bpdm:canid="_h-M6AN44Eee0YMxeWbu2Dg._yLxkwN5MEee5MfuigsCq1w." bpdm:dataobjectPointer="project:///Processes/Core/ProcessISOResponse-ISO_Response_Manager.wsdl?wsdloperationbound={http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager}CanonicServiceForDCM/canonicPort/Receive_update_lifecycle_confirmation">
+          <wsdl:input message="ProcessISOResponse-ISO_Response_Mana:Receive_update_lifecycle_confirmation" name="Receive_confirmation" bpdm:canid="_zCKaMN5MEee5MfuigsCq1w" bpdm:senderId="_h-M6AN44Eee0YMxeWbu2Dg" bpdm:receiverId="_yLxkwN5MEee5MfuigsCq1w" bpdm:senderName="Reply to ISO Response" bpdm:receiverName="Receive confirmation" bpdm:receiverPoolId="_dGwIQN5LEee5MfuigsCq1w" bpdm:dataobjectPointer="project:///Processes/Core/ProcessISOResponse-ISO_Response_Manager.wsdl?messageForBoundOperation={http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager}CanonicServiceForDCM/canonicPort/Receive_update_lifecycle_confirmation/input/Receive_update_lifecycle_confirmation"></wsdl:input>
+          <wsdl:output message="ProcessISOResponse-ISO_Response_Mana:Receive_update_lifecycle_confirmationResponse" name="Receive_confirmationResponse" bpdm:canid="_zbpRMN5MEee5MfuigsCq1w" bpdm:senderId="_yLxkwN5MEee5MfuigsCq1w" bpdm:receiverId="_h-M6AN44Eee0YMxeWbu2Dg" bpdm:senderName="Receive confirmation" bpdm:receiverName="Reply to ISO Response" bpdm:receiverPoolId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:dataobjectPointer="project:///Processes/Core/ProcessISOResponse-ISO_Response_Manager.wsdl?messageForBoundOperation={http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager}CanonicServiceForDCM/canonicPort/Receive_update_lifecycle_confirmation/output/Receive_update_lifecycle_confirmationResponse"></wsdl:output>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
+  </pnlk:partnerLinkType>
+  <pnlk:partnerLinkType name="ISOResponseAndProcessForCanonicPortPlk" bpdm:canPlkId="_dGwIQN5LEee5MfuigsCq1w-_6CzX8N43Eee0YMxeWbu2Dg">
+    <pnlk:role name="ISOResponse_for_process" portType="ProcessISOResponse-ISO_Response_Mana:ForDCM"></pnlk:role>
   </pnlk:partnerLinkType>
   <pnlk:partnerLinkType name="callerAndProcess" bpdm:poolOneId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:poolOneIsExecutable="true" bpdm:poolOneName="process" bpdm:poolTwoId="_rO57Rt42Eee0YMxeWbu2Dg" bpdm:poolTwoIsExecutable="false" bpdm:poolTwoName="caller">
     <pnlk:role name="process_for_caller" portType="process:Forcaller" bpdm:thisPoolId="_6CzX8N43Eee0YMxeWbu2Dg">
@@ -19,5 +61,47 @@
         </wsdl:operation>
       </wsdl:portType>
     </pnlk:role>
+  </pnlk:partnerLinkType>
+  <pnlk:partnerLinkType name="dbAndProcess" bpdm:poolOneId="_ymUIgN5IEee5MfuigsCq1w" bpdm:poolOneIsExecutable="false" bpdm:poolOneName="db" bpdm:poolTwoId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:poolTwoIsExecutable="true" bpdm:poolTwoName="process">
+    <pnlk:role name="db_for_process" portType="db:Forprocess" bpdm:thisPoolId="_ymUIgN5IEee5MfuigsCq1w">
+      <wsdl:portType name="Forprocess">
+        <wsdl:operation name="Receive_request" bpdm:canid="_2N5TNt5IEee5MfuigsCq1w._edFwcN5IEee5MfuigsCq1w." bpdm:dataobjectPointer="project:///Processes/Integrations/getCaseDetails-process.wsdl?wsdloperationbound={http://thisproject/Processes/Integrations/getCaseDetails/process}CanonicServiceForclient/canonicPort/Get_case_id">
+          <wsdl:input message="getCaseDetails-process:Get_case_id" name="Receive_request" bpdm:canid="_3e8rYN5IEee5MfuigsCq1w" bpdm:senderId="_edFwcN5IEee5MfuigsCq1w" bpdm:receiverId="_2N5TNt5IEee5MfuigsCq1w" bpdm:senderName="Request case details" bpdm:receiverName="Receive request" bpdm:receiverPoolId="_ymUIgN5IEee5MfuigsCq1w" bpdm:dataobjectPointer="project:///Processes/Integrations/getCaseDetails-process.wsdl?messageForBoundOperation={http://thisproject/Processes/Integrations/getCaseDetails/process}CanonicServiceForclient/canonicPort/Get_case_id/input/Get_case_id"></wsdl:input>
+          <wsdl:output message="getCaseDetails-process:Get_case_idResponse" name="Receive_requestResponse" bpdm:canid="_4Mr7IN5IEee5MfuigsCq1w" bpdm:senderId="_2N5TNt5IEee5MfuigsCq1w" bpdm:receiverId="_edFwcN5IEee5MfuigsCq1w" bpdm:senderName="Receive request" bpdm:receiverName="Request case details" bpdm:receiverPoolId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:dataobjectPointer="project:///Processes/Integrations/getCaseDetails-process.wsdl?messageForBoundOperation={http://thisproject/Processes/Integrations/getCaseDetails/process}CanonicServiceForclient/canonicPort/Get_case_id/output/Get_case_idResponse"></wsdl:output>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
+    <pnlk:role name="process_for_db" portType="process:Fordb" bpdm:thisPoolId="_6CzX8N43Eee0YMxeWbu2Dg">
+      <wsdl:portType name="Fordb">
+        <wsdl:operation name="Receive_case_details" bpdm:canid="_51UF0N5IEee5MfuigsCq1w._ggqKsN5IEee5MfuigsCq1w.">
+          <wsdl:input message="process:Receive_case_detailsRequest" name="Receive_case_details" bpdm:canid="_7wq_QN5IEee5MfuigsCq1w" bpdm:senderId="_51UF0N5IEee5MfuigsCq1w" bpdm:receiverId="_ggqKsN5IEee5MfuigsCq1w" bpdm:senderName="Send case details" bpdm:receiverName="Receive case details" bpdm:receiverPoolId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:dataobjectPointer="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}LaunchpointCaseType" bpdm:bodyPartElemName="Receive_case_detailsRequest" bpdm:bodyPartElemType="{http://www.example.org/Launchpoint}LaunchpointCaseType"></wsdl:input>
+          <wsdl:output message="process:Receive_case_detailsResponse" name="Receive_case_detailsResponse" bpdm:canid="_9APwwN5IEee5MfuigsCq1w" bpdm:senderId="_ggqKsN5IEee5MfuigsCq1w" bpdm:receiverId="_51UF0N5IEee5MfuigsCq1w" bpdm:senderName="Receive case details" bpdm:receiverName="Send case details" bpdm:receiverPoolId="_ymUIgN5IEee5MfuigsCq1w" bpdm:dataobjectPointer="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType" bpdm:bodyPartElemName="Receive_case_detailsResponse" bpdm:bodyPartElemType="{http://www.example.org/Launchpoint}BpmAckType"></wsdl:output>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
+  </pnlk:partnerLinkType>
+  <pnlk:partnerLinkType name="dbAndProcessForCanonicPortPlk" bpdm:canPlkId="_ymUIgN5IEee5MfuigsCq1w-_6CzX8N43Eee0YMxeWbu2Dg">
+    <pnlk:role name="db_for_process" portType="getCaseDetails-process:Forclient"></pnlk:role>
+    <pnlk:role name="process_for_db" portType="process:Fordb" bpdm:thisPoolId="_6CzX8N43Eee0YMxeWbu2Dg">
+      <wsdl:portType name="Fordb">
+        <wsdl:operation name="Receive_case_details" bpdm:canid="_51UF0N5IEee5MfuigsCq1w._ggqKsN5IEee5MfuigsCq1w.">
+          <wsdl:input message="process:Receive_case_detailsRequest" name="Receive_case_details" bpdm:canid="_7wq_QN5IEee5MfuigsCq1w" bpdm:senderId="_51UF0N5IEee5MfuigsCq1w" bpdm:receiverId="_ggqKsN5IEee5MfuigsCq1w" bpdm:senderName="Send case details" bpdm:receiverName="Receive case details" bpdm:receiverPoolId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:dataobjectPointer="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}LaunchpointCaseType" bpdm:bodyPartElemName="Receive_case_detailsRequest" bpdm:bodyPartElemType="{http://www.example.org/Launchpoint}LaunchpointCaseType"></wsdl:input>
+          <wsdl:output message="process:Receive_case_detailsResponse" name="Receive_case_detailsResponse" bpdm:canid="_9APwwN5IEee5MfuigsCq1w" bpdm:senderId="_ggqKsN5IEee5MfuigsCq1w" bpdm:receiverId="_51UF0N5IEee5MfuigsCq1w" bpdm:senderName="Receive case details" bpdm:receiverName="Send case details" bpdm:receiverPoolId="_ymUIgN5IEee5MfuigsCq1w" bpdm:dataobjectPointer="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType" bpdm:bodyPartElemName="Receive_case_detailsResponse" bpdm:bodyPartElemType="{http://www.example.org/Launchpoint}BpmAckType"></wsdl:output>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
+  </pnlk:partnerLinkType>
+  <pnlk:partnerLinkType name="processimplicitPartnerAndProcess" bpdm:poolOneId="_6CzX8N43Eee0YMxeWbu2DgimplicitPartner" bpdm:poolOneIsExecutable="false" bpdm:poolOneName="processimplicitPartner" bpdm:poolTwoId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:poolTwoIsExecutable="true" bpdm:poolTwoName="process">
+    <pnlk:role name="processimplicitPartner_for_process" portType="processimplicitPartner:Forprocess" bpdm:thisPoolId="_6CzX8N43Eee0YMxeWbu2DgimplicitPartner">
+      <wsdl:portType name="Forprocess">
+        <wsdl:operation name="Call_service-implicitTask" bpdm:canid="_e_UHAN44Eee0YMxeWbu2Dg._e_UHAN44Eee0YMxeWbu2DgimplicitTask." bpdm:dataobjectPointer="project:///Services/REST/updateCaseLifeCycle.wsdl?wsdloperationbound={http://bpms.everteam.com/Services/REST/updateCaseLifeCycle.rest}restService/httpPort/updateCaseLifecycle">
+          <wsdl:input message="updateCaseLifeCycle:updateCaseLifecycleRequest" name="Call_service-implicitTask" bpdm:canid="_e_UHAN44Eee0YMxeWbu2DgOutgoing" bpdm:senderId="_e_UHAN44Eee0YMxeWbu2Dg" bpdm:receiverId="_e_UHAN44Eee0YMxeWbu2DgimplicitTask" bpdm:senderName="Call service" bpdm:receiverName="Call service-implicitTask" bpdm:receiverPoolId="_6CzX8N43Eee0YMxeWbu2DgimplicitPartner" bpdm:dataobjectPointer="project:///Services/REST/updateCaseLifeCycle.wsdl?messageForBoundOperation={http://bpms.everteam.com/Services/REST/updateCaseLifeCycle.rest}restService/httpPort/updateCaseLifecycle/input/updateCaseLifecycleRequest"></wsdl:input>
+          <wsdl:output message="updateCaseLifeCycle:updateCaseLifecycleResponse" name="Call_service-implicitTaskResponse" bpdm:canid="_e_UHAN44Eee0YMxeWbu2DgIncoming" bpdm:senderId="_e_UHAN44Eee0YMxeWbu2DgimplicitTask" bpdm:receiverId="_e_UHAN44Eee0YMxeWbu2Dg" bpdm:senderName="Call service-implicitTask" bpdm:receiverName="Call service" bpdm:receiverPoolId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:dataobjectPointer="project:///Services/REST/updateCaseLifeCycle.wsdl?messageForBoundOperation={http://bpms.everteam.com/Services/REST/updateCaseLifeCycle.rest}restService/httpPort/updateCaseLifecycle/output/updateCaseLifecycleResponse"></wsdl:output>
+        </wsdl:operation>
+      </wsdl:portType>
+    </pnlk:role>
+  </pnlk:partnerLinkType>
+  <pnlk:partnerLinkType name="processimplicitPartnerAndProcessForHttpPortPlk" bpdm:canPlkId="_6CzX8N43Eee0YMxeWbu2DgimplicitPartner-_6CzX8N43Eee0YMxeWbu2Dg">
+    <pnlk:role name="processimplicitPartner_for_process" portType="updateCaseLifeCycle:restInterface"></pnlk:role>
   </pnlk:partnerLinkType>
 </wsdl:definitions>

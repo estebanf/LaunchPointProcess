@@ -81,7 +81,14 @@
         <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_b5vqkdagEeevpLXkVWf6QA" iD="_b5vqkNagEeevpLXkVWf6QA"/>
       </vertices>
       <vertices xmi:type="bpmn:SubProcess" xmi:id="_1y4BMdafEeevpLXkVWf6QA" iD="_1y4BMNafEeevpLXkVWf6QA" name="Query transaction">
-        <vertices xmi:type="bpmn:ActivityService" xmi:id="_s7ggutH5EeeKlIzHx_g2Yg" iD="_s7XWttH5EeeKlIzHx_g2Yg" outgoingEdges="_zEwW2NH5EeeKlIzHx_g2Yg" name="Query DB" activityType="ServiceTask">
+        <artifacts xmi:type="bpmn:DataObject" xmi:id="_lC41Ud5HEee5MfuigsCq1w" iD="_lC41Nt5HEee5MfuigsCq1w" name="LPCase">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lC41Ut5HEee5MfuigsCq1w" source="attachedDataobject">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_lC41U95HEee5MfuigsCq1w" key="douri" value="project:///Schemas/Launchpoint.xsd?xsdelement={http://www.example.org/Launchpoint}LPCase"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_lC41VN5HEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_lC41Vd5HEee5MfuigsCq1w" key="defaultDeclarationName" value="LPCase"/>
+          </eAnnotations>
+        </artifacts>
+        <vertices xmi:type="bpmn:ActivityService" xmi:id="_s7ggutH5EeeKlIzHx_g2Yg" iD="_s7XWttH5EeeKlIzHx_g2Yg" outgoingEdges="_RDnqYd5HEee5MfuigsCq1w" name="Query DB" activityType="ServiceTask">
           <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_s7ggu9H5EeeKlIzHx_g2Yg" source="attachedDataobject">
             <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_s7ggvNH5EeeKlIzHx_g2Yg" key="blackbox" value="true"/>
             <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_s7ggvdH5EeeKlIzHx_g2Yg" key="douri" value="project:///Connectors/Database/getCase.sql/getCase.sql.wsdl?invokerequestresponsebound={urn:intalio.com:connectors:database:launchpointprocess:getcaseservice}getCaseService/getCasePort/getCase"/>
@@ -90,11 +97,52 @@
             <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_s7ggv9H5EeeKlIzHx_g2Yg" key="projectRelativePath" value="Connectors/Database/getCase.sql/getCase.sql"/>
           </eAnnotations>
         </vertices>
-        <vertices xmi:type="bpmn:Activity" xmi:id="_zEdb4dH5EeeKlIzHx_g2Yg" iD="_zEdb4NH5EeeKlIzHx_g2Yg" incomingEdges="_zEwW2NH5EeeKlIzHx_g2Yg" name="Send case" activityType="EventEndMessage">
-          <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_7Bz3gdH6EeeKlIzHx_g2Yg"/>
-          <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_7WqtMdH6EeeKlIzHx_g2Yg"/>
+        <vertices xmi:type="bpmn:Activity" xmi:id="_lVCKkd5GEee5MfuigsCq1w" iD="_lVCKkN5GEee5MfuigsCq1w" outgoingEdges="_rq9K0d5GEee5MfuigsCq1w _2ckTQd5GEee5MfuigsCq1w _ILJN0d5HEee5MfuigsCq1w" incomingEdges="_Ru1Kkd5HEee5MfuigsCq1w" name="Source" activityType="GatewayDataBasedExclusive"/>
+        <vertices xmi:type="bpmn:SubProcess" xmi:id="_swrcwd5GEee5MfuigsCq1w" iD="_swrcwN5GEee5MfuigsCq1w" incomingEdges="_rq9K0d5GEee5MfuigsCq1w" name="Evaluator">
+          <vertices xmi:type="bpmn:Activity" xmi:id="_zEdb4dH5EeeKlIzHx_g2Yg" iD="_zEdb4NH5EeeKlIzHx_g2Yg" name="Send case" activityType="EventEndMessage">
+            <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_7Bz3gdH6EeeKlIzHx_g2Yg"/>
+            <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_7WqtMdH6EeeKlIzHx_g2Yg"/>
+          </vertices>
         </vertices>
-        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_zEwW2NH5EeeKlIzHx_g2Yg" iD="_zEwW19H5EeeKlIzHx_g2Yg"/>
+        <vertices xmi:type="bpmn:SubProcess" xmi:id="_4BJrcd5GEee5MfuigsCq1w" iD="_4BJrcN5GEee5MfuigsCq1w" incomingEdges="_2ckTQd5GEee5MfuigsCq1w" name="Update Lifecycle">
+          <artifacts xmi:type="bpmn:DataObject" xmi:id="_yW1Iyt5NEee5MfuigsCq1w" iD="_yW1Iyd5NEee5MfuigsCq1w" name="updateLifecycleSend_case_detailsRequest1Msg">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_yW1Iy95NEee5MfuigsCq1w" source="attachedDataobject">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yW1IzN5NEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yW1I1d5NEee5MfuigsCq1w" key="defaultDeclarationName" value="updateLifecycleSend_case_detailsRequest1Msg"/>
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yW1I2d5NEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Integrations/updateCaseLifeCycle/process}Receive_case_detailsRequest"/>
+            </eAnnotations>
+            <associations xmi:type="bpmn:Association" xmi:id="_yW1I1t5NEee5MfuigsCq1w" direction="To">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_yW1I195NEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yW1I2N5NEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="outgoingMesssageVariable"/>
+              </eAnnotations>
+            </associations>
+          </artifacts>
+          <artifacts xmi:type="bpmn:DataObject" xmi:id="_y3nhod5NEee5MfuigsCq1w" iD="_y3nhoN5NEee5MfuigsCq1w" name="updateCaseLifeCycle-processReceive_case_detailsResponse2Msg">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_y3nhot5NEee5MfuigsCq1w" source="attachedDataobject">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y3nho95NEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y3nhrN5NEee5MfuigsCq1w" key="defaultDeclarationName" value="updateCaseLifeCycle-processReceive_case_detailsResponse2Msg"/>
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y3nhsN5NEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Integrations/updateCaseLifeCycle/process}Receive_case_detailsResponse"/>
+            </eAnnotations>
+            <associations xmi:type="bpmn:Association" xmi:id="_y3nhrd5NEee5MfuigsCq1w" direction="From">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_y3nhrt5NEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y3nhr95NEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="incomingMesssageVariable"/>
+              </eAnnotations>
+            </associations>
+          </artifacts>
+          <vertices xmi:type="bpmn:Activity" xmi:id="_2cbJUd5GEee5MfuigsCq1w" iD="_2cbJUN5GEee5MfuigsCq1w" associations="_yW1I1t5NEee5MfuigsCq1w _y3nhrd5NEee5MfuigsCq1w" name="Send case" activityType="EventEndMessage">
+            <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_yWr-0d5NEee5MfuigsCq1w"/>
+            <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_y3K1sd5NEee5MfuigsCq1w"/>
+          </vertices>
+        </vertices>
+        <vertices xmi:type="bpmn:SubProcess" xmi:id="_JtMPYd5HEee5MfuigsCq1w" iD="_JtMPYN5HEee5MfuigsCq1w" incomingEdges="_ILJN0d5HEee5MfuigsCq1w" name="Case close reopen">
+          <vertices xmi:type="bpmn:Activity" xmi:id="_ILAD4d5HEee5MfuigsCq1w" iD="_ILAD4N5HEee5MfuigsCq1w" name="Send case" activityType="EventEndMessage"/>
+        </vertices>
+        <vertices xmi:type="bpmn:Activity" xmi:id="_RDegcd5HEee5MfuigsCq1w" iD="_RDegcN5HEee5MfuigsCq1w" outgoingEdges="_Ru1Kkd5HEee5MfuigsCq1w" incomingEdges="_RDnqYd5HEee5MfuigsCq1w" activityType="EventIntermediateEmpty"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_rq9K0d5GEee5MfuigsCq1w" iD="_rq9K0N5GEee5MfuigsCq1w" name="Evaluator" conditionType="Default" isDefault="true"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_2ckTQd5GEee5MfuigsCq1w" iD="_2ckTQN5GEee5MfuigsCq1w" name="Update lifecycle"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_ILJN0d5HEee5MfuigsCq1w" iD="_ILJN0N5HEee5MfuigsCq1w" name="Case Close reopen"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_RDnqYd5HEee5MfuigsCq1w" iD="_RDnqYN5HEee5MfuigsCq1w"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_Ru1Kkd5HEee5MfuigsCq1w" iD="_Ru1KkN5HEee5MfuigsCq1w"/>
         <eventHandlers xmi:type="bpmn:Activity" xmi:id="_-fl5sdafEeevpLXkVWf6QA" iD="_-fl5sNafEeevpLXkVWf6QA" outgoingEdges="_7SufodagEeevpLXkVWf6QA" activityType="EventIntermediateError"/>
       </vertices>
       <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_7SufodagEeevpLXkVWf6QA" iD="_7SufoNagEeevpLXkVWf6QA"/>
@@ -205,10 +253,46 @@
       <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_xaKfEdagEeevpLXkVWf6QA"/>
     </vertices>
   </pools>
+  <pools xmi:type="bpmn:Pool" xmi:id="_n2fWgd5NEee5MfuigsCq1w" iD="_n2fWgN5NEee5MfuigsCq1w" name="UpdateLifecycle">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wiwjEN5NEee5MfuigsCq1w" source="executablepool">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wiwjEd5NEee5MfuigsCq1w" key="poolIsExecutable" value="false"/>
+    </eAnnotations>
+    <artifacts xmi:type="bpmn:DataObject" xmi:id="_yW-5xt5NEee5MfuigsCq1w" iD="_yW-5xd5NEee5MfuigsCq1w" name="thisSend_case_detailsRequest1Msg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_yW-5x95NEee5MfuigsCq1w" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yW-5yN5NEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yW-50d5NEee5MfuigsCq1w" key="defaultDeclarationName" value="thisSend_case_detailsRequest1Msg"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yXIDs95NEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Integrations/updateCaseLifeCycle/process}Receive_case_detailsRequest"/>
+      </eAnnotations>
+      <associations xmi:type="bpmn:Association" xmi:id="_yXIDsN5NEee5MfuigsCq1w" direction="From">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_yXIDsd5NEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yXIDst5NEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="incomingMesssageVariable"/>
+        </eAnnotations>
+      </associations>
+    </artifacts>
+    <artifacts xmi:type="bpmn:DataObject" xmi:id="_y3dwod5NEee5MfuigsCq1w" iD="_y3dwoN5NEee5MfuigsCq1w" name="updateCaseLifeCycle-processReceive_case_detailsResponse2Msg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_y3dwot5NEee5MfuigsCq1w" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y3dwo95NEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y3dwrN5NEee5MfuigsCq1w" key="defaultDeclarationName" value="updateCaseLifeCycle-processReceive_case_detailsResponse2Msg"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y3dwsN5NEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Integrations/updateCaseLifeCycle/process}Receive_case_detailsResponse"/>
+      </eAnnotations>
+      <associations xmi:type="bpmn:Association" xmi:id="_y3dwrd5NEee5MfuigsCq1w" direction="To">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_y3dwrt5NEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y3dwr95NEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="outgoingMesssageVariable"/>
+        </eAnnotations>
+      </associations>
+    </artifacts>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_xOQ-Ud5NEee5MfuigsCq1w" iD="_xOQ-Nt5NEee5MfuigsCq1w" associations="_yXIDsN5NEee5MfuigsCq1w _y3dwrd5NEee5MfuigsCq1w" name="Send case details" activityType="Task">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xOQ-Ut5NEee5MfuigsCq1w" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xOQ-U95NEee5MfuigsCq1w" key="douri" value="project:///Processes/Integrations/updateCaseLifeCycle-process.wsdl?wsdloperationbound={http://thisproject/Processes/Integrations/updateCaseLifeCycle/process}CanonicServiceFordb/canonicPort/Receive_case_details"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xOQ-VN5NEee5MfuigsCq1w" key="douri2" value="project:///Processes/Integrations/updateCaseLifeCycle.bpm/_vgnGYN5JEee5MfuigsCq1w.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Send case details"/>
+      </eAnnotations>
+      <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_yWr-0d5NEee5MfuigsCq1w"/>
+      <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_y3K1sd5NEee5MfuigsCq1w"/>
+    </vertices>
+  </pools>
   <messages xmi:type="bpmn:MessagingEdge" xmi:id="_nX01odH5EeeKlIzHx_g2Yg" iD="_nX01oNH5EeeKlIzHx_g2Yg" source="_k_1DgdH5EeeKlIzHx_g2Yg" target="_nXh6sdH5EeeKlIzHx_g2Yg">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_yj0g4N4WEee0YMxeWbu2Dg" source="attachedDataobject">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yj0g4d4WEee0YMxeWbu2Dg" key="douri" value="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}CaseIdentifierType"/>
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yj0g4t4WEee0YMxeWbu2Dg" key="douri2" value="project:///Schemas/Launchpoint.xsd?xsdelement={http://www.example.org/Launchpoint}CaseIdentifier"/>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cZ40gN5GEee5MfuigsCq1w" source="attachedDataobject">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cZ40gd5GEee5MfuigsCq1w" key="douri" value="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}GetCaseDetailsRequestType"/>
     </eAnnotations>
   </messages>
   <messages xmi:type="bpmn:MessagingEdge" xmi:id="_oKx8kdH5EeeKlIzHx_g2Yg" iD="_oKx8kNH5EeeKlIzHx_g2Yg" source="_nXh6sdH5EeeKlIzHx_g2Yg" target="_k_1DgdH5EeeKlIzHx_g2Yg">
@@ -238,6 +322,18 @@
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3uw0MNahEeevpLXkVWf6QA" source="attachedDataobject">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3uw0MdahEeevpLXkVWf6QA" key="douri" value="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType"/>
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3uw0MtahEeevpLXkVWf6QA" key="douri2" value="project:///Schemas/Launchpoint.xsd?xsdelement={http://www.example.org/Launchpoint}ErrorRecoveryACK"/>
+    </eAnnotations>
+  </messages>
+  <messages xmi:type="bpmn:MessagingEdge" xmi:id="_yWr-0d5NEee5MfuigsCq1w" iD="_yWr-0N5NEee5MfuigsCq1w" source="_2cbJUd5GEee5MfuigsCq1w" target="_xOQ-Ud5NEee5MfuigsCq1w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_yWr-0t5NEee5MfuigsCq1w" source="attachedDataobject">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yWr-095NEee5MfuigsCq1w" key="douri" value="project:///Processes/Integrations/updateCaseLifeCycle-process.wsdl?messageForBoundOperation={http://thisproject/Processes/Integrations/updateCaseLifeCycle/process}CanonicServiceFordb/canonicPort/Receive_case_details/input/Receive_case_details"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yWr-1N5NEee5MfuigsCq1w" key="douri2" value="project:///Processes/Integrations/updateCaseLifeCycle.bpm/_vgnGYN5JEee5MfuigsCq1w.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Send case details"/>
+    </eAnnotations>
+  </messages>
+  <messages xmi:type="bpmn:MessagingEdge" xmi:id="_y3K1sd5NEee5MfuigsCq1w" iD="_y3K1sN5NEee5MfuigsCq1w" source="_xOQ-Ud5NEee5MfuigsCq1w" target="_2cbJUd5GEee5MfuigsCq1w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_y3T_oN5NEee5MfuigsCq1w" source="attachedDataobject">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y3T_od5NEee5MfuigsCq1w" key="douri" value="project:///Processes/Integrations/updateCaseLifeCycle-process.wsdl?messageForBoundOperation={http://thisproject/Processes/Integrations/updateCaseLifeCycle/process}CanonicServiceFordb/canonicPort/Receive_case_details/output/Receive_case_detailsResponse"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y3T_ot5NEee5MfuigsCq1w" key="douri2" value="project:///Processes/Integrations/updateCaseLifeCycle.bpm/_vgnGYN5JEee5MfuigsCq1w.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Send case details"/>
     </eAnnotations>
   </messages>
 </bpmn:BpmnDiagram>

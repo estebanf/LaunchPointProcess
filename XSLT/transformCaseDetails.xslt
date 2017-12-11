@@ -9,9 +9,9 @@
   <xsl:output/>
   <!--No parameters are currently passed to doXslTransform.-->
   <xsl:template match="/ns:getCaseResultSet">
-    <CaseEvaluator-process:Get_db_infoRequest>
+    <Launchpoint:LPCase>
     	<xsl:apply-templates />
-    </CaseEvaluator-process:Get_db_infoRequest>
+    </Launchpoint:LPCase>
   </xsl:template>
   <xsl:template match="ns:rows">
   	<xsl:apply-templates />

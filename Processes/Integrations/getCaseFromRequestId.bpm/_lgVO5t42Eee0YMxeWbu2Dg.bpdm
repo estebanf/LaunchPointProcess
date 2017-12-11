@@ -1,6 +1,7 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:process="http://thisdiagram/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:tns="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/caller" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/caller">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:ProcessISOResponse-ISO_Response_Mana="http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager" xmlns:process="http://thisdiagram/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:tns="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/caller" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/caller">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_13xh8N43Eee0YMxeWbu2Dg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager" bpdm:prefix="ProcessISOResponse-ISO_Response_Mana" bpdm:comment="contrib=&apos;project:///Processes/Core/ProcessISOResponse-ISO_Response_Manager.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="process" bpdm:comment="contrib=&apos;partner-pool:///_13xh8N43Eee0YMxeWbu2Dg"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
@@ -10,10 +11,11 @@
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_13xh8N43Eee0YMxeWbu2Dg" bpdm:label="process"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOResponse-ISO_Response_Manager.wsdl"/>
     </bpdm:dependencies>
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="caller" bpdm:ID="_lgVO5t42Eee0YMxeWbu2Dg">
         <bpel:partnerLinks>
-            <bpel:partnerLink name="callerAndProcessPlkVar" partnerLinkType="diag:callerAndProcess" initializePartnerRole="yes" partnerRole="process_for_caller" bpdm:invokedService="process:CanonicServiceForcaller" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/caller" bpdm:invokedIsDefault="true" bpdm:clientTasks="_lgVO5t42Eee0YMxeWbu2Dg:_lge_4N42Eee0YMxeWbu2Dg" bpdm:isManaged="true" bpdm:otherPoolId="_13xh8N43Eee0YMxeWbu2Dg"/>
+            <bpel:partnerLink name="callerAndProcessForCanonicPortPlkVar" partnerLinkType="diag:callerAndProcessForCanonicPortPlk" initializePartnerRole="yes" myRole="caller_for_process" bpdm:enableSharing="false" bpdm:providedService="ProcessISOResponse-ISO_Response_Mana:CanonicServiceForDB" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="epr" bpdm:providedIsDefault="true" partnerRole="process_for_caller" bpdm:invokedService="process:CanonicServiceForcaller" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/caller" bpdm:invokedIsDefault="true" bpdm:clientTasks="_lgVO5t42Eee0YMxeWbu2Dg:_lge_4N42Eee0YMxeWbu2Dg, _lgVO5t42Eee0YMxeWbu2Dg:_dRB0tt5CEee5MfuigsCq1w" bpdm:isManaged="true" bpdm:otherPoolId="_13xh8N43Eee0YMxeWbu2Dg"/>
         </bpel:partnerLinks>
         <bpel:variables>
             <bpel:variable name="processReceive_requestRequest2Msg" messageType="process:Receive_requestRequest" bpdm:id="_3m7ye943Eee0YMxeWbu2Dg" bpdm:messageIds=" out:_3m7ycN43Eee0YMxeWbu2Dg">
@@ -22,12 +24,26 @@
                 </bpel:from>
             </bpel:variable>
             <bpel:variable name="processReceive_requestResponse2Msg" messageType="process:Receive_requestResponse" bpdm:id="_4qcd-N43Eee0YMxeWbu2Dg" bpdm:messageIds="inc:_4qcd4N43Eee0YMxeWbu2Dg"/>
+            <bpel:variable name="thisGet_caseRequest1Msg" messageType="ProcessISOResponse-ISO_Response_Mana:Receive_caseRequest" binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDBForCanonicPortPlkServiceBinding" operation="Receive_case" opMsgType="0" bpdm:id="_erxUYN5CEee5MfuigsCq1w" bpdm:messageIds="inc:_erUocN5CEee5MfuigsCq1w"/>
+            <bpel:variable name="processISOResponse-ISO_Response_ManaReceive_caseResponse2Msg" messageType="ProcessISOResponse-ISO_Response_Mana:Receive_caseResponse" binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDBForCanonicPortPlkServiceBinding" operation="Receive_case" opMsgType="1" bpdm:id="_fE8pYN5CEee5MfuigsCq1w" bpdm:messageIds=" out:_fEqVgN5CEee5MfuigsCq1w">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="ProcessISOResponse-ISO_Response_Mana:Receive_caseResponse" bpdm:linkedPart="body" bpdm:binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDBForCanonicPortPlkServiceBinding" bpdm:opMsgType="1" bpdm:operation="Receive_case"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
         </bpel:variables>
-        <bpel:sequence>
-            <bpdm:messagingtask operation="Receive_request" partnerLink="callerAndProcessPlkVar" portType="process:Forcaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send request" bpdm:ID="_lge_4N42Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no">
-                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="processReceive_requestRequest2Msg" bpdm:msgVarScopeId="_lgVO5t42Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="process:Receive_requestRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_3m7ycN43Eee0YMxeWbu2Dg"></bpdm:linkset>
-                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processReceive_requestResponse2Msg" bpdm:msgVarScopeId="_lgVO5t42Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="process:Receive_requestResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_4qcd4N43Eee0YMxeWbu2Dg"></bpdm:linkset>
-            </bpdm:messagingtask>
-        </bpel:sequence>
+        <bpel:flow>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="Receive_case" partnerLink="callerAndProcessForCanonicPortPlkVar" portType="ProcessISOResponse-ISO_Response_Mana:ForDB" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get case" bpdm:ID="_dRB0tt5CEee5MfuigsCq1w" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisGet_caseRequest1Msg" bpdm:msgVarScopeId="_lgVO5t42Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOResponse-ISO_Response_Mana:Receive_caseRequest" bpdm:binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDBForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_erUocN5CEee5MfuigsCq1w"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="processISOResponse-ISO_Response_ManaReceive_caseResponse2Msg" bpdm:msgVarScopeId="_lgVO5t42Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOResponse-ISO_Response_Mana:Receive_caseResponse" bpdm:binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDBForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_fEqVgN5CEee5MfuigsCq1w"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="Receive_request" partnerLink="callerAndProcessForCanonicPortPlkVar" portType="process:Forcaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send request" bpdm:ID="_lge_4N42Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="processReceive_requestRequest2Msg" bpdm:msgVarScopeId="_lgVO5t42Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="process:Receive_requestRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_3m7ycN43Eee0YMxeWbu2Dg"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processReceive_requestResponse2Msg" bpdm:msgVarScopeId="_lgVO5t42Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="process:Receive_requestResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_4qcd4N43Eee0YMxeWbu2Dg"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+        </bpel:flow>
     </bpel:scope>
 </bpel:process>

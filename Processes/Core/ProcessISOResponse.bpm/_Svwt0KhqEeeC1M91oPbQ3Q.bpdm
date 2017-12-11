@@ -1,6 +1,6 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:load_scored_iso="urn:intalio.com:connectors:database:launchpointprocess:load_scored_isoservice" xmlns:ax21494="http://isoscoreprocessing.rules.launchpointprocess/bre" xmlns:this="http://thisdiagram/ISO_Response_Manager" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:DB="http://thisdiagram/DB" xmlns:ns="http://isoscoreprocessing.rules.launchpointprocess" xmlns:ISO="http://thisdiagram/ISO" xmlns:diag="http://thisdiagram" xmlns:ISO_Response_ManagerimplicitPartner="http://thisdiagram/ISO_Response_ManagerimplicitPartner" xmlns:tns="http://everteam.com/xvar/example" xmlns:DCM="http://thisdiagram/DCM" xmlns:ax21493="http://isoscoreprocessing.rules.launchpointprocess/xsd" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/ISO_Response_Manager">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:updateCaseLifeCycle-process="http://thisproject/Processes/Integrations/updateCaseLifeCycle/process" xmlns:ax21494="http://isoscoreprocessing.rules.launchpointprocess/bre" xmlns:this="http://thisdiagram/ISO_Response_Manager" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:DB="http://thisdiagram/DB" xmlns:ns="http://isoscoreprocessing.rules.launchpointprocess" xmlns:ISO="http://thisdiagram/ISO" xmlns:diag="http://thisdiagram" xmlns:ISO_Response_ManagerimplicitPartner="http://thisdiagram/ISO_Response_ManagerimplicitPartner" xmlns:tns="http://everteam.com/xvar/example" xmlns:DCM="http://thisdiagram/DCM" xmlns:ax21493="http://isoscoreprocessing.rules.launchpointprocess/xsd" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:getCaseFromRequestId-process="http://thisproject/Processes/Integrations/getCaseFromRequestId/process" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/ISO_Response_Manager">
     <bpdm:dependencies version="6000089">
-        <bpdm:namespaceDefinition bpdm:uri="urn:intalio.com:connectors:database:launchpointprocess:load_scored_isoservice" bpdm:prefix="load_scored_iso" bpdm:comment="contrib=&apos;project:///Connectors/Database/load_scored_iso.sql/load_scored_iso.sql.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Integrations/updateCaseLifeCycle/process" bpdm:prefix="updateCaseLifeCycle-process" bpdm:comment="contrib=&apos;project:///Processes/Integrations/updateCaseLifeCycle-process.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://isoscoreprocessing.rules.launchpointprocess/bre" bpdm:prefix="ax21494" bpdm:comment="contrib=&apos;project:///Rules/ISOScoreProcessing.bre/dtws_launchpointprocess_rules_isoscoreprocessing/META-INF/dtws_launchpointprocess_rules_isoscoreprocessing.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/ISO_Response_Manager" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
@@ -16,14 +16,8 @@
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://test.com/xvar/example" bpdm:prefix="metrics" bpdm:comment="contrib=&apos;project:///Metrics/metrics.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Integrations/getCaseFromRequestId/process" bpdm:prefix="getCaseFromRequestId-process" bpdm:comment="contrib=&apos;project:///Processes/Integrations/getCaseFromRequestId-process.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
-            <wsdl:portType name="ForDCM">
-                <wsdl:operation name="Receive_Scoring" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                    <wsdl:input message="this:Receive_ScoringRequest" name="Receive_Scoring"/>
-                    <wsdl:output message="this:Receive_ScoringResponse" name="Receive_ScoringResponse"/>
-                </wsdl:operation>
-            </wsdl:portType>
-            <bpel:binding name="CanonicBindingForDCM" type="this:ForDCM" bpdm:isSynchronized="true"/>
             <wsdl:portType name="ForISO">
                 <wsdl:operation name="Receive_ISO_Response" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
                     <wsdl:input message="this:Receive_ISO_ResponseRequest" name="Receive_ISO_Response"/>
@@ -31,6 +25,24 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForISO" type="this:ForISO" bpdm:isSynchronized="true"/>
+            <wsdl:portType name="ForDB">
+                <wsdl:operation name="Receive_case" bpdm:source="partner-pool:///_Ir-wwLA2EeeytYusscoK1g">
+                    <wsdl:input message="this:Receive_caseRequest" name="Receive_case"/>
+                    <wsdl:output message="this:Receive_caseResponse" name="Receive_caseResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForDB" type="this:ForDB" bpdm:isSynchronized="true"/>
+            <wsdl:portType name="ForDCM">
+                <wsdl:operation name="Receive_Scoring" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                    <wsdl:input message="this:Receive_ScoringRequest" name="Receive_Scoring"/>
+                    <wsdl:output message="this:Receive_ScoringResponse" name="Receive_ScoringResponse"/>
+                </wsdl:operation>
+                <wsdl:operation name="Receive_update_lifecycle_confirmation" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                    <wsdl:input message="this:Receive_update_lifecycle_confirmationRequest" name="Receive_update_lifecycle_confirmation"/>
+                    <wsdl:output message="this:Receive_update_lifecycle_confirmationResponse" name="Receive_update_lifecycle_confirmationResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForDCM" type="this:ForDCM" bpdm:isSynchronized="true"/>
             <xs:element name="Receive_ScoringRequest" type="Launchpoint:ISOScoringType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
             <wsdl:message name="Receive_ScoringRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                 <wsdl:part name="body" element="this:Receive_ScoringRequest"/>
@@ -38,6 +50,14 @@
             <xs:element name="Receive_ScoringResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
             <wsdl:message name="Receive_ScoringResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                 <wsdl:part name="body" element="this:Receive_ScoringResponse"/>
+            </wsdl:message>
+            <xs:element name="Receive_update_lifecycle_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_update_lifecycle_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_update_lifecycle_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_update_lifecycle_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationResponse"/>
             </wsdl:message>
             <xs:element name="Receive_ISO_ResponseRequest" type="Launchpoint:ISOFileWrapperType" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q"/>
             <wsdl:message name="Receive_ISO_ResponseRequest" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
@@ -47,15 +67,23 @@
             <wsdl:message name="Receive_ISO_ResponseResponse" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
                 <wsdl:part name="body" element="this:Receive_ISO_ResponseResponse"/>
             </wsdl:message>
+            <xs:element name="Receive_caseRequest" type="Launchpoint:GetCaseFromRequestIdResponseType" bpdm:source="partner-pool:///_Ir-wwLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_caseRequest" bpdm:source="partner-pool:///_Ir-wwLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_caseRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_caseResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Ir-wwLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_caseResponse" bpdm:source="partner-pool:///_Ir-wwLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_caseResponse"/>
+            </wsdl:message>
         </bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_Kox0oLA2EeeytYusscoK1g" bpdm:label="DCM"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q" bpdm:label="ISO"/>
-        <bpdm:namespaceContributor bpdm:url="partner-pool:///_Ir-wwLA2EeeytYusscoK1g" bpdm:label="DB"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_Svwt0KhqEeeC1M91oPbQ3QimplicitPartner" bpdm:label="ISO Response ManagerimplicitPartner"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/load_scored_iso.sql/load_scored_iso.sql.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_Ir-wwLA2EeeytYusscoK1g" bpdm:label="DB"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/updateCaseLifeCycle-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseFromRequestId-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Rules/ISOScoreProcessing.bre/dtws_launchpointprocess_rules_isoscoreprocessing/META-INF/dtws_launchpointprocess_rules_isoscoreprocessing.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/load_scored_iso.sql/load_scored_iso.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
@@ -64,9 +92,8 @@
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="ISO Response Manager" bpdm:ID="_Svwt0KhqEeeC1M91oPbQ3Q">
         <bpel:partnerLinks>
             <bpel:partnerLink name="iSO_Response_ManagerAndISOPlkVar" partnerLinkType="diag:ISO_Response_ManagerAndISO" myRole="ISO_Response_Manager_for_ISO" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForISO" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/ISO_Response_Manager/ISO" bpdm:providedIsDefault="true" bpdm:clientTasks="_Svwt0KhqEeeC1M91oPbQ3Q:_pE-1MLAyEeeytYusscoK1g" bpdm:isManaged="true" bpdm:otherPoolId="_3Bc-QKhqEeeC1M91oPbQ3Q"/>
-            <bpel:partnerLink name="iSO_Response_ManagerAndDBForLoad_scored_isoPortPlkVar" partnerLinkType="diag:ISO_Response_ManagerAndDBForLoad_scored_isoPortPlk" initializePartnerRole="yes" partnerRole="DB_for_ISO_Response_Manager" bpdm:invokedService="load_scored_iso:load_scored_isoService" bpdm:invokedPort="load_scored_isoPort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:8080/everteam/ode/processes/LaunchPointProcess/Connectors/Database/load_scored_iso" bpdm:invokedIsDefault="true" bpdm:clientTasks="_Svwt0KhqEeeC1M91oPbQ3Q:_HDLzMLGEEee6aeEJgFykVw" bpdm:isManaged="true" bpdm:otherPoolId="_Ir-wwLA2EeeytYusscoK1g"/>
-            <bpel:partnerLink name="iSO_Response_ManagerAndDCMPlkVar" partnerLinkType="diag:ISO_Response_ManagerAndDCM" myRole="ISO_Response_Manager_for_DCM" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForDCM" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/ISO_Response_Manager/DCM" bpdm:providedIsDefault="true" bpdm:clientTasks="_Svwt0KhqEeeC1M91oPbQ3Q:_-3VHMLAyEeeytYusscoK1g" bpdm:isManaged="true" bpdm:otherPoolId="_Kox0oLA2EeeytYusscoK1g"/>
-            <bpel:partnerLink name="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForPortDtws_launchpointprocess_rules_isoscoreprocessingHttpSoap11EndpointPlkVar" partnerLinkType="diag:ISO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForPortDtws_launchpointprocess_rules_isoscoreprocessingHttpSoap11EndpointPlk" initializePartnerRole="yes" partnerRole="ISO_Response_ManagerimplicitPartner_for_ISO_Response_Manager" bpdm:invokedService="ns:dtws_launchpointprocess_rules_isoscoreprocessing" bpdm:invokedPort="dtws_launchpointprocess_rules_isoscoreprocessingHttpSoap11Endpoint" bpdm:invokedSOAPAddress="http://localhost:8080/everteam/ode/processes/dtws_launchpointprocess_rules_isoscoreprocessing" bpdm:invokedIsDefault="true" bpdm:clientTasks="_Svwt0KhqEeeC1M91oPbQ3Q:_HlpjsMnFEeea1ay7b7CFuw" bpdm:isManaged="true" bpdm:otherPoolId="_Svwt0KhqEeeC1M91oPbQ3QimplicitPartner"/>
+            <bpel:partnerLink name="iSO_Response_ManagerAndDBForCanonicPortPlkVar" partnerLinkType="diag:ISO_Response_ManagerAndDBForCanonicPortPlk" initializePartnerRole="yes" myRole="ISO_Response_Manager_for_DB" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForDB" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/ISO_Response_Manager/DB" bpdm:providedIsDefault="true" partnerRole="DB_for_ISO_Response_Manager" bpdm:invokedService="getCaseFromRequestId-process:CanonicServiceForcaller" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="__zR9QN5BEee5MfuigsCq1w:_yZIsUN5BEee5MfuigsCq1w, __zR9QN5BEee5MfuigsCq1w:_9skvcN5BEee5MfuigsCq1w" bpdm:isManaged="true" bpdm:otherPoolId="_Ir-wwLA2EeeytYusscoK1g"/>
+            <bpel:partnerLink name="iSO_Response_ManagerAndDCMForCanonicPortPlkVar" partnerLinkType="diag:ISO_Response_ManagerAndDCMForCanonicPortPlk" initializePartnerRole="yes" myRole="ISO_Response_Manager_for_DCM" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForDCM" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/ISO_Response_Manager/DCM" bpdm:providedIsDefault="true" partnerRole="DCM_for_ISO_Response_Manager" bpdm:invokedService="updateCaseLifeCycle-process:CanonicServiceForcaller" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_Svwt0KhqEeeC1M91oPbQ3Q:_RrSVEN5MEee5MfuigsCq1w, _Svwt0KhqEeeC1M91oPbQ3Q:_bFvdUN5MEee5MfuigsCq1w, _Svwt0KhqEeeC1M91oPbQ3Q:_-3VHMLAyEeeytYusscoK1g" bpdm:isManaged="true" bpdm:otherPoolId="_Kox0oLA2EeeytYusscoK1g"/>
         </bpel:partnerLinks>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
             <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_S0NI8ahqEeeC1M91oPbQ3Q" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_S0NI8ahqEeeC1M91oPbQ3Q"/>
@@ -76,12 +103,6 @@
                     <bpel:literal bpdm:linkedMessageType="this:Receive_ISO_ResponseResponse" bpdm:linkedPart="body"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
-            <bpel:variable name="dBProvide-Service-Load_scored_isoRequest1Msg" messageType="load_scored_iso:load_scored_isoInput" binding="load_scored_iso:load_scored_isoPortSoapBinding" operation="load_scored_iso" opMsgType="0" bpdm:id="_rv25cLOHEeeA5NNH7BCAqw" bpdm:messageIds=" out:_rvaNgLOHEeeA5NNH7BCAqw">
-                <bpel:from bpdm:toPart="parameters">
-                    <bpel:literal bpdm:linkedMessageType="load_scored_iso:load_scored_isoInput" bpdm:linkedPart="parameters" bpdm:binding="load_scored_iso:load_scored_isoPortSoapBinding" bpdm:opMsgType="0" bpdm:operation="load_scored_iso"></bpel:literal>
-                </bpel:from>
-            </bpel:variable>
-            <bpel:variable name="load_scored_isoLoad_scored_isoResponse2Msg" messageType="load_scored_iso:load_scored_isoOutput" binding="load_scored_iso:load_scored_isoPortSoapBinding" operation="load_scored_iso" opMsgType="1" bpdm:id="_sJycYLOHEeeA5NNH7BCAqw" bpdm:messageIds="inc:_sJVwcLOHEeeA5NNH7BCAqw"/>
             <bpel:variable name="thisReceive_ScoringRequest1Msg" messageType="this:Receive_ScoringRequest" bpdm:messageIds="inc:_kuxyALGHEee6aeEJgFykVw"/>
             <bpel:variable name="thisReceive_ScoringResponse2Msg" messageType="this:Receive_ScoringResponse" bpdm:messageIds=" out:_lcQjELGHEee6aeEJgFykVw">
                 <bpel:from bpdm:toPart="body">
@@ -94,10 +115,21 @@
                     <bpel:literal bpdm:linkedElement="Launchpoint:RqUID"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
-            <bpel:variable name="nsInvokeDecisionTableResponse1Msg" messageType="ns:invokeDecisionTableResponse" binding="ns:dtws_launchpointprocess_rules_isoscoreprocessingSoap11Binding" operation="invokeDecisionTable" opMsgType="1" bpdm:messageIds="inc:_HlpjsMnFEeea1ay7b7CFuwIncoming"/>
-            <bpel:variable name="nsInvokeDecisionTableRequest1Msg" messageType="ns:invokeDecisionTableRequest" binding="ns:dtws_launchpointprocess_rules_isoscoreprocessingSoap11Binding" operation="invokeDecisionTable" opMsgType="0" bpdm:messageIds=" out:_HlpjsMnFEeea1ay7b7CFuwOutgoing">
-                <bpel:from bpdm:toPart="parameters">
-                    <bpel:literal bpdm:linkedMessageType="ns:invokeDecisionTableRequest" bpdm:linkedPart="parameters" bpdm:binding="ns:dtws_launchpointprocess_rules_isoscoreprocessingSoap11Binding" bpdm:opMsgType="0" bpdm:operation="invokeDecisionTable"></bpel:literal>
+            <bpel:variable name="CaseIdentifier" element="Launchpoint:CaseIdentifier" bpdm:id="_SRF8Zt5CEee5MfuigsCq1w">
+                <bpel:from>
+                    <bpel:literal bpdm:linkedElement="Launchpoint:CaseIdentifier"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="dCMSend_requestRequest1Msg" messageType="updateCaseLifeCycle-process:Receive_requestRequest" binding="updateCaseLifeCycle-process:callerAndProcessServiceBinding" operation="Receive_request" opMsgType="0" bpdm:id="_ZMbLQN5MEee5MfuigsCq1w" bpdm:messageIds=" out:_ZMIQUN5MEee5MfuigsCq1w">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="updateCaseLifeCycle-process:Receive_requestRequest" bpdm:linkedPart="body" bpdm:binding="updateCaseLifeCycle-process:callerAndProcessServiceBinding" bpdm:opMsgType="0" bpdm:operation="Receive_request"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="updateCaseLifeCycle-processReceive_requestResponse1Msg" messageType="updateCaseLifeCycle-process:Receive_requestResponse" binding="updateCaseLifeCycle-process:callerAndProcessServiceBinding" operation="Receive_request" opMsgType="1" bpdm:id="_Z0qP8N5MEee5MfuigsCq1w" bpdm:messageIds="inc:_Z0NkAN5MEee5MfuigsCq1w"/>
+            <bpel:variable name="thisReceive_update_lifecycle_confirmationRequest1Msg" messageType="this:Receive_update_lifecycle_confirmationRequest" bpdm:id="_f-WyEN5MEee5MfuigsCq1w" bpdm:messageIds="inc:_f-DQEN5MEee5MfuigsCq1w"/>
+            <bpel:variable name="thisReceive_update_lifecycle_confirmationResponse2Msg" messageType="this:Receive_update_lifecycle_confirmationResponse" bpdm:id="_gl_Z0N5MEee5MfuigsCq1w" bpdm:messageIds=" out:_gl1o0N5MEee5MfuigsCq1w">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="this:Receive_update_lifecycle_confirmationResponse" bpdm:linkedPart="body"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
         </bpel:variables>
@@ -114,13 +146,65 @@
                     </bpel:copy>
                 </bpdm:linkset>
             </bpdm:messagingtask>
-            <bpdm:messagingtask operation="load_scored_iso" partnerLink="iSO_Response_ManagerAndDBForLoad_scored_isoPortPlkVar" portType="load_scored_iso:load_scored_isoPort" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Retrieve ISO and score" bpdm:ID="_HDLzMLGEEee6aeEJgFykVw" bpdm:isHeaderAuthorizationAware="no">
-                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dBProvide-Service-Load_scored_isoRequest1Msg" bpdm:msgVarScopeId="_Svwt0KhqEeeC1M91oPbQ3Q" bpdm:variableIsManaged="true" bpdm:messageType="load_scored_iso:load_scored_isoInput" bpdm:binding="load_scored_iso:load_scored_isoPortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_rvaNgLOHEeeA5NNH7BCAqw"></bpdm:linkset>
-                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="load_scored_isoLoad_scored_isoResponse2Msg" bpdm:msgVarScopeId="_Svwt0KhqEeeC1M91oPbQ3Q" bpdm:variableIsManaged="true" bpdm:messageType="load_scored_iso:load_scored_isoOutput" bpdm:binding="load_scored_iso:load_scored_isoPortSoapBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_sJVwcLOHEeeA5NNH7BCAqw"></bpdm:linkset>
-                <bpdm:thrownFault msgFaultNcName="nsload_scored_isoFault" msgFaultTypeQname="load_scored_iso:load_scored_isoFault"/>
-            </bpdm:messagingtask>
-            <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_TGhCMLGEEee6aeEJgFykVw" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
-            <bpdm:messagingtask operation="Receive_Scoring" partnerLink="iSO_Response_ManagerAndDCMPlkVar" portType="this:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive Scoring" bpdm:ID="_-3VHMLAyEeeytYusscoK1g" bpdm:isHeaderAuthorizationAware="yes">
+            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get case" bpdm:ID="__zR9QN5BEee5MfuigsCq1w">
+                <bpel:variables>
+                    <bpel:variable name="getCaseFromRequestId-processReceive_requestResponse2Msg" messageType="getCaseFromRequestId-process:Receive_requestResponse" binding="getCaseFromRequestId-process:callerAndProcessServiceBinding" operation="Receive_request" opMsgType="1" bpdm:messageIds="inc:_7md-kN5BEee5MfuigsCq1w"/>
+                    <bpel:variable name="dBGet_case_from_Request_IDRequest1Msg" messageType="getCaseFromRequestId-process:Receive_requestRequest" binding="getCaseFromRequestId-process:callerAndProcessServiceBinding" operation="Receive_request" opMsgType="0" bpdm:messageIds=" out:_7HUkcN5BEee5MfuigsCq1w">
+                        <bpel:from bpdm:toPart="body">
+                            <bpel:literal bpdm:linkedMessageType="getCaseFromRequestId-process:Receive_requestRequest" bpdm:linkedPart="body" bpdm:binding="getCaseFromRequestId-process:callerAndProcessServiceBinding" bpdm:opMsgType="0" bpdm:operation="Receive_request"></bpel:literal>
+                        </bpel:from>
+                    </bpel:variable>
+                    <bpel:variable name="thisReceive_caseRequest1Msg" messageType="this:Receive_caseRequest" bpdm:id="_FAxV0N5CEee5MfuigsCq1w" bpdm:messageIds="inc:_FAUp4N5CEee5MfuigsCq1w"/>
+                    <bpel:variable name="thisReceive_caseResponse2Msg" messageType="this:Receive_caseResponse" bpdm:id="_FaZWwt5CEee5MfuigsCq1w" bpdm:messageIds=" out:_FaZWwN5CEee5MfuigsCq1w">
+                        <bpel:from bpdm:toPart="body">
+                            <bpel:literal bpdm:linkedMessageType="this:Receive_caseResponse" bpdm:linkedPart="body"></bpel:literal>
+                        </bpel:from>
+                    </bpel:variable>
+                </bpel:variables>
+                <bpel:sequence>
+                    <bpdm:messagingtask operation="Receive_request" partnerLink="iSO_Response_ManagerAndDBForCanonicPortPlkVar" portType="getCaseFromRequestId-process:Forcaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Load case" bpdm:ID="_yZIsUN5BEee5MfuigsCq1w" bpdm:isHeaderAuthorizationAware="no">
+                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dBGet_case_from_Request_IDRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getCaseFromRequestId-process:Receive_requestRequest" bpdm:binding="getCaseFromRequestId-process:callerAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_7HUkcN5BEee5MfuigsCq1w"></bpdm:linkset>
+                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="getCaseFromRequestId-processReceive_requestResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="getCaseFromRequestId-process:Receive_requestResponse" bpdm:binding="getCaseFromRequestId-process:callerAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_7md-kN5BEee5MfuigsCq1w"></bpdm:linkset>
+                    </bpdm:messagingtask>
+                    <bpdm:messagingtask operation="Receive_case" partnerLink="iSO_Response_ManagerAndDBForCanonicPortPlkVar" portType="this:ForDB" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive case" bpdm:ID="_9skvcN5BEee5MfuigsCq1w" bpdm:isHeaderAuthorizationAware="yes">
+                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_caseRequest1Msg" bpdm:msgVarScopeId="__zR9QN5BEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_caseRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_FAUp4N5CEee5MfuigsCq1w"></bpdm:linkset>
+                        <bpdm:linkset bpdm:type="assignments">
+                            <bpel:copy>
+                                <bpel:from>$ode:pid</bpel:from>
+                                <bpel:to>$thisReceive_caseResponse2Msg.body/Launchpoint:pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1746195454" targetPath="$thisReceive_caseResponse2Msg.body/Launchpoint:pid" targetedBy="190043950-arg0"></mapper:vertice>
+  <mapper:vertice id="190043950" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>current-dateTime()</bpel:from>
+                                <bpel:to>$thisReceive_caseResponse2Msg.body/Launchpoint:timestamp</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="3033847" targetPath="$thisReceive_caseResponse2Msg.body/Launchpoint:timestamp" targetedBy="1240181968-arg0"></mapper:vertice>
+  <mapper:vertice id="1240181968" dimension="109x24" location="396,82">
+    <mapper:value>current-dateTime()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                        </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_caseResponse2Msg" bpdm:msgVarScopeId="__zR9QN5BEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_caseResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_FaZWwN5CEee5MfuigsCq1w"></bpdm:linkset>
+                    </bpdm:messagingtask>
+                    <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_TGhCMLGEEee6aeEJgFykVw" bpdm:isHeaderAuthorizationAware="no">
+                        <bpdm:linkset bpdm:type="assignments">
+                            <bpel:copy>
+                                <bpel:from>$thisReceive_caseRequest1Msg.body/Launchpoint:Case</bpel:from>
+                                <bpel:to>$CaseIdentifier</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="396609299" targetPath="$CaseIdentifier" targetedBy="347183903-arg0"></mapper:vertice>
+  <mapper:vertice id="347183903" sourcePath="$thisReceive_caseRequest1Msg.body/Launchpoint:Case"></mapper:vertice>
+</mapper:mapperLink>
+                            </bpel:copy>
+                        </bpdm:linkset>
+                    </bpdm:messagingtask>
+                </bpel:sequence>
+            </bpel:scope>
+            <bpdm:messagingtask operation="Receive_Scoring" partnerLink="iSO_Response_ManagerAndDCMForCanonicPortPlkVar" portType="this:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive Scoring" bpdm:ID="_-3VHMLAyEeeytYusscoK1g" bpdm:isHeaderAuthorizationAware="yes">
                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_ScoringRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_ScoringRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_kuxyALGHEee6aeEJgFykVw"></bpdm:linkset>
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
@@ -134,9 +218,15 @@
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_ScoringResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_ScoringResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_lcQjELGHEee6aeEJgFykVw"></bpdm:linkset>
             </bpdm:messagingtask>
-            <bpdm:messagingtask operation="invokeDecisionTable" partnerLink="iSO_Response_ManagerimplicitPartnerAndISO_Response_ManagerForPortDtws_launchpointprocess_rules_isoscoreprocessingHttpSoap11EndpointPlkVar" portType="ns:dtws_launchpointprocess_rules_isoscoreprocessingPortType" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Evaluate Business rule" bpdm:ID="_HlpjsMnFEeea1ay7b7CFuw" bpdm:isHeaderAuthorizationAware="no">
-                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="nsInvokeDecisionTableRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:invokeDecisionTableRequest" bpdm:binding="ns:dtws_launchpointprocess_rules_isoscoreprocessingSoap11Binding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_HlpjsMnFEeea1ay7b7CFuwOutgoing"></bpdm:linkset>
-                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="nsInvokeDecisionTableResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:invokeDecisionTableResponse" bpdm:binding="ns:dtws_launchpointprocess_rules_isoscoreprocessingSoap11Binding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_HlpjsMnFEeea1ay7b7CFuwIncoming"></bpdm:linkset>
+            <bpdm:messagingtask operation="Receive_request" partnerLink="iSO_Response_ManagerAndDCMForCanonicPortPlkVar" portType="updateCaseLifeCycle-process:Forcaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Request Update lifecycle" bpdm:ID="_RrSVEN5MEee5MfuigsCq1w" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMSend_requestRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="updateCaseLifeCycle-process:Receive_requestRequest" bpdm:binding="updateCaseLifeCycle-process:callerAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_ZMIQUN5MEee5MfuigsCq1w"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="updateCaseLifeCycle-processReceive_requestResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="updateCaseLifeCycle-process:Receive_requestResponse" bpdm:binding="updateCaseLifeCycle-process:callerAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Z0NkAN5MEee5MfuigsCq1w"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="Receive_update_lifecycle_confirmation" partnerLink="iSO_Response_ManagerAndDCMForCanonicPortPlkVar" portType="this:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive update lifecycle confirmation" bpdm:ID="_bFvdUN5MEee5MfuigsCq1w" bpdm:isHeaderAuthorizationAware="yes">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_update_lifecycle_confirmationRequest1Msg" bpdm:msgVarScopeId="_Svwt0KhqEeeC1M91oPbQ3Q" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_update_lifecycle_confirmationRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_f-DQEN5MEee5MfuigsCq1w"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_update_lifecycle_confirmationResponse2Msg" bpdm:msgVarScopeId="_Svwt0KhqEeeC1M91oPbQ3Q" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_update_lifecycle_confirmationResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_gl1o0N5MEee5MfuigsCq1w"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Evaluate Business rule" bpdm:ID="_HlpjsMnFEeea1ay7b7CFuw" bpdm:isHeaderAuthorizationAware="yes">
                 <bpdm:thrownFault msgFaultNcName="Exception" msgFaultTypeQname="ns:Exception"/>
             </bpdm:messagingtask>
         </bpel:sequence>

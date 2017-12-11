@@ -29,6 +29,9 @@
       </associations>
     </artifacts>
     <vertices xmi:type="bpmn:Activity" xmi:id="_rO57Sd42Eee0YMxeWbu2Dg" iD="_rO57SN42Eee0YMxeWbu2Dg" associations="_8GOoTd43Eee0YMxeWbu2Dg _87SA_d43Eee0YMxeWbu2Dg" name="Send request" activityType="Task">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ypVK0N5JEee5MfuigsCq1w" source="process_template">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ypVK0d5JEee5MfuigsCq1w" key="_xw_0oN5JEee5MfuigsCq1w" value="UpdateLifecycle"/>
+      </eAnnotations>
       <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_8GE3Qd43Eee0YMxeWbu2Dg"/>
       <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_86-e8d43Eee0YMxeWbu2Dg"/>
     </vertices>
@@ -84,6 +87,9 @@
       <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_86-e8d43Eee0YMxeWbu2Dg"/>
     </vertices>
     <vertices xmi:type="bpmn:SubProcess" xmi:id="_CZqqUd46Eee0YMxeWbu2Dg" iD="_CZqqUN46Eee0YMxeWbu2Dg" incomingEdges="_e_d4CN44Eee0YMxeWbu2Dg" name="Update case" looping="true">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_OhluUN5OEee5MfuigsCq1w" source="forEachSource">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_OhluUd5OEee5MfuigsCq1w" key="loopTypeDetailsKey" value="loopTypeRepeatUntil"/>
+      </eAnnotations>
       <vertices xmi:type="bpmn:SubProcess" xmi:id="_Lhe_4d45Eee0YMxeWbu2Dg" iD="_Lhe_4N45Eee0YMxeWbu2Dg" incomingEdges="_Bh8_Md46Eee0YMxeWbu2Dg" name="Error handler" looping="false">
         <artifacts xmi:type="bpmn:DataObject" xmi:id="_dJIrsd48Eee0YMxeWbu2Dg" iD="_dJIrsN48Eee0YMxeWbu2Dg" name="thisReceive_recover_signalRequest1Msg">
           <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dJIrst48Eee0YMxeWbu2Dg" source="attachedDataobject">
@@ -97,7 +103,7 @@
             </eAnnotations>
           </associations>
         </artifacts>
-        <artifacts xmi:type="bpmn:DataObject" xmi:id="_ddP6gd48Eee0YMxeWbu2Dg" iD="_ddP6gN48Eee0YMxeWbu2Dg">
+        <artifacts xmi:type="bpmn:DataObject" xmi:id="_ddP6gd48Eee0YMxeWbu2Dg" iD="_ddP6gN48Eee0YMxeWbu2Dg" name="thisReceive_recover_signalResponse2Msg">
           <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ddP6gt48Eee0YMxeWbu2Dg" source="attachedDataobject">
             <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ddP6g948Eee0YMxeWbu2Dg" key="isBpelDeclaration" value="true"/>
             <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ddP6jN48Eee0YMxeWbu2Dg" key="defaultDeclarationName" value="thisReceive_recover_signalResponse2Msg"/>
@@ -108,6 +114,13 @@
               <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ddP6j948Eee0YMxeWbu2Dg" key="dataObjectAssociationTypeValue" value="outgoingMesssageVariable"/>
             </eAnnotations>
           </associations>
+        </artifacts>
+        <artifacts xmi:type="bpmn:DataObject" xmi:id="_RmYxod5NEee5MfuigsCq1w" iD="_RmYxht5NEee5MfuigsCq1w" name="">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_RmYxot5NEee5MfuigsCq1w" source="attachedDataobject">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_RmYxo95NEee5MfuigsCq1w" key="douri" value="project:///Metrics/metrics.xvar?xvartype={http://test.com/xvar/example}ExecutionError"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_RmYxpN5NEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_RmYxpd5NEee5MfuigsCq1w" key="defaultDeclarationName" value="ExecutionError"/>
+          </eAnnotations>
         </artifacts>
         <vertices xmi:type="bpmn:Activity" xmi:id="_Lhni0N45Eee0YMxeWbu2Dg" iD="_Lhniz945Eee0YMxeWbu2Dg" associations="_dJIrvd48Eee0YMxeWbu2Dg _ddP6jd48Eee0YMxeWbu2Dg" outgoingEdges="_PTTrsd45Eee0YMxeWbu2Dg" incomingEdges="_O89BMd45Eee0YMxeWbu2Dg" name="Receive recover signal" activityType="EventIntermediateMessage" looping="false">
           <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_dI1Jsd48Eee0YMxeWbu2Dg"/>
@@ -120,30 +133,189 @@
         <vertices xmi:type="bpmn:Activity" xmi:id="_LhnjAt45Eee0YMxeWbu2Dg" iD="_LhnjAd45Eee0YMxeWbu2Dg" outgoingEdges="_NeffId45Eee0YMxeWbu2Dg _OkYJId45Eee0YMxeWbu2Dg" incomingEdges="_NKFVYd45Eee0YMxeWbu2Dg" name="Fail count" activityType="GatewayDataBasedExclusive" looping="false"/>
         <vertices xmi:type="bpmn:Activity" xmi:id="_LhnjDN45Eee0YMxeWbu2Dg" iD="_LhnjC945Eee0YMxeWbu2Dg" outgoingEdges="_O89BMd45Eee0YMxeWbu2Dg" incomingEdges="_OkYJId45Eee0YMxeWbu2Dg" name="Signal need for recovery" activityType="Task" looping="false"/>
         <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_NKFVYd45Eee0YMxeWbu2Dg" iD="_NKFVYN45Eee0YMxeWbu2Dg"/>
-        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_NeffId45Eee0YMxeWbu2Dg" iD="_NeffIN45Eee0YMxeWbu2Dg"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_NeffId45Eee0YMxeWbu2Dg" iD="_NeffIN45Eee0YMxeWbu2Dg" name="&lt;= 3"/>
         <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_NzMj0d45Eee0YMxeWbu2Dg" iD="_NzMj0N45Eee0YMxeWbu2Dg"/>
         <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_OHCF0d45Eee0YMxeWbu2Dg" iD="_OHCF0N45Eee0YMxeWbu2Dg"/>
         <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_OkYJId45Eee0YMxeWbu2Dg" iD="_OkYJIN45Eee0YMxeWbu2Dg" conditionType="Default" isDefault="true"/>
         <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_O89BMd45Eee0YMxeWbu2Dg" iD="_O89BMN45Eee0YMxeWbu2Dg"/>
         <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_PTTrsd45Eee0YMxeWbu2Dg" iD="_PTTrsN45Eee0YMxeWbu2Dg"/>
       </vertices>
-      <vertices xmi:type="bpmn:SubProcess" xmi:id="_sJHZYd45Eee0YMxeWbu2Dg" iD="_sJHZYN45Eee0YMxeWbu2Dg" name="Service transaction">
-        <vertices xmi:type="bpmn:Activity" xmi:id="_gTYW8d44Eee0YMxeWbu2Dg" iD="_gTYW8N44Eee0YMxeWbu2Dg" outgoingEdges="_h-WrCN44Eee0YMxeWbu2Dg _KpIbkd45Eee0YMxeWbu2Dg" incomingEdges="_gTqDwd44Eee0YMxeWbu2Dg" name="Source" activityType="GatewayDataBasedExclusive"/>
+      <vertices xmi:type="bpmn:SubProcess" xmi:id="_sJHZYd45Eee0YMxeWbu2Dg" iD="_sJHZYN45Eee0YMxeWbu2Dg" name="Service transaction" looping="false">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_D0tKUN5NEee5MfuigsCq1w" source="odeFailureHandlingSource">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_D0tKUd5NEee5MfuigsCq1w" key="odeFailureFaultOnFailure" value="true"/>
+        </eAnnotations>
+        <artifacts xmi:type="bpmn:DataObject" xmi:id="_3fPmUd5IEee5MfuigsCq1w" iD="_3fPmUN5IEee5MfuigsCq1w" name="dbReceive_requestRequest1Msg">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3fPmUt5IEee5MfuigsCq1w" source="attachedDataobject">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3fPmU95IEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3fPmXN5IEee5MfuigsCq1w" key="defaultDeclarationName" value="dbReceive_requestRequest1Msg"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3fYwQd5IEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Integrations/getCaseDetails/process}Get_case_idRequest"/>
+          </eAnnotations>
+          <associations xmi:type="bpmn:Association" xmi:id="_3fPmXd5IEee5MfuigsCq1w" direction="To">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3fPmXt5IEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3fYwQN5IEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="outgoingMesssageVariable"/>
+            </eAnnotations>
+          </associations>
+        </artifacts>
+        <artifacts xmi:type="bpmn:DataObject" xmi:id="_4NInEd5IEee5MfuigsCq1w" iD="_4NInEN5IEee5MfuigsCq1w" name="getCaseDetails-processGet_case_idResponse2Msg">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_4NInEt5IEee5MfuigsCq1w" source="attachedDataobject">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4NInE95IEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4NInHN5IEee5MfuigsCq1w" key="defaultDeclarationName" value="getCaseDetails-processGet_case_idResponse2Msg"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4NSYEt5IEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Integrations/getCaseDetails/process}Get_case_idResponse"/>
+          </eAnnotations>
+          <associations xmi:type="bpmn:Association" xmi:id="_4NInHd5IEee5MfuigsCq1w" direction="From">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_4NSYEN5IEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4NSYEd5IEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="incomingMesssageVariable"/>
+            </eAnnotations>
+          </associations>
+        </artifacts>
+        <artifacts xmi:type="bpmn:DataObject" xmi:id="_7w-hQd5IEee5MfuigsCq1w" iD="_7w-hQN5IEee5MfuigsCq1w" name="thisReceive_case_detailsRequest1Msg">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7w-hQt5IEee5MfuigsCq1w" source="attachedDataobject">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7w-hQ95IEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7w-hTN5IEee5MfuigsCq1w" key="defaultDeclarationName" value="thisReceive_case_detailsRequest1Msg"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7xHrM95IEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisdiagram/process}Receive_case_detailsRequest"/>
+          </eAnnotations>
+          <associations xmi:type="bpmn:Association" xmi:id="_7xHrMN5IEee5MfuigsCq1w" direction="From">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7xHrMd5IEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7xHrMt5IEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="incomingMesssageVariable"/>
+            </eAnnotations>
+          </associations>
+        </artifacts>
+        <artifacts xmi:type="bpmn:DataObject" xmi:id="_9AZhyt5IEee5MfuigsCq1w" iD="_9AZhyd5IEee5MfuigsCq1w" name="thisReceive_case_detailsResponse2Msg">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9AZhy95IEee5MfuigsCq1w" source="attachedDataobject">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9AZhzN5IEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9AjSwt5IEee5MfuigsCq1w" key="defaultDeclarationName" value="thisReceive_case_detailsResponse2Msg"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9AjSxt5IEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisdiagram/process}Receive_case_detailsResponse"/>
+          </eAnnotations>
+          <associations xmi:type="bpmn:Association" xmi:id="_9AjSw95IEee5MfuigsCq1w" direction="To">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9AjSxN5IEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9AjSxd5IEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="outgoingMesssageVariable"/>
+            </eAnnotations>
+          </associations>
+        </artifacts>
+        <artifacts xmi:type="bpmn:DataObject" xmi:id="_ShaMKt5JEee5MfuigsCq1w" iD="_ShaMKd5JEee5MfuigsCq1w" name="dCMReceive_requestRequest1Msg">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ShaMK95JEee5MfuigsCq1w" source="attachedDataobject">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ShaMLN5JEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Shj9KN5JEee5MfuigsCq1w" key="defaultDeclarationName" value="dCMReceive_requestRequest1Msg"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ShtuId5JEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Integrations/createActivity/process}Receive_requestRequest"/>
+          </eAnnotations>
+          <associations xmi:type="bpmn:Association" xmi:id="_Shj9Kd5JEee5MfuigsCq1w" direction="To">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Shj9Kt5JEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ShtuIN5JEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="outgoingMesssageVariable"/>
+            </eAnnotations>
+          </associations>
+        </artifacts>
+        <artifacts xmi:type="bpmn:DataObject" xmi:id="_TDPG1t5JEee5MfuigsCq1w" iD="_TDPG1d5JEee5MfuigsCq1w" name="createActivity-processReceive_requestResponse2Msg">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TDPG195JEee5MfuigsCq1w" source="attachedDataobject">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TDPG2N5JEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TDPG4d5JEee5MfuigsCq1w" key="defaultDeclarationName" value="createActivity-processReceive_requestResponse2Msg"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TDY30t5JEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Integrations/createActivity/process}Receive_requestResponse"/>
+          </eAnnotations>
+          <associations xmi:type="bpmn:Association" xmi:id="_TDPG4t5JEee5MfuigsCq1w" direction="From">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TDY30N5JEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TDY30d5JEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="incomingMesssageVariable"/>
+            </eAnnotations>
+          </associations>
+        </artifacts>
+        <artifacts xmi:type="bpmn:DataObject" xmi:id="_XpYykd5JEee5MfuigsCq1w" iD="_XpYykN5JEee5MfuigsCq1w" name="thisReceive_create_activityRequest1Msg">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_XpYykt5JEee5MfuigsCq1w" source="attachedDataobject">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_XpYyk95JEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_XpYynN5JEee5MfuigsCq1w" key="defaultDeclarationName" value="thisReceive_create_activityRequest1Msg"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Xpijk95JEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisdiagram/process}Receive_create_activityRequest"/>
+          </eAnnotations>
+          <associations xmi:type="bpmn:Association" xmi:id="_XpijkN5JEee5MfuigsCq1w" direction="From">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Xpijkd5JEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Xpijkt5JEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="incomingMesssageVariable"/>
+            </eAnnotations>
+          </associations>
+        </artifacts>
+        <artifacts xmi:type="bpmn:DataObject" xmi:id="_YBYb0d5JEee5MfuigsCq1w" iD="_YBYb0N5JEee5MfuigsCq1w" name="thisReceive_create_activityResponse2Msg">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YBYb0t5JEee5MfuigsCq1w" source="attachedDataobject">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YBYb095JEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YBYb3N5JEee5MfuigsCq1w" key="defaultDeclarationName" value="thisReceive_create_activityResponse2Msg"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YBhlw95JEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisdiagram/process}Receive_create_activityResponse"/>
+          </eAnnotations>
+          <associations xmi:type="bpmn:Association" xmi:id="_YBhlwN5JEee5MfuigsCq1w" direction="To">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YBhlwd5JEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YBhlwt5JEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="outgoingMesssageVariable"/>
+            </eAnnotations>
+          </associations>
+        </artifacts>
+        <vertices xmi:type="bpmn:Activity" xmi:id="_gTYW8d44Eee0YMxeWbu2Dg" iD="_gTYW8N44Eee0YMxeWbu2Dg" outgoingEdges="_h-WrCN44Eee0YMxeWbu2Dg _KpIbkd45Eee0YMxeWbu2Dg" incomingEdges="_tW42Qd5IEee5MfuigsCq1w" name="Source" activityType="GatewayDataBasedExclusive"/>
         <vertices xmi:type="bpmn:SubProcess" xmi:id="_i_ew0d44Eee0YMxeWbu2Dg" iD="_i_ew0N44Eee0YMxeWbu2Dg" incomingEdges="_h-WrCN44Eee0YMxeWbu2Dg" name="ISO Response">
-          <vertices xmi:type="bpmn:Activity" xmi:id="_h-M6Ad44Eee0YMxeWbu2Dg" iD="_h-M6AN44Eee0YMxeWbu2Dg" name="Reply to ISO Response" activityType="EventEndMessage"/>
+          <artifacts xmi:type="bpmn:DataObject" xmi:id="_zCdVId5MEee5MfuigsCq1w" iD="_zCdVIN5MEee5MfuigsCq1w" name="iSOResponseSend_confirmationRequest1Msg">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zCdVIt5MEee5MfuigsCq1w" source="attachedDataobject">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zCdVI95MEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zCdVLN5MEee5MfuigsCq1w" key="defaultDeclarationName" value="iSOResponseSend_confirmationRequest1Msg"/>
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zCdVMN5MEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager}Receive_update_lifecycle_confirmationRequest"/>
+            </eAnnotations>
+            <associations xmi:type="bpmn:Association" xmi:id="_zCdVLd5MEee5MfuigsCq1w" direction="To">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zCdVLt5MEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zCdVL95MEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="outgoingMesssageVariable"/>
+              </eAnnotations>
+            </associations>
+          </artifacts>
+          <artifacts xmi:type="bpmn:DataObject" xmi:id="_zcFWEd5MEee5MfuigsCq1w" iD="_zcFWEN5MEee5MfuigsCq1w" name="processISOResponse-ISO_Response_ManaReceive_update_lifecycle_confirmationResponse2Msg">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zcFWEt5MEee5MfuigsCq1w" source="attachedDataobject">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zcFWE95MEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zcFWHN5MEee5MfuigsCq1w" key="defaultDeclarationName" value="processISOResponse-ISO_Response_ManaReceive_update_lifecycle_confirmationResponse2Msg"/>
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zcFWIN5MEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager}Receive_update_lifecycle_confirmationResponse"/>
+            </eAnnotations>
+            <associations xmi:type="bpmn:Association" xmi:id="_zcFWHd5MEee5MfuigsCq1w" direction="From">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zcFWHt5MEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zcFWH95MEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="incomingMesssageVariable"/>
+              </eAnnotations>
+            </associations>
+          </artifacts>
+          <vertices xmi:type="bpmn:Activity" xmi:id="_h-M6Ad44Eee0YMxeWbu2Dg" iD="_h-M6AN44Eee0YMxeWbu2Dg" associations="_zCdVLd5MEee5MfuigsCq1w _zcFWHd5MEee5MfuigsCq1w" name="Reply to ISO Response" activityType="EventEndMessage">
+            <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_zCKaMd5MEee5MfuigsCq1w"/>
+            <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_zbpRMd5MEee5MfuigsCq1w"/>
+          </vertices>
         </vertices>
-        <vertices xmi:type="bpmn:Activity" xmi:id="_e_UHAd44Eee0YMxeWbu2Dg" iD="_e_UHAN44Eee0YMxeWbu2Dg" outgoingEdges="_gTqDwd44Eee0YMxeWbu2Dg" name="Call service" activityType="Task"/>
         <vertices xmi:type="bpmn:Activity" xmi:id="_Ko_Rod45Eee0YMxeWbu2Dg" iD="_Ko_RoN45Eee0YMxeWbu2Dg" incomingEdges="_KpIbkd45Eee0YMxeWbu2Dg" activityType="EventEndEmpty"/>
-        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_h-WrCN44Eee0YMxeWbu2Dg" iD="_h-WrB944Eee0YMxeWbu2Dg"/>
-        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_KpIbkd45Eee0YMxeWbu2Dg" iD="_KpIbkN45Eee0YMxeWbu2Dg"/>
-        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_gTqDwd44Eee0YMxeWbu2Dg" iD="_gTqDwN44Eee0YMxeWbu2Dg"/>
+        <vertices xmi:type="bpmn:ActivityService" xmi:id="_A9o6wd5GEee5MfuigsCq1w" iD="_e_UHAN44Eee0YMxeWbu2Dg" outgoingEdges="_lpqE0d5IEee5MfuigsCq1w" incomingEdges="_dNqI4d5IEee5MfuigsCq1w" name="Call service" looping="false">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_A9w2l95GEee5MfuigsCq1w" source="attachedDataobject">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_A9w2mN5GEee5MfuigsCq1w" key="douri" value="project:///Services/REST/updateCaseLifeCycle.wsdl?invokerequestresponsebound={http://bpms.everteam.com/Services/REST/updateCaseLifeCycle.rest}restService/httpPort/updateCaseLifecycle"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_A9w2md5GEee5MfuigsCq1w" key="canonic_invoker" value="true"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_A9w2mt5GEee5MfuigsCq1w" key="blackbox" value="true"/>
+          </eAnnotations>
+        </vertices>
+        <vertices xmi:type="bpmn:Activity" xmi:id="_W0wtId5IEee5MfuigsCq1w" iD="_W0wtIN5IEee5MfuigsCq1w" outgoingEdges="_cmv56t5IEee5MfuigsCq1w" activityType="EventStartEmpty"/>
+        <vertices xmi:type="bpmn:Activity" xmi:id="_cmv54d5IEee5MfuigsCq1w" iD="_cmv54N5IEee5MfuigsCq1w" outgoingEdges="_dNqI4d5IEee5MfuigsCq1w _edNsQd5IEee5MfuigsCq1w" incomingEdges="_cmv56t5IEee5MfuigsCq1w" activityType="GatewayParallel"/>
+        <vertices xmi:type="bpmn:Activity" xmi:id="_edFwcd5IEee5MfuigsCq1w" iD="_edFwcN5IEee5MfuigsCq1w" associations="_3fPmXd5IEee5MfuigsCq1w _4NInHd5IEee5MfuigsCq1w" outgoingEdges="_ggytmN5IEee5MfuigsCq1w" incomingEdges="_edNsQd5IEee5MfuigsCq1w" name="Request case details" activityType="Task">
+          <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_3e8rYd5IEee5MfuigsCq1w"/>
+          <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_4Mr7Id5IEee5MfuigsCq1w"/>
+        </vertices>
+        <vertices xmi:type="bpmn:Activity" xmi:id="_ggqKsd5IEee5MfuigsCq1w" iD="_ggqKsN5IEee5MfuigsCq1w" associations="_7xHrMN5IEee5MfuigsCq1w _9AjSw95IEee5MfuigsCq1w" outgoingEdges="_mF-NYd5IEee5MfuigsCq1w" incomingEdges="_ggytmN5IEee5MfuigsCq1w" name="Receive case details" activityType="Task">
+          <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_7wq_Qd5IEee5MfuigsCq1w"/>
+          <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_9APwwd5IEee5MfuigsCq1w"/>
+        </vertices>
+        <vertices xmi:type="bpmn:Activity" xmi:id="_lpiJAd5IEee5MfuigsCq1w" iD="_lpiJAN5IEee5MfuigsCq1w" outgoingEdges="_m9tGqN5IEee5MfuigsCq1w" incomingEdges="_lpqE0d5IEee5MfuigsCq1w _mF-NYd5IEee5MfuigsCq1w" activityType="GatewayParallel"/>
+        <vertices xmi:type="bpmn:Activity" xmi:id="_m9kjwd5IEee5MfuigsCq1w" iD="_m9kjwN5IEee5MfuigsCq1w" associations="_Shj9Kd5JEee5MfuigsCq1w _TDPG4t5JEee5MfuigsCq1w" outgoingEdges="_q7BQwd5IEee5MfuigsCq1w" incomingEdges="_m9tGqN5IEee5MfuigsCq1w" name="Request create Activity" activityType="Task">
+          <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_ShRCMd5JEee5MfuigsCq1w"/>
+          <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_TC8L4d5JEee5MfuigsCq1w"/>
+        </vertices>
+        <vertices xmi:type="bpmn:Activity" xmi:id="_q64t4d5IEee5MfuigsCq1w" iD="_q64t4N5IEee5MfuigsCq1w" associations="_XpijkN5JEee5MfuigsCq1w _YBhlwN5JEee5MfuigsCq1w" outgoingEdges="_tW42Qd5IEee5MfuigsCq1w" incomingEdges="_q7BQwd5IEee5MfuigsCq1w" name="Receive create activity" activityType="Task">
+          <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_Xo8God5JEee5MfuigsCq1w"/>
+          <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_YBE50d5JEee5MfuigsCq1w"/>
+        </vertices>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_h-WrCN44Eee0YMxeWbu2Dg" iD="_h-WrB944Eee0YMxeWbu2Dg" name="ISO Response"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_KpIbkd45Eee0YMxeWbu2Dg" iD="_KpIbkN45Eee0YMxeWbu2Dg" conditionType="Default" isDefault="true"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_cmv56t5IEee5MfuigsCq1w" iD="_cmv56d5IEee5MfuigsCq1w"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_dNqI4d5IEee5MfuigsCq1w" iD="_dNqI4N5IEee5MfuigsCq1w"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_edNsQd5IEee5MfuigsCq1w" iD="_edNsQN5IEee5MfuigsCq1w"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_ggytmN5IEee5MfuigsCq1w" iD="_ggytl95IEee5MfuigsCq1w"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_lpqE0d5IEee5MfuigsCq1w" iD="_lpqE0N5IEee5MfuigsCq1w"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_mF-NYd5IEee5MfuigsCq1w" iD="_mF-NYN5IEee5MfuigsCq1w"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_m9tGqN5IEee5MfuigsCq1w" iD="_m9tGp95IEee5MfuigsCq1w"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_q7BQwd5IEee5MfuigsCq1w" iD="_q7BQwN5IEee5MfuigsCq1w"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_tW42Qd5IEee5MfuigsCq1w" iD="_tW42QN5IEee5MfuigsCq1w"/>
         <eventHandlers xmi:type="bpmn:Activity" xmi:id="_BAaYYd46Eee0YMxeWbu2Dg" iD="_BAaYYN46Eee0YMxeWbu2Dg" outgoingEdges="_Bh8_Md46Eee0YMxeWbu2Dg" activityType="EventIntermediateError"/>
       </vertices>
       <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_Bh8_Md46Eee0YMxeWbu2Dg" iD="_Bh8_MN46Eee0YMxeWbu2Dg"/>
     </vertices>
     <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_e_d4CN44Eee0YMxeWbu2Dg" iD="_e_d4B944Eee0YMxeWbu2Dg"/>
   </pools>
-  <pools xmi:type="bpmn:Pool" xmi:id="_eHgDUd46Eee0YMxeWbu2Dg" iD="_eHgDUN46Eee0YMxeWbu2Dg" name="R">
+  <pools xmi:type="bpmn:Pool" xmi:id="_eHgDUd46Eee0YMxeWbu2Dg" iD="_eHgDUN46Eee0YMxeWbu2Dg" name="Exception management">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gO84AN46Eee0YMxeWbu2Dg" source="executablepool">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_gO84Ad46Eee0YMxeWbu2Dg" key="poolIsExecutable" value="false"/>
     </eAnnotations>
@@ -159,7 +331,7 @@
         </eAnnotations>
       </associations>
     </artifacts>
-    <artifacts xmi:type="bpmn:DataObject" xmi:id="_ddZrgd48Eee0YMxeWbu2Dg" iD="_ddZrgN48Eee0YMxeWbu2Dg">
+    <artifacts xmi:type="bpmn:DataObject" xmi:id="_ddZrgd48Eee0YMxeWbu2Dg" iD="_ddZrgN48Eee0YMxeWbu2Dg" name="processReceive_recover_signalResponse2Msg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ddZrgt48Eee0YMxeWbu2Dg" source="attachedDataobject">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ddZrg948Eee0YMxeWbu2Dg" key="isBpelDeclaration" value="true"/>
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ddZrjN48Eee0YMxeWbu2Dg" key="defaultDeclarationName" value="processReceive_recover_signalResponse2Msg"/>
@@ -174,6 +346,181 @@
     <vertices xmi:type="bpmn:Activity" xmi:id="_g6UwQd46Eee0YMxeWbu2Dg" iD="_g6UwQN46Eee0YMxeWbu2Dg" associations="_dI-6vd48Eee0YMxeWbu2Dg _ddZrjd48Eee0YMxeWbu2Dg" name="Recover" activityType="Task">
       <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_dI1Jsd48Eee0YMxeWbu2Dg"/>
       <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_ddGJgd48Eee0YMxeWbu2Dg"/>
+    </vertices>
+  </pools>
+  <pools xmi:type="bpmn:Pool" xmi:id="_ymUIgd5IEee5MfuigsCq1w" iD="_ymUIgN5IEee5MfuigsCq1w" name="db">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_z5UBcN5IEee5MfuigsCq1w" source="executablepool">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_z5UBcd5IEee5MfuigsCq1w" key="poolIsExecutable" value="false"/>
+    </eAnnotations>
+    <artifacts xmi:type="bpmn:DataObject" xmi:id="_3fYwSN5IEee5MfuigsCq1w" iD="_3fYwR95IEee5MfuigsCq1w" name="thisReceive_requestRequest1Msg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3fYwSd5IEee5MfuigsCq1w" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3fYwSt5IEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3fihSN5IEee5MfuigsCq1w" key="defaultDeclarationName" value="thisReceive_requestRequest1Msg"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3fihTN5IEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Integrations/getCaseDetails/process}Get_case_idRequest"/>
+      </eAnnotations>
+      <associations xmi:type="bpmn:Association" xmi:id="_3fihSd5IEee5MfuigsCq1w" direction="From">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3fihSt5IEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3fihS95IEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="incomingMesssageVariable"/>
+        </eAnnotations>
+      </associations>
+    </artifacts>
+    <artifacts xmi:type="bpmn:DataObject" xmi:id="_4M1sKt5IEee5MfuigsCq1w" iD="_4M1sKd5IEee5MfuigsCq1w" name="getCaseDetails-processGet_case_idResponse2Msg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_4M1sK95IEee5MfuigsCq1w" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4M1sLN5IEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4M_dKN5IEee5MfuigsCq1w" key="defaultDeclarationName" value="getCaseDetails-processGet_case_idResponse2Msg"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4M_dLN5IEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Integrations/getCaseDetails/process}Get_case_idResponse"/>
+      </eAnnotations>
+      <associations xmi:type="bpmn:Association" xmi:id="_4M_dKd5IEee5MfuigsCq1w" direction="To">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_4M_dKt5IEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4M_dK95IEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="outgoingMesssageVariable"/>
+        </eAnnotations>
+      </associations>
+    </artifacts>
+    <artifacts xmi:type="bpmn:DataObject" xmi:id="_7w0wQd5IEee5MfuigsCq1w" iD="_7w0wQN5IEee5MfuigsCq1w" name="processReceive_case_detailsRequest1Msg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7w0wQt5IEee5MfuigsCq1w" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7w0wQ95IEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7w0wTN5IEee5MfuigsCq1w" key="defaultDeclarationName" value="processReceive_case_detailsRequest1Msg"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7w0wUN5IEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisdiagram/process}Receive_case_detailsRequest"/>
+      </eAnnotations>
+      <associations xmi:type="bpmn:Association" xmi:id="_7w0wTd5IEee5MfuigsCq1w" direction="To">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7w0wTt5IEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7w0wT95IEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="outgoingMesssageVariable"/>
+        </eAnnotations>
+      </associations>
+    </artifacts>
+    <artifacts xmi:type="bpmn:DataObject" xmi:id="_9Ascsd5IEee5MfuigsCq1w" iD="_9AscsN5IEee5MfuigsCq1w" name="processReceive_case_detailsResponse2Msg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9Ascst5IEee5MfuigsCq1w" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9Ascs95IEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9AscvN5IEee5MfuigsCq1w" key="defaultDeclarationName" value="processReceive_case_detailsResponse2Msg"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9AscwN5IEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisdiagram/process}Receive_case_detailsResponse"/>
+      </eAnnotations>
+      <associations xmi:type="bpmn:Association" xmi:id="_9Ascvd5IEee5MfuigsCq1w" direction="From">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9Ascvt5IEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9Ascv95IEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="incomingMesssageVariable"/>
+        </eAnnotations>
+      </associations>
+    </artifacts>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_2N5TUd5IEee5MfuigsCq1w" iD="_2N5TNt5IEee5MfuigsCq1w" associations="_3fihSd5IEee5MfuigsCq1w _4M_dKd5IEee5MfuigsCq1w" outgoingEdges="_51lyqN5IEee5MfuigsCq1w" name="Receive request" activityType="Task">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2N5TUt5IEee5MfuigsCq1w" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2N5TU95IEee5MfuigsCq1w" key="douri" value="project:///Processes/Integrations/getCaseDetails-process.wsdl?wsdloperationbound={http://thisproject/Processes/Integrations/getCaseDetails/process}CanonicServiceForclient/canonicPort/Get_case_id"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2N5TVN5IEee5MfuigsCq1w" key="douri2" value="project:///Processes/Integrations/getCaseDetails.bpm/_8pVrcNH5EeeKlIzHx_g2Yg.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Request case details"/>
+      </eAnnotations>
+      <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_3e8rYd5IEee5MfuigsCq1w"/>
+      <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_4Mr7Id5IEee5MfuigsCq1w"/>
+    </vertices>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_51UF0d5IEee5MfuigsCq1w" iD="_51UF0N5IEee5MfuigsCq1w" associations="_7w0wTd5IEee5MfuigsCq1w _9Ascvd5IEee5MfuigsCq1w" incomingEdges="_51lyqN5IEee5MfuigsCq1w" name="Send case details" activityType="Task">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wDLn8N5JEee5MfuigsCq1w" source="process_template">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wDLn8d5JEee5MfuigsCq1w" key="_vgnGYN5JEee5MfuigsCq1w" value="CaseDetails"/>
+      </eAnnotations>
+      <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_7wq_Qd5IEee5MfuigsCq1w"/>
+      <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_9APwwd5IEee5MfuigsCq1w"/>
+    </vertices>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_51lyqN5IEee5MfuigsCq1w" iD="_51lyp95IEee5MfuigsCq1w"/>
+  </pools>
+  <pools xmi:type="bpmn:Pool" xmi:id="_JIBa4d5JEee5MfuigsCq1w" iD="_JIBa4N5JEee5MfuigsCq1w" name="DCM">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_KOyOoN5JEee5MfuigsCq1w" source="executablepool">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KOyOod5JEee5MfuigsCq1w" key="poolIsExecutable" value="false"/>
+    </eAnnotations>
+    <artifacts xmi:type="bpmn:DataObject" xmi:id="_Sh24Ed5JEee5MfuigsCq1w" iD="_Sh24EN5JEee5MfuigsCq1w" name="thisReceive_requestRequest1Msg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Sh24Et5JEee5MfuigsCq1w" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Sh24E95JEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Sh24HN5JEee5MfuigsCq1w" key="defaultDeclarationName" value="thisReceive_requestRequest1Msg"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Sh24IN5JEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Integrations/createActivity/process}Receive_requestRequest"/>
+      </eAnnotations>
+      <associations xmi:type="bpmn:Association" xmi:id="_Sh24Hd5JEee5MfuigsCq1w" direction="From">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Sh24Ht5JEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Sh24H95JEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="incomingMesssageVariable"/>
+        </eAnnotations>
+      </associations>
+    </artifacts>
+    <artifacts xmi:type="bpmn:DataObject" xmi:id="_TDF85N5JEee5MfuigsCq1w" iD="_TDF8495JEee5MfuigsCq1w" name="createActivity-processReceive_requestResponse2Msg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TDF85d5JEee5MfuigsCq1w" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TDF85t5JEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TDF8795JEee5MfuigsCq1w" key="defaultDeclarationName" value="createActivity-processReceive_requestResponse2Msg"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TDF8895JEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Integrations/createActivity/process}Receive_requestResponse"/>
+      </eAnnotations>
+      <associations xmi:type="bpmn:Association" xmi:id="_TDF88N5JEee5MfuigsCq1w" direction="To">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TDF88d5JEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TDF88t5JEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="outgoingMesssageVariable"/>
+        </eAnnotations>
+      </associations>
+    </artifacts>
+    <artifacts xmi:type="bpmn:DataObject" xmi:id="_XpF3qt5JEee5MfuigsCq1w" iD="_XpF3qd5JEee5MfuigsCq1w" name="processReceive_create_activityRequest1Msg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_XpF3q95JEee5MfuigsCq1w" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_XpF3rN5JEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_XpPBmN5JEee5MfuigsCq1w" key="defaultDeclarationName" value="processReceive_create_activityRequest1Msg"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_XpPBnN5JEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisdiagram/process}Receive_create_activityRequest"/>
+      </eAnnotations>
+      <associations xmi:type="bpmn:Association" xmi:id="_XpPBmd5JEee5MfuigsCq1w" direction="To">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_XpPBmt5JEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_XpPBm95JEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="outgoingMesssageVariable"/>
+        </eAnnotations>
+      </associations>
+    </artifacts>
+    <artifacts xmi:type="bpmn:DataObject" xmi:id="_YBrWwd5JEee5MfuigsCq1w" iD="_YBrWwN5JEee5MfuigsCq1w" name="processReceive_create_activityResponse2Msg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YBrWwt5JEee5MfuigsCq1w" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YBrWw95JEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YBrWzN5JEee5MfuigsCq1w" key="defaultDeclarationName" value="processReceive_create_activityResponse2Msg"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YB1Hwt5JEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisdiagram/process}Receive_create_activityResponse"/>
+      </eAnnotations>
+      <associations xmi:type="bpmn:Association" xmi:id="_YBrWzd5JEee5MfuigsCq1w" direction="From">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YB1HwN5JEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YB1Hwd5JEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="incomingMesssageVariable"/>
+        </eAnnotations>
+      </associations>
+    </artifacts>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_Q1O-Ud5JEee5MfuigsCq1w" iD="_Q1O-Nt5JEee5MfuigsCq1w" associations="_Sh24Hd5JEee5MfuigsCq1w _TDF88N5JEee5MfuigsCq1w" outgoingEdges="_VM7XON5JEee5MfuigsCq1w" name="Receive request" activityType="Task">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Q1O-Ut5JEee5MfuigsCq1w" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Q1O-U95JEee5MfuigsCq1w" key="douri" value="project:///Processes/Integrations/createActivity-process.wsdl?wsdloperationbound={http://thisproject/Processes/Integrations/createActivity/process}CanonicServiceForcaller/canonicPort/Receive_request"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Q1O-VN5JEee5MfuigsCq1w" key="douri2" value="project:///Processes/Integrations/createActivity.bpm/_e5FfAN4_Eee0YMxeWbu2Dg.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Send request"/>
+      </eAnnotations>
+      <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_ShRCMd5JEee5MfuigsCq1w"/>
+      <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_TC8L4d5JEee5MfuigsCq1w"/>
+    </vertices>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_VMxmMd5JEee5MfuigsCq1w" iD="_VMxmMN5JEee5MfuigsCq1w" associations="_XpPBmd5JEee5MfuigsCq1w _YBrWzd5JEee5MfuigsCq1w" incomingEdges="_VM7XON5JEee5MfuigsCq1w" name="Receive Confirmation" activityType="Task">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1g504N5JEee5MfuigsCq1w" source="process_template">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1g504d5JEee5MfuigsCq1w" key="_0qETgN5JEee5MfuigsCq1w" value="ActivityConfirmation"/>
+      </eAnnotations>
+      <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_Xo8God5JEee5MfuigsCq1w"/>
+      <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_YBE50d5JEee5MfuigsCq1w"/>
+    </vertices>
+    <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_VM7XON5JEee5MfuigsCq1w" iD="_VM7XN95JEee5MfuigsCq1w"/>
+  </pools>
+  <pools xmi:type="bpmn:Pool" xmi:id="_dGwIQd5LEee5MfuigsCq1w" iD="_dGwIQN5LEee5MfuigsCq1w" name="ISOResponse">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_emZ9IN5LEee5MfuigsCq1w" source="executablepool">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_emZ9Id5LEee5MfuigsCq1w" key="poolIsExecutable" value="false"/>
+    </eAnnotations>
+    <artifacts xmi:type="bpmn:DataObject" xmi:id="_zCnGId5MEee5MfuigsCq1w" iD="_zCnGIN5MEee5MfuigsCq1w" name="thisSend_confirmationRequest1Msg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zCnGIt5MEee5MfuigsCq1w" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zCnGI95MEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zCnGLN5MEee5MfuigsCq1w" key="defaultDeclarationName" value="thisSend_confirmationRequest1Msg"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zCnGMN5MEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager}Receive_update_lifecycle_confirmationRequest"/>
+      </eAnnotations>
+      <associations xmi:type="bpmn:Association" xmi:id="_zCnGLd5MEee5MfuigsCq1w" direction="From">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zCnGLt5MEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zCnGL95MEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="incomingMesssageVariable"/>
+        </eAnnotations>
+      </associations>
+    </artifacts>
+    <artifacts xmi:type="bpmn:DataObject" xmi:id="_zb8MId5MEee5MfuigsCq1w" iD="_zb8MIN5MEee5MfuigsCq1w" name="processISOResponse-ISO_Response_ManaReceive_update_lifecycle_confirmationResponse2Msg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zb8MIt5MEee5MfuigsCq1w" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zb8MI95MEee5MfuigsCq1w" key="isBpelDeclaration" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zb8MLN5MEee5MfuigsCq1w" key="defaultDeclarationName" value="processISOResponse-ISO_Response_ManaReceive_update_lifecycle_confirmationResponse2Msg"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zb8MMN5MEee5MfuigsCq1w" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager}Receive_update_lifecycle_confirmationResponse"/>
+      </eAnnotations>
+      <associations xmi:type="bpmn:Association" xmi:id="_zb8MLd5MEee5MfuigsCq1w" direction="To">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zb8MLt5MEee5MfuigsCq1w" source="dataObjectAssociationTypeSource">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zb8ML95MEee5MfuigsCq1w" key="dataObjectAssociationTypeValue" value="outgoingMesssageVariable"/>
+        </eAnnotations>
+      </associations>
+    </artifacts>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_yLxk295MEee5MfuigsCq1w" iD="_yLxkwN5MEee5MfuigsCq1w" associations="_zCnGLd5MEee5MfuigsCq1w _zb8MLd5MEee5MfuigsCq1w" name="Receive confirmation" activityType="Task">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_yLxk3N5MEee5MfuigsCq1w" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yLxk3d5MEee5MfuigsCq1w" key="douri" value="project:///Processes/Core/ProcessISOResponse-ISO_Response_Manager.wsdl?wsdloperationbound={http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager}CanonicServiceForDCM/canonicPort/Receive_update_lifecycle_confirmation"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yLxk3t5MEee5MfuigsCq1w" key="douri2" value="project:///Processes/Core/ProcessISOResponse.bpm/_qmcLEN5MEee5MfuigsCq1w.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Send confirmation"/>
+      </eAnnotations>
+      <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_zCKaMd5MEee5MfuigsCq1w"/>
+      <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_zbpRMd5MEee5MfuigsCq1w"/>
     </vertices>
   </pools>
   <messages xmi:type="bpmn:MessagingEdge" xmi:id="_8GE3Qd43Eee0YMxeWbu2Dg" iD="_8GE3QN43Eee0YMxeWbu2Dg" source="_rO57Sd42Eee0YMxeWbu2Dg" target="_8F7tUd43Eee0YMxeWbu2Dg">
@@ -194,6 +541,64 @@
   <messages xmi:type="bpmn:MessagingEdge" xmi:id="_ddGJgd48Eee0YMxeWbu2Dg" iD="_ddGJgN48Eee0YMxeWbu2Dg" source="_Lhni0N45Eee0YMxeWbu2Dg" target="_g6UwQd46Eee0YMxeWbu2Dg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_eSncQN48Eee0YMxeWbu2Dg" source="attachedDataobject">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_eSncQd48Eee0YMxeWbu2Dg" key="douri" value="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType"/>
+    </eAnnotations>
+  </messages>
+  <messages xmi:type="bpmn:MessagingEdge" xmi:id="_3e8rYd5IEee5MfuigsCq1w" iD="_3e8rYN5IEee5MfuigsCq1w" source="_edFwcd5IEee5MfuigsCq1w" target="_2N5TUd5IEee5MfuigsCq1w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3fF1UN5IEee5MfuigsCq1w" source="attachedDataobject">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3fF1Ud5IEee5MfuigsCq1w" key="douri" value="project:///Processes/Integrations/getCaseDetails-process.wsdl?messageForBoundOperation={http://thisproject/Processes/Integrations/getCaseDetails/process}CanonicServiceForclient/canonicPort/Get_case_id/input/Get_case_id"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3fF1Ut5IEee5MfuigsCq1w" key="douri2" value="project:///Processes/Integrations/getCaseDetails.bpm/_8pVrcNH5EeeKlIzHx_g2Yg.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Request case details"/>
+    </eAnnotations>
+  </messages>
+  <messages xmi:type="bpmn:MessagingEdge" xmi:id="_4Mr7Id5IEee5MfuigsCq1w" iD="_4Mr7IN5IEee5MfuigsCq1w" source="_2N5TUd5IEee5MfuigsCq1w" target="_edFwcd5IEee5MfuigsCq1w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_4Mr7It5IEee5MfuigsCq1w" source="attachedDataobject">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4Mr7I95IEee5MfuigsCq1w" key="douri" value="project:///Processes/Integrations/getCaseDetails-process.wsdl?messageForBoundOperation={http://thisproject/Processes/Integrations/getCaseDetails/process}CanonicServiceForclient/canonicPort/Get_case_id/output/Get_case_idResponse"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_4Mr7JN5IEee5MfuigsCq1w" key="douri2" value="project:///Processes/Integrations/getCaseDetails.bpm/_8pVrcNH5EeeKlIzHx_g2Yg.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Request case details"/>
+    </eAnnotations>
+  </messages>
+  <messages xmi:type="bpmn:MessagingEdge" xmi:id="_7wq_Qd5IEee5MfuigsCq1w" iD="_7wq_QN5IEee5MfuigsCq1w" source="_51UF0d5IEee5MfuigsCq1w" target="_ggqKsd5IEee5MfuigsCq1w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Byn6oN5JEee5MfuigsCq1w" source="attachedDataobject">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Byn6od5JEee5MfuigsCq1w" key="douri" value="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}LaunchpointCaseType"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Byn6ot5JEee5MfuigsCq1w" key="douri2" value="project:///Schemas/Launchpoint.xsd?xsdelement={http://www.example.org/Launchpoint}LPCase"/>
+    </eAnnotations>
+  </messages>
+  <messages xmi:type="bpmn:MessagingEdge" xmi:id="_9APwwd5IEee5MfuigsCq1w" iD="_9APwwN5IEee5MfuigsCq1w" source="_ggqKsd5IEee5MfuigsCq1w" target="_51UF0d5IEee5MfuigsCq1w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_DTCkgN5JEee5MfuigsCq1w" source="attachedDataobject">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_DTCkgd5JEee5MfuigsCq1w" key="douri" value="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType"/>
+    </eAnnotations>
+  </messages>
+  <messages xmi:type="bpmn:MessagingEdge" xmi:id="_ShRCMd5JEee5MfuigsCq1w" iD="_ShRCMN5JEee5MfuigsCq1w" source="_m9kjwd5IEee5MfuigsCq1w" target="_Q1O-Ud5JEee5MfuigsCq1w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ShRCMt5JEee5MfuigsCq1w" source="attachedDataobject">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ShRCM95JEee5MfuigsCq1w" key="douri" value="project:///Processes/Integrations/createActivity-process.wsdl?messageForBoundOperation={http://thisproject/Processes/Integrations/createActivity/process}CanonicServiceForcaller/canonicPort/Receive_request/input/Receive_request"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ShRCNN5JEee5MfuigsCq1w" key="douri2" value="project:///Processes/Integrations/createActivity.bpm/_e5FfAN4_Eee0YMxeWbu2Dg.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Send request"/>
+    </eAnnotations>
+  </messages>
+  <messages xmi:type="bpmn:MessagingEdge" xmi:id="_TC8L4d5JEee5MfuigsCq1w" iD="_TC8L4N5JEee5MfuigsCq1w" source="_Q1O-Ud5JEee5MfuigsCq1w" target="_m9kjwd5IEee5MfuigsCq1w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_TDF84N5JEee5MfuigsCq1w" source="attachedDataobject">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TDF84d5JEee5MfuigsCq1w" key="douri" value="project:///Processes/Integrations/createActivity-process.wsdl?messageForBoundOperation={http://thisproject/Processes/Integrations/createActivity/process}CanonicServiceForcaller/canonicPort/Receive_request/output/Receive_requestResponse"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_TDF84t5JEee5MfuigsCq1w" key="douri2" value="project:///Processes/Integrations/createActivity.bpm/_e5FfAN4_Eee0YMxeWbu2Dg.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Send request"/>
+    </eAnnotations>
+  </messages>
+  <messages xmi:type="bpmn:MessagingEdge" xmi:id="_Xo8God5JEee5MfuigsCq1w" iD="_Xo8GoN5JEee5MfuigsCq1w" source="_VMxmMd5JEee5MfuigsCq1w" target="_q64t4d5IEee5MfuigsCq1w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jlOScN5JEee5MfuigsCq1w" source="attachedDataobject">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_jlOScd5JEee5MfuigsCq1w" key="douri" value="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}CaseIdentifierType"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_jlOSct5JEee5MfuigsCq1w" key="douri2" value="project:///Schemas/Launchpoint.xsd?xsdelement={http://www.example.org/Launchpoint}CaseIdentifier"/>
+    </eAnnotations>
+  </messages>
+  <messages xmi:type="bpmn:MessagingEdge" xmi:id="_YBE50d5JEee5MfuigsCq1w" iD="_YBE50N5JEee5MfuigsCq1w" source="_q64t4d5IEee5MfuigsCq1w" target="_VMxmMd5JEee5MfuigsCq1w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZZdpEN5JEee5MfuigsCq1w" source="attachedDataobject">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ZZdpEd5JEee5MfuigsCq1w" key="douri" value="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType"/>
+    </eAnnotations>
+  </messages>
+  <messages xmi:type="bpmn:MessagingEdge" xmi:id="_zCKaMd5MEee5MfuigsCq1w" iD="_zCKaMN5MEee5MfuigsCq1w" source="_h-M6Ad44Eee0YMxeWbu2Dg" target="_yLxk295MEee5MfuigsCq1w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zCULMN5MEee5MfuigsCq1w" source="attachedDataobject">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zCULMd5MEee5MfuigsCq1w" key="douri" value="project:///Processes/Core/ProcessISOResponse-ISO_Response_Manager.wsdl?messageForBoundOperation={http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager}CanonicServiceForDCM/canonicPort/Receive_update_lifecycle_confirmation/input/Receive_update_lifecycle_confirmation"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zCULMt5MEee5MfuigsCq1w" key="douri2" value="project:///Processes/Core/ProcessISOResponse.bpm/_qmcLEN5MEee5MfuigsCq1w.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Send confirmation"/>
+    </eAnnotations>
+  </messages>
+  <messages xmi:type="bpmn:MessagingEdge" xmi:id="_zbpRMd5MEee5MfuigsCq1w" iD="_zbpRMN5MEee5MfuigsCq1w" source="_yLxk295MEee5MfuigsCq1w" target="_h-M6Ad44Eee0YMxeWbu2Dg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zbybIN5MEee5MfuigsCq1w" source="attachedDataobject">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zbybId5MEee5MfuigsCq1w" key="douri" value="project:///Processes/Core/ProcessISOResponse-ISO_Response_Manager.wsdl?messageForBoundOperation={http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager}CanonicServiceForDCM/canonicPort/Receive_update_lifecycle_confirmation/output/Receive_update_lifecycle_confirmationResponse"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zbybIt5MEee5MfuigsCq1w" key="douri2" value="project:///Processes/Core/ProcessISOResponse.bpm/_qmcLEN5MEee5MfuigsCq1w.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Send confirmation"/>
     </eAnnotations>
   </messages>
 </bpmn:BpmnDiagram>
