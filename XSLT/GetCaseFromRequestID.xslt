@@ -21,6 +21,8 @@
         <Launchpoint:BatchId><xsl:value-of select="ns:rows/ns:row[1]/ns:batchid" /></Launchpoint:BatchId>
       </Launchpoint:Case>
       <Launchpoint:isoresponse><xsl:value-of select="ns:rows/ns:row[1]/ns:isoresponse" /></Launchpoint:isoresponse>
+      <Launchpoint:casestatus><xsl:value-of select="ns:rows/ns:row[1]/ns:casestatus" /></Launchpoint:casestatus>
+      <Launchpoint:score><xsl:value-of select="ns:rows/ns:row[1]/ns:score" /></Launchpoint:score>
     </ProcessISOResponse-ISO_Response_Mana:Receive_caseRequest>
   </xsl:template>
 </xsl:stylesheet>

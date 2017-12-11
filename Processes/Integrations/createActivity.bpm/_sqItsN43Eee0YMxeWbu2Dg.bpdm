@@ -1,13 +1,19 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:CreateActivityService="http://bpms.everteam.com/Services/REST/CreateActivityService.rest" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Exception_Management="http://thisdiagram/Exception_Management" xmlns:diag="http://thisdiagram" xmlns:processimplicitPartner="http://thisdiagram/processimplicitPartner" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:caller="http://thisdiagram/caller" xmlns:createActivity="__project:///Schemas/integrations/createActivity.xsd" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:CreateActivityService="http://bpms.everteam.com/Services/REST/CreateActivityService.rest" xmlns:updateCaseLifeCycle-process="http://thisproject/Processes/Integrations/updateCaseLifeCycle/process" xmlns:ProcessISOResponse-ISO_Response_Mana="http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Exception_Management="http://thisdiagram/Exception_Management" xmlns:ISOResponse="http://thisdiagram/ISOResponse" xmlns:UpdateLifecycle="http://thisdiagram/UpdateLifecycle" xmlns:ProcessISO="http://thisdiagram/ProcessISO" xmlns:diag="http://thisdiagram" xmlns:processimplicitPartner="http://thisdiagram/processimplicitPartner" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:ProcessISOCase-Process_ISO_Case="http://thisproject/Processes/Core/ProcessISOCase/Process_ISO_Case" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:caller="http://thisdiagram/caller" xmlns:createActivity="__project:///Schemas/integrations/createActivity.xsd" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/Services/REST/CreateActivityService.rest" bpdm:prefix="CreateActivityService" bpdm:comment="contrib=&apos;project:///Services/REST/CreateActivityService.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Integrations/updateCaseLifeCycle/process" bpdm:prefix="updateCaseLifeCycle-process" bpdm:comment="contrib=&apos;project:///Processes/Integrations/updateCaseLifeCycle-process.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/ProcessISOResponse/ISO_Response_Manager" bpdm:prefix="ProcessISOResponse-ISO_Response_Mana" bpdm:comment="contrib=&apos;project:///Processes/Core/ProcessISOResponse-ISO_Response_Manager.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Exception_Management" bpdm:prefix="Exception_Management" bpdm:comment="contrib=&apos;partner-pool:///_Rs_DYN46Eee0YMxeWbu2Dg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/ISOResponse" bpdm:prefix="ISOResponse" bpdm:comment="contrib=&apos;partner-pool:///_t_l6YN5bEee5MfuigsCq1w"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/UpdateLifecycle" bpdm:prefix="UpdateLifecycle" bpdm:comment="contrib=&apos;partner-pool:///_6CIfMN5bEee5MfuigsCq1w"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/ProcessISO" bpdm:prefix="ProcessISO" bpdm:comment="contrib=&apos;partner-pool:///_1uN6UN5YEee5MfuigsCq1w"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_Ho791t41Eee0YMxeWbu2Dg"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/processimplicitPartner" bpdm:prefix="processimplicitPartner" bpdm:comment="contrib=&apos;partner-pool:///_sqItsN43Eee0YMxeWbu2DgimplicitPartner"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/ProcessISOCase/Process_ISO_Case" bpdm:prefix="ProcessISOCase-Process_ISO_Case" bpdm:comment="contrib=&apos;project:///Processes/Core/ProcessISOCase-Process_ISO_Case.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://test.com/xvar/example" bpdm:prefix="metrics" bpdm:comment="contrib=&apos;project:///Metrics/metrics.xvar"></bpdm:namespaceDefinition>
@@ -55,9 +61,15 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_Ho791t41Eee0YMxeWbu2Dg" bpdm:label="caller"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_Rs_DYN46Eee0YMxeWbu2Dg" bpdm:label="Exception Management"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_sqItsN43Eee0YMxeWbu2DgimplicitPartner" bpdm:label="processimplicitPartner"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_1uN6UN5YEee5MfuigsCq1w" bpdm:label="ProcessISO"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_t_l6YN5bEee5MfuigsCq1w" bpdm:label="ISOResponse"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_6CIfMN5bEee5MfuigsCq1w" bpdm:label="UpdateLifecycle"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/CreateActivityService.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/integrations/createActivity.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOCase-Process_ISO_Case.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOResponse-ISO_Response_Manager.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/updateCaseLifeCycle-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -68,6 +80,9 @@
             <bpel:partnerLink name="processAndCallerPlkVar" partnerLinkType="diag:processAndCaller" myRole="process_for_caller" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForcaller" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/caller" bpdm:providedIsDefault="true" bpdm:clientTasks="_sqItsN43Eee0YMxeWbu2Dg:_vVEC4N43Eee0YMxeWbu2Dg" bpdm:isManaged="true" bpdm:otherPoolId="_Ho791t41Eee0YMxeWbu2Dg"/>
             <bpel:partnerLink name="processAndException_ManagementPlkVar" partnerLinkType="diag:processAndException_Management" myRole="process_for_Exception_Management" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForException_Management" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/Exception_Management" bpdm:providedIsDefault="true" bpdm:clientTasks="_WMZDYN45Eee0YMxeWbu2Dg:_1hmoMN44Eee0YMxeWbu2Dg" bpdm:isManaged="true" bpdm:otherPoolId="_Rs_DYN46Eee0YMxeWbu2Dg"/>
             <bpel:partnerLink name="processimplicitPartnerAndProcessForHttpPortPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForHttpPortPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="CreateActivityService:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://192.168.241.200:3001/createactivity" bpdm:invokedIsDefault="true" bpdm:clientTasks="_jQfy4N45Eee0YMxeWbu2Dg:_EInxYN44Eee0YMxeWbu2Dg" bpdm:isManaged="true" bpdm:otherPoolId="_sqItsN43Eee0YMxeWbu2DgimplicitPartner"/>
+            <bpel:partnerLink name="processAndProcessISOForCanonicPortPlkVar" partnerLinkType="diag:processAndProcessISOForCanonicPortPlk" initializePartnerRole="yes" partnerRole="ProcessISO_for_process" bpdm:invokedService="ProcessISOCase-Process_ISO_Case:CanonicServiceForDCM" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_K3QzoN44Eee0YMxeWbu2Dg:_H9l30N44Eee0YMxeWbu2Dg" bpdm:isManaged="true" bpdm:otherPoolId="_1uN6UN5YEee5MfuigsCq1w"/>
+            <bpel:partnerLink name="iSOResponseAndProcessForCanonicPortPlkVar" partnerLinkType="diag:ISOResponseAndProcessForCanonicPortPlk" initializePartnerRole="yes" partnerRole="ISOResponse_for_process" bpdm:invokedService="ProcessISOResponse-ISO_Response_Mana:CanonicServiceForDCM" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_d6cJ0N5dEee5MfuigsCq1w:_d6cJ4d5dEee5MfuigsCq1w" bpdm:isManaged="true" bpdm:otherPoolId="_t_l6YN5bEee5MfuigsCq1w"/>
+            <bpel:partnerLink name="processAndUpdateLifecycleForCanonicPortPlkVar" partnerLinkType="diag:processAndUpdateLifecycleForCanonicPortPlk" initializePartnerRole="yes" partnerRole="UpdateLifecycle_for_process" bpdm:invokedService="updateCaseLifeCycle-process:CanonicServiceForcaller" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_mw_60N5dEee5MfuigsCq1w:_mxIdv95dEee5MfuigsCq1w" bpdm:isManaged="true" bpdm:otherPoolId="_6CIfMN5bEee5MfuigsCq1w"/>
         </bpel:partnerLinks>
         <bpel:correlationSets>
             <bpel:correlationSet name="newCorrelationSet" properties="this:prop"/>
@@ -282,11 +297,45 @@
                             </bpdm:messagingtask>
                             <bpdm:gateway bpdm:label="Source" bpdm:ID="_GnMFkN44Eee0YMxeWbu2Dg" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_H9vo1944Eee0YMxeWbu2Dg" bpdm:targetDisplayName="[Source - ISO]">
-                                    <bpel:condition>"ISORESPONSE" = $thisReceive_requestRequest2Msg.body/Launchpoint:source<mapper:mapperLink><mapper:vertice id="1252507513" targetPath="$condition" targetedBy="971071638-arg2"></mapper:vertice><mapper:vertice id="971071638" dimension="79x24" location="355,49"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1469085180" dimension="92x24" location="237,25" targetedBy="971071638-arg0"><mapper:value>"ISORESPONSE"</mapper:value></mapper:vertice><mapper:vertice id="1681915681" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:source" targetedBy="971071638-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
+                                    <bpel:condition>"ISO" = $thisReceive_requestRequest2Msg.body/Launchpoint:source
+<mapper:mapperLink>
+  <mapper:vertice id="164712319" targetPath="$condition" targetedBy="543163859-arg2"></mapper:vertice>
+  <mapper:vertice id="543163859" dimension="79x24" location="355,49">
+    <mapper:value>=</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="40237587" dimension="79x24" location="237,25" targetedBy="543163859-arg0">
+    <mapper:value>"ISO"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="344356397" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:source" targetedBy="543163859-arg1"></mapper:vertice>
+</mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
-                                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_-PnhYN5dEee5MfuigsCq1w" bpdm:targetDisplayName="[Source - Iso response]"></bpdm:linkset>
+                                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_-PnhYN5dEee5MfuigsCq1w" bpdm:targetDisplayName="[Source - Iso response]">
+                                    <bpel:condition>"ISOPOINTS" = $thisReceive_requestRequest2Msg.body/Launchpoint:source
+<mapper:mapperLink>
+  <mapper:vertice id="805032369" targetPath="$condition" targetedBy="785498320-arg2"></mapper:vertice>
+  <mapper:vertice id="785498320" dimension="79x24" location="211,178">
+    <mapper:value>=</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1898836331" dimension="79x24" location="86,148" targetedBy="785498320-arg0">
+    <mapper:value>"ISOPOINTS"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="860346026" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:source" targetedBy="785498320-arg1"></mapper:vertice>
+</mapper:mapperLink></bpel:condition>
+                                </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_-nJ3oN5dEee5MfuigsCq1w" bpdm:targetDisplayName="[Source - evaluator]"></bpdm:linkset>
-                                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="__YU14N5dEee5MfuigsCq1w" bpdm:targetDisplayName="[Source - update lifecycle]"></bpdm:linkset>
+                                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="__YU14N5dEee5MfuigsCq1w" bpdm:targetDisplayName="[Source - update lifecycle]">
+                                    <bpel:condition>"LIFECYCLE" = $thisReceive_requestRequest2Msg.body/Launchpoint:source
+<mapper:mapperLink>
+  <mapper:vertice id="515031658" targetPath="$condition" targetedBy="1182331753-arg2"></mapper:vertice>
+  <mapper:vertice id="1182331753" dimension="79x24" location="296,234">
+    <mapper:value>=</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="971260199" dimension="79x24" location="185,202" targetedBy="1182331753-arg0">
+    <mapper:value>"LIFECYCLE"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="158499205" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:source" targetedBy="1182331753-arg1"></mapper:vertice>
+</mapper:mapperLink></bpel:condition>
+                                </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="__6AmoN5dEee5MfuigsCq1w" bpdm:targetDisplayName="[Source - close reson]"></bpdm:linkset>
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_AcuSIN5eEee5MfuigsCq1w" bpdm:targetDisplayName="[Source - close lifecycle]"></bpdm:linkset>
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_A8L1UN5eEee5MfuigsCq1w" bpdm:targetDisplayName="[Source - close status]"></bpdm:linkset>
@@ -294,22 +343,71 @@
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_Cdny4N5eEee5MfuigsCq1w" bpdm:targetDisplayName="[Source - EventEndEmpty]"></bpdm:linkset>
                                 <bpel:sequence>
                                     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="ISO" bpdm:ID="_K3QzoN44Eee0YMxeWbu2Dg">
+                                        <bpel:variables>
+                                            <bpel:variable name="processISOReceive_create_activity_confirmationRequest1Msg" messageType="ProcessISOCase-Process_ISO_Case:Receive_Activity_confirmationRequest" binding="ProcessISOCase-Process_ISO_Case:Process_ISO_CaseAndDCMServiceBinding" operation="Receive_Activity_confirmation" opMsgType="0" bpdm:id="_MM0moN5fEee7jteJyXiOfg" bpdm:messageIds=" out:_MMhEoN5fEee7jteJyXiOfg">
+                                                <bpel:from bpdm:toPart="body">
+                                                    <bpel:literal bpdm:linkedMessageType="ProcessISOCase-Process_ISO_Case:Receive_Activity_confirmationRequest" bpdm:linkedPart="body" bpdm:binding="ProcessISOCase-Process_ISO_Case:Process_ISO_CaseAndDCMServiceBinding" bpdm:opMsgType="0" bpdm:operation="Receive_Activity_confirmation"></bpel:literal>
+                                                </bpel:from>
+                                            </bpel:variable>
+                                            <bpel:variable name="processISOCase-Process_ISO_CaseReceive_Activity_confirmationResponse2Msg" messageType="ProcessISOCase-Process_ISO_Case:Receive_Activity_confirmationResponse" binding="ProcessISOCase-Process_ISO_Case:Process_ISO_CaseAndDCMServiceBinding" operation="Receive_Activity_confirmation" opMsgType="1" bpdm:id="_MxLQ4N5fEee7jteJyXiOfg" bpdm:messageIds="inc:_MwbqAN5fEee7jteJyXiOfg"/>
+                                        </bpel:variables>
                                         <bpel:sequence>
-                                            <bpdm:messagingtask eventType="end: message" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_End_Event" bpdm:ID="_H9l30N44Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no">
+                                            <bpdm:messagingtask eventType="end: message" operation="Receive_Activity_confirmation" partnerLink="processAndProcessISOForCanonicPortPlkVar" portType="ProcessISOCase-Process_ISO_Case:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_End_Event" bpdm:ID="_H9l30N44Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no">
                                                 <bpdm:linkset bpdm:type="assignments">
                                                     <bpel:copy>
                                                         <bpel:from>true()</bpel:from>
                                                         <bpel:to>$success</bpel:to><mapper:mapperLink><mapper:vertice id="667712581" targetPath="$success" targetedBy="967088577-arg0"></mapper:vertice><mapper:vertice id="967088577" dimension="79x24" location="242,173"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Case</bpel:from>
+                                                        <bpel:to>$processISOReceive_create_activity_confirmationRequest1Msg.body</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="906056461" targetPath="$processISOReceive_create_activity_confirmationRequest1Msg.body" targetedBy="1923217232-arg0"></mapper:vertice>
+  <mapper:vertice id="1923217232" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Case"></mapper:vertice>
+</mapper:mapperLink>
+                                                    </bpel:copy>
                                                 </bpdm:linkset>
+                                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="processISOReceive_create_activity_confirmationRequest1Msg" bpdm:msgVarScopeId="_K3QzoN44Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOCase-Process_ISO_Case:Receive_Activity_confirmationRequest" bpdm:binding="ProcessISOCase-Process_ISO_Case:Process_ISO_CaseAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_MMhEoN5fEee7jteJyXiOfg"></bpdm:linkset>
+                                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processISOCase-Process_ISO_CaseReceive_Activity_confirmationResponse2Msg" bpdm:msgVarScopeId="_K3QzoN44Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOCase-Process_ISO_Case:Receive_Activity_confirmationResponse" bpdm:binding="ProcessISOCase-Process_ISO_Case:Process_ISO_CaseAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_MwbqAN5fEee7jteJyXiOfg"></bpdm:linkset>
                                             </bpdm:messagingtask>
                                         </bpel:sequence>
                                     </bpel:scope>
                                 </bpel:sequence>
                                 <bpel:sequence>
                                     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Iso response" bpdm:ID="_d6cJ0N5dEee5MfuigsCq1w">
+                                        <bpel:variables>
+                                            <bpel:variable name="iSOResponseReceive_activity_confirmationRequest1Msg" messageType="ProcessISOResponse-ISO_Response_Mana:Receive_activity_confirmationRequest" binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDCMServiceBinding" operation="Receive_activity_confirmation" opMsgType="0" bpdm:id="_WoCg8N5iEee7jteJyXiOfg" bpdm:messageIds=" out:_WnwNEN5iEee7jteJyXiOfg">
+                                                <bpel:from bpdm:toPart="body">
+                                                    <bpel:literal bpdm:linkedMessageType="ProcessISOResponse-ISO_Response_Mana:Receive_activity_confirmationRequest" bpdm:linkedPart="body" bpdm:binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDCMServiceBinding" bpdm:opMsgType="0" bpdm:operation="Receive_activity_confirmation"></bpel:literal>
+                                                </bpel:from>
+                                            </bpel:variable>
+                                            <bpel:variable name="processISOResponse-ISO_Response_ManaReceive_activity_confirmationResponse2Msg" messageType="ProcessISOResponse-ISO_Response_Mana:Receive_activity_confirmationResponse" binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDCMServiceBinding" operation="Receive_activity_confirmation" opMsgType="1" bpdm:id="_ZS0FJd5iEee7jteJyXiOfg" bpdm:messageIds="inc:_ZSgjIN5iEee7jteJyXiOfg"/>
+                                        </bpel:variables>
                                         <bpel:sequence>
-                                            <bpdm:messagingtask eventType="end: message" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_End_Event" bpdm:ID="_d6cJ4d5dEee5MfuigsCq1w" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                            <bpdm:messagingtask eventType="end: message" operation="Receive_activity_confirmation" partnerLink="iSOResponseAndProcessForCanonicPortPlkVar" portType="ProcessISOResponse-ISO_Response_Mana:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_End_Event" bpdm:ID="_d6cJ4d5dEee5MfuigsCq1w" bpdm:isHeaderAuthorizationAware="no">
+                                                <bpdm:linkset bpdm:type="assignments">
+                                                    <bpel:copy>
+                                                        <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Case</bpel:from>
+                                                        <bpel:to>$iSOResponseReceive_activity_confirmationRequest1Msg.body</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1217889113" targetPath="$iSOResponseReceive_activity_confirmationRequest1Msg.body" targetedBy="1515905893-arg0"></mapper:vertice>
+  <mapper:vertice id="1515905893" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Case"></mapper:vertice>
+</mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>true()</bpel:from>
+                                                        <bpel:to>$success</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1681951288" targetPath="$success" targetedBy="623216120-arg0"></mapper:vertice>
+  <mapper:vertice id="623216120" dimension="79x24" location="338,210">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                                    </bpel:copy>
+                                                </bpdm:linkset>
+                                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iSOResponseReceive_activity_confirmationRequest1Msg" bpdm:msgVarScopeId="_d6cJ0N5dEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOResponse-ISO_Response_Mana:Receive_activity_confirmationRequest" bpdm:binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_WnwNEN5iEee7jteJyXiOfg"></bpdm:linkset>
+                                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processISOResponse-ISO_Response_ManaReceive_activity_confirmationResponse2Msg" bpdm:msgVarScopeId="_d6cJ0N5dEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOResponse-ISO_Response_Mana:Receive_activity_confirmationResponse" bpdm:binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_ZSgjIN5iEee7jteJyXiOfg"></bpdm:linkset>
+                                            </bpdm:messagingtask>
                                         </bpel:sequence>
                                     </bpel:scope>
                                 </bpel:sequence>
@@ -322,8 +420,19 @@
                                 </bpel:sequence>
                                 <bpel:sequence>
                                     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="update lifecycle" bpdm:ID="_mw_60N5dEee5MfuigsCq1w">
+                                        <bpel:variables>
+                                            <bpel:variable name="updateLifecycleSend_requestRequest1Msg" messageType="updateCaseLifeCycle-process:Receive_requestRequest" binding="updateCaseLifeCycle-process:callerAndProcessServiceBinding" operation="Receive_request" opMsgType="0" bpdm:id="_4KF-gN5mEee7jteJyXiOfg" bpdm:messageIds=" out:_4J8NgN5mEee7jteJyXiOfg">
+                                                <bpel:from bpdm:toPart="body">
+                                                    <bpel:literal bpdm:linkedMessageType="updateCaseLifeCycle-process:Receive_requestRequest" bpdm:linkedPart="body" bpdm:binding="updateCaseLifeCycle-process:callerAndProcessServiceBinding" bpdm:opMsgType="0" bpdm:operation="Receive_request"></bpel:literal>
+                                                </bpel:from>
+                                            </bpel:variable>
+                                            <bpel:variable name="updateCaseLifeCycle-processReceive_requestResponse2Msg" messageType="updateCaseLifeCycle-process:Receive_requestResponse" binding="updateCaseLifeCycle-process:callerAndProcessServiceBinding" operation="Receive_request" opMsgType="1" bpdm:id="_5jNGhd5mEee7jteJyXiOfg" bpdm:messageIds="inc:_5i5kgN5mEee7jteJyXiOfg"/>
+                                        </bpel:variables>
                                         <bpel:sequence>
-                                            <bpdm:messagingtask eventType="end: message" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_End_Event" bpdm:ID="_mxIdv95dEee5MfuigsCq1w" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                            <bpdm:messagingtask eventType="end: message" operation="Receive_request" partnerLink="processAndUpdateLifecycleForCanonicPortPlkVar" portType="updateCaseLifeCycle-process:Forcaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Message_End_Event" bpdm:ID="_mxIdv95dEee5MfuigsCq1w" bpdm:isHeaderAuthorizationAware="no">
+                                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="updateLifecycleSend_requestRequest1Msg" bpdm:msgVarScopeId="_mw_60N5dEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="updateCaseLifeCycle-process:Receive_requestRequest" bpdm:binding="updateCaseLifeCycle-process:callerAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_4J8NgN5mEee7jteJyXiOfg"></bpdm:linkset>
+                                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="updateCaseLifeCycle-processReceive_requestResponse2Msg" bpdm:msgVarScopeId="_mw_60N5dEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="updateCaseLifeCycle-process:Receive_requestResponse" bpdm:binding="updateCaseLifeCycle-process:callerAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_5i5kgN5mEee7jteJyXiOfg"></bpdm:linkset>
+                                            </bpdm:messagingtask>
                                         </bpel:sequence>
                                     </bpel:scope>
                                 </bpel:sequence>

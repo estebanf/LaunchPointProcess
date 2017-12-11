@@ -5,13 +5,15 @@
 launchpointcase.clientid as clientid,
 launchpointcase.environmentid as environmentid,
 launchpointcase.batchid as batchid,
-launchpointcase.isoresponse as isoresponse
+launchpointcase.isoresponse as isoresponse,
+launchpointcase.casestatus as casestatus,
+launchpointcase.score as score 
 from launchpointcase inner join isotracking on isotracking.caseid = launchpointcase.caseid  
 where isotracking.requestid = ?" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:getcasefromrequestidservice">
             <jdbc:input>
                 <jdbc:parameter>
                     <jdbc:mode>1</jdbc:mode>
-                    <jdbc:name>Parameter0</jdbc:name>
+                    <jdbc:name>isotracking.requestid</jdbc:name>
                     <jdbc:type>40</jdbc:type>
                     <jdbc:length>10</jdbc:length>
                     <jdbc:typeName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
@@ -36,7 +38,7 @@ where isotracking.requestid = ?" event="false" dynamicCredentials="true" xmlns:u
             <jdbc:databaseUrl>jdbc:postgresql://bpms.everteam.us:5432/bamdb</jdbc:databaseUrl>
             <jdbc:databaseName>BAMDB</jdbc:databaseName>
             <jdbc:userName>bam</jdbc:userName>
-            <jdbc:password>decrypt[XbHtVkDBvZh0Iq5/g8P11I39sfRrLYp9]</jdbc:password>
+            <jdbc:password>decrypt[Xh1wvfrnHJX715qHXWukb1MHim0w6Hxf]</jdbc:password>
         </jdbc:connection>
     </jdbc:service>
 </jdbc:descriptor>
