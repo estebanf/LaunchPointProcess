@@ -1,0 +1,33 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:process="http://thisdiagram/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:tns="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/Exception_Management" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Exception_Management">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_sDzBEN4kEee0YMxeWbu2Dg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="process" bpdm:comment="contrib=&apos;partner-pool:///_sDzBEN4kEee0YMxeWbu2Dg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Exception_Management" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_sDzBEN4kEee0YMxeWbu2Dg" bpdm:label="process"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Exception Management" bpdm:ID="_OZHEYN4lEee0YMxeWbu2Dg">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="processAndException_ManagementPlkVar" partnerLinkType="diag:processAndException_Management" initializePartnerRole="yes" partnerRole="process_for_Exception_Management" bpdm:invokedService="process:CanonicServiceForException_Management" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/Exception_Management" bpdm:invokedIsDefault="true" bpdm:clientTasks="_OZHEYN4lEee0YMxeWbu2Dg:_SNfU8N4lEee0YMxeWbu2Dg" bpdm:isManaged="true" bpdm:otherPoolId="_sDzBEN4kEee0YMxeWbu2Dg"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="processReceive_recovery_signalRequest1Msg" messageType="process:Receive_recovery_signalRequest" bpdm:id="_UDqMa94lEee0YMxeWbu2Dg" bpdm:messageIds=" out:_UDqMYN4lEee0YMxeWbu2Dg">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="process:Receive_recovery_signalRequest" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="processReceive_recovery_signalResponse2Msg" messageType="process:Receive_recovery_signalResponse" bpdm:id="_U0PUwN4lEee0YMxeWbu2Dg" bpdm:messageIds="inc:_Uzyo0N4lEee0YMxeWbu2Dg"/>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask operation="Receive_recovery_signal" partnerLink="processAndException_ManagementPlkVar" portType="process:ForException_Management" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Recover" bpdm:ID="_SNfU8N4lEee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="processReceive_recovery_signalRequest1Msg" bpdm:msgVarScopeId="_OZHEYN4lEee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="process:Receive_recovery_signalRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_UDqMYN4lEee0YMxeWbu2Dg"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processReceive_recovery_signalResponse2Msg" bpdm:msgVarScopeId="_OZHEYN4lEee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="process:Receive_recovery_signalResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Uzyo0N4lEee0YMxeWbu2Dg"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>
