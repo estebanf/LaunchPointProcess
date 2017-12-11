@@ -1,4 +1,4 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:ProcessIQCase-Queue_Monitor="http://thisproject/Processes/Core/ProcessIQCase/Queue_Monitor" xmlns:formless="http://www.intalio.com/formless" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:human="http://thisdiagram/human" xmlns:diag="http://thisdiagram" xmlns:client="http://thisdiagram/client" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:generateIQBatch="http://www.example.org/generateIQBatch" xmlns:attachments="http://www.intalio.com/formless/attachments" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:ProcessIQCase-Queue_Monitor="http://thisproject/Processes/Core/ProcessIQCase/Queue_Monitor" xmlns:formless="http://www.intalio.com/formless" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:human="http://thisdiagram/human" xmlns:diag="http://thisdiagram" xmlns:client="http://thisdiagram/client" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:attachments="http://www.intalio.com/formless/attachments" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/ProcessIQCase/Queue_Monitor" bpdm:prefix="ProcessIQCase-Queue_Monitor" bpdm:comment="contrib=&apos;project:///Processes/Core/ProcessIQCase-Queue_Monitor.wsdl"></bpdm:namespaceDefinition>
@@ -11,7 +11,6 @@
         <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
-        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/generateIQBatch" bpdm:prefix="generateIQBatch" bpdm:comment="contrib=&apos;project:///Schemas/integrations/generateIQBatch.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.intalio.com/formless/attachments" bpdm:prefix="attachments" bpdm:comment="contrib=&apos;project:///formless-ytivitca.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
             <wsdl:portType name="Forclient">
@@ -21,8 +20,9 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForclient" type="this:Forclient" bpdm:isSynchronized="true"/>
+            <xs:element name="received_validation_requestRequest" type="Launchpoint:IQBatchItemListType" bpdm:source="partner-pool:///_3AHiQNnSEee2MLg0sBZbqw"/>
             <wsdl:message name="received_validation_requestRequest" bpdm:source="partner-pool:///_3AHiQNnSEee2MLg0sBZbqw">
-                <wsdl:part name="body" element="generateIQBatch:iob_request_root"/>
+                <wsdl:part name="body" element="this:received_validation_requestRequest"/>
             </wsdl:message>
             <xs:element name="received_validation_requestResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_3AHiQNnSEee2MLg0sBZbqw"/>
             <wsdl:message name="received_validation_requestResponse" bpdm:source="partner-pool:///_3AHiQNnSEee2MLg0sBZbqw">
@@ -34,7 +34,6 @@
         <bpdm:namespaceContributor bpdm:url="project:///formless-ytivitca.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessIQCase-Queue_Monitor.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Schemas/integrations/generateIQBatch.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
     </bpdm:dependencies>
@@ -82,17 +81,17 @@
             <bpdm:messagingtask operation="createTaskSingleActivity" partnerLink="wFmagic_TkKKgNnTEee2MLg0sBZbqwPlkVar" portType="formless:Workflow" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Create validation form" bpdm:ID="_GYy8cNnTEee2MLg0sBZbqw" bpdm:isHeaderAuthorizationAware="no">
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
-                        <bpel:from>concat("Review letters for client ", $thisEventStartMessageRequest1.body/generateIQBatch:ClientId)</bpel:from>
+                        <bpel:from>concat("Review letters for client ", $thisEventStartMessageRequest1.body/Launchpoint:ClientId)</bpel:from>
                         <bpel:to>$humanHuman-create-and-completeRequest1Msg.root/formless:taskMetaData/formless:description</bpel:to>
 <mapper:mapperLink>
-  <mapper:vertice id="632473305" targetPath="$humanHuman-create-and-completeRequest1Msg.root/formless:taskMetaData/formless:description" targetedBy="1446978776-arg2"></mapper:vertice>
-  <mapper:vertice id="1446978776" dimension="79x24" location="432,72">
+  <mapper:vertice id="773093019" targetPath="$humanHuman-create-and-completeRequest1Msg.root/formless:taskMetaData/formless:description" targetedBy="385777710-arg1"></mapper:vertice>
+  <mapper:vertice id="385777710" dimension="79x24" location="432,72">
     <mapper:value>concat()</mapper:value>
   </mapper:vertice>
-  <mapper:vertice id="500335698" dimension="143x24" location="217,154" targetedBy="1446978776-arg0">
+  <mapper:vertice id="1519483557" dimension="143x24" location="217,154" targetedBy="385777710-arg0">
     <mapper:value>"Review letters for client "</mapper:value>
   </mapper:vertice>
-  <mapper:vertice id="1209830961" sourcePath="$thisEventStartMessageRequest1.body/generateIQBatch:ClientId" targetedBy="1446978776-arg1"></mapper:vertice>
+  <mapper:vertice id="182131565" sourcePath="$thisEventStartMessageRequest1.body/Launchpoint:ClientId" targetedBy="385777710-arg2"></mapper:vertice>
 </mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
@@ -102,16 +101,30 @@
             <bpdm:messagingtask eventType="end: message" operation="Receive_validation_results" partnerLink="processAndClientForCanonicPortPlkVar" portType="ProcessIQCase-Queue_Monitor:ForUser" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send results" bpdm:ID="_aFiz4NnTEee2MLg0sBZbqw" bpdm:isHeaderAuthorizationAware="no">
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
-                        <bpel:from>$formlessCreateTaskSingleActivityResponse2Msg.root/formless:taskOutput/formless:FormModel/notesTextAreaInput/notesTextArea</bpel:from>
-                        <bpel:to>$clientTaskRequest1Msg.body/Launchpoint:validationResult</bpel:to><mapper:mapperLink><mapper:vertice id="514796649" targetPath="$clientTaskRequest1Msg.body/Launchpoint:validationResult" targetedBy="654885993-arg0"></mapper:vertice><mapper:vertice id="654885993" sourcePath="$formlessCreateTaskSingleActivityResponse2Msg.root/formless:taskOutput/formless:FormModel/notesTextAreaInput/notesTextArea"></mapper:vertice></mapper:mapperLink>
+                        <bpel:from>$thisEventStartMessageRequest1.body/Launchpoint:IQBatchId</bpel:from>
+                        <bpel:to>$clientTaskRequest1Msg.body/Launchpoint:iqBatchId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1417158844" targetPath="$clientTaskRequest1Msg.body/Launchpoint:iqBatchId" targetedBy="1208278151-arg0"></mapper:vertice>
+  <mapper:vertice id="1208278151" sourcePath="$thisEventStartMessageRequest1.body/Launchpoint:IQBatchId"></mapper:vertice>
+</mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
-                        <bpel:from>$thisEventStartMessageRequest1.body/generateIQBatch:IQBatchId</bpel:from>
-                        <bpel:to>$clientTaskRequest1Msg.body/Launchpoint:iqBatchId</bpel:to><mapper:mapperLink><mapper:vertice id="290468411" targetPath="$clientTaskRequest1Msg.body/Launchpoint:iqBatchId" targetedBy="1573029190-arg0"></mapper:vertice><mapper:vertice id="1573029190" sourcePath="$thisEventStartMessageRequest1.body/generateIQBatch:IQBatchId"></mapper:vertice></mapper:mapperLink>
+                        <bpel:from>"APPROVED" = $formlessCreateTaskSingleActivityResponse2Msg.root/formless:taskOutput/formless:FormModel/notesTextAreaInput/notesTextArea</bpel:from>
+                        <bpel:to>$clientTaskRequest1Msg.body/Launchpoint:validationResult</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="689686446" targetPath="$clientTaskRequest1Msg.body/Launchpoint:validationResult" targetedBy="363339679-arg2"></mapper:vertice>
+  <mapper:vertice id="363339679" dimension="79x24" location="381,69">
+    <mapper:value>=</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="133278545" dimension="79x24" location="249,50" targetedBy="363339679-arg0">
+    <mapper:value>"APPROVED"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="545655168" sourcePath="$formlessCreateTaskSingleActivityResponse2Msg.root/formless:taskOutput/formless:FormModel/notesTextAreaInput/notesTextArea" targetedBy="363339679-arg1"></mapper:vertice>
+</mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
-                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="clientTaskRequest1Msg" bpdm:msgVarScopeId="_5yLaMNnSEee2MLg0sBZbqw" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Queue_Monitor:Receive_validation_resultsRequest" bpdm:binding="ProcessIQCase-Queue_Monitor:UserAndQueue_MonitorForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_dp4vkNrfEeeyFrQIgRvWZA"></bpdm:linkset>
-                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processIQCase-Queue_MonitorReceive_validation_resultsResponse2Msg" bpdm:msgVarScopeId="_5yLaMNnSEee2MLg0sBZbqw" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Queue_Monitor:Receive_validation_resultsResponse" bpdm:binding="ProcessIQCase-Queue_Monitor:UserAndQueue_MonitorForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_eFMykNrfEeeyFrQIgRvWZA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="clientTaskRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Queue_Monitor:Receive_validation_resultsRequest" bpdm:binding="ProcessIQCase-Queue_Monitor:UserAndQueue_MonitorForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_dp4vkNrfEeeyFrQIgRvWZA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processIQCase-Queue_MonitorReceive_validation_resultsResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Queue_Monitor:Receive_validation_resultsResponse" bpdm:binding="ProcessIQCase-Queue_Monitor:UserAndQueue_MonitorForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_eFMykNrfEeeyFrQIgRvWZA"></bpdm:linkset>
             </bpdm:messagingtask>
         </bpel:sequence>
     </bpel:scope>

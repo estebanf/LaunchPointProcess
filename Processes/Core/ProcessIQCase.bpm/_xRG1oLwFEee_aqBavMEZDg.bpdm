@@ -13,7 +13,9 @@
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Case_Evaluator" bpdm:prefix="Case_Evaluator" bpdm:comment="contrib=&apos;partner-pool:///_0uuMALwFEee_aqBavMEZDg"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Process_IQ_Case" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
-            <vprop:property name="caseId" type="xs:int"/>
+            <vprop:property name="caseId" type="xs:string"/>
+            <vprop:property name="clientid" type="xs:string"/>
+            <vprop:property name="environmentid" type="xs:string"/>
             <wsdl:portType name="ForDatabase">
                 <wsdl:operation name="Get_Results" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw">
                     <wsdl:input message="this:Get_ResultsRequest" name="Get_Results"/>
@@ -63,13 +65,31 @@
                 <vprop:query>tns:CaseId/text()</vprop:query>
             </vprop:propertyAlias>
             <vprop:propertyAlias propertyName="this:caseId" messageType="this:Get_ResultsRequest" part="body">
-                <vprop:query>tns:caseId/text()</vprop:query>
+                <vprop:query>tns:Case/tns:CaseId/text()</vprop:query>
             </vprop:propertyAlias>
             <vprop:propertyAlias propertyName="this:caseId" messageType="getCaseQueued-process:Get_case_idRequest" part="body">
-                <vprop:query>text()</vprop:query>
+                <vprop:query>tns:CaseId/text()</vprop:query>
             </vprop:propertyAlias>
             <vprop:propertyAlias propertyName="this:caseId" messageType="this:Receive_sent_signalRequest" part="body">
                 <vprop:query>text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:environmentid" messageType="this:Receive_IQRequest" part="body">
+                <vprop:query>tns:EnvironmentId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:environmentid" messageType="this:Get_ResultsRequest" part="body">
+                <vprop:query>tns:Case/tns:EnvironmentId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:clientid" messageType="this:Get_ResultsRequest" part="body">
+                <vprop:query>tns:Case/tns:ClientId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:environmentid" messageType="getCaseQueued-process:Get_case_idRequest" part="body">
+                <vprop:query>tns:EnvironmentId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:clientid" messageType="getCaseQueued-process:Get_case_idRequest" part="body">
+                <vprop:query>tns:ClientId/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:clientid" messageType="this:Receive_IQRequest" part="body">
+                <vprop:query>tns:ClientId/text()</vprop:query>
             </vprop:propertyAlias>
         </bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_B8ixENZFEeeaesenvnhebw" bpdm:label="Database"/>
@@ -89,7 +109,7 @@
             <bpel:partnerLink name="process_IQ_CaseAndQueue_MonitorPlkVar" partnerLinkType="diag:Process_IQ_CaseAndQueue_Monitor" myRole="Process_IQ_Case_for_Queue_Monitor" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForQueue_Monitor" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_IQ_Case/Queue_Monitor" bpdm:providedIsDefault="true" bpdm:clientTasks="_xRG1oLwFEee_aqBavMEZDg:_ggUcUNLrEeeydOmcLap9Ow" bpdm:isManaged="true" bpdm:otherPoolId="_2mWjgNfGEee2L7fDC3rSXg"/>
         </bpel:partnerLinks>
         <bpel:correlationSets>
-            <bpel:correlationSet name="caseCorrelationSet" properties="this:caseId"/>
+            <bpel:correlationSet name="caseCorrelationSet" properties="this:caseId this:clientid this:environmentid"/>
         </bpel:correlationSets>
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
             <bpel:variable name="thisEventStartMessageRequest1" messageType="this:Receive_IQRequest" bpdm:id="_HPexcLwGEee_aqBavMEZDg" bpdm:messageIds="inc:_HPVAcLwGEee_aqBavMEZDg"/>

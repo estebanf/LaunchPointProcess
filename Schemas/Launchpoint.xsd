@@ -107,12 +107,14 @@
     <element name="ISOScoringACK" type="tns:BpmAckType"></element>
     <element name="DCMISORequestFile" type="tns:DCMISOFileWrapperType">
     </element>
-    <element name="DCMISORequestFileACK" type="tns:BpmAckType"></element>
     <complexType name="DCMISOFileWrapperType">
     	<sequence>
-    		<element name="Case" type="tns:CaseIdentifierType"></element>
-    		<element name="content" type="anyType"></element>
-    	</sequence>
+    		<element name="CaseId" type="string"></element>
+    		<element name="ClientId" type="string"></element>
+    		<element name="EnvironmentId" type="string"></element>
+    		<element name="BatchId" type="string"></element>
+            <element name="content" type="anyType"></element>
+        </sequence>
     </complexType>
     <element name="ISOCaseRequestFile"
     	type="tns:DCMISOFileWrapperType">
@@ -408,7 +410,7 @@
     <complexType name="IQLetterValidationType">
     	<sequence>
     		<element name="iqBatchId" type="string"></element>
-    		<element name="validationResult" type="string"></element>
+    		<element name="validationResult" type="boolean"></element>
     	</sequence>
     </complexType>
     <complexType name="CaseIdentifierType">
@@ -431,7 +433,6 @@
     <element name="GenerateFileRequest"
     	type="tns:GenerateFileRequestType">
     </element>
-    <element name="DCMISORequestACK" type="tns:DCMISOFileWrapperType"></element>
 
     <complexType name="ISOResponseType">
     	<sequence>
@@ -496,4 +497,27 @@
     		<element name="source" type="string"></element>
     	</sequence>
     </complexType>
+
+    <complexType name="IQBatchItemType">
+    	<sequence>
+    		<element name="CaseId" type="string"></element>
+    		<element name="FileId" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="IQBatchItemListType">
+    	<sequence>
+    		<element name="EnvironmentId" type="int"></element>
+    		<element name="IQBatchId" type="int"></element>
+    		<element name="ClientId" type="int"></element>
+    		<element name="TotalLetterCount" type="int"></element>
+    		<element name="Cases" type="tns:IQBatchItemType" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="IQBatchItemList" type="tns:IQBatchItemListType"></element>
+
+    <element name="IQBatchItem" type="tns:IQBatchItemType"></element>
+
+    <element name="IQBatch" type="tns:IQBatchType"></element>
 </schema>

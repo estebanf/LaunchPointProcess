@@ -1,4 +1,4 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:getIQBatch-process="http://thisproject/Processes/Integrations/getIQBatch/process" xmlns:diag="http://thisdiagram" xmlns:HumanVerification-process="http://thisproject/Processes/Integrations/HumanVerification/process" xmlns:this="http://thisdiagram/Queue_Monitor" xmlns:tns="http://everteam.com/xvar/example" xmlns:Queue_MonitorimplicitPartner="http://thisdiagram/Queue_MonitorimplicitPartner" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:generateIQBatch="http://www.example.org/generateIQBatch" xmlns:getOldestQueuedCases-process="http://thisproject/Processes/Integrations/getOldestQueuedCases/process" xmlns:generateFile-process="http://thisproject/Processes/Integrations/generateFile/process" xmlns:ns="http://bpms.everteam.com/LaunchPointProcess" xmlns:Process_IQ_Case="http://thisdiagram/Process_IQ_Case" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Queue_Monitor">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:getIQBatch-process="http://thisproject/Processes/Integrations/getIQBatch/process" xmlns:diag="http://thisdiagram" xmlns:HumanVerification-process="http://thisproject/Processes/Integrations/HumanVerification/process" xmlns:this="http://thisdiagram/Queue_Monitor" xmlns:tns="http://everteam.com/xvar/example" xmlns:Queue_MonitorimplicitPartner="http://thisdiagram/Queue_MonitorimplicitPartner" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:getOldestQueuedCases-process="http://thisproject/Processes/Integrations/getOldestQueuedCases/process" xmlns:generateFile-process="http://thisproject/Processes/Integrations/generateFile/process" xmlns:ns="http://bpms.everteam.com/LaunchPointProcess" xmlns:Process_IQ_Case="http://thisdiagram/Process_IQ_Case" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Queue_Monitor">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
@@ -11,7 +11,6 @@
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://test.com/xvar/example" bpdm:prefix="metrics" bpdm:comment="contrib=&apos;project:///Metrics/metrics.xvar"></bpdm:namespaceDefinition>
-        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/generateIQBatch" bpdm:prefix="generateIQBatch" bpdm:comment="contrib=&apos;project:///Schemas/integrations/generateIQBatch.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Integrations/getOldestQueuedCases/process" bpdm:prefix="getOldestQueuedCases-process" bpdm:comment="contrib=&apos;project:///Processes/Integrations/getOldestQueuedCases-process.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Integrations/generateFile/process" bpdm:prefix="generateFile-process" bpdm:comment="contrib=&apos;project:///Processes/Integrations/generateFile-process.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/LaunchPointProcess" bpdm:prefix="ns" bpdm:comment="contrib=&apos;project:///Processes/Core/ProcessIQCase-Queue_Monitor.startEvent.wsdl"></bpdm:namespaceDefinition>
@@ -53,6 +52,14 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForDCM" type="this:ForDCM" bpdm:isSynchronized="true"/>
+            <xs:element name="Get_resultsRequest" type="Launchpoint:IQBatchesType" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw"/>
+            <wsdl:message name="Get_resultsRequest" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw">
+                <wsdl:part name="body" element="this:Get_resultsRequest"/>
+            </wsdl:message>
+            <xs:element name="Get_resultsResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw"/>
+            <wsdl:message name="Get_resultsResponse" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw">
+                <wsdl:part name="body" element="this:Get_resultsResponse"/>
+            </wsdl:message>
             <xs:element name="Receive_validation_resultsRequest" type="Launchpoint:IQLetterValidationType" bpdm:source="partner-pool:///_n4WZkNrdEeeyFrQIgRvWZA"/>
             <wsdl:message name="Receive_validation_resultsRequest" bpdm:source="partner-pool:///_n4WZkNrdEeeyFrQIgRvWZA">
                 <wsdl:part name="body" element="this:Receive_validation_resultsRequest"/>
@@ -61,13 +68,21 @@
             <wsdl:message name="Receive_validation_resultsResponse" bpdm:source="partner-pool:///_n4WZkNrdEeeyFrQIgRvWZA">
                 <wsdl:part name="body" element="this:Receive_validation_resultsResponse"/>
             </wsdl:message>
-            <xs:element name="Get_resultsRequest" type="Launchpoint:IQBatchesType" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw"/>
-            <wsdl:message name="Get_resultsRequest" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw">
-                <wsdl:part name="body" element="this:Get_resultsRequest"/>
+            <xs:element name="Receive_resultsRequest" type="Launchpoint:IQLetterType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
+            <wsdl:message name="Receive_resultsRequest" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
+                <wsdl:part name="body" element="this:Receive_resultsRequest"/>
             </wsdl:message>
-            <xs:element name="Get_resultsResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw"/>
-            <wsdl:message name="Get_resultsResponse" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw">
-                <wsdl:part name="body" element="this:Get_resultsResponse"/>
+            <xs:element name="Receive_resultsResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
+            <wsdl:message name="Receive_resultsResponse" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
+                <wsdl:part name="body" element="this:Receive_resultsResponse"/>
+            </wsdl:message>
+            <xs:element name="Receive_IQ_Batch_ResultsRequest" type="Launchpoint:IQBatchResponseType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
+            <wsdl:message name="Receive_IQ_Batch_ResultsRequest" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
+                <wsdl:part name="body" element="this:Receive_IQ_Batch_ResultsRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_IQ_Batch_ResultsResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
+            <wsdl:message name="Receive_IQ_Batch_ResultsResponse" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
+                <wsdl:part name="body" element="this:Receive_IQ_Batch_ResultsResponse"/>
             </wsdl:message>
             <xs:element name="Get_DCM_Ack.Request" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
             <wsdl:message name="Get_DCM_Ack.Request" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
@@ -84,22 +99,6 @@
             <xs:element name="Receive_acknowledgementResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
             <wsdl:message name="Receive_acknowledgementResponse" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
                 <wsdl:part name="body" element="this:Receive_acknowledgementResponse"/>
-            </wsdl:message>
-            <xs:element name="Receive_IQ_Batch_ResultsRequest" type="Launchpoint:IQBatchResponseType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
-            <wsdl:message name="Receive_IQ_Batch_ResultsRequest" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
-                <wsdl:part name="body" element="this:Receive_IQ_Batch_ResultsRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_IQ_Batch_ResultsResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
-            <wsdl:message name="Receive_IQ_Batch_ResultsResponse" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
-                <wsdl:part name="body" element="this:Receive_IQ_Batch_ResultsResponse"/>
-            </wsdl:message>
-            <xs:element name="Receive_resultsRequest" type="Launchpoint:IQLetterType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
-            <wsdl:message name="Receive_resultsRequest" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
-                <wsdl:part name="body" element="this:Receive_resultsRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_resultsResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
-            <wsdl:message name="Receive_resultsResponse" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
-                <wsdl:part name="body" element="this:Receive_resultsResponse"/>
             </wsdl:message>
             <wsdl:service name="Queue_MonitorimplicitPartnerAndQueue_MonitorForStartTimer_PortPlkService">
                 <wsdl:port name="Queue_Monitor_for_Queue_MonitorimplicitPartnerPort" binding="this:Queue_MonitorimplicitPartnerAndQueue_MonitorForStartTimer_PortPlkServiceBinding">
@@ -138,15 +137,14 @@
                 <vprop:query>generateIQBatch:IQBatchId/text()</vprop:query>
             </vprop:propertyAlias>
         </bpdm:namespaceContributor>
-        <bpdm:namespaceContributor bpdm:url="partner-pool:///_n4WZkNrdEeeyFrQIgRvWZA" bpdm:label="User"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_B8ixENZFEeeaesenvnhebw" bpdm:label="Database"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_n4WZkNrdEeeyFrQIgRvWZA" bpdm:label="User"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw" bpdm:label="DCM"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_2mWjgNfGEee2L7fDC3rSXgimplicitPartner" bpdm:label="Queue MonitorimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_xRG1oLwFEee_aqBavMEZDg" bpdm:label="Process IQ Case"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getOldestQueuedCases-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/HumanVerification-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Schemas/integrations/generateIQBatch.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getIQBatch-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/generateFile-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
@@ -157,12 +155,12 @@
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Queue Monitor" bpdm:ID="_2mWjgNfGEee2L7fDC3rSXg">
         <bpel:partnerLinks>
             <bpel:partnerLink name="queue_MonitorimplicitPartnerAndQueue_MonitorForStartTimer_PortPlkVar" partnerLinkType="diag:Queue_MonitorimplicitPartnerAndQueue_MonitorForStartTimer_PortPlk" myRole="Queue_Monitor_for_Queue_MonitorimplicitPartner" bpdm:enableSharing="false" bpdm:providedService="this:Queue_MonitorimplicitPartnerAndQueue_MonitorForStartTimer_PortPlkService" bpdm:providedPort="Queue_Monitor_for_Queue_MonitorimplicitPartnerPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Queue_Monitor/Queue_MonitorimplicitPartner/Queue_MonitorimplicitPartnerAndQueue_MonitorForStartTimer_PortPlk" bpdm:providedIsDefault="true" bpdm:clientTasks="_2mWjgNfGEee2L7fDC3rSXg:_NJxGENfHEee2L7fDC3rSXg" bpdm:isManaged="true" bpdm:otherPoolId="_2mWjgNfGEee2L7fDC3rSXgimplicitPartner"/>
-            <bpel:partnerLink name="databaseAndQueue_MonitorForCanonicPortPlkVar" partnerLinkType="diag:DatabaseAndQueue_MonitorForCanonicPortPlk" initializePartnerRole="yes" myRole="Queue_Monitor_for_Database" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForDatabase" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Queue_Monitor/Database" bpdm:providedIsDefault="true" partnerRole="Database_for_Queue_Monitor" bpdm:invokedService="getOldestQueuedCases-process:CanonicServiceForclient" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_2mWjgNfGEee2L7fDC3rSXg:_bonN4NfKEee2L7fDC3rSXg, _2mWjgNfGEee2L7fDC3rSXg:_SXVXINfHEee2L7fDC3rSXg" bpdm:isManaged="true" bpdm:otherPoolId="_B8ixENZFEeeaesenvnhebw"/>
-            <bpel:partnerLink name="dCmAndQueue_MonitorPlkVar" partnerLinkType="diag:DCmAndQueue_Monitor" myRole="Queue_Monitor_for_DCM" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForDCM" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Queue_Monitor/DCM" bpdm:providedIsDefault="true" bpdm:clientTasks="_xFaHkNiDEee2ItVqPC1yfA:_IOEzYNkgEeee0bCkMq0JVw, _xFaHkNiDEee2ItVqPC1yfA:_hT5IkNnhEee2MLg0sBZbqw, _cG87MNiEEee2ItVqPC1yfA:_z5eJMNkIEeeOt_CLbvr25Q, _cG87MNiEEee2ItVqPC1yfA:_9RGN0NkyEeee0bCkMq0JVw" bpdm:isManaged="true" bpdm:otherPoolId="_DJOeoNkOEeee0bCkMq0JVw"/>
-            <bpel:partnerLink name="dCmAndQueue_MonitorForCanonicPortPlk0Var" partnerLinkType="diag:DCmAndQueue_MonitorForCanonicPortPlk0" initializePartnerRole="yes" partnerRole="DCM_for_Queue_Monitor" bpdm:invokedService="generateFile-process:CanonicServiceForcaller" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_cG87MNiEEee2ItVqPC1yfA:_wkSWENkIEeeOt_CLbvr25Q" bpdm:isManaged="true" bpdm:otherPoolId="_DJOeoNkOEeee0bCkMq0JVw"/>
+            <bpel:partnerLink name="databaseAndQueue_MonitorForCanonicPortPlkVar" partnerLinkType="diag:DatabaseAndQueue_MonitorForCanonicPortPlk" initializePartnerRole="yes" myRole="Queue_Monitor_for_Database" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForDatabase" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Queue_Monitor/Database" bpdm:providedIsDefault="true" partnerRole="Database_for_Queue_Monitor" bpdm:invokedService="getOldestQueuedCases-process:CanonicServiceForclient" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_lmHsMN6WEeevw9CK4cNsbA:_bonN4NfKEee2L7fDC3rSXg, _lmHsMN6WEeevw9CK4cNsbA:_SXVXINfHEee2L7fDC3rSXg" bpdm:isManaged="true" bpdm:otherPoolId="_B8ixENZFEeeaesenvnhebw"/>
+            <bpel:partnerLink name="dCmAndQueue_MonitorPlkVar" partnerLinkType="diag:DCmAndQueue_Monitor" myRole="Queue_Monitor_for_DCM" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForDCM" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Queue_Monitor/DCM" bpdm:providedIsDefault="true" bpdm:clientTasks="_eNgRIN6cEeevw9CK4cNsbA:_IOEzYNkgEeee0bCkMq0JVw, _xFaHkNiDEee2ItVqPC1yfA:_hT5IkNnhEee2MLg0sBZbqw, _cG87MNiEEee2ItVqPC1yfA:_z5eJMNkIEeeOt_CLbvr25Q, _ZzLiQN6ZEeevw9CK4cNsbA:_9RGN0NkyEeee0bCkMq0JVw" bpdm:isManaged="true" bpdm:otherPoolId="_DJOeoNkOEeee0bCkMq0JVw"/>
+            <bpel:partnerLink name="dCmAndQueue_MonitorForCanonicPortPlk0Var" partnerLinkType="diag:DCmAndQueue_MonitorForCanonicPortPlk0" initializePartnerRole="yes" partnerRole="DCM_for_Queue_Monitor" bpdm:invokedService="generateFile-process:CanonicServiceForcaller" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_ZzLiQN6ZEeevw9CK4cNsbA:_wkSWENkIEeeOt_CLbvr25Q" bpdm:isManaged="true" bpdm:otherPoolId="_DJOeoNkOEeee0bCkMq0JVw"/>
+            <bpel:partnerLink name="userAndQueue_MonitorForCanonicPortPlkVar" partnerLinkType="diag:UserAndQueue_MonitorForCanonicPortPlk" initializePartnerRole="yes" myRole="Queue_Monitor_for_User" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForUser" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Queue_Monitor/User" bpdm:providedIsDefault="true" partnerRole="User_for_Queue_Monitor" bpdm:invokedService="HumanVerification-process:CanonicServiceForclient" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_yH81EN6WEeevw9CK4cNsbA:_9g4oQNrdEeeyFrQIgRvWZA, _yH81EN6WEeevw9CK4cNsbA:_KyXFYNreEeeyFrQIgRvWZA" bpdm:isManaged="true" bpdm:otherPoolId="_n4WZkNrdEeeyFrQIgRvWZA"/>
             <bpel:partnerLink name="process_IQ_CaseAndQueue_MonitorPlkVar" partnerLinkType="diag:Process_IQ_CaseAndQueue_Monitor" initializePartnerRole="yes" partnerRole="Process_IQ_Case_for_Queue_Monitor" bpdm:invokedService="Process_IQ_Case:CanonicServiceForQueue_Monitor" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Process_IQ_Case/Queue_Monitor" bpdm:invokedIsDefault="true" bpdm:clientTasks="_kQutUNoGEeeyB7mKr1x9lw:_9EdFoNoGEeeyB7mKr1x9lw" bpdm:isManaged="true" bpdm:otherPoolId="_xRG1oLwFEee_aqBavMEZDg"/>
-            <bpel:partnerLink name="userAndQueue_MonitorForCanonicPortPlkVar" partnerLinkType="diag:UserAndQueue_MonitorForCanonicPortPlk" initializePartnerRole="yes" myRole="Queue_Monitor_for_User" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForUser" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/Queue_Monitor/User" bpdm:providedIsDefault="true" partnerRole="User_for_Queue_Monitor" bpdm:invokedService="HumanVerification-process:CanonicServiceForclient" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_9E6u4NrmEeepo5BdaoEIvQ:_9g4oQNrdEeeyFrQIgRvWZA, _9E6u4NrmEeepo5BdaoEIvQ:_KyXFYNreEeeyFrQIgRvWZA" bpdm:isManaged="true" bpdm:otherPoolId="_n4WZkNrdEeeyFrQIgRvWZA"/>
-            <bpel:partnerLink name="dCmAndQueue_MonitorForCanonicPortPlk1Var" partnerLinkType="diag:DCmAndQueue_MonitorForCanonicPortPlk1" initializePartnerRole="yes" partnerRole="DCM_for_Queue_Monitor" bpdm:invokedService="getIQBatch-process:CanonicServiceForclient" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_xFaHkNiDEee2ItVqPC1yfA:_GW_V8NkgEeee0bCkMq0JVw" bpdm:isManaged="true" bpdm:otherPoolId="_DJOeoNkOEeee0bCkMq0JVw"/>
+            <bpel:partnerLink name="dCmAndQueue_MonitorForCanonicPortPlk1Var" partnerLinkType="diag:DCmAndQueue_MonitorForCanonicPortPlk1" initializePartnerRole="yes" partnerRole="DCM_for_Queue_Monitor" bpdm:invokedService="getIQBatch-process:CanonicServiceForclient" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_eNgRIN6cEeevw9CK4cNsbA:_GW_V8NkgEeee0bCkMq0JVw" bpdm:isManaged="true" bpdm:otherPoolId="_DJOeoNkOEeee0bCkMq0JVw"/>
         </bpel:partnerLinks>
         <bpel:correlationSets>
             <bpel:correlationSet name="queuedCasesCorrelation" properties="this:pid"/>
@@ -170,18 +168,6 @@
         <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
             <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_2nRJgdfGEee2L7fDC3rSXg" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_2nRJgdfGEee2L7fDC3rSXg"/>
             <bpel:variable name="nsStartTimerRequest1Msg" messageType="ns:StartTimer_Input" bpdm:messageIds="inc:_NJxGENfHEee2L7fDC3rSXgIncoming"/>
-            <bpel:variable name="databaseQuery_DatabaseRequest1Msg" messageType="getOldestQueuedCases-process:Get_case_requestRequest" binding="getOldestQueuedCases-process:processAndClientForCanonicPortPlkServiceBinding" operation="Get_case_request" opMsgType="0" bpdm:id="_AZTugNfLEee2L7fDC3rSXg" bpdm:messageIds=" out:_AZQEINfLEee2L7fDC3rSXg">
-                <bpel:from bpdm:toPart="body">
-                    <bpel:literal bpdm:linkedMessageType="getOldestQueuedCases-process:Get_case_requestRequest" bpdm:linkedPart="body" bpdm:binding="getOldestQueuedCases-process:processAndClientForCanonicPortPlkServiceBinding" bpdm:opMsgType="0" bpdm:operation="Get_case_request"></bpel:literal>
-                </bpel:from>
-            </bpel:variable>
-            <bpel:variable name="databaseQuery_DatabaseResponse2Msg" messageType="getOldestQueuedCases-process:Get_case_requestResponse" binding="getOldestQueuedCases-process:processAndClientForCanonicPortPlkServiceBinding" operation="Get_case_request" opMsgType="1" bpdm:id="_BGI_UNfLEee2L7fDC3rSXg" bpdm:messageIds="inc:_BFmMwNfLEee2L7fDC3rSXg"/>
-            <bpel:variable name="thisGet_resultsRequest1Msg" messageType="this:Get_resultsRequest" bpdm:id="_Df2osNfLEee2L7fDC3rSXg" bpdm:messageIds="inc:_DfT2INfLEee2L7fDC3rSXg"/>
-            <bpel:variable name="thisGet_resultsResponse2Msg" messageType="this:Get_resultsResponse" bpdm:id="_Eec-8NfLEee2L7fDC3rSXg" bpdm:messageIds=" out:_EeUcENfLEee2L7fDC3rSXg">
-                <bpel:from bpdm:toPart="body">
-                    <bpel:literal bpdm:linkedMessageType="this:Get_resultsResponse" bpdm:linkedPart="body"></bpel:literal>
-                </bpel:from>
-            </bpel:variable>
             <bpel:variable name="IQBatchesType" type="Launchpoint:IQBatchesType" bpdm:id="_aOv8ENiHEee2ItVqPC1yfA">
                 <bpel:from>
                     <bpel:literal bpdm:linkedType="Launchpoint:IQBatchesType"></bpel:literal>
@@ -192,30 +178,56 @@
             <bpdm:messagingtask operation="StartTimer" partnerLink="queue_MonitorimplicitPartnerAndQueue_MonitorForStartTimer_PortPlkVar" portType="ns:StartTimer_Port" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Timer_Start_Event" bpdm:ID="_NJxGENfHEee2L7fDC3rSXg" bpdm:isHeaderAuthorizationAware="yes">
                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="nsStartTimerRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns:StartTimer_Input" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_NJxGENfHEee2L7fDC3rSXgIncoming"></bpdm:linkset>
             </bpdm:messagingtask>
-            <bpdm:messagingtask operation="Get_case_request" partnerLink="databaseAndQueue_MonitorForCanonicPortPlkVar" portType="getOldestQueuedCases-process:Forclient" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Select oldest 2500" bpdm:ID="_SXVXINfHEee2L7fDC3rSXg" bpdm:isHeaderAuthorizationAware="no">
-                <bpdm:linkset bpdm:type="assignments">
-                    <bpel:copy>
-                        <bpel:from>$ode:pid</bpel:from>
-                        <bpel:to>$databaseQuery_DatabaseRequest1Msg.body/text()</bpel:to><mapper:mapperLink><mapper:vertice id="939456620" targetPath="$databaseQuery_DatabaseRequest1Msg.body/text()" targetedBy="589849530-arg0"></mapper:vertice><mapper:vertice id="589849530" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
-                    </bpel:copy>
-                </bpdm:linkset>
-                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="databaseQuery_DatabaseRequest1Msg" bpdm:msgVarScopeId="_2mWjgNfGEee2L7fDC3rSXg" bpdm:variableIsManaged="true" bpdm:messageType="getOldestQueuedCases-process:Get_case_requestRequest" bpdm:binding="getOldestQueuedCases-process:processAndClientForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_AZQEINfLEee2L7fDC3rSXg">
-                    <bpel:correlation set="queuedCasesCorrelation" initiate="join" pattern="request" bpdm:isSource="false"></bpel:correlation>
-                </bpdm:linkset>
-                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="databaseQuery_DatabaseResponse2Msg" bpdm:msgVarScopeId="_2mWjgNfGEee2L7fDC3rSXg" bpdm:variableIsManaged="true" bpdm:messageType="getOldestQueuedCases-process:Get_case_requestResponse" bpdm:binding="getOldestQueuedCases-process:processAndClientForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_BFmMwNfLEee2L7fDC3rSXg"></bpdm:linkset>
-            </bpdm:messagingtask>
-            <bpdm:messagingtask operation="Get_results" partnerLink="databaseAndQueue_MonitorForCanonicPortPlkVar" portType="this:ForDatabase" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get results" bpdm:ID="_bonN4NfKEee2L7fDC3rSXg" bpdm:isHeaderAuthorizationAware="yes">
-                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisGet_resultsRequest1Msg" bpdm:msgVarScopeId="_2mWjgNfGEee2L7fDC3rSXg" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_resultsRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_DfT2INfLEee2L7fDC3rSXg">
-                    <bpel:correlation set="queuedCasesCorrelation" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
-                </bpdm:linkset>
-                <bpdm:linkset bpdm:type="assignments">
-                    <bpel:copy>
-                        <bpel:from>$thisGet_resultsRequest1Msg.body</bpel:from>
-                        <bpel:to>$IQBatchesType</bpel:to><mapper:mapperLink><mapper:vertice id="1307979364" targetPath="$IQBatchesType" targetedBy="1294106929-arg0"></mapper:vertice><mapper:vertice id="1294106929" sourcePath="$thisGet_resultsRequest1Msg.body"></mapper:vertice></mapper:mapperLink>
-                    </bpel:copy>
-                </bpdm:linkset>
-                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisGet_resultsResponse2Msg" bpdm:msgVarScopeId="_2mWjgNfGEee2L7fDC3rSXg" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_resultsResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_EeUcENfLEee2L7fDC3rSXg"></bpdm:linkset>
-            </bpdm:messagingtask>
+            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Retrieve candidates IQ" bpdm:ID="_lmHsMN6WEeevw9CK4cNsbA">
+                <bpel:variables>
+                    <bpel:variable name="thisGet_resultsRequest1Msg" messageType="this:Get_resultsRequest" bpdm:id="_Df2osNfLEee2L7fDC3rSXg" bpdm:messageIds="inc:_DfT2INfLEee2L7fDC3rSXg"/>
+                    <bpel:variable name="thisGet_resultsResponse2Msg" messageType="this:Get_resultsResponse" bpdm:id="_Eec-8NfLEee2L7fDC3rSXg" bpdm:messageIds=" out:_EeUcENfLEee2L7fDC3rSXg">
+                        <bpel:from bpdm:toPart="body">
+                            <bpel:literal bpdm:linkedMessageType="this:Get_resultsResponse" bpdm:linkedPart="body"></bpel:literal>
+                        </bpel:from>
+                    </bpel:variable>
+                    <bpel:variable name="databaseQuery_DatabaseRequest1Msg" messageType="getOldestQueuedCases-process:Get_case_requestRequest" binding="getOldestQueuedCases-process:processAndClientForCanonicPortPlkServiceBinding" operation="Get_case_request" opMsgType="0" bpdm:id="_AZTugNfLEee2L7fDC3rSXg" bpdm:messageIds=" out:_AZQEINfLEee2L7fDC3rSXg">
+                        <bpel:from bpdm:toPart="body">
+                            <bpel:literal bpdm:linkedMessageType="getOldestQueuedCases-process:Get_case_requestRequest" bpdm:linkedPart="body" bpdm:binding="getOldestQueuedCases-process:processAndClientForCanonicPortPlkServiceBinding" bpdm:opMsgType="0" bpdm:operation="Get_case_request"></bpel:literal>
+                        </bpel:from>
+                    </bpel:variable>
+                    <bpel:variable name="databaseQuery_DatabaseResponse2Msg" messageType="getOldestQueuedCases-process:Get_case_requestResponse" binding="getOldestQueuedCases-process:processAndClientForCanonicPortPlkServiceBinding" operation="Get_case_request" opMsgType="1" bpdm:id="_BGI_UNfLEee2L7fDC3rSXg" bpdm:messageIds="inc:_BFmMwNfLEee2L7fDC3rSXg"/>
+                </bpel:variables>
+                <bpel:sequence>
+                    <bpdm:messagingtask operation="Get_case_request" partnerLink="databaseAndQueue_MonitorForCanonicPortPlkVar" portType="getOldestQueuedCases-process:Forclient" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Select oldest 2500" bpdm:ID="_SXVXINfHEee2L7fDC3rSXg" bpdm:isHeaderAuthorizationAware="no">
+                        <bpdm:linkset bpdm:type="assignments">
+                            <bpel:copy>
+                                <bpel:from>$ode:pid</bpel:from>
+                                <bpel:to>$databaseQuery_DatabaseRequest1Msg.body/text()</bpel:to><mapper:mapperLink><mapper:vertice id="939456620" targetPath="$databaseQuery_DatabaseRequest1Msg.body/text()" targetedBy="589849530-arg0"></mapper:vertice><mapper:vertice id="589849530" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                        </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="databaseQuery_DatabaseRequest1Msg" bpdm:msgVarScopeId="_lmHsMN6WEeevw9CK4cNsbA" bpdm:variableIsManaged="true" bpdm:messageType="getOldestQueuedCases-process:Get_case_requestRequest" bpdm:binding="getOldestQueuedCases-process:processAndClientForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_AZQEINfLEee2L7fDC3rSXg">
+                            <bpel:correlation set="queuedCasesCorrelation" initiate="join" pattern="request" bpdm:isSource="false"></bpel:correlation>
+                        </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="databaseQuery_DatabaseResponse2Msg" bpdm:msgVarScopeId="_lmHsMN6WEeevw9CK4cNsbA" bpdm:variableIsManaged="true" bpdm:messageType="getOldestQueuedCases-process:Get_case_requestResponse" bpdm:binding="getOldestQueuedCases-process:processAndClientForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_BFmMwNfLEee2L7fDC3rSXg"></bpdm:linkset>
+                    </bpdm:messagingtask>
+                    <bpdm:messagingtask operation="Get_results" partnerLink="databaseAndQueue_MonitorForCanonicPortPlkVar" portType="this:ForDatabase" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get results" bpdm:ID="_bonN4NfKEee2L7fDC3rSXg" bpdm:isHeaderAuthorizationAware="yes">
+                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisGet_resultsRequest1Msg" bpdm:msgVarScopeId="_lmHsMN6WEeevw9CK4cNsbA" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_resultsRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_DfT2INfLEee2L7fDC3rSXg">
+                            <bpel:correlation set="queuedCasesCorrelation" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
+                        </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="assignments">
+                            <bpel:copy>
+                                <bpel:from>$thisGet_resultsRequest1Msg.body</bpel:from>
+                                <bpel:to>$IQBatchesType</bpel:to><mapper:mapperLink><mapper:vertice id="1307979364" targetPath="$IQBatchesType" targetedBy="1294106929-arg0"></mapper:vertice><mapper:vertice id="1294106929" sourcePath="$thisGet_resultsRequest1Msg.body"></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                        </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisGet_resultsResponse2Msg" bpdm:msgVarScopeId="_lmHsMN6WEeevw9CK4cNsbA" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_resultsResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_EeUcENfLEee2L7fDC3rSXg"></bpdm:linkset>
+                    </bpdm:messagingtask>
+                    <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_qwL9UN6WEeevw9CK4cNsbA" bpdm:isHeaderAuthorizationAware="no">
+                        <bpdm:linkset bpdm:type="assignments">
+                            <bpel:copy>
+                                <bpel:from>$thisGet_resultsRequest1Msg.body</bpel:from>
+                                <bpel:to>$IQBatchesType</bpel:to><mapper:mapperLink><mapper:vertice id="96772133" targetPath="$IQBatchesType" targetedBy="1478614637-arg0"></mapper:vertice><mapper:vertice id="1478614637" sourcePath="$thisGet_resultsRequest1Msg.body"></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                        </bpdm:linkset>
+                    </bpdm:messagingtask>
+                </bpel:sequence>
+            </bpel:scope>
             <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Process IQ Batch" bpdm:ID="_xFaHkNiDEee2ItVqPC1yfA">
                 <bpdm:linkset bpdm:type="loop" bpdm:loopType="forEach" bpdm:backEdgeParticipantType="none" parallel="yes" counterName="batchCounter" bpdm:isBackEdgeContributor="no">
                     <bpel:condition bpdm:loopType="forEachStartCounter">1<mapper:mapperLink><mapper:vertice id="1077387780" targetPath="$Start counter" targetedBy="458845729-arg0"></mapper:vertice><mapper:vertice id="458845729" dimension="79x24" location="600,12"><mapper:value>1</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
@@ -226,86 +238,67 @@
                     <bpel:correlationSet name="iqBatchValidationCorrelation" properties="this:iqBatchId"/>
                 </bpel:correlationSets>
                 <bpel:variables>
-                    <bpel:variable name="dCMInitiate_IQ_BatchRequest1Msg" messageType="getIQBatch-process:Receive_requestRequest" binding="getIQBatch-process:processAndClientServiceBinding" operation="Receive_request" opMsgType="0" bpdm:id="_NyEuwNnhEee2MLg0sBZbqw" bpdm:messageIds=" out:_Nx2sUNnhEee2MLg0sBZbqw">
-                        <bpel:from bpdm:toPart="body">
-                            <bpel:literal bpdm:linkedMessageType="getIQBatch-process:Receive_requestRequest" bpdm:linkedPart="body" bpdm:binding="getIQBatch-process:processAndClientServiceBinding" bpdm:opMsgType="0" bpdm:operation="Receive_request"></bpel:literal>
-                        </bpel:from>
-                    </bpel:variable>
-                    <bpel:variable name="getIQBatch-processReceive_requestResponse2Msg" messageType="getIQBatch-process:Receive_requestResponse" binding="getIQBatch-process:processAndClientServiceBinding" operation="Receive_request" opMsgType="1" bpdm:id="_Oi2rcNnhEee2MLg0sBZbqw" bpdm:messageIds="inc:_Oh30ANnhEee2MLg0sBZbqw"/>
-                    <bpel:variable name="thisReceive_acknowledgementRequest1Msg" messageType="this:Receive_acknowledgementRequest" bpdm:id="_b3vo9dnhEee2MLg0sBZbqw" bpdm:messageIds="inc:_b21qANnhEee2MLg0sBZbqw"/>
-                    <bpel:variable name="thisReceive_acknowledgementResponse2Msg" messageType="this:Receive_acknowledgementResponse" bpdm:id="_caiM8NnhEee2MLg0sBZbqw" bpdm:messageIds=" out:_caNc0NnhEee2MLg0sBZbqw">
-                        <bpel:from bpdm:toPart="body">
-                            <bpel:literal bpdm:linkedMessageType="this:Receive_acknowledgementResponse" bpdm:linkedPart="body"></bpel:literal>
-                        </bpel:from>
-                    </bpel:variable>
-                    <bpel:variable name="thisReceive_IQ_Batch_ResultsRequest1Msg" messageType="this:Receive_IQ_Batch_ResultsRequest" bpdm:id="_qW8dcNnhEee2MLg0sBZbqw" bpdm:messageIds="inc:_qWETsNnhEee2MLg0sBZbqw"/>
-                    <bpel:variable name="thisReceive_IQ_Batch_ResultsResponse1Msg" messageType="this:Receive_IQ_Batch_ResultsResponse" bpdm:id="_r9BDYNnhEee2MLg0sBZbqw" bpdm:messageIds=" out:_r8jJUNnhEee2MLg0sBZbqw">
-                        <bpel:from bpdm:toPart="body">
-                            <bpel:literal bpdm:linkedMessageType="this:Receive_IQ_Batch_ResultsResponse" bpdm:linkedPart="body"></bpel:literal>
-                        </bpel:from>
-                    </bpel:variable>
                     <bpel:variable name="batchValid" type="xs:boolean" bpdm:id="_dzZ-UNrnEeepo5BdaoEIvQ">
                         <bpel:from>
                             <bpel:literal bpdm:linkedType="xs:boolean"></bpel:literal>
                         </bpel:from>
                     </bpel:variable>
-                    <bpel:variable name="validatedBatch" element="generateIQBatch:iob_request_root" bpdm:id="_m_Hc8NsIEeeqtbPiETQo_Q">
+                    <bpel:variable name="IQBatchItemList" element="Launchpoint:IQBatchItemList" bpdm:id="_LeW5Jd6WEeevw9CK4cNsbA">
                         <bpel:from>
-                            <bpel:literal bpdm:linkedElement="generateIQBatch:iob_request_root"></bpel:literal>
+                            <bpel:literal bpdm:linkedElement="Launchpoint:IQBatchItemList" bpdm:linkedFile="IQBatchItemList-_2mWjgNfGEee2L7fDC3rSXg-0-literal.xml"></bpel:literal>
+                        </bpel:from>
+                    </bpel:variable>
+                    <bpel:variable name="IQBatch" element="Launchpoint:IQBatch" bpdm:id="_b87kZt6WEeevw9CK4cNsbA">
+                        <bpel:from>
+                            <bpel:literal bpdm:linkedElement="Launchpoint:IQBatch"></bpel:literal>
+                        </bpel:from>
+                    </bpel:variable>
+                    <bpel:variable name="thisReceive_IQ_Batch_ResultsRequest1Msg" messageType="this:Receive_IQ_Batch_ResultsRequest" bpdm:messageIds="inc:_qWETsNnhEee2MLg0sBZbqw"/>
+                    <bpel:variable name="thisReceive_IQ_Batch_ResultsResponse1Msg" messageType="this:Receive_IQ_Batch_ResultsResponse" bpdm:messageIds=" out:_r8jJUNnhEee2MLg0sBZbqw">
+                        <bpel:from bpdm:toPart="body">
+                            <bpel:literal bpdm:linkedMessageType="this:Receive_IQ_Batch_ResultsResponse" bpdm:linkedPart="body"></bpel:literal>
                         </bpel:from>
                     </bpel:variable>
                 </bpel:variables>
                 <bpel:sequence>
+                    <bpdm:messagingtask eventType="start: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Start_Event" bpdm:ID="_ebAwYN6WEeevw9CK4cNsbA" bpdm:isHeaderAuthorizationAware="no">
+                        <bpdm:linkset bpdm:type="assignments">
+                            <bpel:copy>
+                                <bpel:from>$IQBatchesType/Launchpoint:batches[$batchCounter]</bpel:from>
+                                <bpel:to>$IQBatch</bpel:to><mapper:mapperLink><mapper:vertice id="285256934" targetPath="$IQBatch" targetedBy="1859874343-arg2"></mapper:vertice><mapper:vertice id="1859874343" dimension="79x24" location="443,53"><mapper:value>[]</mapper:value></mapper:vertice><mapper:vertice id="2123851157" sourcePath="$IQBatchesType/Launchpoint:batches" targetedBy="1859874343-arg0"></mapper:vertice><mapper:vertice id="1956903542" sourcePath="$batchCounter" targetedBy="1859874343-arg1"></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                        </bpdm:linkset>
+                    </bpdm:messagingtask>
                     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Generate IQ Letter Batch" bpdm:ID="_9E6u4NrmEeepo5BdaoEIvQ">
                         <bpdm:linkset bpdm:type="loop" bpdm:loopType="repeatUntil" bpdm:backEdgeParticipantType="none" bpdm:isBackEdgeContributor="no">
-                            <bpel:condition bpdm:loopType="repeatUntil">true() = $batchValid<mapper:mapperLink><mapper:vertice id="365847272" targetPath="$repeat until" targetedBy="315307848-arg1"></mapper:vertice><mapper:vertice id="315307848" dimension="79x24" location="480,120"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="814476835" dimension="79x24" location="630,33" targetedBy="315307848-arg0"><mapper:value>true()</mapper:value></mapper:vertice><mapper:vertice id="1758885670" sourcePath="$batchValid" targetedBy="315307848-arg2"></mapper:vertice></mapper:mapperLink></bpel:condition>
+                            <bpel:condition bpdm:loopType="repeatUntil">true() = $batchValid
+<mapper:mapperLink>
+  <mapper:vertice id="782140999" targetPath="$repeat until" targetedBy="1687216000-arg1"></mapper:vertice>
+  <mapper:vertice id="1687216000" dimension="79x24" location="288,108">
+    <mapper:value>=</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="888327770" dimension="79x24" location="228,36" targetedBy="1687216000-arg0">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1269556421" sourcePath="$batchValid" targetedBy="1687216000-arg2"></mapper:vertice>
+</mapper:mapperLink></bpel:condition>
                         </bpdm:linkset>
-                        <bpel:variables>
-                            <bpel:variable name="userRequest_letter_validationRequest1Msg" messageType="HumanVerification-process:received_validation_requestRequest" binding="HumanVerification-process:processAndClientServiceBinding" operation="received_validation_request" opMsgType="0" bpdm:id="_P1xU4NreEeeyFrQIgRvWZA" bpdm:messageIds=" out:_P1Q-kNreEeeyFrQIgRvWZA">
-                                <bpel:from bpdm:toPart="body">
-                                    <bpel:literal bpdm:linkedMessageType="HumanVerification-process:received_validation_requestRequest" bpdm:linkedPart="body" bpdm:binding="HumanVerification-process:processAndClientServiceBinding" bpdm:opMsgType="0" bpdm:operation="received_validation_request"></bpel:literal>
-                                </bpel:from>
-                            </bpel:variable>
-                            <bpel:variable name="IQBatchType" type="Launchpoint:IQBatchType" bpdm:id="_Tp5vANiHEee2ItVqPC1yfA">
-                                <bpel:from>
-                                    <bpel:literal bpdm:linkedType="Launchpoint:IQBatchType"></bpel:literal>
-                                </bpel:from>
-                            </bpel:variable>
-                            <bpel:variable name="thisReceive_validation_resultsResponse1Msg" messageType="this:Receive_validation_resultsResponse" bpdm:id="_T2OSkNreEeeyFrQIgRvWZA" bpdm:messageIds=" out:_T19M0NreEeeyFrQIgRvWZA">
-                                <bpel:from bpdm:toPart="body">
-                                    <bpel:literal bpdm:linkedMessageType="this:Receive_validation_resultsResponse" bpdm:linkedPart="body"></bpel:literal>
-                                </bpel:from>
-                            </bpel:variable>
-                            <bpel:variable name="userRequest_letter_validationResponse2Msg" messageType="HumanVerification-process:received_validation_requestResponse" binding="HumanVerification-process:processAndClientServiceBinding" operation="received_validation_request" opMsgType="1" bpdm:id="_QOjoUNreEeeyFrQIgRvWZA" bpdm:messageIds="inc:_QOSikNreEeeyFrQIgRvWZA"/>
-                            <bpel:variable name="thisReceive_validation_resultsRequest1Msg" messageType="this:Receive_validation_resultsRequest" bpdm:id="_TGcbcNreEeeyFrQIgRvWZA" bpdm:messageIds="inc:_TGF2INreEeeyFrQIgRvWZA"/>
-                            <bpel:variable name="iqRequestBatch" element="generateIQBatch:iob_request_root" bpdm:id="_dGxPANlsEee14LnV0IkhZg">
-                                <bpel:from>
-                                    <bpel:literal bpdm:linkedElement="generateIQBatch:iob_request_root" bpdm:linkedFile="iob_request_root-_2mWjgNfGEee2L7fDC3rSXg-0-literal.xml"></bpel:literal>
-                                </bpel:from>
-                            </bpel:variable>
-                        </bpel:variables>
                         <bpel:sequence>
-                            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get Batch" bpdm:ID="_sAn3sNiGEee2ItVqPC1yfA" bpdm:isHeaderAuthorizationAware="no">
+                            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Init IQBatchItemList" bpdm:ID="_JI9gUN6cEeevw9CK4cNsbA" bpdm:isHeaderAuthorizationAware="no">
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
-                                        <bpel:from>$IQBatchesType/Launchpoint:batches[$batchCounter]</bpel:from>
-                                        <bpel:to>$IQBatchType</bpel:to><mapper:mapperLink><mapper:vertice id="550062327" targetPath="$IQBatchType" targetedBy="1652249683-arg2"></mapper:vertice><mapper:vertice id="1652249683" dimension="79x24" location="346,50"><mapper:value>[]</mapper:value></mapper:vertice><mapper:vertice id="825479460" sourcePath="$IQBatchesType/Launchpoint:batches" targetedBy="1652249683-arg0"></mapper:vertice><mapper:vertice id="1226311560" sourcePath="$batchCounter" targetedBy="1652249683-arg1"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                </bpdm:linkset>
-                            </bpdm:messagingtask>
-                            <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Set IQ Batch Id" bpdm:ID="_Q4BEoNnkEee2MLg0sBZbqw" bpdm:isHeaderAuthorizationAware="no">
-                                <bpdm:linkset bpdm:type="assignments">
-                                    <bpel:copy>
-                                        <bpel:from>concat($ode:pid, $IQBatchType/Launchpoint:clientId)</bpel:from>
-                                        <bpel:to>$iqRequestBatch/generateIQBatch:IQBatchId</bpel:to><mapper:mapperLink><mapper:vertice id="1856982588" targetPath="$iqRequestBatch/generateIQBatch:IQBatchId" targetedBy="61304392-arg2"></mapper:vertice><mapper:vertice id="61304392" dimension="79x24" location="492,192"><mapper:value>concat()</mapper:value></mapper:vertice><mapper:vertice id="1182758845" sourcePath="$ode:pid" targetedBy="61304392-arg0"></mapper:vertice><mapper:vertice id="739075356" sourcePath="$IQBatchType/Launchpoint:clientId" targetedBy="61304392-arg1"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>$IQBatchType/Launchpoint:environmentId</bpel:from>
-                                        <bpel:to>$iqRequestBatch/generateIQBatch:EnvironmentId</bpel:to><mapper:mapperLink><mapper:vertice id="877608663" targetPath="$iqRequestBatch/generateIQBatch:EnvironmentId" targetedBy="542780592-arg0"></mapper:vertice><mapper:vertice id="542780592" sourcePath="$IQBatchType/Launchpoint:environmentId"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>$IQBatchType/Launchpoint:clientId</bpel:from>
-                                        <bpel:to>$iqRequestBatch/generateIQBatch:ClientId</bpel:to><mapper:mapperLink><mapper:vertice id="845817420" targetPath="$iqRequestBatch/generateIQBatch:ClientId" targetedBy="368539163-arg0"></mapper:vertice><mapper:vertice id="368539163" sourcePath="$IQBatchType/Launchpoint:clientId"></mapper:vertice></mapper:mapperLink>
+                                        <bpel:from>bpel:doXslTransform("../../XSLT/InitIQBatchItemList.xslt", $IQBatch)</bpel:from>
+                                        <bpel:to>$IQBatchItemList</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="375280414" targetPath="$IQBatchItemList" targetedBy="1862590916-arg2"></mapper:vertice>
+  <mapper:vertice id="1862590916" dimension="126x24" location="357,75">
+    <mapper:value>bpel:doXslTransform()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="500168641" dimension="192x24" location="109,31" targetedBy="1862590916-arg0">
+    <mapper:value>"../../XSLT/InitIQBatchItemList.xslt"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1265067079" sourcePath="$IQBatch" targetedBy="1862590916-arg1"></mapper:vertice>
+</mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
@@ -324,36 +317,27 @@
                                         </bpel:from>
                                     </bpel:variable>
                                     <bpel:variable name="IQTracking" element="metrics:IQTracking" xvar:id="IQTracking-_WOBqoNkhEeee0bCkMq0JVw" xvar:relates-to="IQTracking-keys" bpdm:xvarType="metrics:IQTracking" bpdm:id="_WOBqoNkhEeee0bCkMq0JVw"/>
-                                    <bpel:variable name="Cases" element="generateIQBatch:Cases" bpdm:id="_7wI18Nl1Eee14LnV0IkhZg">
-                                        <bpel:from>
-                                            <bpel:literal bpdm:linkedElement="generateIQBatch:Cases" bpdm:linkedFile="Cases-_2mWjgNfGEee2L7fDC3rSXg-0-literal.xml"></bpel:literal>
-                                        </bpel:from>
-                                    </bpel:variable>
-                                    <bpel:variable name="dCMSend_DCM_ResultsRequest2Msg" messageType="this:Get_DCM_Ack.Response" bpdm:id="_2zv6cNkzEeee0bCkMq0JVw" bpdm:messageIds=" out:_2zn-oNkzEeee0bCkMq0JVw">
-                                        <bpel:from bpdm:toPart="body">
-                                            <bpel:literal bpdm:linkedMessageType="this:Get_DCM_Ack.Response" bpdm:linkedPart="body"></bpel:literal>
-                                        </bpel:from>
-                                    </bpel:variable>
-                                    <bpel:variable name="thisGet_DCM_Ack_Request1Msg" messageType="this:Get_DCM_Ack.Request" bpdm:id="_2IxDwNkzEeee0bCkMq0JVw" bpdm:messageIds="inc:_2IG8cNkzEeee0bCkMq0JVw"/>
                                     <bpel:variable name="thisReceive_resultsRequest1Msg" messageType="this:Receive_resultsRequest" bpdm:messageIds="inc:_j2zIENkOEeee0bCkMq0JVw"/>
                                     <bpel:variable name="thisReceive_resultsResponse2Msg" messageType="this:Receive_resultsResponse" bpdm:messageIds=" out:_kbODwNkOEeee0bCkMq0JVw">
                                         <bpel:from bpdm:toPart="body">
                                             <bpel:literal bpdm:linkedMessageType="this:Receive_resultsResponse" bpdm:linkedPart="body"></bpel:literal>
                                         </bpel:from>
                                     </bpel:variable>
-                                    <bpel:variable name="dCMTaskRequest1Msg" messageType="generateFile-process:Recieve_RequestRequest" binding="generateFile-process:callerAndProcessServiceBinding" operation="Recieve_Request" opMsgType="0" bpdm:id="_pFlwoN5-EeehVZzZ9HvU-g" bpdm:messageIds=" out:_pFSOoN5-EeehVZzZ9HvU-g">
-                                        <bpel:from bpdm:toPart="body">
-                                            <bpel:literal bpdm:linkedMessageType="generateFile-process:Recieve_RequestRequest" bpdm:linkedPart="body" bpdm:binding="generateFile-process:callerAndProcessServiceBinding" bpdm:opMsgType="0" bpdm:operation="Recieve_Request"></bpel:literal>
-                                        </bpel:from>
-                                    </bpel:variable>
-                                    <bpel:variable name="generateFile-processRecieve_RequestResponse2Msg" messageType="generateFile-process:Recieve_RequestResponse" binding="generateFile-process:callerAndProcessServiceBinding" operation="Recieve_Request" opMsgType="1" bpdm:id="_plxskN5-EeehVZzZ9HvU-g" bpdm:messageIds="inc:_plCFsN5-EeehVZzZ9HvU-g"/>
                                 </bpel:variables>
                                 <bpel:sequence>
                                     <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get Case" bpdm:ID="_cG_XcNiEEee2ItVqPC1yfA" bpdm:isHeaderAuthorizationAware="no">
                                         <bpdm:linkset bpdm:type="assignments">
                                             <bpel:copy>
-                                                <bpel:from>$IQBatchType/Launchpoint:cases[$caseCounter]</bpel:from>
-                                                <bpel:to>$IQDBCaseType</bpel:to><mapper:mapperLink><mapper:vertice id="1324500818" targetPath="$IQDBCaseType" targetedBy="82777297-arg2"></mapper:vertice><mapper:vertice id="82777297" dimension="79x24" location="543,75"><mapper:value>[]</mapper:value></mapper:vertice><mapper:vertice id="1315895691" sourcePath="$IQBatchType/Launchpoint:cases" targetedBy="82777297-arg0"></mapper:vertice><mapper:vertice id="529241227" sourcePath="$caseCounter" targetedBy="82777297-arg1"></mapper:vertice></mapper:mapperLink>
+                                                <bpel:from>$caseCounter[$IQBatch/Launchpoint:cases]</bpel:from>
+                                                <bpel:to>$IQDBCaseType</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1700410718" targetPath="$IQDBCaseType" targetedBy="51198604-arg1"></mapper:vertice>
+  <mapper:vertice id="51198604" dimension="79x24" location="543,75">
+    <mapper:value>[]</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="752553964" sourcePath="$caseCounter" targetedBy="51198604-arg0"></mapper:vertice>
+  <mapper:vertice id="2093110568" sourcePath="$IQBatch/Launchpoint:cases" targetedBy="51198604-arg2"></mapper:vertice>
+</mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                     </bpdm:messagingtask>
@@ -373,68 +357,64 @@
                                             </bpel:copy>
                                         </bpdm:linkset>
                                     </bpdm:messagingtask>
-                                    <bpdm:messagingtask operation="Recieve_Request" partnerLink="dCmAndQueue_MonitorForCanonicPortPlk0Var" portType="generateFile-process:Forcaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Generate File" bpdm:ID="_wkSWENkIEeeOt_CLbvr25Q" bpdm:isHeaderAuthorizationAware="no">
-                                        <bpdm:linkset bpdm:type="assignments">
-                                            <bpel:copy>
-                                                <bpel:from>"IQLetter"</bpel:from>
-                                                <bpel:to>$dCMTaskRequest1Msg.body/Launchpoint:fileType</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1598093230" targetPath="$dCMTaskRequest1Msg.body/Launchpoint:fileType" targetedBy="870284855-arg0"></mapper:vertice>
-  <mapper:vertice id="870284855" dimension="79x24" location="501,84">
-    <mapper:value>"IQLetter"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
-                                            </bpel:copy>
-                                            <bpel:copy>
-                                                <bpel:from>""</bpel:from>
-                                                <bpel:to>$dCMTaskRequest1Msg.body/Launchpoint:content</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="667003706" targetPath="$dCMTaskRequest1Msg.body/Launchpoint:content" targetedBy="598904128-arg0"></mapper:vertice>
-  <mapper:vertice id="598904128" dimension="78x24" location="467,130">
-    <mapper:value>""</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
-                                            </bpel:copy>
-                                            <bpel:copy>
-                                                <bpel:from>"IQLETTER"</bpel:from>
-                                                <bpel:to>$dCMTaskRequest1Msg.body/Launchpoint:source</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1007707372" targetPath="$dCMTaskRequest1Msg.body/Launchpoint:source" targetedBy="1560866947-arg0"></mapper:vertice>
-  <mapper:vertice id="1560866947" dimension="79x24" location="455,206">
-    <mapper:value>"IQLETTER"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
-                                            </bpel:copy>
-                                            <bpel:copy>
-                                                <bpel:from>$IQDBCaseType/Launchpoint:Case</bpel:from>
-                                                <bpel:to>$dCMTaskRequest1Msg.body/Launchpoint:Case</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1523349795" targetPath="$dCMTaskRequest1Msg.body/Launchpoint:Case" targetedBy="1354430655-arg0"></mapper:vertice>
-  <mapper:vertice id="1354430655" sourcePath="$IQDBCaseType/Launchpoint:Case"></mapper:vertice>
-</mapper:mapperLink>
-                                            </bpel:copy>
-                                        </bpdm:linkset>
-                                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMTaskRequest1Msg" bpdm:msgVarScopeId="_cG87MNiEEee2ItVqPC1yfA" bpdm:variableIsManaged="true" bpdm:messageType="generateFile-process:Recieve_RequestRequest" bpdm:binding="generateFile-process:callerAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_pFSOoN5-EeehVZzZ9HvU-g">
-                                            <bpel:correlation set="fileGenerationCorrelation" initiate="join" pattern="request" bpdm:isSource="false"></bpel:correlation>
-                                        </bpdm:linkset>
-                                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="generateFile-processRecieve_RequestResponse2Msg" bpdm:msgVarScopeId="_cG87MNiEEee2ItVqPC1yfA" bpdm:variableIsManaged="true" bpdm:messageType="generateFile-process:Recieve_RequestResponse" bpdm:binding="generateFile-process:callerAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_plCFsN5-EeehVZzZ9HvU-g"></bpdm:linkset>
-                                    </bpdm:messagingtask>
-                                    <bpdm:messagingtask operation="Get_DCM_Ack." partnerLink="dCmAndQueue_MonitorPlkVar" portType="this:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get DCM Ack." bpdm:ID="_9RGN0NkyEeee0bCkMq0JVw" bpdm:isHeaderAuthorizationAware="yes">
-                                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisGet_DCM_Ack_Request1Msg" bpdm:msgVarScopeId="_cG87MNiEEee2ItVqPC1yfA" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_DCM_Ack.Request" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_2IG8cNkzEeee0bCkMq0JVw">
-                                            <bpel:correlation set="fileGenerationCorrelation" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
-                                        </bpdm:linkset>
-                                        <bpdm:linkset bpdm:type="assignments">
-                                            <bpel:copy>
-                                                <bpel:from>$ode:pid</bpel:from>
-                                                <bpel:to>$dCMSend_DCM_ResultsRequest2Msg.body/Launchpoint:pid</bpel:to><mapper:mapperLink><mapper:vertice id="683627989" targetPath="$dCMSend_DCM_ResultsRequest2Msg.body/Launchpoint:pid" targetedBy="567146974-arg0"></mapper:vertice><mapper:vertice id="567146974" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
-                                            </bpel:copy>
-                                            <bpel:copy>
-                                                <bpel:from>current-dateTime()</bpel:from>
-                                                <bpel:to>$dCMSend_DCM_ResultsRequest2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="1710449961" targetPath="$dCMSend_DCM_ResultsRequest2Msg.body/Launchpoint:timestamp" targetedBy="639815561-arg0"></mapper:vertice><mapper:vertice id="639815561" dimension="109x24" location="600,72"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
-                                            </bpel:copy>
-                                        </bpdm:linkset>
-                                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="dCMSend_DCM_ResultsRequest2Msg" bpdm:msgVarScopeId="_cG87MNiEEee2ItVqPC1yfA" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_DCM_Ack.Response" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_2zn-oNkzEeee0bCkMq0JVw"></bpdm:linkset>
-                                    </bpdm:messagingtask>
+                                    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Generate file" bpdm:ID="_ZzLiQN6ZEeevw9CK4cNsbA">
+                                        <bpel:variables>
+                                            <bpel:variable name="dCMSend_DCM_ResultsRequest2Msg" messageType="this:Get_DCM_Ack.Response" bpdm:id="_2zv6cNkzEeee0bCkMq0JVw" bpdm:messageIds=" out:_2zn-oNkzEeee0bCkMq0JVw">
+                                                <bpel:from bpdm:toPart="body">
+                                                    <bpel:literal bpdm:linkedMessageType="this:Get_DCM_Ack.Response" bpdm:linkedPart="body"></bpel:literal>
+                                                </bpel:from>
+                                            </bpel:variable>
+                                            <bpel:variable name="dCMTaskRequest1Msg" messageType="generateFile-process:Recieve_RequestRequest" binding="generateFile-process:callerAndProcessServiceBinding" operation="Recieve_Request" opMsgType="0" bpdm:id="_pFlwoN5-EeehVZzZ9HvU-g" bpdm:messageIds=" out:_pFSOoN5-EeehVZzZ9HvU-g">
+                                                <bpel:from bpdm:toPart="body">
+                                                    <bpel:literal bpdm:linkedMessageType="generateFile-process:Recieve_RequestRequest" bpdm:linkedPart="body" bpdm:binding="generateFile-process:callerAndProcessServiceBinding" bpdm:opMsgType="0" bpdm:operation="Recieve_Request"></bpel:literal>
+                                                </bpel:from>
+                                            </bpel:variable>
+                                            <bpel:variable name="thisGet_DCM_Ack_Request1Msg" messageType="this:Get_DCM_Ack.Request" bpdm:id="_2IxDwNkzEeee0bCkMq0JVw" bpdm:messageIds="inc:_2IG8cNkzEeee0bCkMq0JVw"/>
+                                            <bpel:variable name="generateFile-processRecieve_RequestResponse2Msg" messageType="generateFile-process:Recieve_RequestResponse" binding="generateFile-process:callerAndProcessServiceBinding" operation="Recieve_Request" opMsgType="1" bpdm:id="_plxskN5-EeehVZzZ9HvU-g" bpdm:messageIds="inc:_plCFsN5-EeehVZzZ9HvU-g"/>
+                                        </bpel:variables>
+                                        <bpel:sequence>
+                                            <bpdm:messagingtask operation="Recieve_Request" partnerLink="dCmAndQueue_MonitorForCanonicPortPlk0Var" portType="generateFile-process:Forcaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Generate File" bpdm:ID="_wkSWENkIEeeOt_CLbvr25Q" bpdm:isHeaderAuthorizationAware="no">
+                                                <bpdm:linkset bpdm:type="assignments">
+                                                    <bpel:copy>
+                                                        <bpel:from>"IQLetter"</bpel:from>
+                                                        <bpel:to>$dCMTaskRequest1Msg.body/Launchpoint:fileType</bpel:to><mapper:mapperLink><mapper:vertice id="1598093230" targetPath="$dCMTaskRequest1Msg.body/Launchpoint:fileType" targetedBy="870284855-arg0"></mapper:vertice><mapper:vertice id="870284855" dimension="79x24" location="501,84"><mapper:value>"IQLetter"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>""</bpel:from>
+                                                        <bpel:to>$dCMTaskRequest1Msg.body/Launchpoint:content</bpel:to><mapper:mapperLink><mapper:vertice id="667003706" targetPath="$dCMTaskRequest1Msg.body/Launchpoint:content" targetedBy="598904128-arg0"></mapper:vertice><mapper:vertice id="598904128" dimension="78x24" location="467,130"><mapper:value>""</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>"IQLETTER"</bpel:from>
+                                                        <bpel:to>$dCMTaskRequest1Msg.body/Launchpoint:source</bpel:to><mapper:mapperLink><mapper:vertice id="1007707372" targetPath="$dCMTaskRequest1Msg.body/Launchpoint:source" targetedBy="1560866947-arg0"></mapper:vertice><mapper:vertice id="1560866947" dimension="79x24" location="455,206"><mapper:value>"IQLETTER"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>$IQDBCaseType/Launchpoint:Case</bpel:from>
+                                                        <bpel:to>$dCMTaskRequest1Msg.body/Launchpoint:Case</bpel:to><mapper:mapperLink><mapper:vertice id="1523349795" targetPath="$dCMTaskRequest1Msg.body/Launchpoint:Case" targetedBy="1354430655-arg0"></mapper:vertice><mapper:vertice id="1354430655" sourcePath="$IQDBCaseType/Launchpoint:Case"></mapper:vertice></mapper:mapperLink>
+                                                    </bpel:copy>
+                                                </bpdm:linkset>
+                                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMTaskRequest1Msg" bpdm:msgVarScopeId="_ZzLiQN6ZEeevw9CK4cNsbA" bpdm:variableIsManaged="true" bpdm:messageType="generateFile-process:Recieve_RequestRequest" bpdm:binding="generateFile-process:callerAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_pFSOoN5-EeehVZzZ9HvU-g">
+                                                    <bpel:correlation set="fileGenerationCorrelation" initiate="join" pattern="request" bpdm:isSource="false"></bpel:correlation>
+                                                </bpdm:linkset>
+                                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="generateFile-processRecieve_RequestResponse2Msg" bpdm:msgVarScopeId="_ZzLiQN6ZEeevw9CK4cNsbA" bpdm:variableIsManaged="true" bpdm:messageType="generateFile-process:Recieve_RequestResponse" bpdm:binding="generateFile-process:callerAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_plCFsN5-EeehVZzZ9HvU-g"></bpdm:linkset>
+                                            </bpdm:messagingtask>
+                                            <bpdm:messagingtask operation="Get_DCM_Ack." partnerLink="dCmAndQueue_MonitorPlkVar" portType="this:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get DCM Ack." bpdm:ID="_9RGN0NkyEeee0bCkMq0JVw" bpdm:isHeaderAuthorizationAware="yes">
+                                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisGet_DCM_Ack_Request1Msg" bpdm:msgVarScopeId="_ZzLiQN6ZEeevw9CK4cNsbA" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_DCM_Ack.Request" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_2IG8cNkzEeee0bCkMq0JVw">
+                                                    <bpel:correlation set="fileGenerationCorrelation" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
+                                                </bpdm:linkset>
+                                                <bpdm:linkset bpdm:type="assignments">
+                                                    <bpel:copy>
+                                                        <bpel:from>$ode:pid</bpel:from>
+                                                        <bpel:to>$dCMSend_DCM_ResultsRequest2Msg.body/Launchpoint:pid</bpel:to><mapper:mapperLink><mapper:vertice id="683627989" targetPath="$dCMSend_DCM_ResultsRequest2Msg.body/Launchpoint:pid" targetedBy="567146974-arg0"></mapper:vertice><mapper:vertice id="567146974" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>current-dateTime()</bpel:from>
+                                                        <bpel:to>$dCMSend_DCM_ResultsRequest2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="1710449961" targetPath="$dCMSend_DCM_ResultsRequest2Msg.body/Launchpoint:timestamp" targetedBy="639815561-arg0"></mapper:vertice><mapper:vertice id="639815561" dimension="109x24" location="600,72"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                    </bpel:copy>
+                                                </bpdm:linkset>
+                                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="dCMSend_DCM_ResultsRequest2Msg" bpdm:msgVarScopeId="_ZzLiQN6ZEeevw9CK4cNsbA" bpdm:variableIsManaged="true" bpdm:messageType="this:Get_DCM_Ack.Response" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_2zn-oNkzEeee0bCkMq0JVw"></bpdm:linkset>
+                                            </bpdm:messagingtask>
+                                        </bpel:sequence>
+                                    </bpel:scope>
                                     <bpdm:messagingtask operation="Receive_results" partnerLink="dCmAndQueue_MonitorPlkVar" portType="this:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive results" bpdm:ID="_z5eJMNkIEeeOt_CLbvr25Q" bpdm:isHeaderAuthorizationAware="yes">
                                         <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_resultsRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_resultsRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_j2zIENkOEeee0bCkMq0JVw">
                                             <bpel:correlation set="fileGenerationCorrelation" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
@@ -451,106 +431,138 @@
                                         </bpdm:linkset>
                                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_resultsResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_resultsResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_kbODwNkOEeee0bCkMq0JVw"></bpdm:linkset>
                                     </bpdm:messagingtask>
-                                    <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Initialize case variable" bpdm:ID="_Bq76ENluEee14LnV0IkhZg" bpdm:isHeaderAuthorizationAware="no">
+                                    <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Add item to IQ Batch Item List" bpdm:ID="_lMagcNlsEee14LnV0IkhZg" bpdm:isHeaderAuthorizationAware="no">
                                         <bpdm:linkset bpdm:type="assignments">
                                             <bpel:copy>
-                                                <bpel:from>$thisReceive_resultsRequest1Msg.body/Launchpoint:CaseId</bpel:from>
-                                                <bpel:to>$Cases/generateIQBatch:CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="216428832" targetPath="$Cases/generateIQBatch:CaseId" targetedBy="1333814061-arg0"></mapper:vertice><mapper:vertice id="1333814061" sourcePath="$thisReceive_resultsRequest1Msg.body/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
-                                            </bpel:copy>
-                                            <bpel:copy>
-                                                <bpel:from>$thisReceive_resultsRequest1Msg.body/Launchpoint:FileId</bpel:from>
-                                                <bpel:to>$Cases/generateIQBatch:FileId</bpel:to><mapper:mapperLink><mapper:vertice id="1924814041" targetPath="$Cases/generateIQBatch:FileId" targetedBy="870499341-arg0"></mapper:vertice><mapper:vertice id="870499341" sourcePath="$thisReceive_resultsRequest1Msg.body/Launchpoint:FileId"></mapper:vertice></mapper:mapperLink>
-                                            </bpel:copy>
-                                        </bpdm:linkset>
-                                    </bpdm:messagingtask>
-                                    <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Add case to batch" bpdm:ID="_lMagcNlsEee14LnV0IkhZg" bpdm:isHeaderAuthorizationAware="no">
-                                        <bpdm:linkset bpdm:type="assignments">
-                                            <bpel:copy>
-                                                <bpel:from>bpel:doXslTransform("../../XSLT/appendCaseToIQBatch.xsl", $iqRequestBatch, "newCase", $Cases)</bpel:from>
-                                                <bpel:to>$iqRequestBatch</bpel:to><mapper:mapperLink><mapper:vertice id="1017515656" targetPath="$iqRequestBatch" targetedBy="388581633-arg1"></mapper:vertice><mapper:vertice id="388581633" dimension="126x24" location="446,120"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="698374474" dimension="208x24" location="252,24" targetedBy="388581633-arg0"><mapper:value>"../../XSLT/appendCaseToIQBatch.xsl"</mapper:value></mapper:vertice><mapper:vertice id="460907910" sourcePath="$iqRequestBatch" targetedBy="388581633-arg2"></mapper:vertice><mapper:vertice id="1612108194" dimension="79x24" location="276,144" targetedBy="388581633-arg3"><mapper:value>"newCase"</mapper:value></mapper:vertice><mapper:vertice id="564679675" sourcePath="$Cases" targetedBy="388581633-arg4"></mapper:vertice></mapper:mapperLink>
+                                                <bpel:from>bpel:doXslTransform("../../XSLT/appendCaseToIQBatch.xsl", $IQBatchItemList, "fileid", $thisReceive_resultsRequest1Msg.body/Launchpoint:FileId, "caseid", $IQDBCaseType/Launchpoint:Case/Launchpoint:CaseId)</bpel:from>
+                                                <bpel:to>$IQBatchItemList</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1986926376" targetPath="$IQBatchItemList" targetedBy="1326095593-arg4"></mapper:vertice>
+  <mapper:vertice id="1326095593" dimension="126x24" location="502,85">
+    <mapper:value>bpel:doXslTransform()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="26528607" dimension="208x24" location="240,36" targetedBy="1326095593-arg0">
+    <mapper:value>"../../XSLT/appendCaseToIQBatch.xsl"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1247482126" sourcePath="$IQBatchItemList" targetedBy="1326095593-arg1"></mapper:vertice>
+  <mapper:vertice id="261860645" dimension="79x24" location="308,182" targetedBy="1326095593-arg2">
+    <mapper:value>"fileid"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="969684414" sourcePath="$thisReceive_resultsRequest1Msg.body/Launchpoint:FileId" targetedBy="1326095593-arg3"></mapper:vertice>
+  <mapper:vertice id="650799691" dimension="79x24" location="330,241" targetedBy="1326095593-arg5">
+    <mapper:value>"caseid"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1197120793" sourcePath="$IQDBCaseType/Launchpoint:Case/Launchpoint:CaseId" targetedBy="1326095593-arg6"></mapper:vertice>
+</mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                     </bpdm:messagingtask>
                                 </bpel:sequence>
                             </bpel:scope>
-                            <bpdm:messagingtask operation="received_validation_request" partnerLink="userAndQueue_MonitorForCanonicPortPlkVar" portType="HumanVerification-process:Forclient" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Validate batch" bpdm:ID="_KyXFYNreEeeyFrQIgRvWZA" bpdm:isHeaderAuthorizationAware="no">
-                                <bpdm:linkset bpdm:type="assignments">
-                                    <bpel:copy>
-                                        <bpel:from>$iqRequestBatch</bpel:from>
-                                        <bpel:to>$userRequest_letter_validationRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="659908109" targetPath="$userRequest_letter_validationRequest1Msg.body" targetedBy="1317266883-arg0"></mapper:vertice><mapper:vertice id="1317266883" sourcePath="$iqRequestBatch"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
+                            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Human verification" bpdm:ID="_yH81EN6WEeevw9CK4cNsbA">
+                                <bpel:variables>
+                                    <bpel:variable name="userRequest_letter_validationResponse2Msg" messageType="HumanVerification-process:received_validation_requestResponse" binding="HumanVerification-process:processAndClientServiceBinding" operation="received_validation_request" opMsgType="1" bpdm:id="_QOjoUNreEeeyFrQIgRvWZA" bpdm:messageIds="inc:_QOSikNreEeeyFrQIgRvWZA"/>
+                                    <bpel:variable name="thisReceive_validation_resultsResponse1Msg" messageType="this:Receive_validation_resultsResponse" bpdm:id="_T2OSkNreEeeyFrQIgRvWZA" bpdm:messageIds=" out:_T19M0NreEeeyFrQIgRvWZA">
+                                        <bpel:from bpdm:toPart="body">
+                                            <bpel:literal bpdm:linkedMessageType="this:Receive_validation_resultsResponse" bpdm:linkedPart="body"></bpel:literal>
+                                        </bpel:from>
+                                    </bpel:variable>
+                                    <bpel:variable name="thisReceive_validation_resultsRequest1Msg" messageType="this:Receive_validation_resultsRequest" bpdm:id="_TGcbcNreEeeyFrQIgRvWZA" bpdm:messageIds="inc:_TGF2INreEeeyFrQIgRvWZA"/>
+                                    <bpel:variable name="userRequest_letter_validationRequest1Msg" messageType="HumanVerification-process:received_validation_requestRequest" binding="HumanVerification-process:processAndClientServiceBinding" operation="received_validation_request" opMsgType="0" bpdm:id="_P1xU4NreEeeyFrQIgRvWZA" bpdm:messageIds=" out:_P1Q-kNreEeeyFrQIgRvWZA">
+                                        <bpel:from bpdm:toPart="body">
+                                            <bpel:literal bpdm:linkedMessageType="HumanVerification-process:received_validation_requestRequest" bpdm:linkedPart="body" bpdm:binding="HumanVerification-process:processAndClientServiceBinding" bpdm:opMsgType="0" bpdm:operation="received_validation_request"></bpel:literal>
+                                        </bpel:from>
+                                    </bpel:variable>
+                                </bpel:variables>
+                                <bpel:sequence>
+                                    <bpdm:messagingtask operation="received_validation_request" partnerLink="userAndQueue_MonitorForCanonicPortPlkVar" portType="HumanVerification-process:Forclient" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Validate batch" bpdm:ID="_KyXFYNreEeeyFrQIgRvWZA" bpdm:isHeaderAuthorizationAware="no">
+                                        <bpdm:linkset bpdm:type="assignments">
+                                            <bpel:copy>
+                                                <bpel:from>$IQBatchItemList</bpel:from>
+                                                <bpel:to>$userRequest_letter_validationRequest1Msg.body</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1573780888" targetPath="$userRequest_letter_validationRequest1Msg.body" targetedBy="341163718-arg0"></mapper:vertice>
+  <mapper:vertice id="341163718" sourcePath="$IQBatchItemList"></mapper:vertice>
+</mapper:mapperLink>
+                                            </bpel:copy>
+                                        </bpdm:linkset>
+                                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="userRequest_letter_validationRequest1Msg" bpdm:msgVarScopeId="_yH81EN6WEeevw9CK4cNsbA" bpdm:variableIsManaged="true" bpdm:messageType="HumanVerification-process:received_validation_requestRequest" bpdm:binding="HumanVerification-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_P1Q-kNreEeeyFrQIgRvWZA">
+                                            <bpel:correlation set="iqBatchValidationCorrelation" initiate="join" pattern="request" bpdm:isSource="false"></bpel:correlation>
+                                        </bpdm:linkset>
+                                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="userRequest_letter_validationResponse2Msg" bpdm:msgVarScopeId="_yH81EN6WEeevw9CK4cNsbA" bpdm:variableIsManaged="true" bpdm:messageType="HumanVerification-process:received_validation_requestResponse" bpdm:binding="HumanVerification-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_QOSikNreEeeyFrQIgRvWZA"></bpdm:linkset>
+                                    </bpdm:messagingtask>
+                                    <bpdm:messagingtask operation="Receive_validation_results" partnerLink="userAndQueue_MonitorForCanonicPortPlkVar" portType="this:ForUser" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive validation results" bpdm:ID="_9g4oQNrdEeeyFrQIgRvWZA" bpdm:isHeaderAuthorizationAware="yes">
+                                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_validation_resultsRequest1Msg" bpdm:msgVarScopeId="_yH81EN6WEeevw9CK4cNsbA" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_validation_resultsRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_TGF2INreEeeyFrQIgRvWZA">
+                                            <bpel:correlation set="iqBatchValidationCorrelation" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
+                                        </bpdm:linkset>
+                                        <bpdm:linkset bpdm:type="assignments">
+                                            <bpel:copy>
+                                                <bpel:from>$ode:pid</bpel:from>
+                                                <bpel:to>$thisReceive_validation_resultsResponse1Msg.body/Launchpoint:pid</bpel:to><mapper:mapperLink><mapper:vertice id="2802083" targetPath="$thisReceive_validation_resultsResponse1Msg.body/Launchpoint:pid" targetedBy="434499795-arg0"></mapper:vertice><mapper:vertice id="434499795" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
+                                            </bpel:copy>
+                                            <bpel:copy>
+                                                <bpel:from>current-dateTime()</bpel:from>
+                                                <bpel:to>$thisReceive_validation_resultsResponse1Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="668538240" targetPath="$thisReceive_validation_resultsResponse1Msg.body/Launchpoint:timestamp" targetedBy="313789222-arg0"></mapper:vertice><mapper:vertice id="313789222" dimension="109x24" location="537,76"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                            </bpel:copy>
+                                        </bpdm:linkset>
+                                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_validation_resultsResponse1Msg" bpdm:msgVarScopeId="_yH81EN6WEeevw9CK4cNsbA" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_validation_resultsResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_T19M0NreEeeyFrQIgRvWZA"></bpdm:linkset>
+                                    </bpdm:messagingtask>
+                                    <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_ykcKgN6bEeevw9CK4cNsbA" bpdm:isHeaderAuthorizationAware="no">
+                                        <bpdm:linkset bpdm:type="assignments">
+                                            <bpel:copy>
+                                                <bpel:from>$thisReceive_validation_resultsRequest1Msg.body/Launchpoint:validationResult</bpel:from>
+                                                <bpel:to>$batchValid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1294564917" targetPath="$batchValid" targetedBy="1132891707-arg0"></mapper:vertice>
+  <mapper:vertice id="1132891707" sourcePath="$thisReceive_validation_resultsRequest1Msg.body/Launchpoint:validationResult"></mapper:vertice>
+</mapper:mapperLink>
+                                            </bpel:copy>
+                                        </bpdm:linkset>
+                                    </bpdm:messagingtask>
+                                </bpel:sequence>
+                            </bpel:scope>
+                        </bpel:sequence>
+                    </bpel:scope>
+                    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send IQ Batch" bpdm:ID="_eNgRIN6cEeevw9CK4cNsbA">
+                        <bpel:variables>
+                            <bpel:variable name="getIQBatch-processReceive_requestResponse2Msg" messageType="getIQBatch-process:Receive_requestResponse" binding="getIQBatch-process:processAndClientServiceBinding" operation="Receive_request" opMsgType="1" bpdm:messageIds="inc:_Oh30ANnhEee2MLg0sBZbqw"/>
+                            <bpel:variable name="dCMInitiate_IQ_BatchRequest1Msg" messageType="getIQBatch-process:Receive_requestRequest" binding="getIQBatch-process:processAndClientServiceBinding" operation="Receive_request" opMsgType="0" bpdm:messageIds=" out:_Nx2sUNnhEee2MLg0sBZbqw">
+                                <bpel:from bpdm:toPart="body">
+                                    <bpel:literal bpdm:linkedMessageType="getIQBatch-process:Receive_requestRequest" bpdm:linkedPart="body" bpdm:binding="getIQBatch-process:processAndClientServiceBinding" bpdm:opMsgType="0" bpdm:operation="Receive_request"></bpel:literal>
+                                </bpel:from>
+                            </bpel:variable>
+                            <bpel:variable name="thisReceive_acknowledgementRequest1Msg" messageType="this:Receive_acknowledgementRequest" bpdm:messageIds="inc:_b21qANnhEee2MLg0sBZbqw"/>
+                            <bpel:variable name="thisReceive_acknowledgementResponse2Msg" messageType="this:Receive_acknowledgementResponse" bpdm:messageIds=" out:_caNc0NnhEee2MLg0sBZbqw">
+                                <bpel:from bpdm:toPart="body">
+                                    <bpel:literal bpdm:linkedMessageType="this:Receive_acknowledgementResponse" bpdm:linkedPart="body"></bpel:literal>
+                                </bpel:from>
+                            </bpel:variable>
+                        </bpel:variables>
+                        <bpel:sequence>
+                            <bpdm:messagingtask operation="Receive_request" partnerLink="dCmAndQueue_MonitorForCanonicPortPlk1Var" portType="getIQBatch-process:Forclient" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Generate IQ Batch" bpdm:ID="_GW_V8NkgEeee0bCkMq0JVw" bpdm:isHeaderAuthorizationAware="no">
+                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMInitiate_IQ_BatchRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getIQBatch-process:Receive_requestRequest" bpdm:binding="getIQBatch-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Nx2sUNnhEee2MLg0sBZbqw">
+                                    <bpel:correlation set="iqBatchCorrelation" initiate="join" pattern="request" bpdm:isSource="false"></bpel:correlation>
                                 </bpdm:linkset>
-                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="userRequest_letter_validationRequest1Msg" bpdm:msgVarScopeId="_9E6u4NrmEeepo5BdaoEIvQ" bpdm:variableIsManaged="true" bpdm:messageType="HumanVerification-process:received_validation_requestRequest" bpdm:binding="HumanVerification-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_P1Q-kNreEeeyFrQIgRvWZA">
-                                    <bpel:correlation set="iqBatchValidationCorrelation" initiate="join" pattern="request" bpdm:isSource="false"></bpel:correlation>
-                                </bpdm:linkset>
-                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="userRequest_letter_validationResponse2Msg" bpdm:msgVarScopeId="_9E6u4NrmEeepo5BdaoEIvQ" bpdm:variableIsManaged="true" bpdm:messageType="HumanVerification-process:received_validation_requestResponse" bpdm:binding="HumanVerification-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_QOSikNreEeeyFrQIgRvWZA"></bpdm:linkset>
+                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="getIQBatch-processReceive_requestResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="getIQBatch-process:Receive_requestResponse" bpdm:binding="getIQBatch-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Oh30ANnhEee2MLg0sBZbqw"></bpdm:linkset>
                             </bpdm:messagingtask>
-                            <bpdm:messagingtask operation="Receive_validation_results" partnerLink="userAndQueue_MonitorForCanonicPortPlkVar" portType="this:ForUser" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive validation results" bpdm:ID="_9g4oQNrdEeeyFrQIgRvWZA" bpdm:isHeaderAuthorizationAware="yes">
-                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_validation_resultsRequest1Msg" bpdm:msgVarScopeId="_9E6u4NrmEeepo5BdaoEIvQ" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_validation_resultsRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_TGF2INreEeeyFrQIgRvWZA">
-                                    <bpel:correlation set="iqBatchValidationCorrelation" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
+                            <bpdm:messagingtask operation="Receive_acknowledgement" partnerLink="dCmAndQueue_MonitorPlkVar" portType="this:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive acknowledgement" bpdm:ID="_IOEzYNkgEeee0bCkMq0JVw" bpdm:isHeaderAuthorizationAware="yes">
+                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_acknowledgementRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_acknowledgementRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_b21qANnhEee2MLg0sBZbqw">
+                                    <bpel:correlation set="iqBatchCorrelation" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>$ode:pid</bpel:from>
-                                        <bpel:to>$thisReceive_validation_resultsResponse1Msg.body/Launchpoint:pid</bpel:to><mapper:mapperLink><mapper:vertice id="2802083" targetPath="$thisReceive_validation_resultsResponse1Msg.body/Launchpoint:pid" targetedBy="434499795-arg0"></mapper:vertice><mapper:vertice id="434499795" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
+                                        <bpel:to>$thisReceive_acknowledgementResponse2Msg.body/Launchpoint:pid</bpel:to><mapper:mapperLink><mapper:vertice id="395009551" targetPath="$thisReceive_acknowledgementResponse2Msg.body/Launchpoint:pid" targetedBy="1623222021-arg0"></mapper:vertice><mapper:vertice id="1623222021" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>current-dateTime()</bpel:from>
-                                        <bpel:to>$thisReceive_validation_resultsResponse1Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="668538240" targetPath="$thisReceive_validation_resultsResponse1Msg.body/Launchpoint:timestamp" targetedBy="313789222-arg0"></mapper:vertice><mapper:vertice id="313789222" dimension="109x24" location="537,76"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                        <bpel:to>$thisReceive_acknowledgementResponse2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="2144228375" targetPath="$thisReceive_acknowledgementResponse2Msg.body/Launchpoint:timestamp" targetedBy="977129833-arg0"></mapper:vertice><mapper:vertice id="977129833" dimension="109x24" location="600,72"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
-                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_validation_resultsResponse1Msg" bpdm:msgVarScopeId="_9E6u4NrmEeepo5BdaoEIvQ" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_validation_resultsResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_T19M0NreEeeyFrQIgRvWZA"></bpdm:linkset>
-                            </bpdm:messagingtask>
-                            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Update Validation variables" bpdm:ID="_vrnTANsIEeeqtbPiETQo_Q" bpdm:isHeaderAuthorizationAware="no">
-                                <bpdm:linkset bpdm:type="assignments">
-                                    <bpel:copy>
-                                        <bpel:from>if ("approve" = $thisReceive_validation_resultsRequest1Msg.body/Launchpoint:validationResult) then (true()) else (false())</bpel:from>
-                                        <bpel:to>$batchValid</bpel:to><mapper:mapperLink><mapper:vertice id="998233822" targetPath="$batchValid" targetedBy="1230841639-arg3"></mapper:vertice><mapper:vertice id="1230841639" dimension="79x24" location="454,13"><mapper:value>if-then-else</mapper:value></mapper:vertice><mapper:vertice id="497130080" dimension="79x24" location="407,94" targetedBy="1230841639-arg0"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="693848647" dimension="79x24" location="286,49" targetedBy="497130080-arg0"><mapper:value>"approve"</mapper:value></mapper:vertice><mapper:vertice id="1215595684" sourcePath="$thisReceive_validation_resultsRequest1Msg.body/Launchpoint:validationResult" targetedBy="497130080-arg1"></mapper:vertice><mapper:vertice id="1922212659" dimension="79x24" location="576,120" targetedBy="1230841639-arg1"><mapper:value>true()</mapper:value></mapper:vertice><mapper:vertice id="2137898515" dimension="79x24" location="454,145" targetedBy="1230841639-arg2"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>$iqRequestBatch</bpel:from>
-                                        <bpel:to>$validatedBatch</bpel:to><mapper:mapperLink><mapper:vertice id="270746854" targetPath="$validatedBatch" targetedBy="1789165763-arg0"></mapper:vertice><mapper:vertice id="1789165763" sourcePath="$iqRequestBatch"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                </bpdm:linkset>
+                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_acknowledgementResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_acknowledgementResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_caNc0NnhEee2MLg0sBZbqw"></bpdm:linkset>
                             </bpdm:messagingtask>
                         </bpel:sequence>
                     </bpel:scope>
-                    <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Set total letter count" bpdm:ID="_64F0UNrNEeeapNtOJrIQNA" bpdm:isHeaderAuthorizationAware="no">
-                        <bpdm:linkset bpdm:type="assignments">
-                            <bpel:copy>
-                                <bpel:from>count($validatedBatch/generateIQBatch:Cases)</bpel:from>
-                                <bpel:to>$validatedBatch/generateIQBatch:TotalLetterCount</bpel:to><mapper:mapperLink><mapper:vertice id="355970563" targetPath="$validatedBatch/generateIQBatch:TotalLetterCount" targetedBy="1047403317-arg1"></mapper:vertice><mapper:vertice id="1047403317" dimension="79x24" location="470,212"><mapper:value>count()</mapper:value></mapper:vertice><mapper:vertice id="942378314" sourcePath="$validatedBatch/generateIQBatch:Cases" targetedBy="1047403317-arg0"></mapper:vertice></mapper:mapperLink>
-                            </bpel:copy>
-                        </bpdm:linkset>
-                    </bpdm:messagingtask>
-                    <bpdm:messagingtask operation="Receive_request" partnerLink="dCmAndQueue_MonitorForCanonicPortPlk1Var" portType="getIQBatch-process:Forclient" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Generate IQ Batch" bpdm:ID="_GW_V8NkgEeee0bCkMq0JVw" bpdm:isHeaderAuthorizationAware="no">
-                        <bpdm:linkset bpdm:type="assignments">
-                            <bpel:copy>
-                                <bpel:from>$validatedBatch</bpel:from>
-                                <bpel:to>$dCMInitiate_IQ_BatchRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="1201436253" targetPath="$dCMInitiate_IQ_BatchRequest1Msg.body" targetedBy="1737422225-arg0"></mapper:vertice><mapper:vertice id="1737422225" sourcePath="$validatedBatch"></mapper:vertice></mapper:mapperLink>
-                            </bpel:copy>
-                        </bpdm:linkset>
-                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMInitiate_IQ_BatchRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getIQBatch-process:Receive_requestRequest" bpdm:binding="getIQBatch-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Nx2sUNnhEee2MLg0sBZbqw">
-                            <bpel:correlation set="iqBatchCorrelation" initiate="join" pattern="request" bpdm:isSource="false"></bpel:correlation>
-                        </bpdm:linkset>
-                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="getIQBatch-processReceive_requestResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="getIQBatch-process:Receive_requestResponse" bpdm:binding="getIQBatch-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Oh30ANnhEee2MLg0sBZbqw"></bpdm:linkset>
-                    </bpdm:messagingtask>
-                    <bpdm:messagingtask operation="Receive_acknowledgement" partnerLink="dCmAndQueue_MonitorPlkVar" portType="this:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive acknowledgement" bpdm:ID="_IOEzYNkgEeee0bCkMq0JVw" bpdm:isHeaderAuthorizationAware="yes">
-                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_acknowledgementRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_acknowledgementRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_b21qANnhEee2MLg0sBZbqw">
-                            <bpel:correlation set="iqBatchCorrelation" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
-                        </bpdm:linkset>
-                        <bpdm:linkset bpdm:type="assignments">
-                            <bpel:copy>
-                                <bpel:from>$ode:pid</bpel:from>
-                                <bpel:to>$thisReceive_acknowledgementResponse2Msg.body/Launchpoint:pid</bpel:to><mapper:mapperLink><mapper:vertice id="395009551" targetPath="$thisReceive_acknowledgementResponse2Msg.body/Launchpoint:pid" targetedBy="1623222021-arg0"></mapper:vertice><mapper:vertice id="1623222021" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
-                            </bpel:copy>
-                            <bpel:copy>
-                                <bpel:from>current-dateTime()</bpel:from>
-                                <bpel:to>$thisReceive_acknowledgementResponse2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="2144228375" targetPath="$thisReceive_acknowledgementResponse2Msg.body/Launchpoint:timestamp" targetedBy="977129833-arg0"></mapper:vertice><mapper:vertice id="977129833" dimension="109x24" location="600,72"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
-                            </bpel:copy>
-                        </bpdm:linkset>
-                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_acknowledgementResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_acknowledgementResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_caNc0NnhEee2MLg0sBZbqw"></bpdm:linkset>
-                    </bpdm:messagingtask>
                     <bpdm:messagingtask operation="Receive_IQ_Batch_Results" partnerLink="dCmAndQueue_MonitorPlkVar" portType="this:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive IQ Batch Results" bpdm:ID="_hT5IkNnhEee2MLg0sBZbqw" bpdm:isHeaderAuthorizationAware="yes">
                         <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_IQ_Batch_ResultsRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_IQ_Batch_ResultsRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_qWETsNnhEee2MLg0sBZbqw">
                             <bpel:correlation set="iqBatchCorrelation" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>

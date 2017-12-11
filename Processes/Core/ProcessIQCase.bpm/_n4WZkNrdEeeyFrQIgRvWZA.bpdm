@@ -1,4 +1,4 @@
-﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:HumanVerification-process="http://thisproject/Processes/Integrations/HumanVerification/process" xmlns:diag="http://thisdiagram" xmlns:Queue_Monitor="http://thisdiagram/Queue_Monitor" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://www.example.org/generateIQBatch" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/User" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/User">
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:HumanVerification-process="http://thisproject/Processes/Integrations/HumanVerification/process" xmlns:diag="http://thisdiagram" xmlns:Queue_Monitor="http://thisdiagram/Queue_Monitor" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/User" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/User">
     <bpdm:dependencies version="6000089">
         <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Integrations/HumanVerification/process" bpdm:prefix="HumanVerification-process" bpdm:comment="contrib=&apos;project:///Processes/Integrations/HumanVerification-process.wsdl"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_2mWjgNfGEee2L7fDC3rSXg"></bpdm:namespaceDefinition>
@@ -6,14 +6,12 @@
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
-        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/generateIQBatch" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///Schemas/integrations/generateIQBatch.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/User" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_2mWjgNfGEee2L7fDC3rSXg" bpdm:label="Queue Monitor"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/HumanVerification-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Schemas/integrations/generateIQBatch.xsd"/>
     </bpdm:dependencies>
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="User" bpdm:ID="_n4WZkNrdEeeyFrQIgRvWZA">
         <bpel:partnerLinks>
@@ -33,19 +31,15 @@
             </bpel:variable>
             <bpel:variable name="queue_MonitorReceive_validation_resultsResponse2Msg" messageType="Queue_Monitor:Receive_validation_resultsResponse" bpdm:id="_T2oiQNreEeeyFrQIgRvWZA" bpdm:messageIds="inc:_T19M0NreEeeyFrQIgRvWZA"/>
         </bpel:variables>
-        <bpel:flow>
-            <bpel:sequence>
-                <bpdm:messagingtask operation="Receive_validation_results" partnerLink="userAndQueue_MonitorForCanonicPortPlkVar" portType="Queue_Monitor:ForUser" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send validation results" bpdm:ID="_x0wYUNrdEeeyFrQIgRvWZA" bpdm:isHeaderAuthorizationAware="no">
-                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="queue_MonitorReceive_validation_resultsRequest1Msg" bpdm:msgVarScopeId="_n4WZkNrdEeeyFrQIgRvWZA" bpdm:variableIsManaged="true" bpdm:messageType="Queue_Monitor:Receive_validation_resultsRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_TGF2INreEeeyFrQIgRvWZA"></bpdm:linkset>
-                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="queue_MonitorReceive_validation_resultsResponse2Msg" bpdm:msgVarScopeId="_n4WZkNrdEeeyFrQIgRvWZA" bpdm:variableIsManaged="true" bpdm:messageType="Queue_Monitor:Receive_validation_resultsResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_T19M0NreEeeyFrQIgRvWZA"></bpdm:linkset>
-                </bpdm:messagingtask>
-            </bpel:sequence>
-            <bpel:sequence>
-                <bpdm:messagingtask operation="received_validation_request" partnerLink="userAndQueue_MonitorForCanonicPortPlkVar" portType="HumanVerification-process:Forclient" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Request letter validation" bpdm:ID="_wDJQwNrdEeeyFrQIgRvWZA" bpdm:isHeaderAuthorizationAware="no">
-                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisRequest_letter_validationRequest1Msg" bpdm:msgVarScopeId="_n4WZkNrdEeeyFrQIgRvWZA" bpdm:variableIsManaged="true" bpdm:messageType="HumanVerification-process:received_validation_requestRequest" bpdm:binding="HumanVerification-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_P1Q-kNreEeeyFrQIgRvWZA"></bpdm:linkset>
-                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisRequest_letter_validationResponse2Msg" bpdm:msgVarScopeId="_n4WZkNrdEeeyFrQIgRvWZA" bpdm:variableIsManaged="true" bpdm:messageType="HumanVerification-process:received_validation_requestResponse" bpdm:binding="HumanVerification-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_QOSikNreEeeyFrQIgRvWZA"></bpdm:linkset>
-                </bpdm:messagingtask>
-            </bpel:sequence>
-        </bpel:flow>
+        <bpel:sequence>
+            <bpdm:messagingtask operation="received_validation_request" partnerLink="userAndQueue_MonitorForCanonicPortPlkVar" portType="HumanVerification-process:Forclient" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Request letter validation" bpdm:ID="_wDJQwNrdEeeyFrQIgRvWZA" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisRequest_letter_validationRequest1Msg" bpdm:msgVarScopeId="_n4WZkNrdEeeyFrQIgRvWZA" bpdm:variableIsManaged="true" bpdm:messageType="HumanVerification-process:received_validation_requestRequest" bpdm:binding="HumanVerification-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_P1Q-kNreEeeyFrQIgRvWZA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisRequest_letter_validationResponse2Msg" bpdm:msgVarScopeId="_n4WZkNrdEeeyFrQIgRvWZA" bpdm:variableIsManaged="true" bpdm:messageType="HumanVerification-process:received_validation_requestResponse" bpdm:binding="HumanVerification-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_QOSikNreEeeyFrQIgRvWZA"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="Receive_validation_results" partnerLink="userAndQueue_MonitorForCanonicPortPlkVar" portType="Queue_Monitor:ForUser" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send validation results" bpdm:ID="_x0wYUNrdEeeyFrQIgRvWZA" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="queue_MonitorReceive_validation_resultsRequest1Msg" bpdm:msgVarScopeId="_n4WZkNrdEeeyFrQIgRvWZA" bpdm:variableIsManaged="true" bpdm:messageType="Queue_Monitor:Receive_validation_resultsRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_TGF2INreEeeyFrQIgRvWZA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="queue_MonitorReceive_validation_resultsResponse2Msg" bpdm:msgVarScopeId="_n4WZkNrdEeeyFrQIgRvWZA" bpdm:variableIsManaged="true" bpdm:messageType="Queue_Monitor:Receive_validation_resultsResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_T19M0NreEeeyFrQIgRvWZA"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
     </bpel:scope>
 </bpel:process>
