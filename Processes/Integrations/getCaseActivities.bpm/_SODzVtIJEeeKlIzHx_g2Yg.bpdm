@@ -109,6 +109,26 @@
                         <bpel:from>current-dateTime()</bpel:from>
                         <bpel:to>$thisGet_case_idResponse2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="1723363147" targetPath="$thisGet_case_idResponse2Msg.body/Launchpoint:timestamp" targetedBy="579124349-arg0"></mapper:vertice><mapper:vertice id="579124349" dimension="109x24" location="328,173"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>false()</bpel:from>
+                        <bpel:to>$success</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1013270156" targetPath="$success" targetedBy="2017441505-arg0"></mapper:vertice>
+  <mapper:vertice id="2017441505" dimension="79x24" location="396,232">
+    <mapper:value>false()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>0</bpel:from>
+                        <bpel:to>$failCount</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1785519041" targetPath="$failCount" targetedBy="452846745-arg0"></mapper:vertice>
+  <mapper:vertice id="452846745" dimension="79x24" location="394,271">
+    <mapper:value>0</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisGet_case_idResponse2Msg" bpdm:msgVarScopeId="_SODzVtIJEeeKlIzHx_g2Yg" bpdm:variableIsManaged="true" bpdm:messageType="this:get_case_idResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_gKyM4NIJEeeKlIzHx_g2Yg">
                     <bpel:correlation set="newCorrelationSet" initiate="join" pattern="request" bpdm:isSource="false"></bpel:correlation>
@@ -257,6 +277,24 @@
                                                             <bpel:from>current-dateTime()</bpel:from>
                                                             <bpel:to>$thisReceive_recover_signalResponse2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="461186116" targetPath="$thisReceive_recover_signalResponse2Msg.body/Launchpoint:timestamp" targetedBy="620330073-arg0"></mapper:vertice><mapper:vertice id="620330073" dimension="109x24" location="236,88"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>$ode:pid</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:id</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1504985390" targetPath="$ExecutionError/metrics:id" targetedBy="37545615-arg0"></mapper:vertice>
+  <mapper:vertice id="37545615" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
+                                                        </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>true()</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:resolved</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="964951017" targetPath="$ExecutionError/metrics:resolved" targetedBy="376344953-arg0"></mapper:vertice>
+  <mapper:vertice id="376344953" dimension="79x24" location="408,126">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                                        </bpel:copy>
                                                     </bpdm:linkset>
                                                     <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_recover_signalResponse2Msg" bpdm:msgVarScopeId="_G8KqENxWEeeU5oFZSJFCiA" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_recover_signalResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_6cCNgNxZEee2xbsk1VZIAA"></bpdm:linkset>
                                                 </bpdm:messagingtask>
@@ -288,6 +326,19 @@
                                     <bpel:copy>
                                         <bpel:from>$thisGet_case_idRequest2Msg.body/Launchpoint:EnvironmentId</bpel:from>
                                         <bpel:to>$getCaseActivitiesGetCaseActivitiesRequest1Msg.environmentid</bpel:to><mapper:mapperLink><mapper:vertice id="1676347286" targetPath="$getCaseActivitiesGetCaseActivitiesRequest1Msg.environmentid" targetedBy="1427964519-arg0"></mapper:vertice><mapper:vertice id="1427964519" sourcePath="$thisGet_case_idRequest2Msg.body/Launchpoint:EnvironmentId"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>ode:get-property-value("GETACTIVITIES")</bpel:from>
+                                        <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="650214118" targetPath="$endpoint" targetedBy="345652418-arg1"></mapper:vertice>
+  <mapper:vertice id="345652418" dimension="139x24" location="192,200">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1909733984" dimension="97x24" location="53,200" targetedBy="345652418-arg0">
+    <mapper:value>"GETACTIVITIES"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="getCaseActivitiesGetCaseActivitiesRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getCaseActivities:getCaseActivities_input" bpdm:binding="getCaseActivities:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_at2FZdMBEeesf764mnQLPAOutgoing"></bpdm:linkset>

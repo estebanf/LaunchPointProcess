@@ -21,10 +21,10 @@
             <bpel:binding name="process-monitorimplicitPartnerAndProcess-monitorForStart_PortPlkServiceBinding" type="ns:Start_Port" bpdm:isSynchronized="true"/>
         </bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_3lpv5tKNEeeKlIzHx_g2YgimplicitPartner" bpdm:label="process-monitorimplicitPartner"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getAllCases.sql/getAllCases.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/CaseEvaluator-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/BusinessRule.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getAllCases.sql/getAllCases.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getAllCases.sql/getAllCases.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
@@ -70,7 +70,14 @@
             <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="SubProcess" bpdm:ID="_5C9CUNbVEeeY-olbqRPfBw">
                 <bpdm:linkset bpdm:type="loop" bpdm:loopType="forEach" bpdm:backEdgeParticipantType="none" parallel="no" counterName="emptyCounter" bpdm:isBackEdgeContributor="no">
                     <bpel:condition bpdm:loopType="forEachStartCounter">1<mapper:mapperLink><mapper:vertice id="2007141198" targetPath="$Start counter" targetedBy="202431264-arg0"></mapper:vertice><mapper:vertice id="202431264" dimension="79x24" location="330,38"><mapper:value>1</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
-                    <bpel:condition bpdm:loopType="forEachFinalCounter">count($lpCases/Launchpoint:caseid)<mapper:mapperLink><mapper:vertice id="1376125990" targetPath="$Final counter" targetedBy="2092447874-arg1"></mapper:vertice><mapper:vertice id="2092447874" dimension="79x24" location="322,91"><mapper:value>count()</mapper:value></mapper:vertice><mapper:vertice id="1311421253" sourcePath="$lpCases/Launchpoint:caseid" targetedBy="2092447874-arg0"></mapper:vertice></mapper:mapperLink></bpel:condition>
+                    <bpel:condition bpdm:loopType="forEachFinalCounter">count($lpCases/Launchpoint:lpCase)
+<mapper:mapperLink>
+  <mapper:vertice id="1877578160" targetPath="$Final counter" targetedBy="795733908-arg0"></mapper:vertice>
+  <mapper:vertice id="795733908" dimension="79x24" location="322,91">
+    <mapper:value>count()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1741212962" sourcePath="$lpCases/Launchpoint:lpCase" targetedBy="795733908-arg1"></mapper:vertice>
+</mapper:mapperLink></bpel:condition>
                 </bpdm:linkset>
                 <bpel:variables>
                     <bpel:variable name="caseEvaluator-processGet_caseResponse1Msg" messageType="CaseEvaluator-process:Get_caseResponse" binding="CaseEvaluator-process:processAndClientServiceBinding" operation="Get_case" opMsgType="1" bpdm:messageIds="inc:_zYk2BtKOEee0svt489vHigIncoming"/>

@@ -305,11 +305,22 @@
                                         <bpel:from>$thisGet_case_idRequest2Msg.body/Launchpoint:EnvironmentId</bpel:from>
                                         <bpel:to>$getLaunchpointCaseGetCaseRequest1Msg.environmentid</bpel:to><mapper:mapperLink><mapper:vertice id="211722962" targetPath="$getLaunchpointCaseGetCaseRequest1Msg.environmentid" targetedBy="2047812480-arg0"></mapper:vertice><mapper:vertice id="2047812480" sourcePath="$thisGet_case_idRequest2Msg.body/Launchpoint:EnvironmentId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>ode:get-property-value("GETDCMCASE")</bpel:from>
+                                        <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="1428944060" targetPath="$endpoint" targetedBy="353990501-arg1"></mapper:vertice><mapper:vertice id="353990501" dimension="139x24" location="214,140"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="314824465" dimension="94x24" location="53,131" targetedBy="353990501-arg0"><mapper:value>"GETDCMCASE"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="getLaunchpointCaseGetCaseRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getLaunchpointCase:getCase_input" bpdm:binding="getLaunchpointCase:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_34c5ddw4EeeU5oFZSJFCiAOutgoing"></bpdm:linkset>
                                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="getLaunchpointCaseGetCaseResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getLaunchpointCase:getCase_output" bpdm:binding="getLaunchpointCase:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_34c5ddw4EeeU5oFZSJFCiAIncoming"></bpdm:linkset>
                             </bpdm:messagingtask>
-                            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Validate data" bpdm:ID="_XBgo8NajEeeDx7b0yj_szA" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Validate data" bpdm:ID="_XBgo8NajEeeDx7b0yj_szA" bpdm:isHeaderAuthorizationAware="no">
+                                <bpdm:linkset bpdm:type="assignments">
+                                    <bpel:copy>
+                                        <bpel:from>true()</bpel:from>
+                                        <bpel:to>$DocumentValid/Validation:isValid</bpel:to><mapper:mapperLink><mapper:vertice id="1915633649" targetPath="$DocumentValid/Validation:isValid" targetedBy="1201821826-arg0"></mapper:vertice><mapper:vertice id="1201821826" dimension="79x24" location="408,191"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                </bpdm:linkset>
+                            </bpdm:messagingtask>
                             <bpdm:gateway bpdm:label="Data is valid" bpdm:ID="_Ybhv4NajEeeDx7b0yj_szA" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_ZebXUNajEeeDx7b0yj_szA" bpdm:targetDisplayName="Yes">
                                     <bpel:condition>true() = $DocumentValid/Validation:isValid<mapper:mapperLink><mapper:vertice id="1727498891" targetPath="$condition" targetedBy="465904941-arg2"></mapper:vertice><mapper:vertice id="465904941" dimension="79x24" location="203,65"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="2118588214" dimension="79x24" location="38,40" targetedBy="465904941-arg0"><mapper:value>true()</mapper:value></mapper:vertice><mapper:vertice id="1320237577" sourcePath="$DocumentValid/Validation:isValid" targetedBy="465904941-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>

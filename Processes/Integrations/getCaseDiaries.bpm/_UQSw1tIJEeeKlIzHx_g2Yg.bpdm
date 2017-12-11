@@ -297,6 +297,19 @@
                                         <bpel:from>$thisGet_case_idRequest2Msg.body/Launchpoint:EnvironmentId</bpel:from>
                                         <bpel:to>$getCaseDiariesGetCaseDiariesRequest1Msg.environmentid</bpel:to><mapper:mapperLink><mapper:vertice id="411727982" targetPath="$getCaseDiariesGetCaseDiariesRequest1Msg.environmentid" targetedBy="1304342247-arg0"></mapper:vertice><mapper:vertice id="1304342247" sourcePath="$thisGet_case_idRequest2Msg.body/Launchpoint:EnvironmentId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>ode:get-property-value("GETDIARIES")</bpel:from>
+                                        <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="447239688" targetPath="$endpoint" targetedBy="1664557746-arg1"></mapper:vertice>
+  <mapper:vertice id="1664557746" dimension="139x24" location="178,136">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1405958766" dimension="80x24" location="37,123" targetedBy="1664557746-arg0">
+    <mapper:value>"GETDIARIES"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="getCaseDiariesGetCaseDiariesRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getCaseDiaries:getCaseDiaries_input" bpdm:binding="getCaseDiaries:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_jr2iNtMBEeesf764mnQLPAOutgoing"></bpdm:linkset>
                                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="getCaseDiariesGetCaseDiariesResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getCaseDiaries:getCaseDiaries_output" bpdm:binding="getCaseDiaries:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_jr2iNtMBEeesf764mnQLPAIncoming"></bpdm:linkset>
@@ -318,8 +331,34 @@
                                     <bpdm:messagingtask eventType="intermediate: message" operation="Get_diaries" partnerLink="clientAndProcessForCanonicPortPlkVar" portType="CaseEvaluator-process:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send diaries" bpdm:ID="_w8eiQNImEeeKlIzHx_g2Yg" bpdm:isHeaderAuthorizationAware="no">
                                         <bpdm:linkset bpdm:type="assignments">
                                             <bpel:copy>
-                                                <bpel:from>bpel:doXslTransform("../../XSLT/transformCaseDiaries.xslt", $getCaseDiariesGetCaseDiariesResponse1Msg.diaries, "caseid", $thisGet_case_idRequest2Msg.body)</bpel:from>
-                                                <bpel:to>$clientGet_diariesRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="1956952648" targetPath="$clientGet_diariesRequest1Msg.body" targetedBy="1171211988-arg4"></mapper:vertice><mapper:vertice id="1171211988" dimension="126x24" location="336,120"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="1666690368" dimension="203x24" location="111,60" targetedBy="1171211988-arg0"><mapper:value>"../../XSLT/transformCaseDiaries.xslt"</mapper:value></mapper:vertice><mapper:vertice id="654911542" sourcePath="$getCaseDiariesGetCaseDiariesResponse1Msg.diaries" targetedBy="1171211988-arg1"></mapper:vertice><mapper:vertice id="1912848145" dimension="79x24" location="131,166" targetedBy="1171211988-arg2"><mapper:value>"caseid"</mapper:value></mapper:vertice><mapper:vertice id="533031256" sourcePath="$thisGet_case_idRequest2Msg.body" targetedBy="1171211988-arg3"></mapper:vertice></mapper:mapperLink>
+                                                <bpel:from>bpel:doXslTransform("../../XSLT/transformCaseDiaries.xslt", $getCaseDiariesGetCaseDiariesResponse1Msg.diaries, "caseid", $thisGet_case_idRequest2Msg.body/Launchpoint:CaseId, "clientid", $thisGet_case_idRequest2Msg.body/Launchpoint:ClientId, "environmentid", $thisGet_case_idRequest2Msg.body/Launchpoint:EnvironmentId, "batchid", $thisGet_case_idRequest2Msg.body/Launchpoint:BatchId)</bpel:from>
+                                                <bpel:to>$clientGet_diariesRequest1Msg.body</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="553417770" targetPath="$clientGet_diariesRequest1Msg.body" targetedBy="1214538049-arg3"></mapper:vertice>
+  <mapper:vertice id="1214538049" dimension="126x24" location="336,120">
+    <mapper:value>bpel:doXslTransform()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="361943606" dimension="203x24" location="111,60" targetedBy="1214538049-arg0">
+    <mapper:value>"../../XSLT/transformCaseDiaries.xslt"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="57248861" sourcePath="$getCaseDiariesGetCaseDiariesResponse1Msg.diaries" targetedBy="1214538049-arg1"></mapper:vertice>
+  <mapper:vertice id="285786618" dimension="79x24" location="131,166" targetedBy="1214538049-arg2">
+    <mapper:value>"caseid"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1483586141" sourcePath="$thisGet_case_idRequest2Msg.body/Launchpoint:CaseId" targetedBy="1214538049-arg4"></mapper:vertice>
+  <mapper:vertice id="1205247789" dimension="79x24" location="156,214" targetedBy="1214538049-arg5">
+    <mapper:value>"clientid"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="700373184" sourcePath="$thisGet_case_idRequest2Msg.body/Launchpoint:ClientId" targetedBy="1214538049-arg6"></mapper:vertice>
+  <mapper:vertice id="1442442367" dimension="96x24" location="174,248" targetedBy="1214538049-arg7">
+    <mapper:value>"environmentid"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1760197812" sourcePath="$thisGet_case_idRequest2Msg.body/Launchpoint:EnvironmentId" targetedBy="1214538049-arg8"></mapper:vertice>
+  <mapper:vertice id="1624408978" dimension="79x24" location="174,288" targetedBy="1214538049-arg9">
+    <mapper:value>"batchid"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1144216399" sourcePath="$thisGet_case_idRequest2Msg.body/Launchpoint:BatchId" targetedBy="1214538049-arg10"></mapper:vertice>
+</mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="clientGet_diariesRequest1Msg" bpdm:msgVarScopeId="_DBzZQNajEeeDx7b0yj_szA" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Get_diariesRequest" bpdm:binding="CaseEvaluator-process:processAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_x6AhgNImEeeKlIzHx_g2Yg"></bpdm:linkset>

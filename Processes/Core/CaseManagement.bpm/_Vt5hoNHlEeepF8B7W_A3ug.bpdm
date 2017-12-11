@@ -34,6 +34,26 @@
         <bpel:sequence>
             <bpdm:messagingtask operation="Receive_case" partnerLink="case_ManagerAndDatabaseForCanonicPortPlkVar" portType="CheckCaseExistance-process:Forclient" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Check if case exists" bpdm:ID="_cNXfdtHlEeepF8B7W_A3ug" bpdm:isHeaderAuthorizationAware="no">
                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisCheck_if_case_existsRequest1Msg" bpdm:msgVarScopeId="_Vt5hoNHlEeepF8B7W_A3ug" bpdm:variableIsManaged="true" bpdm:messageType="CheckCaseExistance-process:Receive_caseRequest" bpdm:binding="CheckCaseExistance-process:clientAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_dBWhINHlEeepF8B7W_A3ug"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$ode:pid</bpel:from>
+                        <bpel:to>$checkCaseExistance-processReceive_caseResponse2Msg.body/Launchpoint:pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="160130862" targetPath="$checkCaseExistance-processReceive_caseResponse2Msg.body/Launchpoint:pid" targetedBy="124264001-arg0"></mapper:vertice>
+  <mapper:vertice id="124264001" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>current-dateTime()</bpel:from>
+                        <bpel:to>$checkCaseExistance-processReceive_caseResponse2Msg.body/Launchpoint:timestamp</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="430749113" targetPath="$checkCaseExistance-processReceive_caseResponse2Msg.body/Launchpoint:timestamp" targetedBy="354795857-arg0"></mapper:vertice>
+  <mapper:vertice id="354795857" dimension="109x24" location="299,78">
+    <mapper:value>current-dateTime()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="checkCaseExistance-processReceive_caseResponse2Msg" bpdm:msgVarScopeId="_Vt5hoNHlEeepF8B7W_A3ug" bpdm:variableIsManaged="true" bpdm:messageType="CheckCaseExistance-process:Receive_caseResponse" bpdm:binding="CheckCaseExistance-process:clientAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_dgpFMNHlEeepF8B7W_A3ug"></bpdm:linkset>
             </bpdm:messagingtask>
             <bpdm:messagingtask operation="Receive_results" partnerLink="case_ManagerAndDatabaseForCanonicPortPlkVar" portType="Case_Manager:ForDatabase" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send results" bpdm:ID="_glDRYNHlEeepF8B7W_A3ug" bpdm:isHeaderAuthorizationAware="no">

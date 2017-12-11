@@ -1,47 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jdbc:descriptor wsdlLocation="getIsoHighestScore.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:getisohighestscoreservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
     <jdbc:service name="getIsoHighestScoreService">
-        <jdbc:operation name="urn:getIsoHighestScore" sqlStatement="select 
-	isotracking.caseid,
-	isotracking.requestid,
-	isoresponsetracking.score,
-	COALESCE((EXTRACT(epoch from age(now(),isoresponsereceivedat)) / 86400)::int,0) as daysSinceResponse,
-	isoresponsereceivedat,
-	scorevalue
-from isotracking
-	inner join isoresponsetracking on (isotracking.caseid = isoresponsetracking.caseid and isotracking.requestid = isoresponsetracking.requestid)
-where
-	isotracking.isosent = true
-	and isoresponsetracking.scorereceived = true
-	and isotracking.caseid = ?
-	and isoresponsetracking.isoresponsereceivedat not in (select max(isoresponsetracking.isoresponsereceivedat) from isoresponsetracking where caseid = ?)
-order by 
-	isoresponsetracking.scorevalue desc
-limit 1" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:getisohighestscoreservice">
+        <jdbc:operation name="urn:getIsoHighestScore" sqlStatement="select resp.id,resp.score, resp.scorevalue  
+from isoresponsetracking as resp
+inner join isotracking as iso on (iso.requestid = resp.requestid)
+where iso.caseid = ?
+order by resp.scorevalue desc" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:getisohighestscoreservice">
             <jdbc:input>
                 <jdbc:parameter>
                     <jdbc:mode>1</jdbc:mode>
-                    <jdbc:name>isotracking.caseid</jdbc:name>
+                    <jdbc:name>iso.caseid</jdbc:name>
                     <jdbc:type>20</jdbc:type>
                     <jdbc:length>0</jdbc:length>
                     <jdbc:typeName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
                     <jdbc:precision>15</jdbc:precision>
                     <jdbc:scale>2</jdbc:scale>
                     <jdbc:nullable>false</jdbc:nullable>
-                    <jdbc:value>0</jdbc:value>
                     <jdbc:index>0</jdbc:index>
-                </jdbc:parameter>
-                <jdbc:parameter>
-                    <jdbc:mode>1</jdbc:mode>
-                    <jdbc:name>caseid</jdbc:name>
-                    <jdbc:type>20</jdbc:type>
-                    <jdbc:length>0</jdbc:length>
-                    <jdbc:typeName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-                    <jdbc:precision>15</jdbc:precision>
-                    <jdbc:scale>2</jdbc:scale>
-                    <jdbc:nullable>false</jdbc:nullable>
-                    <jdbc:value>0</jdbc:value>
-                    <jdbc:index>1</jdbc:index>
                 </jdbc:parameter>
             </jdbc:input>
             <jdbc:filter rowsToSendService="1" rowsToFetch="-1" duration="-PT1S">
@@ -59,7 +34,7 @@ limit 1" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:conn
             <jdbc:databaseUrl>jdbc:postgresql://bpms.everteam.us:5432/bamdb</jdbc:databaseUrl>
             <jdbc:databaseName>BAMDB</jdbc:databaseName>
             <jdbc:userName>bam</jdbc:userName>
-            <jdbc:password>decrypt[ndGZr+oEHbPO5eKBr/WIUhgv/zKAKvdi]</jdbc:password>
+            <jdbc:password>decrypt[maoS6u0U4blRLk1ZmLLG4D6ALufm3zjz]</jdbc:password>
         </jdbc:connection>
     </jdbc:service>
 </jdbc:descriptor>
