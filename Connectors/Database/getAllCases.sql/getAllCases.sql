@@ -1,1 +1,1 @@
-SELECT caseid, clientid, batchid, environmentid FROM launchpointcase; 
+SELECT caseid, clientid, batchid, environmentid FROM launchpointcase where active=true; 

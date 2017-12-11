@@ -16,6 +16,8 @@
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Queue_Service" bpdm:prefix="Queue_Service" bpdm:comment="contrib=&apos;partner-pool:///_G9knAJ9HEeebe_jNvZNWBA"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
             <vprop:property name="caseid" type="xs:string"/>
+            <vprop:property name="clientid" type="xs:string"/>
+            <vprop:property name="enviromentid" type="xs:string"/>
             <wsdl:portType name="ForDatabase">
                 <wsdl:operation name="Receive_results" bpdm:source="partner-pool:///_Vt5hoNHlEeepF8B7W_A3ug">
                     <wsdl:input message="this:Receive_resultsRequest" name="Receive_results"/>
@@ -30,8 +32,6 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForQueue_Service" type="this:ForQueue_Service" bpdm:isSynchronized="true"/>
-            <vprop:property name="clientid" type="xs:string"/>
-            <vprop:property name="enviromentid" type="xs:string"/>
             <xs:element name="Receive_resultsRequest" type="tns:CaseExistanceType" bpdm:source="partner-pool:///_Vt5hoNHlEeepF8B7W_A3ug"/>
             <wsdl:message name="Receive_resultsRequest" bpdm:source="partner-pool:///_Vt5hoNHlEeepF8B7W_A3ug">
                 <wsdl:part name="body" element="this:Receive_resultsRequest"/>
@@ -256,41 +256,35 @@
                                         <bpel:from>$case_ManagerRead_case_batchRequest1Msg.body/tns:BatchId</bpel:from>
                                         <bpel:to>$LaunchpointCase/metrics:batchId</bpel:to><mapper:mapperLink><mapper:vertice id="51575640" targetPath="$LaunchpointCase/metrics:batchId" targetedBy="1348682929-arg0"></mapper:vertice><mapper:vertice id="1348682929" sourcePath="$case_ManagerRead_case_batchRequest1Msg.body/tns:BatchId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>true()</bpel:from>
+                                        <bpel:to>$LaunchpointCase/metrics:active</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1271074395" targetPath="$LaunchpointCase/metrics:active" targetedBy="2012821648-arg0"></mapper:vertice>
+  <mapper:vertice id="2012821648" dimension="79x24" location="252,601">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
                             <bpdm:messagingtask eventType="end: message" operation="Get_case" partnerLink="case_ManagerAndCase_evaluatorForCanonicPortPlkVar" portType="CaseEvaluator-process:Forclient" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send case for evaluatiorn" bpdm:ID="_lRSOoNHzEeegkeOYmwRRMQ" bpdm:isHeaderAuthorizationAware="no">
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>$lpCase/tns:CaseId</bpel:from>
-                                        <bpel:to>$case_evaluatorGet_caseRequest1Msg.body/tns:CaseId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="23044037" targetPath="$case_evaluatorGet_caseRequest1Msg.body/tns:CaseId" targetedBy="714582036-arg0"></mapper:vertice>
-  <mapper:vertice id="714582036" sourcePath="$lpCase/tns:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$case_evaluatorGet_caseRequest1Msg.body/tns:CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="23044037" targetPath="$case_evaluatorGet_caseRequest1Msg.body/tns:CaseId" targetedBy="714582036-arg0"></mapper:vertice><mapper:vertice id="714582036" sourcePath="$lpCase/tns:CaseId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$case_ManagerRead_case_batchRequest1Msg.body/tns:ClientId</bpel:from>
-                                        <bpel:to>$case_evaluatorGet_caseRequest1Msg.body/tns:ClientId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="826091265" targetPath="$case_evaluatorGet_caseRequest1Msg.body/tns:ClientId" targetedBy="756600613-arg0"></mapper:vertice>
-  <mapper:vertice id="756600613" sourcePath="$case_ManagerRead_case_batchRequest1Msg.body/tns:ClientId"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$case_evaluatorGet_caseRequest1Msg.body/tns:ClientId</bpel:to><mapper:mapperLink><mapper:vertice id="826091265" targetPath="$case_evaluatorGet_caseRequest1Msg.body/tns:ClientId" targetedBy="756600613-arg0"></mapper:vertice><mapper:vertice id="756600613" sourcePath="$case_ManagerRead_case_batchRequest1Msg.body/tns:ClientId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$case_ManagerRead_case_batchRequest1Msg.body/tns:EnvironmentId</bpel:from>
-                                        <bpel:to>$case_evaluatorGet_caseRequest1Msg.body/tns:EnvironmentId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="998179199" targetPath="$case_evaluatorGet_caseRequest1Msg.body/tns:EnvironmentId" targetedBy="1273638952-arg0"></mapper:vertice>
-  <mapper:vertice id="1273638952" sourcePath="$case_ManagerRead_case_batchRequest1Msg.body/tns:EnvironmentId"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$case_evaluatorGet_caseRequest1Msg.body/tns:EnvironmentId</bpel:to><mapper:mapperLink><mapper:vertice id="998179199" targetPath="$case_evaluatorGet_caseRequest1Msg.body/tns:EnvironmentId" targetedBy="1273638952-arg0"></mapper:vertice><mapper:vertice id="1273638952" sourcePath="$case_ManagerRead_case_batchRequest1Msg.body/tns:EnvironmentId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$case_ManagerRead_case_batchRequest1Msg.body/tns:BatchId</bpel:from>
-                                        <bpel:to>$case_evaluatorGet_caseRequest1Msg.body/tns:BatchId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1647312449" targetPath="$case_evaluatorGet_caseRequest1Msg.body/tns:BatchId" targetedBy="992499060-arg0"></mapper:vertice>
-  <mapper:vertice id="992499060" sourcePath="$case_ManagerRead_case_batchRequest1Msg.body/tns:BatchId"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$case_evaluatorGet_caseRequest1Msg.body/tns:BatchId</bpel:to><mapper:mapperLink><mapper:vertice id="1647312449" targetPath="$case_evaluatorGet_caseRequest1Msg.body/tns:BatchId" targetedBy="992499060-arg0"></mapper:vertice><mapper:vertice id="992499060" sourcePath="$case_ManagerRead_case_batchRequest1Msg.body/tns:BatchId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="case_evaluatorGet_caseRequest1Msg" bpdm:msgVarScopeId="_SRGm4M8BEeecbIAlY2LAug" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Get_caseRequest" bpdm:binding="CaseEvaluator-process:processAndClientServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_mewuYNHzEeegkeOYmwRRMQ"></bpdm:linkset>
