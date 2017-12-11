@@ -35,7 +35,7 @@
       <Launchpoint:State><xsl:value-of select="ns:state" /></Launchpoint:State>
       <Launchpoint:IQResponseReceived><xsl:value-of select="ns:iqresponsereceived" /></Launchpoint:IQResponseReceived>
       <Launchpoint:CanClose><xsl:value-of select="ns:canclose" /></Launchpoint:CanClose>
-      <Launchpoint:BelowCostEffectivePursuit><xsl:value-of select="ns:belowcosteffectivepursuit" /></Launchpoint:BelowCostEffectivePursuit>
+      <Launchpoint:BelowCostEffectivePursuit><xsl:value-of select="ns:bcep" /></Launchpoint:BelowCostEffectivePursuit>
       <Launchpoint:IQReturnMail><xsl:value-of select="ns:iqreturnmail" /></Launchpoint:IQReturnMail>
       <Launchpoint:InvalidAddress><xsl:value-of select="ns:invalidaddress" /></Launchpoint:InvalidAddress>
       <Launchpoint:IQHold><xsl:value-of select="ns:iqhold" /></Launchpoint:IQHold>
@@ -44,7 +44,7 @@
       <Launchpoint:vip><xsl:value-of select="ns:vip" /></Launchpoint:vip>
       <Launchpoint:IQLetters><xsl:value-of select="ns:iqletters" /></Launchpoint:IQLetters>
       <Launchpoint:daysSinceAccident><xsl:value-of select="ns:dayssinceaccident" /></Launchpoint:daysSinceAccident>
-      <Launchpoint:BelowCostEffectivePursuitDueDatePassed><xsl:value-of select="ns:belowcosteffectivepursuitduedatepassed" /></Launchpoint:BelowCostEffectivePursuitDueDatePassed>
+      <Launchpoint:BelowCostEffectivePursuitDueDatePassed><xsl:value-of select="ns:bcepduedatepassed" /></Launchpoint:BelowCostEffectivePursuitDueDatePassed>
       <Launchpoint:daysSinceLastIQLetter><xsl:value-of select="ns:dayssincelastiqletter" /></Launchpoint:daysSinceLastIQLetter>
   </xsl:template>  
 </xsl:stylesheet>
