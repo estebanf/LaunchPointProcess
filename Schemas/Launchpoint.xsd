@@ -350,14 +350,13 @@
     <complexType name="IQQueuedType">
     	<sequence>
     		<element name="iqQueued" type="boolean"></element>
-    		<element name="caseId" type="int"></element>
+    		<element name="Case" type="tns:CaseIdentifierType"></element>
     	</sequence>
     </complexType>
     <element name="lpCases" type="tns:listCasesType"></element>
     <complexType name="IQBatchType">
     	<sequence>
     		<element name="clientId" type="int"></element>
-    		<element name="environmentId" type="string"></element>
     		<element name="cases" type="tns:IQDBCaseType"
     			maxOccurs="unbounded" minOccurs="1">
     		</element>
@@ -366,16 +365,7 @@
     <complexType name="IQDBCaseType">
     	<sequence>
     		<element name="id" type="int"></element>
-    		<element name="batchId" type="int"></element>
-    		<element name="caseId" type="int"></element>
-    		<element name="iqReceived" type="boolean"></element>
-    		<element name="iqReceivedAt" type="dateTime"></element>
-    		<element name="iqEnqueued" type="boolean"></element>
-    		<element name="iqEnqueuedAt" type="dateTime"></element>
-    		<element name="iqDequeued" type="boolean"></element>
-    		<element name="iqDequeuedAt" type="dateTime"></element>
-    		<element name="iqSent" type="boolean"></element>
-    		<element name="iqSentAt" type="dateTime"></element>
+    		<element name="Case" type="tns:CaseIdentifierType"></element>
     	</sequence>
     </complexType>
     <element name="IQBatches" type="tns:IQBatchesType"></element>
@@ -392,6 +382,7 @@
     		<element name="BatchId" type="int"></element>
     		<element name="ClientId" type="int"></element>
     		<element name="CaseId" type="int"></element>
+    		<element name="EnvironmentId" type="int"></element>
     		<element name="FileId" type="string"></element>
     	</sequence>
     </complexType>
@@ -433,7 +424,7 @@
     	<sequence>
     		<element name="Case" type="tns:CaseIdentifierType"></element>
     		<element name="fileType" type="string"></element>
-    		<element name="content" type="string"></element>
+    		<element name="content" type="anyType"></element>
     		<element name="source" type="string"></element>
     	</sequence>
     </complexType>

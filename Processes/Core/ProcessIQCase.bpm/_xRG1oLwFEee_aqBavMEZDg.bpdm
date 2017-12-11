@@ -51,7 +51,7 @@
             <wsdl:message name="Receive_sent_signalResponse" bpdm:source="partner-pool:///_2mWjgNfGEee2L7fDC3rSXg">
                 <wsdl:part name="body" element="this:Receive_sent_signalResponse"/>
             </wsdl:message>
-            <xs:element name="Receive_IQRequest" type="tns:IQCaseType" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
+            <xs:element name="Receive_IQRequest" type="tns:CaseIdentifierType" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg"/>
             <wsdl:message name="Receive_IQRequest" bpdm:source="partner-pool:///_0uuMALwFEee_aqBavMEZDg">
                 <wsdl:part name="body" element="this:Receive_IQRequest"/>
             </wsdl:message>
@@ -189,7 +189,9 @@
                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_dGGYUNZFEeeaesenvnhebw" bpdm:targetDisplayName="Enqueue IQ">
                     <bpel:condition>false() = $thisGet_ResultsRequest2Msg.body/tns:iqQueued<mapper:mapperLink><mapper:vertice id="400137743" targetPath="$condition" targetedBy="1531452791-arg2"></mapper:vertice><mapper:vertice id="1531452791" dimension="79x24" location="480,108"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="2091990614" dimension="79x24" location="396,48" targetedBy="1531452791-arg0"><mapper:value>false()</mapper:value></mapper:vertice><mapper:vertice id="297112209" sourcePath="$thisGet_ResultsRequest2Msg.body/tns:iqQueued" targetedBy="1531452791-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                 </bpdm:linkset>
-                <bpel:sequence></bpel:sequence>
+                <bpel:sequence>
+                    <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_x4F9gN59EeehVZzZ9HvU-g" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                </bpel:sequence>
                 <bpel:sequence>
                     <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_Vb5soNLrEeeydOmcLap9Ow" bpdm:isHeaderAuthorizationAware="no">
                         <bpdm:linkset bpdm:type="assignments">
@@ -207,41 +209,40 @@
                             </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>
+                    <bpdm:messagingtask operation="Receive_sent_signal" partnerLink="process_IQ_CaseAndQueue_MonitorPlkVar" portType="this:ForQueue_Monitor" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive sent signal" bpdm:ID="_ggUcUNLrEeeydOmcLap9Ow" bpdm:isHeaderAuthorizationAware="yes">
+                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_sent_signalRequest1Msg" bpdm:msgVarScopeId="_xRG1oLwFEee_aqBavMEZDg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_sent_signalRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_zYazQNoIEeeyB7mKr1x9lw">
+                            <bpel:correlation set="caseCorrelationSet" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
+                        </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="assignments">
+                            <bpel:copy>
+                                <bpel:from>$ode:pid</bpel:from>
+                                <bpel:to>$thisReceive_sent_signalResponse2Msg.body/tns:pid</bpel:to><mapper:mapperLink><mapper:vertice id="1262551828" targetPath="$thisReceive_sent_signalResponse2Msg.body/tns:pid" targetedBy="1093301408-arg0"></mapper:vertice><mapper:vertice id="1093301408" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>current-dateTime()</bpel:from>
+                                <bpel:to>$thisReceive_sent_signalResponse2Msg.body/tns:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="1034818093" targetPath="$thisReceive_sent_signalResponse2Msg.body/tns:timestamp" targetedBy="2079274538-arg0"></mapper:vertice><mapper:vertice id="2079274538" dimension="109x24" location="528,72"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                        </bpdm:linkset>
+                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_sent_signalResponse2Msg" bpdm:msgVarScopeId="_xRG1oLwFEee_aqBavMEZDg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_sent_signalResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_0PUmENoIEeeyB7mKr1x9lw"></bpdm:linkset>
+                    </bpdm:messagingtask>
+                    <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_j5RVINLrEeeydOmcLap9Ow" bpdm:isHeaderAuthorizationAware="no">
+                        <bpdm:linkset bpdm:type="assignments">
+                            <bpel:copy>
+                                <bpel:from>$ode:pid</bpel:from>
+                                <bpel:to>$IQTracking/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="778832568" targetPath="$IQTracking/metrics:id" targetedBy="1857674730-arg0"></mapper:vertice><mapper:vertice id="1857674730" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>true()</bpel:from>
+                                <bpel:to>$IQTracking/metrics:iqSent</bpel:to><mapper:mapperLink><mapper:vertice id="800976615" targetPath="$IQTracking/metrics:iqSent" targetedBy="2136684431-arg0"></mapper:vertice><mapper:vertice id="2136684431" dimension="79x24" location="569,105"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                            <bpel:copy>
+                                <bpel:from>current-dateTime()</bpel:from>
+                                <bpel:to>$IQTracking/metrics:iqSentAt</bpel:to><mapper:mapperLink><mapper:vertice id="1467544007" targetPath="$IQTracking/metrics:iqSentAt" targetedBy="1133717732-arg0"></mapper:vertice><mapper:vertice id="1133717732" dimension="109x24" location="582,142"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
+                            </bpel:copy>
+                        </bpdm:linkset>
+                    </bpdm:messagingtask>
                 </bpel:sequence>
             </bpdm:gateway>
-            <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_WzHXUNZFEeeaesenvnhebw" bpdm:gatewayType="data_xor" bpdm:isMerge="true"></bpdm:gateway>
-            <bpdm:messagingtask operation="Receive_sent_signal" partnerLink="process_IQ_CaseAndQueue_MonitorPlkVar" portType="this:ForQueue_Monitor" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive sent signal" bpdm:ID="_ggUcUNLrEeeydOmcLap9Ow" bpdm:isHeaderAuthorizationAware="yes">
-                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_sent_signalRequest1Msg" bpdm:msgVarScopeId="_xRG1oLwFEee_aqBavMEZDg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_sent_signalRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_zYazQNoIEeeyB7mKr1x9lw">
-                    <bpel:correlation set="caseCorrelationSet" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
-                </bpdm:linkset>
-                <bpdm:linkset bpdm:type="assignments">
-                    <bpel:copy>
-                        <bpel:from>$ode:pid</bpel:from>
-                        <bpel:to>$thisReceive_sent_signalResponse2Msg.body/tns:pid</bpel:to><mapper:mapperLink><mapper:vertice id="1262551828" targetPath="$thisReceive_sent_signalResponse2Msg.body/tns:pid" targetedBy="1093301408-arg0"></mapper:vertice><mapper:vertice id="1093301408" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
-                    </bpel:copy>
-                    <bpel:copy>
-                        <bpel:from>current-dateTime()</bpel:from>
-                        <bpel:to>$thisReceive_sent_signalResponse2Msg.body/tns:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="1034818093" targetPath="$thisReceive_sent_signalResponse2Msg.body/tns:timestamp" targetedBy="2079274538-arg0"></mapper:vertice><mapper:vertice id="2079274538" dimension="109x24" location="528,72"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
-                    </bpel:copy>
-                </bpdm:linkset>
-                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_sent_signalResponse2Msg" bpdm:msgVarScopeId="_xRG1oLwFEee_aqBavMEZDg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_sent_signalResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_0PUmENoIEeeyB7mKr1x9lw"></bpdm:linkset>
-            </bpdm:messagingtask>
-            <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_j5RVINLrEeeydOmcLap9Ow" bpdm:isHeaderAuthorizationAware="no">
-                <bpdm:linkset bpdm:type="assignments">
-                    <bpel:copy>
-                        <bpel:from>$ode:pid</bpel:from>
-                        <bpel:to>$IQTracking/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="778832568" targetPath="$IQTracking/metrics:id" targetedBy="1857674730-arg0"></mapper:vertice><mapper:vertice id="1857674730" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
-                    </bpel:copy>
-                    <bpel:copy>
-                        <bpel:from>true()</bpel:from>
-                        <bpel:to>$IQTracking/metrics:iqSent</bpel:to><mapper:mapperLink><mapper:vertice id="800976615" targetPath="$IQTracking/metrics:iqSent" targetedBy="2136684431-arg0"></mapper:vertice><mapper:vertice id="2136684431" dimension="79x24" location="569,105"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
-                    </bpel:copy>
-                    <bpel:copy>
-                        <bpel:from>current-dateTime()</bpel:from>
-                        <bpel:to>$IQTracking/metrics:iqSentAt</bpel:to><mapper:mapperLink><mapper:vertice id="1467544007" targetPath="$IQTracking/metrics:iqSentAt" targetedBy="1133717732-arg0"></mapper:vertice><mapper:vertice id="1133717732" dimension="109x24" location="582,142"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
-                    </bpel:copy>
-                </bpdm:linkset>
-            </bpdm:messagingtask>
         </bpel:sequence>
     </bpel:scope>
 </bpel:process>

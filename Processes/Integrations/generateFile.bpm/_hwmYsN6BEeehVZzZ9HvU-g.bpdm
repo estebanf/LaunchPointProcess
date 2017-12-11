@@ -1,0 +1,35 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:process="http://thisdiagram/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:ProcessIQCase-Queue_Monitor="http://thisproject/Processes/Core/ProcessIQCase/Queue_Monitor" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:this="http://thisdiagram/IQLetter" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/IQLetter">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_S8OrRt4aEee0YMxeWbu2Dg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="process" bpdm:comment="contrib=&apos;partner-pool:///_S8OrRt4aEee0YMxeWbu2Dg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Core/ProcessIQCase/Queue_Monitor" bpdm:prefix="ProcessIQCase-Queue_Monitor" bpdm:comment="contrib=&apos;project:///Processes/Core/ProcessIQCase-Queue_Monitor.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/IQLetter" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_S8OrRt4aEee0YMxeWbu2Dg" bpdm:label="process"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessIQCase-Queue_Monitor.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="IQLetter" bpdm:ID="_hwmYsN6BEeehVZzZ9HvU-g">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="iQLetterAndProcessForCanonicPortPlkVar" partnerLinkType="diag:IQLetterAndProcessForCanonicPortPlk" myRole="IQLetter_for_process" bpdm:enableSharing="false" bpdm:providedService="ProcessIQCase-Queue_Monitor:CanonicServiceForDCM" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="epr" bpdm:providedIsDefault="true" bpdm:clientTasks="_hwmYsN6BEeehVZzZ9HvU-g:_rB0FZt6BEeehVZzZ9HvU-g" bpdm:isManaged="true" bpdm:otherPoolId="_S8OrRt4aEee0YMxeWbu2Dg"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="thisSend_DCM_ResultsRequest1Msg" messageType="ProcessIQCase-Queue_Monitor:Get_DCM_Ack.Request" binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorServiceBinding" operation="Get_DCM_Ack." opMsgType="0" bpdm:id="_wz9DIN6BEeehVZzZ9HvU-g" bpdm:messageIds="inc:_wzg-QN6BEeehVZzZ9HvU-g"/>
+            <bpel:variable name="processIQCase-Queue_MonitorGet_DCM_Ack_Response2Msg" messageType="ProcessIQCase-Queue_Monitor:Get_DCM_Ack.Response" binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorServiceBinding" operation="Get_DCM_Ack." opMsgType="1" bpdm:id="_xcC95d6BEeehVZzZ9HvU-g" bpdm:messageIds=" out:_xcC94N6BEeehVZzZ9HvU-g">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="ProcessIQCase-Queue_Monitor:Get_DCM_Ack.Response" bpdm:linkedPart="body" bpdm:binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorServiceBinding" bpdm:opMsgType="1" bpdm:operation="Get_DCM_Ack."></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask operation="Get_DCM_Ack." partnerLink="iQLetterAndProcessForCanonicPortPlkVar" portType="ProcessIQCase-Queue_Monitor:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send DCM Results" bpdm:ID="_rB0FZt6BEeehVZzZ9HvU-g" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisSend_DCM_ResultsRequest1Msg" bpdm:msgVarScopeId="_hwmYsN6BEeehVZzZ9HvU-g" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Queue_Monitor:Get_DCM_Ack.Request" bpdm:binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_wzg-QN6BEeehVZzZ9HvU-g"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="processIQCase-Queue_MonitorGet_DCM_Ack_Response2Msg" bpdm:msgVarScopeId="_hwmYsN6BEeehVZzZ9HvU-g" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Queue_Monitor:Get_DCM_Ack.Response" bpdm:binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_xcC94N6BEeehVZzZ9HvU-g"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>

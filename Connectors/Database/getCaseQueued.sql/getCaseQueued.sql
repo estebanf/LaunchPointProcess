@@ -1,1 +1,1 @@
-select * from iqtracking where caseid = ? and not iqenqueued;
+select * from iqtracking where caseid = ? and not iqsent;
