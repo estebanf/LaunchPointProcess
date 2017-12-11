@@ -9,7 +9,15 @@
         <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
         <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
-        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <wsdl:portType name="Forprocess">
+                <wsdl:operation name="Send_BRE_Results" bpdm:source="partner-pool:///_F-_sINPPEee16ulg3Gf3rA">
+                    <wsdl:input message="CaseEvaluator-process:Receive_rules_results" name="Send_BRE_Results"/>
+                    <wsdl:output message="CaseEvaluator-process:Receive_rules_resultsResponse" name="Send_BRE_ResultsResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForprocess" type="this:Forprocess" bpdm:isSynchronized="true"/>
+        </bpdm:namespaceContributor>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_F-_sINPPEee16ulg3Gf3rA" bpdm:label="process"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/BusinessRule.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/CaseEvaluator-process.wsdl"/>
@@ -17,7 +25,7 @@
     </bpdm:dependencies>
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="client" bpdm:ID="_SthSkNPiEee16ulg3Gf3rA">
         <bpel:partnerLinks>
-            <bpel:partnerLink name="clientAndProcessForCanonicPortPlkVar" partnerLinkType="diag:clientAndProcessForCanonicPortPlk" initializePartnerRole="yes" myRole="client_for_process" bpdm:enableSharing="false" bpdm:providedService="CaseEvaluator-process:CanonicServiceForbre" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="epr" bpdm:providedIsDefault="true" partnerRole="process_for_client" bpdm:invokedService="process:CanonicServiceForclient" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/client" bpdm:invokedIsDefault="true" bpdm:clientTasks="_SthSkNPiEee16ulg3Gf3rA:_9HX_Ntk0EeeyAckJj3pjRg, _SthSkNPiEee16ulg3Gf3rA:_XWqA4NPiEee16ulg3Gf3rA" bpdm:isManaged="true" bpdm:otherPoolId="_F-_sINPPEee16ulg3Gf3rA"/>
+            <bpel:partnerLink name="clientAndProcessPlkVar" partnerLinkType="diag:clientAndProcess" initializePartnerRole="yes" myRole="client_for_process" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForprocess" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/client/process" bpdm:providedIsDefault="true" partnerRole="process_for_client" bpdm:invokedService="process:CanonicServiceForclient" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/client" bpdm:invokedIsDefault="true" bpdm:clientTasks="_SthSkNPiEee16ulg3Gf3rA:_9HX_Ntk0EeeyAckJj3pjRg, _SthSkNPiEee16ulg3Gf3rA:_XWqA4NPiEee16ulg3Gf3rA" bpdm:isManaged="true" bpdm:otherPoolId="_F-_sINPPEee16ulg3Gf3rA"/>
         </bpel:partnerLinks>
         <bpel:variables>
             <bpel:variable name="processStartRequest1Msg" messageType="process:StartRequest" bpdm:id="_aa5N8NPiEee16ulg3Gf3rA" bpdm:messageIds=" out:_aalr8NPiEee16ulg3Gf3rA">
@@ -27,24 +35,24 @@
             </bpel:variable>
             <bpel:variable name="processStartResponse2Msg" messageType="process:StartResponse" bpdm:id="_2lfbcNPiEee16ulg3Gf3rA" bpdm:messageIds="inc:_2k4-gNPiEee16ulg3Gf3rA"/>
             <bpel:variable name="processStartResponse2Msg" messageType="process:StartResponse" bpdm:id="_txLjMNkyEeeyAckJj3pjRg"/>
-            <bpel:variable name="thisSend_BRE_ResultsRequest1Msg" messageType="CaseEvaluator-process:Call_business_ruleRequest" binding="CaseEvaluator-process:processAndBreForCanonicPortPlkServiceBinding" operation="Call_business_rule" opMsgType="0" bpdm:id="_-VKoCNk0EeeyAckJj3pjRg" bpdm:messageIds="inc:_-U3GANk0EeeyAckJj3pjRg"/>
-            <bpel:variable name="caseEvaluator-processCall_business_ruleResponse2Msg" messageType="CaseEvaluator-process:Call_business_ruleResponse" binding="CaseEvaluator-process:processAndBreForCanonicPortPlkServiceBinding" operation="Call_business_rule" opMsgType="1" bpdm:id="__E_icNk0EeeyAckJj3pjRg" bpdm:messageIds=" out:__E2YgNk0EeeyAckJj3pjRg">
+            <bpel:variable name="thisSend_BRE_ResultsRequest1Msg" messageType="this:Receive_rules_results" bpdm:id="_-VKoCNk0EeeyAckJj3pjRg" bpdm:messageIds="inc:_-U3GANk0EeeyAckJj3pjRg"/>
+            <bpel:variable name="caseEvaluator-processCall_business_ruleResponse2Msg" messageType="this:Receive_rules_resultsResponse" bpdm:id="__E_icNk0EeeyAckJj3pjRg" bpdm:messageIds=" out:__E2YgNk0EeeyAckJj3pjRg">
                 <bpel:from bpdm:toPart="body">
-                    <bpel:literal bpdm:linkedMessageType="CaseEvaluator-process:Call_business_ruleResponse" bpdm:linkedPart="body" bpdm:binding="CaseEvaluator-process:processAndBreForCanonicPortPlkServiceBinding" bpdm:opMsgType="1" bpdm:operation="Call_business_rule"></bpel:literal>
+                    <bpel:literal bpdm:linkedMessageType="this:Receive_rules_resultsResponse" bpdm:linkedPart="body"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
         </bpel:variables>
         <bpel:flow>
             <bpel:sequence>
-                <bpdm:messagingtask operation="Call_business_rule" partnerLink="clientAndProcessForCanonicPortPlkVar" portType="CaseEvaluator-process:Forbre" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send BRE Results" bpdm:ID="_9HX_Ntk0EeeyAckJj3pjRg" bpdm:isHeaderAuthorizationAware="no">
-                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisSend_BRE_ResultsRequest1Msg" bpdm:msgVarScopeId="_SthSkNPiEee16ulg3Gf3rA" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Call_business_ruleRequest" bpdm:binding="CaseEvaluator-process:processAndBreForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_-U3GANk0EeeyAckJj3pjRg"></bpdm:linkset>
-                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="caseEvaluator-processCall_business_ruleResponse2Msg" bpdm:msgVarScopeId="_SthSkNPiEee16ulg3Gf3rA" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Call_business_ruleResponse" bpdm:binding="CaseEvaluator-process:processAndBreForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="__E2YgNk0EeeyAckJj3pjRg"></bpdm:linkset>
+                <bpdm:messagingtask operation="Start" partnerLink="clientAndProcessPlkVar" portType="process:Forclient" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Request business rule evaluation" bpdm:ID="_XWqA4NPiEee16ulg3Gf3rA" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="processStartRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="process:StartRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_aalr8NPiEee16ulg3Gf3rA"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processStartResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="process:StartResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_2k4-gNPiEee16ulg3Gf3rA"></bpdm:linkset>
                 </bpdm:messagingtask>
             </bpel:sequence>
             <bpel:sequence>
-                <bpdm:messagingtask operation="Start" partnerLink="clientAndProcessForCanonicPortPlkVar" portType="process:Forclient" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Request business rule evaluation" bpdm:ID="_XWqA4NPiEee16ulg3Gf3rA" bpdm:isHeaderAuthorizationAware="no">
-                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="processStartRequest1Msg" bpdm:msgVarScopeId="_SthSkNPiEee16ulg3Gf3rA" bpdm:variableIsManaged="true" bpdm:messageType="process:StartRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_aalr8NPiEee16ulg3Gf3rA"></bpdm:linkset>
-                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processStartResponse2Msg" bpdm:msgVarScopeId="_SthSkNPiEee16ulg3Gf3rA" bpdm:variableIsManaged="true" bpdm:messageType="process:StartResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_2k4-gNPiEee16ulg3Gf3rA"></bpdm:linkset>
+                <bpdm:messagingtask operation="Send_BRE_Results" partnerLink="clientAndProcessPlkVar" portType="this:Forprocess" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send BRE Results" bpdm:ID="_9HX_Ntk0EeeyAckJj3pjRg" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisSend_BRE_ResultsRequest1Msg" bpdm:msgVarScopeId="_SthSkNPiEee16ulg3Gf3rA" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_rules_results" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_-U3GANk0EeeyAckJj3pjRg"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="caseEvaluator-processCall_business_ruleResponse2Msg" bpdm:msgVarScopeId="_SthSkNPiEee16ulg3Gf3rA" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_rules_resultsResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="__E2YgNk0EeeyAckJj3pjRg"></bpdm:linkset>
                 </bpdm:messagingtask>
             </bpel:sequence>
         </bpel:flow>

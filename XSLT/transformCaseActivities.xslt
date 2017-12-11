@@ -13,7 +13,6 @@
 	</xsl:template>
 	<xsl:template  match="iob_element">
 			<Launchpoint:activities>
-				<Launchpoint:ActivityId><xsl:value-of select="ActivityId" /></Launchpoint:ActivityId>
 				<Launchpoint:ActivityType><xsl:value-of select="ActivityType" /></Launchpoint:ActivityType>
 				<Launchpoint:ActivityCode><xsl:value-of select="ActivityCode" /></Launchpoint:ActivityCode>
 				<Launchpoint:ActivityDescription><xsl:value-of select="Description" /></Launchpoint:ActivityDescription>

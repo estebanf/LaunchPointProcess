@@ -14,7 +14,6 @@
 	</xsl:template>
 	<xsl:template match="iob_element">
 			<Launchpoint:diaries>
-				<Launchpoint:DiaryId><xsl:value-of select="DiaryId" /></Launchpoint:DiaryId>
 				<Launchpoint:DiaryType><xsl:value-of select="DiaryType" /></Launchpoint:DiaryType>
 				<Launchpoint:DiaryStatus><xsl:value-of select="DiaryStatus" /></Launchpoint:DiaryStatus>
 				<Launchpoint:DiaryDueDate><xsl:value-of select="DueDate" /></Launchpoint:DiaryDueDate>

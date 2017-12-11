@@ -30,6 +30,15 @@
   	<xsl:variable name="CanClose" select="Launchpoint:CanClose != $dcmCase/Launchpoint:CanClose" />
   	<xsl:variable name="BelowCostEffectivePursuit" select="Launchpoint:BelowCostEffectivePursuit != $dcmCase/Launchpoint:BelowCostEffectivePursuit" />
   	<xsl:variable name="IQReturnMail" select="Launchpoint:IQReturnMail != $dcmCase/Launchpoint:IQReturnMail" />
+  	<xsl:variable name="InvalidAddress" select="Launchpoint:InvalidAddress != $dcmCase/Launchpoint:InvalidAddress" />
+  	<xsl:variable name="IQHold" select="Launchpoint:IQHold != $dcmCase/Launchpoint:IQHold" />
+  	<xsl:variable name="ISOSent" select="Launchpoint:ISOSent != $dcmCase/Launchpoint:ISOSent" />
+  	<xsl:variable name="ISOResponse" select="Launchpoint:ISOResponse != $dcmCase/Launchpoint:ISOResponse" />
+  	<xsl:variable name="vip" select="Launchpoint:vip != $dcmCase/Launchpoint:vip" />
+  	<xsl:variable name="IQLetters" select="Launchpoint:IQLetters != $dcmCase/Launchpoint:IQLetters" />
+  	<xsl:variable name="daysSinceAccident" select="Launchpoint:daysSinceAccident != $dcmCase/Launchpoint:daysSinceAccident" />
+  	<xsl:variable name="BelowCostEffectivePursuitDueDatePassed" select="Launchpoint:BelowCostEffectivePursuitDueDatePassed != $dcmCase/Launchpoint:BelowCostEffectivePursuitDueDatePassed" />
+  	<xsl:variable name="daysSinceLastIQLetter" select="Launchpoint:daysSinceLastIQLetter != $dcmCase/Launchpoint:daysSinceLastIQLetter" />
     <Launchpoint:lpCaseChangesTracker>
       <Launchpoint:caseid><xsl:value-of select="Launchpoint:CaseId" /></Launchpoint:caseid>
       <Launchpoint:hasChanges><xsl:value-of select="$ISOIndicator or $Score or $AccidentDate or $BenefitAmount or $FundingSource or $LOB or $WorkComp or $CaseStatus or $CaseSource or $LifeCycle or $CloseReason or $IQResponseReceived or $CanClose or $BelowCostEffectivePursuit or $IQReturnMail or $State" /></Launchpoint:hasChanges>
@@ -50,6 +59,15 @@
         <Launchpoint:CanCloseChanged><xsl:value-of select="$CanClose" /></Launchpoint:CanCloseChanged>
         <Launchpoint:BelowCostEffectivePursuitChanged><xsl:value-of select="$BelowCostEffectivePursuit" /></Launchpoint:BelowCostEffectivePursuitChanged>
         <Launchpoint:IQReturnMailChanged><xsl:value-of select="$IQReturnMail" /></Launchpoint:IQReturnMailChanged>
+        <Launchpoint:InvalidAddressChanged><xsl:value-of select="$InvalidAddress" /></Launchpoint:InvalidAddressChanged>
+        <Launchpoint:IQHoldChanged><xsl:value-of select="$IQHold" /></Launchpoint:IQHoldChanged>
+        <Launchpoint:ISOSentChanged><xsl:value-of select="$ISOSent" /></Launchpoint:ISOSentChanged>
+        <Launchpoint:ISOResponseChanged><xsl:value-of select="$ISOResponse" /></Launchpoint:ISOResponseChanged>
+        <Launchpoint:vipChanged><xsl:value-of select="$vip" /></Launchpoint:vipChanged>
+        <Launchpoint:IQLettersChanged><xsl:value-of select="$IQLetters" /></Launchpoint:IQLettersChanged>
+        <Launchpoint:daysSinceAccidentChanged><xsl:value-of select="$daysSinceAccident" /></Launchpoint:daysSinceAccidentChanged>
+        <Launchpoint:BelowCostEffectivePursuitDueDatePassedChanged><xsl:value-of select="$BelowCostEffectivePursuitDueDatePassed" /></Launchpoint:BelowCostEffectivePursuitDueDatePassedChanged>
+        <Launchpoint:daysSinceLastIQLetterChanged><xsl:value-of select="$daysSinceLastIQLetter" /></Launchpoint:daysSinceLastIQLetterChanged>
       </Launchpoint:changes>
     </Launchpoint:lpCaseChangesTracker>
   </xsl:template>

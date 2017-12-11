@@ -1,10 +1,19 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	version="2.0" xmlns:getLaunchpointCase1="__project:///Schemas/integrations/getLaunchpointCase.xsd"
-	xmlns:CaseEvaluator-process="http://bpms.everteam.com/Processes/Core/CaseEvaluator/process"
-	xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-	<xsl:template match="/iob_response_root">
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0" xmlns:getLaunchpointCase="http://bpms.everteam.com/Services/REST/getLaunchpointCase.rest" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Validation="http://www.example.org/Validation" xmlns:diag="http://bpms.everteam.com/Processes/Integrations/getDCMCase" xmlns:BusinessRule="http://www.example.org/NewXMLSchema" xmlns:getLaunchpointCase1="__project:///Schemas/integrations/getLaunchpointCase.xsd" xmlns:client="http://bpms.everteam.com/Processes/Integrations/getDCMCase/client" xmlns:processimplicitPartner="http://bpms.everteam.com/Processes/Integrations/getDCMCase/processimplicitPartner" xmlns:this="http://bpms.everteam.com/Processes/Integrations/getDCMCase/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:CaseEvaluator-process="http://bpms.everteam.com/Processes/Core/CaseEvaluator/process" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:ExceptionManagement="http://bpms.everteam.com/Processes/Integrations/getDCMCase/ExceptionManagement">
+  <!--XSL Skeleton generated on Sat Dec 09 06:13:33 EST 2017
+ for F/LaunchPointProcess/Processes/Integrations/getDCMCase.bpm
+   pool:process
+   activity: Send  case
+ Complete doXslTransform: bpel:doXslTransform("../../XSLT/transformCaseDetailsFromDCM.xslt", $getLaunchpointCaseGetCaseResponse1Msg.dcmCase)
+ Input document as defined in the mapper: $getLaunchpointCaseGetCaseResponse1Msg.dcmCase-->
+  <xsl:output/>
+  <!--No parameters are currently passed to doXslTransform.-->
+  <xsl:template match="/iob_response_root">
 		<CaseEvaluator-process:Get_DCM_infoRequest>
 			<Launchpoint:CaseId><xsl:value-of select="CaseId" /></Launchpoint:CaseId>
+			<Launchpoint:BatchId />
+			<Launchpoint:ClientId><xsl:value-of select="ClientId" /></Launchpoint:ClientId>
+			<Launchpoint:EnvironmentId><xsl:value-of select="EnvironmentId" /></Launchpoint:EnvironmentId>
 			<Launchpoint:ISOIndicator><xsl:value-of select="ISOIndicator" /></Launchpoint:ISOIndicator>
 			<Launchpoint:Score><xsl:value-of select="Score" /></Launchpoint:Score>
 			<Launchpoint:AccidentDate><xsl:value-of select="AccidentDate" /></Launchpoint:AccidentDate>
@@ -14,16 +23,22 @@
 			<Launchpoint:WorkComp><xsl:value-of select="WorkComp" /></Launchpoint:WorkComp>
 			<Launchpoint:CaseStatus><xsl:value-of select="CaseStatus" /></Launchpoint:CaseStatus>
 			<Launchpoint:CaseSource><xsl:value-of select="CaseSource" /></Launchpoint:CaseSource>
-			<Launchpoint:ClientId><xsl:value-of select="ClientId" /></Launchpoint:ClientId>
-			<Launchpoint:EnvironmentId><xsl:value-of select="EnvironmentId" /></Launchpoint:EnvironmentId>
 			<Launchpoint:LifeCycle><xsl:value-of select="LifeCycle" /></Launchpoint:LifeCycle>
 			<Launchpoint:CloseReason></Launchpoint:CloseReason>
 			<Launchpoint:State><xsl:value-of select="State" /></Launchpoint:State>
-			<Launchpoint:IQHold />
 			<Launchpoint:IQResponseReceived />
 			<Launchpoint:CanClose />
 			<Launchpoint:BelowCostEffectivePursuit />
 			<Launchpoint:IQReturnMail />
-		</CaseEvaluator-process:Get_DCM_infoRequest>
-	</xsl:template>
+      		<Launchpoint:InvalidAddress><xsl:value-of select="InvalidAddress" /></Launchpoint:InvalidAddress>
+			<Launchpoint:IQHold />
+			<Launchpoint:ISOSent />
+			<Launchpoint:ISOResponse />
+			<Launchpoint:vip />
+			<Launchpoint:IQLetters />
+			<Launchpoint:daysSinceAccident><xsl:value-of select="days-from-duration(current-date() - xs:date(AccidentDate))" /></Launchpoint:daysSinceAccident>
+			<Launchpoint:BelowCostEffectivePursuitDueDatePassed />
+			<Launchpoint:daysSinceLastIQLetter />
+    </CaseEvaluator-process:Get_DCM_infoRequest>
+  </xsl:template>
 </xsl:stylesheet>

@@ -36,5 +36,6 @@
       <Launchpoint:BelowCostEffectivePursuit><xsl:value-of select="ns:belowcosteffectivepursuit" /></Launchpoint:BelowCostEffectivePursuit>
       <Launchpoint:IQReturnMail><xsl:value-of select="ns:iqreturnmail" /></Launchpoint:IQReturnMail>
       <Launchpoint:State><xsl:value-of select="ns:state" /></Launchpoint:State>
+      <Launchpoint:BatchId><xsl:value-of select="ns:batchid" /></Launchpoint:BatchId>
   </xsl:template>  
 </xsl:stylesheet>

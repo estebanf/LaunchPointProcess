@@ -340,6 +340,9 @@
     <complexType name="LaunchpointCaseType">
     	<sequence>
     		<element name="CaseId" type="string"></element>
+    		<element name="BatchId" type="int"></element>
+    		<element name="ClientId" type="int"></element>
+    		<element name="EnvironmentId" type="int"></element>
     		<element name="ISOIndicator" type="int"></element>
     		<element name="Score" type="int"></element>
     		<element name="AccidentDate" type="date"></element>
@@ -349,21 +352,30 @@
     		<element name="WorkComp" type="boolean"></element>
     		<element name="CaseStatus" type="string"></element>
     		<element name="CaseSource" type="string"></element>
-    		<element name="ClientId" type="int"></element>
-    		<element name="EnvironmentId" type="int"></element>
     		<element name="LifeCycle" type="string"></element>
     		<element name="CloseReason" type="string"></element>
-            <element name="State" type="string"></element>
-            <element name="IQResponseReceived" type="boolean"></element>
+    		<element name="State" type="string"></element>
+    		<element name="IQResponseReceived" type="boolean"></element>
     		<element name="CanClose" type="boolean"></element>
     		<element name="BelowCostEffectivePursuit" type="boolean"></element>
     		<element name="IQReturnMail" type="boolean"></element>
+
+    		<element name="InvalidAddress" type="boolean"></element>
+    		<element name="IQHold" type="boolean"></element>
+    		<element name="ISOSent" type="boolean"></element>
+    		<element name="ISOResponse" type="string"></element>
+    		<element name="vip" type="boolean"></element>
+    		<element name="IQLetters" type="int"></element>
+    		<element name="daysSinceAccident" type="int"></element>
+    		<element name="BelowCostEffectivePursuitDueDatePassed"
+    			type="boolean">
+    		</element>
+    		<element name="daysSinceLastIQLetter" type="int"></element>
     	</sequence>
     </complexType>
 
     <complexType name="ActivityType">
     	<sequence>
-    		<element name="ActivityId" type="string"></element>
     		<element name="ActivityType" type="string"></element>
     		<element name="ActivityCode" type="string"></element>
     		<element name="ActivityDescription" type="string"></element>
@@ -440,6 +452,7 @@
     					<element name="CloseReasonChanged"
     						type="boolean">
     					</element>
+    					<element name="StateChanged" type="boolean"></element>
     					<element name="IQResponseReceivedChanged"
     						type="boolean">
     					</element>
@@ -452,7 +465,26 @@
     					<element name="IQReturnMailChanged"
     						type="boolean">
     					</element>
-    					<element name="StateChanged" type="boolean"></element>
+    					<element name="InvalidAddressChanged"
+    						type="boolean">
+    					</element>
+    					<element name="IQHoldChanged" type="boolean"></element>
+    					<element name="ISOSentChanged" type="boolean"></element>
+    					<element name="ISOResponseChanged"
+    						type="boolean">
+    					</element>
+    					<element name="vipChanged" type="boolean"></element>
+    					<element name="IQLettersChanged"
+    						type="boolean">
+    					</element>
+    					<element name="daysSinceAccidentChanged"
+    						type="boolean">
+    					</element>
+    					<element
+    						name="BelowCostEffectivePursuitDueDatePassedChanged"
+    						type="boolean">
+    					</element>
+    					<element name="daysSinceLastIQLetterChanged" type="boolean"></element>
     				</sequence>
     			</complexType>
     		</element>
