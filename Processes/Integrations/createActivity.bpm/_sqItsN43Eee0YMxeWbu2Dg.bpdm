@@ -1,0 +1,322 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:CreateActivityService="http://bpms.everteam.com/Services/REST/CreateActivityService.rest" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:Exception_Management="http://thisdiagram/Exception_Management" xmlns:diag="http://thisdiagram" xmlns:processimplicitPartner="http://thisdiagram/processimplicitPartner" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:caller="http://thisdiagram/caller" xmlns:createActivity="__project:///Schemas/integrations/createActivity.xsd" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/Services/REST/CreateActivityService.rest" bpdm:prefix="CreateActivityService" bpdm:comment="contrib=&apos;project:///Services/REST/CreateActivityService.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Exception_Management" bpdm:prefix="Exception_Management" bpdm:comment="contrib=&apos;partner-pool:///_Rs_DYN46Eee0YMxeWbu2Dg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_Ho791t41Eee0YMxeWbu2Dg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/processimplicitPartner" bpdm:prefix="processimplicitPartner" bpdm:comment="contrib=&apos;partner-pool:///_sqItsN43Eee0YMxeWbu2DgimplicitPartner"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://test.com/xvar/example" bpdm:prefix="metrics" bpdm:comment="contrib=&apos;project:///Metrics/metrics.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/caller" bpdm:prefix="caller" bpdm:comment="contrib=&apos;partner-pool:///_Ho791t41Eee0YMxeWbu2Dg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/integrations/createActivity.xsd" bpdm:prefix="createActivity" bpdm:comment="contrib=&apos;project:///Schemas/integrations/createActivity.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <vprop:property name="prop" type="xs:string"/>
+            <wsdl:portType name="Forcaller">
+                <wsdl:operation name="Receive_request" bpdm:source="partner-pool:///_Ho791t41Eee0YMxeWbu2Dg">
+                    <wsdl:input message="this:Receive_requestRequest" name="Receive_request"/>
+                    <wsdl:output message="this:Receive_requestResponse" name="Receive_requestResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForcaller" type="this:Forcaller" bpdm:isSynchronized="true"/>
+            <wsdl:portType name="ForException_Management">
+                <wsdl:operation name="Receive_recover_signal" bpdm:source="partner-pool:///_Rs_DYN46Eee0YMxeWbu2Dg">
+                    <wsdl:input message="this:Receive_recover_signalRequest" name="Receive_recover_signal"/>
+                    <wsdl:output message="this:Receive_recover_signalResponse" name="Receive_recover_signalResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForException_Management" type="this:ForException_Management" bpdm:isSynchronized="true"/>
+            <xs:element name="Receive_recover_signalRequest" type="Launchpoint:ErrorRecoveryType" bpdm:source="partner-pool:///_Rs_DYN46Eee0YMxeWbu2Dg"/>
+            <wsdl:message name="Receive_recover_signalRequest" bpdm:source="partner-pool:///_Rs_DYN46Eee0YMxeWbu2Dg">
+                <wsdl:part name="body" element="this:Receive_recover_signalRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_recover_signalResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Rs_DYN46Eee0YMxeWbu2Dg"/>
+            <wsdl:message name="Receive_recover_signalResponse" bpdm:source="partner-pool:///_Rs_DYN46Eee0YMxeWbu2Dg">
+                <wsdl:part name="body" element="this:Receive_recover_signalResponse"/>
+            </wsdl:message>
+            <xs:element name="Receive_requestRequest" type="Launchpoint:CreateActivityRequestType" bpdm:source="partner-pool:///_Ho791t41Eee0YMxeWbu2Dg"/>
+            <wsdl:message name="Receive_requestRequest" bpdm:source="partner-pool:///_Ho791t41Eee0YMxeWbu2Dg">
+                <wsdl:part name="body" element="this:Receive_requestRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_requestResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Ho791t41Eee0YMxeWbu2Dg"/>
+            <wsdl:message name="Receive_requestResponse" bpdm:source="partner-pool:///_Ho791t41Eee0YMxeWbu2Dg">
+                <wsdl:part name="body" element="this:Receive_requestResponse"/>
+            </wsdl:message>
+            <vprop:propertyAlias propertyName="this:prop" messageType="this:Receive_requestResponse" part="body">
+                <vprop:query>Launchpoint:pid/text()</vprop:query>
+            </vprop:propertyAlias>
+            <vprop:propertyAlias propertyName="this:prop" messageType="this:Receive_recover_signalRequest" part="body">
+                <vprop:query>Launchpoint:recoverId/text()</vprop:query>
+            </vprop:propertyAlias>
+        </bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_Rs_DYN46Eee0YMxeWbu2Dg" bpdm:label="Exception Management"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_Ho791t41Eee0YMxeWbu2Dg" bpdm:label="caller"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_sqItsN43Eee0YMxeWbu2DgimplicitPartner" bpdm:label="processimplicitPartner"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/CreateActivityService.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/integrations/createActivity.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="process" bpdm:ID="_sqItsN43Eee0YMxeWbu2Dg">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="processAndCallerPlkVar" partnerLinkType="diag:processAndCaller" myRole="process_for_caller" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForcaller" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/caller" bpdm:providedIsDefault="true" bpdm:clientTasks="_sqItsN43Eee0YMxeWbu2Dg:_vVEC4N43Eee0YMxeWbu2Dg" bpdm:isManaged="true" bpdm:otherPoolId="_Ho791t41Eee0YMxeWbu2Dg"/>
+            <bpel:partnerLink name="processAndException_ManagementPlkVar" partnerLinkType="diag:processAndException_Management" myRole="process_for_Exception_Management" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForException_Management" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/Exception_Management" bpdm:providedIsDefault="true" bpdm:clientTasks="_WMZDYN45Eee0YMxeWbu2Dg:_1hmoMN44Eee0YMxeWbu2Dg" bpdm:isManaged="true" bpdm:otherPoolId="_Rs_DYN46Eee0YMxeWbu2Dg"/>
+            <bpel:partnerLink name="processimplicitPartnerAndProcessForHttpPortPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForHttpPortPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="CreateActivityService:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://192.168.241.200:3001/createactivity" bpdm:invokedIsDefault="true" bpdm:clientTasks="_jQfy4N45Eee0YMxeWbu2Dg:_EInxYN44Eee0YMxeWbu2Dg" bpdm:isManaged="true" bpdm:otherPoolId="_sqItsN43Eee0YMxeWbu2DgimplicitPartner"/>
+        </bpel:partnerLinks>
+        <bpel:correlationSets>
+            <bpel:correlationSet name="newCorrelationSet" properties="this:prop"/>
+        </bpel:correlationSets>
+        <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
+            <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_sqR3pt43Eee0YMxeWbu2Dg" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_sqR3pt43Eee0YMxeWbu2Dg"/>
+            <bpel:variable name="thisReceive_requestRequest2Msg" messageType="this:Receive_requestRequest" bpdm:id="_vVgHxd43Eee0YMxeWbu2Dg" bpdm:messageIds="inc:_vVMlx943Eee0YMxeWbu2Dg"/>
+            <bpel:variable name="thisReceive_requestResponse1Msg" messageType="this:Receive_requestResponse" bpdm:id="_wTVpCd43Eee0YMxeWbu2Dg" bpdm:messageIds=" out:_wTL4AN43Eee0YMxeWbu2Dg">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="this:Receive_requestResponse" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="failCount" type="xs:int" bpdm:id="_GDy9QN47Eee0YMxeWbu2Dg">
+                <bpel:from>
+                    <bpel:literal bpdm:linkedType="xs:int"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="success" type="xs:boolean" bpdm:id="_J-l-4N47Eee0YMxeWbu2Dg">
+                <bpel:from>
+                    <bpel:literal bpdm:linkedType="xs:boolean"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask eventType="start: message" operation="Receive_request" partnerLink="processAndCallerPlkVar" portType="this:Forcaller" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive request" bpdm:ID="_vVEC4N43Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="yes">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_requestRequest2Msg" bpdm:msgVarScopeId="_sqItsN43Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_requestRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_vVMlx943Eee0YMxeWbu2Dg"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$ode:pid</bpel:from>
+                        <bpel:to>$thisReceive_requestResponse1Msg.body/Launchpoint:pid</bpel:to><mapper:mapperLink><mapper:vertice id="1276539720" targetPath="$thisReceive_requestResponse1Msg.body/Launchpoint:pid" targetedBy="833162630-arg0"></mapper:vertice><mapper:vertice id="833162630" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>current-dateTime()</bpel:from>
+                        <bpel:to>$thisReceive_requestResponse1Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="1415894452" targetPath="$thisReceive_requestResponse1Msg.body/Launchpoint:timestamp" targetedBy="189514465-arg0"></mapper:vertice><mapper:vertice id="189514465" dimension="109x24" location="296,101"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>0</bpel:from>
+                        <bpel:to>$failCount</bpel:to><mapper:mapperLink><mapper:vertice id="639507913" targetPath="$failCount" targetedBy="703941849-arg0"></mapper:vertice><mapper:vertice id="703941849" dimension="79x24" location="350,159"><mapper:value>0</mapper:value></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>false()</bpel:from>
+                        <bpel:to>$success</bpel:to><mapper:mapperLink><mapper:vertice id="923822096" targetPath="$success" targetedBy="709662955-arg0"></mapper:vertice><mapper:vertice id="709662955" dimension="79x24" location="368,209"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_requestResponse1Msg" bpdm:msgVarScopeId="_sqItsN43Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_requestResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_wTL4AN43Eee0YMxeWbu2Dg">
+                    <bpel:correlation set="newCorrelationSet" initiate="join" pattern="request" bpdm:isSource="false"></bpel:correlation>
+                </bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Create activity" bpdm:ID="_zK1IoN45Eee0YMxeWbu2Dg">
+                <bpdm:linkset bpdm:type="loop" bpdm:loopType="repeatUntil" bpdm:backEdgeParticipantType="none" bpdm:isBackEdgeContributor="no">
+                    <bpel:condition bpdm:loopType="repeatUntil">true() = $success<mapper:mapperLink><mapper:vertice id="1376792598" targetPath="$repeat until" targetedBy="439930952-arg2"></mapper:vertice><mapper:vertice id="439930952" dimension="79x24" location="254,141"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1545502396" dimension="79x24" location="126,114" targetedBy="439930952-arg0"><mapper:value>true()</mapper:value></mapper:vertice><mapper:vertice id="340797950" sourcePath="$success" targetedBy="439930952-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
+                </bpdm:linkset>
+                <bpel:sequence>
+                    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Service transaction" bpdm:ID="_jQfy4N45Eee0YMxeWbu2Dg" bpdm:faultOnFailure="true">
+                        <bpel:variables>
+                            <bpel:variable name="createActivityServiceCreate_ActivityResponse1Msg" messageType="CreateActivityService:Create_Activity_output" binding="CreateActivityService:restBinding" operation="Create_Activity" opMsgType="1" bpdm:messageIds="inc:_EInxYN44Eee0YMxeWbu2DgIncoming"/>
+                            <bpel:variable name="createActivityServiceCreate_ActivityRequest1Msg" messageType="CreateActivityService:Create_Activity_input" binding="CreateActivityService:restBinding" operation="Create_Activity" opMsgType="0" bpdm:messageIds=" out:_EInxYN44Eee0YMxeWbu2DgOutgoing">
+                                <bpel:from bpdm:toPart="body">
+                                    <bpel:literal bpdm:linkedMessageType="CreateActivityService:Create_Activity_input" bpdm:linkedPart="body" bpdm:binding="CreateActivityService:restBinding" bpdm:opMsgType="0" bpdm:operation="Create_Activity"></bpel:literal>
+                                </bpel:from>
+                            </bpel:variable>
+                        </bpel:variables>
+                        <bpel:faultHandlers>
+                            <bpel:catchAll>
+                                <bpdm:eventHandler bpdm:label="Error_Intermediate_Event" bpdm:ID="_x9fy0N45Eee0YMxeWbu2Dg" bpdm:type="error"></bpdm:eventHandler>
+                                <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Error handler" bpdm:ID="_WMZDYN45Eee0YMxeWbu2Dg">
+                                    <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
+                                        <bpel:variable name="thisReceive_recover_signalRequest1Msg" messageType="this:Receive_recover_signalRequest" bpdm:id="_ABakFd47Eee0YMxeWbu2Dg" bpdm:messageIds="inc:_ABQzEN47Eee0YMxeWbu2Dg"/>
+                                        <bpel:variable name="thisReceive_recover_signalResponse2Msg" messageType="this:Receive_recover_signalResponse" bpdm:id="_Ac-eu947Eee0YMxeWbu2Dg" bpdm:messageIds=" out:_Ac-esN47Eee0YMxeWbu2Dg">
+                                            <bpel:from bpdm:toPart="body">
+                                                <bpel:literal bpdm:linkedMessageType="this:Receive_recover_signalResponse" bpdm:linkedPart="body"></bpel:literal>
+                                            </bpel:from>
+                                        </bpel:variable>
+                                        <bpel:variable name="ExecutionError" element="metrics:ExecutionError" xvar:id="ExecutionError-_vQAfkd4-Eee0YMxeWbu2Dg" xvar:relates-to="ExecutionError-keys" bpdm:xvarType="metrics:ExecutionError" bpdm:id="_vQAfkd4-Eee0YMxeWbu2Dg"/>
+                                    </bpel:variables>
+                                    <bpel:sequence>
+                                        <bpdm:messagingtask eventType="start: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Start_Event" bpdm:ID="_wOJxkN44Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no">
+                                            <bpdm:linkset bpdm:type="assignments">
+                                                <bpel:copy>
+                                                    <bpel:from>1 + $failCount</bpel:from>
+                                                    <bpel:to>$failCount</bpel:to><mapper:mapperLink><mapper:vertice id="2046799341" targetPath="$failCount" targetedBy="568528292-arg2"></mapper:vertice><mapper:vertice id="568528292" dimension="79x24" location="215,106"><mapper:value>+</mapper:value></mapper:vertice><mapper:vertice id="562832932" dimension="79x24" location="110,79" targetedBy="568528292-arg0"><mapper:value>1</mapper:value></mapper:vertice><mapper:vertice id="176927681" sourcePath="$failCount" targetedBy="568528292-arg1"></mapper:vertice></mapper:mapperLink>
+                                                </bpel:copy>
+                                                <bpel:copy>
+                                                    <bpel:from>false()</bpel:from>
+                                                    <bpel:to>$success</bpel:to><mapper:mapperLink><mapper:vertice id="1766077188" targetPath="$success" targetedBy="532975905-arg0"></mapper:vertice><mapper:vertice id="532975905" dimension="79x24" location="210,161"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                </bpel:copy>
+                                            </bpdm:linkset>
+                                        </bpdm:messagingtask>
+                                        <bpdm:gateway bpdm:label="Fail count" bpdm:ID="_xH-8kN44Eee0YMxeWbu2Dg" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
+                                            <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_x9K4J944Eee0YMxeWbu2Dg" bpdm:targetDisplayName="&lt;= 3">
+                                                <bpel:condition>$failCount&lt;= 3<mapper:mapperLink><mapper:vertice id="1944453296" targetPath="$condition" targetedBy="1422233507-arg2"></mapper:vertice><mapper:vertice id="1422233507" dimension="79x24" location="306,96"><mapper:value>&lt;=</mapper:value></mapper:vertice><mapper:vertice id="1356010842" sourcePath="$failCount" targetedBy="1422233507-arg0"></mapper:vertice><mapper:vertice id="1922612155" dimension="79x24" location="201,129" targetedBy="1422233507-arg1"><mapper:value>3</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
+                                            </bpdm:linkset>
+                                            <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_ycwXJ944Eee0YMxeWbu2Dg" bpdm:targetDisplayName="default"></bpdm:linkset>
+                                            <bpel:sequence>
+                                                <bpdm:messagingtask eventType="intermediate: timer" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Wait" bpdm:ID="_x9CVQN44Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no">
+                                                    <bpdm:linkset bpdm:type="timer">
+                                                        <bpel:for>ode:get-property-value("SERVICE_RETRY_WAIT")<mapper:mapperLink><mapper:vertice id="620156210" targetPath="$duration" targetedBy="1764284108-arg1"></mapper:vertice><mapper:vertice id="1764284108" dimension="139x24" location="330,99"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="963449401" dimension="134x24" location="118,59" targetedBy="1764284108-arg0"><mapper:value>"SERVICE_RETRY_WAIT"</mapper:value></mapper:vertice></mapper:mapperLink></bpel:for>
+                                                    </bpdm:linkset>
+                                                </bpdm:messagingtask>
+                                            </bpel:sequence>
+                                            <bpel:sequence>
+                                                <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Signal need for recovery" bpdm:ID="_ycnNMN44Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no">
+                                                    <bpdm:linkset bpdm:type="assignments">
+                                                        <bpel:copy>
+                                                            <bpel:from>$ode:pid</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="636954981" targetPath="$ExecutionError/metrics:id" targetedBy="1646228312-arg0"></mapper:vertice><mapper:vertice id="1646228312" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
+                                                        </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Case/Launchpoint:CaseId</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="1377583816" targetPath="$ExecutionError/metrics:CaseId" targetedBy="599726872-arg0"></mapper:vertice><mapper:vertice id="599726872" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Case/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
+                                                        </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>$failCount</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:failCount</bpel:to><mapper:mapperLink><mapper:vertice id="163017303" targetPath="$ExecutionError/metrics:failCount" targetedBy="496399705-arg0"></mapper:vertice><mapper:vertice id="496399705" sourcePath="$failCount"></mapper:vertice></mapper:mapperLink>
+                                                        </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>true()</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:technicalError</bpel:to><mapper:mapperLink><mapper:vertice id="1828501395" targetPath="$ExecutionError/metrics:technicalError" targetedBy="394231402-arg0"></mapper:vertice><mapper:vertice id="394231402" dimension="79x24" location="341,125"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>"CREATEACTIVITY"</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:step</bpel:to><mapper:mapperLink><mapper:vertice id="1041655073" targetPath="$ExecutionError/metrics:step" targetedBy="2113869074-arg0"></mapper:vertice><mapper:vertice id="2113869074" dimension="110x24" location="290,183"><mapper:value>"CREATEACTIVITY"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>false()</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:resolved</bpel:to><mapper:mapperLink><mapper:vertice id="2099853148" targetPath="$ExecutionError/metrics:resolved" targetedBy="1529201860-arg0"></mapper:vertice><mapper:vertice id="1529201860" dimension="79x24" location="325,214"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>true()</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:integration</bpel:to><mapper:mapperLink><mapper:vertice id="275467102" targetPath="$ExecutionError/metrics:integration" targetedBy="1195964132-arg0"></mapper:vertice><mapper:vertice id="1195964132" dimension="79x24" location="337,251"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>false()</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:validation</bpel:to><mapper:mapperLink><mapper:vertice id="989264105" targetPath="$ExecutionError/metrics:validation" targetedBy="993024622-arg0"></mapper:vertice><mapper:vertice id="993024622" dimension="79x24" location="379,284"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>"Error calling create activity"</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:message</bpel:to><mapper:mapperLink><mapper:vertice id="1754979370" targetPath="$ExecutionError/metrics:message" targetedBy="8851503-arg0"></mapper:vertice><mapper:vertice id="8851503" dimension="157x24" location="282,330"><mapper:value>"Error calling create activity"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        </bpel:copy>
+                                                    </bpdm:linkset>
+                                                </bpdm:messagingtask>
+                                                <bpdm:messagingtask eventType="intermediate: message" operation="Receive_recover_signal" partnerLink="processAndException_ManagementPlkVar" portType="this:ForException_Management" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive recover signal" bpdm:ID="_1hmoMN44Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="yes">
+                                                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_recover_signalRequest1Msg" bpdm:msgVarScopeId="_WMZDYN45Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_recover_signalRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_ABQzEN47Eee0YMxeWbu2Dg">
+                                                        <bpel:correlation set="newCorrelationSet" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
+                                                    </bpdm:linkset>
+                                                    <bpdm:linkset bpdm:type="assignments">
+                                                        <bpel:copy>
+                                                            <bpel:from>$ode:pid</bpel:from>
+                                                            <bpel:to>$thisReceive_recover_signalResponse2Msg.body/Launchpoint:pid</bpel:to><mapper:mapperLink><mapper:vertice id="1936557880" targetPath="$thisReceive_recover_signalResponse2Msg.body/Launchpoint:pid" targetedBy="1526548111-arg0"></mapper:vertice><mapper:vertice id="1526548111" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
+                                                        </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>current-dateTime()</bpel:from>
+                                                            <bpel:to>$thisReceive_recover_signalResponse2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="964935764" targetPath="$thisReceive_recover_signalResponse2Msg.body/Launchpoint:timestamp" targetedBy="69305716-arg0"></mapper:vertice><mapper:vertice id="69305716" dimension="109x24" location="287,173"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>$ode:pid</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:id</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1035753956" targetPath="$ExecutionError/metrics:id" targetedBy="932715513-arg0"></mapper:vertice>
+  <mapper:vertice id="932715513" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
+                                                        </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>true()</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:resolved</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1373249506" targetPath="$ExecutionError/metrics:resolved" targetedBy="565817747-arg0"></mapper:vertice>
+  <mapper:vertice id="565817747" dimension="79x24" location="359,242">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                                        </bpel:copy>
+                                                    </bpdm:linkset>
+                                                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_recover_signalResponse2Msg" bpdm:msgVarScopeId="_WMZDYN45Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_recover_signalResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_Ac-esN47Eee0YMxeWbu2Dg"></bpdm:linkset>
+                                                </bpdm:messagingtask>
+                                            </bpel:sequence>
+                                        </bpdm:gateway>
+                                        <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_7LaJUN44Eee0YMxeWbu2Dg" bpdm:gatewayType="data_xor" bpdm:isMerge="true"></bpdm:gateway>
+                                        <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Try again" bpdm:ID="_tl6VQN4-Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                    </bpel:sequence>
+                                </bpel:scope>
+                            </bpel:catchAll>
+                        </bpel:faultHandlers>
+                        <bpel:sequence>
+                            <bpdm:messagingtask operation="Create_Activity" partnerLink="processimplicitPartnerAndProcessForHttpPortPlkVar" portType="CreateActivityService:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Call service" bpdm:ID="_EInxYN44Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no">
+                                <bpdm:linkset bpdm:type="assignments">
+                                    <bpel:copy>
+                                        <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Case/Launchpoint:EnvironmentId</bpel:from>
+                                        <bpel:to>$createActivityServiceCreate_ActivityRequest1Msg.body/EnvironmentId</bpel:to><mapper:mapperLink><mapper:vertice id="227244843" targetPath="$createActivityServiceCreate_ActivityRequest1Msg.body/EnvironmentId" targetedBy="719802065-arg0"></mapper:vertice><mapper:vertice id="719802065" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Case/Launchpoint:EnvironmentId"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Case/Launchpoint:CaseId</bpel:from>
+                                        <bpel:to>$createActivityServiceCreate_ActivityRequest1Msg.body/CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="2063793744" targetPath="$createActivityServiceCreate_ActivityRequest1Msg.body/CaseId" targetedBy="1039667079-arg0"></mapper:vertice><mapper:vertice id="1039667079" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Case/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Case/Launchpoint:ClientId</bpel:from>
+                                        <bpel:to>$createActivityServiceCreate_ActivityRequest1Msg.body/ClientId</bpel:to><mapper:mapperLink><mapper:vertice id="1950809090" targetPath="$createActivityServiceCreate_ActivityRequest1Msg.body/ClientId" targetedBy="60328210-arg0"></mapper:vertice><mapper:vertice id="60328210" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Case/Launchpoint:ClientId"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityType</bpel:from>
+                                        <bpel:to>$createActivityServiceCreate_ActivityRequest1Msg.body/ActivityType</bpel:to><mapper:mapperLink><mapper:vertice id="1864837230" targetPath="$createActivityServiceCreate_ActivityRequest1Msg.body/ActivityType" targetedBy="1898925817-arg0"></mapper:vertice><mapper:vertice id="1898925817" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityType"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode</bpel:from>
+                                        <bpel:to>$createActivityServiceCreate_ActivityRequest1Msg.body/ActivityCode</bpel:to><mapper:mapperLink><mapper:vertice id="2067306635" targetPath="$createActivityServiceCreate_ActivityRequest1Msg.body/ActivityCode" targetedBy="777420874-arg0"></mapper:vertice><mapper:vertice id="777420874" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityDescription</bpel:from>
+                                        <bpel:to>$createActivityServiceCreate_ActivityRequest1Msg.body/Description</bpel:to><mapper:mapperLink><mapper:vertice id="335363094" targetPath="$createActivityServiceCreate_ActivityRequest1Msg.body/Description" targetedBy="1936942909-arg0"></mapper:vertice><mapper:vertice id="1936942909" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityDescription"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:CreatedBy</bpel:from>
+                                        <bpel:to>$createActivityServiceCreate_ActivityRequest1Msg.body/CreatedBy</bpel:to><mapper:mapperLink><mapper:vertice id="1661142422" targetPath="$createActivityServiceCreate_ActivityRequest1Msg.body/CreatedBy" targetedBy="62027078-arg0"></mapper:vertice><mapper:vertice id="62027078" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:CreatedBy"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:CreatedDate</bpel:from>
+                                        <bpel:to>$createActivityServiceCreate_ActivityRequest1Msg.body/CreateDate</bpel:to><mapper:mapperLink><mapper:vertice id="1656889581" targetPath="$createActivityServiceCreate_ActivityRequest1Msg.body/CreateDate" targetedBy="141935246-arg0"></mapper:vertice><mapper:vertice id="141935246" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:CreatedDate"></mapper:vertice></mapper:mapperLink>
+                                    </bpel:copy>
+                                </bpdm:linkset>
+                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="createActivityServiceCreate_ActivityRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="CreateActivityService:Create_Activity_input" bpdm:binding="CreateActivityService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_EInxYN44Eee0YMxeWbu2DgOutgoing"></bpdm:linkset>
+                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="createActivityServiceCreate_ActivityResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="CreateActivityService:Create_Activity_output" bpdm:binding="CreateActivityService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_EInxYN44Eee0YMxeWbu2DgIncoming"></bpdm:linkset>
+                            </bpdm:messagingtask>
+                            <bpdm:gateway bpdm:label="Source" bpdm:ID="_GnMFkN44Eee0YMxeWbu2Dg" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
+                                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_H9vo1944Eee0YMxeWbu2Dg" bpdm:targetDisplayName="[Source - ISO Response]">
+                                    <bpel:condition>"ISORESPONSE" = $thisReceive_requestRequest2Msg.body/Launchpoint:source<mapper:mapperLink><mapper:vertice id="1252507513" targetPath="$condition" targetedBy="971071638-arg2"></mapper:vertice><mapper:vertice id="971071638" dimension="79x24" location="355,49"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1469085180" dimension="92x24" location="237,25" targetedBy="971071638-arg0"><mapper:value>"ISORESPONSE"</mapper:value></mapper:vertice><mapper:vertice id="1681915681" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:source" targetedBy="971071638-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
+                                </bpdm:linkset>
+                                <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_Nvb6p944Eee0YMxeWbu2Dg" bpdm:targetDisplayName="default"></bpdm:linkset>
+                                <bpel:sequence>
+                                    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="ISO Response" bpdm:ID="_K3QzoN44Eee0YMxeWbu2Dg">
+                                        <bpel:sequence>
+                                            <bpdm:messagingtask eventType="end: message" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Reply to ISO response" bpdm:ID="_H9l30N44Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no">
+                                                <bpdm:linkset bpdm:type="assignments">
+                                                    <bpel:copy>
+                                                        <bpel:from>true()</bpel:from>
+                                                        <bpel:to>$success</bpel:to><mapper:mapperLink><mapper:vertice id="667712581" targetPath="$success" targetedBy="967088577-arg0"></mapper:vertice><mapper:vertice id="967088577" dimension="79x24" location="242,173"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                    </bpel:copy>
+                                                </bpdm:linkset>
+                                            </bpdm:messagingtask>
+                                        </bpel:sequence>
+                                    </bpel:scope>
+                                </bpel:sequence>
+                                <bpel:sequence>
+                                    <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_NvTXwN44Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                </bpel:sequence>
+                            </bpdm:gateway>
+                        </bpel:sequence>
+                    </bpel:scope>
+                </bpel:sequence>
+            </bpel:scope>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>

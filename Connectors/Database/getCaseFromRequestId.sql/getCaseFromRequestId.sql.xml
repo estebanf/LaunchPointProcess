@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jdbc:descriptor wsdlLocation="load_scored_iso.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:load_scored_isoservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
-    <jdbc:service name="load_scored_isoService">
-        <jdbc:operation name="urn:load_scored_iso" sqlStatement="select launchpointcase.caseid as caseid,
+<jdbc:descriptor wsdlLocation="getCaseFromRequestId.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:getcasefromrequestidservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
+    <jdbc:service name="getCaseFromRequestIdService">
+        <jdbc:operation name="urn:getCaseFromRequestId" sqlStatement="select launchpointcase.caseid as caseid,
 launchpointcase.clientid as clientid,
 launchpointcase.environmentid as environmentid,
 launchpointcase.batchid as batchid,
 launchpointcase.isoresponse as isoresponse
 from launchpointcase inner join isotracking on isotracking.caseid = launchpointcase.caseid  
-where isotracking.requestid = ?" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:load_scored_isoservice">
+where isotracking.requestid = ?" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:getcasefromrequestidservice">
             <jdbc:input>
                 <jdbc:parameter>
                     <jdbc:mode>1</jdbc:mode>
-                    <jdbc:name>isotracking.requestid</jdbc:name>
+                    <jdbc:name>Parameter0</jdbc:name>
                     <jdbc:type>40</jdbc:type>
                     <jdbc:length>10</jdbc:length>
                     <jdbc:typeName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
@@ -27,16 +27,16 @@ where isotracking.requestid = ?" event="false" dynamicCredentials="true" xmlns:u
             <jdbc:output/>
         </jdbc:operation>
         <jdbc:port>
-            <jdbc:address location="http://bpms.everteam.us:8080/everteam/ode/processes/load_scored_isoService"/>
+            <jdbc:address location="http://bpms.everteam.us:8080/everteam/ode/processes/getCaseFromRequestIdService"/>
         </jdbc:port>
-        <jdbc:connection jndiName="java:comp/env/jdbc/BAMDB">
+        <jdbc:connection jndiName="java:comp/env/jdbc/">
             <jdbc:databaseProductName>Generic JDBC</jdbc:databaseProductName>
             <jdbc:databaseProductVersion>1.0</jdbc:databaseProductVersion>
             <jdbc:driverClass>org.postgresql.Driver</jdbc:driverClass>
             <jdbc:databaseUrl>jdbc:postgresql://bpms.everteam.us:5432/bamdb</jdbc:databaseUrl>
             <jdbc:databaseName>BAMDB</jdbc:databaseName>
             <jdbc:userName>bam</jdbc:userName>
-            <jdbc:password>decrypt[ObOFhOPWUyfFT9TDAng/jJpRyokTU0r4]</jdbc:password>
+            <jdbc:password>decrypt[XbHtVkDBvZh0Iq5/g8P11I39sfRrLYp9]</jdbc:password>
         </jdbc:connection>
     </jdbc:service>
 </jdbc:descriptor>

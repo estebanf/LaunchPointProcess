@@ -1,0 +1,181 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:tns="http://everteam.com/xvar/example" xmlns:this="http://thisdiagram/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:caller="http://thisdiagram/caller" xmlns:R="http://thisdiagram/R" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_rO57Rt42Eee0YMxeWbu2Dg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/caller" bpdm:prefix="caller" bpdm:comment="contrib=&apos;partner-pool:///_rO57Rt42Eee0YMxeWbu2Dg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/R" bpdm:prefix="R" bpdm:comment="contrib=&apos;partner-pool:///_eHgDUN46Eee0YMxeWbu2Dg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <wsdl:portType name="Forcaller">
+                <wsdl:operation name="Receive_request" bpdm:source="partner-pool:///_rO57Rt42Eee0YMxeWbu2Dg">
+                    <wsdl:input message="this:Receive_requestRequest" name="Receive_request"/>
+                    <wsdl:output message="this:Receive_requestResponse" name="Receive_requestResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForcaller" type="this:Forcaller" bpdm:isSynchronized="true"/>
+            <wsdl:portType name="ForR">
+                <wsdl:operation name="Receive_recover_signal" bpdm:source="partner-pool:///_eHgDUN46Eee0YMxeWbu2Dg">
+                    <wsdl:input message="this:Receive_recover_signalRequest" name="Receive_recover_signal"/>
+                    <wsdl:output message="this:Receive_recover_signalResponse" name="Receive_recover_signalResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForR" type="this:ForR" bpdm:isSynchronized="true"/>
+            <xs:element name="Receive_requestRequest" type="Launchpoint:UpdateLifecycleRequestType" bpdm:source="partner-pool:///_rO57Rt42Eee0YMxeWbu2Dg"/>
+            <wsdl:message name="Receive_requestRequest" bpdm:source="partner-pool:///_rO57Rt42Eee0YMxeWbu2Dg">
+                <wsdl:part name="body" element="this:Receive_requestRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_requestResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_rO57Rt42Eee0YMxeWbu2Dg"/>
+            <wsdl:message name="Receive_requestResponse" bpdm:source="partner-pool:///_rO57Rt42Eee0YMxeWbu2Dg">
+                <wsdl:part name="body" element="this:Receive_requestResponse"/>
+            </wsdl:message>
+            <xs:element name="Receive_recover_signalRequest" type="Launchpoint:ErrorRecoveryType" bpdm:source="partner-pool:///_eHgDUN46Eee0YMxeWbu2Dg"/>
+            <wsdl:message name="Receive_recover_signalRequest" bpdm:source="partner-pool:///_eHgDUN46Eee0YMxeWbu2Dg">
+                <wsdl:part name="body" element="this:Receive_recover_signalRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_recover_signalResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_eHgDUN46Eee0YMxeWbu2Dg"/>
+            <wsdl:message name="Receive_recover_signalResponse" bpdm:source="partner-pool:///_eHgDUN46Eee0YMxeWbu2Dg">
+                <wsdl:part name="body" element="this:Receive_recover_signalResponse"/>
+            </wsdl:message>
+        </bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_rO57Rt42Eee0YMxeWbu2Dg" bpdm:label="caller"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_eHgDUN46Eee0YMxeWbu2Dg" bpdm:label="R"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="process" bpdm:ID="_6CzX8N43Eee0YMxeWbu2Dg">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="callerAndProcessPlkVar" partnerLinkType="diag:callerAndProcess" myRole="process_for_caller" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForcaller" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/caller" bpdm:providedIsDefault="true" bpdm:clientTasks="_6CzX8N43Eee0YMxeWbu2Dg:_8F7tUN43Eee0YMxeWbu2Dg" bpdm:isManaged="true" bpdm:otherPoolId="_rO57Rt42Eee0YMxeWbu2Dg"/>
+            <bpel:partnerLink name="rAndProcessPlkVar" partnerLinkType="diag:RAndProcess" myRole="process_for_R" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForR" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/R" bpdm:providedIsDefault="true" bpdm:clientTasks="_Lhe_4N45Eee0YMxeWbu2Dg:_Lhniz945Eee0YMxeWbu2Dg" bpdm:isManaged="true" bpdm:otherPoolId="_eHgDUN46Eee0YMxeWbu2Dg"/>
+        </bpel:partnerLinks>
+        <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
+            <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_6C8h5t43Eee0YMxeWbu2Dg" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_6C8h5t43Eee0YMxeWbu2Dg"/>
+            <bpel:variable name="thisReceive_requestRequest2Msg" messageType="this:Receive_requestRequest" bpdm:id="_8GOoVt43Eee0YMxeWbu2Dg" bpdm:messageIds="inc:_8GE3QN43Eee0YMxeWbu2Dg"/>
+            <bpel:variable name="thisReceive_requestResponse1Msg" messageType="this:Receive_requestResponse" bpdm:id="_87IP8N43Eee0YMxeWbu2Dg" bpdm:messageIds=" out:_86-e8N43Eee0YMxeWbu2Dg">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="this:Receive_requestResponse" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="failCount" type="xs:int" bpdm:id="_hYMGEN48Eee0YMxeWbu2Dg">
+                <bpel:from>
+                    <bpel:literal bpdm:linkedType="xs:int"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="success" type="xs:boolean" bpdm:id="_hgOnwN48Eee0YMxeWbu2Dg">
+                <bpel:from>
+                    <bpel:literal bpdm:linkedType="xs:boolean"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask eventType="start: message" operation="Receive_request" partnerLink="callerAndProcessPlkVar" portType="this:Forcaller" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive request" bpdm:ID="_8F7tUN43Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="yes">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_requestRequest2Msg" bpdm:msgVarScopeId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_requestRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_8GE3QN43Eee0YMxeWbu2Dg"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$ode:pid</bpel:from>
+                        <bpel:to>$thisReceive_requestResponse1Msg.body/Launchpoint:pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="711998864" targetPath="$thisReceive_requestResponse1Msg.body/Launchpoint:pid" targetedBy="1687618688-arg0"></mapper:vertice>
+  <mapper:vertice id="1687618688" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>current-dateTime()</bpel:from>
+                        <bpel:to>$thisReceive_requestResponse1Msg.body/Launchpoint:timestamp</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="717267199" targetPath="$thisReceive_requestResponse1Msg.body/Launchpoint:timestamp" targetedBy="1292830544-arg0"></mapper:vertice>
+  <mapper:vertice id="1292830544" dimension="109x24" location="189,62">
+    <mapper:value>current-dateTime()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>0</bpel:from>
+                        <bpel:to>$failCount</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="566407991" targetPath="$failCount" targetedBy="559199485-arg0"></mapper:vertice>
+  <mapper:vertice id="559199485" dimension="79x24" location="186,99">
+    <mapper:value>0</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>false()</bpel:from>
+                        <bpel:to>$success</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1373680236" targetPath="$success" targetedBy="1577593254-arg0"></mapper:vertice>
+  <mapper:vertice id="1577593254" dimension="79x24" location="192,135">
+    <mapper:value>false()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_requestResponse1Msg" bpdm:msgVarScopeId="_6CzX8N43Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_requestResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_86-e8N43Eee0YMxeWbu2Dg"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Update case" bpdm:ID="_CZqqUN46Eee0YMxeWbu2Dg">
+                <bpdm:linkset bpdm:type="loop" bpdm:loopType="while" bpdm:backEdgeParticipantType="none" bpdm:isBackEdgeContributor="no"></bpdm:linkset>
+                <bpel:sequence>
+                    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Service transaction" bpdm:ID="_sJHZYN45Eee0YMxeWbu2Dg">
+                        <bpel:faultHandlers>
+                            <bpel:catch>
+                                <bpdm:eventHandler bpdm:label="Error_Intermediate_Event" bpdm:ID="_BAaYYN46Eee0YMxeWbu2Dg" bpdm:type="error"></bpdm:eventHandler>
+                                <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Error handler" bpdm:ID="_Lhe_4N45Eee0YMxeWbu2Dg">
+                                    <bpel:variables>
+                                        <bpel:variable name="thisReceive_recover_signalRequest1Msg" messageType="this:Receive_recover_signalRequest" bpdm:id="_dJIrsN48Eee0YMxeWbu2Dg" bpdm:messageIds="inc:_dI1JsN48Eee0YMxeWbu2Dg"/>
+                                        <bpel:variable name="thisReceive_recover_signalResponse2Msg" messageType="this:Receive_recover_signalResponse" bpdm:id="_ddP6gN48Eee0YMxeWbu2Dg" bpdm:messageIds=" out:_ddGJgN48Eee0YMxeWbu2Dg">
+                                            <bpel:from bpdm:toPart="body">
+                                                <bpel:literal bpdm:linkedMessageType="this:Receive_recover_signalResponse" bpdm:linkedPart="body"></bpel:literal>
+                                            </bpel:from>
+                                        </bpel:variable>
+                                    </bpel:variables>
+                                    <bpel:sequence>
+                                        <bpdm:messagingtask eventType="start: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Start_Event" bpdm:ID="_Lhni9945Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                        <bpdm:gateway bpdm:label="Fail count" bpdm:ID="_LhnjAd45Eee0YMxeWbu2Dg" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
+                                            <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_NeffIN45Eee0YMxeWbu2Dg" bpdm:targetDisplayName="[Fail count - Wait]"></bpdm:linkset>
+                                            <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_OkYJIN45Eee0YMxeWbu2Dg" bpdm:targetDisplayName="default"></bpdm:linkset>
+                                            <bpel:sequence>
+                                                <bpdm:messagingtask eventType="intermediate: timer" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Wait" bpdm:ID="_Lhni7d45Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no">
+                                                    <bpdm:linkset bpdm:type="timer"></bpdm:linkset>
+                                                </bpdm:messagingtask>
+                                            </bpel:sequence>
+                                            <bpel:sequence>
+                                                <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Signal need for recovery" bpdm:ID="_LhnjC945Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                                <bpdm:messagingtask eventType="intermediate: message" operation="Receive_recover_signal" partnerLink="rAndProcessPlkVar" portType="this:ForR" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive recover signal" bpdm:ID="_Lhniz945Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="yes">
+                                                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_recover_signalRequest1Msg" bpdm:msgVarScopeId="_Lhe_4N45Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_recover_signalRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_dI1JsN48Eee0YMxeWbu2Dg"></bpdm:linkset>
+                                                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_recover_signalResponse2Msg" bpdm:msgVarScopeId="_Lhe_4N45Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_recover_signalResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_ddGJgN48Eee0YMxeWbu2Dg"></bpdm:linkset>
+                                                </bpdm:messagingtask>
+                                            </bpel:sequence>
+                                        </bpdm:gateway>
+                                        <bpdm:gateway bpdm:label="Exclusive_Data-Based_Gateway" bpdm:ID="_Lhni2d45Eee0YMxeWbu2Dg" bpdm:gatewayType="data_xor" bpdm:isMerge="true"></bpdm:gateway>
+                                        <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_Lhni4945Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                    </bpel:sequence>
+                                </bpel:scope>
+                            </bpel:catch>
+                        </bpel:faultHandlers>
+                        <bpel:sequence>
+                            <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Call service" bpdm:ID="_e_UHAN44Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                            <bpdm:gateway bpdm:label="Source" bpdm:ID="_gTYW8N44Eee0YMxeWbu2Dg" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
+                                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_h-WrB944Eee0YMxeWbu2Dg" bpdm:targetDisplayName="[Source - ISO Response]"></bpdm:linkset>
+                                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_KpIbkN45Eee0YMxeWbu2Dg" bpdm:targetDisplayName="[Source - EventEndEmpty]"></bpdm:linkset>
+                                <bpel:sequence>
+                                    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="ISO Response" bpdm:ID="_i_ew0N44Eee0YMxeWbu2Dg">
+                                        <bpel:sequence>
+                                            <bpdm:messagingtask eventType="end: message" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Reply to ISO Response" bpdm:ID="_h-M6AN44Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                        </bpel:sequence>
+                                    </bpel:scope>
+                                </bpel:sequence>
+                                <bpel:sequence>
+                                    <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_Ko_RoN45Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                </bpel:sequence>
+                            </bpdm:gateway>
+                        </bpel:sequence>
+                    </bpel:scope>
+                </bpel:sequence>
+            </bpel:scope>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>

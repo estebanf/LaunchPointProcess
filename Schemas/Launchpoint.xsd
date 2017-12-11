@@ -227,7 +227,6 @@
     </complexType>
     <complexType name="DiaryType">
     	<sequence>
-    		<element name="DiaryId" type="string"></element>
     		<element name="DiaryType" type="string"></element>
     		<element name="DiaryStatus" type="string"></element>
     		<element name="DiaryDueDate" type="date"></element>
@@ -441,4 +440,52 @@
     	type="tns:GenerateFileRequestType">
     </element>
     <element name="DCMISORequestACK" type="tns:DCMISOFileWrapperType"></element>
+
+    <complexType name="ISOResponseType">
+    	<sequence>
+    		<element name="ClaimInvestigationAddRs" type="anyType"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="CreateActivityRequestType">
+    	<sequence>
+    		<element name="Case" type="tns:CaseIdentifierType"></element>
+    		<element name="Activity" type="tns:ActivityType"></element>
+    		<element name="source" type="string"></element>
+    		<element name="sourcePid" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="CreateDiaryType">
+    	<sequence>
+    		<element name="Case" type="tns:CaseIdentifierType"></element>
+    		<element name="Diary" type="tns:DiaryType"></element>
+    		<element name="Source" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="UpdateLifecycleRequestType">
+    	<sequence>
+    		<element name="Case" type="tns:CaseIdentifierType"></element>
+    		<element name="lifeCycle" type="string"></element>
+    		<element name="source" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="CaseCloseReopenType">
+    	<sequence>
+    		<element name="Case" type="tns:CaseIdentifierType"></element>
+    		<element name="lifecycle" type="string"></element>
+    		<element name="status" type="string"></element>
+    		<element name="closeReason" type="string"></element>
+    		<element name="source" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="GetCaseFromRequestIdType">
+    	<sequence>
+    		<element name="Case" type="tns:CaseIdentifierType"></element>
+    		<element name="requestid" type="string"></element>
+    	</sequence>
+    </complexType>
 </schema>
