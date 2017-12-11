@@ -94,10 +94,10 @@
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WEKiMN4-Eee0YMxeWbu2Dg" source="odeFailureHandlingSource">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_WEKiMd4-Eee0YMxeWbu2Dg" key="odeFailureFaultOnFailure" value="true"/>
         </eAnnotations>
-        <vertices xmi:type="bpmn:Activity" xmi:id="_GnMFkd44Eee0YMxeWbu2Dg" iD="_GnMFkN44Eee0YMxeWbu2Dg" outgoingEdges="_H9vo2N44Eee0YMxeWbu2Dg _Nvb6qN44Eee0YMxeWbu2Dg" incomingEdges="_GndyYd44Eee0YMxeWbu2Dg" name="Source" activityType="GatewayDataBasedExclusive"/>
-        <vertices xmi:type="bpmn:Activity" xmi:id="_NvTXwd44Eee0YMxeWbu2Dg" iD="_NvTXwN44Eee0YMxeWbu2Dg" incomingEdges="_Nvb6qN44Eee0YMxeWbu2Dg" activityType="EventEndEmpty"/>
-        <vertices xmi:type="bpmn:SubProcess" xmi:id="_K3Qzod44Eee0YMxeWbu2Dg" iD="_K3QzoN44Eee0YMxeWbu2Dg" incomingEdges="_H9vo2N44Eee0YMxeWbu2Dg" name="ISO Response">
-          <vertices xmi:type="bpmn:Activity" xmi:id="_H9l30d44Eee0YMxeWbu2Dg" iD="_H9l30N44Eee0YMxeWbu2Dg" name="Reply to ISO response" activityType="EventEndMessage"/>
+        <vertices xmi:type="bpmn:Activity" xmi:id="_GnMFkd44Eee0YMxeWbu2Dg" iD="_GnMFkN44Eee0YMxeWbu2Dg" outgoingEdges="_H9vo2N44Eee0YMxeWbu2Dg _-PnhYd5dEee5MfuigsCq1w _-nJ3od5dEee5MfuigsCq1w __YU14d5dEee5MfuigsCq1w __6Amod5dEee5MfuigsCq1w _AcuSId5eEee5MfuigsCq1w _A8L1Ud5eEee5MfuigsCq1w _Bwni8d5eEee5MfuigsCq1w _Cdny4d5eEee5MfuigsCq1w" incomingEdges="_GndyYd44Eee0YMxeWbu2Dg" name="Source" activityType="GatewayDataBasedExclusive"/>
+        <vertices xmi:type="bpmn:Activity" xmi:id="_NvTXwd44Eee0YMxeWbu2Dg" iD="_NvTXwN44Eee0YMxeWbu2Dg" incomingEdges="_Cdny4d5eEee5MfuigsCq1w" activityType="EventEndEmpty"/>
+        <vertices xmi:type="bpmn:SubProcess" xmi:id="_K3Qzod44Eee0YMxeWbu2Dg" iD="_K3QzoN44Eee0YMxeWbu2Dg" incomingEdges="_H9vo2N44Eee0YMxeWbu2Dg" name="ISO">
+          <vertices xmi:type="bpmn:Activity" xmi:id="_H9l30d44Eee0YMxeWbu2Dg" iD="_H9l30N44Eee0YMxeWbu2Dg" name="" activityType="EventEndMessage"/>
         </vertices>
         <vertices xmi:type="bpmn:ActivityService" xmi:id="__u034d49Eee0YMxeWbu2Dg" iD="_EInxYN44Eee0YMxeWbu2Dg" outgoingEdges="_GndyYd44Eee0YMxeWbu2Dg" name="Call service" looping="false">
           <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__vRj0N49Eee0YMxeWbu2Dg" source="attachedDataobject">
@@ -106,9 +106,37 @@
             <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="__vRj0949Eee0YMxeWbu2Dg" key="blackbox" value="true"/>
           </eAnnotations>
         </vertices>
-        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_Nvb6qN44Eee0YMxeWbu2Dg" iD="_Nvb6p944Eee0YMxeWbu2Dg" conditionType="Default" isDefault="true"/>
+        <vertices xmi:type="bpmn:SubProcess" xmi:id="_d6cJ0d5dEee5MfuigsCq1w" iD="_d6cJ0N5dEee5MfuigsCq1w" incomingEdges="_-PnhYd5dEee5MfuigsCq1w" name="Iso response" looping="false">
+          <vertices xmi:type="bpmn:Activity" xmi:id="_d6cJ4t5dEee5MfuigsCq1w" iD="_d6cJ4d5dEee5MfuigsCq1w" name="" activityType="EventEndMessage" looping="false"/>
+        </vertices>
+        <vertices xmi:type="bpmn:SubProcess" xmi:id="_h3KeEd5dEee5MfuigsCq1w" iD="_h3KeEN5dEee5MfuigsCq1w" incomingEdges="_-nJ3od5dEee5MfuigsCq1w" name="evaluator" looping="false">
+          <vertices xmi:type="bpmn:Activity" xmi:id="_h3KeIt5dEee5MfuigsCq1w" iD="_h3KeId5dEee5MfuigsCq1w" name="" activityType="EventEndMessage" looping="false"/>
+        </vertices>
+        <vertices xmi:type="bpmn:SubProcess" xmi:id="_mw_60d5dEee5MfuigsCq1w" iD="_mw_60N5dEee5MfuigsCq1w" incomingEdges="__YU14d5dEee5MfuigsCq1w" name="update lifecycle" looping="false">
+          <vertices xmi:type="bpmn:Activity" xmi:id="_mxIdwN5dEee5MfuigsCq1w" iD="_mxIdv95dEee5MfuigsCq1w" name="" activityType="EventEndMessage" looping="false"/>
+        </vertices>
+        <vertices xmi:type="bpmn:SubProcess" xmi:id="_rUKkAd5dEee5MfuigsCq1w" iD="_rUKkAN5dEee5MfuigsCq1w" incomingEdges="__6Amod5dEee5MfuigsCq1w" name="close reson" looping="false">
+          <vertices xmi:type="bpmn:Activity" xmi:id="_rUTG8N5dEee5MfuigsCq1w" iD="_rUTG795dEee5MfuigsCq1w" name="" activityType="EventEndMessage" looping="false"/>
+        </vertices>
+        <vertices xmi:type="bpmn:SubProcess" xmi:id="_trirEd5dEee5MfuigsCq1w" iD="_trirEN5dEee5MfuigsCq1w" incomingEdges="_AcuSId5eEee5MfuigsCq1w" name="close lifecycle" looping="false">
+          <vertices xmi:type="bpmn:Activity" xmi:id="_trirIt5dEee5MfuigsCq1w" iD="_trirId5dEee5MfuigsCq1w" name="" activityType="EventEndMessage" looping="false"/>
+        </vertices>
+        <vertices xmi:type="bpmn:SubProcess" xmi:id="_vsSa0d5dEee5MfuigsCq1w" iD="_vsSa0N5dEee5MfuigsCq1w" incomingEdges="_A8L1Ud5eEee5MfuigsCq1w" name="close status" looping="false">
+          <vertices xmi:type="bpmn:Activity" xmi:id="_vsSa4t5dEee5MfuigsCq1w" iD="_vsSa4d5dEee5MfuigsCq1w" name="" activityType="EventEndMessage" looping="false"/>
+        </vertices>
+        <vertices xmi:type="bpmn:SubProcess" xmi:id="_2InlEd5dEee5MfuigsCq1w" iD="_2InlEN5dEee5MfuigsCq1w" incomingEdges="_Bwni8d5eEee5MfuigsCq1w" name="IQ letter" looping="false">
+          <vertices xmi:type="bpmn:Activity" xmi:id="_2InlIt5dEee5MfuigsCq1w" iD="_2InlId5dEee5MfuigsCq1w" name="" activityType="EventEndMessage" looping="false"/>
+        </vertices>
         <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_H9vo2N44Eee0YMxeWbu2Dg" iD="_H9vo1944Eee0YMxeWbu2Dg"/>
         <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_GndyYd44Eee0YMxeWbu2Dg" iD="_GndyYN44Eee0YMxeWbu2Dg"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_-PnhYd5dEee5MfuigsCq1w" iD="_-PnhYN5dEee5MfuigsCq1w"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_-nJ3od5dEee5MfuigsCq1w" iD="_-nJ3oN5dEee5MfuigsCq1w"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="__YU14d5dEee5MfuigsCq1w" iD="__YU14N5dEee5MfuigsCq1w"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="__6Amod5dEee5MfuigsCq1w" iD="__6AmoN5dEee5MfuigsCq1w"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_AcuSId5eEee5MfuigsCq1w" iD="_AcuSIN5eEee5MfuigsCq1w"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_A8L1Ud5eEee5MfuigsCq1w" iD="_A8L1UN5eEee5MfuigsCq1w"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_Bwni8d5eEee5MfuigsCq1w" iD="_Bwni8N5eEee5MfuigsCq1w"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_Cdny4d5eEee5MfuigsCq1w" iD="_Cdny4N5eEee5MfuigsCq1w"/>
         <eventHandlers xmi:type="bpmn:Activity" xmi:id="_x9fy0d45Eee0YMxeWbu2Dg" iD="_x9fy0N45Eee0YMxeWbu2Dg" outgoingEdges="_yZX2gd45Eee0YMxeWbu2Dg" activityType="EventIntermediateError"/>
       </vertices>
       <vertices xmi:type="bpmn:SubProcess" xmi:id="_WMZDYd45Eee0YMxeWbu2Dg" iD="_WMZDYN45Eee0YMxeWbu2Dg" incomingEdges="_yZX2gd45Eee0YMxeWbu2Dg" name="Error handler">
@@ -197,6 +225,37 @@
       <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_ABQzEd47Eee0YMxeWbu2Dg"/>
       <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_Ac-esd47Eee0YMxeWbu2Dg"/>
     </vertices>
+  </pools>
+  <pools xmi:type="bpmn:Pool" xmi:id="_1uN6Ud5YEee5MfuigsCq1w" iD="_1uN6UN5YEee5MfuigsCq1w" name="ProcessISO">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_54pTYN5YEee5MfuigsCq1w" source="executablepool">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_54pTYd5YEee5MfuigsCq1w" key="poolIsExecutable" value="false"/>
+    </eAnnotations>
+    <vertices xmi:type="bpmn:Activity" xmi:id="_nfGo4N5bEee5MfuigsCq1w" iD="_ne-tFt5bEee5MfuigsCq1w" name="Receive create activity confirmation" activityType="Task">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nfGo4d5bEee5MfuigsCq1w" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_nfGo4t5bEee5MfuigsCq1w" key="douri" value="project:///Processes/Core/ProcessISOCase-Process_ISO_Case.wsdl?wsdloperationbound={http://thisproject/Processes/Core/ProcessISOCase/Process_ISO_Case}CanonicServiceForDCM/canonicPort/Receive_Activity_confirmation"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_nfGo495bEee5MfuigsCq1w" key="douri2" value="project:///Processes/Core/ProcessISOCase.bpm/_cnqlQN5bEee5MfuigsCq1w.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Send create activity confirmation"/>
+      </eAnnotations>
+    </vertices>
+  </pools>
+  <pools xmi:type="bpmn:Pool" xmi:id="_t_l6Yd5bEee5MfuigsCq1w" iD="_t_l6YN5bEee5MfuigsCq1w" name="ISOResponse">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wXu2cN5bEee5MfuigsCq1w" source="executablepool">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wXu2cd5bEee5MfuigsCq1w" key="poolIsExecutable" value="false"/>
+    </eAnnotations>
+  </pools>
+  <pools xmi:type="bpmn:Pool" xmi:id="_yS_CMd5bEee5MfuigsCq1w" iD="_yS_CMN5bEee5MfuigsCq1w" name="evaluator">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zfjjAN5bEee5MfuigsCq1w" source="executablepool">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zfjjAd5bEee5MfuigsCq1w" key="poolIsExecutable" value="false"/>
+    </eAnnotations>
+  </pools>
+  <pools xmi:type="bpmn:Pool" xmi:id="_6CIfMd5bEee5MfuigsCq1w" iD="_6CIfMN5bEee5MfuigsCq1w" name="UpdateLifecycle">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7hNFQN5bEee5MfuigsCq1w" source="executablepool">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7hNFQd5bEee5MfuigsCq1w" key="poolIsExecutable" value="false"/>
+    </eAnnotations>
+  </pools>
+  <pools xmi:type="bpmn:Pool" xmi:id="_8ClUAd5bEee5MfuigsCq1w" iD="_8ClUAN5bEee5MfuigsCq1w" name="CaseCloseReaopen">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_AFa3UN5cEee5MfuigsCq1w" source="executablepool">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_AFa3Ud5cEee5MfuigsCq1w" key="poolIsExecutable" value="false"/>
+    </eAnnotations>
   </pools>
   <messages xmi:type="bpmn:MessagingEdge" xmi:id="_vVMlyN43Eee0YMxeWbu2Dg" iD="_vVMlx943Eee0YMxeWbu2Dg" source="_Ho792d41Eee0YMxeWbu2Dg" target="_vVEC4d43Eee0YMxeWbu2Dg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ETUeIN47Eee0YMxeWbu2Dg" source="attachedDataobject">
