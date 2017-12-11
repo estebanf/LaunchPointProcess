@@ -18,6 +18,9 @@
   </xsl:template>
   <xsl:template match="ns:row">
       <Launchpoint:CaseId><xsl:value-of select="ns:caseid" /></Launchpoint:CaseId>
+      <Launchpoint:BatchId><xsl:value-of select="ns:batchid" /></Launchpoint:BatchId>
+      <Launchpoint:ClientId><xsl:value-of select="ns:clientid" /></Launchpoint:ClientId>
+      <Launchpoint:EnvironmentId><xsl:value-of select="ns:environmentid" /></Launchpoint:EnvironmentId>
       <Launchpoint:ISOIndicator><xsl:value-of select="ns:isoindicator" /></Launchpoint:ISOIndicator>
       <Launchpoint:Score><xsl:value-of select="ns:score" /></Launchpoint:Score>
       <Launchpoint:AccidentDate><xsl:value-of select="ns:accidentdate" /></Launchpoint:AccidentDate>
@@ -27,15 +30,21 @@
       <Launchpoint:WorkComp><xsl:value-of select="ns:workcomp" /></Launchpoint:WorkComp>
       <Launchpoint:CaseStatus><xsl:value-of select="ns:casestatus" /></Launchpoint:CaseStatus>
       <Launchpoint:CaseSource><xsl:value-of select="ns:casesource" /></Launchpoint:CaseSource>
-      <Launchpoint:ClientId><xsl:value-of select="ns:clientid" /></Launchpoint:ClientId>
-      <Launchpoint:EnvironmentId><xsl:value-of select="ns:environmentid" /></Launchpoint:EnvironmentId>
       <Launchpoint:LifeCycle><xsl:value-of select="ns:lifecycle" /></Launchpoint:LifeCycle>
       <Launchpoint:CloseReason><xsl:value-of select="ns:closereason" /></Launchpoint:CloseReason>
+      <Launchpoint:State><xsl:value-of select="ns:state" /></Launchpoint:State>
       <Launchpoint:IQResponseReceived><xsl:value-of select="ns:iqresponsereceived" /></Launchpoint:IQResponseReceived>
       <Launchpoint:CanClose><xsl:value-of select="ns:canclose" /></Launchpoint:CanClose>
       <Launchpoint:BelowCostEffectivePursuit><xsl:value-of select="ns:belowcosteffectivepursuit" /></Launchpoint:BelowCostEffectivePursuit>
       <Launchpoint:IQReturnMail><xsl:value-of select="ns:iqreturnmail" /></Launchpoint:IQReturnMail>
-      <Launchpoint:State><xsl:value-of select="ns:state" /></Launchpoint:State>
-      <Launchpoint:BatchId><xsl:value-of select="ns:batchid" /></Launchpoint:BatchId>
+      <Launchpoint:InvalidAddress><xsl:value-of select="ns:invalidaddress" /></Launchpoint:InvalidAddress>
+      <Launchpoint:IQHold><xsl:value-of select="ns:iqhold" /></Launchpoint:IQHold>
+      <Launchpoint:ISOSent><xsl:value-of select="ns:isosent" /></Launchpoint:ISOSent>
+      <Launchpoint:ISOResponse><xsl:value-of select="ns:isoresponse" /></Launchpoint:ISOResponse>
+      <Launchpoint:vip><xsl:value-of select="ns:vip" /></Launchpoint:vip>
+      <Launchpoint:IQLetters><xsl:value-of select="ns:iqletters" /></Launchpoint:IQLetters>
+      <Launchpoint:daysSinceAccident><xsl:value-of select="ns:dayssinceaccident" /></Launchpoint:daysSinceAccident>
+      <Launchpoint:BelowCostEffectivePursuitDueDatePassed><xsl:value-of select="ns:belowcosteffectivepursuitduedatepassed" /></Launchpoint:BelowCostEffectivePursuitDueDatePassed>
+      <Launchpoint:daysSinceLastIQLetter><xsl:value-of select="ns:dayssincelastiqletter" /></Launchpoint:daysSinceLastIQLetter>
   </xsl:template>  
 </xsl:stylesheet>
