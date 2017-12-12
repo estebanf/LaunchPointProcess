@@ -319,18 +319,8 @@
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_-PnhYN5dEee5MfuigsCq1w" bpdm:targetDisplayName="ISOPOINTS">
                                     <bpel:condition>"ISOPOINTS" = $thisReceive_requestRequest2Msg.body/Launchpoint:source<mapper:mapperLink><mapper:vertice id="805032369" targetPath="$condition" targetedBy="785498320-arg2"></mapper:vertice><mapper:vertice id="785498320" dimension="79x24" location="211,178"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1898836331" dimension="79x24" location="86,148" targetedBy="785498320-arg0"><mapper:value>"ISOPOINTS"</mapper:value></mapper:vertice><mapper:vertice id="860346026" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:source" targetedBy="785498320-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
-                                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_-nJ3oN5dEee5MfuigsCq1w" bpdm:targetDisplayName="[Source - evaluator]">
-                                    <bpel:condition>"EVALUATOR" = $thisReceive_requestRequest2Msg.body/Launchpoint:source
-<mapper:mapperLink>
-  <mapper:vertice id="2042300575" targetPath="$condition" targetedBy="1203048328-arg2"></mapper:vertice>
-  <mapper:vertice id="1203048328" dimension="79x24" location="152,56">
-    <mapper:value>=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="842006935" dimension="84x24" location="53,28" targetedBy="1203048328-arg0">
-    <mapper:value>"EVALUATOR"</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1702350719" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:source" targetedBy="1203048328-arg1"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_-nJ3oN5dEee5MfuigsCq1w" bpdm:targetDisplayName="EVALUATOR">
+                                    <bpel:condition>"EVALUATOR" = $thisReceive_requestRequest2Msg.body/Launchpoint:source<mapper:mapperLink><mapper:vertice id="2042300575" targetPath="$condition" targetedBy="1203048328-arg2"></mapper:vertice><mapper:vertice id="1203048328" dimension="79x24" location="152,56"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="842006935" dimension="84x24" location="53,28" targetedBy="1203048328-arg0"><mapper:value>"EVALUATOR"</mapper:value></mapper:vertice><mapper:vertice id="1702350719" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:source" targetedBy="1203048328-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="__YU14N5dEee5MfuigsCq1w" bpdm:targetDisplayName="LIFECYCLE">
                                     <bpel:condition>"LIFECYCLE" = $thisReceive_requestRequest2Msg.body/Launchpoint:source<mapper:mapperLink><mapper:vertice id="515031658" targetPath="$condition" targetedBy="1182331753-arg2"></mapper:vertice><mapper:vertice id="1182331753" dimension="79x24" location="296,234"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="971260199" dimension="79x24" location="185,202" targetedBy="1182331753-arg0"><mapper:value>"LIFECYCLE"</mapper:value></mapper:vertice><mapper:vertice id="158499205" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:source" targetedBy="1182331753-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
@@ -419,10 +409,16 @@
                                                 <bpdm:linkset bpdm:type="assignments">
                                                     <bpel:copy>
                                                         <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Case</bpel:from>
-                                                        <bpel:to>$evaluatorSend_confirmationRequest1Msg.body</bpel:to>
+                                                        <bpel:to>$evaluatorSend_confirmationRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="1884883533" targetPath="$evaluatorSend_confirmationRequest1Msg.body" targetedBy="1726599024-arg0"></mapper:vertice><mapper:vertice id="1726599024" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Case"></mapper:vertice></mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>true()</bpel:from>
+                                                        <bpel:to>$success</bpel:to>
 <mapper:mapperLink>
-  <mapper:vertice id="1884883533" targetPath="$evaluatorSend_confirmationRequest1Msg.body" targetedBy="1726599024-arg0"></mapper:vertice>
-  <mapper:vertice id="1726599024" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Case"></mapper:vertice>
+  <mapper:vertice id="2043894813" targetPath="$success" targetedBy="1982339529-arg0"></mapper:vertice>
+  <mapper:vertice id="1982339529" dimension="79x24" location="413,142">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
 </mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
@@ -447,10 +443,16 @@
                                                 <bpdm:linkset bpdm:type="assignments">
                                                     <bpel:copy>
                                                         <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Case</bpel:from>
-                                                        <bpel:to>$updateLifecycleReceive_ConfirmationRequest1Msg.body</bpel:to>
+                                                        <bpel:to>$updateLifecycleReceive_ConfirmationRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="980980002" targetPath="$updateLifecycleReceive_ConfirmationRequest1Msg.body" targetedBy="1566331138-arg0"></mapper:vertice><mapper:vertice id="1566331138" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Case"></mapper:vertice></mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>true()</bpel:from>
+                                                        <bpel:to>$success</bpel:to>
 <mapper:mapperLink>
-  <mapper:vertice id="980980002" targetPath="$updateLifecycleReceive_ConfirmationRequest1Msg.body" targetedBy="1566331138-arg0"></mapper:vertice>
-  <mapper:vertice id="1566331138" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Case"></mapper:vertice>
+  <mapper:vertice id="261643902" targetPath="$success" targetedBy="1188258411-arg0"></mapper:vertice>
+  <mapper:vertice id="1188258411" dimension="79x24" location="411,147">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
 </mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
@@ -561,6 +563,16 @@
                                                         <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Case</bpel:from>
                                                         <bpel:to>$iQLetterGet_confirmationRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="793134583" targetPath="$iQLetterGet_confirmationRequest1Msg.body" targetedBy="1977411277-arg0"></mapper:vertice><mapper:vertice id="1977411277" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Case"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>true()</bpel:from>
+                                                        <bpel:to>$success</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1358392116" targetPath="$success" targetedBy="1136201741-arg0"></mapper:vertice>
+  <mapper:vertice id="1136201741" dimension="79x24" location="448,117">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                                    </bpel:copy>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iQLetterGet_confirmationRequest1Msg" bpdm:msgVarScopeId="_2InlEN5dEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Process_IQ_Case:Receive_IQ_Activity_confirmationRequest" bpdm:binding="ProcessIQCase-Process_IQ_Case:Process_IQ_CaseAndDCMForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_wWrfMN6rEeecAJzv8fWIEw"></bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processIQCase-Process_IQ_CaseReceive_IQ_Activity_confirmationResponse2Msg" bpdm:msgVarScopeId="_2InlEN5dEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Process_IQ_Case:Receive_IQ_Activity_confirmationResponse" bpdm:binding="ProcessIQCase-Process_IQ_Case:Process_IQ_CaseAndDCMForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_w8rIMN6rEeecAJzv8fWIEw"></bpdm:linkset>
@@ -569,7 +581,20 @@
                                     </bpel:scope>
                                 </bpel:sequence>
                                 <bpel:sequence>
-                                    <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_NvTXwN44Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
+                                    <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_NvTXwN44Eee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="no">
+                                        <bpdm:linkset bpdm:type="assignments">
+                                            <bpel:copy>
+                                                <bpel:from>true()</bpel:from>
+                                                <bpel:to>$success</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="766977982" targetPath="$success" targetedBy="805256744-arg0"></mapper:vertice>
+  <mapper:vertice id="805256744" dimension="79x24" location="579,124">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                            </bpel:copy>
+                                        </bpdm:linkset>
+                                    </bpdm:messagingtask>
                                 </bpel:sequence>
                             </bpdm:gateway>
                         </bpel:sequence>

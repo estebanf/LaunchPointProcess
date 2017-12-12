@@ -1,0 +1,35 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:tns="http://www.example.org/NewXMLSchema" xmlns:process="http://thisdiagram/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/externalApp" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/externalApp">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_F-_sINPPEee16ulg3Gf3rA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/NewXMLSchema" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///Schemas/BusinessRule.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="process" bpdm:comment="contrib=&apos;partner-pool:///_F-_sINPPEee16ulg3Gf3rA"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/externalApp" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_F-_sINPPEee16ulg3Gf3rA" bpdm:label="process"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/BusinessRule.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="externalApp" bpdm:ID="_GqHMkN7OEeeNCLQSWYfcBA">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="externalAppAndProcessPlkVar" partnerLinkType="diag:externalAppAndProcess" initializePartnerRole="yes" partnerRole="process_for_externalApp" bpdm:invokedService="process:CanonicServiceForexternalApp" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/externalApp" bpdm:invokedIsDefault="true" bpdm:clientTasks="_GqHMkN7OEeeNCLQSWYfcBA:_Jr0qEN7OEeeNCLQSWYfcBA" bpdm:isManaged="true" bpdm:otherPoolId="_F-_sINPPEee16ulg3Gf3rA"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="processTest_runRequest1Msg" messageType="process:Test_runRequest" bpdm:id="_K5c60t7OEeeNCLQSWYfcBA" bpdm:messageIds=" out:_K5c60N7OEeeNCLQSWYfcBA">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="process:Test_runRequest" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="processTest_runResponse2Msg" messageType="process:Test_runResponse" bpdm:id="_clYUmN7PEeeNCLQSWYfcBA" bpdm:messageIds="inc:_clOjkN7PEeeNCLQSWYfcBA"/>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask operation="Test_run" partnerLink="externalAppAndProcessPlkVar" portType="process:ForexternalApp" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Invoke" bpdm:ID="_Jr0qEN7OEeeNCLQSWYfcBA" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="processTest_runRequest1Msg" bpdm:msgVarScopeId="_GqHMkN7OEeeNCLQSWYfcBA" bpdm:variableIsManaged="true" bpdm:messageType="process:Test_runRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_K5c60N7OEeeNCLQSWYfcBA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processTest_runResponse2Msg" bpdm:msgVarScopeId="_GqHMkN7OEeeNCLQSWYfcBA" bpdm:variableIsManaged="true" bpdm:messageType="process:Test_runResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_clOjkN7PEeeNCLQSWYfcBA"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>

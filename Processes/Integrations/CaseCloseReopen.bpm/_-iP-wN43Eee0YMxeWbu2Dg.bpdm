@@ -417,6 +417,19 @@
                                                 <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:status</bpel:from>
                                                 <bpel:to>$dCMCloseReopenCaseRequest1Msg.body/CaseStatus</bpel:to><mapper:mapperLink><mapper:vertice id="1169462925" targetPath="$dCMCloseReopenCaseRequest1Msg.body/CaseStatus" targetedBy="14356820-arg0"></mapper:vertice><mapper:vertice id="14356820" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:status"></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
+                                            <bpel:copy>
+                                                <bpel:from>ode:get-property-value("CLOSECASE")</bpel:from>
+                                                <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="603642419" targetPath="$endpoint" targetedBy="1489195159-arg1"></mapper:vertice>
+  <mapper:vertice id="1489195159" dimension="139x24" location="243,230">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="572518047" dimension="81x24" location="92,227" targetedBy="1489195159-arg0">
+    <mapper:value>"CLOSECASE"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                            </bpel:copy>
                                         </bpdm:linkset>
                                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMCloseReopenCaseRequest1Msg" bpdm:msgVarScopeId="_vCVpQN45Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="caseCloseReopen:closeReopenCase_input" bpdm:binding="caseCloseReopen:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_lp1fcN5SEee5MfuigsCq1w"></bpdm:linkset>
                                         <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="caseCloseReopenCloseReopenCaseResponse1Msg" bpdm:msgVarScopeId="_vCVpQN45Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="caseCloseReopen:closeReopenCase_output" bpdm:binding="caseCloseReopen:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_mdP5YN5SEee5MfuigsCq1w"></bpdm:linkset>
@@ -462,6 +475,14 @@
                                                         <bpel:from>current-dateTime()</bpel:from>
                                                         <bpel:to>$thisReceive_case_detailsResponse2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="1691849778" targetPath="$thisReceive_case_detailsResponse2Msg.body/Launchpoint:timestamp" targetedBy="570525519-arg0"></mapper:vertice><mapper:vertice id="570525519" dimension="109x24" location="323,136"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>$ode:pid</bpel:from>
+                                                        <bpel:to>$thisReceive_case_detailsResponse2Msg.body/Launchpoint:pid</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="482330197" targetPath="$thisReceive_case_detailsResponse2Msg.body/Launchpoint:pid" targetedBy="222962217-arg0"></mapper:vertice>
+  <mapper:vertice id="222962217" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
+                                                    </bpel:copy>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_case_detailsResponse2Msg" bpdm:msgVarScopeId="_UyiyMN5SEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_case_detailsResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_ZFcAMN5REee5MfuigsCq1w"></bpdm:linkset>
                                             </bpdm:messagingtask>
@@ -502,14 +523,6 @@
                                                         <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Case</bpel:to><mapper:mapperLink><mapper:vertice id="910996682" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Case" targetedBy="1945448729-arg0"></mapper:vertice><mapper:vertice id="1945448729" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Case"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
-                                                        <bpel:from>"Case status changed"</bpel:from>
-                                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityType</bpel:to><mapper:mapperLink><mapper:vertice id="197338895" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityType" targetedBy="1615295832-arg0"></mapper:vertice><mapper:vertice id="1615295832" dimension="126x24" location="389,100"><mapper:value>"Case status changed"</mapper:value></mapper:vertice></mapper:mapperLink>
-                                                    </bpel:copy>
-                                                    <bpel:copy>
-                                                        <bpel:from>"000"</bpel:from>
-                                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode</bpel:to><mapper:mapperLink><mapper:vertice id="1705871896" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode" targetedBy="1065113870-arg0"></mapper:vertice><mapper:vertice id="1065113870" dimension="79x24" location="396,143"><mapper:value>"000"</mapper:value></mapper:vertice></mapper:mapperLink>
-                                                    </bpel:copy>
-                                                    <bpel:copy>
                                                         <bpel:from>concat("OLD: ", $LPCase/Launchpoint:CaseStatus, "-&gt; NEW: ", $thisReceive_requestRequest2Msg.body/Launchpoint:status)</bpel:from>
                                                         <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityDescription</bpel:to><mapper:mapperLink><mapper:vertice id="1519211059" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityDescription" targetedBy="1568033561-arg4"></mapper:vertice><mapper:vertice id="1568033561" dimension="79x24" location="331,227"><mapper:value>concat()</mapper:value></mapper:vertice><mapper:vertice id="1572491038" dimension="79x24" location="194,179" targetedBy="1568033561-arg0"><mapper:value>"OLD: "</mapper:value></mapper:vertice><mapper:vertice id="719387280" sourcePath="$LPCase/Launchpoint:CaseStatus" targetedBy="1568033561-arg1"></mapper:vertice><mapper:vertice id="59846209" dimension="79x24" location="196,253" targetedBy="1568033561-arg2"><mapper:value>"-&gt; NEW: "</mapper:value></mapper:vertice><mapper:vertice id="1388433550" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:status" targetedBy="1568033561-arg3"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
@@ -524,6 +537,32 @@
                                                     <bpel:copy>
                                                         <bpel:from>"CASECLOSEREOPENSTATUS"</bpel:from>
                                                         <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:source</bpel:to><mapper:mapperLink><mapper:vertice id="1587218311" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:source" targetedBy="749383868-arg0"></mapper:vertice><mapper:vertice id="749383868" dimension="167x24" location="355,465"><mapper:value>"CASECLOSEREOPENSTATUS"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>ode:get-property-value("CASESTATUSCHANCHEDAACTIVITYTYPE")</bpel:from>
+                                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityType</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="658463990" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityType" targetedBy="19856592-arg1"></mapper:vertice>
+  <mapper:vertice id="19856592" dimension="139x24" location="373,79">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1757368800" dimension="238x24" location="84,72" targetedBy="19856592-arg0">
+    <mapper:value>"CASESTATUSCHANCHEDAACTIVITYTYPE"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>ode:get-property-value("CASESTATUSCHANCHEDAACTIVITYCODE")</bpel:from>
+                                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="725525094" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode" targetedBy="1064511994-arg1"></mapper:vertice>
+  <mapper:vertice id="1064511994" dimension="139x24" location="386,114">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="340333508" dimension="242x24" location="90,116" targetedBy="1064511994-arg0">
+    <mapper:value>"CASESTATUSCHANCHEDAACTIVITYCODE"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMSend_requestRequest1Msg" bpdm:msgVarScopeId="_0Lkx8N5PEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="createActivity-process:Receive_requestRequest" bpdm:binding="createActivity-process:processAndCallerServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_B54fkN5REee5MfuigsCq1w"></bpdm:linkset>
@@ -572,14 +611,6 @@
                                                         <bpel:to>$dCMSend_requestRequest2Msg.body/Launchpoint:Case</bpel:to><mapper:mapperLink><mapper:vertice id="232005879" targetPath="$dCMSend_requestRequest2Msg.body/Launchpoint:Case" targetedBy="1489135459-arg0"></mapper:vertice><mapper:vertice id="1489135459" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Case"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
-                                                        <bpel:from>"LifeCycle changed"</bpel:from>
-                                                        <bpel:to>$dCMSend_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityType</bpel:to><mapper:mapperLink><mapper:vertice id="2111057666" targetPath="$dCMSend_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityType" targetedBy="2105785889-arg0"></mapper:vertice><mapper:vertice id="2105785889" dimension="115x24" location="265,150"><mapper:value>"LifeCycle changed"</mapper:value></mapper:vertice></mapper:mapperLink>
-                                                    </bpel:copy>
-                                                    <bpel:copy>
-                                                        <bpel:from>"000"</bpel:from>
-                                                        <bpel:to>$dCMSend_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode</bpel:to><mapper:mapperLink><mapper:vertice id="1926816635" targetPath="$dCMSend_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode" targetedBy="1953272590-arg0"></mapper:vertice><mapper:vertice id="1953272590" dimension="79x24" location="378,191"><mapper:value>"000"</mapper:value></mapper:vertice></mapper:mapperLink>
-                                                    </bpel:copy>
-                                                    <bpel:copy>
                                                         <bpel:from>concat("OLD: ", $LPCase/Launchpoint:LifeCycle, "-&gt; NEW: ", $thisReceive_requestRequest2Msg.body/Launchpoint:lifecycle)</bpel:from>
                                                         <bpel:to>$dCMSend_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityDescription</bpel:to><mapper:mapperLink><mapper:vertice id="1725951237" targetPath="$dCMSend_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityDescription" targetedBy="152040342-arg4"></mapper:vertice><mapper:vertice id="152040342" dimension="79x24" location="387,284"><mapper:value>concat()</mapper:value></mapper:vertice><mapper:vertice id="1363875131" dimension="79x24" location="258,243" targetedBy="152040342-arg0"><mapper:value>"OLD: "</mapper:value></mapper:vertice><mapper:vertice id="2125955179" sourcePath="$LPCase/Launchpoint:LifeCycle" targetedBy="152040342-arg1"></mapper:vertice><mapper:vertice id="1523492082" dimension="79x24" location="275,329" targetedBy="152040342-arg2"><mapper:value>"-&gt; NEW: "</mapper:value></mapper:vertice><mapper:vertice id="109209914" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:lifecycle" targetedBy="152040342-arg3"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
@@ -594,6 +625,32 @@
                                                     <bpel:copy>
                                                         <bpel:from>"CASECLOSEREOPENLIFECYCLE"</bpel:from>
                                                         <bpel:to>$dCMSend_requestRequest2Msg.body/Launchpoint:source</bpel:to><mapper:mapperLink><mapper:vertice id="1696507944" targetPath="$dCMSend_requestRequest2Msg.body/Launchpoint:source" targetedBy="1666027570-arg0"></mapper:vertice><mapper:vertice id="1666027570" dimension="181x24" location="385,440"><mapper:value>"CASECLOSEREOPENLIFECYCLE"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>ode:get-property-value("LIFECYCLECHANGEDACTIVITYTYPE")</bpel:from>
+                                                        <bpel:to>$dCMSend_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityType</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1575483474" targetPath="$dCMSend_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityType" targetedBy="1831257254-arg1"></mapper:vertice>
+  <mapper:vertice id="1831257254" dimension="139x24" location="377,112">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1253408426" dimension="207x24" location="87,106" targetedBy="1831257254-arg0">
+    <mapper:value>"LIFECYCLECHANGEDACTIVITYTYPE"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>ode:get-property-value("LIFECYCLECHANGEDACTIVITYCODE")</bpel:from>
+                                                        <bpel:to>$dCMSend_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="392246660" targetPath="$dCMSend_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode" targetedBy="368670189-arg1"></mapper:vertice>
+  <mapper:vertice id="368670189" dimension="139x24" location="372,144">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="738275889" dimension="211x24" location="91,145" targetedBy="368670189-arg0">
+    <mapper:value>"LIFECYCLECHANGEDACTIVITYCODE"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMSend_requestRequest2Msg" bpdm:msgVarScopeId="_2qRpAN5PEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="createActivity-process:Receive_requestRequest" bpdm:binding="createActivity-process:processAndCallerServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Gk8ggN5REee5MfuigsCq1w"></bpdm:linkset>
@@ -642,14 +699,6 @@
                                                         <bpel:to>$dCMSend_requestRequest3Msg.body/Launchpoint:Case</bpel:to><mapper:mapperLink><mapper:vertice id="1485429624" targetPath="$dCMSend_requestRequest3Msg.body/Launchpoint:Case" targetedBy="1105552577-arg0"></mapper:vertice><mapper:vertice id="1105552577" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Case"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
-                                                        <bpel:from>"Close reason changed"</bpel:from>
-                                                        <bpel:to>$dCMSend_requestRequest3Msg.body/Launchpoint:Activity/Launchpoint:ActivityType</bpel:to><mapper:mapperLink><mapper:vertice id="364835993" targetPath="$dCMSend_requestRequest3Msg.body/Launchpoint:Activity/Launchpoint:ActivityType" targetedBy="1796620821-arg0"></mapper:vertice><mapper:vertice id="1796620821" dimension="134x24" location="343,312"><mapper:value>"Close reason changed"</mapper:value></mapper:vertice></mapper:mapperLink>
-                                                    </bpel:copy>
-                                                    <bpel:copy>
-                                                        <bpel:from>"000"</bpel:from>
-                                                        <bpel:to>$dCMSend_requestRequest3Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode</bpel:to><mapper:mapperLink><mapper:vertice id="42654699" targetPath="$dCMSend_requestRequest3Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode" targetedBy="145077464-arg0"></mapper:vertice><mapper:vertice id="145077464" dimension="79x24" location="378,350"><mapper:value>"000"</mapper:value></mapper:vertice></mapper:mapperLink>
-                                                    </bpel:copy>
-                                                    <bpel:copy>
                                                         <bpel:from>concat("OLD: ", $LPCase/Launchpoint:CloseReason, "-&gt; NEW: ", $thisReceive_requestRequest2Msg.body/Launchpoint:closeReason)</bpel:from>
                                                         <bpel:to>$dCMSend_requestRequest3Msg.body/Launchpoint:Activity/Launchpoint:ActivityDescription</bpel:to><mapper:mapperLink><mapper:vertice id="640029950" targetPath="$dCMSend_requestRequest3Msg.body/Launchpoint:Activity/Launchpoint:ActivityDescription" targetedBy="468119934-arg4"></mapper:vertice><mapper:vertice id="468119934" dimension="79x24" location="377,432"><mapper:value>concat()</mapper:value></mapper:vertice><mapper:vertice id="440861973" dimension="79x24" location="276,396" targetedBy="468119934-arg0"><mapper:value>"OLD: "</mapper:value></mapper:vertice><mapper:vertice id="546443856" sourcePath="$LPCase/Launchpoint:CloseReason" targetedBy="468119934-arg1"></mapper:vertice><mapper:vertice id="138958800" dimension="79x24" location="276,456" targetedBy="468119934-arg2"><mapper:value>"-&gt; NEW: "</mapper:value></mapper:vertice><mapper:vertice id="730153203" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:closeReason" targetedBy="468119934-arg3"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
@@ -664,6 +713,32 @@
                                                     <bpel:copy>
                                                         <bpel:from>"CASECLOSEREOPENCLOSEREASON"</bpel:from>
                                                         <bpel:to>$dCMSend_requestRequest3Msg.body/Launchpoint:source</bpel:to><mapper:mapperLink><mapper:vertice id="1709983717" targetPath="$dCMSend_requestRequest3Msg.body/Launchpoint:source" targetedBy="345357498-arg0"></mapper:vertice><mapper:vertice id="345357498" dimension="205x24" location="357,583"><mapper:value>"CASECLOSEREOPENCLOSEREASON"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>ode:get-property-value("CLOSEREASONCHANGEDACTIVITYTYPE")</bpel:from>
+                                                        <bpel:to>$dCMSend_requestRequest3Msg.body/Launchpoint:Activity/Launchpoint:ActivityType</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="764560135" targetPath="$dCMSend_requestRequest3Msg.body/Launchpoint:Activity/Launchpoint:ActivityType" targetedBy="1438355496-arg1"></mapper:vertice>
+  <mapper:vertice id="1438355496" dimension="139x24" location="351,319">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1257134534" dimension="231x24" location="52,307" targetedBy="1438355496-arg0">
+    <mapper:value>"CLOSEREASONCHANGEDACTIVITYTYPE"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>ode:get-property-value("CLOSEREASONCHANGEDACTIVITYCODE")</bpel:from>
+                                                        <bpel:to>$dCMSend_requestRequest3Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="913907751" targetPath="$dCMSend_requestRequest3Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode" targetedBy="1337366163-arg1"></mapper:vertice>
+  <mapper:vertice id="1337366163" dimension="139x24" location="368,357">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="296031207" dimension="235x24" location="56,361" targetedBy="1337366163-arg0">
+    <mapper:value>"CLOSEREASONCHANGEDACTIVITYCODE"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMSend_requestRequest3Msg" bpdm:msgVarScopeId="_4g5zcN5PEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="createActivity-process:Receive_requestRequest" bpdm:binding="createActivity-process:processAndCallerServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_LEPWUN5REee5MfuigsCq1w"></bpdm:linkset>
@@ -744,6 +819,16 @@
                                                     <bpel:copy>
                                                         <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Case</bpel:from>
                                                         <bpel:to>$evaluatorSend_confirmationRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="1597615687" targetPath="$evaluatorSend_confirmationRequest1Msg.body" targetedBy="1300973034-arg0"></mapper:vertice><mapper:vertice id="1300973034" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Case"></mapper:vertice></mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>true()</bpel:from>
+                                                        <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="206689893" targetPath="$endpoint" targetedBy="736976443-arg0"></mapper:vertice>
+  <mapper:vertice id="736976443" dimension="79x24" location="350,160">
+    <mapper:value>true()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="evaluatorSend_confirmationRequest1Msg" bpdm:msgVarScopeId="_VKMIEN5QEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="CaseEvaluator-process:Receive_close_case_confirmationRequest" bpdm:binding="CaseEvaluator-process:processAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_GysxkN6yEeecAJzv8fWIEw"></bpdm:linkset>

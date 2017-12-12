@@ -1,0 +1,35 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:process="http://thisdiagram/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:this="http://thisdiagram/CaseCloseReopen" xmlns:CaseCloseReopen-process="http://thisproject/Processes/Integrations/CaseCloseReopen/process" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/CaseCloseReopen">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_iH83cNH5EeeKlIzHx_g2Yg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="process" bpdm:comment="contrib=&apos;partner-pool:///_iH83cNH5EeeKlIzHx_g2Yg"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/CaseCloseReopen" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisproject/Processes/Integrations/CaseCloseReopen/process" bpdm:prefix="CaseCloseReopen-process" bpdm:comment="contrib=&apos;project:///Processes/Integrations/CaseCloseReopen-process.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_iH83cNH5EeeKlIzHx_g2Yg" bpdm:label="process"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/CaseCloseReopen-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="CaseCloseReopen" bpdm:ID="_X5niUN7KEeeNCLQSWYfcBA">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="processAndCaseCloseReopenForCanonicPortPlkVar" partnerLinkType="diag:processAndCaseCloseReopenForCanonicPortPlk" myRole="CaseCloseReopen_for_process" bpdm:enableSharing="false" bpdm:providedService="CaseCloseReopen-process:CanonicServiceFordb" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="epr" bpdm:providedIsDefault="true" bpdm:clientTasks="_X5niUN7KEeeNCLQSWYfcBA:_bguy9t7KEeeNCLQSWYfcBA" bpdm:isManaged="true" bpdm:otherPoolId="_iH83cNH5EeeKlIzHx_g2Yg"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="thisSend_case_detailsRequest1Msg" messageType="CaseCloseReopen-process:Receive_case_detailsRequest" binding="CaseCloseReopen-process:processAndDbForCanonicPortPlkServiceBinding" operation="Receive_case_details" opMsgType="0" bpdm:id="_c_pA8N7KEeeNCLQSWYfcBA" bpdm:messageIds="inc:_c_MVAN7KEeeNCLQSWYfcBA"/>
+            <bpel:variable name="caseCloseReopen-processReceive_case_detailsResponse2Msg" messageType="CaseCloseReopen-process:Receive_case_detailsResponse" binding="CaseCloseReopen-process:processAndDbForCanonicPortPlkServiceBinding" operation="Receive_case_details" opMsgType="1" bpdm:id="_dyASCd7KEeeNCLQSWYfcBA" bpdm:messageIds=" out:_dx3IEN7KEeeNCLQSWYfcBA">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="CaseCloseReopen-process:Receive_case_detailsResponse" bpdm:linkedPart="body" bpdm:binding="CaseCloseReopen-process:processAndDbForCanonicPortPlkServiceBinding" bpdm:opMsgType="1" bpdm:operation="Receive_case_details"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask operation="Receive_case_details" partnerLink="processAndCaseCloseReopenForCanonicPortPlkVar" portType="CaseCloseReopen-process:Fordb" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send case details" bpdm:ID="_bguy9t7KEeeNCLQSWYfcBA" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisSend_case_detailsRequest1Msg" bpdm:msgVarScopeId="_X5niUN7KEeeNCLQSWYfcBA" bpdm:variableIsManaged="true" bpdm:messageType="CaseCloseReopen-process:Receive_case_detailsRequest" bpdm:binding="CaseCloseReopen-process:processAndDbForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_c_MVAN7KEeeNCLQSWYfcBA"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="caseCloseReopen-processReceive_case_detailsResponse2Msg" bpdm:msgVarScopeId="_X5niUN7KEeeNCLQSWYfcBA" bpdm:variableIsManaged="true" bpdm:messageType="CaseCloseReopen-process:Receive_case_detailsResponse" bpdm:binding="CaseCloseReopen-process:processAndDbForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_dx3IEN7KEeeNCLQSWYfcBA"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>
