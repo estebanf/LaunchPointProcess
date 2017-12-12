@@ -34,7 +34,7 @@
 			<Launchpoint:IQHold />
 			<Launchpoint:ISOSent />
 			<Launchpoint:ISOResponse />
-			<Launchpoint:vip />
+			<Launchpoint:vip><xsl:value-of select="VipIndicator" /></Launchpoint:vip>
 			<Launchpoint:IQLetters />
 			<Launchpoint:daysSinceAccident><xsl:value-of select="days-from-duration(current-date() - xs:date(AccidentDate))" /></Launchpoint:daysSinceAccident>
 			<Launchpoint:BelowCostEffectivePursuitDueDatePassed />

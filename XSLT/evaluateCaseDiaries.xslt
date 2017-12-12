@@ -49,7 +49,7 @@
       <Launchpoint:daysSinceAccident><xsl:value-of select="$dcmCase/Launchpoint:daysSinceAccident" /></Launchpoint:daysSinceAccident>
       <Launchpoint:BelowCostEffectivePursuitDueDatePassed>
 		<xsl:choose>
-			<xsl:when test="$hasBelowCost"><xsl:value-of select="xs:date(Launchpoint:diaries[Launchpoint:DiaryType='Below Cost Effective Pursuit'][1]/Launchpoint:DiaryDueDate) &lt; fn:current-date()" /></xsl:when>
+			<xsl:when test="$hasBelowCost"><xsl:value-of select="xs:date(Launchpoint:diaries[Launchpoint:DiaryType='Below Cost Effective Pursuit'][1]/Launchpoint:DiaryDueDate) &gt; fn:current-date()" /></xsl:when>
 			<xsl:otherwise>false</xsl:otherwise>
 		</xsl:choose>
       </Launchpoint:BelowCostEffectivePursuitDueDatePassed>
