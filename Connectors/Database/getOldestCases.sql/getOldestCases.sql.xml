@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jdbc:descriptor wsdlLocation="getOldestCases.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:getoldestcasesservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
     <jdbc:service name="getOldestCasesService">
-        <jdbc:operation name="urn:getOldestCases" sqlStatement="SELECT iq.*, lc.clientid, lc.environmentid, lc.batchid FROM iqtracking iq join launchpointcase lc on lc.caseid = iq.caseid where iq.iqdequeued is NULL order by iq.iqenqueuedat asc limit 5;" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:getoldestcasesservice">
+        <jdbc:operation name="urn:getOldestCases" sqlStatement="SELECT iq.*, lc.clientid, lc.environmentid, lc.batchid FROM iqtracking iq join launchpointcase lc on lc.caseid = iq.caseid where iq.iqdequeued is NULL order by iq.iqenqueuedat asc limit 2500;" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:getoldestcasesservice">
             <jdbc:input/>
             <jdbc:filter rowsToSendService="1" rowsToFetch="-1" duration="-PT1S">
                 <jdbc:unique scope="none"/>
@@ -9,9 +9,9 @@
             <jdbc:output/>
         </jdbc:operation>
         <jdbc:port>
-            <jdbc:address location="http://192.168.241.209:8080/everteam/ode/processes/getOldestCasesService"/>
+            <jdbc:address location="http://54.90.107.154:8080/everteam/ode/processes/getOldestCasesService"/>
         </jdbc:port>
-        <jdbc:connection jndiName="java:comp/env/jdbc/BAMDB">
+        <jdbc:connection jndiName="java:comp/env/jdbc/BPMSDB">
             <jdbc:databaseProductName>Generic JDBC</jdbc:databaseProductName>
             <jdbc:databaseProductVersion>1.0</jdbc:databaseProductVersion>
             <jdbc:driverClass>org.postgresql.Driver</jdbc:driverClass>

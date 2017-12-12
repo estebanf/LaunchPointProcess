@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jdbc:descriptor wsdlLocation="getCaseQueued.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:getcasequeuedservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
     <jdbc:service name="getCaseQueuedService">
-        <jdbc:operation name="urn:getCaseQueued" sqlStatement="select * from iqtracking where caseid = ? and not iqenqueued;" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:getcasequeuedservice">
+        <jdbc:operation name="urn:getCaseQueued" sqlStatement="select * from iqtracking where caseid = ? and not iqsent;" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:getcasequeuedservice">
             <jdbc:input>
                 <jdbc:parameter>
                     <jdbc:mode>1</jdbc:mode>
@@ -22,9 +22,9 @@
             <jdbc:output/>
         </jdbc:operation>
         <jdbc:port>
-            <jdbc:address location="http://192.168.241.209:8080/everteam/ode/processes/getCaseQueuedService"/>
+            <jdbc:address location="http://54.90.107.154:8080/everteam/ode/processes/getCaseQueuedService"/>
         </jdbc:port>
-        <jdbc:connection jndiName="java:comp/env/jdbc/BAMDB">
+        <jdbc:connection jndiName="java:comp/env/jdbc/BPMSDB">
             <jdbc:databaseProductName>Generic JDBC</jdbc:databaseProductName>
             <jdbc:databaseProductVersion>1.0</jdbc:databaseProductVersion>
             <jdbc:driverClass>org.postgresql.Driver</jdbc:driverClass>

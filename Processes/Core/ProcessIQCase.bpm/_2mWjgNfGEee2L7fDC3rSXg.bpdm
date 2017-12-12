@@ -160,11 +160,11 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw" bpdm:label="DCM"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_2mWjgNfGEee2L7fDC3rSXgimplicitPartner" bpdm:label="Queue MonitorimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_xRG1oLwFEee_aqBavMEZDg" bpdm:label="Process IQ Case"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getOldestQueuedCases-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/HumanVerification-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/generateFile-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getIQBatch-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/generateFile-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -286,14 +286,7 @@
                             <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Iterate through cases" bpdm:ID="_cG87MNiEEee2ItVqPC1yfA">
                                 <bpdm:linkset bpdm:type="loop" bpdm:loopType="forEach" bpdm:backEdgeParticipantType="none" parallel="no" counterName="caseCounter" bpdm:isBackEdgeContributor="no">
                                     <bpel:condition bpdm:loopType="forEachStartCounter">1<mapper:mapperLink><mapper:vertice id="272439332" targetPath="$Start counter" targetedBy="857679299-arg0"></mapper:vertice><mapper:vertice id="857679299" dimension="79x24" location="588,12"><mapper:value>1</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
-                                    <bpel:condition bpdm:loopType="forEachFinalCounter">count($IQBatch/Launchpoint:cases)
-<mapper:mapperLink>
-  <mapper:vertice id="247069796" targetPath="$Final counter" targetedBy="197951328-arg1"></mapper:vertice>
-  <mapper:vertice id="197951328" dimension="79x24" location="552,73">
-    <mapper:value>count()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1957826690" sourcePath="$IQBatch/Launchpoint:cases" targetedBy="197951328-arg0"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                                    <bpel:condition bpdm:loopType="forEachFinalCounter">count($IQBatch/Launchpoint:cases)<mapper:mapperLink><mapper:vertice id="247069796" targetPath="$Final counter" targetedBy="197951328-arg1"></mapper:vertice><mapper:vertice id="197951328" dimension="79x24" location="552,73"><mapper:value>count()</mapper:value></mapper:vertice><mapper:vertice id="1957826690" sourcePath="$IQBatch/Launchpoint:cases" targetedBy="197951328-arg0"></mapper:vertice></mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
                                 <bpel:correlationSets>
                                     <bpel:correlationSet name="IQLettersCorrelation" properties="this:caseid this:clientid this:environmentid"/>
