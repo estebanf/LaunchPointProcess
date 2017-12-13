@@ -7,13 +7,16 @@
  Complete doXslTransform: bpel:doXslTransform("../../XSLT/transformCaseDetailsFromDCM.xslt", $getLaunchpointCaseGetCaseResponse1Msg.dcmCase)
  Input document as defined in the mapper: $getLaunchpointCaseGetCaseResponse1Msg.dcmCase-->
   <xsl:output/>
-  <!--No parameters are currently passed to doXslTransform.-->
+  <xsl:param name="environmentid">
+    <!--Parameter defined in mapper as $CaseResponse/Launchpoint:CaseId variable type: Launchpoint:IQBatchResponseCaseType-->
+    <error>Parameter caseid no initialized</error>
+  </xsl:param>
   <xsl:template match="/iob_response_root">
 		<CaseEvaluator-process:Get_DCM_infoRequest>
 			<Launchpoint:CaseId><xsl:value-of select="CaseId" /></Launchpoint:CaseId>
 			<Launchpoint:BatchId />
 			<Launchpoint:ClientId><xsl:value-of select="ClientId" /></Launchpoint:ClientId>
-			<Launchpoint:EnvironmentId><xsl:value-of select="EnvironmentId" /></Launchpoint:EnvironmentId>
+			<Launchpoint:EnvironmentId><xsl:value-of select="$environmentid" /></Launchpoint:EnvironmentId>
 			<Launchpoint:ISOIndicator><xsl:value-of select="ISOIndicator" /></Launchpoint:ISOIndicator>
 			<Launchpoint:Score><xsl:value-of select="Score" /></Launchpoint:Score>
 			<Launchpoint:AccidentDate><xsl:value-of select="AccidentDate" /></Launchpoint:AccidentDate>
@@ -36,7 +39,7 @@
 			<Launchpoint:ISOResponse />
 			<Launchpoint:vip><xsl:value-of select="VipIndicator" /></Launchpoint:vip>
 			<Launchpoint:IQLetters />
-			<Launchpoint:daysSinceAccident><xsl:value-of select="days-from-duration(current-date() - xs:date(AccidentDate))" /></Launchpoint:daysSinceAccident>
+			<Launchpoint:daysSinceAccident><xsl:value-of select="days-from-duration(current-dateTime() - xs:dateTime(AccidentDate))" /></Launchpoint:daysSinceAccident>
 			<Launchpoint:BelowCostEffectivePursuitDueDatePassed />
 			<Launchpoint:daysSinceLastIQLetter />
     </CaseEvaluator-process:Get_DCM_infoRequest>

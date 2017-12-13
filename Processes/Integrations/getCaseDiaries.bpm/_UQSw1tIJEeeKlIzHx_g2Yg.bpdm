@@ -72,7 +72,7 @@
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="process" bpdm:ID="_UQSw1tIJEeeKlIzHx_g2Yg">
         <bpel:partnerLinks>
             <bpel:partnerLink name="clientAndProcessForCanonicPortPlkVar" partnerLinkType="diag:clientAndProcessForCanonicPortPlk" initializePartnerRole="yes" myRole="process_for_client" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForclient" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/client" bpdm:providedIsDefault="true" partnerRole="client_for_process" bpdm:invokedService="CaseEvaluator-process:CanonicServiceForDCM" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="epr" bpdm:invokedIsDefault="true" bpdm:clientTasks="_DBzZQNajEeeDx7b0yj_szA:_w8eiQNImEeeKlIzHx_g2Yg, _UQSw1tIJEeeKlIzHx_g2Yg:_zy9GUNIJEeeKlIzHx_g2Yg" bpdm:isManaged="true" bpdm:otherPoolId="_vhreYNIJEeeKlIzHx_g2Yg"/>
-            <bpel:partnerLink name="processimplicitPartnerAndProcessForHttpPortPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForHttpPortPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="getCaseDiaries:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:3005/api/LaunchpointCases/{caseid}/diaries?environmentid={environmentid}&amp;DiaryType={DiaryType}&amp;DiaryStatus={DiaryStatus}" bpdm:invokedIsDefault="true" bpdm:clientTasks="_DBzZQNajEeeDx7b0yj_szA:_jr2iNtMBEeesf764mnQLPA" bpdm:isManaged="true" bpdm:otherPoolId="_UQSw1tIJEeeKlIzHx_g2YgimplicitPartner"/>
+            <bpel:partnerLink name="processimplicitPartnerAndProcessForHttpPortPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForHttpPortPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="getCaseDiaries:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://bpms.everteam.us:3005/api/LaunchpointCases/{caseid}/diaries?environmentid={environmentid}&amp;DiaryStatus={DiaryStatus}" bpdm:invokedIsDefault="true" bpdm:clientTasks="_DBzZQNajEeeDx7b0yj_szA:_jr2iNtMBEeesf764mnQLPA" bpdm:isManaged="true" bpdm:otherPoolId="_UQSw1tIJEeeKlIzHx_g2YgimplicitPartner"/>
             <bpel:partnerLink name="exceptionManagement_AndProcessPlkVar" partnerLinkType="diag:ExceptionManagement_AndProcess" myRole="process_for_ExceptionManagement" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForExceptionManagement" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/ExceptionManagement" bpdm:providedIsDefault="true" bpdm:clientTasks="_XcIgoNxPEeeU5oFZSJFCiA:_r6HSoNxNEeeU5oFZSJFCiA" bpdm:isManaged="true" bpdm:otherPoolId="_rJjRANxQEeeU5oFZSJFCiA"/>
         </bpel:partnerLinks>
         <bpel:correlationSets>
@@ -150,8 +150,8 @@
                                 <bpel:from bpdm:toPart="environmentid">
                                     <bpel:literal bpdm:linkedMessageType="getCaseDiaries:getCaseDiaries_input" bpdm:linkedPart="environmentid" bpdm:binding="getCaseDiaries:restBinding" bpdm:opMsgType="0" bpdm:operation="getCaseDiaries"></bpel:literal>
                                 </bpel:from>
-                                <bpel:from bpdm:toPart="DiaryType">
-                                    <bpel:literal bpdm:linkedMessageType="getCaseDiaries:getCaseDiaries_input" bpdm:linkedPart="DiaryType" bpdm:binding="getCaseDiaries:restBinding" bpdm:opMsgType="0" bpdm:operation="getCaseDiaries"></bpel:literal>
+                                <bpel:from bpdm:toPart="DiaryStatus">
+                                    <bpel:literal bpdm:linkedMessageType="getCaseDiaries:getCaseDiaries_input" bpdm:linkedPart="DiaryStatus" bpdm:binding="getCaseDiaries:restBinding" bpdm:opMsgType="0" bpdm:operation="getCaseDiaries"></bpel:literal>
                                 </bpel:from>
                                 <bpel:from bpdm:toPart="DiaryStatus">
                                     <bpel:literal bpdm:linkedMessageType="getCaseDiaries:getCaseDiaries_input" bpdm:linkedPart="DiaryStatus" bpdm:binding="getCaseDiaries:restBinding" bpdm:opMsgType="0" bpdm:operation="getCaseDiaries"></bpel:literal>
@@ -308,23 +308,7 @@
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>"Open"</bpel:from>
-                                        <bpel:to>$getCaseDiariesGetCaseDiariesRequest1Msg.DiaryStatus</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="998925434" targetPath="$getCaseDiariesGetCaseDiariesRequest1Msg.DiaryStatus" targetedBy="1182387434-arg0"></mapper:vertice>
-  <mapper:vertice id="1182387434" dimension="79x24" location="419,67">
-    <mapper:value>"Open"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>"Below Cost Effective Pursuit"</bpel:from>
-                                        <bpel:to>$getCaseDiariesGetCaseDiariesRequest1Msg.DiaryType</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1746463250" targetPath="$getCaseDiariesGetCaseDiariesRequest1Msg.DiaryType" targetedBy="17259937-arg0"></mapper:vertice>
-  <mapper:vertice id="17259937" dimension="165x24" location="240,36">
-    <mapper:value>"Below Cost Effective Pursuit"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$getCaseDiariesGetCaseDiariesRequest1Msg.DiaryStatus</bpel:to><mapper:mapperLink><mapper:vertice id="998925434" targetPath="$getCaseDiariesGetCaseDiariesRequest1Msg.DiaryStatus" targetedBy="1182387434-arg0"></mapper:vertice><mapper:vertice id="1182387434" dimension="79x24" location="419,67"><mapper:value>"Open"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="getCaseDiariesGetCaseDiariesRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="getCaseDiaries:getCaseDiaries_input" bpdm:binding="getCaseDiaries:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_jr2iNtMBEeesf764mnQLPAOutgoing"></bpdm:linkset>
