@@ -225,6 +225,22 @@
                                                             <bpel:from>"Error calling service"</bpel:from>
                                                             <bpel:to>$ExecutionError/metrics:message</bpel:to><mapper:mapperLink><mapper:vertice id="2113010229" targetPath="$ExecutionError/metrics:message" targetedBy="83735105-arg0"></mapper:vertice><mapper:vertice id="83735105" dimension="120x24" location="484,496"><mapper:value>"Error calling service"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>$thisRecieve_RequestRequest2Msg.body/Launchpoint:Case/Launchpoint:ClientId</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:ClientId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="262383864" targetPath="$ExecutionError/metrics:ClientId" targetedBy="354034837-arg0"></mapper:vertice>
+  <mapper:vertice id="354034837" sourcePath="$thisRecieve_RequestRequest2Msg.body/Launchpoint:Case/Launchpoint:ClientId"></mapper:vertice>
+</mapper:mapperLink>
+                                                        </bpel:copy>
+                                                        <bpel:copy>
+                                                            <bpel:from>$thisRecieve_RequestRequest2Msg.body/Launchpoint:Case/Launchpoint:EnvironmentId</bpel:from>
+                                                            <bpel:to>$ExecutionError/metrics:environmentId</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="801577384" targetPath="$ExecutionError/metrics:environmentId" targetedBy="1125285591-arg0"></mapper:vertice>
+  <mapper:vertice id="1125285591" sourcePath="$thisRecieve_RequestRequest2Msg.body/Launchpoint:Case/Launchpoint:EnvironmentId"></mapper:vertice>
+</mapper:mapperLink>
+                                                        </bpel:copy>
                                                     </bpdm:linkset>
                                                 </bpdm:messagingtask>
                                                 <bpdm:messagingtask eventType="intermediate: message" operation="Receive_recover_signal" partnerLink="processAndException_managementPlkVar" portType="this:ForException_management" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive recover signal" bpdm:ID="_tH8fUN4cEee0YMxeWbu2Dg" bpdm:isHeaderAuthorizationAware="yes">
@@ -286,6 +302,19 @@
                                         <bpel:from>$thisRecieve_RequestRequest2Msg.body/Launchpoint:content</bpel:from>
                                         <bpel:to>$generateFileServiceGenerate_FileRequest1Msg.body/Content</bpel:to><mapper:mapperLink><mapper:vertice id="510758498" targetPath="$generateFileServiceGenerate_FileRequest1Msg.body/Content" targetedBy="809180647-arg0"></mapper:vertice><mapper:vertice id="809180647" sourcePath="$thisRecieve_RequestRequest2Msg.body/Launchpoint:content"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>ode:get-property-value("GENERATEFILE")</bpel:from>
+                                        <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="2092810204" targetPath="$endpoint" targetedBy="711168810-arg1"></mapper:vertice>
+  <mapper:vertice id="711168810" dimension="139x24" location="315,184">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1135302696" dimension="96x24" location="162,176" targetedBy="711168810-arg0">
+    <mapper:value>"GENERATEFILE"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="generateFileServiceGenerate_FileRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="GenerateFileService:Generate_File_input" bpdm:binding="GenerateFileService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_MA0tdd4cEee0YMxeWbu2DgOutgoing"></bpdm:linkset>
                                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="generateFileServiceGenerate_FileResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="GenerateFileService:Generate_File_output" bpdm:binding="GenerateFileService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_MA0tdd4cEee0YMxeWbu2DgIncoming"></bpdm:linkset>
@@ -297,18 +326,8 @@
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_08ANsN5tEeehVZzZ9HvU-g" bpdm:targetDisplayName="ISO Response">
                                     <bpel:condition>"ISORESPONSE" = $thisRecieve_RequestRequest2Msg.body/Launchpoint:source<mapper:mapperLink><mapper:vertice id="2072103548" targetPath="$condition" targetedBy="192662481-arg2"></mapper:vertice><mapper:vertice id="192662481" dimension="79x24" location="243,64"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1979791978" dimension="92x24" location="98,27" targetedBy="192662481-arg0"><mapper:value>"ISORESPONSE"</mapper:value></mapper:vertice><mapper:vertice id="1331015804" sourcePath="$thisRecieve_RequestRequest2Msg.body/Launchpoint:source" targetedBy="192662481-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
-                                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_aWSXJ94cEee0YMxeWbu2Dg" bpdm:targetDisplayName="[Source - IQ Letter]">
-                                    <bpel:condition>"IQLETTER" = $thisRecieve_RequestRequest2Msg.body/Launchpoint:source
-<mapper:mapperLink>
-  <mapper:vertice id="575526851" targetPath="$condition" targetedBy="1400593173-arg2"></mapper:vertice>
-  <mapper:vertice id="1400593173" dimension="79x24" location="220,65">
-    <mapper:value>=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1149362365" dimension="79x24" location="86,16" targetedBy="1400593173-arg0">
-    <mapper:value>"IQLETTER"</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="140114952" sourcePath="$thisRecieve_RequestRequest2Msg.body/Launchpoint:source" targetedBy="1400593173-arg1"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                                <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_aWSXJ94cEee0YMxeWbu2Dg" bpdm:targetDisplayName="IQ Letter">
+                                    <bpel:condition>"IQLETTER" = $thisRecieve_RequestRequest2Msg.body/Launchpoint:source<mapper:mapperLink><mapper:vertice id="575526851" targetPath="$condition" targetedBy="1400593173-arg2"></mapper:vertice><mapper:vertice id="1400593173" dimension="79x24" location="220,65"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1149362365" dimension="79x24" location="86,16" targetedBy="1400593173-arg0"><mapper:value>"IQLETTER"</mapper:value></mapper:vertice><mapper:vertice id="140114952" sourcePath="$thisRecieve_RequestRequest2Msg.body/Launchpoint:source" targetedBy="1400593173-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_12Rth96BEeehVZzZ9HvU-g" bpdm:targetDisplayName="default"></bpdm:linkset>
                                 <bpel:sequence>
@@ -382,11 +401,7 @@
                                                 <bpdm:linkset bpdm:type="assignments">
                                                     <bpel:copy>
                                                         <bpel:from>$thisRecieve_RequestRequest2Msg.body/Launchpoint:Case</bpel:from>
-                                                        <bpel:to>$iQLetterSend_DCM_ResultsRequest1Msg.body</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1250727062" targetPath="$iQLetterSend_DCM_ResultsRequest1Msg.body" targetedBy="1358063034-arg0"></mapper:vertice>
-  <mapper:vertice id="1358063034" sourcePath="$thisRecieve_RequestRequest2Msg.body/Launchpoint:Case"></mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:to>$iQLetterSend_DCM_ResultsRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="1250727062" targetPath="$iQLetterSend_DCM_ResultsRequest1Msg.body" targetedBy="1358063034-arg0"></mapper:vertice><mapper:vertice id="1358063034" sourcePath="$thisRecieve_RequestRequest2Msg.body/Launchpoint:Case"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iQLetterSend_DCM_ResultsRequest1Msg" bpdm:msgVarScopeId="_uZSXgN6BEeehVZzZ9HvU-g" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Queue_Monitor:Get_DCM_Ack.Request" bpdm:binding="ProcessIQCase-Queue_Monitor:DCmAndQueue_MonitorServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_wzg-QN6BEeehVZzZ9HvU-g"></bpdm:linkset>

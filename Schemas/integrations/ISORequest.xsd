@@ -1,13 +1,272 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-		
-
-
-    <element name="Wrapper">
-    	<complexType>
-    		<sequence>
-    			<element name="content" type="anyType"></element>
-    		</sequence>
-    	</complexType>
-    </element>
-</schema>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Cases">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Case" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:int" name="CaseID"/>
+              <xs:element type="xs:byte" name="ReplacementInd"/>
+              <xs:element name="Claim">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ClaimsOccurrence">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="ItemIdInfo">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:int" name="InsurerId"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="ClaimsReported">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="ReportedDt"/>
+                              </xs:sequence>
+                              <xs:attribute type="xs:string" name="ReportedToRef" use="optional"/>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element type="xs:date" name="LossDt"/>
+                          <xs:element type="xs:string" name="LossTime"/>
+                          <xs:element type="xs:string" name="IncidentDesc"/>
+                          <xs:element name="Addr">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="Addr1"/>
+                                <xs:element type="xs:string" name="Addr2"/>
+                                <xs:element type="xs:string" name="City"/>
+                                <xs:element type="xs:string" name="StateProvCd"/>
+                                <xs:element type="xs:short" name="PostalCode"/>
+                                <xs:element type="xs:string" name="CountryCd"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="id" use="optional"/>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ClaimsParty">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="GeneralPartyInfo">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="NameInfo">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="PersonName">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="Surname"/>
+                                            <xs:element type="xs:string" name="GivenName"/>
+                                            <xs:element type="xs:string" name="OtherGivenName"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="TaxIdentity">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="TaxIdTypeCd"/>
+                                            <xs:element type="xs:int" name="TaxId"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="Addr">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="Addr1"/>
+                                      <xs:element type="xs:string" name="Addr2"/>
+                                      <xs:element type="xs:string" name="City"/>
+                                      <xs:element type="xs:string" name="StateProvCd"/>
+                                      <xs:element type="xs:short" name="PostalCode"/>
+                                      <xs:element type="xs:string" name="CountryCd"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="Communications">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="PhoneInfo">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="PhoneTypeCd"/>
+                                            <xs:element type="xs:string" name="CommunicationUseCd"/>
+                                            <xs:element type="xs:string" name="PhoneNumber"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="PersonInfo">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="GenderCd"/>
+                                <xs:element type="xs:date" name="BirthDt"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="ClaimsPartyInfo">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="ClaimsPartyRoleCd">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="codelistref" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="ClaimsInjuredInfo">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="ClaimsInjury">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="InjuryNatureDesc"/>
+                                      <xs:element type="xs:string" name="LossCauseDesc"/>
+                                      <xs:element type="xs:byte" name="ImpairmentPct"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute type="xs:string" name="id" use="optional"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="id" use="optional"/>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="AdjusterParty">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="AdjusterPartyInfo">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="CoverageCd">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="codelistref" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="LossCauseCd">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="codelistref" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute type="xs:string" name="AssignmentRef" use="optional"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+    <xs:element name="ACORD">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Status">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:byte" name="StatusCd"/>
+              <xs:element type="xs:string" name="StatusDesc"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SignonRs">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Status">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:byte" name="StatusCd"/>
+                    <xs:element type="xs:string" name="StatusDesc"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="CustId">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="SPName"/>
+                    <xs:element type="xs:short" name="CustLoginId"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:dateTime" name="ClientDt"/>
+              <xs:element type="xs:string" name="CustLangPref"/>
+              <xs:element name="ClientApp">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="Org"/>
+                    <xs:element type="xs:string" name="Name"/>
+                    <xs:element type="xs:byte" name="Version"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:dateTime" name="ServerDt"/>
+              <xs:element type="xs:string" name="Language"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ClaimsSvcRs">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Status">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:byte" name="StatusCd"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:int" name="RqUID"/>
+              <xs:element name="ClaimInvestigationAddRs">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:int" name="RqUID"/>
+                    <xs:element type="xs:string" name="TransactionResponseDt"/>
+                    <xs:element type="xs:string" name="CurCd"/>
+                    <xs:element name="MsgStatus">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="MsgStatusCd"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
