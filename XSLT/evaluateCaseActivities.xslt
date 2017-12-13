@@ -33,7 +33,7 @@
 		<xsl:variable name="isoSent" select="count(Launchpoint:activities[Launchpoint:ActivityType=('ISO Index Received: Pending')]) > 0"></xsl:variable>
 		<xsl:variable name="iqLetters">
 			<xsl:choose>
-				<xsl:when test="$iqreturnmail"><xsl:value-of select="count(Launchpoint:activities[Launchpoint:ActivityType=('Outgoing Letter : IQ(FIRST)','Outgoing Letter : IQ(SECOND)','Outgoing Letter : IQ(THIRD)','Outgoing Letter : IQ(FOURTH)') and xs:date(Launchpoint:CreatedDate) &gt; xs:date($iqreturnmaildate)])" /></xsl:when>
+				<xsl:when test="$iqreturnmail"><xsl:value-of select="count(Launchpoint:activities[Launchpoint:ActivityType=('Outgoing Letter : IQ(FIRST)','Outgoing Letter : IQ(SECOND)','Outgoing Letter : IQ(THIRD)','Outgoing Letter : IQ(FOURTH)') and xs:dateTime(Launchpoint:CreatedDate) &gt; xs:dateTime($iqreturnmaildate)])" /></xsl:when>
 				<xsl:otherwise><xsl:value-of select="count(Launchpoint:activities[Launchpoint:ActivityType=('Outgoing Letter : IQ(FIRST)','Outgoing Letter : IQ(SECOND)','Outgoing Letter : IQ(THIRD)','Outgoing Letter : IQ(FOURTH)')])" /></xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
@@ -41,24 +41,29 @@
 			<xsl:choose>
 				<xsl:when test="$iqreturnmail">
 					<xsl:choose>
-						<xsl:when test="count(Launchpoint:activities[Launchpoint:ActivityType=('Outgoing Letter : IQ(FIRST)','Outgoing Letter : IQ(SECOND)','Outgoing Letter : IQ(THIRD)','Outgoing Letter : IQ(FOURTH)') and xs:date(Launchpoint:CreatedDate) &gt; xs:date($iqreturnmaildate)]) > 0">
-							<xsl:for-each select="Launchpoint:activities[Launchpoint:ActivityType=('Outgoing Letter : IQ(FIRST)','Outgoing Letter : IQ(SECOND)','Outgoing Letter : IQ(THIRD)','Outgoing Letter : IQ(FOURTH)') and xs:date(Launchpoint:CreatedDate) &gt; xs:date($iqreturnmaildate)]">
+						<xsl:when test="count(Launchpoint:activities[Launchpoint:ActivityType=('Outgoing Letter : IQ(FIRST)','Outgoing Letter : IQ(SECOND)','Outgoing Letter : IQ(THIRD)','Outgoing Letter : IQ(FOURTH)') and xs:dateTime(Launchpoint:CreatedDate) &gt; xs:dateTime($iqreturnmaildate)]) > 0">
+							<xsl:for-each select="Launchpoint:activities[Launchpoint:ActivityType=('Outgoing Letter : IQ(FIRST)','Outgoing Letter : IQ(SECOND)','Outgoing Letter : IQ(THIRD)','Outgoing Letter : IQ(FOURTH)') and xs:dateTime(Launchpoint:CreatedDate) &gt; xs:dateTime($iqreturnmaildate)]">
 				            	<xsl:sort select="Launchpoint:CreatedDate" order="descending" />
 					            <xsl:if test="position() = 1">
 					            	<xsl:value-of select="Launchpoint:CreatedDate"/>
 					            </xsl:if>
 							</xsl:for-each>
 						</xsl:when>
-						<xsl:otherwise><xsl:value-of select="current-date()" /></xsl:otherwise> 
+						<xsl:otherwise><xsl:value-of select="current-dateTime()" /></xsl:otherwise> 
 					</xsl:choose>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:for-each select="Launchpoint:activities[Launchpoint:ActivityType=('Outgoing Letter : IQ(FIRST)','Outgoing Letter : IQ(SECOND)','Outgoing Letter : IQ(THIRD)','Outgoing Letter : IQ(FOURTH)')]">
-		            	<xsl:sort select="Launchpoint:CreatedDate" order="descending" />
-			            <xsl:if test="position() = 1">
-			            	<xsl:value-of select="Launchpoint:CreatedDate"/>
-			            </xsl:if>
-					</xsl:for-each>
+					<xsl:choose>
+						<xsl:when test="count(Launchpoint:activities[Launchpoint:ActivityType=('Outgoing Letter : IQ(FIRST)','Outgoing Letter : IQ(SECOND)','Outgoing Letter : IQ(THIRD)','Outgoing Letter : IQ(FOURTH)')]) > 0">
+							<xsl:for-each select="Launchpoint:activities[Launchpoint:ActivityType=('Outgoing Letter : IQ(FIRST)','Outgoing Letter : IQ(SECOND)','Outgoing Letter : IQ(THIRD)','Outgoing Letter : IQ(FOURTH)')]">
+				            	<xsl:sort select="Launchpoint:CreatedDate" order="descending" />
+					            <xsl:if test="position() = 1">
+					            	<xsl:value-of select="Launchpoint:CreatedDate"/>
+					            </xsl:if>
+							</xsl:for-each>
+						</xsl:when>
+						<xsl:otherwise>0</xsl:otherwise>
+					</xsl:choose>
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
@@ -91,12 +96,12 @@
       	  <Launchpoint:InvalidAddress><xsl:value-of select="$dcmCase/Launchpoint:InvalidAddress" /></Launchpoint:InvalidAddress>
       	  <Launchpoint:IQHold><xsl:value-of select="$iqHold" /></Launchpoint:IQHold>
    		  <Launchpoint:ISOSent><xsl:value-of select="$isoSent" /></Launchpoint:ISOSent>
-	      <Launchpoint:ISOResponse />
+	      <Launchpoint:ISOResponse><xsl:value-of select="$dcmCase/Launchpoint:ISOResponse" /></Launchpoint:ISOResponse>
 		  <Launchpoint:vip>false</Launchpoint:vip>
 		  <Launchpoint:IQLetters><xsl:value-of select="$iqLetters" /></Launchpoint:IQLetters>
-		  <Launchpoint:daysSinceAccident><xsl:value-of select="Launchpoint:daysSinceAccident" /></Launchpoint:daysSinceAccident>
-	      <Launchpoint:BelowCostEffectivePursuitDueDatePassed><xsl:value-of select="Launchpoint:BelowCostEffectivePursuitDueDatePassed" /></Launchpoint:BelowCostEffectivePursuitDueDatePassed>
-	      <Launchpoint:daysSinceLastIQLetter><xsl:value-of select="days-from-duration(current-date() - xs:date($daysSinceLastIQLetter))" /></Launchpoint:daysSinceLastIQLetter>
+		  <Launchpoint:daysSinceAccident><xsl:value-of select="$dcmCase/Launchpoint:daysSinceAccident" /></Launchpoint:daysSinceAccident>
+	      <Launchpoint:BelowCostEffectivePursuitDueDatePassed><xsl:value-of select="$dcmCase/Launchpoint:BelowCostEffectivePursuitDueDatePassed" /></Launchpoint:BelowCostEffectivePursuitDueDatePassed>
+	      <Launchpoint:daysSinceLastIQLetter><xsl:value-of select="$daysSinceLastIQLetter" /></Launchpoint:daysSinceLastIQLetter>
 	    </Launchpoint:LPCase>  
 	</xsl:template>
 </xsl:stylesheet>

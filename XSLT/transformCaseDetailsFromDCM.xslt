@@ -7,15 +7,15 @@
  Complete doXslTransform: bpel:doXslTransform("../../XSLT/transformCaseDetailsFromDCM.xslt", $getLaunchpointCaseGetCaseResponse1Msg.dcmCase)
  Input document as defined in the mapper: $getLaunchpointCaseGetCaseResponse1Msg.dcmCase-->
   <xsl:output/>
-  <xsl:param name="environmentid">
-    <!--Parameter defined in mapper as $CaseResponse/Launchpoint:CaseId variable type: Launchpoint:IQBatchResponseCaseType-->
-    <error>Parameter caseid no initialized</error>
-  </xsl:param>
+  <xsl:param name="clientid" />
+  <xsl:param name="caseid" />
+  <xsl:param name="batchid" />
+  <xsl:param name="environmentid" />
   <xsl:template match="/iob_response_root">
 		<CaseEvaluator-process:Get_DCM_infoRequest>
-			<Launchpoint:CaseId><xsl:value-of select="CaseId" /></Launchpoint:CaseId>
-			<Launchpoint:BatchId />
-			<Launchpoint:ClientId><xsl:value-of select="ClientId" /></Launchpoint:ClientId>
+			<Launchpoint:CaseId><xsl:value-of select="$caseid" /></Launchpoint:CaseId>
+			<Launchpoint:BatchId><xsl:value-of select="$batchid" /></Launchpoint:BatchId>
+			<Launchpoint:ClientId><xsl:value-of select="$clientid" /></Launchpoint:ClientId>
 			<Launchpoint:EnvironmentId><xsl:value-of select="$environmentid" /></Launchpoint:EnvironmentId>
 			<Launchpoint:ISOIndicator><xsl:value-of select="ISOIndicator" /></Launchpoint:ISOIndicator>
 			<Launchpoint:Score><xsl:value-of select="Score" /></Launchpoint:Score>

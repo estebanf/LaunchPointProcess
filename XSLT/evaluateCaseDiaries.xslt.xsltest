@@ -7,45 +7,60 @@
  Complete doXslTransform: bpel:doXslTransform("../../XSLT/evaluateCaseDiaries.xslt", $diaries, "dcmCase", $dcmCase)
  Input document as defined in the mapper: $diaries-->
   <test:input>
-    <Launchpoint:CaseDiaries>
-      <Launchpoint:caseId>string</Launchpoint:caseId>
-      <Launchpoint:diaries>
-        <Launchpoint:DiaryId>string</Launchpoint:DiaryId>
-        <Launchpoint:DiaryType>Below Cost Effective Pursuit</Launchpoint:DiaryType>
-        <Launchpoint:DiaryStatus>Open</Launchpoint:DiaryStatus>
-        <Launchpoint:DiaryDueDate>2017-10-11</Launchpoint:DiaryDueDate>
-        <Launchpoint:Description>string</Launchpoint:Description>
-        <Launchpoint:CreatedDate>dateTime</Launchpoint:CreatedDate>
-        <Launchpoint:CreatedBy>string</Launchpoint:CreatedBy>
-      </Launchpoint:diaries>
-      <Launchpoint:diaries>
-        <Launchpoint:DiaryId>string</Launchpoint:DiaryId>
-        <Launchpoint:DiaryType>Other</Launchpoint:DiaryType>
-        <Launchpoint:DiaryStatus>Open</Launchpoint:DiaryStatus>
-        <Launchpoint:DiaryDueDate>2017-12-11</Launchpoint:DiaryDueDate>
-        <Launchpoint:Description>string</Launchpoint:Description>
-        <Launchpoint:CreatedDate>dateTime</Launchpoint:CreatedDate>
-        <Launchpoint:CreatedBy>string</Launchpoint:CreatedBy>
-      </Launchpoint:diaries>
-   </Launchpoint:CaseDiaries>
+<CaseDiaries xmlns="http://www.example.org/Launchpoint">
+<Case xmlns:Launchpoint="http://www.example.org/Launchpoint">
+<CaseId>1009914</CaseId>
+<ClientId>4</ClientId>
+<EnvironmentId>2</EnvironmentId>
+<BatchId>2425</BatchId>
+</Case>
+<diaries xmlns:Launchpoint="http://www.example.org/Launchpoint">
+<DiaryType>Investigation</DiaryType>
+<DiaryStatus>Open</DiaryStatus>
+<DiaryDueDate>2017-12-13T00:00:00.000Z</DiaryDueDate>
+<Description>Test Diary 01</Description>
+<CreatedDate>2017-12-13T17:34:24.000Z</CreatedDate>
+<CreatedBy>nitorqa@NitorSSO.onmicrosoft.com</CreatedBy>
+</diaries>
+<diaries xmlns:Launchpoint="http://www.example.org/Launchpoint">
+<DiaryType>Check In House</DiaryType>
+<DiaryStatus>Open</DiaryStatus>
+<DiaryDueDate>2017-12-13T00:00:00.000Z</DiaryDueDate>
+<Description>test Diary 02</Description>
+<CreatedDate>2017-12-13T17:35:09.000Z</CreatedDate>
+<CreatedBy>nitorqa@NitorSSO.onmicrosoft.com</CreatedBy>
+</diaries>
+</CaseDiaries>
   </test:input>
-  <test:param name="dcmCase"><Launchpoint:LPCase>
-      <Launchpoint:CaseId>1234</Launchpoint:CaseId>
-      <Launchpoint:ISOIndicator>int</Launchpoint:ISOIndicator>
-      <Launchpoint:Score>int</Launchpoint:Score>
-      <Launchpoint:AccidentDate>date</Launchpoint:AccidentDate>
-      <Launchpoint:BenefitAmount>double</Launchpoint:BenefitAmount>
-      <Launchpoint:FundingSource>string</Launchpoint:FundingSource>
-      <Launchpoint:LOB>string</Launchpoint:LOB>
-      <Launchpoint:WorkComp>boolean</Launchpoint:WorkComp>
-      <Launchpoint:CaseStatus>string</Launchpoint:CaseStatus>
-      <Launchpoint:CaseSource>string</Launchpoint:CaseSource>
-      <Launchpoint:ClientId>int</Launchpoint:ClientId>
-      <Launchpoint:EnvironmentId>int</Launchpoint:EnvironmentId>
-      <Launchpoint:LifeCycle>string</Launchpoint:LifeCycle>
-      <Launchpoint:CloseReason>string</Launchpoint:CloseReason>
-      <Launchpoint:IQResponseReceived>boolean</Launchpoint:IQResponseReceived>
-      <Launchpoint:CanClose>boolean</Launchpoint:CanClose>
-      <Launchpoint:BelowCostEffectivePursuit>boolean</Launchpoint:BelowCostEffectivePursuit>
-    </Launchpoint:LPCase></test:param>
+  <test:param name="dcmCase"><LPCase xmlns="http://www.example.org/Launchpoint">
+<CaseId xmlns:Launchpoint="http://www.example.org/Launchpoint">1009914</CaseId>
+<BatchId xmlns:Launchpoint="http://www.example.org/Launchpoint"/>
+<ClientId xmlns:Launchpoint="http://www.example.org/Launchpoint">4</ClientId>
+<EnvironmentId xmlns:Launchpoint="http://www.example.org/Launchpoint">2</EnvironmentId>
+<ISOIndicator xmlns:Launchpoint="http://www.example.org/Launchpoint">1</ISOIndicator>
+<Score xmlns:Launchpoint="http://www.example.org/Launchpoint">500</Score>
+<AccidentDate xmlns:Launchpoint="http://www.example.org/Launchpoint">2017-12-01T00:00:00.000Z</AccidentDate>
+<BenefitAmount xmlns:Launchpoint="http://www.example.org/Launchpoint">2000.0</BenefitAmount>
+<FundingSource xmlns:Launchpoint="http://www.example.org/Launchpoint">Medicaid</FundingSource>
+<LOB xmlns:Launchpoint="http://www.example.org/Launchpoint">Medicaid</LOB>
+<WorkComp xmlns:Launchpoint="http://www.example.org/Launchpoint">false</WorkComp>
+<CaseStatus xmlns:Launchpoint="http://www.example.org/Launchpoint">Investigation</CaseStatus>
+<CaseSource xmlns:Launchpoint="http://www.example.org/Launchpoint">User</CaseSource>
+<LifeCycle xmlns:Launchpoint="http://www.example.org/Launchpoint"/>
+<CloseReason xmlns:Launchpoint="http://www.example.org/Launchpoint"/>
+<State xmlns:Launchpoint="http://www.example.org/Launchpoint">FL</State>
+<IQResponseReceived xmlns:Launchpoint="http://www.example.org/Launchpoint"/>
+<CanClose xmlns:Launchpoint="http://www.example.org/Launchpoint"/>
+<BelowCostEffectivePursuit xmlns:Launchpoint="http://www.example.org/Launchpoint"/>
+<IQReturnMail xmlns:Launchpoint="http://www.example.org/Launchpoint"/>
+<InvalidAddress xmlns:Launchpoint="http://www.example.org/Launchpoint">true</InvalidAddress>
+<IQHold xmlns:Launchpoint="http://www.example.org/Launchpoint"/>
+<ISOSent xmlns:Launchpoint="http://www.example.org/Launchpoint"/>
+<ISOResponse xmlns:Launchpoint="http://www.example.org/Launchpoint">NONE</ISOResponse>
+<vip xmlns:Launchpoint="http://www.example.org/Launchpoint"/>
+<IQLetters xmlns:Launchpoint="http://www.example.org/Launchpoint"/>
+<daysSinceAccident xmlns:Launchpoint="http://www.example.org/Launchpoint">12</daysSinceAccident>
+<BelowCostEffectivePursuitDueDatePassed xmlns:Launchpoint="http://www.example.org/Launchpoint"/>
+<daysSinceLastIQLetter xmlns:Launchpoint="http://www.example.org/Launchpoint"/>
+</LPCase></test:param>
 </test:testxsl>

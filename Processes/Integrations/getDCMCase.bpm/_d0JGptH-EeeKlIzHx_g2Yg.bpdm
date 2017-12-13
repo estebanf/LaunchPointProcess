@@ -329,21 +329,33 @@
                                     <bpdm:messagingtask eventType="intermediate: message" operation="Get_DCM_info" partnerLink="clientAndProcessForCanonicPortPlkVar" portType="CaseEvaluator-process:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send  case" bpdm:ID="_3IpQwNH-EeeKlIzHx_g2Yg" bpdm:isHeaderAuthorizationAware="no">
                                         <bpdm:linkset bpdm:type="assignments">
                                             <bpel:copy>
-                                                <bpel:from>bpel:doXslTransform("../../XSLT/transformCaseDetailsFromDCM.xslt", $getLaunchpointCaseGetCaseResponse1Msg.dcmCase, "environmentid", $thisGet_case_idRequest2Msg.body/Launchpoint:EnvironmentId)</bpel:from>
+                                                <bpel:from>bpel:doXslTransform("../../XSLT/transformCaseDetailsFromDCM.xslt", $getLaunchpointCaseGetCaseResponse1Msg.dcmCase, "environmentid", $thisGet_case_idRequest2Msg.body/Launchpoint:EnvironmentId, "caseid", $thisGet_case_idRequest2Msg.body/Launchpoint:CaseId, "clientid", $thisGet_case_idRequest2Msg.body/Launchpoint:ClientId, "batchid", $thisGet_case_idRequest2Msg.body/Launchpoint:BatchId)</bpel:from>
                                                 <bpel:to>$clientGet_DCM_infoRequest1Msg.body</bpel:to>
 <mapper:mapperLink>
-  <mapper:vertice id="1564664288" targetPath="$clientGet_DCM_infoRequest1Msg.body" targetedBy="2079163885-arg1"></mapper:vertice>
-  <mapper:vertice id="2079163885" dimension="126x24" location="348,72">
+  <mapper:vertice id="812395456" targetPath="$clientGet_DCM_infoRequest1Msg.body" targetedBy="1930812497-arg1"></mapper:vertice>
+  <mapper:vertice id="1930812497" dimension="126x24" location="348,72">
     <mapper:value>bpel:doXslTransform()</mapper:value>
   </mapper:vertice>
-  <mapper:vertice id="672625817" dimension="258x24" location="111,28" targetedBy="2079163885-arg0">
+  <mapper:vertice id="1746265103" dimension="258x24" location="111,28" targetedBy="1930812497-arg0">
     <mapper:value>"../../XSLT/transformCaseDetailsFromDCM.xslt"</mapper:value>
   </mapper:vertice>
-  <mapper:vertice id="1332400237" sourcePath="$getLaunchpointCaseGetCaseResponse1Msg.dcmCase" targetedBy="2079163885-arg2"></mapper:vertice>
-  <mapper:vertice id="904170866" dimension="96x24" location="85,99" targetedBy="2079163885-arg3">
+  <mapper:vertice id="282937665" sourcePath="$getLaunchpointCaseGetCaseResponse1Msg.dcmCase" targetedBy="1930812497-arg2"></mapper:vertice>
+  <mapper:vertice id="2002482757" dimension="96x24" location="85,99" targetedBy="1930812497-arg3">
     <mapper:value>"environmentid"</mapper:value>
   </mapper:vertice>
-  <mapper:vertice id="701775762" sourcePath="$thisGet_case_idRequest2Msg.body/Launchpoint:EnvironmentId" targetedBy="2079163885-arg4"></mapper:vertice>
+  <mapper:vertice id="1056930961" sourcePath="$thisGet_case_idRequest2Msg.body/Launchpoint:EnvironmentId" targetedBy="1930812497-arg4"></mapper:vertice>
+  <mapper:vertice id="1365794352" dimension="79x24" location="116,157" targetedBy="1930812497-arg5">
+    <mapper:value>"caseid"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1728579717" sourcePath="$thisGet_case_idRequest2Msg.body/Launchpoint:CaseId" targetedBy="1930812497-arg6"></mapper:vertice>
+  <mapper:vertice id="1994351325" dimension="79x24" location="130,206" targetedBy="1930812497-arg7">
+    <mapper:value>"clientid"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1486435415" sourcePath="$thisGet_case_idRequest2Msg.body/Launchpoint:ClientId" targetedBy="1930812497-arg8"></mapper:vertice>
+  <mapper:vertice id="691340297" dimension="79x24" location="130,246" targetedBy="1930812497-arg9">
+    <mapper:value>"batchid"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1584472074" sourcePath="$thisGet_case_idRequest2Msg.body/Launchpoint:BatchId" targetedBy="1930812497-arg10"></mapper:vertice>
 </mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>

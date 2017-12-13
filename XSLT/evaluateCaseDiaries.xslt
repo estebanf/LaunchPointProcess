@@ -17,8 +17,7 @@
   <xsl:param name="dcmCase" select="/.." />
   <xsl:template match="/Launchpoint:CaseDiaries">
 	<xsl:variable name="hasOpenDiaries" select="count(Launchpoint:diaries[Launchpoint:DiaryStatus='Open']) > 0" />
-<!-- 	<xsl:variable name="hasBelowCost"   select="count(Launchpoint:diaries[Launchpoint:DiaryType='Below Cost Effective Pursuit' and Launchpoint:DiaryStatus='Open' and xs:date(Launchpoint:DiaryDueDate) &lt; fn:current-date()])   > 0" /> -->
-	<xsl:variable name="hasBelowCost"   select="count(Launchpoint:diaries[Launchpoint:DiaryType='Below Cost Effective Pursuit'])   > 0" />
+	<xsl:variable name="hasBelowCost"   select="count(Launchpoint:diaries[Launchpoint:DiaryType='Below Cost Effective Pursuit' and Launchpoint:DiaryStatus='Open'])   > 0" />
     <Launchpoint:LPCase>
       <Launchpoint:CaseId><xsl:value-of select="$dcmCase/Launchpoint:CaseId" /></Launchpoint:CaseId>
       <Launchpoint:BatchId><xsl:value-of select="$dcmCase/Launchpoint:BatchId" /></Launchpoint:BatchId>
@@ -49,7 +48,7 @@
       <Launchpoint:daysSinceAccident><xsl:value-of select="$dcmCase/Launchpoint:daysSinceAccident" /></Launchpoint:daysSinceAccident>
       <Launchpoint:BelowCostEffectivePursuitDueDatePassed>
 		<xsl:choose>
-			<xsl:when test="$hasBelowCost"><xsl:value-of select="xs:date(Launchpoint:diaries[Launchpoint:DiaryType='Below Cost Effective Pursuit'][1]/Launchpoint:DiaryDueDate) &gt; fn:current-date()" /></xsl:when>
+			<xsl:when test="$hasBelowCost"><xsl:value-of select="xs:dateTime(Launchpoint:diaries[Launchpoint:DiaryType='Below Cost Effective Pursuit'][1]/Launchpoint:DiaryDueDate) &gt; fn:current-dateTime()" /></xsl:when>
 			<xsl:otherwise>false</xsl:otherwise>
 		</xsl:choose>
       </Launchpoint:BelowCostEffectivePursuitDueDatePassed>
