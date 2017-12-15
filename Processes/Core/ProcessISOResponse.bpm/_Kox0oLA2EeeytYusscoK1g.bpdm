@@ -15,9 +15,9 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_Svwt0KhqEeeC1M91oPbQ3Q" bpdm:label="ISO Response Manager"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/updateCaseLifeCycle-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/CaseCloseReopen-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/generateFile-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createActivity-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/CaseCloseReopen-process.wsdl"/>
     </bpdm:dependencies>
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="DCM" bpdm:ID="_Kox0oLA2EeeytYusscoK1g">
         <bpel:partnerLinks>
@@ -105,6 +105,12 @@
                 </bpdm:messagingtask>
             </bpel:sequence>
             <bpel:sequence>
+                <bpdm:messagingtask operation="Receive_Scoring" partnerLink="iSO_Response_ManagerAndDCMPlkVar" portType="ISO_Response_Manager:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send scoring" bpdm:ID="_j1DUsLGHEee6aeEJgFykVw" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iSO_Response_ManagerReceive_ScoringRequest1Msg" bpdm:msgVarScopeId="_Kox0oLA2EeeytYusscoK1g" bpdm:variableIsManaged="true" bpdm:messageType="ISO_Response_Manager:Receive_ScoringRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_kuxyALGHEee6aeEJgFykVw"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="iSO_Response_ManagerReceive_ScoringResponse2Msg" bpdm:msgVarScopeId="_Kox0oLA2EeeytYusscoK1g" bpdm:variableIsManaged="true" bpdm:messageType="ISO_Response_Manager:Receive_ScoringResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_lcQjELGHEee6aeEJgFykVw"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+            <bpel:sequence>
                 <bpdm:messagingtask operation="Receive_request" partnerLink="iSO_Response_ManagerAndDCMForCanonicPortPlk1Var" portType="createActivity-process:Forcaller" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Get request" bpdm:ID="_zlWsMN5fEee7jteJyXiOfg" bpdm:isHeaderAuthorizationAware="no">
                     <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisGet_requestRequest1Msg" bpdm:msgVarScopeId="_Kox0oLA2EeeytYusscoK1g" bpdm:variableIsManaged="true" bpdm:messageType="createActivity-process:Receive_requestRequest" bpdm:binding="createActivity-process:processAndCallerServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_1MBIAN5fEee7jteJyXiOfg"></bpdm:linkset>
                     <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="createActivity-processReceive_requestResponse2Msg" bpdm:msgVarScopeId="_Kox0oLA2EeeytYusscoK1g" bpdm:variableIsManaged="true" bpdm:messageType="createActivity-process:Receive_requestResponse" bpdm:binding="createActivity-process:processAndCallerServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_11cfgN5fEee7jteJyXiOfg"></bpdm:linkset>
@@ -122,12 +128,6 @@
                 <bpdm:messagingtask operation="Receive_generate_file_confirmaation" partnerLink="iSO_Response_ManagerAndDCMPlkVar" portType="ISO_Response_Manager:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send confirmation" bpdm:ID="_N92-EN5tEeehVZzZ9HvU-g" bpdm:isHeaderAuthorizationAware="no">
                     <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iSO_Response_ManagerReceive_generate_file_confirmaationRequest1Msg" bpdm:msgVarScopeId="_Kox0oLA2EeeytYusscoK1g" bpdm:variableIsManaged="true" bpdm:messageType="ISO_Response_Manager:Receive_generate_file_confirmaationRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_SC6u8N5tEeehVZzZ9HvU-g"></bpdm:linkset>
                     <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="iSO_Response_ManagerReceive_generate_file_confirmaationResponse2Msg" bpdm:msgVarScopeId="_Kox0oLA2EeeytYusscoK1g" bpdm:variableIsManaged="true" bpdm:messageType="ISO_Response_Manager:Receive_generate_file_confirmaationResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Sf-eYN5tEeehVZzZ9HvU-g"></bpdm:linkset>
-                </bpdm:messagingtask>
-            </bpel:sequence>
-            <bpel:sequence>
-                <bpdm:messagingtask operation="Receive_Scoring" partnerLink="iSO_Response_ManagerAndDCMPlkVar" portType="ISO_Response_Manager:ForDCM" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send scoring" bpdm:ID="_j1DUsLGHEee6aeEJgFykVw" bpdm:isHeaderAuthorizationAware="no">
-                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iSO_Response_ManagerReceive_ScoringRequest1Msg" bpdm:msgVarScopeId="_Kox0oLA2EeeytYusscoK1g" bpdm:variableIsManaged="true" bpdm:messageType="ISO_Response_Manager:Receive_ScoringRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_kuxyALGHEee6aeEJgFykVw"></bpdm:linkset>
-                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="iSO_Response_ManagerReceive_ScoringResponse2Msg" bpdm:msgVarScopeId="_Kox0oLA2EeeytYusscoK1g" bpdm:variableIsManaged="true" bpdm:messageType="ISO_Response_Manager:Receive_ScoringResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_lcQjELGHEee6aeEJgFykVw"></bpdm:linkset>
                 </bpdm:messagingtask>
             </bpel:sequence>
         </bpel:flow>

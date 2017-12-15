@@ -4,7 +4,7 @@
         <jdbc:operation name="urn:getIsoHighestScore" sqlStatement="select resp.id,resp.score, resp.scorevalue  
 from isoresponsetracking as resp
 inner join isotracking as iso on (iso.requestid = resp.requestid)
-where iso.caseid = ?
+where iso.caseid = ? and iso.environmentid = ? and iso.clientid = ? and score is not null
 order by resp.scorevalue desc" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:getisohighestscoreservice">
             <jdbc:input>
                 <jdbc:parameter>
@@ -18,6 +18,30 @@ order by resp.scorevalue desc" event="false" dynamicCredentials="true" xmlns:urn
                     <jdbc:nullable>false</jdbc:nullable>
                     <jdbc:value>0</jdbc:value>
                     <jdbc:index>0</jdbc:index>
+                </jdbc:parameter>
+                <jdbc:parameter>
+                    <jdbc:mode>1</jdbc:mode>
+                    <jdbc:name>iso.environmentid</jdbc:name>
+                    <jdbc:type>20</jdbc:type>
+                    <jdbc:length>0</jdbc:length>
+                    <jdbc:typeName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <jdbc:precision>15</jdbc:precision>
+                    <jdbc:scale>2</jdbc:scale>
+                    <jdbc:nullable>false</jdbc:nullable>
+                    <jdbc:value>0</jdbc:value>
+                    <jdbc:index>1</jdbc:index>
+                </jdbc:parameter>
+                <jdbc:parameter>
+                    <jdbc:mode>1</jdbc:mode>
+                    <jdbc:name>iso.clientid</jdbc:name>
+                    <jdbc:type>20</jdbc:type>
+                    <jdbc:length>0</jdbc:length>
+                    <jdbc:typeName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <jdbc:precision>15</jdbc:precision>
+                    <jdbc:scale>2</jdbc:scale>
+                    <jdbc:nullable>false</jdbc:nullable>
+                    <jdbc:value>0</jdbc:value>
+                    <jdbc:index>2</jdbc:index>
                 </jdbc:parameter>
             </jdbc:input>
             <jdbc:filter rowsToSendService="1" rowsToFetch="-1" duration="-PT1S">
@@ -35,7 +59,7 @@ order by resp.scorevalue desc" event="false" dynamicCredentials="true" xmlns:urn
             <jdbc:databaseUrl>jdbc:postgresql://bpms.everteam.us:5432/bamdb</jdbc:databaseUrl>
             <jdbc:databaseName>BAMDB</jdbc:databaseName>
             <jdbc:userName>bam</jdbc:userName>
-            <jdbc:password>decrypt[OwPTO6zFNeBiFXMh/4S1rgZLZ9PZI66B]</jdbc:password>
+            <jdbc:password>decrypt[tmWjY+ay1XR037zt7/ViS4Lkz2q2s5hA]</jdbc:password>
         </jdbc:connection>
     </jdbc:service>
 </jdbc:descriptor>

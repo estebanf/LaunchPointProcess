@@ -113,7 +113,7 @@
     		<element name="ClientId" type="string"></element>
     		<element name="EnvironmentId" type="string"></element>
     		<element name="BatchId" type="string"></element>
-            <element name="content" type="anyType"></element>
+            <element name="Content" type="anyType"></element>
         </sequence>
     </complexType>
     <element name="ISOCaseRequestFile"
@@ -488,6 +488,8 @@
     		<element name="isoresponse" type="string"></element>
     		<element name="casestatus" type="string"></element>
     		<element name="score" type="int"></element>
+    		<element name="highestIsoScore" type="string"></element>
+    		<element name="highestIsoScoreValue" type="integer"></element>
     	</sequence>
     </complexType>
 
@@ -535,6 +537,19 @@
     	<sequence>
     		<element name="Case" type="tns:CaseIdentifierType"></element>
     		<element name="source" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="CaseHighestScore"
+    	type="tns:GetCaseFromRequestIdResponseType">
+    </element>
+
+    <element name="CaseScore" type="tns:CaseScoreType"></element>
+    
+    <complexType name="CaseScoreType">
+    	<sequence>
+    		<element name="score" type="string"></element>
+    		<element name="scoreValue" type="boolean"></element>
     	</sequence>
     </complexType>
 </schema>

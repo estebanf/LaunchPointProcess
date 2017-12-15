@@ -227,19 +227,11 @@
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>$thisRecieve_RequestRequest2Msg.body/Launchpoint:Case/Launchpoint:ClientId</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:ClientId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="262383864" targetPath="$ExecutionError/metrics:ClientId" targetedBy="354034837-arg0"></mapper:vertice>
-  <mapper:vertice id="354034837" sourcePath="$thisRecieve_RequestRequest2Msg.body/Launchpoint:Case/Launchpoint:ClientId"></mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:ClientId</bpel:to><mapper:mapperLink><mapper:vertice id="262383864" targetPath="$ExecutionError/metrics:ClientId" targetedBy="354034837-arg0"></mapper:vertice><mapper:vertice id="354034837" sourcePath="$thisRecieve_RequestRequest2Msg.body/Launchpoint:Case/Launchpoint:ClientId"></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>$thisRecieve_RequestRequest2Msg.body/Launchpoint:Case/Launchpoint:EnvironmentId</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:environmentId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="801577384" targetPath="$ExecutionError/metrics:environmentId" targetedBy="1125285591-arg0"></mapper:vertice>
-  <mapper:vertice id="1125285591" sourcePath="$thisRecieve_RequestRequest2Msg.body/Launchpoint:Case/Launchpoint:EnvironmentId"></mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:environmentId</bpel:to><mapper:mapperLink><mapper:vertice id="801577384" targetPath="$ExecutionError/metrics:environmentId" targetedBy="1125285591-arg0"></mapper:vertice><mapper:vertice id="1125285591" sourcePath="$thisRecieve_RequestRequest2Msg.body/Launchpoint:Case/Launchpoint:EnvironmentId"></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                     </bpdm:linkset>
                                                 </bpdm:messagingtask>
@@ -304,16 +296,7 @@
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("GENERATEFILE")</bpel:from>
-                                        <bpel:to endpointReference="partnerRole"/>
-<mapper:mapperLink>
-  <mapper:vertice id="2092810204" targetPath="$endpoint" targetedBy="711168810-arg1"></mapper:vertice>
-  <mapper:vertice id="711168810" dimension="139x24" location="315,184">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1135302696" dimension="96x24" location="162,176" targetedBy="711168810-arg0">
-    <mapper:value>"GENERATEFILE"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="2092810204" targetPath="$endpoint" targetedBy="711168810-arg1"></mapper:vertice><mapper:vertice id="711168810" dimension="139x24" location="315,184"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1135302696" dimension="96x24" location="162,176" targetedBy="711168810-arg0"><mapper:value>"GENERATEFILE"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="generateFileServiceGenerate_FileRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="GenerateFileService:Generate_File_input" bpdm:binding="GenerateFileService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_MA0tdd4cEee0YMxeWbu2DgOutgoing"></bpdm:linkset>
@@ -348,8 +331,8 @@
                                                         <bpel:to>$success</bpel:to><mapper:mapperLink><mapper:vertice id="1868563373" targetPath="$success" targetedBy="2001084785-arg0"></mapper:vertice><mapper:vertice id="2001084785" dimension="79x24" location="500,80"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
-                                                        <bpel:from>$thisRecieve_RequestRequest2Msg.body</bpel:from>
-                                                        <bpel:to>$iSO_RequestReceive_generate_responseRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="926980933" targetPath="$iSO_RequestReceive_generate_responseRequest1Msg.body" targetedBy="227346735-arg0"></mapper:vertice><mapper:vertice id="227346735" sourcePath="$thisRecieve_RequestRequest2Msg.body"></mapper:vertice></mapper:mapperLink>
+                                                        <bpel:from>$thisRecieve_RequestRequest2Msg.body/Launchpoint:Case</bpel:from>
+                                                        <bpel:to>$iSO_RequestReceive_generate_responseRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="708398376" targetPath="$iSO_RequestReceive_generate_responseRequest1Msg.body" targetedBy="620893822-arg0"></mapper:vertice><mapper:vertice id="620893822" sourcePath="$thisRecieve_RequestRequest2Msg.body/Launchpoint:Case"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iSO_RequestReceive_generate_responseRequest1Msg" bpdm:msgVarScopeId="_byrcoN4cEee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOCase-Process_ISO_Case:Receive_generate_file_responseRequest" bpdm:binding="ProcessISOCase-Process_ISO_Case:Process_ISO_CaseAndDCMForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_B5LAoN4fEee0YMxeWbu2Dg"></bpdm:linkset>

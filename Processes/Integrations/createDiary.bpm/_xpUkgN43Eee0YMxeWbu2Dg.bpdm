@@ -280,6 +280,19 @@
                                         <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Diary/Launchpoint:CreatedBy</bpel:from>
                                         <bpel:to>$createDiaryServiceCreate_DiaryRequest1Msg.body/CreatedBy</bpel:to><mapper:mapperLink><mapper:vertice id="1716082990" targetPath="$createDiaryServiceCreate_DiaryRequest1Msg.body/CreatedBy" targetedBy="1001928088-arg0"></mapper:vertice><mapper:vertice id="1001928088" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Diary/Launchpoint:CreatedBy"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
+                                    <bpel:copy>
+                                        <bpel:from>ode:get-property-value("CREATEDIARY")</bpel:from>
+                                        <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="1209451877" targetPath="$endpoint" targetedBy="527144190-arg1"></mapper:vertice>
+  <mapper:vertice id="527144190" dimension="139x24" location="305,169">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1651308886" dimension="93x24" location="97,137" targetedBy="527144190-arg0">
+    <mapper:value>"CREATEDIARY"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                    </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="createDiaryServiceCreate_DiaryRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="CreateDiaryService:Create_Diary_input" bpdm:binding="CreateDiaryService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_QIxwkN44Eee0YMxeWbu2DgOutgoing"></bpdm:linkset>
                                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="createDiaryServiceCreate_DiaryResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="CreateDiaryService:Create_Diary_output" bpdm:binding="CreateDiaryService:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_QIxwkN44Eee0YMxeWbu2DgIncoming"></bpdm:linkset>

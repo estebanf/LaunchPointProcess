@@ -5,5 +5,5 @@ launchpointcase.batchid as batchid,
 launchpointcase.isoresponse as isoresponse,
 launchpointcase.casestatus as casestatus,
 launchpointcase.score as score
-from launchpointcase inner join isotracking on isotracking.caseid = launchpointcase.caseid  
+from launchpointcase inner join isotracking on isotracking.caseid = launchpointcase.caseid
 where isotracking.requestid = ?
