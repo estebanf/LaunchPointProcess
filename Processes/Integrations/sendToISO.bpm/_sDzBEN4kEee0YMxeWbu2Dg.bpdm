@@ -133,7 +133,7 @@
                                     <bpel:literal bpdm:linkedMessageType="ns0:SubmitToISOSoapIn" bpdm:linkedPart="ISOLogin" bpdm:binding="ns0:ISOXmlWebServiceSoap" bpdm:opMsgType="0" bpdm:operation="SubmitToISO"></bpel:literal>
                                 </bpel:from>
                                 <bpel:from bpdm:toPart="parameters">
-                                    <bpel:literal bpdm:linkedMessageType="ns0:SubmitToISOSoapIn" bpdm:linkedPart="parameters" bpdm:binding="ns0:ISOXmlWebServiceSoap" bpdm:opMsgType="0" bpdm:operation="SubmitToISO"></bpel:literal>
+                                    <bpel:literal bpdm:linkedMessageType="ns0:SubmitToISOSoapIn" bpdm:linkedPart="parameters" bpdm:binding="ns0:ISOXmlWebServiceSoap" bpdm:opMsgType="0" bpdm:operation="SubmitToISO" bpdm:linkedFile="SubmitToISOSoapIn.parameters-_sDzBEN4kEee0YMxeWbu2Dg-0-literal.xml"></bpel:literal>
                                 </bpel:from>
                             </bpel:variable>
                         </bpel:variables>
@@ -260,21 +260,12 @@
                                         <bpel:toHeader variable="ns0SubmitToISORequest1Msg" header="ISOLogin">ns0:password</bpel:toHeader><mapper:mapperLink><mapper:vertice id="2134921456" targetPath="$ns0SubmitToISORequest1Msg.ISOLogin/ns0:password" targetedBy="1182562397-arg1"></mapper:vertice><mapper:vertice id="1182562397" dimension="139x24" location="240,108"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1485647504" dimension="98x24" location="89,87" targetedBy="1182562397-arg0"><mapper:value>"ISOPASSWORD"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
-                                        <bpel:from>bpel:doXslTransform("../../XSLT/transformIsoVendorRequest.xslt", $processISOReceive_ISO_ACKRequest1Msg.body)</bpel:from>
-                                        <bpel:to>$ns0SubmitToISORequest1Msg.parameters</bpel:to><mapper:mapperLink><mapper:vertice id="427826061" targetPath="$ns0SubmitToISORequest1Msg.parameters" targetedBy="709506664-arg2"></mapper:vertice><mapper:vertice id="709506664" dimension="126x24" location="276,192"><mapper:value>bpel:doXslTransform()</mapper:value></mapper:vertice><mapper:vertice id="198941055" dimension="238x24" location="104,147" targetedBy="709506664-arg0"><mapper:value>"../../XSLT/transformIsoVendorRequest.xslt"</mapper:value></mapper:vertice><mapper:vertice id="417383960" sourcePath="$processISOReceive_ISO_ACKRequest1Msg.body" targetedBy="709506664-arg1"></mapper:vertice></mapper:mapperLink>
+                                        <bpel:from>ode:get-property-value("ISOVENDOR")</bpel:from>
+                                        <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="1056957896" targetPath="$endpoint" targetedBy="901697696-arg1"></mapper:vertice><mapper:vertice id="901697696" dimension="139x24" location="229,255"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="2123035544" dimension="82x24" location="60,263" targetedBy="901697696-arg0"><mapper:value>"ISOVENDOR"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
-                                        <bpel:from>ode:get-property-value("SENDTOISO")</bpel:from>
-                                        <bpel:to endpointReference="partnerRole"/>
-<mapper:mapperLink>
-  <mapper:vertice id="1151352293" targetPath="$endpoint" targetedBy="29588267-arg1"></mapper:vertice>
-  <mapper:vertice id="29588267" dimension="139x24" location="229,255">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1755248157" dimension="81x24" location="60,263" targetedBy="29588267-arg0">
-    <mapper:value>"SENDTOISO"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:Content</bpel:from>
+                                        <bpel:to>$ns0SubmitToISORequest1Msg.parameters/ns0:xml</bpel:to><mapper:mapperLink><mapper:vertice id="587503975" targetPath="$ns0SubmitToISORequest1Msg.parameters/ns0:xml" targetedBy="618078783-arg0"></mapper:vertice><mapper:vertice id="618078783" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:Content"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="ns0SubmitToISORequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="ns0:SubmitToISOSoapIn" bpdm:binding="ns0:ISOXmlWebServiceSoap" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_0jpipuDfEeek0MVZyHWoswOutgoing"></bpdm:linkset>

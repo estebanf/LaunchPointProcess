@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jdbc:descriptor wsdlLocation="getCaseFromRequestId.sql.wsdl" targetNamespace="urn:intalio.com:connectors:database:launchpointprocess:getcasefromrequestidservice" xmlns:jdbc="http://bpms.intalio.com/connectors/jdbc/">
     <jdbc:service name="getCaseFromRequestIdService">
-        <jdbc:operation name="urn:getCaseFromRequestId" sqlStatement="select launchpointcase.caseid as caseid,
+        <jdbc:operation name="urn:getCaseFromRequestId" sqlStatement="select 
+launchpointcase.caseid as caseid,
 launchpointcase.clientid as clientid,
 launchpointcase.environmentid as environmentid,
 launchpointcase.batchid as batchid,
 launchpointcase.isoresponse as isoresponse,
 launchpointcase.casestatus as casestatus,
-launchpointcase.score as score
-from launchpointcase inner join isotracking on isotracking.caseid = launchpointcase.caseid
-where isotracking.requestid = ?" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:getcasefromrequestidservice">
+launchpointcase.score as score,
+isoresponsetracking.score as highScore, 
+isoresponsetracking.scorevalue as highScoreValue
+from launchpointcase 
+inner join isotracking on isotracking.caseid = launchpointcase.caseid
+left outer join isoresponsetracking on isotracking.requestid = isoresponsetracking.requestid
+where isotracking.requestid = ?
+order by isoresponsetracking.scorevalue desc
+limit 1" event="false" dynamicCredentials="true" xmlns:urn="urn:intalio.com:connectors:database:launchpointprocess:getcasefromrequestidservice">
             <jdbc:input>
                 <jdbc:parameter>
                     <jdbc:mode>1</jdbc:mode>
@@ -38,7 +45,7 @@ where isotracking.requestid = ?" event="false" dynamicCredentials="true" xmlns:u
             <jdbc:databaseUrl>jdbc:postgresql://bpms.everteam.us:5432/bamdb</jdbc:databaseUrl>
             <jdbc:databaseName>BAMDB</jdbc:databaseName>
             <jdbc:userName>bam</jdbc:userName>
-            <jdbc:password>decrypt[VUHRdYN4aOkfXRarxzVTGHQrUWWPno2p]</jdbc:password>
+            <jdbc:password>decrypt[uwd/CMM9aHHtG5uAqvBHU2YnaUlhcgtj]</jdbc:password>
         </jdbc:connection>
     </jdbc:service>
 </jdbc:descriptor>

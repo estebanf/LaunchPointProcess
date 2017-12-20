@@ -12,7 +12,7 @@
     <error>Parameter requestid no initialized</error>
   </xsl:param>
   <xsl:template match="/ns:getCaseFromRequestIdResultSet">
-    <CaseHighestScore>
+    <Launchpoint:CaseHighestScore>
       <Launchpoint:requestid><xsl:value-of select="$requestid" /></Launchpoint:requestid>
       <Launchpoint:Case>
         <Launchpoint:CaseId><xsl:value-of select="ns:rows/ns:row[1]/ns:caseid" /></Launchpoint:CaseId>
@@ -23,8 +23,8 @@
       <Launchpoint:isoresponse><xsl:value-of select="ns:rows/ns:row[1]/ns:isoresponse" /></Launchpoint:isoresponse>
       <Launchpoint:casestatus><xsl:value-of select="ns:rows/ns:row[1]/ns:casestatus" /></Launchpoint:casestatus>
       <Launchpoint:score><xsl:value-of select="ns:rows/ns:row[1]/ns:score" /></Launchpoint:score>
-      <Launchpoint:highestIsoScore />
-      <Launchpoint:highestIsoScoreValue />
-    </CaseHighestScore>
+      <Launchpoint:highestIsoScore><xsl:value-of select="ns:rows/ns:row[1]/ns:highscore" /></Launchpoint:highestIsoScore>
+      <Launchpoint:highestIsoScoreValue><xsl:value-of select="ns:rows/ns:row[1]/ns:highscorevalue" /></Launchpoint:highestIsoScoreValue>
+    </Launchpoint:CaseHighestScore>
   </xsl:template>
 </xsl:stylesheet>

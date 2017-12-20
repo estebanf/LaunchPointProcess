@@ -1,33 +1,37 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<test:testxsl xmlns:test="http://intalio.com/xsltestcase" xsl="TransformScoredCaseFromRequest.xslt" xmlns:ProcessISOResponse-ISO_Response_Mana="http://bpms.everteam.com/Processes/Core/ProcessISOResponse/ISO_Response_Manager" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:ns="urn:intalio.com:connectors:database:launchpointprocess:getcasefromrequestidservice" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:diag="http://bpms.everteam.com/Processes/Integrations/getCaseFromRequestId" xmlns:processimplicitPartner="http://bpms.everteam.com/Processes/Integrations/getCaseFromRequestId/processimplicitPartner" xmlns:this="http://bpms.everteam.com/Processes/Integrations/getCaseFromRequestId/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:caller="http://bpms.everteam.com/Processes/Integrations/getCaseFromRequestId/caller" xmlns:getIsoHighestScore="urn:intalio.com:connectors:database:launchpointprocess:getisohighestscoreservice" xmlns:Exception_management="http://bpms.everteam.com/Processes/Integrations/getCaseFromRequestId/Exception_management">
-  <!--XSL Test sample  generated on Thu Dec 14 17:21:08 EST 2017
- for F/LaunchPointProcess/Processes/Integrations/getCaseFromRequestId.bpm
-   pool:process
-   activity: Reply
+<test:testxsl xmlns:test="http://intalio.com/xsltestcase" xsl="TransformScoredCaseFromRequest.xslt" xmlns:updateCaseLifeCycle-process="http://bpms.everteam.com/Processes/Integrations/updateCaseLifeCycle/process" xmlns:ax2198="http://isoscoreprocessing.rules.launchpointprocess/bre" xmlns:createActivity-process="http://bpms.everteam.com/Processes/Integrations/createActivity/process" xmlns:this="http://bpms.everteam.com/Processes/Core/ProcessISOResponse/ISO_Response_Manager" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:getCaseFromRequestId="urn:intalio.com:connectors:database:launchpointprocess:getcasefromrequestidservice" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns="http://isoscoreprocessing.rules.launchpointprocess" xmlns:diag="http://bpms.everteam.com/Processes/Core/ProcessISOResponse" xmlns:ISO_Response_ManagerimplicitPartner="http://bpms.everteam.com/Processes/Core/ProcessISOResponse/ISO_Response_ManagerimplicitPartner" xmlns:tns="http://everteam.com/xvar/example" xmlns:ax2197="http://isoscoreprocessing.rules.launchpointprocess/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:generateFile-process="http://bpms.everteam.com/Processes/Integrations/generateFile/process" xmlns:getIsoHighestScore="urn:intalio.com:connectors:database:launchpointprocess:getisohighestscoreservice" xmlns:CaseCloseReopen-process="http://bpms.everteam.com/Processes/Integrations/CaseCloseReopen/process">
+  <!--XSL Test sample  generated on Mon Dec 18 18:17:39 EST 2017
+ for F/LaunchPointProcess/Processes/Core/ProcessISOResponse.bpm
+   pool:ISO Response Manager
+   activity: Empty_Intermediate_Event
  Complete doXslTransform: bpel:doXslTransform("../../XSLT/TransformScoredCaseFromRequest.xslt", $getIsoHighestScoreGetIsoHighestScoreResponse1Msg.parameters, "scoredCase", $CaseHighestScore)
  Input document as defined in the mapper: $getIsoHighestScoreGetIsoHighestScoreResponse1Msg.parameters-->
   <test:input>
-<getIsoHighestScoreResultSet xmlns="urn:intalio.com:connectors:database:launchpointprocess:getisohighestscoreservice" xmlns:axis2ns710="urn:intalio.com:connectors:database:launchpointprocess:getisohighestscoreservice" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-<rows>
-<row>
-<id>505406</id>
-<score/>
-<scorevalue/>
-</row>
-</rows>
-</getIsoHighestScoreResultSet></test:input>
-  <test:param name="scoredCase"><CaseHighestScore xmlns="http://www.example.org/Launchpoint">
-<Launchpoint:requestid xmlns:Launchpoint="http://www.example.org/Launchpoint">1006641</Launchpoint:requestid>
-<Launchpoint:Case xmlns:Launchpoint="http://www.example.org/Launchpoint">
-<Launchpoint:CaseId>1006641</Launchpoint:CaseId>
-<Launchpoint:ClientId>4</Launchpoint:ClientId>
-<Launchpoint:EnvironmentId>2</Launchpoint:EnvironmentId>
-<Launchpoint:BatchId>2522</Launchpoint:BatchId>
-</Launchpoint:Case>
-<Launchpoint:isoresponse xmlns:Launchpoint="http://www.example.org/Launchpoint">NONE</Launchpoint:isoresponse>
-<Launchpoint:casestatus xmlns:Launchpoint="http://www.example.org/Launchpoint">Investigation</Launchpoint:casestatus>
-<Launchpoint:score xmlns:Launchpoint="http://www.example.org/Launchpoint">1100</Launchpoint:score>
-<Launchpoint:highestIsoScore xmlns:Launchpoint="http://www.example.org/Launchpoint"/>
-<Launchpoint:highestIsoScoreValue xmlns:Launchpoint="http://www.example.org/Launchpoint"/>
-</CaseHighestScore></test:param>
+    <getIsoHighestScore:getIsoHighestScoreResultSet>
+      <getIsoHighestScore:rows>
+        <getIsoHighestScore:row>
+          <getIsoHighestScore:id>decimal</getIsoHighestScore:id>
+          <getIsoHighestScore:score>string</getIsoHighestScore:score>
+          <getIsoHighestScore:scorevalue>decimal</getIsoHighestScore:scorevalue>
+        </getIsoHighestScore:row>
+      </getIsoHighestScore:rows>
+    </getIsoHighestScore:getIsoHighestScoreResultSet>
+  </test:input>
+  <test:param name="scoredCase">
+    <!--Parameter defined in mapper as $CaseHighestScore variable type: Launchpoint:CaseHighestScore-->
+    <Launchpoint:CaseHighestScore>
+      <Launchpoint:requestid>string</Launchpoint:requestid>
+      <Launchpoint:Case>
+        <Launchpoint:CaseId>string</Launchpoint:CaseId>
+        <Launchpoint:ClientId>string</Launchpoint:ClientId>
+        <Launchpoint:EnvironmentId>string</Launchpoint:EnvironmentId>
+        <Launchpoint:BatchId>string</Launchpoint:BatchId>
+      </Launchpoint:Case>
+      <Launchpoint:isoresponse>string</Launchpoint:isoresponse>
+      <Launchpoint:casestatus>string</Launchpoint:casestatus>
+      <Launchpoint:score>int</Launchpoint:score>
+      <Launchpoint:highestIsoScore>string</Launchpoint:highestIsoScore>
+      <Launchpoint:highestIsoScoreValue>integer</Launchpoint:highestIsoScoreValue>
+    </Launchpoint:CaseHighestScore>
+  </test:param>
 </test:testxsl>

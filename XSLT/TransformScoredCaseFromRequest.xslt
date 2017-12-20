@@ -9,7 +9,7 @@
   <xsl:output/>
   <xsl:param name="scoredCase" select="/.." />
   <xsl:template match="/getIsoHighestScore:getIsoHighestScoreResultSet">
-    <ProcessISOResponse-ISO_Response_Mana:Receive_caseRequest>
+    <Launchpoint:CaseHighestScore>
       <Launchpoint:requestid><xsl:value-of select="$scoredCase/Launchpoint:requestid" /></Launchpoint:requestid>
       <Launchpoint:Case>
         <Launchpoint:CaseId><xsl:value-of select="$scoredCase/Launchpoint:Case/Launchpoint:CaseId" /></Launchpoint:CaseId>
@@ -30,6 +30,6 @@
       			<Launchpoint:highestIsoScoreValue>0</Launchpoint:highestIsoScoreValue>
       		</xsl:otherwise>
       	</xsl:choose>
-    </ProcessISOResponse-ISO_Response_Mana:Receive_caseRequest>
+    </Launchpoint:CaseHighestScore>
   </xsl:template>
 </xsl:stylesheet>

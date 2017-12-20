@@ -8,7 +8,7 @@
  Input document as defined in the mapper: $processISOReceive_ISO_ACKRequest1Msg.body-->
   <xsl:output/>
   <!--No parameters are currently passed to doXslTransform.-->
-  <xsl:template match="/ProcessISOCase-Process_ISO_Case:Receive_ISO_ACKRequest">
+  <xsl:template match="/ProcessISO:Receive_requestRequest">
     <ns0:SubmitToISO>
       <ns0:xml><xsl:copy-of select="Launchpoint:content/Cases" /></ns0:xml>
     </ns0:SubmitToISO>

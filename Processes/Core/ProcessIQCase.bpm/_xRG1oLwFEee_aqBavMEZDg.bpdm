@@ -209,13 +209,21 @@
                         <bpel:from>$thisEventStartMessageRequest1.body/tns:CaseId</bpel:from>
                         <bpel:to>$IQTracking/metrics:CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="1763530886" targetPath="$IQTracking/metrics:CaseId" targetedBy="1516799234-arg0"></mapper:vertice><mapper:vertice id="1516799234" sourcePath="$thisEventStartMessageRequest1.body/tns:CaseId"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisEventStartMessageRequest1.body/tns:ClientId</bpel:from>
+                        <bpel:to>$IQTracking/metrics:ClientId</bpel:to><mapper:mapperLink><mapper:vertice id="330795889" targetPath="$IQTracking/metrics:ClientId" targetedBy="451672039-arg0"></mapper:vertice><mapper:vertice id="451672039" sourcePath="$thisEventStartMessageRequest1.body/tns:ClientId"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisEventStartMessageRequest1.body/tns:EnvironmentId</bpel:from>
+                        <bpel:to>$IQTracking/metrics:environmentId</bpel:to><mapper:mapperLink><mapper:vertice id="1364066838" targetPath="$IQTracking/metrics:environmentId" targetedBy="1836790675-arg0"></mapper:vertice><mapper:vertice id="1836790675" sourcePath="$thisEventStartMessageRequest1.body/tns:EnvironmentId"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
                 </bpdm:linkset>
             </bpdm:messagingtask>
             <bpdm:messagingtask operation="Get_case_id" partnerLink="process_IQ_CaseAndDatabaseForCanonicPortPlkVar" portType="getCaseQueued-process:Forclient" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Request case queued" bpdm:ID="_A4FwYNbHEeecXoBS3MwKtg" bpdm:isHeaderAuthorizationAware="no">
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
-                        <bpel:from>$thisEventStartMessageRequest1.body/tns:CaseId</bpel:from>
-                        <bpel:to>$getCaseQueued-processGet_case_id2Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="1693250910" targetPath="$getCaseQueued-processGet_case_id2Msg.body" targetedBy="1790273127-arg0"></mapper:vertice><mapper:vertice id="1790273127" sourcePath="$thisEventStartMessageRequest1.body/tns:CaseId"></mapper:vertice></mapper:mapperLink>
+                        <bpel:from>$thisEventStartMessageRequest1.body</bpel:from>
+                        <bpel:to>$getCaseQueued-processGet_case_id2Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="1544351630" targetPath="$getCaseQueued-processGet_case_id2Msg.body" targetedBy="547518431-arg0"></mapper:vertice><mapper:vertice id="547518431" sourcePath="$thisEventStartMessageRequest1.body"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="getCaseQueued-processGet_case_id2Msg" bpdm:msgVarScopeId="_xRG1oLwFEee_aqBavMEZDg" bpdm:variableIsManaged="true" bpdm:messageType="getCaseQueued-process:Get_case_idRequest" bpdm:binding="getCaseQueued-process:processAndClientForCanonicPortPlkServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_27E7YNbLEeecXoBS3MwKtg">
