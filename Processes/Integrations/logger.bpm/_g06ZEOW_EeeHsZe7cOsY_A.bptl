@@ -1,0 +1,16 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<bpt:template xmlns:bpt="http://www.intalio/designer/business-process-data-modeling/template" ID="_g06ZEOW_EeeHsZe7cOsY_A" displayName="Log" ownerPoolId="_HKe3sOW-EeeHsZe7cOsY_A" ownerPoolNcName="Caller" ownerPoolIsExecutable="false" version="6000089">
+    <bpt:partnerPool ID="_JrHBYOW-EeeHsZe7cOsY_A" ncName="process" isExecutable="true"/>
+    <bpt:container displayName="sequence" containerType="sequence">
+        <bpt:activity ID="_HKe3suW-EeeHsZe7cOsY_A" displayName="Send log" activityType="Task" messaging="invokerequestresponsebound">
+            <bpt:generatedOperation providingPoolId="_JrHBYOW-EeeHsZe7cOsY_A" generatedPartnerLinkTypeLocalName="processAndCaller" generatedService="CanonicServiceForCaller" generatedOperation="Receive_Log" generatedPort="canonicPort">
+                <bpt:input name="Receive_Log" generatedMessageTypeLocalName="Receive_LogRequest">
+                    <bpt:part name="body" attachedSchemaObject="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}LoggerType" generatedElementLocalName="Receive_LogRequest"/>
+                </bpt:input>
+                <bpt:output name="Receive_LogResponse" generatedMessageTypeLocalName="Receive_LogResponse">
+                    <bpt:part name="body" attachedSchemaObject="project:///Schemas/Launchpoint.xsd?xsdtype={http://www.example.org/Launchpoint}BpmAckType" generatedElementLocalName="Receive_LogResponse"/>
+                </bpt:output>
+            </bpt:generatedOperation>
+        </bpt:activity>
+    </bpt:container>
+</bpt:template>

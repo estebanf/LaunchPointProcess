@@ -54,6 +54,22 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForISO" type="this:ForISO" bpdm:isSynchronized="true"/>
+            <xs:element name="Receive_update_lifecycle_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_update_lifecycle_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_update_lifecycle_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_update_lifecycle_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationResponse"/>
+            </wsdl:message>
+            <xs:element name="Receive_ScoringRequest" type="Launchpoint:ISOScoringType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_ScoringRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_ScoringRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_ScoringResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_ScoringResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_ScoringResponse"/>
+            </wsdl:message>
             <xs:element name="Receive_activity_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
             <wsdl:message name="Receive_activity_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                 <wsdl:part name="body" element="this:Receive_activity_confirmationRequest"/>
@@ -77,22 +93,6 @@
             <xs:element name="Receive_reopen_case_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
             <wsdl:message name="Receive_reopen_case_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                 <wsdl:part name="body" element="this:Receive_reopen_case_confirmationResponse"/>
-            </wsdl:message>
-            <xs:element name="Receive_update_lifecycle_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_update_lifecycle_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_update_lifecycle_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_update_lifecycle_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationResponse"/>
-            </wsdl:message>
-            <xs:element name="Receive_ScoringRequest" type="Launchpoint:ISOScoringType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_ScoringRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_ScoringRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_ScoringResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_ScoringResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_ScoringResponse"/>
             </wsdl:message>
             <xs:element name="Receive_ISO_ResponseRequest" type="Launchpoint:ISOFileWrapperType" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q"/>
             <wsdl:message name="Receive_ISO_ResponseRequest" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
@@ -118,13 +118,13 @@
                 <vprop:query>Launchpoint:Case/Launchpoint:EnvironmentId/text()</vprop:query>
             </vprop:propertyAlias>
             <vprop:propertyAlias propertyName="this:environmentid" messageType="this:Receive_ScoringRequest" part="body">
-                <vprop:query>Launchpoint:environmentId/text()</vprop:query>
+                <vprop:query>Launchpoint:EnvironmentId/text()</vprop:query>
             </vprop:propertyAlias>
             <vprop:propertyAlias propertyName="this:caseid" messageType="this:Receive_activity_confirmationRequest" part="body">
                 <vprop:query>Launchpoint:CaseId/text()</vprop:query>
             </vprop:propertyAlias>
             <vprop:propertyAlias propertyName="this:caseid" messageType="this:Receive_ScoringRequest" part="body">
-                <vprop:query>Launchpoint:caseId/text()</vprop:query>
+                <vprop:query>Launchpoint:CaseId/text()</vprop:query>
             </vprop:propertyAlias>
             <vprop:propertyAlias propertyName="this:caseid" messageType="this:Receive_generate_file_confirmaationRequest" part="body">
                 <vprop:query>Launchpoint:CaseId/text()</vprop:query>
@@ -151,7 +151,7 @@
                 <vprop:query>Launchpoint:CaseId/text()</vprop:query>
             </vprop:propertyAlias>
             <vprop:propertyAlias propertyName="this:clientid" messageType="this:Receive_ScoringRequest" part="body">
-                <vprop:query>Launchpoint:clientid/text()</vprop:query>
+                <vprop:query>Launchpoint:ClientId/text()</vprop:query>
             </vprop:propertyAlias>
             <vprop:propertyAlias propertyName="this:clientid" messageType="this:Receive_update_lifecycle_confirmationRequest" part="body">
                 <vprop:query>Launchpoint:ClientId/text()</vprop:query>
@@ -161,11 +161,11 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q" bpdm:label="ISO"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_Svwt0KhqEeeC1M91oPbQ3QimplicitPartner" bpdm:label="ISO Response ManagerimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getCaseFromRequestId.sql/getCaseFromRequestId.sql.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/CaseCloseReopen-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/updateCaseLifeCycle-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createActivity-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/generateFile-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/CaseCloseReopen-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createActivity-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Rules/ISOScoreProcessing.bre/dtws_launchpointprocess_rules_isoscoreprocessing/META-INF/dtws_launchpointprocess_rules_isoscoreprocessing.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getCaseFromRequestId.sql/getCaseFromRequestId.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -381,12 +381,57 @@
                                         <bpel:to>$ISOResponseTracking/metrics:scoreReceivedAt</bpel:to><mapper:mapperLink><mapper:vertice id="2137195050" targetPath="$ISOResponseTracking/metrics:scoreReceivedAt" targetedBy="553394154-arg0"></mapper:vertice><mapper:vertice id="553394154" dimension="109x24" location="564,264"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
-                                        <bpel:from>if ("MISS" = upper-case($thisReceive_ScoringRequest1Msg.body/Launchpoint:score)) then (10) else (if ("HIT" = upper-case($thisReceive_ScoringRequest1Msg.body/Launchpoint:score)) then (20) else (30))</bpel:from>
-                                        <bpel:to>$CaseScore/Launchpoint:scoreValue</bpel:to><mapper:mapperLink><mapper:vertice id="670548966" targetPath="$CaseScore/Launchpoint:scoreValue" targetedBy="1815104063-arg3"></mapper:vertice><mapper:vertice id="1815104063" dimension="79x145" location="492,36"><mapper:value>if-then-else</mapper:value></mapper:vertice><mapper:vertice id="1784650971" dimension="79x24" location="360,48" targetedBy="1815104063-arg0"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1599889346" dimension="79x24" location="276,12" targetedBy="1784650971-arg0"><mapper:value>"MISS"</mapper:value></mapper:vertice><mapper:vertice id="1340509297" dimension="79x24" location="50,69" targetedBy="1784650971-arg1"><mapper:value>upper-case()</mapper:value></mapper:vertice><mapper:vertice id="1599365427" sourcePath="$thisReceive_ScoringRequest1Msg.body/Launchpoint:score" targetedBy="1340509297-arg0"></mapper:vertice><mapper:vertice id="715907650" dimension="79x24" location="360,96" targetedBy="1815104063-arg1"><mapper:value>10</mapper:value></mapper:vertice><mapper:vertice id="106110084" dimension="79x73" location="360,144" targetedBy="1815104063-arg2"><mapper:value>if-then-else</mapper:value></mapper:vertice><mapper:vertice id="1128777650" dimension="79x24" location="264,156" targetedBy="106110084-arg0"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="31523331" dimension="79x24" location="192,120" targetedBy="1128777650-arg0"><mapper:value>"HIT"</mapper:value></mapper:vertice><mapper:vertice id="53410283" dimension="79x24" location="41,111" targetedBy="1128777650-arg1"><mapper:value>upper-case()</mapper:value></mapper:vertice><mapper:vertice id="1138686694" sourcePath="$thisReceive_ScoringRequest1Msg.body/Launchpoint:score" targetedBy="53410283-arg0"></mapper:vertice><mapper:vertice id="1975331970" dimension="79x24" location="266,206" targetedBy="106110084-arg1"><mapper:value>20</mapper:value></mapper:vertice><mapper:vertice id="823008955" dimension="79x24" location="240,252" targetedBy="106110084-arg2"><mapper:value>30</mapper:value></mapper:vertice></mapper:mapperLink>
+                                        <bpel:from>if ("MISS" = upper-case($thisReceive_ScoringRequest1Msg.body/Launchpoint:ISOScore)) then (10) else (if ("HIT" = upper-case($thisReceive_ScoringRequest1Msg.body/Launchpoint:ISOScore)) then (20) else (30))</bpel:from>
+                                        <bpel:to>$CaseScore/Launchpoint:scoreValue</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1650709678" targetPath="$CaseScore/Launchpoint:scoreValue" targetedBy="1429995375-arg3"></mapper:vertice>
+  <mapper:vertice id="1429995375" dimension="79x145" location="492,36">
+    <mapper:value>if-then-else</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="930267853" dimension="79x24" location="360,48" targetedBy="1429995375-arg0">
+    <mapper:value>=</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="468618587" dimension="79x24" location="276,12" targetedBy="930267853-arg0">
+    <mapper:value>"MISS"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1742007340" dimension="79x24" location="50,69" targetedBy="930267853-arg1">
+    <mapper:value>upper-case()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1239476210" sourcePath="$thisReceive_ScoringRequest1Msg.body/Launchpoint:ISOScore" targetedBy="1742007340-arg0"></mapper:vertice>
+  <mapper:vertice id="964710245" dimension="79x24" location="360,96" targetedBy="1429995375-arg1">
+    <mapper:value>10</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1990924882" dimension="79x73" location="360,144" targetedBy="1429995375-arg2">
+    <mapper:value>if-then-else</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="361222571" dimension="79x24" location="264,156" targetedBy="1990924882-arg0">
+    <mapper:value>=</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="2083507246" dimension="79x24" location="192,120" targetedBy="361222571-arg0">
+    <mapper:value>"HIT"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1391992947" dimension="79x24" location="41,111" targetedBy="361222571-arg1">
+    <mapper:value>upper-case()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="296281873" sourcePath="$thisReceive_ScoringRequest1Msg.body/Launchpoint:ISOScore" targetedBy="1391992947-arg0"></mapper:vertice>
+  <mapper:vertice id="1432972836" dimension="79x24" location="266,206" targetedBy="1990924882-arg1">
+    <mapper:value>20</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1263692732" dimension="79x24" location="240,252" targetedBy="1990924882-arg2">
+    <mapper:value>30</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
-                                        <bpel:from>upper-case($thisReceive_ScoringRequest1Msg.body/Launchpoint:score)</bpel:from>
-                                        <bpel:to>$CaseScore/Launchpoint:score</bpel:to><mapper:mapperLink><mapper:vertice id="77649005" targetPath="$CaseScore/Launchpoint:score" targetedBy="1244723855-arg1"></mapper:vertice><mapper:vertice id="1244723855" dimension="79x24" location="47,178"><mapper:value>upper-case()</mapper:value></mapper:vertice><mapper:vertice id="1974067629" sourcePath="$thisReceive_ScoringRequest1Msg.body/Launchpoint:score" targetedBy="1244723855-arg0"></mapper:vertice></mapper:mapperLink>
+                                        <bpel:from>upper-case($thisReceive_ScoringRequest1Msg.body/Launchpoint:ISOScore)</bpel:from>
+                                        <bpel:to>$CaseScore/Launchpoint:score</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="447955272" targetPath="$CaseScore/Launchpoint:score" targetedBy="1429040749-arg0"></mapper:vertice>
+  <mapper:vertice id="1429040749" dimension="79x24" location="47,178">
+    <mapper:value>upper-case()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1376718010" sourcePath="$thisReceive_ScoringRequest1Msg.body/Launchpoint:ISOScore" targetedBy="1429040749-arg1"></mapper:vertice>
+</mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>

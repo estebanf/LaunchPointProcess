@@ -1,0 +1,33 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:process="http://thisdiagram/process" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:this="http://thisdiagram/Caller" xmlns:tns="http://www.example.org/Launchpoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/Caller">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_JrHBYOW-EeeHsZe7cOsY_A"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="process" bpdm:comment="contrib=&apos;partner-pool:///_JrHBYOW-EeeHsZe7cOsY_A"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Caller" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types"></bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_JrHBYOW-EeeHsZe7cOsY_A" bpdm:label="process"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Caller" bpdm:ID="_HKe3sOW-EeeHsZe7cOsY_A">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="processAndCallerPlkVar" partnerLinkType="diag:processAndCaller" initializePartnerRole="yes" partnerRole="process_for_Caller" bpdm:invokedService="process:CanonicServiceForCaller" bpdm:invokedPort="canonicPort" bpdm:invokedSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/Caller" bpdm:invokedIsDefault="true" bpdm:clientTasks="_HKe3sOW-EeeHsZe7cOsY_A:_HKe3suW-EeeHsZe7cOsY_A" bpdm:isManaged="true" bpdm:otherPoolId="_JrHBYOW-EeeHsZe7cOsY_A"/>
+        </bpel:partnerLinks>
+        <bpel:variables>
+            <bpel:variable name="processReceive_LogRequest2Msg" messageType="process:Receive_LogRequest" bpdm:id="_NhIQsOW-EeeHsZe7cOsY_A" bpdm:messageIds=" out:_Ng1VwOW-EeeHsZe7cOsY_A">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="process:Receive_LogRequest" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="processReceive_LogResponse2Msg" messageType="process:Receive_LogResponse" bpdm:id="_O7IwkOW-EeeHsZe7cOsY_A" bpdm:messageIds="inc:_O61OkOW-EeeHsZe7cOsY_A"/>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask operation="Receive_Log" partnerLink="processAndCallerPlkVar" portType="process:ForCaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send log" bpdm:ID="_HKe3suW-EeeHsZe7cOsY_A" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="processReceive_LogRequest2Msg" bpdm:msgVarScopeId="_HKe3sOW-EeeHsZe7cOsY_A" bpdm:variableIsManaged="true" bpdm:messageType="process:Receive_LogRequest" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Ng1VwOW-EeeHsZe7cOsY_A"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="processReceive_LogResponse2Msg" bpdm:msgVarScopeId="_HKe3sOW-EeeHsZe7cOsY_A" bpdm:variableIsManaged="true" bpdm:messageType="process:Receive_LogResponse" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_O61OkOW-EeeHsZe7cOsY_A"></bpdm:linkset>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>

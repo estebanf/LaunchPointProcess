@@ -33,13 +33,6 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForException_Management" type="this:ForException_Management" bpdm:isSynchronized="true"/>
-            <wsdl:portType name="Fordb">
-                <wsdl:operation name="Receive_case_details" bpdm:source="partner-pool:///_-LGyoN5OEee5MfuigsCq1w">
-                    <wsdl:input message="this:Receive_case_detailsRequest" name="Receive_case_details"/>
-                    <wsdl:output message="this:Receive_case_detailsResponse" name="Receive_case_detailsResponse"/>
-                </wsdl:operation>
-            </wsdl:portType>
-            <bpel:binding name="CanonicBindingFordb" type="this:Fordb" bpdm:isSynchronized="true"/>
             <wsdl:portType name="Forcaller">
                 <wsdl:operation name="Receive_request" bpdm:source="partner-pool:///_uR9clt42Eee0YMxeWbu2Dg">
                     <wsdl:input message="this:Receive_requestRequest" name="Receive_request"/>
@@ -47,6 +40,13 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForcaller" type="this:Forcaller" bpdm:isSynchronized="true"/>
+            <wsdl:portType name="Fordb">
+                <wsdl:operation name="Receive_case_details" bpdm:source="partner-pool:///_-LGyoN5OEee5MfuigsCq1w">
+                    <wsdl:input message="this:Receive_case_detailsRequest" name="Receive_case_details"/>
+                    <wsdl:output message="this:Receive_case_detailsResponse" name="Receive_case_detailsResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingFordb" type="this:Fordb" bpdm:isSynchronized="true"/>
             <wsdl:portType name="ForDCM">
                 <wsdl:operation name="Receive_activity_confirmation_case_close_reason" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
                     <wsdl:input message="this:Receive_activity_confirmation_case_close_reasonRequest" name="Receive_activity_confirmation_case_close_reason"/>
@@ -94,14 +94,6 @@
             <wsdl:message name="Receive_activity_confirmation_case_close_reasonResponse" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
                 <wsdl:part name="body" element="this:Receive_activity_confirmation_case_close_reasonResponse"/>
             </wsdl:message>
-            <xs:element name="Receive_activity_confirmation_case_statusRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
-            <wsdl:message name="Receive_activity_confirmation_case_statusRequest" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
-                <wsdl:part name="body" element="this:Receive_activity_confirmation_case_statusRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_activity_confirmation_case_statusResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
-            <wsdl:message name="Receive_activity_confirmation_case_statusResponse" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
-                <wsdl:part name="body" element="this:Receive_activity_confirmation_case_statusResponse"/>
-            </wsdl:message>
             <xs:element name="Receive_activity_confirmation_case_lifecycleRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
             <wsdl:message name="Receive_activity_confirmation_case_lifecycleRequest" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
                 <wsdl:part name="body" element="this:Receive_activity_confirmation_case_lifecycleRequest"/>
@@ -109,6 +101,14 @@
             <xs:element name="Receive_activity_confirmation_case_lifecycleResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
             <wsdl:message name="Receive_activity_confirmation_case_lifecycleResponse" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
                 <wsdl:part name="body" element="this:Receive_activity_confirmation_case_lifecycleResponse"/>
+            </wsdl:message>
+            <xs:element name="Receive_activity_confirmation_case_statusRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
+            <wsdl:message name="Receive_activity_confirmation_case_statusRequest" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
+                <wsdl:part name="body" element="this:Receive_activity_confirmation_case_statusRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_activity_confirmation_case_statusResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
+            <wsdl:message name="Receive_activity_confirmation_case_statusResponse" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
+                <wsdl:part name="body" element="this:Receive_activity_confirmation_case_statusResponse"/>
             </wsdl:message>
             <vprop:propertyAlias propertyName="this:prop" messageType="this:Receive_requestResponse" part="body">
                 <vprop:query>Launchpoint:pid/text()</vprop:query>
@@ -170,9 +170,9 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_CViLsN5PEee5MfuigsCq1w" bpdm:label="Evaluator"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseDetails-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createActivity-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/caseCloseReopen.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/integrations/CaseCloseReopen.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createActivity-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessISOResponse-ISO_Response_Manager.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/CaseEvaluator-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/BusinessRule.xsd"/>
@@ -418,8 +418,8 @@
                                                 <bpel:to>$dCMCloseReopenCaseRequest1Msg.body/CaseStatus</bpel:to><mapper:mapperLink><mapper:vertice id="1169462925" targetPath="$dCMCloseReopenCaseRequest1Msg.body/CaseStatus" targetedBy="14356820-arg0"></mapper:vertice><mapper:vertice id="14356820" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:status"></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                             <bpel:copy>
-                                                <bpel:from>ode:get-property-value("CLOSECASE")</bpel:from>
-                                                <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="603642419" targetPath="$endpoint" targetedBy="1489195159-arg1"></mapper:vertice><mapper:vertice id="1489195159" dimension="139x24" location="243,230"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="572518047" dimension="81x24" location="92,227" targetedBy="1489195159-arg0"><mapper:value>"CLOSECASE"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                <bpel:from>ode:get-property-value("UPDATECASE")</bpel:from>
+                                                <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="271404474" targetPath="$endpoint" targetedBy="1675022402-arg1"></mapper:vertice><mapper:vertice id="1675022402" dimension="139x24" location="243,230"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1925603754" dimension="90x24" location="92,227" targetedBy="1675022402-arg0"><mapper:value>"UPDATECASE"</mapper:value></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMCloseReopenCaseRequest1Msg" bpdm:msgVarScopeId="_vCVpQN45Eee0YMxeWbu2Dg" bpdm:variableIsManaged="true" bpdm:messageType="caseCloseReopen:closeReopenCase_input" bpdm:binding="caseCloseReopen:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_lp1fcN5SEee5MfuigsCq1w"></bpdm:linkset>

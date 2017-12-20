@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0" xmlns:updateCaseLifeCycle-process="http://bpms.everteam.com/Processes/Integrations/updateCaseLifeCycle/process" xmlns:ax2198="http://isoscoreprocessing.rules.launchpointprocess/bre" xmlns:createActivity-process="http://bpms.everteam.com/Processes/Integrations/createActivity/process" xmlns:this="http://bpms.everteam.com/Processes/Core/ProcessISOResponse/ISO_Response_Manager" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:DB="http://bpms.everteam.com/Processes/Core/ProcessISOResponse/DB" xmlns:ns="http://isoscoreprocessing.rules.launchpointprocess" xmlns:ISO="http://bpms.everteam.com/Processes/Core/ProcessISOResponse/ISO" xmlns:diag="http://bpms.everteam.com/Processes/Core/ProcessISOResponse" xmlns:ISO_Response_ManagerimplicitPartner="http://bpms.everteam.com/Processes/Core/ProcessISOResponse/ISO_Response_ManagerimplicitPartner" xmlns:tns="http://everteam.com/xvar/example" xmlns:DCM="http://bpms.everteam.com/Processes/Core/ProcessISOResponse/DCM" xmlns:ax2197="http://isoscoreprocessing.rules.launchpointprocess/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metrics="http://test.com/xvar/example" xmlns:generateFile-process="http://bpms.everteam.com/Processes/Integrations/generateFile/process" xmlns:getCaseFromRequestId-process="http://bpms.everteam.com/Processes/Integrations/getCaseFromRequestId/process" xmlns:CaseCloseReopen-process="http://bpms.everteam.com/Processes/Integrations/CaseCloseReopen/process">
-  <!--XSL Skeleton generated on Fri Dec 15 11:54:56 EST 2017
- for F/LaunchPointProcess/Processes/Core/ProcessISOResponse.bpm
-   pool:ISO Response Manager
-   activity: Request ISOREsponse file
- Complete doXslTransform: bpel:doXslTransform("../../XSLT/GenerateFileRequestForIsoResponse.xslt", $thisEventStartMessageRequest1.body, "lpcase", $CaseHighestScore/Launchpoint:Case)
- Input document as defined in the mapper: $thisEventStartMessageRequest1.body-->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	version="2.0"
+	xmlns:this="http://bpms.everteam.com/Processes/Core/ProcessISOResponse/ISO_Response_Manager"
+	xmlns:Launchpoint="http://www.example.org/Launchpoint" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:generateFile-process="http://bpms.everteam.com/Processes/Integrations/generateFile/process">
   <xsl:output/>
   <xsl:param name="lpcase" select="/.." />
-  <xsl:template match="/this:Receive_ISO_ResponseRequest">
+  <xsl:template match="/this:Receive_ISO_ResponseRequest/Launchpoint:content">
     <generateFile-process:Recieve_RequestRequest>
       <Launchpoint:Case>
         <Launchpoint:CaseId><xsl:value-of select="$lpcase/Launchpoint:CaseId" /></Launchpoint:CaseId>
@@ -26,19 +26,19 @@
         <xsl:text>&lt;</xsl:text>
         <xsl:value-of select="name()"/>
 
-        <!-- Namespaces -->
-        <xsl:for-each select="namespace::*">
-            <xsl:text> xmlns</xsl:text>
-            <xsl:if test="name() != ''">
-                <xsl:text>:</xsl:text>
-                <xsl:value-of select="name()"/>
-            </xsl:if>
-            <xsl:text>='</xsl:text>
-            <xsl:call-template name="escape-xml">
-                <xsl:with-param name="text" select="normalize-space(.)"/>
-            </xsl:call-template>
-            <xsl:text>'</xsl:text>
-        </xsl:for-each>
+<!--         Namespaces -->
+<!--         <xsl:for-each select="namespace::*"> -->
+<!--             <xsl:text> xmlns</xsl:text> -->
+<!--             <xsl:if test="name() != ''"> -->
+<!--                 <xsl:text>:</xsl:text> -->
+<!--                 <xsl:value-of select="name()"/> -->
+<!--             </xsl:if> -->
+<!--             <xsl:text>='</xsl:text> -->
+<!--             <xsl:call-template name="escape-xml"> -->
+<!--                 <xsl:with-param name="text" select="normalize-space(.)"/> -->
+<!--             </xsl:call-template> -->
+<!--             <xsl:text>'</xsl:text> -->
+<!--         </xsl:for-each> -->
 
         <!-- Attributes -->
         <xsl:for-each select="@*">

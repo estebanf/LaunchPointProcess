@@ -1,0 +1,204 @@
+﻿<bpel:process xmlns:bpdm="http://www.intalio/designer/business-process-data-modeling" xmlns:mapper="http://www.intalio.com/designer/mapper" xmlns:diag="http://thisdiagram" xmlns:logger="http://bpms.everteam.com/Services/REST/logger.rest" xmlns:processimplicitPartner="http://thisdiagram/processimplicitPartner" xmlns:this="http://thisdiagram/process" xmlns:tns="http://everteam.com/xvar/example" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:Launchpoint="http://www.example.org/Launchpoint" xmlns:Caller="http://thisdiagram/Caller" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:logger1="__project:///Schemas/integrations/logger.xsd" xmlns:LaunchpointError="__project:///Schemas/integrations/LaunchpointError.xsd" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:pnlk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ode="http://www.apache.org/ode/type/extension" targetNamespace="http://thisdiagram/process">
+    <bpdm:dependencies version="6000089">
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram" bpdm:prefix="diag" bpdm:comment="contrib=&apos;partner-pool:///_HKe3sOW-EeeHsZe7cOsY_A"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://bpms.everteam.com/Services/REST/logger.rest" bpdm:prefix="logger" bpdm:comment="contrib=&apos;project:///Services/REST/logger.wsdl"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/processimplicitPartner" bpdm:prefix="processimplicitPartner" bpdm:comment="contrib=&apos;partner-pool:///_JrHBYOW-EeeHsZe7cOsY_AimplicitPartner"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/process" bpdm:prefix="this" bpdm:type="this_process"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://everteam.com/xvar/example" bpdm:prefix="tns" bpdm:comment="contrib=&apos;project:///IntalioObjects/customVariable.xvar"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/XML/1998/namespace" bpdm:prefix="xml"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.example.org/Launchpoint" bpdm:prefix="Launchpoint" bpdm:comment="contrib=&apos;project:///Schemas/Launchpoint.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/Caller" bpdm:prefix="Caller" bpdm:comment="contrib=&apos;partner-pool:///_HKe3sOW-EeeHsZe7cOsY_A"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema-instance" bpdm:prefix="xsi"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="http://www.w3.org/2001/XMLSchema" bpdm:prefix="xs"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/integrations/logger.xsd" bpdm:prefix="logger1" bpdm:comment="contrib=&apos;project:///Schemas/integrations/logger.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceDefinition bpdm:uri="__project:///Schemas/integrations/LaunchpointError.xsd" bpdm:prefix="LaunchpointError" bpdm:comment="contrib=&apos;project:///Schemas/integrations/LaunchpointError.xsd"></bpdm:namespaceDefinition>
+        <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
+            <wsdl:portType name="ForCaller">
+                <wsdl:operation name="Receive_Log" bpdm:source="partner-pool:///_HKe3sOW-EeeHsZe7cOsY_A">
+                    <wsdl:input message="this:Receive_LogRequest" name="Receive_Log"/>
+                    <wsdl:output message="this:Receive_LogResponse" name="Receive_LogResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForCaller" type="this:ForCaller" bpdm:isSynchronized="true"/>
+            <xs:element name="Receive_LogRequest" type="Launchpoint:LoggerType" bpdm:source="partner-pool:///_HKe3sOW-EeeHsZe7cOsY_A"/>
+            <wsdl:message name="Receive_LogRequest" bpdm:source="partner-pool:///_HKe3sOW-EeeHsZe7cOsY_A">
+                <wsdl:part name="body" element="this:Receive_LogRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_LogResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_HKe3sOW-EeeHsZe7cOsY_A"/>
+            <wsdl:message name="Receive_LogResponse" bpdm:source="partner-pool:///_HKe3sOW-EeeHsZe7cOsY_A">
+                <wsdl:part name="body" element="this:Receive_LogResponse"/>
+            </wsdl:message>
+        </bpdm:namespaceContributor>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_HKe3sOW-EeeHsZe7cOsY_A" bpdm:label="Caller"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_JrHBYOW-EeeHsZe7cOsY_AimplicitPartner" bpdm:label="processimplicitPartner"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Services/REST/logger.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/integrations/logger.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/integrations/LaunchpointError.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
+        <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
+    </bpdm:dependencies>
+    <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="process" bpdm:ID="_JrHBYOW-EeeHsZe7cOsY_A">
+        <bpel:partnerLinks>
+            <bpel:partnerLink name="processAndCallerPlkVar" partnerLinkType="diag:processAndCaller" myRole="process_for_Caller" bpdm:enableSharing="false" bpdm:providedService="this:CanonicServiceForCaller" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="${deploy_serverUrl}${deploy_baseSoapServicesUrl}/${deploy_bundleNcName}/${diagram_relativeURL}/process/Caller" bpdm:providedIsDefault="true" bpdm:clientTasks="_JrHBYOW-EeeHsZe7cOsY_A:_NgrkwOW-EeeHsZe7cOsY_A" bpdm:isManaged="true" bpdm:otherPoolId="_HKe3sOW-EeeHsZe7cOsY_A"/>
+            <bpel:partnerLink name="processimplicitPartnerAndProcessForHttpPortPlkVar" partnerLinkType="diag:processimplicitPartnerAndProcessForHttpPortPlk" initializePartnerRole="yes" partnerRole="processimplicitPartner_for_process" bpdm:invokedService="logger:restService" bpdm:invokedPort="httpPort" bpdm:invokedSOAPAddress="http://52.89.71.240:8003/api/v1/loggables" bpdm:invokedIsDefault="true" bpdm:clientTasks="_JrHBYOW-EeeHsZe7cOsY_A:_9de0puXCEeeHsZe7cOsY_A" bpdm:isManaged="true" bpdm:otherPoolId="_JrHBYOW-EeeHsZe7cOsY_AimplicitPartner"/>
+        </bpel:partnerLinks>
+        <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
+            <bpel:variable name="customVariable" element="tns:customVariable" xvar:id="customVariable-_JrQyZuW-EeeHsZe7cOsY_A" xvar:relates-to="customVariable-keys" bpdm:xvarType="tns:customVariable" bpdm:id="_JrQyZuW-EeeHsZe7cOsY_A"/>
+            <bpel:variable name="thisReceive_LogRequest2Msg" messageType="this:Receive_LogRequest" bpdm:id="_NhSBteW-EeeHsZe7cOsY_A" bpdm:messageIds="inc:_Ng1VwOW-EeeHsZe7cOsY_A"/>
+            <bpel:variable name="thisReceive_LogResponse2Msg" messageType="this:Receive_LogResponse" bpdm:id="_O6-_kOW-EeeHsZe7cOsY_A" bpdm:messageIds=" out:_O61OkOW-EeeHsZe7cOsY_A">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="this:Receive_LogResponse" bpdm:linkedPart="body"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+            <bpel:variable name="loggerTp_logResponse1Msg" messageType="logger:tp_log_output" binding="logger:restBinding" operation="tp_log" opMsgType="1" bpdm:messageIds="inc:_9de0puXCEeeHsZe7cOsY_AIncoming"/>
+            <bpel:variable name="loggerTp_logRequest1Msg" messageType="logger:tp_log_input" binding="logger:restBinding" operation="tp_log" opMsgType="0" bpdm:messageIds=" out:_9de0puXCEeeHsZe7cOsY_AOutgoing">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="logger:tp_log_input" bpdm:linkedPart="body" bpdm:binding="logger:restBinding" bpdm:opMsgType="0" bpdm:operation="tp_log"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
+        </bpel:variables>
+        <bpel:sequence>
+            <bpdm:messagingtask eventType="start: message" operation="Receive_Log" partnerLink="processAndCallerPlkVar" portType="this:ForCaller" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive Log" bpdm:ID="_NgrkwOW-EeeHsZe7cOsY_A" bpdm:isHeaderAuthorizationAware="yes">
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_LogRequest2Msg" bpdm:msgVarScopeId="_JrHBYOW-EeeHsZe7cOsY_A" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_LogRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_Ng1VwOW-EeeHsZe7cOsY_A"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>$ode:pid</bpel:from>
+                        <bpel:to>$thisReceive_LogResponse2Msg.body/Launchpoint:pid</bpel:to><mapper:mapperLink><mapper:vertice id="1796588945" targetPath="$thisReceive_LogResponse2Msg.body/Launchpoint:pid" targetedBy="305962017-arg0"></mapper:vertice><mapper:vertice id="305962017" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>current-dateTime()</bpel:from>
+                        <bpel:to>$thisReceive_LogResponse2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="1215410689" targetPath="$thisReceive_LogResponse2Msg.body/Launchpoint:timestamp" targetedBy="1476981887-arg0"></mapper:vertice><mapper:vertice id="1476981887" dimension="109x24" location="345,85"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_LogResponse2Msg" bpdm:msgVarScopeId="_JrHBYOW-EeeHsZe7cOsY_A" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_LogResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_O61OkOW-EeeHsZe7cOsY_A"></bpdm:linkset>
+            </bpdm:messagingtask>
+            <bpdm:messagingtask operation="tp_log" partnerLink="processimplicitPartnerAndProcessForHttpPortPlkVar" portType="logger:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="tp_log" bpdm:ID="_9de0puXCEeeHsZe7cOsY_A" bpdm:isHeaderAuthorizationAware="no">
+                <bpdm:linkset bpdm:type="assignments">
+                    <bpel:copy>
+                        <bpel:from>ode:get-property-value("LOGGER")</bpel:from>
+                        <bpel:to endpointReference="partnerRole"/>
+<mapper:mapperLink>
+  <mapper:vertice id="1473339654" targetPath="$endpoint" targetedBy="605184131-arg1"></mapper:vertice>
+  <mapper:vertice id="605184131" dimension="139x24" location="283,471">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="2060959256" dimension="79x24" location="140,440" targetedBy="605184131-arg0">
+    <mapper:value>"LOGGER"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisReceive_LogRequest2Msg.body/Launchpoint:Case</bpel:from>
+                        <bpel:to>$loggerTp_logRequest1Msg.body/entity</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1503965110" targetPath="$loggerTp_logRequest1Msg.body/entity" targetedBy="547779493-arg0"></mapper:vertice>
+  <mapper:vertice id="547779493" sourcePath="$thisReceive_LogRequest2Msg.body/Launchpoint:Case"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisReceive_LogRequest2Msg.body/Launchpoint:action_name</bpel:from>
+                        <bpel:to>$loggerTp_logRequest1Msg.body/action_name</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1049065285" targetPath="$loggerTp_logRequest1Msg.body/action_name" targetedBy="2110608988-arg0"></mapper:vertice>
+  <mapper:vertice id="2110608988" sourcePath="$thisReceive_LogRequest2Msg.body/Launchpoint:action_name"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisReceive_LogRequest2Msg.body/Launchpoint:process_name</bpel:from>
+                        <bpel:to>$loggerTp_logRequest1Msg.body/actor</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="504894274" targetPath="$loggerTp_logRequest1Msg.body/actor" targetedBy="888489191-arg0"></mapper:vertice>
+  <mapper:vertice id="888489191" sourcePath="$thisReceive_LogRequest2Msg.body/Launchpoint:process_name"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisReceive_LogRequest2Msg.body/Launchpoint:event</bpel:from>
+                        <bpel:to>$loggerTp_logRequest1Msg.body/event</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="2142535762" targetPath="$loggerTp_logRequest1Msg.body/event" targetedBy="1294190533-arg0"></mapper:vertice>
+  <mapper:vertice id="1294190533" sourcePath="$thisReceive_LogRequest2Msg.body/Launchpoint:event"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$thisReceive_LogRequest2Msg.body/Launchpoint:pid</bpel:from>
+                        <bpel:to>$loggerTp_logRequest1Msg.body/process_id</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="721560017" targetPath="$loggerTp_logRequest1Msg.body/process_id" targetedBy="1145990639-arg0"></mapper:vertice>
+  <mapper:vertice id="1145990639" sourcePath="$thisReceive_LogRequest2Msg.body/Launchpoint:pid"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>"BPM"</bpel:from>
+                        <bpel:to>$loggerTp_logRequest1Msg.body/source_app</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1531646738" targetPath="$loggerTp_logRequest1Msg.body/source_app" targetedBy="768403906-arg0"></mapper:vertice>
+  <mapper:vertice id="768403906" dimension="79x24" location="372,144">
+    <mapper:value>"BPM"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>false()</bpel:from>
+                        <bpel:to>$loggerTp_logRequest1Msg.body/is_sensitive</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="261607113" targetPath="$loggerTp_logRequest1Msg.body/is_sensitive" targetedBy="450062780-arg0"></mapper:vertice>
+  <mapper:vertice id="450062780" dimension="79x24" location="448,182">
+    <mapper:value>false()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>"PROCESS"</bpel:from>
+                        <bpel:to>$loggerTp_logRequest1Msg.body/actor_type</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="839915311" targetPath="$loggerTp_logRequest1Msg.body/actor_type" targetedBy="1498627587-arg0"></mapper:vertice>
+  <mapper:vertice id="1498627587" dimension="79x24" location="464,223">
+    <mapper:value>"PROCESS"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>"STEP"</bpel:from>
+                        <bpel:to>$loggerTp_logRequest1Msg.body/event_type</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="462704774" targetPath="$loggerTp_logRequest1Msg.body/event_type" targetedBy="1912362454-arg0"></mapper:vertice>
+  <mapper:vertice id="1912362454" dimension="79x24" location="468,264">
+    <mapper:value>"STEP"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$ode:pid</bpel:from>
+                        <bpel:to>$loggerTp_logRequest1Msg.body/thread_id</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="573281874" targetPath="$loggerTp_logRequest1Msg.body/thread_id" targetedBy="1419920262-arg0"></mapper:vertice>
+  <mapper:vertice id="1419920262" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>$ode:pid</bpel:from>
+                        <bpel:to>$loggerTp_logRequest1Msg.body/session_id</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="51234223" targetPath="$loggerTp_logRequest1Msg.body/session_id" targetedBy="67886278-arg0"></mapper:vertice>
+  <mapper:vertice id="67886278" sourcePath="$ode:pid"></mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                    <bpel:copy>
+                        <bpel:from>false()</bpel:from>
+                        <bpel:to>$loggerTp_logRequest1Msg.body/extended_attr</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="822904034" targetPath="$loggerTp_logRequest1Msg.body/extended_attr" targetedBy="993700796-arg0"></mapper:vertice>
+  <mapper:vertice id="993700796" dimension="79x24" location="461,336">
+    <mapper:value>false()</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                    </bpel:copy>
+                </bpdm:linkset>
+                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="loggerTp_logRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="logger:tp_log_input" bpdm:binding="logger:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_9de0puXCEeeHsZe7cOsY_AOutgoing"></bpdm:linkset>
+                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="loggerTp_logResponse1Msg" bpdm:variableIsManaged="true" bpdm:messageType="logger:tp_log_output" bpdm:binding="logger:restBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_9de0puXCEeeHsZe7cOsY_AIncoming"></bpdm:linkset>
+                <bpdm:thrownFault msgFaultNcName="tp_logFault" msgFaultTypeQname="logger:tp_log_fault"/>
+            </bpdm:messagingtask>
+        </bpel:sequence>
+    </bpel:scope>
+</bpel:process>
