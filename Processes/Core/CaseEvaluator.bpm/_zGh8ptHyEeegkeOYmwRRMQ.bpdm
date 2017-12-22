@@ -110,14 +110,6 @@
             <wsdl:message name="Get_activitiesResponse" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
                 <wsdl:part name="body" element="this:Get_activitiesResponse"/>
             </wsdl:message>
-            <xs:element name="Receive__Activity_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
-            <wsdl:message name="Receive__Activity_confirmationRequest" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
-                <wsdl:part name="body" element="this:Receive__Activity_confirmationRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive__Activity_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
-            <wsdl:message name="Receive__Activity_confirmationResponse" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
-                <wsdl:part name="body" element="this:Receive__Activity_confirmationResponse"/>
-            </wsdl:message>
             <xs:element name="Get_DCM_infoRequest" type="Launchpoint:LaunchpointCaseType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
             <wsdl:message name="Get_DCM_infoRequest" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
                 <wsdl:part name="body" element="this:Get_DCM_infoRequest"/>
@@ -133,6 +125,14 @@
             <xs:element name="Get_diariesResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
             <wsdl:message name="Get_diariesResponse" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
                 <wsdl:part name="body" element="this:Get_diariesResponse"/>
+            </wsdl:message>
+            <xs:element name="Receive__Activity_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
+            <wsdl:message name="Receive__Activity_confirmationRequest" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
+                <wsdl:part name="body" element="this:Receive__Activity_confirmationRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive__Activity_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg"/>
+            <wsdl:message name="Receive__Activity_confirmationResponse" bpdm:source="partner-pool:///_9-JI8NH-EeeKlIzHx_g2Yg">
+                <wsdl:part name="body" element="this:Receive__Activity_confirmationResponse"/>
             </wsdl:message>
             <xs:element name="Get_caseRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_5PxLwNHyEeegkeOYmwRRMQ"/>
             <wsdl:message name="Get_caseRequest" bpdm:source="partner-pool:///_5PxLwNHyEeegkeOYmwRRMQ">
@@ -240,10 +240,10 @@
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseDetails-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getIsoResponse-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getDCMCase-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createActivity-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseDiaries-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/CaseCloseReopen-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createActivity-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getDCMCase-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getCaseActivities-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/BusinessRules/ExecutionRules-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/BusinessRule.xsd"/>
@@ -1186,25 +1186,11 @@
                                         <bpdm:linkset bpdm:type="assignments">
                                             <bpel:copy>
                                                 <bpel:from>$thisGet_caseRequest1Msg.body</bpel:from>
-                                                <bpel:to>$iQ_ProcessHandle_IQ_CaseRequest1Msg.body/Launchpoint:Case</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="308227787" targetPath="$iQ_ProcessHandle_IQ_CaseRequest1Msg.body/Launchpoint:Case" targetedBy="772462883-arg0"></mapper:vertice>
-  <mapper:vertice id="772462883" sourcePath="$thisGet_caseRequest1Msg.body"></mapper:vertice>
-</mapper:mapperLink>
+                                                <bpel:to>$iQ_ProcessHandle_IQ_CaseRequest1Msg.body/Launchpoint:Case</bpel:to><mapper:mapperLink><mapper:vertice id="308227787" targetPath="$iQ_ProcessHandle_IQ_CaseRequest1Msg.body/Launchpoint:Case" targetedBy="772462883-arg0"></mapper:vertice><mapper:vertice id="772462883" sourcePath="$thisGet_caseRequest1Msg.body"></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                             <bpel:copy>
                                                 <bpel:from>$dcmCase/Launchpoint:IQLetters + 1</bpel:from>
-                                                <bpel:to>$iQ_ProcessHandle_IQ_CaseRequest1Msg.body/Launchpoint:letter</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="144795560" targetPath="$iQ_ProcessHandle_IQ_CaseRequest1Msg.body/Launchpoint:letter" targetedBy="846175888-arg2"></mapper:vertice>
-  <mapper:vertice id="846175888" dimension="79x24" location="396,81">
-    <mapper:value>+</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1120782544" sourcePath="$dcmCase/Launchpoint:IQLetters" targetedBy="846175888-arg0"></mapper:vertice>
-  <mapper:vertice id="1394119454" dimension="79x24" location="167,132" targetedBy="846175888-arg1">
-    <mapper:value>1</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                <bpel:to>$iQ_ProcessHandle_IQ_CaseRequest1Msg.body/Launchpoint:letter</bpel:to><mapper:mapperLink><mapper:vertice id="144795560" targetPath="$iQ_ProcessHandle_IQ_CaseRequest1Msg.body/Launchpoint:letter" targetedBy="846175888-arg2"></mapper:vertice><mapper:vertice id="846175888" dimension="79x24" location="396,81"><mapper:value>+</mapper:value></mapper:vertice><mapper:vertice id="1120782544" sourcePath="$dcmCase/Launchpoint:IQLetters" targetedBy="846175888-arg0"></mapper:vertice><mapper:vertice id="1394119454" dimension="79x24" location="167,132" targetedBy="846175888-arg1"><mapper:value>1</mapper:value></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
                                         <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iQ_ProcessHandle_IQ_CaseRequest1Msg" bpdm:msgVarScopeId="_YX3lINzIEee2xbsk1VZIAA" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Process_IQ_Case:Receive_IQRequest" bpdm:binding="ProcessIQCase-Process_IQ_Case:Process_IQ_CaseAndCase_EvaluatorServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_mV6CwNzHEee2xbsk1VZIAA"></bpdm:linkset>

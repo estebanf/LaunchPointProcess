@@ -10,8 +10,8 @@
   <!--No parameters are currently passed to doXslTransform.-->
   <xsl:template match="/Launchpoint:IQBatch">
     <Launchpoint:IQBatchItemList>
-      <Launchpoint:EnvironmentId><xsl:value-of select="Launchpoint:cases/Launchpoint:Case[1]/Launchpoint:EnvironmentId" /></Launchpoint:EnvironmentId>
-      <Launchpoint:IQBatchId><xsl:value-of select="concat(Launchpoint:clientId,Launchpoint:cases/Launchpoint:id)" /></Launchpoint:IQBatchId>
+      <Launchpoint:EnvironmentId><xsl:value-of select="Launchpoint:cases[1]/Launchpoint:Case/Launchpoint:EnvironmentId" /></Launchpoint:EnvironmentId>
+      <Launchpoint:IQBatchId><xsl:value-of select="concat(Launchpoint:clientId,Launchpoint:cases[1]/Launchpoint:id)" /></Launchpoint:IQBatchId>
       <Launchpoint:ClientId><xsl:value-of select="Launchpoint:clientId" /></Launchpoint:ClientId>
       <Launchpoint:TotalLetterCount>0</Launchpoint:TotalLetterCount>
     </Launchpoint:IQBatchItemList>

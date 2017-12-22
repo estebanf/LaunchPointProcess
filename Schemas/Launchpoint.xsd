@@ -563,11 +563,29 @@
 
     <complexType name="LoggerType">
     	<sequence>
+    		<element name="isError" type="boolean"></element>
     		<element name="Case" type="tns:CaseIdentifierType"></element>
     		<element name="action_name" type="string"></element>
     		<element name="process_name" type="string"></element>
-    		<element name="event" type="string"></element>
     		<element name="pid" type="string"></element>
+    		
+    	</sequence>
+    </complexType>
+
+    <element name="IQBatchApproval" type="tns:IQBatchApprovalType">
+    </element>
+
+    <complexType name="IQBatchApprovalType">
+    	<sequence>
+    		<element name="Batch" type="tns:IQBatchItemListType"></element>
+    		<element name="Decision">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value="APPROVED"></enumeration>
+    					<enumeration value="REJECTED"></enumeration>
+    				</restriction>
+    			</simpleType>
+    		</element>
     	</sequence>
     </complexType>
 </schema>
