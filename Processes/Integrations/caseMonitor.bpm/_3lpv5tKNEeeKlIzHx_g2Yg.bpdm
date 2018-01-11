@@ -36,13 +36,13 @@
             </wsdl:service>
             <bpel:binding name="process-monitorimplicitPartnerAndProcess-monitorForStart_PortPlkServiceBinding" type="ns:Start_Port" bpdm:isSynchronized="true"/>
         </bpdm:namespaceContributor>
-        <bpdm:namespaceContributor bpdm:url="partner-pool:///_3lpv5tKNEeeKlIzHx_g2YgimplicitPartner" bpdm:label="process-monitorimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_PG69QPbqEeec_6rtUGGW1w" bpdm:label="ExceptionManagement "/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_3lpv5tKNEeeKlIzHx_g2YgimplicitPartner" bpdm:label="process-monitorimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/CaseEvaluator-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Schemas/BusinessRule.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getAllCases.sql/getAllCases.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getAllCases.sql/getAllCases.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/CaseEvaluator-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/BusinessRule.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -83,57 +83,25 @@
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$ode:pid</bpel:from>
-                        <bpel:to>$MonitorTracking/metrics:id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1906966838" targetPath="$MonitorTracking/metrics:id" targetedBy="189808774-arg0"></mapper:vertice>
-  <mapper:vertice id="189808774" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$MonitorTracking/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="1906966838" targetPath="$MonitorTracking/metrics:id" targetedBy="189808774-arg0"></mapper:vertice><mapper:vertice id="189808774" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>current-dateTime()</bpel:from>
-                        <bpel:to>$MonitorTracking/metrics:started_at</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2088182635" targetPath="$MonitorTracking/metrics:started_at" targetedBy="1351674754-arg0"></mapper:vertice>
-  <mapper:vertice id="1351674754" dimension="109x24" location="291,124">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$MonitorTracking/metrics:started_at</bpel:to><mapper:mapperLink><mapper:vertice id="2088182635" targetPath="$MonitorTracking/metrics:started_at" targetedBy="1351674754-arg0"></mapper:vertice><mapper:vertice id="1351674754" dimension="109x24" location="291,124"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>false()</bpel:from>
-                        <bpel:to>$success</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1639676723" targetPath="$success" targetedBy="1548298303-arg0"></mapper:vertice>
-  <mapper:vertice id="1548298303" dimension="79x24" location="472,175">
-    <mapper:value>false()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$success</bpel:to><mapper:mapperLink><mapper:vertice id="1639676723" targetPath="$success" targetedBy="1548298303-arg0"></mapper:vertice><mapper:vertice id="1548298303" dimension="79x24" location="472,175"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>0</bpel:from>
-                        <bpel:to>$failCount</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="738166758" targetPath="$failCount" targetedBy="1091045401-arg0"></mapper:vertice>
-  <mapper:vertice id="1091045401" dimension="79x24" location="496,217">
-    <mapper:value>0</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$failCount</bpel:to><mapper:mapperLink><mapper:vertice id="738166758" targetPath="$failCount" targetedBy="1091045401-arg0"></mapper:vertice><mapper:vertice id="1091045401" dimension="79x24" location="496,217"><mapper:value>0</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
             </bpdm:messagingtask>
             <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Load cases" bpdm:ID="_PzFj4PbjEeec_6rtUGGW1w">
                 <bpdm:linkset bpdm:type="loop" bpdm:loopType="repeatUntil" bpdm:backEdgeParticipantType="none" bpdm:isBackEdgeContributor="no">
-                    <bpel:condition bpdm:loopType="repeatUntil">true() = $success
-<mapper:mapperLink>
-  <mapper:vertice id="805575805" targetPath="$repeat until" targetedBy="1185576413-arg2"></mapper:vertice>
-  <mapper:vertice id="1185576413" dimension="79x24" location="181,56">
-    <mapper:value>=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="270838319" dimension="79x24" location="48,24" targetedBy="1185576413-arg0">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1575429761" sourcePath="$success" targetedBy="1185576413-arg1"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                    <bpel:condition bpdm:loopType="repeatUntil">true() = $success<mapper:mapperLink><mapper:vertice id="805575805" targetPath="$repeat until" targetedBy="1185576413-arg2"></mapper:vertice><mapper:vertice id="1185576413" dimension="79x24" location="181,56"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="270838319" dimension="79x24" location="48,24" targetedBy="1185576413-arg0"><mapper:value>true()</mapper:value></mapper:vertice><mapper:vertice id="1575429761" sourcePath="$success" targetedBy="1185576413-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                 </bpdm:linkset>
                 <bpel:sequence>
                     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Invoke transaction" bpdm:ID="_m6NNQPbfEeec_6rtUGGW1w" bpdm:faultOnFailure="true">
@@ -146,7 +114,7 @@
                             </bpel:variable>
                         </bpel:variables>
                         <bpel:faultHandlers>
-                            <bpel:catch>
+                            <bpel:catchAll>
                                 <bpdm:eventHandler bpdm:label="Error_Intermediate_Event" bpdm:ID="_1Le6gPbfEeec_6rtUGGW1w" bpdm:type="error"></bpdm:eventHandler>
                                 <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Error handler" bpdm:ID="_M66c4PbjEeec_6rtUGGW1w">
                                     <bpel:variables xmlns:xvar="http://ode.apache.org/externalVariables">
@@ -163,58 +131,23 @@
                                             <bpdm:linkset bpdm:type="assignments">
                                                 <bpel:copy>
                                                     <bpel:from>false()</bpel:from>
-                                                    <bpel:to>$success</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="153876239" targetPath="$success" targetedBy="424210748-arg0"></mapper:vertice>
-  <mapper:vertice id="424210748" dimension="79x24" location="233,82">
-    <mapper:value>false()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                    <bpel:to>$success</bpel:to><mapper:mapperLink><mapper:vertice id="153876239" targetPath="$success" targetedBy="424210748-arg0"></mapper:vertice><mapper:vertice id="424210748" dimension="79x24" location="233,82"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                 </bpel:copy>
                                                 <bpel:copy>
                                                     <bpel:from>$success + 1</bpel:from>
-                                                    <bpel:to>$failCount</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="148896134" targetPath="$failCount" targetedBy="1025575718-arg2"></mapper:vertice>
-  <mapper:vertice id="1025575718" dimension="79x24" location="269,133">
-    <mapper:value>+</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1906847200" sourcePath="$success" targetedBy="1025575718-arg0"></mapper:vertice>
-  <mapper:vertice id="196268172" dimension="79x24" location="187,169" targetedBy="1025575718-arg1">
-    <mapper:value>1</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                    <bpel:to>$failCount</bpel:to><mapper:mapperLink><mapper:vertice id="148896134" targetPath="$failCount" targetedBy="1025575718-arg2"></mapper:vertice><mapper:vertice id="1025575718" dimension="79x24" location="269,133"><mapper:value>+</mapper:value></mapper:vertice><mapper:vertice id="1906847200" sourcePath="$success" targetedBy="1025575718-arg0"></mapper:vertice><mapper:vertice id="196268172" dimension="79x24" location="187,169" targetedBy="1025575718-arg1"><mapper:value>1</mapper:value></mapper:vertice></mapper:mapperLink>
                                                 </bpel:copy>
                                             </bpdm:linkset>
                                         </bpdm:messagingtask>
                                         <bpdm:gateway bpdm:label="fail count?" bpdm:ID="_zAkawPbiEeec_6rtUGGW1w" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                                             <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_0Z92ofbiEeec_6rtUGGW1w" bpdm:targetDisplayName="[fail count? - EventIntermediateTimer]">
-                                                <bpel:condition>3 &lt; $failCount
-<mapper:mapperLink>
-  <mapper:vertice id="1836924911" targetPath="$condition" targetedBy="890579511-arg2"></mapper:vertice>
-  <mapper:vertice id="890579511" dimension="79x24" location="282,69">
-    <mapper:value>&lt;</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1928362601" dimension="79x24" location="203,36" targetedBy="890579511-arg0">
-    <mapper:value>3</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="604358565" sourcePath="$failCount" targetedBy="890579511-arg1"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                                                <bpel:condition>3&lt; $failCount<mapper:mapperLink><mapper:vertice id="1836924911" targetPath="$condition" targetedBy="890579511-arg2"></mapper:vertice><mapper:vertice id="890579511" dimension="79x24" location="282,69"><mapper:value>&lt;</mapper:value></mapper:vertice><mapper:vertice id="1928362601" dimension="79x24" location="203,36" targetedBy="890579511-arg0"><mapper:value>3</mapper:value></mapper:vertice><mapper:vertice id="604358565" sourcePath="$failCount" targetedBy="890579511-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                                             </bpdm:linkset>
                                             <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_0w6XAPbiEeec_6rtUGGW1w" bpdm:targetDisplayName="default"></bpdm:linkset>
                                             <bpel:sequence>
                                                 <bpdm:messagingtask eventType="intermediate: timer" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Timer_Intermediate_Event" bpdm:ID="_0Z0ssPbiEeec_6rtUGGW1w" bpdm:isHeaderAuthorizationAware="no">
                                                     <bpdm:linkset bpdm:type="timer">
-                                                        <bpel:for>ode:get-property-value("SERVICE_RETRY_WAIT")
-<mapper:mapperLink>
-  <mapper:vertice id="143216304" targetPath="$duration" targetedBy="1580148000-arg1"></mapper:vertice>
-  <mapper:vertice id="1580148000" dimension="139x24" location="389,113">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="774523082" dimension="134x24" location="148,94" targetedBy="1580148000-arg0">
-    <mapper:value>"SERVICE_RETRY_WAIT"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink></bpel:for>
+                                                        <bpel:for>ode:get-property-value("SERVICE_RETRY_WAIT")<mapper:mapperLink><mapper:vertice id="143216304" targetPath="$duration" targetedBy="1580148000-arg1"></mapper:vertice><mapper:vertice id="1580148000" dimension="139x24" location="389,113"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="774523082" dimension="134x24" location="148,94" targetedBy="1580148000-arg0"><mapper:value>"SERVICE_RETRY_WAIT"</mapper:value></mapper:vertice></mapper:mapperLink></bpel:for>
                                                     </bpdm:linkset>
                                                 </bpdm:messagingtask>
                                             </bpel:sequence>
@@ -223,69 +156,31 @@
                                                     <bpdm:linkset bpdm:type="assignments">
                                                         <bpel:copy>
                                                             <bpel:from>$ode:pid</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1369581532" targetPath="$ExecutionError/metrics:id" targetedBy="494008448-arg0"></mapper:vertice>
-  <mapper:vertice id="494008448" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="1369581532" targetPath="$ExecutionError/metrics:id" targetedBy="494008448-arg0"></mapper:vertice><mapper:vertice id="494008448" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>$failCount</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:failCount</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="817580724" targetPath="$ExecutionError/metrics:failCount" targetedBy="501312774-arg0"></mapper:vertice>
-  <mapper:vertice id="501312774" sourcePath="$failCount"></mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:failCount</bpel:to><mapper:mapperLink><mapper:vertice id="817580724" targetPath="$ExecutionError/metrics:failCount" targetedBy="501312774-arg0"></mapper:vertice><mapper:vertice id="501312774" sourcePath="$failCount"></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>true()</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:technicalError</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="367011843" targetPath="$ExecutionError/metrics:technicalError" targetedBy="953828064-arg0"></mapper:vertice>
-  <mapper:vertice id="953828064" dimension="79x24" location="343,149">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:technicalError</bpel:to><mapper:mapperLink><mapper:vertice id="367011843" targetPath="$ExecutionError/metrics:technicalError" targetedBy="953828064-arg0"></mapper:vertice><mapper:vertice id="953828064" dimension="79x24" location="343,149"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>"Query DB"</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:step</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="49359061" targetPath="$ExecutionError/metrics:step" targetedBy="1725796965-arg0"></mapper:vertice>
-  <mapper:vertice id="1725796965" dimension="79x24" location="406,200">
-    <mapper:value>"Query DB"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:step</bpel:to><mapper:mapperLink><mapper:vertice id="49359061" targetPath="$ExecutionError/metrics:step" targetedBy="1725796965-arg0"></mapper:vertice><mapper:vertice id="1725796965" dimension="79x24" location="406,200"><mapper:value>"Query DB"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>false()</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:resolved</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1028064052" targetPath="$ExecutionError/metrics:resolved" targetedBy="282461881-arg0"></mapper:vertice>
-  <mapper:vertice id="282461881" dimension="79x24" location="339,244">
-    <mapper:value>false()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:resolved</bpel:to><mapper:mapperLink><mapper:vertice id="1028064052" targetPath="$ExecutionError/metrics:resolved" targetedBy="282461881-arg0"></mapper:vertice><mapper:vertice id="282461881" dimension="79x24" location="339,244"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>true()</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:integration</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1765160658" targetPath="$ExecutionError/metrics:integration" targetedBy="954128366-arg0"></mapper:vertice>
-  <mapper:vertice id="954128366" dimension="79x24" location="476,252">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:integration</bpel:to><mapper:mapperLink><mapper:vertice id="1765160658" targetPath="$ExecutionError/metrics:integration" targetedBy="954128366-arg0"></mapper:vertice><mapper:vertice id="954128366" dimension="79x24" location="476,252"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>false()</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:validation</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="265347724" targetPath="$ExecutionError/metrics:validation" targetedBy="1993692081-arg0"></mapper:vertice>
-  <mapper:vertice id="1993692081" dimension="79x24" location="577,278">
-    <mapper:value>false()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:validation</bpel:to><mapper:mapperLink><mapper:vertice id="265347724" targetPath="$ExecutionError/metrics:validation" targetedBy="1993692081-arg0"></mapper:vertice><mapper:vertice id="1993692081" dimension="79x24" location="577,278"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                     </bpdm:linkset>
                                                 </bpdm:messagingtask>
@@ -294,21 +189,11 @@
                                                     <bpdm:linkset bpdm:type="assignments">
                                                         <bpel:copy>
                                                             <bpel:from>$ode:pid</bpel:from>
-                                                            <bpel:to>$thisReceive_recover_signalResponse2Msg.body/Launchpoint:pid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1001291977" targetPath="$thisReceive_recover_signalResponse2Msg.body/Launchpoint:pid" targetedBy="1021331919-arg0"></mapper:vertice>
-  <mapper:vertice id="1021331919" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$thisReceive_recover_signalResponse2Msg.body/Launchpoint:pid</bpel:to><mapper:mapperLink><mapper:vertice id="1001291977" targetPath="$thisReceive_recover_signalResponse2Msg.body/Launchpoint:pid" targetedBy="1021331919-arg0"></mapper:vertice><mapper:vertice id="1021331919" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>current-dateTime()</bpel:from>
-                                                            <bpel:to>$thisReceive_recover_signalResponse2Msg.body/Launchpoint:timestamp</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1792395501" targetPath="$thisReceive_recover_signalResponse2Msg.body/Launchpoint:timestamp" targetedBy="1169797894-arg0"></mapper:vertice>
-  <mapper:vertice id="1169797894" dimension="109x24" location="367,114">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$thisReceive_recover_signalResponse2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="1792395501" targetPath="$thisReceive_recover_signalResponse2Msg.body/Launchpoint:timestamp" targetedBy="1169797894-arg0"></mapper:vertice><mapper:vertice id="1169797894" dimension="109x24" location="367,114"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                     </bpdm:linkset>
                                                     <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_recover_signalResponse2Msg" bpdm:msgVarScopeId="_M66c4PbjEeec_6rtUGGW1w" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_recover_signalResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_S_6oEPbqEeec_6rtUGGW1w"></bpdm:linkset>
@@ -319,7 +204,7 @@
                                         <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_MB2G4PbjEeec_6rtUGGW1w" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
                                     </bpel:sequence>
                                 </bpel:scope>
-                            </bpel:catch>
+                            </bpel:catchAll>
                         </bpel:faultHandlers>
                         <bpel:sequence>
                             <bpdm:messagingtask operation="getAllCases" partnerLink="process-monitorimplicitPartnerAndProcess-monitorForGetAllCasesPortPlkVar" portType="getAllCases:getAllCasesPort" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Query DB" bpdm:ID="_ZXqR1dKOEee0svt489vHig" bpdm:isHeaderAuthorizationAware="no">
@@ -335,13 +220,7 @@
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>true()</bpel:from>
-                                        <bpel:to>$success</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="497465850" targetPath="$success" targetedBy="1686413001-arg0"></mapper:vertice>
-  <mapper:vertice id="1686413001" dimension="79x24" location="336,138">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$success</bpel:to><mapper:mapperLink><mapper:vertice id="497465850" targetPath="$success" targetedBy="1686413001-arg0"></mapper:vertice><mapper:vertice id="1686413001" dimension="79x24" location="336,138"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
@@ -353,42 +232,19 @@
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$ode:pid</bpel:from>
-                        <bpel:to>$MonitorTracking/metrics:id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1464403685" targetPath="$MonitorTracking/metrics:id" targetedBy="1409144039-arg0"></mapper:vertice>
-  <mapper:vertice id="1409144039" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$MonitorTracking/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="1464403685" targetPath="$MonitorTracking/metrics:id" targetedBy="1409144039-arg0"></mapper:vertice><mapper:vertice id="1409144039" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>true()</bpel:from>
-                        <bpel:to>$MonitorTracking/metrics:casesLoaded</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1000728822" targetPath="$MonitorTracking/metrics:casesLoaded" targetedBy="393562577-arg0"></mapper:vertice>
-  <mapper:vertice id="393562577" dimension="79x24" location="247,130">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$MonitorTracking/metrics:casesLoaded</bpel:to><mapper:mapperLink><mapper:vertice id="1000728822" targetPath="$MonitorTracking/metrics:casesLoaded" targetedBy="393562577-arg0"></mapper:vertice><mapper:vertice id="393562577" dimension="79x24" location="247,130"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>current-dateTime()</bpel:from>
-                        <bpel:to>$MonitorTracking/metrics:casesLoaded_at</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2076916899" targetPath="$MonitorTracking/metrics:casesLoaded_at" targetedBy="634341709-arg0"></mapper:vertice>
-  <mapper:vertice id="634341709" dimension="109x24" location="277,171">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$MonitorTracking/metrics:casesLoaded_at</bpel:to><mapper:mapperLink><mapper:vertice id="2076916899" targetPath="$MonitorTracking/metrics:casesLoaded_at" targetedBy="634341709-arg0"></mapper:vertice><mapper:vertice id="634341709" dimension="109x24" location="277,171"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>count($lpCases/Launchpoint:lpCase)</bpel:from>
-                        <bpel:to>$MonitorTracking/metrics:nCases</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="983323911" targetPath="$MonitorTracking/metrics:nCases" targetedBy="1444379188-arg1"></mapper:vertice>
-  <mapper:vertice id="1444379188" dimension="79x24" location="280,230">
-    <mapper:value>count()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1479065739" sourcePath="$lpCases/Launchpoint:lpCase" targetedBy="1444379188-arg0"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$MonitorTracking/metrics:nCases</bpel:to><mapper:mapperLink><mapper:vertice id="983323911" targetPath="$MonitorTracking/metrics:nCases" targetedBy="1444379188-arg1"></mapper:vertice><mapper:vertice id="1444379188" dimension="79x24" location="280,230"><mapper:value>count()</mapper:value></mapper:vertice><mapper:vertice id="1479065739" sourcePath="$lpCases/Launchpoint:lpCase" targetedBy="1444379188-arg0"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
             </bpdm:messagingtask>
@@ -435,31 +291,15 @@
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$ode:pid</bpel:from>
-                        <bpel:to>$MonitorTracking/metrics:id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2084570447" targetPath="$MonitorTracking/metrics:id" targetedBy="322365388-arg0"></mapper:vertice>
-  <mapper:vertice id="322365388" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$MonitorTracking/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="2084570447" targetPath="$MonitorTracking/metrics:id" targetedBy="322365388-arg0"></mapper:vertice><mapper:vertice id="322365388" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>true()</bpel:from>
-                        <bpel:to>$MonitorTracking/metrics:completed</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2002883859" targetPath="$MonitorTracking/metrics:completed" targetedBy="800242747-arg0"></mapper:vertice>
-  <mapper:vertice id="800242747" dimension="79x24" location="221,129">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$MonitorTracking/metrics:completed</bpel:to><mapper:mapperLink><mapper:vertice id="2002883859" targetPath="$MonitorTracking/metrics:completed" targetedBy="800242747-arg0"></mapper:vertice><mapper:vertice id="800242747" dimension="79x24" location="221,129"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>current-dateTime()</bpel:from>
-                        <bpel:to>$MonitorTracking/metrics:completedAt</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="579323946" targetPath="$MonitorTracking/metrics:completedAt" targetedBy="2112527980-arg0"></mapper:vertice>
-  <mapper:vertice id="2112527980" dimension="109x24" location="290,191">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$MonitorTracking/metrics:completedAt</bpel:to><mapper:mapperLink><mapper:vertice id="579323946" targetPath="$MonitorTracking/metrics:completedAt" targetedBy="2112527980-arg0"></mapper:vertice><mapper:vertice id="2112527980" dimension="109x24" location="290,191"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
             </bpdm:messagingtask>
