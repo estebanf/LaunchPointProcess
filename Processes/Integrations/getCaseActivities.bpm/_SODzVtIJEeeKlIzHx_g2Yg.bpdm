@@ -406,7 +406,14 @@
                             <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Validate activities" bpdm:ID="_UePFwPciEeec_6rtUGGW1w">
                                 <bpdm:linkset bpdm:type="loop" bpdm:loopType="forEach" bpdm:backEdgeParticipantType="none" parallel="no" counterName="Validate_activitiesCounter" bpdm:isBackEdgeContributor="no">
                                     <bpel:condition bpdm:loopType="forEachStartCounter">1<mapper:mapperLink><mapper:vertice id="442738540" targetPath="$Start counter" targetedBy="23787062-arg0"></mapper:vertice><mapper:vertice id="23787062" dimension="79x24" location="432,24"><mapper:value>1</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
-                                    <bpel:condition bpdm:loopType="forEachFinalCounter">count()<mapper:mapperLink><mapper:vertice id="729042104" targetPath="$Final counter" targetedBy="1829884220-arg0"></mapper:vertice><mapper:vertice id="1829884220" dimension="79x24" location="431,80"><mapper:value>count()</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
+                                    <bpel:condition bpdm:loopType="forEachFinalCounter">count($queryCaseActivitiesGetActivitiesResponse1Msg.activities/iob_element)
+<mapper:mapperLink>
+  <mapper:vertice id="1549471749" targetPath="$Final counter" targetedBy="1135461772-arg0"></mapper:vertice>
+  <mapper:vertice id="1135461772" dimension="79x24" location="431,80">
+    <mapper:value>count()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1697675156" sourcePath="$queryCaseActivitiesGetActivitiesResponse1Msg.activities/iob_element" targetedBy="1135461772-arg1"></mapper:vertice>
+</mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
                                 <bpel:sequence>
                                     <bpdm:messagingtask bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Validate data" bpdm:ID="_xrHHQNxVEeeU5oFZSJFCiA" bpdm:isHeaderAuthorizationAware="no">

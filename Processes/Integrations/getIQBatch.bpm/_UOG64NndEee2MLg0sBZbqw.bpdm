@@ -82,20 +82,21 @@
             <bpdm:messagingtask operation="generateIqBatch" partnerLink="processimplicitPartnerAndProcessForHttpPortPlkVar" portType="GenerateIQBatch:restInterface" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="generateIqBatch" bpdm:ID="_KaKXkd6eEeevw9CK4cNsbA" bpdm:isHeaderAuthorizationAware="no">
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
-                        <bpel:from>$thisEventStartMessageRequest1.body</bpel:from>
-                        <bpel:to>$generateIQBatchGenerateIqBatchRequest1Msg.body</bpel:to><mapper:mapperLink><mapper:vertice id="228374628" targetPath="$generateIQBatchGenerateIqBatchRequest1Msg.body" targetedBy="27384111-arg0"></mapper:vertice><mapper:vertice id="27384111" sourcePath="$thisEventStartMessageRequest1.body"></mapper:vertice></mapper:mapperLink>
+                        <bpel:from>ode:get-property-value("IQBATCH")</bpel:from>
+                        <bpel:to endpointReference="partnerRole"/><mapper:mapperLink><mapper:vertice id="409532040" targetPath="$endpoint" targetedBy="171007710-arg1"></mapper:vertice><mapper:vertice id="171007710" dimension="139x24" location="235,221"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="227921104" dimension="79x24" location="84,185" targetedBy="171007710-arg0"><mapper:value>"IQBATCH"</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
-                        <bpel:from>ode:get-property-value("IQBATCH")</bpel:from>
-                        <bpel:to endpointReference="partnerRole"/>
+                        <bpel:from>bpel:doXslTransform("../../XSLT/AddJSONArrayToIQBatch.xslt", $thisEventStartMessageRequest1.body)</bpel:from>
+                        <bpel:to>$generateIQBatchGenerateIqBatchRequest1Msg.body</bpel:to>
 <mapper:mapperLink>
-  <mapper:vertice id="409532040" targetPath="$endpoint" targetedBy="171007710-arg1"></mapper:vertice>
-  <mapper:vertice id="171007710" dimension="139x24" location="235,221">
-    <mapper:value>ode:get-property-value()</mapper:value>
+  <mapper:vertice id="1634666444" targetPath="$generateIQBatchGenerateIqBatchRequest1Msg.body" targetedBy="1188787416-arg2"></mapper:vertice>
+  <mapper:vertice id="1188787416" dimension="126x24" location="296,95">
+    <mapper:value>bpel:doXslTransform()</mapper:value>
   </mapper:vertice>
-  <mapper:vertice id="227921104" dimension="79x24" location="84,185" targetedBy="171007710-arg0">
-    <mapper:value>"IQBATCH"</mapper:value>
+  <mapper:vertice id="430623114" dimension="225x24" location="12,48" targetedBy="1188787416-arg0">
+    <mapper:value>"../../XSLT/AddJSONArrayToIQBatch.xslt"</mapper:value>
   </mapper:vertice>
+  <mapper:vertice id="940752788" sourcePath="$thisEventStartMessageRequest1.body" targetedBy="1188787416-arg1"></mapper:vertice>
 </mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>

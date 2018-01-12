@@ -25,13 +25,6 @@
             <vprop:property name="iqbatchid" type="xs:int"/>
             <vprop:property name="prop0" type="xs:string"/>
             <vprop:property name="iqBatchId" type="xs:int"/>
-            <wsdl:portType name="ForDatabase">
-                <wsdl:operation name="Get_results" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw">
-                    <wsdl:input message="this:Get_resultsRequest" name="Get_results"/>
-                    <wsdl:output message="this:Get_resultsResponse" name="Get_resultsResponse"/>
-                </wsdl:operation>
-            </wsdl:portType>
-            <bpel:binding name="CanonicBindingForDatabase" type="this:ForDatabase" bpdm:isSynchronized="true"/>
             <wsdl:portType name="ForUser">
                 <wsdl:operation name="Receive_validation_results" bpdm:source="partner-pool:///_n4WZkNrdEeeyFrQIgRvWZA">
                     <wsdl:input message="this:Receive_validation_resultsRequest" name="Receive_validation_results"/>
@@ -39,6 +32,13 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForUser" type="this:ForUser" bpdm:isSynchronized="true"/>
+            <wsdl:portType name="ForDatabase">
+                <wsdl:operation name="Get_results" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw">
+                    <wsdl:input message="this:Get_resultsRequest" name="Get_results"/>
+                    <wsdl:output message="this:Get_resultsResponse" name="Get_resultsResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForDatabase" type="this:ForDatabase" bpdm:isSynchronized="true"/>
             <wsdl:portType name="ForDCM">
                 <wsdl:operation name="Get_DCM_Ack." bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
                     <wsdl:input message="this:Get_DCM_Ack.Request" name="Get_DCM_Ack."/>
@@ -74,6 +74,14 @@
             <wsdl:message name="Receive_validation_resultsResponse" bpdm:source="partner-pool:///_n4WZkNrdEeeyFrQIgRvWZA">
                 <wsdl:part name="body" element="this:Receive_validation_resultsResponse"/>
             </wsdl:message>
+            <xs:element name="Get_DCM_Ack.Request" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
+            <wsdl:message name="Get_DCM_Ack.Request" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
+                <wsdl:part name="body" element="this:Get_DCM_Ack.Request"/>
+            </wsdl:message>
+            <xs:element name="Get_DCM_Ack.Response" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
+            <wsdl:message name="Get_DCM_Ack.Response" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
+                <wsdl:part name="body" element="this:Get_DCM_Ack.Response"/>
+            </wsdl:message>
             <xs:element name="Receive_resultsRequest" type="Launchpoint:IQLetterType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
             <wsdl:message name="Receive_resultsRequest" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
                 <wsdl:part name="body" element="this:Receive_resultsRequest"/>
@@ -89,14 +97,6 @@
             <xs:element name="Receive_acknowledgementResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
             <wsdl:message name="Receive_acknowledgementResponse" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
                 <wsdl:part name="body" element="this:Receive_acknowledgementResponse"/>
-            </wsdl:message>
-            <xs:element name="Get_DCM_Ack.Request" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
-            <wsdl:message name="Get_DCM_Ack.Request" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
-                <wsdl:part name="body" element="this:Get_DCM_Ack.Request"/>
-            </wsdl:message>
-            <xs:element name="Get_DCM_Ack.Response" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
-            <wsdl:message name="Get_DCM_Ack.Response" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
-                <wsdl:part name="body" element="this:Get_DCM_Ack.Response"/>
             </wsdl:message>
             <xs:element name="Receive_IQ_Batch_ResultsRequest" type="Launchpoint:IQBatchResponseType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
             <wsdl:message name="Receive_IQ_Batch_ResultsRequest" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
@@ -163,8 +163,8 @@
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getOldestQueuedCases-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/HumanVerification-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getIQBatch-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/generateFile-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getIQBatch-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
