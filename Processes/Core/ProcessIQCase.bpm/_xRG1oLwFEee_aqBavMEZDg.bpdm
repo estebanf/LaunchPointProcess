@@ -384,28 +384,18 @@
                             <bpdm:messagingtask operation="Receive_request" partnerLink="process_IQ_CaseAndDCMForCanonicPortPlkVar" portType="createActivity-process:Forcaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Create IQ Sent activity" bpdm:ID="_ybkkkN6qEeecAJzv8fWIEw" bpdm:isHeaderAuthorizationAware="no">
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
-                                        <bpel:from>$thisEventStartMessageRequest1.body</bpel:from>
-                                        <bpel:to>$dCMSend_requestRequest1Msg.body/tns:Case</bpel:to><mapper:mapperLink><mapper:vertice id="796305539" targetPath="$dCMSend_requestRequest1Msg.body/tns:Case" targetedBy="1512225296-arg0"></mapper:vertice><mapper:vertice id="1512225296" sourcePath="$thisEventStartMessageRequest1.body"></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>"IQ Sent"</bpel:from>
-                                        <bpel:to>$dCMSend_requestRequest1Msg.body/tns:Activity/tns:ActivityType</bpel:to><mapper:mapperLink><mapper:vertice id="262664080" targetPath="$dCMSend_requestRequest1Msg.body/tns:Activity/tns:ActivityType" targetedBy="718868217-arg0"></mapper:vertice><mapper:vertice id="718868217" dimension="79x24" location="347,185"><mapper:value>"IQ Sent"</mapper:value></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>"000"</bpel:from>
-                                        <bpel:to>$dCMSend_requestRequest1Msg.body/tns:Activity/tns:ActivityCode</bpel:to><mapper:mapperLink><mapper:vertice id="1912817594" targetPath="$dCMSend_requestRequest1Msg.body/tns:Activity/tns:ActivityCode" targetedBy="573902034-arg0"></mapper:vertice><mapper:vertice id="573902034" dimension="79x24" location="440,226"><mapper:value>"000"</mapper:value></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>"IQ Sent"</bpel:from>
-                                        <bpel:to>$dCMSend_requestRequest1Msg.body/tns:Activity/tns:ActivityDescription</bpel:to><mapper:mapperLink><mapper:vertice id="418999247" targetPath="$dCMSend_requestRequest1Msg.body/tns:Activity/tns:ActivityDescription" targetedBy="1015807833-arg0"></mapper:vertice><mapper:vertice id="1015807833" dimension="79x24" location="355,276"><mapper:value>"IQ Sent"</mapper:value></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>current-dateTime()</bpel:from>
-                                        <bpel:to>$dCMSend_requestRequest1Msg.body/tns:Activity/tns:CreatedDate</bpel:to><mapper:mapperLink><mapper:vertice id="1286801907" targetPath="$dCMSend_requestRequest1Msg.body/tns:Activity/tns:CreatedDate" targetedBy="1161194669-arg0"></mapper:vertice><mapper:vertice id="1161194669" dimension="109x24" location="374,334"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
-                                    </bpel:copy>
-                                    <bpel:copy>
-                                        <bpel:from>"BPM"</bpel:from>
-                                        <bpel:to>$dCMSend_requestRequest1Msg.body/tns:Activity/tns:CreatedBy</bpel:to><mapper:mapperLink><mapper:vertice id="10441572" targetPath="$dCMSend_requestRequest1Msg.body/tns:Activity/tns:CreatedBy" targetedBy="1341673443-arg0"></mapper:vertice><mapper:vertice id="1341673443" dimension="79x24" location="384,394"><mapper:value>"BPM"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                        <bpel:from>bpel:doXslTransform("../../XSLT/IQLetterSentActivity.xslt", $thisEventStartMessageRequest1.body)</bpel:from>
+                                        <bpel:to>$dCMSend_requestRequest1Msg.body</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="788229172" targetPath="$dCMSend_requestRequest1Msg.body" targetedBy="352063191-arg2"></mapper:vertice>
+  <mapper:vertice id="352063191" dimension="126x24" location="492,204">
+    <mapper:value>bpel:doXslTransform()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1235586933" dimension="196x24" location="211,164" targetedBy="352063191-arg0">
+    <mapper:value>"../../XSLT/IQLetterSentActivity.xslt"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="640226004" sourcePath="$thisEventStartMessageRequest1.body" targetedBy="352063191-arg1"></mapper:vertice>
+</mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMSend_requestRequest1Msg" bpdm:msgVarScopeId="_5j_YwN6qEeecAJzv8fWIEw" bpdm:variableIsManaged="true" bpdm:messageType="createActivity-process:Receive_requestRequest" bpdm:binding="createActivity-process:processAndCallerServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_GT-5cN6rEeecAJzv8fWIEw"></bpdm:linkset>

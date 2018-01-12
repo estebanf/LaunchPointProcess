@@ -15,7 +15,8 @@
     <Launchpoint:IQDbCase>
     	<xsl:for-each select="Launchpoint:cases">
     		<xsl:if test="Launchpoint:Case/Launchpoint:CaseId = $caseid">
-    			<xsl:copy-of select="." />
+    			<xsl:copy-of select="Launchpoint:id" />
+    			<xsl:copy-of select="Launchpoint:Case" />
     		</xsl:if>
     	</xsl:for-each>
     </Launchpoint:IQDbCase>
