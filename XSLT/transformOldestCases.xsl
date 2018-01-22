@@ -48,6 +48,7 @@
 							<Launchpoint:EnvironmentId><xsl:value-of select="getOldestCases:environmentid"/></Launchpoint:EnvironmentId>
 							<Launchpoint:BatchId><xsl:value-of select="getOldestCases:batchid"/></Launchpoint:BatchId>
 						</Launchpoint:Case>
+						<Launchpoint:letter><xsl:value-of select="getOldestCases:letter"/></Launchpoint:letter>
 					</Launchpoint:cases>
 				</xsl:for-each>
 		</Launchpoint:batches>

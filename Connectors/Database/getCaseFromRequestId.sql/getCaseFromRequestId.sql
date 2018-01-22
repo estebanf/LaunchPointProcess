@@ -6,8 +6,8 @@ launchpointcase.batchid as batchid,
 launchpointcase.isoresponse as isoresponse,
 launchpointcase.casestatus as casestatus,
 launchpointcase.score as score,
-isoresponsetracking.score as highScore, 
-isoresponsetracking.scorevalue as highScoreValue
+coalesce(isoresponsetracking.score,'NONE') as highScore, 
+coalesce(isoresponsetracking.scorevalue,0) as highScoreValue
 from launchpointcase 
 inner join isotracking on isotracking.caseid = launchpointcase.caseid
 left outer join isoresponsetracking on isotracking.requestid = isoresponsetracking.requestid
