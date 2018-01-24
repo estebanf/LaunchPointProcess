@@ -10,7 +10,7 @@
   <!--No parameters are currently passed to doXslTransform.-->
   <xsl:template match="/this:Receive_ISO_ACKRequest">
     <Launchpoint:RqUID>
-      <Launchpoint:value><xsl:value-of select="Launchpoint:content/ACORD/ClaimsSvcRs/RqUID" /></Launchpoint:value>
+      <Launchpoint:value><xsl:value-of select="Launchpoint:content/ACORD/ClaimsSvcRq/RqUID" /></Launchpoint:value>
     </Launchpoint:RqUID>
     </xsl:template>
 </xsl:stylesheet>
