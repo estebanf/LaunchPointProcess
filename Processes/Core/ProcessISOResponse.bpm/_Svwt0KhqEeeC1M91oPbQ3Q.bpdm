@@ -25,6 +25,13 @@
             <vprop:property name="caseid" type="xs:string"/>
             <vprop:property name="clientid" type="xs:string"/>
             <vprop:property name="environmentid" type="xs:string"/>
+            <wsdl:portType name="ForISO">
+                <wsdl:operation name="Receive_ISO_Response" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
+                    <wsdl:input message="this:Receive_ISO_ResponseRequest" name="Receive_ISO_Response"/>
+                    <wsdl:output message="this:Receive_ISO_ResponseResponse" name="Receive_ISO_ResponseResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForISO" type="this:ForISO" bpdm:isSynchronized="true"/>
             <wsdl:portType name="ForDCM">
                 <wsdl:operation name="Receive_Scoring" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                     <wsdl:input message="this:Receive_ScoringRequest" name="Receive_Scoring"/>
@@ -52,13 +59,22 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForDCM" type="this:ForDCM" bpdm:isSynchronized="true"/>
-            <wsdl:portType name="ForISO">
-                <wsdl:operation name="Receive_ISO_Response" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
-                    <wsdl:input message="this:Receive_ISO_ResponseRequest" name="Receive_ISO_Response"/>
-                    <wsdl:output message="this:Receive_ISO_ResponseResponse" name="Receive_ISO_ResponseResponse"/>
-                </wsdl:operation>
-            </wsdl:portType>
-            <bpel:binding name="CanonicBindingForISO" type="this:ForISO" bpdm:isSynchronized="true"/>
+            <xs:element name="Receive_responseRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_responseRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_responseRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_responseResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_responseResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_responseResponse"/>
+            </wsdl:message>
+            <xs:element name="Receive_generate_file_confirmaationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_generate_file_confirmaationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_generate_file_confirmaationRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_generate_file_confirmaationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_generate_file_confirmaationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_generate_file_confirmaationResponse"/>
+            </wsdl:message>
             <xs:element name="Receive_activity_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
             <wsdl:message name="Receive_activity_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                 <wsdl:part name="body" element="this:Receive_activity_confirmationRequest"/>
@@ -75,22 +91,6 @@
             <wsdl:message name="Receive_ScoringResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                 <wsdl:part name="body" element="this:Receive_ScoringResponse"/>
             </wsdl:message>
-            <xs:element name="Receive_generate_file_confirmaationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_generate_file_confirmaationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_generate_file_confirmaationRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_generate_file_confirmaationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_generate_file_confirmaationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_generate_file_confirmaationResponse"/>
-            </wsdl:message>
-            <xs:element name="Receive_update_lifecycle_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_update_lifecycle_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_update_lifecycle_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_update_lifecycle_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationResponse"/>
-            </wsdl:message>
             <xs:element name="Receive_reopen_case_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
             <wsdl:message name="Receive_reopen_case_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                 <wsdl:part name="body" element="this:Receive_reopen_case_confirmationRequest"/>
@@ -99,13 +99,13 @@
             <wsdl:message name="Receive_reopen_case_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                 <wsdl:part name="body" element="this:Receive_reopen_case_confirmationResponse"/>
             </wsdl:message>
-            <xs:element name="Receive_responseRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_responseRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_responseRequest"/>
+            <xs:element name="Receive_update_lifecycle_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_update_lifecycle_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationRequest"/>
             </wsdl:message>
-            <xs:element name="Receive_responseResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_responseResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_responseResponse"/>
+            <xs:element name="Receive_update_lifecycle_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_update_lifecycle_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationResponse"/>
             </wsdl:message>
             <xs:element name="Receive_ISO_ResponseRequest" type="Launchpoint:ISOFileWrapperType" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q"/>
             <wsdl:message name="Receive_ISO_ResponseRequest" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
@@ -185,9 +185,9 @@
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getCaseFromRequestId.sql/getCaseFromRequestId.sql.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/generateFile-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createDiary-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/CaseCloseReopen-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/updateCaseLifeCycle-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/CaseCloseReopen-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createDiary-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createActivity-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Rules/ISOScoreProcessing.bre/dtws_launchpointprocess_rules_isoscoreprocessing/META-INF/dtws_launchpointprocess_rules_isoscoreprocessing.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getCaseFromRequestId.sql/getCaseFromRequestId.xsd"/>
@@ -522,30 +522,10 @@
                             <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_WLSoAOEqEeevwNE0_uDipA" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
                             <bpdm:gateway bpdm:label="Actions" bpdm:ID="_jEyK8N5hEee7jteJyXiOfg" bpdm:gatewayType="inclusive_or" bpdm:isMerge="false">
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_kVPtQN5hEee7jteJyXiOfg" bpdm:targetDisplayName="Update lifecycle">
-                                    <bpel:condition>true() = $nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:updateLifecycle
-<mapper:mapperLink>
-  <mapper:vertice id="1948597364" targetPath="$condition" targetedBy="1869192538-arg1"></mapper:vertice>
-  <mapper:vertice id="1869192538" dimension="79x24" location="342,122">
-    <mapper:value>=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1876177553" dimension="79x24" location="204,96" targetedBy="1869192538-arg0">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="136763282" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:updateLifecycle" targetedBy="1869192538-arg2"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                                    <bpel:condition>true() = $nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:updateLifecycle<mapper:mapperLink><mapper:vertice id="1948597364" targetPath="$condition" targetedBy="1869192538-arg1"></mapper:vertice><mapper:vertice id="1869192538" dimension="79x24" location="342,122"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1876177553" dimension="79x24" location="204,96" targetedBy="1869192538-arg0"><mapper:value>true()</mapper:value></mapper:vertice><mapper:vertice id="136763282" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:updateLifecycle" targetedBy="1869192538-arg2"></mapper:vertice></mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_nECOwN5hEee7jteJyXiOfg" bpdm:targetDisplayName="Reopen case">
-                                    <bpel:condition>true() = $nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:reopenCase
-<mapper:mapperLink>
-  <mapper:vertice id="843774700" targetPath="$condition" targetedBy="1253607330-arg1"></mapper:vertice>
-  <mapper:vertice id="1253607330" dimension="79x24" location="365,135">
-    <mapper:value>=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="956655984" dimension="79x24" location="231,110" targetedBy="1253607330-arg0">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1022873800" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:reopenCase" targetedBy="1253607330-arg2"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                                    <bpel:condition>true() = $nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:reopenCase<mapper:mapperLink><mapper:vertice id="843774700" targetPath="$condition" targetedBy="1253607330-arg1"></mapper:vertice><mapper:vertice id="1253607330" dimension="79x24" location="365,135"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="956655984" dimension="79x24" location="231,110" targetedBy="1253607330-arg0"><mapper:value>true()</mapper:value></mapper:vertice><mapper:vertice id="1022873800" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:reopenCase" targetedBy="1253607330-arg2"></mapper:vertice></mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_hM2wZ_o2EeeIrpbe-qDQtw" bpdm:targetDisplayName="Create diary">
                                     <bpel:condition>true() = $nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:diary<mapper:mapperLink><mapper:vertice id="277593328" targetPath="$condition" targetedBy="875474864-arg2"></mapper:vertice><mapper:vertice id="875474864" dimension="79x24" location="213,51"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="317967034" dimension="79x24" location="99,18" targetedBy="875474864-arg0"><mapper:value>true()</mapper:value></mapper:vertice><mapper:vertice id="726080521" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:diary" targetedBy="875474864-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
