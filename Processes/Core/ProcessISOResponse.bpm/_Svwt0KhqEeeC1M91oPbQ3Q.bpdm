@@ -25,13 +25,6 @@
             <vprop:property name="caseid" type="xs:string"/>
             <vprop:property name="clientid" type="xs:string"/>
             <vprop:property name="environmentid" type="xs:string"/>
-            <wsdl:portType name="ForISO">
-                <wsdl:operation name="Receive_ISO_Response" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
-                    <wsdl:input message="this:Receive_ISO_ResponseRequest" name="Receive_ISO_Response"/>
-                    <wsdl:output message="this:Receive_ISO_ResponseResponse" name="Receive_ISO_ResponseResponse"/>
-                </wsdl:operation>
-            </wsdl:portType>
-            <bpel:binding name="CanonicBindingForISO" type="this:ForISO" bpdm:isSynchronized="true"/>
             <wsdl:portType name="ForDCM">
                 <wsdl:operation name="Receive_Scoring" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                     <wsdl:input message="this:Receive_ScoringRequest" name="Receive_Scoring"/>
@@ -59,6 +52,21 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForDCM" type="this:ForDCM" bpdm:isSynchronized="true"/>
+            <wsdl:portType name="ForISO">
+                <wsdl:operation name="Receive_ISO_Response" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
+                    <wsdl:input message="this:Receive_ISO_ResponseRequest" name="Receive_ISO_Response"/>
+                    <wsdl:output message="this:Receive_ISO_ResponseResponse" name="Receive_ISO_ResponseResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForISO" type="this:ForISO" bpdm:isSynchronized="true"/>
+            <xs:element name="Receive_ISO_ResponseRequest" type="Launchpoint:ISOFileWrapperType" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q"/>
+            <wsdl:message name="Receive_ISO_ResponseRequest" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
+                <wsdl:part name="body" element="this:Receive_ISO_ResponseRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_ISO_ResponseResponse" type="xs:string" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q"/>
+            <wsdl:message name="Receive_ISO_ResponseResponse" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
+                <wsdl:part name="body" element="this:Receive_ISO_ResponseResponse"/>
+            </wsdl:message>
             <xs:element name="Receive_responseRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
             <wsdl:message name="Receive_responseRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                 <wsdl:part name="body" element="this:Receive_responseRequest"/>
@@ -66,6 +74,14 @@
             <xs:element name="Receive_responseResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
             <wsdl:message name="Receive_responseResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                 <wsdl:part name="body" element="this:Receive_responseResponse"/>
+            </wsdl:message>
+            <xs:element name="Receive_reopen_case_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_reopen_case_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_reopen_case_confirmationRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_reopen_case_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_reopen_case_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_reopen_case_confirmationResponse"/>
             </wsdl:message>
             <xs:element name="Receive_generate_file_confirmaationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
             <wsdl:message name="Receive_generate_file_confirmaationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
@@ -91,14 +107,6 @@
             <wsdl:message name="Receive_ScoringResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                 <wsdl:part name="body" element="this:Receive_ScoringResponse"/>
             </wsdl:message>
-            <xs:element name="Receive_reopen_case_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_reopen_case_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_reopen_case_confirmationRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_reopen_case_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_reopen_case_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_reopen_case_confirmationResponse"/>
-            </wsdl:message>
             <xs:element name="Receive_update_lifecycle_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
             <wsdl:message name="Receive_update_lifecycle_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                 <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationRequest"/>
@@ -106,14 +114,6 @@
             <xs:element name="Receive_update_lifecycle_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
             <wsdl:message name="Receive_update_lifecycle_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                 <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationResponse"/>
-            </wsdl:message>
-            <xs:element name="Receive_ISO_ResponseRequest" type="Launchpoint:ISOFileWrapperType" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q"/>
-            <wsdl:message name="Receive_ISO_ResponseRequest" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
-                <wsdl:part name="body" element="this:Receive_ISO_ResponseRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_ISO_ResponseResponse" type="xs:string" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q"/>
-            <wsdl:message name="Receive_ISO_ResponseResponse" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
-                <wsdl:part name="body" element="this:Receive_ISO_ResponseResponse"/>
             </wsdl:message>
             <vprop:propertyAlias propertyName="this:environmentid" messageType="this:Receive_reopen_case_confirmationRequest" part="body">
                 <vprop:query>Launchpoint:EnvironmentId/text()</vprop:query>
@@ -179,16 +179,16 @@
                 <vprop:query>Launchpoint:CaseId/text()</vprop:query>
             </vprop:propertyAlias>
         </bpdm:namespaceContributor>
-        <bpdm:namespaceContributor bpdm:url="partner-pool:///_Kox0oLA2EeeytYusscoK1g" bpdm:label="DCM"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q" bpdm:label="ISO"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_Kox0oLA2EeeytYusscoK1g" bpdm:label="DCM"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_Svwt0KhqEeeC1M91oPbQ3QimplicitPartner" bpdm:label="ISO Response ManagerimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getCaseFromRequestId.sql/getCaseFromRequestId.sql.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/generateFile-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/updateCaseLifeCycle-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/CaseCloseReopen-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createDiary-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createActivity-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/updateCaseLifeCycle-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/generateFile-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Rules/ISOScoreProcessing.bre/dtws_launchpointprocess_rules_isoscoreprocessing/META-INF/dtws_launchpointprocess_rules_isoscoreprocessing.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getCaseFromRequestId.sql/getCaseFromRequestId.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///IntalioObjects/customVariable.xvar"/>
@@ -551,16 +551,32 @@
                                             <bpdm:messagingtask operation="Receive_request" partnerLink="iSO_Response_ManagerAndDCMForCanonicPortPlk4Var" portType="updateCaseLifeCycle-process:Forcaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Request Update lifecycle" bpdm:ID="_RrSVEN5MEee5MfuigsCq1w" bpdm:isHeaderAuthorizationAware="no">
                                                 <bpdm:linkset bpdm:type="assignments">
                                                     <bpel:copy>
-                                                        <bpel:from>"ISORESPONSE"</bpel:from>
-                                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:source</bpel:to><mapper:mapperLink><mapper:vertice id="474756460" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:source" targetedBy="1846879593-arg0"></mapper:vertice><mapper:vertice id="1846879593" dimension="92x24" location="348,168"><mapper:value>"ISORESPONSE"</mapper:value></mapper:vertice></mapper:mapperLink>
-                                                    </bpel:copy>
-                                                    <bpel:copy>
-                                                        <bpel:from>"ISO Response"</bpel:from>
-                                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:lifeCycle</bpel:to><mapper:mapperLink><mapper:vertice id="886603845" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:lifeCycle" targetedBy="899416329-arg0"></mapper:vertice><mapper:vertice id="899416329" dimension="89x24" location="301,107"><mapper:value>"ISO Response"</mapper:value></mapper:vertice></mapper:mapperLink>
-                                                    </bpel:copy>
-                                                    <bpel:copy>
                                                         <bpel:from>$CaseHighestScore/Launchpoint:Case</bpel:from>
                                                         <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Case</bpel:to><mapper:mapperLink><mapper:vertice id="1018012777" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Case" targetedBy="206998165-arg0"></mapper:vertice><mapper:vertice id="206998165" sourcePath="$CaseHighestScore/Launchpoint:Case"></mapper:vertice></mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>"ISORESPONSE"</bpel:from>
+                                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:source</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="292069065" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:source" targetedBy="91480371-arg0"></mapper:vertice>
+  <mapper:vertice id="91480371" dimension="92x24" location="301,107">
+    <mapper:value>"ISORESPONSE"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
+                                                    </bpel:copy>
+                                                    <bpel:copy>
+                                                        <bpel:from>concat("ISO Index Received: ", $CaseScore/Launchpoint:score)</bpel:from>
+                                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:lifeCycle</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1314261035" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:lifeCycle" targetedBy="1638810563-arg2"></mapper:vertice>
+  <mapper:vertice id="1638810563" dimension="79x24" location="496,235">
+    <mapper:value>concat()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1004839861" dimension="123x24" location="336,204" targetedBy="1638810563-arg0">
+    <mapper:value>"ISO Index Received: "</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="292352243" sourcePath="$CaseScore/Launchpoint:score" targetedBy="1638810563-arg1"></mapper:vertice>
+</mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMSend_requestRequest1Msg" bpdm:msgVarScopeId="_k4DKQN5fEee7jteJyXiOfg" bpdm:variableIsManaged="true" bpdm:messageType="updateCaseLifeCycle-process:Receive_requestRequest" bpdm:binding="updateCaseLifeCycle-process:callerAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_ZMIQUN5MEee5MfuigsCq1w"></bpdm:linkset>
