@@ -15,7 +15,7 @@
     </bpdm:dependencies>
     <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="ISOResponse" bpdm:ID="_t_l6YN5bEee5MfuigsCq1w">
         <bpel:partnerLinks>
-            <bpel:partnerLink name="iSOResponseAndProcessForCanonicPortPlkVar" partnerLinkType="diag:ISOResponseAndProcessForCanonicPortPlk" myRole="ISOResponse_for_process" bpdm:enableSharing="false" bpdm:providedService="ProcessISOResponse-ISO_Response_Mana:CanonicServiceForDCM" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="epr" bpdm:providedIsDefault="true" bpdm:clientTasks="_t_l6YN5bEee5MfuigsCq1w:_TCkPEd5iEee7jteJyXiOfg" bpdm:isManaged="true" bpdm:otherPoolId="_sqItsN43Eee0YMxeWbu2Dg"/>
+            <bpel:partnerLink name="iSOResponseAndProcessForCanonicPortPlkVar" partnerLinkType="diag:ISOResponseAndProcessForCanonicPortPlk" myRole="ISOResponse_for_process" bpdm:enableSharing="false" bpdm:providedService="ProcessISOResponse-ISO_Response_Mana:CanonicServiceForDCM" bpdm:providedPort="canonicPort" bpdm:provideSOAPAddress="epr" bpdm:providedIsDefault="true" bpdm:clientTasks="_t_l6YN5bEee5MfuigsCq1w:_TCkPEd5iEee7jteJyXiOfg, _t_l6YN5bEee5MfuigsCq1w:_YEcD9gVmEeiItoCU8_MuVA" bpdm:isManaged="true" bpdm:otherPoolId="_sqItsN43Eee0YMxeWbu2Dg"/>
         </bpel:partnerLinks>
         <bpel:variables>
             <bpel:variable name="thisReceive_activity_confirmationRequest1Msg" messageType="ProcessISOResponse-ISO_Response_Mana:Receive_activity_confirmationRequest" binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDCMServiceBinding" operation="Receive_activity_confirmation" opMsgType="0" bpdm:id="_WoMR995iEee7jteJyXiOfg" bpdm:messageIds="inc:_WnwNEN5iEee7jteJyXiOfg"/>
@@ -24,12 +24,26 @@
                     <bpel:literal bpdm:linkedMessageType="ProcessISOResponse-ISO_Response_Mana:Receive_activity_confirmationResponse" bpdm:linkedPart="body" bpdm:binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDCMServiceBinding" bpdm:opMsgType="1" bpdm:operation="Receive_activity_confirmation"></bpel:literal>
                 </bpel:from>
             </bpel:variable>
+            <bpel:variable name="thisSend_activity_confirmationRequest1Msg" messageType="ProcessISOResponse-ISO_Response_Mana:Receive_hold_confirmationRequest" binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDCMServiceBinding" operation="Receive_hold_confirmation" opMsgType="0" bpdm:id="_bYVdtgVmEeiItoCU8_MuVA" bpdm:messageIds="inc:_bYLFkAVmEeiItoCU8_MuVA"/>
+            <bpel:variable name="processISOResponse-ISO_Response_ManaReceive_hold_confirmationResponse2Msg" messageType="ProcessISOResponse-ISO_Response_Mana:Receive_hold_confirmationResponse" binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDCMServiceBinding" operation="Receive_hold_confirmation" opMsgType="1" bpdm:id="_cPd58AVmEeiItoCU8_MuVA" bpdm:messageIds=" out:_cPKX8AVmEeiItoCU8_MuVA">
+                <bpel:from bpdm:toPart="body">
+                    <bpel:literal bpdm:linkedMessageType="ProcessISOResponse-ISO_Response_Mana:Receive_hold_confirmationResponse" bpdm:linkedPart="body" bpdm:binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDCMServiceBinding" bpdm:opMsgType="1" bpdm:operation="Receive_hold_confirmation"></bpel:literal>
+                </bpel:from>
+            </bpel:variable>
         </bpel:variables>
-        <bpel:sequence>
-            <bpdm:messagingtask operation="Receive_activity_confirmation" partnerLink="iSOResponseAndProcessForCanonicPortPlkVar" portType="ProcessISOResponse-ISO_Response_Mana:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive activity confirmation" bpdm:ID="_TCkPEd5iEee7jteJyXiOfg" bpdm:isHeaderAuthorizationAware="no">
-                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_activity_confirmationRequest1Msg" bpdm:msgVarScopeId="_t_l6YN5bEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOResponse-ISO_Response_Mana:Receive_activity_confirmationRequest" bpdm:binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_WnwNEN5iEee7jteJyXiOfg"></bpdm:linkset>
-                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="processISOResponse-ISO_Response_ManaReceive_activity_confirmationResponse2Msg" bpdm:msgVarScopeId="_t_l6YN5bEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOResponse-ISO_Response_Mana:Receive_activity_confirmationResponse" bpdm:binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_ZSgjIN5iEee7jteJyXiOfg"></bpdm:linkset>
-            </bpdm:messagingtask>
-        </bpel:sequence>
+        <bpel:flow>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="Receive_hold_confirmation" partnerLink="iSOResponseAndProcessForCanonicPortPlkVar" portType="ProcessISOResponse-ISO_Response_Mana:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Send activity confirmation" bpdm:ID="_YEcD9gVmEeiItoCU8_MuVA" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisSend_activity_confirmationRequest1Msg" bpdm:msgVarScopeId="_t_l6YN5bEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOResponse-ISO_Response_Mana:Receive_hold_confirmationRequest" bpdm:binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_bYLFkAVmEeiItoCU8_MuVA"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="processISOResponse-ISO_Response_ManaReceive_hold_confirmationResponse2Msg" bpdm:msgVarScopeId="_t_l6YN5bEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOResponse-ISO_Response_Mana:Receive_hold_confirmationResponse" bpdm:binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_cPKX8AVmEeiItoCU8_MuVA"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+            <bpel:sequence>
+                <bpdm:messagingtask operation="Receive_activity_confirmation" partnerLink="iSOResponseAndProcessForCanonicPortPlkVar" portType="ProcessISOResponse-ISO_Response_Mana:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive activity confirmation" bpdm:ID="_TCkPEd5iEee7jteJyXiOfg" bpdm:isHeaderAuthorizationAware="no">
+                    <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_activity_confirmationRequest1Msg" bpdm:msgVarScopeId="_t_l6YN5bEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOResponse-ISO_Response_Mana:Receive_activity_confirmationRequest" bpdm:binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_WnwNEN5iEee7jteJyXiOfg"></bpdm:linkset>
+                    <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="processISOResponse-ISO_Response_ManaReceive_activity_confirmationResponse2Msg" bpdm:msgVarScopeId="_t_l6YN5bEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="ProcessISOResponse-ISO_Response_Mana:Receive_activity_confirmationResponse" bpdm:binding="ProcessISOResponse-ISO_Response_Mana:ISO_Response_ManagerAndDCMServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_ZSgjIN5iEee7jteJyXiOfg"></bpdm:linkset>
+                </bpdm:messagingtask>
+            </bpel:sequence>
+        </bpel:flow>
     </bpel:scope>
 </bpel:process>

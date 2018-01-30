@@ -440,10 +440,10 @@
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_WDLWwNfHEee2L7fDC3rSXg" key="minutesKey" value="0"/>
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sI4mqAFEEeiFt8x2G1VgCQ" key="secondsKey" value="30"/>
       </eAnnotations>
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_oQoigQFEEeiFt8x2G1VgCQ" source="attachedDataobject">
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_oQoiggFEEeiFt8x2G1VgCQ" key="douri" value="project:///Processes/Core/ProcessIQCase-Queue_Monitor.startEvent.wsdl?wsdloperation={http://bpms.everteam.com/LaunchPointProcess}StartTimer_Port/StartTimer"/>
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_oQoigwFEEeiFt8x2G1VgCQ" key="blackbox" value="true"/>
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_oQoihAFEEeiFt8x2G1VgCQ" key="canonic_one_way" value="true"/>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1NP3FAVvEeiV2aJren-IEA" source="attachedDataobject">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1NP3FQVvEeiV2aJren-IEA" key="douri" value="project:///Processes/Core/ProcessIQCase-Queue_Monitor.startEvent.wsdl?wsdloperation={http://bpms.everteam.com/LaunchPointProcess}StartTimer_Port/StartTimer"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1NP3FgVvEeiV2aJren-IEA" key="blackbox" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1NP3FwVvEeiV2aJren-IEA" key="canonic_one_way" value="true"/>
       </eAnnotations>
     </vertices>
     <vertices xmi:type="bpmn:SubProcess" xmi:id="_xFaHkdiDEee2ItVqPC1yfA" iD="_xFaHkNiDEee2ItVqPC1yfA" incomingEdges="_xGnogdiDEee2ItVqPC1yfA" name="Process IQ Batch" activityType="SubProcess" looping="true">
@@ -518,74 +518,113 @@
             <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#__hRnkfoqEeeIrpbe-qDQtw"/>
             <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_AnwugforEeeIrpbe-qDQtw"/>
           </vertices>
-          <vertices xmi:type="bpmn:Activity" xmi:id="_z5eJMdkIEeeOt_CLbvr25Q" iD="_z5eJMNkIEeeOt_CLbvr25Q" outgoingEdges="_g_xr0d6ZEeevw9CK4cNsbA" incomingEdges="__NkhkdkyEeee0bCkMq0JVw" name="Receive results" activityType="Task">
-            <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_j2zIEdkOEeee0bCkMq0JVw"/>
-            <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_kbODwdkOEeee0bCkMq0JVw"/>
-          </vertices>
-          <vertices xmi:type="bpmn:Activity" xmi:id="_lMagcdlsEee14LnV0IkhZg" iD="_lMagcNlsEee14LnV0IkhZg" incomingEdges="_g_xr0d6ZEeevw9CK4cNsbA" name="Add item to IQ Batch Item List" activityType="Task"/>
-          <vertices xmi:type="bpmn:SubProcess" xmi:id="_ZzLiQd6ZEeevw9CK4cNsbA" iD="_ZzLiQN6ZEeevw9CK4cNsbA" outgoingEdges="__NkhkdkyEeee0bCkMq0JVw" incomingEdges="_wkslwdkIEeeOt_CLbvr25Q" name="Generate file">
-            <artifacts xmi:type="bpmn:DataObject" xmi:id="_2zv6cdkzEeee0bCkMq0JVw" iD="_2zv6cNkzEeee0bCkMq0JVw" name="dCMSend_DCM_ResultsRequest2Msg">
-              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2zv6ctkzEeee0bCkMq0JVw" source="attachedDataobject">
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2zv6c9kzEeee0bCkMq0JVw" key="isBpelDeclaration" value="true"/>
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2zyWuNkzEeee0bCkMq0JVw" key="defaultDeclarationName" value="thisGet_DCM_Ack_Response2Msg"/>
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2z1aAdkzEeee0bCkMq0JVw" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisdiagram/Queue_Monitor}Get_DCM_Ack.Response"/>
+          <vertices xmi:type="bpmn:SubProcess" xmi:id="_Du3DMQVsEeiItoCU8_MuVA" iD="_Du3DMAVsEeiItoCU8_MuVA" incomingEdges="_wkslwdkIEeeOt_CLbvr25Q" name="Generate IQLetter">
+            <artifacts xmi:type="bpmn:DataObject" xmi:id="_M4oEMQVsEeiItoCU8_MuVA" iD="_M4oEFgVsEeiItoCU8_MuVA" name="ExecutionError">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_M4oEMgVsEeiItoCU8_MuVA" source="attachedDataobject">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_M4oEMwVsEeiItoCU8_MuVA" key="douri" value="project:///Metrics/metrics.xvar?xvartype={http://test.com/xvar/example}ExecutionError"/>
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_M4oENAVsEeiItoCU8_MuVA" key="isBpelDeclaration" value="true"/>
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_M4oENQVsEeiItoCU8_MuVA" key="defaultDeclarationName" value="ExecutionError"/>
               </eAnnotations>
-              <associations xmi:type="bpmn:Association" xmi:id="_2zzk0NkzEeee0bCkMq0JVw" direction="To">
-                <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2z0L4NkzEeee0bCkMq0JVw" source="dataObjectAssociationTypeSource">
-                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2z1aANkzEeee0bCkMq0JVw" key="dataObjectAssociationTypeValue" value="outgoingMesssageVariable"/>
-                </eAnnotations>
-              </associations>
             </artifacts>
-            <artifacts xmi:type="bpmn:DataObject" xmi:id="_pFlwod5-EeehVZzZ9HvU-g" iD="_pFlwoN5-EeehVZzZ9HvU-g" name="dCMTaskRequest1Msg">
-              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pFlwot5-EeehVZzZ9HvU-g" source="attachedDataobject">
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pFlwo95-EeehVZzZ9HvU-g" key="isBpelDeclaration" value="true"/>
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pFlwrN5-EeehVZzZ9HvU-g" key="defaultDeclarationName" value="dCMTaskRequest1Msg"/>
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pFu6k95-EeehVZzZ9HvU-g" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Integrations/generateFile/process}Recieve_RequestRequest"/>
+            <artifacts xmi:type="bpmn:DataObject" xmi:id="_NZjm4QVsEeiItoCU8_MuVA" iD="_NZjm4AVsEeiItoCU8_MuVA" name="delayOccured">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_NZjm4gVsEeiItoCU8_MuVA" source="attachedDataobject">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NZjm4wVsEeiItoCU8_MuVA" key="isBpelDeclaration" value="true"/>
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NZjm5AVsEeiItoCU8_MuVA" key="defaultDeclarationName" value="variable"/>
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_PkAFMAVsEeiItoCU8_MuVA" key="douri" value="builtin:///xsd?xsdtype={http://www.w3.org/2001/XMLSchema}boolean"/>
               </eAnnotations>
-              <associations xmi:type="bpmn:Association" xmi:id="_pFu6kN5-EeehVZzZ9HvU-g" direction="To">
-                <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pFu6kd5-EeehVZzZ9HvU-g" source="dataObjectAssociationTypeSource">
-                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pFu6kt5-EeehVZzZ9HvU-g" key="dataObjectAssociationTypeValue" value="outgoingMesssageVariable"/>
-                </eAnnotations>
-              </associations>
             </artifacts>
-            <artifacts xmi:type="bpmn:DataObject" xmi:id="_2IxDwdkzEeee0bCkMq0JVw" iD="_2IxDwNkzEeee0bCkMq0JVw" name="thisGet_DCM_Ack_Request1Msg">
-              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2IxDwtkzEeee0bCkMq0JVw" source="attachedDataobject">
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2IxDw9kzEeee0bCkMq0JVw" key="isBpelDeclaration" value="true"/>
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2IzgAtkzEeee0bCkMq0JVw" key="defaultDeclarationName" value="thisGet_DCM_Ack_Request1Msg"/>
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2I-fINkzEeee0bCkMq0JVw" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisdiagram/Queue_Monitor}Get_DCM_Ack.Request"/>
-              </eAnnotations>
-              <associations xmi:type="bpmn:Association" xmi:id="_2I0HENkzEeee0bCkMq0JVw" direction="From">
-                <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2I1VMNkzEeee0bCkMq0JVw" source="dataObjectAssociationTypeSource">
-                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2I18QNkzEeee0bCkMq0JVw" key="dataObjectAssociationTypeValue" value="incomingMesssageVariable"/>
-                </eAnnotations>
-              </associations>
-            </artifacts>
-            <artifacts xmi:type="bpmn:DataObject" xmi:id="_plxskd5-EeehVZzZ9HvU-g" iD="_plxskN5-EeehVZzZ9HvU-g" name="generateFile-processRecieve_RequestResponse2Msg">
-              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_plxskt5-EeehVZzZ9HvU-g" source="attachedDataobject">
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_plxsk95-EeehVZzZ9HvU-g" key="isBpelDeclaration" value="true"/>
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_plxsnN5-EeehVZzZ9HvU-g" key="defaultDeclarationName" value="generateFile-processRecieve_RequestResponse2Msg"/>
-                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pl7dkd5-EeehVZzZ9HvU-g" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Integrations/generateFile/process}Recieve_RequestResponse"/>
-              </eAnnotations>
-              <associations xmi:type="bpmn:Association" xmi:id="_plxsnd5-EeehVZzZ9HvU-g" direction="From">
-                <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_plxsnt5-EeehVZzZ9HvU-g" source="dataObjectAssociationTypeSource">
-                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pl7dkN5-EeehVZzZ9HvU-g" key="dataObjectAssociationTypeValue" value="incomingMesssageVariable"/>
-                </eAnnotations>
-              </associations>
-            </artifacts>
-            <vertices xmi:type="bpmn:Activity" xmi:id="_wkS9INkIEeeOt_CLbvr25Q" iD="_wkSWENkIEeeOt_CLbvr25Q" associations="_pFu6kN5-EeehVZzZ9HvU-g _plxsnd5-EeehVZzZ9HvU-g" outgoingEdges="_z5hzkdkIEeeOt_CLbvr25Q" name="Generate File" activityType="Task">
-              <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_pFSOod5-EeehVZzZ9HvU-g"/>
-              <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_plCFsd5-EeehVZzZ9HvU-g"/>
+            <vertices xmi:type="bpmn:Activity" xmi:id="_ANtQoQVsEeiItoCU8_MuVA" iD="_ANtQoAVsEeiItoCU8_MuVA" outgoingEdges="_BE_d-AVsEeiItoCU8_MuVA _CLxf2gVsEeiItoCU8_MuVA" incomingEdges="_AN2akQVsEeiItoCU8_MuVA" name="Delay occured?" activityType="GatewayDataBasedExclusive"/>
+            <vertices xmi:type="bpmn:SubProcess" xmi:id="_yXGGIQVrEeiItoCU8_MuVA" iD="_yXGGIAVrEeiItoCU8_MuVA" outgoingEdges="_AN2akQVsEeiItoCU8_MuVA" incomingEdges="__NkhkdkyEeee0bCkMq0JVw" name="Receive letter">
+              <vertices xmi:type="bpmn:Activity" xmi:id="_lMagcdlsEee14LnV0IkhZg" iD="_lMagcNlsEee14LnV0IkhZg" incomingEdges="_g_xr0d6ZEeevw9CK4cNsbA" name="Add item to IQ Batch Item List" activityType="Task"/>
+              <vertices xmi:type="bpmn:Activity" xmi:id="_z5eJMdkIEeeOt_CLbvr25Q" iD="_z5eJMNkIEeeOt_CLbvr25Q" outgoingEdges="_g_xr0d6ZEeevw9CK4cNsbA" name="Receive results" activityType="Task">
+                <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_j2zIEdkOEeee0bCkMq0JVw"/>
+                <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_kbODwdkOEeee0bCkMq0JVw"/>
+              </vertices>
+              <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_g_xr0d6ZEeevw9CK4cNsbA" iD="_g_xr0N6ZEeevw9CK4cNsbA"/>
+              <eventHandlers xmi:type="bpmn:Activity" xmi:id="_0gVDgQVrEeiItoCU8_MuVA" iD="_0gVDgAVrEeiItoCU8_MuVA" outgoingEdges="_2IfUKAVrEeiItoCU8_MuVA" activityType="EventIntermediateNonIntTimer"/>
             </vertices>
-            <vertices xmi:type="bpmn:Activity" xmi:id="_9RGN0dkyEeee0bCkMq0JVw" iD="_9RGN0NkyEeee0bCkMq0JVw" associations="_2I0HENkzEeee0bCkMq0JVw _2zzk0NkzEeee0bCkMq0JVw" incomingEdges="_z5hzkdkIEeeOt_CLbvr25Q" name="Get DCM Ack." activityType="Task">
-              <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_2IG8cdkzEeee0bCkMq0JVw"/>
-              <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_2zn-odkzEeee0bCkMq0JVw"/>
+            <vertices xmi:type="bpmn:Activity" xmi:id="_CLxf0QVsEeiItoCU8_MuVA" iD="_CLxf0AVsEeiItoCU8_MuVA" incomingEdges="_CLxf2gVsEeiItoCU8_MuVA" activityType="EventIntermediateEmpty"/>
+            <vertices xmi:type="bpmn:SubProcess" xmi:id="_70X44QVrEeiItoCU8_MuVA" iD="_70X44AVrEeiItoCU8_MuVA" incomingEdges="_2IfUKAVrEeiItoCU8_MuVA" name="Exception management">
+              <vertices xmi:type="bpmn:Activity" xmi:id="_2IWKMQVrEeiItoCU8_MuVA" iD="_2IWKMAVrEeiItoCU8_MuVA" outgoingEdges="_8ei3QQVrEeiItoCU8_MuVA" name="Notify delay" activityType="Task"/>
+              <vertices xmi:type="bpmn:Activity" xmi:id="_3sCKoQVrEeiItoCU8_MuVA" iD="_3sCKhgVrEeiItoCU8_MuVA" incomingEdges="_8ei3QQVrEeiItoCU8_MuVA" name="Send log" activityType="Task">
+                <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_3sCKogVrEeiItoCU8_MuVA" source="attachedDataobject">
+                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3sCKowVrEeiItoCU8_MuVA" key="blackbox" value="true"/>
+                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3sCKpAVrEeiItoCU8_MuVA" key="douri" value="project:///Processes/Integrations/logger-process.wsdl?invokerequestresponsebound={http://thisproject/Processes/Integrations/logger/process}CanonicServiceForCaller/canonicPort/Receive_Log"/>
+                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_3sCKpQVrEeiItoCU8_MuVA" key="douri2" value="project:///Processes/Integrations/logger.bpm/_g06ZEOW_EeeHsZe7cOsY_A.bptl?bptnode={http://www.intalio/designer/business-process-data-modeling/template}Send log"/>
+                </eAnnotations>
+              </vertices>
+              <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_8ei3QQVrEeiItoCU8_MuVA" iD="_8ei3QAVrEeiItoCU8_MuVA"/>
             </vertices>
-            <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_z5hzkdkIEeeOt_CLbvr25Q" iD="_z5hzkNkIEeeOt_CLbvr25Q"/>
+            <vertices xmi:type="bpmn:Activity" xmi:id="_BE2UAQVsEeiItoCU8_MuVA" iD="_BE2UAAVsEeiItoCU8_MuVA" incomingEdges="_BE_d-AVsEeiItoCU8_MuVA" activityType="EventEndEmpty"/>
+            <vertices xmi:type="bpmn:SubProcess" xmi:id="_ZzLiQd6ZEeevw9CK4cNsbA" iD="_ZzLiQN6ZEeevw9CK4cNsbA" outgoingEdges="__NkhkdkyEeee0bCkMq0JVw" incomingEdges="_KC1isQVsEeiItoCU8_MuVA" name="Generate file">
+              <artifacts xmi:type="bpmn:DataObject" xmi:id="_2zv6cdkzEeee0bCkMq0JVw" iD="_2zv6cNkzEeee0bCkMq0JVw" name="dCMSend_DCM_ResultsRequest2Msg">
+                <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2zv6ctkzEeee0bCkMq0JVw" source="attachedDataobject">
+                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2zv6c9kzEeee0bCkMq0JVw" key="isBpelDeclaration" value="true"/>
+                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2zyWuNkzEeee0bCkMq0JVw" key="defaultDeclarationName" value="thisGet_DCM_Ack_Response2Msg"/>
+                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2z1aAdkzEeee0bCkMq0JVw" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisdiagram/Queue_Monitor}Get_DCM_Ack.Response"/>
+                </eAnnotations>
+                <associations xmi:type="bpmn:Association" xmi:id="_2zzk0NkzEeee0bCkMq0JVw" direction="To">
+                  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2z0L4NkzEeee0bCkMq0JVw" source="dataObjectAssociationTypeSource">
+                    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2z1aANkzEeee0bCkMq0JVw" key="dataObjectAssociationTypeValue" value="outgoingMesssageVariable"/>
+                  </eAnnotations>
+                </associations>
+              </artifacts>
+              <artifacts xmi:type="bpmn:DataObject" xmi:id="_pFlwod5-EeehVZzZ9HvU-g" iD="_pFlwoN5-EeehVZzZ9HvU-g" name="dCMTaskRequest1Msg">
+                <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pFlwot5-EeehVZzZ9HvU-g" source="attachedDataobject">
+                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pFlwo95-EeehVZzZ9HvU-g" key="isBpelDeclaration" value="true"/>
+                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pFlwrN5-EeehVZzZ9HvU-g" key="defaultDeclarationName" value="dCMTaskRequest1Msg"/>
+                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pFu6k95-EeehVZzZ9HvU-g" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Integrations/generateFile/process}Recieve_RequestRequest"/>
+                </eAnnotations>
+                <associations xmi:type="bpmn:Association" xmi:id="_pFu6kN5-EeehVZzZ9HvU-g" direction="To">
+                  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_pFu6kd5-EeehVZzZ9HvU-g" source="dataObjectAssociationTypeSource">
+                    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pFu6kt5-EeehVZzZ9HvU-g" key="dataObjectAssociationTypeValue" value="outgoingMesssageVariable"/>
+                  </eAnnotations>
+                </associations>
+              </artifacts>
+              <artifacts xmi:type="bpmn:DataObject" xmi:id="_2IxDwdkzEeee0bCkMq0JVw" iD="_2IxDwNkzEeee0bCkMq0JVw" name="thisGet_DCM_Ack_Request1Msg">
+                <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2IxDwtkzEeee0bCkMq0JVw" source="attachedDataobject">
+                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2IxDw9kzEeee0bCkMq0JVw" key="isBpelDeclaration" value="true"/>
+                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2IzgAtkzEeee0bCkMq0JVw" key="defaultDeclarationName" value="thisGet_DCM_Ack_Request1Msg"/>
+                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2I-fINkzEeee0bCkMq0JVw" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisdiagram/Queue_Monitor}Get_DCM_Ack.Request"/>
+                </eAnnotations>
+                <associations xmi:type="bpmn:Association" xmi:id="_2I0HENkzEeee0bCkMq0JVw" direction="From">
+                  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2I1VMNkzEeee0bCkMq0JVw" source="dataObjectAssociationTypeSource">
+                    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2I18QNkzEeee0bCkMq0JVw" key="dataObjectAssociationTypeValue" value="incomingMesssageVariable"/>
+                  </eAnnotations>
+                </associations>
+              </artifacts>
+              <artifacts xmi:type="bpmn:DataObject" xmi:id="_plxskd5-EeehVZzZ9HvU-g" iD="_plxskN5-EeehVZzZ9HvU-g" name="generateFile-processRecieve_RequestResponse2Msg">
+                <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_plxskt5-EeehVZzZ9HvU-g" source="attachedDataobject">
+                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_plxsk95-EeehVZzZ9HvU-g" key="isBpelDeclaration" value="true"/>
+                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_plxsnN5-EeehVZzZ9HvU-g" key="defaultDeclarationName" value="generateFile-processRecieve_RequestResponse2Msg"/>
+                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pl7dkd5-EeehVZzZ9HvU-g" key="douri2" value="builtin:///diagram?wsdlmessage={http://thisproject/Processes/Integrations/generateFile/process}Recieve_RequestResponse"/>
+                </eAnnotations>
+                <associations xmi:type="bpmn:Association" xmi:id="_plxsnd5-EeehVZzZ9HvU-g" direction="From">
+                  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_plxsnt5-EeehVZzZ9HvU-g" source="dataObjectAssociationTypeSource">
+                    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_pl7dkN5-EeehVZzZ9HvU-g" key="dataObjectAssociationTypeValue" value="incomingMesssageVariable"/>
+                  </eAnnotations>
+                </associations>
+              </artifacts>
+              <vertices xmi:type="bpmn:Activity" xmi:id="_wkS9INkIEeeOt_CLbvr25Q" iD="_wkSWENkIEeeOt_CLbvr25Q" associations="_pFu6kN5-EeehVZzZ9HvU-g _plxsnd5-EeehVZzZ9HvU-g" outgoingEdges="_z5hzkdkIEeeOt_CLbvr25Q" name="Generate File" activityType="Task">
+                <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_pFSOod5-EeehVZzZ9HvU-g"/>
+                <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_plCFsd5-EeehVZzZ9HvU-g"/>
+              </vertices>
+              <vertices xmi:type="bpmn:Activity" xmi:id="_9RGN0dkyEeee0bCkMq0JVw" iD="_9RGN0NkyEeee0bCkMq0JVw" associations="_2I0HENkzEeee0bCkMq0JVw _2zzk0NkzEeee0bCkMq0JVw" incomingEdges="_z5hzkdkIEeeOt_CLbvr25Q" name="Get DCM Ack." activityType="Task">
+                <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_2IG8cdkzEeee0bCkMq0JVw"/>
+                <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_2zn-odkzEeee0bCkMq0JVw"/>
+              </vertices>
+              <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_z5hzkdkIEeeOt_CLbvr25Q" iD="_z5hzkNkIEeeOt_CLbvr25Q"/>
+            </vertices>
+            <vertices xmi:type="bpmn:Activity" xmi:id="_JX7kgQVsEeiItoCU8_MuVA" iD="_JX7kgAVsEeiItoCU8_MuVA" outgoingEdges="_KC1isQVsEeiItoCU8_MuVA" activityType="EventStartEmpty"/>
+            <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_BE_d-AVsEeiItoCU8_MuVA" iD="_BE_d9wVsEeiItoCU8_MuVA" name="No" conditionType="Default" isDefault="true"/>
+            <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_CLxf2gVsEeiItoCU8_MuVA" iD="_CLxf2QVsEeiItoCU8_MuVA" name="Yes"/>
+            <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_AN2akQVsEeiItoCU8_MuVA" iD="_AN2akAVsEeiItoCU8_MuVA"/>
+            <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="__NkhkdkyEeee0bCkMq0JVw" iD="__NkhkNkyEeee0bCkMq0JVw"/>
+            <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_2IfUKAVrEeiItoCU8_MuVA" iD="_2IfUJwVrEeiItoCU8_MuVA"/>
+            <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_KC1isQVsEeiItoCU8_MuVA" iD="_KC1isAVsEeiItoCU8_MuVA"/>
           </vertices>
           <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_uyRGodiLEee2ItVqPC1yfA" iD="_uyRGoNiLEee2ItVqPC1yfA"/>
           <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_wkslwdkIEeeOt_CLbvr25Q" iD="_wkslwNkIEeeOt_CLbvr25Q"/>
-          <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="__NkhkdkyEeee0bCkMq0JVw" iD="__NkhkNkyEeee0bCkMq0JVw"/>
-          <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_g_xr0d6ZEeevw9CK4cNsbA" iD="_g_xr0N6ZEeevw9CK4cNsbA"/>
         </vertices>
         <vertices xmi:type="bpmn:SubProcess" xmi:id="_yH81Ed6WEeevw9CK4cNsbA" iD="_yH81EN6WEeevw9CK4cNsbA" incomingEdges="_Kym9AdreEeeyFrQIgRvWZA" name="Human verification">
           <artifacts xmi:type="bpmn:DataObject" xmi:id="_QOjoUdreEeeyFrQIgRvWZA" iD="_QOjoUNreEeeyFrQIgRvWZA" name="userRequest_letter_validationResponse2Msg">
@@ -654,7 +693,14 @@
       </vertices>
       <vertices xmi:type="bpmn:Activity" xmi:id="_ebAwYd6WEeevw9CK4cNsbA" iD="_ebAwYN6WEeevw9CK4cNsbA" outgoingEdges="_NTr0Ud6cEeevw9CK4cNsbA" activityType="EventStartEmpty"/>
       <vertices xmi:type="bpmn:SubProcess" xmi:id="_8jEgYd6nEeecAJzv8fWIEw" iD="_8jEgYN6nEeecAJzv8fWIEw" incomingEdges="_ad5L0d6cEeevw9CK4cNsbA" name="Process IQ Batch">
-        <vertices xmi:type="bpmn:SubProcess" xmi:id="_kQvUYNoGEeeyB7mKr1x9lw" iD="_kQutUNoGEeeyB7mKr1x9lw" incomingEdges="_kRdGEdoGEeeyB7mKr1x9lw" name="Iterate through responses" activityType="SubProcess" looping="true">
+        <artifacts xmi:type="bpmn:DataObject" xmi:id="_Pi8qgQVuEeiV2aJren-IEA" iD="_Pi8qZgVuEeiV2aJren-IEA" name="IQBatchResponse">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Pi8qggVuEeiV2aJren-IEA" source="attachedDataobject">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Pi8qgwVuEeiV2aJren-IEA" key="douri" value="project:///Schemas/Launchpoint.xsd?xsdelement={http://www.example.org/Launchpoint}IQBatchResponse"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Pi8qhAVuEeiV2aJren-IEA" key="isBpelDeclaration" value="true"/>
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_PjF0UAVuEeiV2aJren-IEA" key="defaultDeclarationName" value="IQBatchResponse"/>
+          </eAnnotations>
+        </artifacts>
+        <vertices xmi:type="bpmn:SubProcess" xmi:id="_kQvUYNoGEeeyB7mKr1x9lw" iD="_kQutUNoGEeeyB7mKr1x9lw" incomingEdges="_NhUw4QVuEeiV2aJren-IEA" name="Iterate through responses" activityType="SubProcess" looping="true">
           <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_tIVxwNoHEeeyB7mKr1x9lw" source="forEachSource">
             <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_tIVxwdoHEeeyB7mKr1x9lw" key="loopTypeDetailsKey" value="loopTypeForEach"/>
             <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0Yp9sNoHEeeyB7mKr1x9lw" key="forEachCounterName" value="caseResponse"/>
@@ -737,23 +783,56 @@
           <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_ia2Mkd6iEeecAJzv8fWIEw" iD="_ia2MkN6iEeecAJzv8fWIEw"/>
           <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_jcHcUd6iEeecAJzv8fWIEw" iD="_jcHcUN6iEeecAJzv8fWIEw"/>
         </vertices>
-        <vertices xmi:type="bpmn:Activity" xmi:id="_hT5IkdnhEee2MLg0sBZbqw" iD="_hT5IkNnhEee2MLg0sBZbqw" outgoingEdges="_kRdGEdoGEeeyB7mKr1x9lw" incomingEdges="_Q84WkdkgEeee0bCkMq0JVw" name="Receive IQ Batch Results" activityType="Task">
-          <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_qWETsdnhEee2MLg0sBZbqw"/>
-          <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_r8jJUdnhEee2MLg0sBZbqw"/>
-        </vertices>
-        <vertices xmi:type="bpmn:SubProcess" xmi:id="_eNgRId6cEeevw9CK4cNsbA" iD="_eNgRIN6cEeevw9CK4cNsbA" outgoingEdges="_Q84WkdkgEeee0bCkMq0JVw" name="Send IQ Batch">
-          <vertices xmi:type="bpmn:Activity" xmi:id="_GW_V8dkgEeee0bCkMq0JVw" iD="_GW_V8NkgEeee0bCkMq0JVw" outgoingEdges="_IOIdwdkgEeee0bCkMq0JVw" name="Generate IQ Batch" activityType="Task">
-            <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_Nx2sUdnhEee2MLg0sBZbqw"/>
-            <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_Oh30AdnhEee2MLg0sBZbqw"/>
+        <vertices xmi:type="bpmn:SubProcess" xmi:id="_LNMLEQVuEeiV2aJren-IEA" iD="_LNMLEAVuEeiV2aJren-IEA" outgoingEdges="_NhUw4QVuEeiV2aJren-IEA" name="Handle IQ Batch">
+          <artifacts xmi:type="bpmn:DataObject" xmi:id="_RZadTAVuEeiV2aJren-IEA" iD="_RZac5wVuEeiV2aJren-IEA" name="ExecutionError">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_RZadTQVuEeiV2aJren-IEA" source="attachedDataobject">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_RZadTgVuEeiV2aJren-IEA" key="douri" value="project:///Metrics/metrics.xvar?xvartype={http://test.com/xvar/example}ExecutionError"/>
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_RZadTwVuEeiV2aJren-IEA" key="isBpelDeclaration" value="true"/>
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_RZkNwAVuEeiV2aJren-IEA" key="defaultDeclarationName" value="ExecutionError"/>
+            </eAnnotations>
+          </artifacts>
+          <artifacts xmi:type="bpmn:DataObject" xmi:id="_SZCuugVuEeiV2aJren-IEA" iD="_SZCuuQVuEeiV2aJren-IEA" name="delayOcurred">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_SZCuuwVuEeiV2aJren-IEA" source="attachedDataobject">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SZCuvAVuEeiV2aJren-IEA" key="isBpelDeclaration" value="true"/>
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SZCuvQVuEeiV2aJren-IEA" key="defaultDeclarationName" value="variable"/>
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_WupcEAVuEeiV2aJren-IEA" key="douri" value="builtin:///xsd?xsdtype={http://www.w3.org/2001/XMLSchema}boolean"/>
+            </eAnnotations>
+          </artifacts>
+          <vertices xmi:type="bpmn:Activity" xmi:id="_9H0y4QVtEeiV2aJren-IEA" iD="_9H0y4AVtEeiV2aJren-IEA" outgoingEdges="_91kCoQVtEeiV2aJren-IEA _-dMqaAVtEeiV2aJren-IEA" incomingEdges="_9IHGwQVtEeiV2aJren-IEA" name="delay occured" activityType="GatewayDataBasedExclusive"/>
+          <vertices xmi:type="bpmn:SubProcess" xmi:id="__fqM8QVtEeiV2aJren-IEA" iD="__fqM8AVtEeiV2aJren-IEA" outgoingEdges="_9IHGwQVtEeiV2aJren-IEA" incomingEdges="_Q84WkdkgEeee0bCkMq0JVw" name="Receive batch response">
+            <vertices xmi:type="bpmn:Activity" xmi:id="_hT5IkdnhEee2MLg0sBZbqw" iD="_hT5IkNnhEee2MLg0sBZbqw" outgoingEdges="_7H9z8QVtEeiV2aJren-IEA" name="Receive IQ Batch Results" activityType="Task">
+              <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_qWETsdnhEee2MLg0sBZbqw"/>
+              <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_r8jJUdnhEee2MLg0sBZbqw"/>
+            </vertices>
+            <vertices xmi:type="bpmn:Activity" xmi:id="_7H0C8QVtEeiV2aJren-IEA" iD="_7H0C8AVtEeiV2aJren-IEA" incomingEdges="_7H9z8QVtEeiV2aJren-IEA" activityType="EventIntermediateEmpty"/>
+            <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_7H9z8QVtEeiV2aJren-IEA" iD="_7H9z8AVtEeiV2aJren-IEA"/>
+            <eventHandlers xmi:type="bpmn:Activity" xmi:id="_CfTN4QVuEeiV2aJren-IEA" iD="_CfTN4AVuEeiV2aJren-IEA" outgoingEdges="_Dk4V4QVuEeiV2aJren-IEA" activityType="EventIntermediateNonIntTimer"/>
           </vertices>
-          <vertices xmi:type="bpmn:Activity" xmi:id="_IOEzYdkgEeee0bCkMq0JVw" iD="_IOEzYNkgEeee0bCkMq0JVw" incomingEdges="_IOIdwdkgEeee0bCkMq0JVw" name="Receive acknowledgement" activityType="Task">
-            <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_b21qAdnhEee2MLg0sBZbqw"/>
-            <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_caNc0dnhEee2MLg0sBZbqw"/>
+          <vertices xmi:type="bpmn:Activity" xmi:id="_-dEHgQVtEeiV2aJren-IEA" iD="_-dEHgAVtEeiV2aJren-IEA" incomingEdges="_-dMqaAVtEeiV2aJren-IEA" activityType="EventIntermediateEmpty"/>
+          <vertices xmi:type="bpmn:Activity" xmi:id="_91aRoQVtEeiV2aJren-IEA" iD="_91aRoAVtEeiV2aJren-IEA" incomingEdges="_91kCoQVtEeiV2aJren-IEA" activityType="EventEndEmpty"/>
+          <vertices xmi:type="bpmn:Activity" xmi:id="_4Zn-YQVtEeiV2aJren-IEA" iD="_4Zn-YAVtEeiV2aJren-IEA" outgoingEdges="_5CANAQVtEeiV2aJren-IEA" activityType="EventStartEmpty"/>
+          <vertices xmi:type="bpmn:SubProcess" xmi:id="_eNgRId6cEeevw9CK4cNsbA" iD="_eNgRIN6cEeevw9CK4cNsbA" outgoingEdges="_Q84WkdkgEeee0bCkMq0JVw" incomingEdges="_5CANAQVtEeiV2aJren-IEA" name="Send IQ Batch">
+            <vertices xmi:type="bpmn:Activity" xmi:id="_GW_V8dkgEeee0bCkMq0JVw" iD="_GW_V8NkgEeee0bCkMq0JVw" outgoingEdges="_IOIdwdkgEeee0bCkMq0JVw" name="Generate IQ Batch" activityType="Task">
+              <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_Nx2sUdnhEee2MLg0sBZbqw"/>
+              <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_Oh30AdnhEee2MLg0sBZbqw"/>
+            </vertices>
+            <vertices xmi:type="bpmn:Activity" xmi:id="_IOEzYdkgEeee0bCkMq0JVw" iD="_IOEzYNkgEeee0bCkMq0JVw" incomingEdges="_IOIdwdkgEeee0bCkMq0JVw" name="Receive acknowledgement" activityType="Task">
+              <incomingMessages xmi:type="bpmn:MessagingEdge" href="#_b21qAdnhEee2MLg0sBZbqw"/>
+              <outgoingMessages xmi:type="bpmn:MessagingEdge" href="#_caNc0dnhEee2MLg0sBZbqw"/>
+            </vertices>
+            <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_IOIdwdkgEeee0bCkMq0JVw" iD="_IOIdwNkgEeee0bCkMq0JVw"/>
           </vertices>
-          <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_IOIdwdkgEeee0bCkMq0JVw" iD="_IOIdwNkgEeee0bCkMq0JVw"/>
+          <vertices xmi:type="bpmn:SubProcess" xmi:id="_H0-SEQVuEeiV2aJren-IEA" iD="_H0-SEAVuEeiV2aJren-IEA" incomingEdges="_Dk4V4QVuEeiV2aJren-IEA" name="Exception management">
+            <vertices xmi:type="bpmn:Activity" xmi:id="_DkmCAQVuEeiV2aJren-IEA" iD="_DkmCAAVuEeiV2aJren-IEA" name="Notify delay" activityType="Task"/>
+          </vertices>
+          <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_Dk4V4QVuEeiV2aJren-IEA" iD="_Dk4V4AVuEeiV2aJren-IEA"/>
+          <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_5CANAQVtEeiV2aJren-IEA" iD="_5CANAAVtEeiV2aJren-IEA"/>
+          <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_9IHGwQVtEeiV2aJren-IEA" iD="_9IHGwAVtEeiV2aJren-IEA"/>
+          <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_-dMqaAVtEeiV2aJren-IEA" iD="_-dMqZwVtEeiV2aJren-IEA" name="YEs"/>
+          <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_Q84WkdkgEeee0bCkMq0JVw" iD="_Q84WkNkgEeee0bCkMq0JVw"/>
+          <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_91kCoQVtEeiV2aJren-IEA" iD="_91kCoAVtEeiV2aJren-IEA" name="NO" conditionType="Default" isDefault="true"/>
         </vertices>
-        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_Q84WkdkgEeee0bCkMq0JVw" iD="_Q84WkNkgEeee0bCkMq0JVw"/>
-        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_kRdGEdoGEeeyB7mKr1x9lw" iD="_kRdGENoGEeeyB7mKr1x9lw"/>
+        <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_NhUw4QVuEeiV2aJren-IEA" iD="_NhUw4AVuEeiV2aJren-IEA"/>
       </vertices>
       <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_NTr0Ud6cEeevw9CK4cNsbA" iD="_NTr0UN6cEeevw9CK4cNsbA"/>
       <sequenceEdges xmi:type="bpmn:SequenceEdge" xmi:id="_ad5L0d6cEeevw9CK4cNsbA" iD="_ad5L0N6cEeevw9CK4cNsbA"/>
