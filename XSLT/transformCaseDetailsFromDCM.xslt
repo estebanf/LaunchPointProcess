@@ -30,6 +30,7 @@
 			<Launchpoint:CloseReason></Launchpoint:CloseReason>
 			<Launchpoint:State><xsl:value-of select="State" /></Launchpoint:State>
 			<Launchpoint:IQResponseReceived />
+			<Launchpoint:IQResponseReceivedReason />
 			<Launchpoint:CanClose />
 			<Launchpoint:BelowCostEffectivePursuit />
 			<Launchpoint:IQReturnMail />

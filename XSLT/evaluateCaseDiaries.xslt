@@ -36,6 +36,7 @@
       <Launchpoint:CloseReason><xsl:value-of select="$dcmCase/Launchpoint:CloseReason" /></Launchpoint:CloseReason>
       <Launchpoint:State><xsl:value-of select="$dcmCase/Launchpoint:State" /></Launchpoint:State>
       <Launchpoint:IQResponseReceived><xsl:value-of select="$dcmCase/Launchpoint:IQResponseReceived" /></Launchpoint:IQResponseReceived>
+      <Launchpoint:IQResponseReceivedReason><xsl:value-of select="$dcmCase/Launchpoint:IQResponseReceivedReason" /></Launchpoint:IQResponseReceivedReason>
       <Launchpoint:CanClose><xsl:value-of select="not($hasOpenDiaries)" /></Launchpoint:CanClose>
       <Launchpoint:BelowCostEffectivePursuit><xsl:value-of select="$hasBelowCost" /></Launchpoint:BelowCostEffectivePursuit>
       <Launchpoint:IQReturnMail><xsl:value-of select="$dcmCase/Launchpoint:IQReturnMail" /></Launchpoint:IQReturnMail>

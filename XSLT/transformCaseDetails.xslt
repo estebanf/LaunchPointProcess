@@ -34,6 +34,7 @@
       <Launchpoint:CloseReason><xsl:value-of select="ns:closereason" /></Launchpoint:CloseReason>
       <Launchpoint:State><xsl:value-of select="ns:state" /></Launchpoint:State>
       <Launchpoint:IQResponseReceived><xsl:value-of select="ns:iqresponsereceived" /></Launchpoint:IQResponseReceived>
+      <Launchpoint:IQResponseReceivedReason><xsl:value-of select="ns:iqresponsereason" /></Launchpoint:IQResponseReceivedReason>
       <Launchpoint:CanClose><xsl:value-of select="ns:canclose" /></Launchpoint:CanClose>
       <Launchpoint:BelowCostEffectivePursuit><xsl:value-of select="ns:bcep" /></Launchpoint:BelowCostEffectivePursuit>
       <Launchpoint:IQReturnMail><xsl:value-of select="ns:iqreturnmail" /></Launchpoint:IQReturnMail>

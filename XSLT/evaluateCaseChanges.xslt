@@ -27,6 +27,7 @@
   	<xsl:variable name="LifeCycle" select="Launchpoint:LifeCycle != $dcmCase/Launchpoint:LifeCycle" />
   	<xsl:variable name="CloseReason" select="Launchpoint:CloseReason != $dcmCase/Launchpoint:CloseReason" />
   	<xsl:variable name="IQResponseReceived" select="Launchpoint:IQResponseReceived != $dcmCase/Launchpoint:IQResponseReceived" />
+  	<xsl:variable name="IQResponseReceivedReason" select="Launchpoint:IQResponseReceivedReason != $dcmCase/Launchpoint:IQResponseReceivedReason" />
   	<xsl:variable name="CanClose" select="Launchpoint:CanClose != $dcmCase/Launchpoint:CanClose" />
   	<xsl:variable name="BelowCostEffectivePursuit" select="Launchpoint:BelowCostEffectivePursuit != $dcmCase/Launchpoint:BelowCostEffectivePursuit" />
   	<xsl:variable name="IQReturnMail" select="Launchpoint:IQReturnMail != $dcmCase/Launchpoint:IQReturnMail" />
@@ -56,6 +57,7 @@
         <Launchpoint:CloseReasonChanged><xsl:value-of select="$CloseReason" /></Launchpoint:CloseReasonChanged>
         <Launchpoint:StateChanged><xsl:value-of select="$State" /></Launchpoint:StateChanged>
         <Launchpoint:IQResponseReceivedChanged><xsl:value-of select="$IQResponseReceived" /></Launchpoint:IQResponseReceivedChanged>
+        <Launchpoint:IQResponseReceivedReasonChanged><xsl:value-of select="$IQResponseReceivedReason" /></Launchpoint:IQResponseReceivedReasonChanged>
         <Launchpoint:CanCloseChanged><xsl:value-of select="$CanClose" /></Launchpoint:CanCloseChanged>
         <Launchpoint:BelowCostEffectivePursuitChanged><xsl:value-of select="$BelowCostEffectivePursuit" /></Launchpoint:BelowCostEffectivePursuitChanged>
         <Launchpoint:IQReturnMailChanged><xsl:value-of select="$IQReturnMail" /></Launchpoint:IQReturnMailChanged>
