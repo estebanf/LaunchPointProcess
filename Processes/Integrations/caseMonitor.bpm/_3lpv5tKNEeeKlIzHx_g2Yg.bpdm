@@ -141,13 +141,42 @@
                                         </bpdm:messagingtask>
                                         <bpdm:gateway bpdm:label="fail count?" bpdm:ID="_zAkawPbiEeec_6rtUGGW1w" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                                             <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_0Z92ofbiEeec_6rtUGGW1w" bpdm:targetDisplayName="[fail count? - EventIntermediateTimer]">
-                                                <bpel:condition>3&lt; $failCount<mapper:mapperLink><mapper:vertice id="1836924911" targetPath="$condition" targetedBy="890579511-arg2"></mapper:vertice><mapper:vertice id="890579511" dimension="79x24" location="282,69"><mapper:value>&lt;</mapper:value></mapper:vertice><mapper:vertice id="1928362601" dimension="79x24" location="203,36" targetedBy="890579511-arg0"><mapper:value>3</mapper:value></mapper:vertice><mapper:vertice id="604358565" sourcePath="$failCount" targetedBy="890579511-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
+                                                <bpel:condition>$failCount &lt;= xs:int(ode:get-property-value("MAX_RETRIES"))
+<mapper:mapperLink>
+  <mapper:vertice id="1612827011" targetPath="$condition" targetedBy="1021433662-arg2"></mapper:vertice>
+  <mapper:vertice id="1021433662" dimension="79x24" location="516,72">
+    <mapper:value>&lt;=</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1141550202" sourcePath="$failCount" targetedBy="1021433662-arg0"></mapper:vertice>
+  <mapper:vertice id="1661720217" dimension="79x24" location="408,120" targetedBy="1021433662-arg1">
+    <mapper:value>xs:int()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="2032563707" dimension="139x24" location="288,168" targetedBy="1661720217-arg0">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="507604116" dimension="91x24" location="120,180" targetedBy="2032563707-arg0">
+    <mapper:value>"MAX_RETRIES"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink></bpel:condition>
                                             </bpdm:linkset>
                                             <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_0w6XAPbiEeec_6rtUGGW1w" bpdm:targetDisplayName="default"></bpdm:linkset>
                                             <bpel:sequence>
                                                 <bpdm:messagingtask eventType="intermediate: timer" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Timer_Intermediate_Event" bpdm:ID="_0Z0ssPbiEeec_6rtUGGW1w" bpdm:isHeaderAuthorizationAware="no">
                                                     <bpdm:linkset bpdm:type="timer">
-                                                        <bpel:for>ode:get-property-value("SERVICE_RETRY_WAIT")<mapper:mapperLink><mapper:vertice id="143216304" targetPath="$duration" targetedBy="1580148000-arg1"></mapper:vertice><mapper:vertice id="1580148000" dimension="139x24" location="389,113"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="774523082" dimension="134x24" location="148,94" targetedBy="1580148000-arg0"><mapper:value>"SERVICE_RETRY_WAIT"</mapper:value></mapper:vertice></mapper:mapperLink></bpel:for>
+                                                        <bpel:for>ode:get-property-value(concat("SERVICE_RETRY_WAIT", $failCount))
+<mapper:mapperLink>
+  <mapper:vertice id="1965202968" targetPath="$duration" targetedBy="733824160-arg0"></mapper:vertice>
+  <mapper:vertice id="733824160" dimension="139x24" location="389,113">
+    <mapper:value>ode:get-property-value()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1057669362" dimension="79x24" location="256,166" targetedBy="733824160-arg1">
+    <mapper:value>concat()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="694885519" dimension="134x24" location="148,94" targetedBy="1057669362-arg0">
+    <mapper:value>"SERVICE_RETRY_WAIT"</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1527307764" sourcePath="$failCount" targetedBy="1057669362-arg1"></mapper:vertice>
+</mapper:mapperLink></bpel:for>
                                                     </bpdm:linkset>
                                                 </bpdm:messagingtask>
                                             </bpel:sequence>
