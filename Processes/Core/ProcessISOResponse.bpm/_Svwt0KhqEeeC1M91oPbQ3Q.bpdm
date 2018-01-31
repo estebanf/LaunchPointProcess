@@ -27,13 +27,6 @@
             <vprop:property name="caseid" type="xs:string"/>
             <vprop:property name="clientid" type="xs:string"/>
             <vprop:property name="environmentid" type="xs:string"/>
-            <wsdl:portType name="ForISO">
-                <wsdl:operation name="Receive_ISO_Response" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
-                    <wsdl:input message="this:Receive_ISO_ResponseRequest" name="Receive_ISO_Response"/>
-                    <wsdl:output message="this:Receive_ISO_ResponseResponse" name="Receive_ISO_ResponseResponse"/>
-                </wsdl:operation>
-            </wsdl:portType>
-            <bpel:binding name="CanonicBindingForISO" type="this:ForISO" bpdm:isSynchronized="true"/>
             <wsdl:portType name="ForDCM">
                 <wsdl:operation name="Receive_Scoring" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                     <wsdl:input message="this:Receive_ScoringRequest" name="Receive_Scoring"/>
@@ -61,37 +54,20 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForDCM" type="this:ForDCM" bpdm:isSynchronized="true"/>
-            <xs:element name="Receive_ISO_ResponseRequest" type="Launchpoint:ISOFileWrapperType" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q"/>
-            <wsdl:message name="Receive_ISO_ResponseRequest" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
-                <wsdl:part name="body" element="this:Receive_ISO_ResponseRequest"/>
+            <wsdl:portType name="ForISO">
+                <wsdl:operation name="Receive_ISO_Response" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
+                    <wsdl:input message="this:Receive_ISO_ResponseRequest" name="Receive_ISO_Response"/>
+                    <wsdl:output message="this:Receive_ISO_ResponseResponse" name="Receive_ISO_ResponseResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForISO" type="this:ForISO" bpdm:isSynchronized="true"/>
+            <xs:element name="Receive_update_lifecycle_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_update_lifecycle_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationRequest"/>
             </wsdl:message>
-            <xs:element name="Receive_ISO_ResponseResponse" type="xs:string" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q"/>
-            <wsdl:message name="Receive_ISO_ResponseResponse" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
-                <wsdl:part name="body" element="this:Receive_ISO_ResponseResponse"/>
-            </wsdl:message>
-            <xs:element name="Receive_hold_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_hold_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_hold_confirmationRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_hold_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_hold_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_hold_confirmationResponse"/>
-            </wsdl:message>
-            <xs:element name="Receive_ScoringRequest" type="Launchpoint:ISOScoringType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_ScoringRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_ScoringRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_ScoringResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_ScoringResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_ScoringResponse"/>
-            </wsdl:message>
-            <xs:element name="Receive_activity_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_activity_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_activity_confirmationRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_activity_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_activity_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_activity_confirmationResponse"/>
+            <xs:element name="Receive_update_lifecycle_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_update_lifecycle_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationResponse"/>
             </wsdl:message>
             <xs:element name="Receive_generate_file_confirmaationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
             <wsdl:message name="Receive_generate_file_confirmaationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
@@ -101,13 +77,29 @@
             <wsdl:message name="Receive_generate_file_confirmaationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                 <wsdl:part name="body" element="this:Receive_generate_file_confirmaationResponse"/>
             </wsdl:message>
-            <xs:element name="Receive_update_lifecycle_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_update_lifecycle_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationRequest"/>
+            <xs:element name="Receive_hold_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_hold_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_hold_confirmationRequest"/>
             </wsdl:message>
-            <xs:element name="Receive_update_lifecycle_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_update_lifecycle_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationResponse"/>
+            <xs:element name="Receive_hold_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_hold_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_hold_confirmationResponse"/>
+            </wsdl:message>
+            <xs:element name="Receive_activity_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_activity_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_activity_confirmationRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_activity_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_activity_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_activity_confirmationResponse"/>
+            </wsdl:message>
+            <xs:element name="Receive_ScoringRequest" type="Launchpoint:ISOScoringType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_ScoringRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_ScoringRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_ScoringResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_ScoringResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_ScoringResponse"/>
             </wsdl:message>
             <xs:element name="Receive_reopen_case_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
             <wsdl:message name="Receive_reopen_case_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
@@ -116,6 +108,14 @@
             <xs:element name="Receive_reopen_case_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
             <wsdl:message name="Receive_reopen_case_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                 <wsdl:part name="body" element="this:Receive_reopen_case_confirmationResponse"/>
+            </wsdl:message>
+            <xs:element name="Receive_ISO_ResponseRequest" type="Launchpoint:ISOFileWrapperType" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q"/>
+            <wsdl:message name="Receive_ISO_ResponseRequest" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
+                <wsdl:part name="body" element="this:Receive_ISO_ResponseRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_ISO_ResponseResponse" type="xs:string" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q"/>
+            <wsdl:message name="Receive_ISO_ResponseResponse" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
+                <wsdl:part name="body" element="this:Receive_ISO_ResponseResponse"/>
             </wsdl:message>
             <vprop:propertyAlias propertyName="this:environmentid" messageType="this:Receive_reopen_case_confirmationRequest" part="body">
                 <vprop:query>Launchpoint:EnvironmentId/text()</vprop:query>
@@ -181,18 +181,18 @@
                 <vprop:query>Launchpoint:CaseId/text()</vprop:query>
             </vprop:propertyAlias>
         </bpdm:namespaceContributor>
-        <bpdm:namespaceContributor bpdm:url="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q" bpdm:label="ISO"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_Kox0oLA2EeeytYusscoK1g" bpdm:label="DCM"/>
+        <bpdm:namespaceContributor bpdm:url="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q" bpdm:label="ISO"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_Svwt0KhqEeeC1M91oPbQ3QimplicitPartner" bpdm:label="ISO Response ManagerimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_jdCQsAViEeiItoCU8_MuVA" bpdm:label="iq process"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getCaseFromRequestId.sql/getCaseFromRequestId.sql.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/CaseCloseReopen-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/updateCaseLifeCycle-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/generateFile-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/updateCaseLifeCycle-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createActivity-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/logger-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/CaseCloseReopen-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Rules/ISOScoreProcessing.bre/dtws_launchpointprocess_rules_isoscoreprocessing/META-INF/dtws_launchpointprocess_rules_isoscoreprocessing.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/logger-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessIQCase-Process_IQ_Case.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getCaseFromRequestId.sql/getCaseFromRequestId.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
@@ -247,31 +247,15 @@
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$ode:pid</bpel:from>
-                        <bpel:to>$ISOResponseTracking/metrics:id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1581103946" targetPath="$ISOResponseTracking/metrics:id" targetedBy="519126974-arg0"></mapper:vertice>
-  <mapper:vertice id="519126974" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$ISOResponseTracking/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="1581103946" targetPath="$ISOResponseTracking/metrics:id" targetedBy="519126974-arg0"></mapper:vertice><mapper:vertice id="519126974" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>true()</bpel:from>
-                        <bpel:to>$ISOResponseTracking/metrics:isoResponseReceived</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="528728072" targetPath="$ISOResponseTracking/metrics:isoResponseReceived" targetedBy="1722697127-arg0"></mapper:vertice>
-  <mapper:vertice id="1722697127" dimension="79x24" location="334,99">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$ISOResponseTracking/metrics:isoResponseReceived</bpel:to><mapper:mapperLink><mapper:vertice id="528728072" targetPath="$ISOResponseTracking/metrics:isoResponseReceived" targetedBy="1722697127-arg0"></mapper:vertice><mapper:vertice id="1722697127" dimension="79x24" location="334,99"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>current-dateTime()</bpel:from>
-                        <bpel:to>$ISOResponseTracking/metrics:isoResponseReceivedAt</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2104428790" targetPath="$ISOResponseTracking/metrics:isoResponseReceivedAt" targetedBy="1433073853-arg0"></mapper:vertice>
-  <mapper:vertice id="1433073853" dimension="109x24" location="339,150">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$ISOResponseTracking/metrics:isoResponseReceivedAt</bpel:to><mapper:mapperLink><mapper:vertice id="2104428790" targetPath="$ISOResponseTracking/metrics:isoResponseReceivedAt" targetedBy="1433073853-arg0"></mapper:vertice><mapper:vertice id="1433073853" dimension="109x24" location="339,150"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
             </bpdm:messagingtask>
@@ -330,55 +314,27 @@
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$ode:pid</bpel:from>
-                        <bpel:to>$ISOResponseTracking/metrics:id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="199241996" targetPath="$ISOResponseTracking/metrics:id" targetedBy="669895722-arg0"></mapper:vertice>
-  <mapper:vertice id="669895722" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$ISOResponseTracking/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="199241996" targetPath="$ISOResponseTracking/metrics:id" targetedBy="669895722-arg0"></mapper:vertice><mapper:vertice id="669895722" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>$CaseHighestScore/Launchpoint:requestid</bpel:from>
-                        <bpel:to>$ISOResponseTracking/metrics:requestId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="507806977" targetPath="$ISOResponseTracking/metrics:requestId" targetedBy="655903878-arg0"></mapper:vertice>
-  <mapper:vertice id="655903878" sourcePath="$CaseHighestScore/Launchpoint:requestid"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$ISOResponseTracking/metrics:requestId</bpel:to><mapper:mapperLink><mapper:vertice id="507806977" targetPath="$ISOResponseTracking/metrics:requestId" targetedBy="655903878-arg0"></mapper:vertice><mapper:vertice id="655903878" sourcePath="$CaseHighestScore/Launchpoint:requestid"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>$CaseHighestScore/Launchpoint:highestIsoScore</bpel:from>
-                        <bpel:to>$ISOResponseTracking/metrics:previousHighScore</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1891365755" targetPath="$ISOResponseTracking/metrics:previousHighScore" targetedBy="250911691-arg0"></mapper:vertice>
-  <mapper:vertice id="250911691" sourcePath="$CaseHighestScore/Launchpoint:highestIsoScore"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$ISOResponseTracking/metrics:previousHighScore</bpel:to><mapper:mapperLink><mapper:vertice id="1891365755" targetPath="$ISOResponseTracking/metrics:previousHighScore" targetedBy="250911691-arg0"></mapper:vertice><mapper:vertice id="250911691" sourcePath="$CaseHighestScore/Launchpoint:highestIsoScore"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>$CaseHighestScore/Launchpoint:highestIsoScoreValue</bpel:from>
-                        <bpel:to>$ISOResponseTracking/metrics:previousHighScoreValue</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1140969607" targetPath="$ISOResponseTracking/metrics:previousHighScoreValue" targetedBy="1827329543-arg0"></mapper:vertice>
-  <mapper:vertice id="1827329543" sourcePath="$CaseHighestScore/Launchpoint:highestIsoScoreValue"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$ISOResponseTracking/metrics:previousHighScoreValue</bpel:to><mapper:mapperLink><mapper:vertice id="1140969607" targetPath="$ISOResponseTracking/metrics:previousHighScoreValue" targetedBy="1827329543-arg0"></mapper:vertice><mapper:vertice id="1827329543" sourcePath="$CaseHighestScore/Launchpoint:highestIsoScoreValue"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>true()</bpel:from>
-                        <bpel:to>$ISOResponseTracking/metrics:previousScoreRetrieved</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1038716312" targetPath="$ISOResponseTracking/metrics:previousScoreRetrieved" targetedBy="1816288671-arg0"></mapper:vertice>
-  <mapper:vertice id="1816288671" dimension="79x24" location="451,160">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$ISOResponseTracking/metrics:previousScoreRetrieved</bpel:to><mapper:mapperLink><mapper:vertice id="1038716312" targetPath="$ISOResponseTracking/metrics:previousScoreRetrieved" targetedBy="1816288671-arg0"></mapper:vertice><mapper:vertice id="1816288671" dimension="79x24" location="451,160"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>current-dateTime()</bpel:from>
-                        <bpel:to>$ISOResponseTracking/metrics:previousScoreRetrievedAt</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="977753749" targetPath="$ISOResponseTracking/metrics:previousScoreRetrievedAt" targetedBy="1301004374-arg0"></mapper:vertice>
-  <mapper:vertice id="1301004374" dimension="109x24" location="450,203">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$ISOResponseTracking/metrics:previousScoreRetrievedAt</bpel:to><mapper:mapperLink><mapper:vertice id="977753749" targetPath="$ISOResponseTracking/metrics:previousScoreRetrievedAt" targetedBy="1301004374-arg0"></mapper:vertice><mapper:vertice id="1301004374" dimension="109x24" location="450,203"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
             </bpdm:messagingtask>
@@ -409,13 +365,7 @@
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>false()</bpel:from>
-                                        <bpel:to>$delayOccured</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="123322805" targetPath="$delayOccured" targetedBy="2053425262-arg0"></mapper:vertice>
-  <mapper:vertice id="2053425262" dimension="79x24" location="300,39">
-    <mapper:value>false()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$delayOccured</bpel:to><mapper:mapperLink><mapper:vertice id="123322805" targetPath="$delayOccured" targetedBy="2053425262-arg0"></mapper:vertice><mapper:vertice id="2053425262" dimension="79x24" location="300,39"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
@@ -448,7 +398,7 @@
                                         <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="generateFile-processRecieve_RequestResponse2Msg" bpdm:msgVarScopeId="_DIglIN5tEeehVZzZ9HvU-g" bpdm:variableIsManaged="true" bpdm:messageType="generateFile-process:Recieve_RequestResponse" bpdm:binding="generateFile-process:callerAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_ManCoN5tEeehVZzZ9HvU-g"></bpdm:linkset>
                                     </bpdm:messagingtask>
                                     <bpdm:messagingtask operation="Receive_generate_file_confirmaation" partnerLink="iSO_Response_ManagerAndDCMPlkVar" portType="this:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive generate file confirmaation" bpdm:ID="_56IKAN5sEeehVZzZ9HvU-g" bpdm:isHeaderAuthorizationAware="yes">
-                                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_generate_file_confirmaationRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_generate_file_confirmaationRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_SC6u8N5tEeehVZzZ9HvU-g">
+                                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_generate_file_confirmaationRequest1Msg" bpdm:msgVarScopeId="_DIglIN5tEeehVZzZ9HvU-g" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_generate_file_confirmaationRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_SC6u8N5tEeehVZzZ9HvU-g">
                                             <bpel:correlation set="handleIsoScoringCorr" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
                                         </bpdm:linkset>
                                         <bpdm:linkset bpdm:type="assignments">
@@ -461,7 +411,7 @@
                                                 <bpel:to>$thisReceive_generate_file_confirmaationResponse2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="62563441" targetPath="$thisReceive_generate_file_confirmaationResponse2Msg.body/Launchpoint:timestamp" targetedBy="1724202957-arg0"></mapper:vertice><mapper:vertice id="1724202957" dimension="109x24" location="330,92"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
-                                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_generate_file_confirmaationResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_generate_file_confirmaationResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_Sf-eYN5tEeehVZzZ9HvU-g"></bpdm:linkset>
+                                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_generate_file_confirmaationResponse2Msg" bpdm:msgVarScopeId="_DIglIN5tEeehVZzZ9HvU-g" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_generate_file_confirmaationResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_Sf-eYN5tEeehVZzZ9HvU-g"></bpdm:linkset>
                                     </bpdm:messagingtask>
                                     <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_Intermediate_Event" bpdm:ID="_7_u24OElEeewctOjNdGTvg" bpdm:isHeaderAuthorizationAware="no">
                                         <bpdm:linkset bpdm:type="assignments">
@@ -492,28 +442,10 @@
                                 </bpel:variables>
                                 <bpel:eventHandlers>
                                     <bpel:onAlarm>
-                                        <bpel:for>ode:get-property-value("DELAY_WAIT")
-<mapper:mapperLink>
-  <mapper:vertice id="38165960" targetPath="$duration" targetedBy="1380812129-arg1"></mapper:vertice>
-  <mapper:vertice id="1380812129" dimension="139x24" location="282,69">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="991583926" dimension="87x24" location="86,29" targetedBy="1380812129-arg0">
-    <mapper:value>"DELAY_WAIT"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink></bpel:for>
+                                        <bpel:for>ode:get-property-value("DELAY_WAIT")<mapper:mapperLink><mapper:vertice id="38165960" targetPath="$duration" targetedBy="1380812129-arg1"></mapper:vertice><mapper:vertice id="1380812129" dimension="139x24" location="282,69"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="991583926" dimension="87x24" location="86,29" targetedBy="1380812129-arg0"><mapper:value>"DELAY_WAIT"</mapper:value></mapper:vertice></mapper:mapperLink></bpel:for>
                                         <bpdm:eventHandler bpdm:label="Non-Int_Timer_Intermediate_Event" bpdm:ID="_FCOQ4AVeEeiItoCU8_MuVA" bpdm:type="timer">
                                             <bpdm:linkset bpdm:type="timer">
-                                                <bpel:for>ode:get-property-value("DELAY_WAIT")
-<mapper:mapperLink>
-  <mapper:vertice id="38165960" targetPath="$duration" targetedBy="1380812129-arg1"></mapper:vertice>
-  <mapper:vertice id="1380812129" dimension="139x24" location="282,69">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="991583926" dimension="87x24" location="86,29" targetedBy="1380812129-arg0">
-    <mapper:value>"DELAY_WAIT"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink></bpel:for>
+                                                <bpel:for>ode:get-property-value("DELAY_WAIT")<mapper:mapperLink><mapper:vertice id="38165960" targetPath="$duration" targetedBy="1380812129-arg1"></mapper:vertice><mapper:vertice id="1380812129" dimension="139x24" location="282,69"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="991583926" dimension="87x24" location="86,29" targetedBy="1380812129-arg0"><mapper:value>"DELAY_WAIT"</mapper:value></mapper:vertice></mapper:mapperLink></bpel:for>
                                             </bpdm:linkset>
                                         </bpdm:eventHandler>
                                         <bpel:scope bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Exception management" bpdm:ID="_GwV_kAVeEeiItoCU8_MuVA">
@@ -530,115 +462,51 @@
                                                     <bpdm:linkset bpdm:type="assignments">
                                                         <bpel:copy>
                                                             <bpel:from>$ode:pid</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1185038646" targetPath="$ExecutionError/metrics:id" targetedBy="1627928155-arg0"></mapper:vertice>
-  <mapper:vertice id="1627928155" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="1185038646" targetPath="$ExecutionError/metrics:id" targetedBy="1627928155-arg0"></mapper:vertice><mapper:vertice id="1627928155" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>$CaseHighestScore/Launchpoint:Case/Launchpoint:CaseId</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:CaseId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2070053104" targetPath="$ExecutionError/metrics:CaseId" targetedBy="893161858-arg0"></mapper:vertice>
-  <mapper:vertice id="893161858" sourcePath="$CaseHighestScore/Launchpoint:Case/Launchpoint:CaseId"></mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="2070053104" targetPath="$ExecutionError/metrics:CaseId" targetedBy="893161858-arg0"></mapper:vertice><mapper:vertice id="893161858" sourcePath="$CaseHighestScore/Launchpoint:Case/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>$CaseHighestScore/Launchpoint:Case/Launchpoint:ClientId</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:ClientId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1332394447" targetPath="$ExecutionError/metrics:ClientId" targetedBy="1189661856-arg0"></mapper:vertice>
-  <mapper:vertice id="1189661856" sourcePath="$CaseHighestScore/Launchpoint:Case/Launchpoint:ClientId"></mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:ClientId</bpel:to><mapper:mapperLink><mapper:vertice id="1332394447" targetPath="$ExecutionError/metrics:ClientId" targetedBy="1189661856-arg0"></mapper:vertice><mapper:vertice id="1189661856" sourcePath="$CaseHighestScore/Launchpoint:Case/Launchpoint:ClientId"></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>$CaseHighestScore/Launchpoint:Case/Launchpoint:EnvironmentId</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:environmentId</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1835905978" targetPath="$ExecutionError/metrics:environmentId" targetedBy="2062833934-arg0"></mapper:vertice>
-  <mapper:vertice id="2062833934" sourcePath="$CaseHighestScore/Launchpoint:Case/Launchpoint:EnvironmentId"></mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:environmentId</bpel:to><mapper:mapperLink><mapper:vertice id="1835905978" targetPath="$ExecutionError/metrics:environmentId" targetedBy="2062833934-arg0"></mapper:vertice><mapper:vertice id="2062833934" sourcePath="$CaseHighestScore/Launchpoint:Case/Launchpoint:EnvironmentId"></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>1</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:failCount</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1669775075" targetPath="$ExecutionError/metrics:failCount" targetedBy="843197789-arg0"></mapper:vertice>
-  <mapper:vertice id="843197789" dimension="79x24" location="591,184">
-    <mapper:value>1</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:failCount</bpel:to><mapper:mapperLink><mapper:vertice id="1669775075" targetPath="$ExecutionError/metrics:failCount" targetedBy="843197789-arg0"></mapper:vertice><mapper:vertice id="843197789" dimension="79x24" location="591,184"><mapper:value>1</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>false()</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:technicalError</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1400367171" targetPath="$ExecutionError/metrics:technicalError" targetedBy="1067404023-arg0"></mapper:vertice>
-  <mapper:vertice id="1067404023" dimension="79x24" location="586,245">
-    <mapper:value>false()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:technicalError</bpel:to><mapper:mapperLink><mapper:vertice id="1400367171" targetPath="$ExecutionError/metrics:technicalError" targetedBy="1067404023-arg0"></mapper:vertice><mapper:vertice id="1067404023" dimension="79x24" location="586,245"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>"Receive iso score"</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:step</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1519833643" targetPath="$ExecutionError/metrics:step" targetedBy="144019689-arg0"></mapper:vertice>
-  <mapper:vertice id="144019689" dimension="107x24" location="555,291">
-    <mapper:value>"Receive iso score"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:step</bpel:to><mapper:mapperLink><mapper:vertice id="1519833643" targetPath="$ExecutionError/metrics:step" targetedBy="144019689-arg0"></mapper:vertice><mapper:vertice id="144019689" dimension="107x24" location="555,291"><mapper:value>"Receive iso score"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>false()</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:resolved</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1785760627" targetPath="$ExecutionError/metrics:resolved" targetedBy="1722386679-arg0"></mapper:vertice>
-  <mapper:vertice id="1722386679" dimension="79x24" location="559,339">
-    <mapper:value>false()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:resolved</bpel:to><mapper:mapperLink><mapper:vertice id="1785760627" targetPath="$ExecutionError/metrics:resolved" targetedBy="1722386679-arg0"></mapper:vertice><mapper:vertice id="1722386679" dimension="79x24" location="559,339"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>false()</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:integration</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="299902035" targetPath="$ExecutionError/metrics:integration" targetedBy="609461794-arg0"></mapper:vertice>
-  <mapper:vertice id="609461794" dimension="79x24" location="552,392">
-    <mapper:value>false()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:integration</bpel:to><mapper:mapperLink><mapper:vertice id="299902035" targetPath="$ExecutionError/metrics:integration" targetedBy="609461794-arg0"></mapper:vertice><mapper:vertice id="609461794" dimension="79x24" location="552,392"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>false()</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:validation</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="519082417" targetPath="$ExecutionError/metrics:validation" targetedBy="1005261269-arg0"></mapper:vertice>
-  <mapper:vertice id="1005261269" dimension="79x24" location="565,438">
-    <mapper:value>false()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:validation</bpel:to><mapper:mapperLink><mapper:vertice id="519082417" targetPath="$ExecutionError/metrics:validation" targetedBy="1005261269-arg0"></mapper:vertice><mapper:vertice id="1005261269" dimension="79x24" location="565,438"><mapper:value>false()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>"Delay receiving iso score"</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:message</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1364805004" targetPath="$ExecutionError/metrics:message" targetedBy="1313162523-arg0"></mapper:vertice>
-  <mapper:vertice id="1313162523" dimension="147x24" location="541,493">
-    <mapper:value>"Delay receiving iso score"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:message</bpel:to><mapper:mapperLink><mapper:vertice id="1364805004" targetPath="$ExecutionError/metrics:message" targetedBy="1313162523-arg0"></mapper:vertice><mapper:vertice id="1313162523" dimension="147x24" location="541,493"><mapper:value>"Delay receiving iso score"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>true()</bpel:from>
-                                                            <bpel:to>$delayOccured</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2029398151" targetPath="$delayOccured" targetedBy="687239716-arg0"></mapper:vertice>
-  <mapper:vertice id="687239716" dimension="79x24" location="287,74">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$delayOccured</bpel:to><mapper:mapperLink><mapper:vertice id="2029398151" targetPath="$delayOccured" targetedBy="687239716-arg0"></mapper:vertice><mapper:vertice id="687239716" dimension="79x24" location="287,74"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                     </bpdm:linkset>
                                                 </bpdm:messagingtask>
@@ -646,49 +514,23 @@
                                                     <bpdm:linkset bpdm:type="assignments">
                                                         <bpel:copy>
                                                             <bpel:from>true()</bpel:from>
-                                                            <bpel:to>$logger-processReceive_Log1Msg.body/Launchpoint:isError</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1516871912" targetPath="$logger-processReceive_Log1Msg.body/Launchpoint:isError" targetedBy="699530071-arg0"></mapper:vertice>
-  <mapper:vertice id="699530071" dimension="79x24" location="380,44">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$logger-processReceive_Log1Msg.body/Launchpoint:isError</bpel:to><mapper:mapperLink><mapper:vertice id="1516871912" targetPath="$logger-processReceive_Log1Msg.body/Launchpoint:isError" targetedBy="699530071-arg0"></mapper:vertice><mapper:vertice id="699530071" dimension="79x24" location="380,44"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>$CaseHighestScore/Launchpoint:Case</bpel:from>
-                                                            <bpel:to>$logger-processReceive_Log1Msg.body/Launchpoint:Case</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1384576019" targetPath="$logger-processReceive_Log1Msg.body/Launchpoint:Case" targetedBy="1916147111-arg0"></mapper:vertice>
-  <mapper:vertice id="1916147111" sourcePath="$CaseHighestScore/Launchpoint:Case"></mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$logger-processReceive_Log1Msg.body/Launchpoint:Case</bpel:to><mapper:mapperLink><mapper:vertice id="1384576019" targetPath="$logger-processReceive_Log1Msg.body/Launchpoint:Case" targetedBy="1916147111-arg0"></mapper:vertice><mapper:vertice id="1916147111" sourcePath="$CaseHighestScore/Launchpoint:Case"></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>"Receive iso score"</bpel:from>
-                                                            <bpel:to>$logger-processReceive_Log1Msg.body/Launchpoint:action_name</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1506200257" targetPath="$logger-processReceive_Log1Msg.body/Launchpoint:action_name" targetedBy="1786194170-arg0"></mapper:vertice>
-  <mapper:vertice id="1786194170" dimension="107x24" location="399,114">
-    <mapper:value>"Receive iso score"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$logger-processReceive_Log1Msg.body/Launchpoint:action_name</bpel:to><mapper:mapperLink><mapper:vertice id="1506200257" targetPath="$logger-processReceive_Log1Msg.body/Launchpoint:action_name" targetedBy="1786194170-arg0"></mapper:vertice><mapper:vertice id="1786194170" dimension="107x24" location="399,114"><mapper:value>"Receive iso score"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>"ProcessISOResponse"</bpel:from>
-                                                            <bpel:to>$logger-processReceive_Log1Msg.body/Launchpoint:process_name</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="675483563" targetPath="$logger-processReceive_Log1Msg.body/Launchpoint:process_name" targetedBy="1483561549-arg0"></mapper:vertice>
-  <mapper:vertice id="1483561549" dimension="126x24" location="408,158">
-    <mapper:value>"ProcessISOResponse"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$logger-processReceive_Log1Msg.body/Launchpoint:process_name</bpel:to><mapper:mapperLink><mapper:vertice id="675483563" targetPath="$logger-processReceive_Log1Msg.body/Launchpoint:process_name" targetedBy="1483561549-arg0"></mapper:vertice><mapper:vertice id="1483561549" dimension="126x24" location="408,158"><mapper:value>"ProcessISOResponse"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>$ode:pid</bpel:from>
-                                                            <bpel:to>$logger-processReceive_Log1Msg.body/Launchpoint:pid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="548496190" targetPath="$logger-processReceive_Log1Msg.body/Launchpoint:pid" targetedBy="999770370-arg0"></mapper:vertice>
-  <mapper:vertice id="999770370" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                                            <bpel:to>$logger-processReceive_Log1Msg.body/Launchpoint:pid</bpel:to><mapper:mapperLink><mapper:vertice id="548496190" targetPath="$logger-processReceive_Log1Msg.body/Launchpoint:pid" targetedBy="999770370-arg0"></mapper:vertice><mapper:vertice id="999770370" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                                         </bpel:copy>
                                                     </bpdm:linkset>
                                                     <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="logger-processReceive_Log1Msg" bpdm:variableIsManaged="true" bpdm:messageType="logger-process:Receive_LogRequest" bpdm:binding="logger-process:processAndCallerServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_qOGRpgVeEeiItoCU8_MuVAOutgoing"></bpdm:linkset>
@@ -744,17 +586,7 @@
                             <bpdm:gateway bpdm:label="delay occured" bpdm:ID="_MoKHgAVeEeiItoCU8_MuVA" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                                 <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_N206EAVeEeiItoCU8_MuVA" bpdm:targetDisplayName="default"></bpdm:linkset>
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_O1HHRwVeEeiItoCU8_MuVA" bpdm:targetDisplayName="Yes">
-                                    <bpel:condition>true() = $delayOccured
-<mapper:mapperLink>
-  <mapper:vertice id="1903242460" targetPath="$condition" targetedBy="412246409-arg2"></mapper:vertice>
-  <mapper:vertice id="412246409" dimension="79x24" location="216,48">
-    <mapper:value>=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="184348381" dimension="79x24" location="66,18" targetedBy="412246409-arg0">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="327024939" sourcePath="$delayOccured" targetedBy="412246409-arg1"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                                    <bpel:condition>true() = $delayOccured<mapper:mapperLink><mapper:vertice id="1903242460" targetPath="$condition" targetedBy="412246409-arg2"></mapper:vertice><mapper:vertice id="412246409" dimension="79x24" location="216,48"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="184348381" dimension="79x24" location="66,18" targetedBy="412246409-arg0"><mapper:value>true()</mapper:value></mapper:vertice><mapper:vertice id="327024939" sourcePath="$delayOccured" targetedBy="412246409-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
                                 <bpel:sequence>
                                     <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_N2rJEAVeEeiItoCU8_MuVA" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
@@ -769,47 +601,23 @@
                         <bpdm:linkset bpdm:type="assignments">
                             <bpel:copy>
                                 <bpel:from>$ode:pid</bpel:from>
-                                <bpel:to>$ISOResponseTracking/metrics:id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="41575247" targetPath="$ISOResponseTracking/metrics:id" targetedBy="1663202769-arg0"></mapper:vertice>
-  <mapper:vertice id="1663202769" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$ISOResponseTracking/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="41575247" targetPath="$ISOResponseTracking/metrics:id" targetedBy="1663202769-arg0"></mapper:vertice><mapper:vertice id="1663202769" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>$CaseScore/Launchpoint:score</bpel:from>
-                                <bpel:to>$ISOResponseTracking/metrics:score</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="166417347" targetPath="$ISOResponseTracking/metrics:score" targetedBy="606250113-arg0"></mapper:vertice>
-  <mapper:vertice id="606250113" sourcePath="$CaseScore/Launchpoint:score"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$ISOResponseTracking/metrics:score</bpel:to><mapper:mapperLink><mapper:vertice id="166417347" targetPath="$ISOResponseTracking/metrics:score" targetedBy="606250113-arg0"></mapper:vertice><mapper:vertice id="606250113" sourcePath="$CaseScore/Launchpoint:score"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>$CaseScore/Launchpoint:scoreValue</bpel:from>
-                                <bpel:to>$ISOResponseTracking/metrics:scoreValue</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1384268221" targetPath="$ISOResponseTracking/metrics:scoreValue" targetedBy="962303333-arg0"></mapper:vertice>
-  <mapper:vertice id="962303333" sourcePath="$CaseScore/Launchpoint:scoreValue"></mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$ISOResponseTracking/metrics:scoreValue</bpel:to><mapper:mapperLink><mapper:vertice id="1384268221" targetPath="$ISOResponseTracking/metrics:scoreValue" targetedBy="962303333-arg0"></mapper:vertice><mapper:vertice id="962303333" sourcePath="$CaseScore/Launchpoint:scoreValue"></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>true()</bpel:from>
-                                <bpel:to>$ISOResponseTracking/metrics:scoreReceived</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1284476712" targetPath="$ISOResponseTracking/metrics:scoreReceived" targetedBy="885992970-arg0"></mapper:vertice>
-  <mapper:vertice id="885992970" dimension="79x24" location="371,120">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$ISOResponseTracking/metrics:scoreReceived</bpel:to><mapper:mapperLink><mapper:vertice id="1284476712" targetPath="$ISOResponseTracking/metrics:scoreReceived" targetedBy="885992970-arg0"></mapper:vertice><mapper:vertice id="885992970" dimension="79x24" location="371,120"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                             <bpel:copy>
                                 <bpel:from>current-dateTime()</bpel:from>
-                                <bpel:to>$ISOResponseTracking/metrics:scoreReceivedAt</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1777905706" targetPath="$ISOResponseTracking/metrics:scoreReceivedAt" targetedBy="1806254119-arg0"></mapper:vertice>
-  <mapper:vertice id="1806254119" dimension="109x24" location="385,161">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                <bpel:to>$ISOResponseTracking/metrics:scoreReceivedAt</bpel:to><mapper:mapperLink><mapper:vertice id="1777905706" targetPath="$ISOResponseTracking/metrics:scoreReceivedAt" targetedBy="1806254119-arg0"></mapper:vertice><mapper:vertice id="1806254119" dimension="109x24" location="385,161"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                             </bpel:copy>
                         </bpdm:linkset>
                     </bpdm:messagingtask>
@@ -866,7 +674,7 @@
                                         <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="createActivity-processReceive_requestResponse2Msg" bpdm:msgVarScopeId="_vGpsQN5fEee7jteJyXiOfg" bpdm:variableIsManaged="true" bpdm:messageType="createActivity-process:Receive_requestResponse" bpdm:binding="createActivity-process:processAndCallerServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_11cfgN5fEee7jteJyXiOfg"></bpdm:linkset>
                                     </bpdm:messagingtask>
                                     <bpdm:messagingtask operation="Receive_activity_confirmation" partnerLink="iSO_Response_ManagerAndDCMPlkVar" portType="this:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive activity confirmation" bpdm:ID="_sfUdoN5fEee7jteJyXiOfg" bpdm:isHeaderAuthorizationAware="yes">
-                                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_activity_confirmationRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_activity_confirmationRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_6MZRoN5fEee7jteJyXiOfg">
+                                        <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_activity_confirmationRequest1Msg" bpdm:msgVarScopeId="_vGpsQN5fEee7jteJyXiOfg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_activity_confirmationRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_6MZRoN5fEee7jteJyXiOfg">
                                             <bpel:correlation set="handleIsoScoringCorr" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
                                         </bpdm:linkset>
                                         <bpdm:linkset bpdm:type="assignments">
@@ -879,7 +687,7 @@
                                                 <bpel:to>$thisReceive_activity_confirmationResponse2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="1127277791" targetPath="$thisReceive_activity_confirmationResponse2Msg.body/Launchpoint:timestamp" targetedBy="1608828218-arg0"></mapper:vertice><mapper:vertice id="1608828218" dimension="109x24" location="531,82"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                             </bpel:copy>
                                         </bpdm:linkset>
-                                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_activity_confirmationResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_activity_confirmationResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_7XDG4N5fEee7jteJyXiOfg"></bpdm:linkset>
+                                        <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_activity_confirmationResponse2Msg" bpdm:msgVarScopeId="_vGpsQN5fEee7jteJyXiOfg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_activity_confirmationResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_7XDG4N5fEee7jteJyXiOfg"></bpdm:linkset>
                                     </bpdm:messagingtask>
                                     <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_aiZYUAVfEeiItoCU8_MuVA" bpdm:isHeaderAuthorizationAware="no"></bpdm:messagingtask>
                                 </bpel:sequence>
@@ -921,79 +729,39 @@
                                 <bpdm:linkset bpdm:type="assignments">
                                     <bpel:copy>
                                         <bpel:from>$ode:pid</bpel:from>
-                                        <bpel:to>$ISOResponseTracking/metrics:id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1491057937" targetPath="$ISOResponseTracking/metrics:id" targetedBy="1397379570-arg0"></mapper:vertice>
-  <mapper:vertice id="1397379570" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$ISOResponseTracking/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="1491057937" targetPath="$ISOResponseTracking/metrics:id" targetedBy="1397379570-arg0"></mapper:vertice><mapper:vertice id="1397379570" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>true()</bpel:from>
-                                        <bpel:to>$ISOResponseTracking/metrics:ruleEvaluated</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1078383409" targetPath="$ISOResponseTracking/metrics:ruleEvaluated" targetedBy="345280317-arg0"></mapper:vertice>
-  <mapper:vertice id="345280317" dimension="79x24" location="392,92">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$ISOResponseTracking/metrics:ruleEvaluated</bpel:to><mapper:mapperLink><mapper:vertice id="1078383409" targetPath="$ISOResponseTracking/metrics:ruleEvaluated" targetedBy="345280317-arg0"></mapper:vertice><mapper:vertice id="345280317" dimension="79x24" location="392,92"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>current-dateTime()</bpel:from>
-                                        <bpel:to>$ISOResponseTracking/metrics:ruleEvaluatedAt</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="147850042" targetPath="$ISOResponseTracking/metrics:ruleEvaluatedAt" targetedBy="1081631150-arg0"></mapper:vertice>
-  <mapper:vertice id="1081631150" dimension="109x24" location="412,145">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$ISOResponseTracking/metrics:ruleEvaluatedAt</bpel:to><mapper:mapperLink><mapper:vertice id="147850042" targetPath="$ISOResponseTracking/metrics:ruleEvaluatedAt" targetedBy="1081631150-arg0"></mapper:vertice><mapper:vertice id="1081631150" dimension="109x24" location="412,145"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:ruleId</bpel:from>
-                                        <bpel:to>$ISOResponseTracking/metrics:ruleid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1399527301" targetPath="$ISOResponseTracking/metrics:ruleid" targetedBy="1168791369-arg0"></mapper:vertice>
-  <mapper:vertice id="1168791369" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:ruleId"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$ISOResponseTracking/metrics:ruleid</bpel:to><mapper:mapperLink><mapper:vertice id="1399527301" targetPath="$ISOResponseTracking/metrics:ruleid" targetedBy="1168791369-arg0"></mapper:vertice><mapper:vertice id="1168791369" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:ruleId"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:updateLifecycle</bpel:from>
-                                        <bpel:to>$ISOResponseTracking/metrics:updateLifecycle</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1440509626" targetPath="$ISOResponseTracking/metrics:updateLifecycle" targetedBy="1995404508-arg0"></mapper:vertice>
-  <mapper:vertice id="1995404508" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:updateLifecycle"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$ISOResponseTracking/metrics:updateLifecycle</bpel:to><mapper:mapperLink><mapper:vertice id="1440509626" targetPath="$ISOResponseTracking/metrics:updateLifecycle" targetedBy="1995404508-arg0"></mapper:vertice><mapper:vertice id="1995404508" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:updateLifecycle"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:diary</bpel:from>
-                                        <bpel:to>$ISOResponseTracking/metrics:createDiary</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2046882016" targetPath="$ISOResponseTracking/metrics:createDiary" targetedBy="1566095034-arg0"></mapper:vertice>
-  <mapper:vertice id="1566095034" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:diary"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$ISOResponseTracking/metrics:createDiary</bpel:to><mapper:mapperLink><mapper:vertice id="2046882016" targetPath="$ISOResponseTracking/metrics:createDiary" targetedBy="1566095034-arg0"></mapper:vertice><mapper:vertice id="1566095034" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:diary"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:forceIQ</bpel:from>
-                                        <bpel:to>$ISOResponseTracking/metrics:forceIq</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="563266078" targetPath="$ISOResponseTracking/metrics:forceIq" targetedBy="485268763-arg0"></mapper:vertice>
-  <mapper:vertice id="485268763" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:forceIQ"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$ISOResponseTracking/metrics:forceIq</bpel:to><mapper:mapperLink><mapper:vertice id="563266078" targetPath="$ISOResponseTracking/metrics:forceIq" targetedBy="485268763-arg0"></mapper:vertice><mapper:vertice id="485268763" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:forceIQ"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:iqHold</bpel:from>
-                                        <bpel:to>$ISOResponseTracking/metrics:holdIQ</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="61324381" targetPath="$ISOResponseTracking/metrics:holdIQ" targetedBy="809214787-arg0"></mapper:vertice>
-  <mapper:vertice id="809214787" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:iqHold"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$ISOResponseTracking/metrics:holdIQ</bpel:to><mapper:mapperLink><mapper:vertice id="61324381" targetPath="$ISOResponseTracking/metrics:holdIQ" targetedBy="809214787-arg0"></mapper:vertice><mapper:vertice id="809214787" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:iqHold"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:reopenCase</bpel:from>
-                                        <bpel:to>$ISOResponseTracking/metrics:reopenCase</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="468249954" targetPath="$ISOResponseTracking/metrics:reopenCase" targetedBy="849283034-arg0"></mapper:vertice>
-  <mapper:vertice id="849283034" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:reopenCase"></mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$ISOResponseTracking/metrics:reopenCase</bpel:to><mapper:mapperLink><mapper:vertice id="468249954" targetPath="$ISOResponseTracking/metrics:reopenCase" targetedBy="849283034-arg0"></mapper:vertice><mapper:vertice id="849283034" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:reopenCase"></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                             </bpdm:messagingtask>
@@ -1005,30 +773,10 @@
                                     <bpel:condition>true() = $nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:reopenCase<mapper:mapperLink><mapper:vertice id="843774700" targetPath="$condition" targetedBy="1253607330-arg1"></mapper:vertice><mapper:vertice id="1253607330" dimension="79x24" location="365,135"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="956655984" dimension="79x24" location="231,110" targetedBy="1253607330-arg0"><mapper:value>true()</mapper:value></mapper:vertice><mapper:vertice id="1022873800" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:reopenCase" targetedBy="1253607330-arg2"></mapper:vertice></mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_xWOYpwVjEeiItoCU8_MuVA" bpdm:targetDisplayName="IQ Hold">
-                                    <bpel:condition>true() = $nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:iqHold
-<mapper:mapperLink>
-  <mapper:vertice id="929640230" targetPath="$condition" targetedBy="1673475087-arg2"></mapper:vertice>
-  <mapper:vertice id="1673475087" dimension="79x24" location="209,70">
-    <mapper:value>=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1314079673" dimension="79x24" location="105,41" targetedBy="1673475087-arg0">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1116356441" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:iqHold" targetedBy="1673475087-arg1"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                                    <bpel:condition>true() = $nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:iqHold<mapper:mapperLink><mapper:vertice id="929640230" targetPath="$condition" targetedBy="1673475087-arg2"></mapper:vertice><mapper:vertice id="1673475087" dimension="79x24" location="209,70"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="1314079673" dimension="79x24" location="105,41" targetedBy="1673475087-arg0"><mapper:value>true()</mapper:value></mapper:vertice><mapper:vertice id="1116356441" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:iqHold" targetedBy="1673475087-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_LQibAAVjEeiItoCU8_MuVA" bpdm:targetDisplayName="force iq">
-                                    <bpel:condition>true() = $nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:forceIQ
-<mapper:mapperLink>
-  <mapper:vertice id="183530439" targetPath="$condition" targetedBy="1968300626-arg2"></mapper:vertice>
-  <mapper:vertice id="1968300626" dimension="79x24" location="228,54">
-    <mapper:value>=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="724532173" dimension="79x24" location="99,22" targetedBy="1968300626-arg0">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="285071971" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:forceIQ" targetedBy="1968300626-arg1"></mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                                    <bpel:condition>true() = $nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:forceIQ<mapper:mapperLink><mapper:vertice id="183530439" targetPath="$condition" targetedBy="1968300626-arg2"></mapper:vertice><mapper:vertice id="1968300626" dimension="79x24" location="228,54"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="724532173" dimension="79x24" location="99,22" targetedBy="1968300626-arg0"><mapper:value>true()</mapper:value></mapper:vertice><mapper:vertice id="285071971" sourcePath="$nsInvokeDecisionTableResponse1Msg.parameters/ns:return/ax2197:isoScoreOut/ax2198:forceIQ" targetedBy="1968300626-arg1"></mapper:vertice></mapper:mapperLink></bpel:condition>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_tSoa195oEee7jteJyXiOfg" bpdm:targetDisplayName="default"></bpdm:linkset>
                                 <bpel:sequence>
@@ -1059,15 +807,15 @@
                                                         <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:source</bpel:to><mapper:mapperLink><mapper:vertice id="292069065" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:source" targetedBy="91480371-arg0"></mapper:vertice><mapper:vertice id="91480371" dimension="92x24" location="301,107"><mapper:value>"ISORESPONSE"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
-                                                        <bpel:from>concat("ISO Index Received: ", $CaseScore/Launchpoint:score)</bpel:from>
-                                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:lifeCycle</bpel:to><mapper:mapperLink><mapper:vertice id="1314261035" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:lifeCycle" targetedBy="1638810563-arg2"></mapper:vertice><mapper:vertice id="1638810563" dimension="79x24" location="496,235"><mapper:value>concat()</mapper:value></mapper:vertice><mapper:vertice id="1004839861" dimension="123x24" location="336,204" targetedBy="1638810563-arg0"><mapper:value>"ISO Index Received: "</mapper:value></mapper:vertice><mapper:vertice id="292352243" sourcePath="$CaseScore/Launchpoint:score" targetedBy="1638810563-arg1"></mapper:vertice></mapper:mapperLink>
+                                                        <bpel:from>concat(ode:get-property-value("UPDLCISORESP"), " ", $CaseScore/Launchpoint:score)</bpel:from>
+                                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:lifeCycle</bpel:to><mapper:mapperLink><mapper:vertice id="939609183" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:lifeCycle" targetedBy="338741836-arg3"></mapper:vertice><mapper:vertice id="338741836" dimension="79x24" location="496,235"><mapper:value>concat()</mapper:value></mapper:vertice><mapper:vertice id="2080411777" dimension="139x24" location="336,204" targetedBy="338741836-arg0"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1439615161" dimension="99x24" location="115,227" targetedBy="2080411777-arg0"><mapper:value>"UPDLCISORESP"</mapper:value></mapper:vertice><mapper:vertice id="207405065" dimension="79x24" location="219,289" targetedBy="338741836-arg1"><mapper:value>" "</mapper:value></mapper:vertice><mapper:vertice id="445282133" sourcePath="$CaseScore/Launchpoint:score" targetedBy="338741836-arg2"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMSend_requestRequest1Msg" bpdm:msgVarScopeId="_k4DKQN5fEee7jteJyXiOfg" bpdm:variableIsManaged="true" bpdm:messageType="updateCaseLifeCycle-process:Receive_requestRequest" bpdm:binding="updateCaseLifeCycle-process:callerAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_ZMIQUN5MEee5MfuigsCq1w"></bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="updateCaseLifeCycle-processReceive_requestResponse1Msg" bpdm:msgVarScopeId="_k4DKQN5fEee7jteJyXiOfg" bpdm:variableIsManaged="true" bpdm:messageType="updateCaseLifeCycle-process:Receive_requestResponse" bpdm:binding="updateCaseLifeCycle-process:callerAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_Z0NkAN5MEee5MfuigsCq1w"></bpdm:linkset>
                                             </bpdm:messagingtask>
                                             <bpdm:messagingtask operation="Receive_update_lifecycle_confirmation" partnerLink="iSO_Response_ManagerAndDCMPlkVar" portType="this:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive update lifecycle confirmation" bpdm:ID="_bFvdUN5MEee5MfuigsCq1w" bpdm:isHeaderAuthorizationAware="yes">
-                                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_update_lifecycle_confirmationRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_update_lifecycle_confirmationRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_f-DQEN5MEee5MfuigsCq1w">
+                                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_update_lifecycle_confirmationRequest1Msg" bpdm:msgVarScopeId="_k4DKQN5fEee7jteJyXiOfg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_update_lifecycle_confirmationRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_f-DQEN5MEee5MfuigsCq1w">
                                                     <bpel:correlation set="handleIsoScoringCorr" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="assignments">
@@ -1080,27 +828,17 @@
                                                         <bpel:to>$thisReceive_update_lifecycle_confirmationResponse2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="1592492588" targetPath="$thisReceive_update_lifecycle_confirmationResponse2Msg.body/Launchpoint:timestamp" targetedBy="1312700542-arg0"></mapper:vertice><mapper:vertice id="1312700542" dimension="109x24" location="407,83"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
-                                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_update_lifecycle_confirmationResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_update_lifecycle_confirmationResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_gl1o0N5MEee5MfuigsCq1w"></bpdm:linkset>
+                                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_update_lifecycle_confirmationResponse2Msg" bpdm:msgVarScopeId="_k4DKQN5fEee7jteJyXiOfg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_update_lifecycle_confirmationResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_gl1o0N5MEee5MfuigsCq1w"></bpdm:linkset>
                                             </bpdm:messagingtask>
                                             <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_b5aOkAVfEeiItoCU8_MuVA" bpdm:isHeaderAuthorizationAware="no">
                                                 <bpdm:linkset bpdm:type="assignments">
                                                     <bpel:copy>
                                                         <bpel:from>$ode:pid</bpel:from>
-                                                        <bpel:to>$ISOResponseTracking/metrics:id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2101671398" targetPath="$ISOResponseTracking/metrics:id" targetedBy="532604640-arg0"></mapper:vertice>
-  <mapper:vertice id="532604640" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:to>$ISOResponseTracking/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="2101671398" targetPath="$ISOResponseTracking/metrics:id" targetedBy="532604640-arg0"></mapper:vertice><mapper:vertice id="532604640" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
                                                         <bpel:from>current-dateTime()</bpel:from>
-                                                        <bpel:to>$ISOResponseTracking/metrics:updateLifecycleAt</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="302310312" targetPath="$ISOResponseTracking/metrics:updateLifecycleAt" targetedBy="75419632-arg0"></mapper:vertice>
-  <mapper:vertice id="75419632" dimension="109x24" location="310,114">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:to>$ISOResponseTracking/metrics:updateLifecycleAt</bpel:to><mapper:mapperLink><mapper:vertice id="302310312" targetPath="$ISOResponseTracking/metrics:updateLifecycleAt" targetedBy="75419632-arg0"></mapper:vertice><mapper:vertice id="75419632" dimension="109x24" location="310,114"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                             </bpdm:messagingtask>
@@ -1127,12 +865,12 @@
                                             <bpdm:messagingtask operation="Receive_request" partnerLink="iSO_Response_ManagerAndDCMForCanonicPortPlk0Var" portType="CaseCloseReopen-process:Forcaller" isMyRole="false" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Request reopen case" bpdm:ID="_nDuswN5hEee7jteJyXiOfg" bpdm:isHeaderAuthorizationAware="no">
                                                 <bpdm:linkset bpdm:type="assignments">
                                                     <bpel:copy>
-                                                        <bpel:from>"Case reopen"</bpel:from>
-                                                        <bpel:to>$dCMSend_requestRequest2Msg.body/Launchpoint:lifecycle</bpel:to><mapper:mapperLink><mapper:vertice id="554769581" targetPath="$dCMSend_requestRequest2Msg.body/Launchpoint:lifecycle" targetedBy="827843063-arg0"></mapper:vertice><mapper:vertice id="827843063" dimension="83x24" location="348,120"><mapper:value>"Case reopen"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        <bpel:from>""</bpel:from>
+                                                        <bpel:to>$dCMSend_requestRequest2Msg.body/Launchpoint:lifecycle</bpel:to><mapper:mapperLink><mapper:vertice id="310080886" targetPath="$dCMSend_requestRequest2Msg.body/Launchpoint:lifecycle" targetedBy="1305191379-arg0"></mapper:vertice><mapper:vertice id="1305191379" dimension="79x24" location="348,120"><mapper:value>""</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
-                                                        <bpel:from>"Investigation"</bpel:from>
-                                                        <bpel:to>$dCMSend_requestRequest2Msg.body/Launchpoint:status</bpel:to><mapper:mapperLink><mapper:vertice id="1964720692" targetPath="$dCMSend_requestRequest2Msg.body/Launchpoint:status" targetedBy="1961040937-arg0"></mapper:vertice><mapper:vertice id="1961040937" dimension="86x24" location="356,157"><mapper:value>"Investigation"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        <bpel:from>ode:get-property-value("REOPENCASESTATUS")</bpel:from>
+                                                        <bpel:to>$dCMSend_requestRequest2Msg.body/Launchpoint:status</bpel:to><mapper:mapperLink><mapper:vertice id="1635340758" targetPath="$dCMSend_requestRequest2Msg.body/Launchpoint:status" targetedBy="1557582902-arg0"></mapper:vertice><mapper:vertice id="1557582902" dimension="139x24" location="356,157"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1128092678" dimension="132x24" location="107,178" targetedBy="1557582902-arg1"><mapper:value>"REOPENCASESTATUS"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
                                                         <bpel:from>""</bpel:from>
@@ -1151,7 +889,7 @@
                                                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="invoke-receive" bpdm:messageVariable="caseCloseReopen-processReceive_requestResponse2Msg" bpdm:msgVarScopeId="_1TiaYN5hEee7jteJyXiOfg" bpdm:variableIsManaged="true" bpdm:messageType="CaseCloseReopen-process:Receive_requestResponse" bpdm:binding="CaseCloseReopen-process:callerAndProcessServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_d96F0N5jEee7jteJyXiOfg"></bpdm:linkset>
                                             </bpdm:messagingtask>
                                             <bpdm:messagingtask operation="Receive_reopen_case_confirmation" partnerLink="iSO_Response_ManagerAndDCMPlkVar" portType="this:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive reopen case confirmation" bpdm:ID="_xoRCgN5hEee7jteJyXiOfg" bpdm:isHeaderAuthorizationAware="yes">
-                                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_reopen_case_confirmationRequest1Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_reopen_case_confirmationRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_g4eZgN5jEee7jteJyXiOfg">
+                                                <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_reopen_case_confirmationRequest1Msg" bpdm:msgVarScopeId="_1TiaYN5hEee7jteJyXiOfg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_reopen_case_confirmationRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_g4eZgN5jEee7jteJyXiOfg">
                                                     <bpel:correlation set="handleIsoScoringCorr" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="assignments">
@@ -1164,27 +902,17 @@
                                                         <bpel:to>$thisReceive_reopen_case_confirmationResponse2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="1542523482" targetPath="$thisReceive_reopen_case_confirmationResponse2Msg.body/Launchpoint:timestamp" targetedBy="2134202417-arg0"></mapper:vertice><mapper:vertice id="2134202417" dimension="109x24" location="391,96"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
-                                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_reopen_case_confirmationResponse2Msg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_reopen_case_confirmationResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_hbMsEN5jEee7jteJyXiOfg"></bpdm:linkset>
+                                                <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_reopen_case_confirmationResponse2Msg" bpdm:msgVarScopeId="_1TiaYN5hEee7jteJyXiOfg" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_reopen_case_confirmationResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_hbMsEN5jEee7jteJyXiOfg"></bpdm:linkset>
                                             </bpdm:messagingtask>
                                             <bpdm:messagingtask eventType="end: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Empty_End_Event" bpdm:ID="_dqg_0AVfEeiItoCU8_MuVA" bpdm:isHeaderAuthorizationAware="no">
                                                 <bpdm:linkset bpdm:type="assignments">
                                                     <bpel:copy>
                                                         <bpel:from>$ode:pid</bpel:from>
-                                                        <bpel:to>$ISOResponseTracking/metrics:id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="689652226" targetPath="$ISOResponseTracking/metrics:id" targetedBy="1844970935-arg0"></mapper:vertice>
-  <mapper:vertice id="1844970935" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:to>$ISOResponseTracking/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="689652226" targetPath="$ISOResponseTracking/metrics:id" targetedBy="1844970935-arg0"></mapper:vertice><mapper:vertice id="1844970935" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
                                                         <bpel:from>current-dateTime()</bpel:from>
-                                                        <bpel:to>$ISOResponseTracking/metrics:reopenCaseAt</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1446682488" targetPath="$ISOResponseTracking/metrics:reopenCaseAt" targetedBy="936633055-arg0"></mapper:vertice>
-  <mapper:vertice id="936633055" dimension="109x24" location="374,87">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:to>$ISOResponseTracking/metrics:reopenCaseAt</bpel:to><mapper:mapperLink><mapper:vertice id="1446682488" targetPath="$ISOResponseTracking/metrics:reopenCaseAt" targetedBy="936633055-arg0"></mapper:vertice><mapper:vertice id="936633055" dimension="109x24" location="374,87"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                             </bpdm:messagingtask>
@@ -1212,71 +940,31 @@
                                                 <bpdm:linkset bpdm:type="assignments">
                                                     <bpel:copy>
                                                         <bpel:from>$CaseHighestScore/Launchpoint:Case</bpel:from>
-                                                        <bpel:to>$dCMGet_requestRequest2Msg.body/Launchpoint:Case</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="514793779" targetPath="$dCMGet_requestRequest2Msg.body/Launchpoint:Case" targetedBy="474954009-arg0"></mapper:vertice>
-  <mapper:vertice id="474954009" sourcePath="$CaseHighestScore/Launchpoint:Case"></mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:to>$dCMGet_requestRequest2Msg.body/Launchpoint:Case</bpel:to><mapper:mapperLink><mapper:vertice id="514793779" targetPath="$dCMGet_requestRequest2Msg.body/Launchpoint:Case" targetedBy="474954009-arg0"></mapper:vertice><mapper:vertice id="474954009" sourcePath="$CaseHighestScore/Launchpoint:Case"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
-                                                        <bpel:from>"IQ on hold"</bpel:from>
-                                                        <bpel:to>$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="197401078" targetPath="$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode" targetedBy="902393363-arg0"></mapper:vertice>
-  <mapper:vertice id="902393363" dimension="79x24" location="408,133">
-    <mapper:value>"IQ on hold"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:from>ode:get-property-value("IQHOLDCODE")</bpel:from>
+                                                        <bpel:to>$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode</bpel:to><mapper:mapperLink><mapper:vertice id="399583050" targetPath="$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode" targetedBy="1842746028-arg0"></mapper:vertice><mapper:vertice id="1842746028" dimension="139x24" location="408,133"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="701340552" dimension="93x24" location="78,181" targetedBy="1842746028-arg1"><mapper:value>"IQHOLDCODE"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
-                                                        <bpel:from>"IQ"</bpel:from>
-                                                        <bpel:to>$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityType</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1943056722" targetPath="$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityType" targetedBy="1031676895-arg0"></mapper:vertice>
-  <mapper:vertice id="1031676895" dimension="79x24" location="408,96">
-    <mapper:value>"IQ"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:from>ode:get-property-value("IQHOLDTYPE")</bpel:from>
+                                                        <bpel:to>$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityType</bpel:to><mapper:mapperLink><mapper:vertice id="341792310" targetPath="$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityType" targetedBy="267620250-arg0"></mapper:vertice><mapper:vertice id="267620250" dimension="139x24" location="408,96"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="953896755" dimension="89x24" location="53,129" targetedBy="267620250-arg1"><mapper:value>"IQHOLDTYPE"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
-                                                        <bpel:from>"IQ on hold"</bpel:from>
-                                                        <bpel:to>$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityDescription</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1758804741" targetPath="$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityDescription" targetedBy="1877519915-arg0"></mapper:vertice>
-  <mapper:vertice id="1877519915" dimension="79x24" location="450,166">
-    <mapper:value>"IQ on hold"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:from>ode:get-property-value("IQHOLDDESC")</bpel:from>
+                                                        <bpel:to>$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityDescription</bpel:to><mapper:mapperLink><mapper:vertice id="448078961" targetPath="$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:ActivityDescription" targetedBy="434548791-arg0"></mapper:vertice><mapper:vertice id="434548791" dimension="139x24" location="450,166"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="797277479" dimension="90x24" location="78,224" targetedBy="434548791-arg1"><mapper:value>"IQHOLDDESC"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
                                                         <bpel:from>current-dateTime()</bpel:from>
-                                                        <bpel:to>$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:CreatedDate</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1015342313" targetPath="$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:CreatedDate" targetedBy="1206281836-arg0"></mapper:vertice>
-  <mapper:vertice id="1206281836" dimension="109x24" location="457,229">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:to>$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:CreatedDate</bpel:to><mapper:mapperLink><mapper:vertice id="1015342313" targetPath="$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:CreatedDate" targetedBy="1206281836-arg0"></mapper:vertice><mapper:vertice id="1206281836" dimension="109x24" location="457,229"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
-                                                        <bpel:from>"BPM"</bpel:from>
-                                                        <bpel:to>$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:CreatedBy</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="312079701" targetPath="$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:CreatedBy" targetedBy="1266295210-arg0"></mapper:vertice>
-  <mapper:vertice id="1266295210" dimension="79x24" location="482,276">
-    <mapper:value>"BPM"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:from>ode:get-property-value("BPMUSER")</bpel:from>
+                                                        <bpel:to>$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:CreatedBy</bpel:to><mapper:mapperLink><mapper:vertice id="1301042894" targetPath="$dCMGet_requestRequest2Msg.body/Launchpoint:Activity/Launchpoint:CreatedBy" targetedBy="1003349896-arg0"></mapper:vertice><mapper:vertice id="1003349896" dimension="139x24" location="482,276"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="933917351" dimension="79x24" location="76,279" targetedBy="1003349896-arg1"><mapper:value>"BPMUSER"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
                                                         <bpel:from>"ISORESPONSE"</bpel:from>
-                                                        <bpel:to>$dCMGet_requestRequest2Msg.body/Launchpoint:source</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1933784565" targetPath="$dCMGet_requestRequest2Msg.body/Launchpoint:source" targetedBy="602791305-arg0"></mapper:vertice>
-  <mapper:vertice id="602791305" dimension="92x24" location="441,307">
-    <mapper:value>"ISORESPONSE"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:to>$dCMGet_requestRequest2Msg.body/Launchpoint:source</bpel:to><mapper:mapperLink><mapper:vertice id="1933784565" targetPath="$dCMGet_requestRequest2Msg.body/Launchpoint:source" targetedBy="602791305-arg0"></mapper:vertice><mapper:vertice id="602791305" dimension="92x24" location="441,307"><mapper:value>"ISORESPONSE"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMGet_requestRequest2Msg" bpdm:msgVarScopeId="_0BcBsAVjEeiItoCU8_MuVA" bpdm:variableIsManaged="true" bpdm:messageType="createActivity-process:Receive_requestRequest" bpdm:binding="createActivity-process:processAndCallerServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_qSyVoAVkEeiItoCU8_MuVA"></bpdm:linkset>
@@ -1284,26 +972,16 @@
                                             </bpdm:messagingtask>
                                             <bpdm:messagingtask operation="Receive_hold_confirmation" partnerLink="iSO_Response_ManagerAndDCMPlkVar" portType="this:ForDCM" isMyRole="true" enableSharing="false" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="Receive hold confirmation" bpdm:ID="_dW9i8AVlEeiItoCU8_MuVA" bpdm:isHeaderAuthorizationAware="yes">
                                                 <bpdm:linkset bpdm:type="incomingMessage" bpdm:bpeltype="receive" bpdm:messageVariable="thisReceive_hold_confirmationRequest1Msg" bpdm:msgVarScopeId="_0BcBsAVjEeiItoCU8_MuVA" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_hold_confirmationRequest" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_nfAJ8AVlEeiItoCU8_MuVA">
-                                                    <bpel:correlation set="handleIsoScoringCorr" initiate="join" pattern="response"></bpel:correlation>
+                                                    <bpel:correlation set="handleIsoScoringCorr" initiate="join" pattern="response" bpdm:isSource="false"></bpel:correlation>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="assignments">
                                                     <bpel:copy>
                                                         <bpel:from>$ode:pid</bpel:from>
-                                                        <bpel:to>$thisReceive_hold_confirmationResponse2Msg.body/Launchpoint:pid</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1840409753" targetPath="$thisReceive_hold_confirmationResponse2Msg.body/Launchpoint:pid" targetedBy="1149795766-arg0"></mapper:vertice>
-  <mapper:vertice id="1149795766" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:to>$thisReceive_hold_confirmationResponse2Msg.body/Launchpoint:pid</bpel:to><mapper:mapperLink><mapper:vertice id="1840409753" targetPath="$thisReceive_hold_confirmationResponse2Msg.body/Launchpoint:pid" targetedBy="1149795766-arg0"></mapper:vertice><mapper:vertice id="1149795766" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
                                                         <bpel:from>current-dateTime()</bpel:from>
-                                                        <bpel:to>$thisReceive_hold_confirmationResponse2Msg.body/Launchpoint:timestamp</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="322019514" targetPath="$thisReceive_hold_confirmationResponse2Msg.body/Launchpoint:timestamp" targetedBy="1890259604-arg0"></mapper:vertice>
-  <mapper:vertice id="1890259604" dimension="109x24" location="384,72">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:to>$thisReceive_hold_confirmationResponse2Msg.body/Launchpoint:timestamp</bpel:to><mapper:mapperLink><mapper:vertice id="322019514" targetPath="$thisReceive_hold_confirmationResponse2Msg.body/Launchpoint:timestamp" targetedBy="1890259604-arg0"></mapper:vertice><mapper:vertice id="1890259604" dimension="109x24" location="384,72"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="reply" bpdm:messageVariable="thisReceive_hold_confirmationResponse2Msg" bpdm:msgVarScopeId="_0BcBsAVjEeiItoCU8_MuVA" bpdm:variableIsManaged="true" bpdm:messageType="this:Receive_hold_confirmationResponse" bpdm:isHeaderAuthorizationAware="yes" bpdm:ID="_olfQ4AVlEeiItoCU8_MuVA"></bpdm:linkset>
@@ -1312,21 +990,11 @@
                                                 <bpdm:linkset bpdm:type="assignments">
                                                     <bpel:copy>
                                                         <bpel:from>$ode:pid</bpel:from>
-                                                        <bpel:to>$ISOResponseTracking/metrics:id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="624371089" targetPath="$ISOResponseTracking/metrics:id" targetedBy="1002130885-arg0"></mapper:vertice>
-  <mapper:vertice id="1002130885" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:to>$ISOResponseTracking/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="624371089" targetPath="$ISOResponseTracking/metrics:id" targetedBy="1002130885-arg0"></mapper:vertice><mapper:vertice id="1002130885" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
                                                         <bpel:from>current-dateTime()</bpel:from>
-                                                        <bpel:to>$ISOResponseTracking/metrics:holdIQAt</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1202731786" targetPath="$ISOResponseTracking/metrics:holdIQAt" targetedBy="1107424318-arg0"></mapper:vertice>
-  <mapper:vertice id="1107424318" dimension="109x24" location="444,96">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:to>$ISOResponseTracking/metrics:holdIQAt</bpel:to><mapper:mapperLink><mapper:vertice id="1202731786" targetPath="$ISOResponseTracking/metrics:holdIQAt" targetedBy="1107424318-arg0"></mapper:vertice><mapper:vertice id="1107424318" dimension="109x24" location="444,96"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                             </bpdm:messagingtask>
@@ -1348,21 +1016,11 @@
                                                 <bpdm:linkset bpdm:type="assignments">
                                                     <bpel:copy>
                                                         <bpel:from>$CaseHighestScore/Launchpoint:Case</bpel:from>
-                                                        <bpel:to>$iq_processHandle_IQ_CaseRequest1Msg.body/Launchpoint:Case</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="48247263" targetPath="$iq_processHandle_IQ_CaseRequest1Msg.body/Launchpoint:Case" targetedBy="1593048250-arg0"></mapper:vertice>
-  <mapper:vertice id="1593048250" sourcePath="$CaseHighestScore/Launchpoint:Case"></mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:to>$iq_processHandle_IQ_CaseRequest1Msg.body/Launchpoint:Case</bpel:to><mapper:mapperLink><mapper:vertice id="48247263" targetPath="$iq_processHandle_IQ_CaseRequest1Msg.body/Launchpoint:Case" targetedBy="1593048250-arg0"></mapper:vertice><mapper:vertice id="1593048250" sourcePath="$CaseHighestScore/Launchpoint:Case"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
                                                         <bpel:from>1</bpel:from>
-                                                        <bpel:to>$iq_processHandle_IQ_CaseRequest1Msg.body/Launchpoint:letter</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1078491603" targetPath="$iq_processHandle_IQ_CaseRequest1Msg.body/Launchpoint:letter" targetedBy="1600194576-arg0"></mapper:vertice>
-  <mapper:vertice id="1600194576" dimension="79x24" location="557,134">
-    <mapper:value>1</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:to>$iq_processHandle_IQ_CaseRequest1Msg.body/Launchpoint:letter</bpel:to><mapper:mapperLink><mapper:vertice id="1078491603" targetPath="$iq_processHandle_IQ_CaseRequest1Msg.body/Launchpoint:letter" targetedBy="1600194576-arg0"></mapper:vertice><mapper:vertice id="1600194576" dimension="79x24" location="557,134"><mapper:value>1</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="iq_processHandle_IQ_CaseRequest1Msg" bpdm:msgVarScopeId="_LQGWIAVjEeiItoCU8_MuVA" bpdm:variableIsManaged="true" bpdm:messageType="ProcessIQCase-Process_IQ_Case:Receive_IQRequest" bpdm:binding="ProcessIQCase-Process_IQ_Case:Process_IQ_CaseAndCase_EvaluatorServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_TLe4UAVjEeiItoCU8_MuVA"></bpdm:linkset>
@@ -1372,21 +1030,11 @@
                                                 <bpdm:linkset bpdm:type="assignments">
                                                     <bpel:copy>
                                                         <bpel:from>$ode:pid</bpel:from>
-                                                        <bpel:to>$ISOResponseTracking/metrics:id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="258301046" targetPath="$ISOResponseTracking/metrics:id" targetedBy="1088246250-arg0"></mapper:vertice>
-  <mapper:vertice id="1088246250" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:to>$ISOResponseTracking/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="258301046" targetPath="$ISOResponseTracking/metrics:id" targetedBy="1088246250-arg0"></mapper:vertice><mapper:vertice id="1088246250" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
                                                         <bpel:from>current-dateTime()</bpel:from>
-                                                        <bpel:to>$ISOResponseTracking/metrics:forceIqAt</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1188890076" targetPath="$ISOResponseTracking/metrics:forceIqAt" targetedBy="1539289432-arg0"></mapper:vertice>
-  <mapper:vertice id="1539289432" dimension="109x24" location="438,102">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                                        <bpel:to>$ISOResponseTracking/metrics:forceIqAt</bpel:to><mapper:mapperLink><mapper:vertice id="1188890076" targetPath="$ISOResponseTracking/metrics:forceIqAt" targetedBy="1539289432-arg0"></mapper:vertice><mapper:vertice id="1539289432" dimension="109x24" location="438,102"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                             </bpdm:messagingtask>
@@ -1405,21 +1053,11 @@
                 <bpdm:linkset bpdm:type="assignments">
                     <bpel:copy>
                         <bpel:from>$ode:pid</bpel:from>
-                        <bpel:to>$ISOResponseTracking/metrics:id</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1741864865" targetPath="$ISOResponseTracking/metrics:id" targetedBy="1645605517-arg0"></mapper:vertice>
-  <mapper:vertice id="1645605517" sourcePath="$ode:pid"></mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$ISOResponseTracking/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="1741864865" targetPath="$ISOResponseTracking/metrics:id" targetedBy="1645605517-arg0"></mapper:vertice><mapper:vertice id="1645605517" sourcePath="$ode:pid"></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                     <bpel:copy>
                         <bpel:from>current-dateTime()</bpel:from>
-                        <bpel:to>$ISOResponseTracking/metrics:completedAt</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2034806360" targetPath="$ISOResponseTracking/metrics:completedAt" targetedBy="1878392512-arg0"></mapper:vertice>
-  <mapper:vertice id="1878392512" dimension="109x24" location="402,94">
-    <mapper:value>current-dateTime()</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                        <bpel:to>$ISOResponseTracking/metrics:completedAt</bpel:to><mapper:mapperLink><mapper:vertice id="2034806360" targetPath="$ISOResponseTracking/metrics:completedAt" targetedBy="1878392512-arg0"></mapper:vertice><mapper:vertice id="1878392512" dimension="109x24" location="402,94"><mapper:value>current-dateTime()</mapper:value></mapper:vertice></mapper:mapperLink>
                     </bpel:copy>
                 </bpdm:linkset>
             </bpdm:messagingtask>

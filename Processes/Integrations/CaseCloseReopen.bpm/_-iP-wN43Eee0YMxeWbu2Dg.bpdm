@@ -35,13 +35,6 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForException_Management" type="this:ForException_Management" bpdm:isSynchronized="true"/>
-            <wsdl:portType name="Fordb">
-                <wsdl:operation name="Receive_case_details" bpdm:source="partner-pool:///_-LGyoN5OEee5MfuigsCq1w">
-                    <wsdl:input message="this:Receive_case_detailsRequest" name="Receive_case_details"/>
-                    <wsdl:output message="this:Receive_case_detailsResponse" name="Receive_case_detailsResponse"/>
-                </wsdl:operation>
-            </wsdl:portType>
-            <bpel:binding name="CanonicBindingFordb" type="this:Fordb" bpdm:isSynchronized="true"/>
             <wsdl:portType name="Forcaller">
                 <wsdl:operation name="Receive_request" bpdm:source="partner-pool:///_uR9clt42Eee0YMxeWbu2Dg">
                     <wsdl:input message="this:Receive_requestRequest" name="Receive_request"/>
@@ -49,6 +42,13 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForcaller" type="this:Forcaller" bpdm:isSynchronized="true"/>
+            <wsdl:portType name="Fordb">
+                <wsdl:operation name="Receive_case_details" bpdm:source="partner-pool:///_-LGyoN5OEee5MfuigsCq1w">
+                    <wsdl:input message="this:Receive_case_detailsRequest" name="Receive_case_details"/>
+                    <wsdl:output message="this:Receive_case_detailsResponse" name="Receive_case_detailsResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingFordb" type="this:Fordb" bpdm:isSynchronized="true"/>
             <wsdl:portType name="ForDCM">
                 <wsdl:operation name="Receive_activity_confirmation_case_close_reason" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
                     <wsdl:input message="this:Receive_activity_confirmation_case_close_reasonRequest" name="Receive_activity_confirmation_case_close_reason"/>
@@ -96,14 +96,6 @@
             <wsdl:message name="Receive_activity_confirmation_case_close_reasonResponse" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
                 <wsdl:part name="body" element="this:Receive_activity_confirmation_case_close_reasonResponse"/>
             </wsdl:message>
-            <xs:element name="Receive_activity_confirmation_case_statusRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
-            <wsdl:message name="Receive_activity_confirmation_case_statusRequest" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
-                <wsdl:part name="body" element="this:Receive_activity_confirmation_case_statusRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_activity_confirmation_case_statusResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
-            <wsdl:message name="Receive_activity_confirmation_case_statusResponse" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
-                <wsdl:part name="body" element="this:Receive_activity_confirmation_case_statusResponse"/>
-            </wsdl:message>
             <xs:element name="Receive_activity_confirmation_case_lifecycleRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
             <wsdl:message name="Receive_activity_confirmation_case_lifecycleRequest" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
                 <wsdl:part name="body" element="this:Receive_activity_confirmation_case_lifecycleRequest"/>
@@ -111,6 +103,14 @@
             <xs:element name="Receive_activity_confirmation_case_lifecycleResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
             <wsdl:message name="Receive_activity_confirmation_case_lifecycleResponse" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
                 <wsdl:part name="body" element="this:Receive_activity_confirmation_case_lifecycleResponse"/>
+            </wsdl:message>
+            <xs:element name="Receive_activity_confirmation_case_statusRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
+            <wsdl:message name="Receive_activity_confirmation_case_statusRequest" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
+                <wsdl:part name="body" element="this:Receive_activity_confirmation_case_statusRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_activity_confirmation_case_statusResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w"/>
+            <wsdl:message name="Receive_activity_confirmation_case_statusResponse" bpdm:source="partner-pool:///_Aowg0N5PEee5MfuigsCq1w">
+                <wsdl:part name="body" element="this:Receive_activity_confirmation_case_statusResponse"/>
             </wsdl:message>
             <vprop:propertyAlias propertyName="this:prop" messageType="this:Receive_requestResponse" part="body">
                 <vprop:query>Launchpoint:pid/text()</vprop:query>
@@ -607,12 +607,22 @@
                                                         <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:source</bpel:to><mapper:mapperLink><mapper:vertice id="1587218311" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:source" targetedBy="749383868-arg0"></mapper:vertice><mapper:vertice id="749383868" dimension="167x24" location="355,465"><mapper:value>"CASECLOSEREOPENSTATUS"</mapper:value></mapper:vertice></mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
-                                                        <bpel:from>"Case Status"</bpel:from>
-                                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityType</bpel:to><mapper:mapperLink><mapper:vertice id="139068233" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityType" targetedBy="1859906351-arg0"></mapper:vertice><mapper:vertice id="1859906351" dimension="79x24" location="373,79"><mapper:value>"Case Status"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                        <bpel:from>$thisReceive_requestRequest2Msg.body/Launchpoint:status</bpel:from>
+                                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1367096569" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode" targetedBy="258387821-arg0"></mapper:vertice>
+  <mapper:vertice id="258387821" sourcePath="$thisReceive_requestRequest2Msg.body/Launchpoint:status"></mapper:vertice>
+</mapper:mapperLink>
                                                     </bpel:copy>
                                                     <bpel:copy>
-                                                        <bpel:from>$LPCase/Launchpoint:vip</bpel:from>
-                                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode</bpel:to><mapper:mapperLink><mapper:vertice id="1716024488" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode" targetedBy="105175796-arg0"></mapper:vertice><mapper:vertice id="105175796" sourcePath="$LPCase/Launchpoint:vip"></mapper:vertice></mapper:mapperLink>
+                                                        <bpel:from>"Case Status"</bpel:from>
+                                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityType</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="1756188618" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityType" targetedBy="1562074551-arg0"></mapper:vertice>
+  <mapper:vertice id="1562074551" dimension="79x24" location="366,102">
+    <mapper:value>"Case Status"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                                     </bpel:copy>
                                                 </bpdm:linkset>
                                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMSend_requestRequest1Msg" bpdm:msgVarScopeId="_0Lkx8N5PEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="createActivity-process:Receive_requestRequest" bpdm:binding="createActivity-process:processAndCallerServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_B54fkN5REee5MfuigsCq1w"></bpdm:linkset>
