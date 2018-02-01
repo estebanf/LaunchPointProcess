@@ -15,13 +15,6 @@
         <bpdm:namespaceDefinition bpdm:uri="http://thisdiagram/ExceptionManagement" bpdm:prefix="ExceptionManagement" bpdm:comment="contrib=&apos;partner-pool:///_oUmvYAbdEei9LZZ4jiz0Tg"></bpdm:namespaceDefinition>
         <bpdm:namespaceContributor bpdm:url="thisprocess://this-process-types" bpdm:label="process defined this-process-types">
             <vprop:property name="prop" type="xs:string"/>
-            <wsdl:portType name="Forclient">
-                <wsdl:operation name="Get_case_request" bpdm:source="partner-pool:///_KeUMINa5Eeeaesenvnhebw">
-                    <wsdl:input message="this:Get_case_requestRequest" name="Get_case_request"/>
-                    <wsdl:output message="this:Get_case_requestResponse" name="Get_case_requestResponse"/>
-                </wsdl:operation>
-            </wsdl:portType>
-            <bpel:binding name="CanonicBindingForclient" type="this:Forclient" bpdm:isSynchronized="true"/>
             <wsdl:portType name="ForExceptionManagement">
                 <wsdl:operation name="Receive_recover_signal" bpdm:source="partner-pool:///_oUmvYAbdEei9LZZ4jiz0Tg">
                     <wsdl:input message="this:Receive_recover_signalRequest" name="Receive_recover_signal"/>
@@ -29,6 +22,13 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForExceptionManagement" type="this:ForExceptionManagement" bpdm:isSynchronized="true"/>
+            <wsdl:portType name="Forclient">
+                <wsdl:operation name="Get_case_request" bpdm:source="partner-pool:///_KeUMINa5Eeeaesenvnhebw">
+                    <wsdl:input message="this:Get_case_requestRequest" name="Get_case_request"/>
+                    <wsdl:output message="this:Get_case_requestResponse" name="Get_case_requestResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForclient" type="this:Forclient" bpdm:isSynchronized="true"/>
             <xs:element name="Get_case_requestRequest" type="xs:int" bpdm:source="partner-pool:///_KeUMINa5Eeeaesenvnhebw"/>
             <wsdl:message name="Get_case_requestRequest" bpdm:source="partner-pool:///_KeUMINa5Eeeaesenvnhebw">
                 <wsdl:part name="body" element="this:Get_case_requestRequest"/>
