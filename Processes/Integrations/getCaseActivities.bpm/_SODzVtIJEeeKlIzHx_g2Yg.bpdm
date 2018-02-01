@@ -259,52 +259,13 @@
                                         </bpel:scope>
                                         <bpdm:gateway bpdm:label="Failed more than 3 times or validation error" bpdm:ID="_9cV5oNxVEeeU5oFZSJFCiA" bpdm:gatewayType="data_xor" bpdm:isMerge="false">
                                             <bpdm:linkset bpdm:type="case" bpdm:default="false" bpdm:ID="_AJDXgNxWEeeU5oFZSJFCiA" bpdm:targetDisplayName="No">
-                                                <bpel:condition>(true() = $DocumentValid/Validation:isValid) and ($failCount &lt;= xs:int(ode:get-property-value("MAX_RETRIES")))
-<mapper:mapperLink>
-  <mapper:vertice id="211404525" targetPath="$condition" targetedBy="1179120227-arg2"></mapper:vertice>
-  <mapper:vertice id="1179120227" dimension="79x24" location="438,82">
-    <mapper:value>and</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="2022658026" dimension="79x24" location="271,43" targetedBy="1179120227-arg0">
-    <mapper:value>=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="288289339" dimension="79x24" location="149,15" targetedBy="2022658026-arg0">
-    <mapper:value>true()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="958681793" sourcePath="$DocumentValid/Validation:isValid" targetedBy="2022658026-arg1"></mapper:vertice>
-  <mapper:vertice id="2111979421" dimension="79x24" location="264,120" targetedBy="1179120227-arg1">
-    <mapper:value>&lt;=</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1760248571" sourcePath="$failCount" targetedBy="2111979421-arg0"></mapper:vertice>
-  <mapper:vertice id="531652703" dimension="79x24" location="156,156" targetedBy="2111979421-arg1">
-    <mapper:value>xs:int()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="731347594" dimension="139x24" location="208,233" targetedBy="531652703-arg0">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1816976041" dimension="91x24" location="68,226" targetedBy="731347594-arg0">
-    <mapper:value>"MAX_RETRIES"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink></bpel:condition>
+                                                <bpel:condition>(true() = $DocumentValid/Validation:isValid) and ($failCount&lt;= xs:int(ode:get-property-value("MAX_RETRIES")))<mapper:mapperLink><mapper:vertice id="211404525" targetPath="$condition" targetedBy="1179120227-arg2"></mapper:vertice><mapper:vertice id="1179120227" dimension="79x24" location="438,82"><mapper:value>and</mapper:value></mapper:vertice><mapper:vertice id="2022658026" dimension="79x24" location="271,43" targetedBy="1179120227-arg0"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="288289339" dimension="79x24" location="149,15" targetedBy="2022658026-arg0"><mapper:value>true()</mapper:value></mapper:vertice><mapper:vertice id="958681793" sourcePath="$DocumentValid/Validation:isValid" targetedBy="2022658026-arg1"></mapper:vertice><mapper:vertice id="2111979421" dimension="79x24" location="264,120" targetedBy="1179120227-arg1"><mapper:value>&lt;=</mapper:value></mapper:vertice><mapper:vertice id="1760248571" sourcePath="$failCount" targetedBy="2111979421-arg0"></mapper:vertice><mapper:vertice id="531652703" dimension="79x24" location="156,156" targetedBy="2111979421-arg1"><mapper:value>xs:int()</mapper:value></mapper:vertice><mapper:vertice id="731347594" dimension="139x24" location="208,233" targetedBy="531652703-arg0"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1816976041" dimension="91x24" location="68,226" targetedBy="731347594-arg0"><mapper:value>"MAX_RETRIES"</mapper:value></mapper:vertice></mapper:mapperLink></bpel:condition>
                                             </bpdm:linkset>
                                             <bpdm:linkset bpdm:type="case" bpdm:default="true" bpdm:ID="_B8Y9YNxWEeeU5oFZSJFCiA" bpdm:targetDisplayName="default"></bpdm:linkset>
                                             <bpel:sequence>
                                                 <bpdm:messagingtask eventType="intermediate: timer" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="wait" bpdm:ID="_AI60oNxWEeeU5oFZSJFCiA" bpdm:isHeaderAuthorizationAware="no">
                                                     <bpdm:linkset bpdm:type="timer">
-                                                        <bpel:for>ode:get-property-value(concat("SERVICE_RETRY_WAIT", $failCount))
-<mapper:mapperLink>
-  <mapper:vertice id="1454768376" targetPath="$duration" targetedBy="2102161202-arg0"></mapper:vertice>
-  <mapper:vertice id="2102161202" dimension="139x24" location="396,48">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1981584029" dimension="79x24" location="288,84" targetedBy="2102161202-arg1">
-    <mapper:value>concat()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1245927135" dimension="134x24" location="156,36" targetedBy="1981584029-arg0">
-    <mapper:value>"SERVICE_RETRY_WAIT"</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="2047554453" sourcePath="$failCount" targetedBy="1981584029-arg1"></mapper:vertice>
-</mapper:mapperLink></bpel:for>
+                                                        <bpel:for>ode:get-property-value(concat("SERVICE_RETRY_WAIT", $failCount))<mapper:mapperLink><mapper:vertice id="1454768376" targetPath="$duration" targetedBy="2102161202-arg0"></mapper:vertice><mapper:vertice id="2102161202" dimension="139x24" location="396,48"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1981584029" dimension="79x24" location="288,84" targetedBy="2102161202-arg1"><mapper:value>concat()</mapper:value></mapper:vertice><mapper:vertice id="1245927135" dimension="134x24" location="156,36" targetedBy="1981584029-arg0"><mapper:value>"SERVICE_RETRY_WAIT"</mapper:value></mapper:vertice><mapper:vertice id="2047554453" sourcePath="$failCount" targetedBy="1981584029-arg1"></mapper:vertice></mapper:mapperLink></bpel:for>
                                                     </bpdm:linkset>
                                                 </bpdm:messagingtask>
                                                 <bpdm:messagingtask eventType="intermediate: empty" bpdm:backEdgeId="" bpdm:backEdgeParticipantType="none" bpdm:backEdgeParticipantTarget="none" bpdm:label="try again" bpdm:ID="_BIZUoNxWEeeU5oFZSJFCiA" bpdm:isHeaderAuthorizationAware="no">

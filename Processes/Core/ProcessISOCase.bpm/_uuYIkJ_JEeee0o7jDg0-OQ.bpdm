@@ -55,6 +55,14 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForISO" type="this:ForISO" bpdm:isSynchronized="true"/>
+            <xs:element name="Receive_generate_file_responseRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw"/>
+            <wsdl:message name="Receive_generate_file_responseRequest" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
+                <wsdl:part name="body" element="this:Receive_generate_file_responseRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_generate_file_responseResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw"/>
+            <wsdl:message name="Receive_generate_file_responseResponse" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
+                <wsdl:part name="body" element="this:Receive_generate_file_responseResponse"/>
+            </wsdl:message>
             <xs:element name="Receive_Activity_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw"/>
             <wsdl:message name="Receive_Activity_confirmationRequest" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
                 <wsdl:part name="body" element="this:Receive_Activity_confirmationRequest"/>
@@ -70,14 +78,6 @@
             <xs:element name="Receive_update_lifecycle_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw"/>
             <wsdl:message name="Receive_update_lifecycle_confirmationResponse" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
                 <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationResponse"/>
-            </wsdl:message>
-            <xs:element name="Receive_generate_file_responseRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw"/>
-            <wsdl:message name="Receive_generate_file_responseRequest" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
-                <wsdl:part name="body" element="this:Receive_generate_file_responseRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_generate_file_responseResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw"/>
-            <wsdl:message name="Receive_generate_file_responseResponse" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
-                <wsdl:part name="body" element="this:Receive_generate_file_responseResponse"/>
             </wsdl:message>
             <wsdl:message name="Receive_ISO_RequestRequest" bpdm:source="partner-pool:///_s6fdgLH7Eee6aeEJgFykVw">
                 <wsdl:part name="body" element="Launchpoint:DCMISORequestFile"/>
@@ -162,9 +162,9 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_5RMaAN4lEee0YMxeWbu2Dg" bpdm:label="ISO"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_uuYIkJ_JEeee0o7jDg0-OQimplicitPartner" bpdm:label="Process ISO CaseimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/updateCaseLifeCycle-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createActivity-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/generateFile-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/updateCaseLifeCycle-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/sendToISO-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/logger-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
@@ -647,29 +647,11 @@
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("ISOSENTTYPE")</bpel:from>
-                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityType</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1229455346" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityType" targetedBy="1968698921-arg0"></mapper:vertice>
-  <mapper:vertice id="1968698921" dimension="139x24" location="288,86">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1135970332" dimension="91x24" location="53,148" targetedBy="1968698921-arg1">
-    <mapper:value>"ISOSENTTYPE"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityType</bpel:to><mapper:mapperLink><mapper:vertice id="1229455346" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityType" targetedBy="1968698921-arg0"></mapper:vertice><mapper:vertice id="1968698921" dimension="139x24" location="288,86"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1135970332" dimension="91x24" location="53,148" targetedBy="1968698921-arg1"><mapper:value>"ISOSENTTYPE"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("ISOSENTCODE")</bpel:from>
-                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="703941685" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode" targetedBy="491327688-arg0"></mapper:vertice>
-  <mapper:vertice id="491327688" dimension="139x24" location="372,130">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="437964856" dimension="95x24" location="48,192" targetedBy="491327688-arg1">
-    <mapper:value>"ISOSENTCODE"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode</bpel:to><mapper:mapperLink><mapper:vertice id="703941685" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityCode" targetedBy="491327688-arg0"></mapper:vertice><mapper:vertice id="491327688" dimension="139x24" location="372,130"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="437964856" dimension="95x24" location="48,192" targetedBy="491327688-arg1"><mapper:value>"ISOSENTCODE"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>current-dateTime()</bpel:from>
@@ -677,16 +659,7 @@
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("BPMUSER")</bpel:from>
-                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:CreatedBy</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="519824890" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:CreatedBy" targetedBy="1000316642-arg0"></mapper:vertice>
-  <mapper:vertice id="1000316642" dimension="139x24" location="446,281">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1936387917" dimension="79x24" location="46,303" targetedBy="1000316642-arg1">
-    <mapper:value>"BPMUSER"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:CreatedBy</bpel:to><mapper:mapperLink><mapper:vertice id="519824890" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:CreatedBy" targetedBy="1000316642-arg0"></mapper:vertice><mapper:vertice id="1000316642" dimension="139x24" location="446,281"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1936387917" dimension="79x24" location="46,303" targetedBy="1000316642-arg1"><mapper:value>"BPMUSER"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>"ISO"</bpel:from>
@@ -694,16 +667,7 @@
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("ISOSENTDESC")</bpel:from>
-                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityDescription</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="2121569291" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityDescription" targetedBy="2052741175-arg0"></mapper:vertice>
-  <mapper:vertice id="2052741175" dimension="139x24" location="234,192">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1340683226" dimension="92x24" location="48,240" targetedBy="2052741175-arg1">
-    <mapper:value>"ISOSENTDESC"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityDescription</bpel:to><mapper:mapperLink><mapper:vertice id="2121569291" targetPath="$dCMSend_requestRequest1Msg.body/Launchpoint:Activity/Launchpoint:ActivityDescription" targetedBy="2052741175-arg0"></mapper:vertice><mapper:vertice id="2052741175" dimension="139x24" location="234,192"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1340683226" dimension="92x24" location="48,240" targetedBy="2052741175-arg1"><mapper:value>"ISOSENTDESC"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                 </bpdm:linkset>
                                 <bpdm:linkset bpdm:type="outgoingMessage" bpdm:bpeltype="invoke-request" bpdm:messageVariable="dCMSend_requestRequest1Msg" bpdm:msgVarScopeId="_P-eiEN5ZEee5MfuigsCq1w" bpdm:variableIsManaged="true" bpdm:messageType="createActivity-process:Receive_requestRequest" bpdm:binding="createActivity-process:processAndCallerServiceBinding" bpdm:isHeaderAuthorizationAware="no" bpdm:ID="_l4qhcN5ZEee5MfuigsCq1w"></bpdm:linkset>
@@ -753,16 +717,7 @@
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>ode:get-property-value("UPDLCISO")</bpel:from>
-                                        <bpel:to>$dCMReceive_update_lifecycle_requestRequest1Msg.body/Launchpoint:lifeCycle</bpel:to>
-<mapper:mapperLink>
-  <mapper:vertice id="1190991939" targetPath="$dCMReceive_update_lifecycle_requestRequest1Msg.body/Launchpoint:lifeCycle" targetedBy="2054010800-arg0"></mapper:vertice>
-  <mapper:vertice id="2054010800" dimension="139x24" location="353,110">
-    <mapper:value>ode:get-property-value()</mapper:value>
-  </mapper:vertice>
-  <mapper:vertice id="1757064291" dimension="79x24" location="125,121" targetedBy="2054010800-arg1">
-    <mapper:value>"UPDLCISO"</mapper:value>
-  </mapper:vertice>
-</mapper:mapperLink>
+                                        <bpel:to>$dCMReceive_update_lifecycle_requestRequest1Msg.body/Launchpoint:lifeCycle</bpel:to><mapper:mapperLink><mapper:vertice id="1190991939" targetPath="$dCMReceive_update_lifecycle_requestRequest1Msg.body/Launchpoint:lifeCycle" targetedBy="2054010800-arg0"></mapper:vertice><mapper:vertice id="2054010800" dimension="139x24" location="353,110"><mapper:value>ode:get-property-value()</mapper:value></mapper:vertice><mapper:vertice id="1757064291" dimension="79x24" location="125,121" targetedBy="2054010800-arg1"><mapper:value>"UPDLCISO"</mapper:value></mapper:vertice></mapper:mapperLink>
                                     </bpel:copy>
                                     <bpel:copy>
                                         <bpel:from>"ISO"</bpel:from>

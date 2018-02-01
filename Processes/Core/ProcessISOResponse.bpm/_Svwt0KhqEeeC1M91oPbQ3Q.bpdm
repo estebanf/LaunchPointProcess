@@ -27,13 +27,6 @@
             <vprop:property name="caseid" type="xs:string"/>
             <vprop:property name="clientid" type="xs:string"/>
             <vprop:property name="environmentid" type="xs:string"/>
-            <wsdl:portType name="ForISO">
-                <wsdl:operation name="Receive_ISO_Response" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
-                    <wsdl:input message="this:Receive_ISO_ResponseRequest" name="Receive_ISO_Response"/>
-                    <wsdl:output message="this:Receive_ISO_ResponseResponse" name="Receive_ISO_ResponseResponse"/>
-                </wsdl:operation>
-            </wsdl:portType>
-            <bpel:binding name="CanonicBindingForISO" type="this:ForISO" bpdm:isSynchronized="true"/>
             <wsdl:portType name="ForDCM">
                 <wsdl:operation name="Receive_Scoring" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                     <wsdl:input message="this:Receive_ScoringRequest" name="Receive_Scoring"/>
@@ -57,22 +50,13 @@
                 </wsdl:operation>
             </wsdl:portType>
             <bpel:binding name="CanonicBindingForDCM" type="this:ForDCM" bpdm:isSynchronized="true"/>
-            <xs:element name="Receive_update_lifecycle_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_update_lifecycle_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_update_lifecycle_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_update_lifecycle_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationResponse"/>
-            </wsdl:message>
-            <xs:element name="Receive_generate_file_confirmaationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_generate_file_confirmaationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_generate_file_confirmaationRequest"/>
-            </wsdl:message>
-            <xs:element name="Receive_generate_file_confirmaationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
-            <wsdl:message name="Receive_generate_file_confirmaationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
-                <wsdl:part name="body" element="this:Receive_generate_file_confirmaationResponse"/>
-            </wsdl:message>
+            <wsdl:portType name="ForISO">
+                <wsdl:operation name="Receive_ISO_Response" bpdm:source="partner-pool:///_3Bc-QKhqEeeC1M91oPbQ3Q">
+                    <wsdl:input message="this:Receive_ISO_ResponseRequest" name="Receive_ISO_Response"/>
+                    <wsdl:output message="this:Receive_ISO_ResponseResponse" name="Receive_ISO_ResponseResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+            <bpel:binding name="CanonicBindingForISO" type="this:ForISO" bpdm:isSynchronized="true"/>
             <xs:element name="Receive_hold_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
             <wsdl:message name="Receive_hold_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                 <wsdl:part name="body" element="this:Receive_hold_confirmationRequest"/>
@@ -88,6 +72,22 @@
             <xs:element name="Receive_ScoringResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
             <wsdl:message name="Receive_ScoringResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
                 <wsdl:part name="body" element="this:Receive_ScoringResponse"/>
+            </wsdl:message>
+            <xs:element name="Receive_update_lifecycle_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_update_lifecycle_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_update_lifecycle_confirmationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_update_lifecycle_confirmationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_update_lifecycle_confirmationResponse"/>
+            </wsdl:message>
+            <xs:element name="Receive_generate_file_confirmaationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_generate_file_confirmaationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_generate_file_confirmaationRequest"/>
+            </wsdl:message>
+            <xs:element name="Receive_generate_file_confirmaationResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
+            <wsdl:message name="Receive_generate_file_confirmaationResponse" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
+                <wsdl:part name="body" element="this:Receive_generate_file_confirmaationResponse"/>
             </wsdl:message>
             <xs:element name="Receive_reopen_case_confirmationRequest" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g"/>
             <wsdl:message name="Receive_reopen_case_confirmationRequest" bpdm:source="partner-pool:///_Kox0oLA2EeeytYusscoK1g">
@@ -165,13 +165,13 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_Svwt0KhqEeeC1M91oPbQ3QimplicitPartner" bpdm:label="ISO Response ManagerimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_jdCQsAViEeiItoCU8_MuVA" bpdm:label="iq process"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getCaseFromRequestId.sql/getCaseFromRequestId.sql.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/CaseCloseReopen-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createActivity-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/updateCaseLifeCycle-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/generateFile-process.wsdl"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Rules/ISOScoreProcessing.bre/dtws_launchpointprocess_rules_isoscoreprocessing/META-INF/dtws_launchpointprocess_rules_isoscoreprocessing.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/createActivity-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/CaseCloseReopen-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/logger-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Rules/ISOScoreProcessing.bre/dtws_launchpointprocess_rules_isoscoreprocessing/META-INF/dtws_launchpointprocess_rules_isoscoreprocessing.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/ProcessIQCase-Process_IQ_Case.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Connectors/Database/getCaseFromRequestId.sql/getCaseFromRequestId.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
