@@ -8,7 +8,7 @@
         <xsl:when test="ClientId">
           <xsl:call-template name="validator">
             <xsl:with-param name="obj" select="ClientId"/>
-            <xsl:with-param name="dataType" select="integer"/>
+            <xsl:with-param name="dataType" select="'integer'"/>
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
@@ -20,7 +20,7 @@
         <xsl:when test="CaseId">
           <xsl:call-template name="validator">
             <xsl:with-param name="obj" select="CaseId"/>
-            <xsl:with-param name="dataType" select="integer"/>
+            <xsl:with-param name="dataType" select="'integer'"/>
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
@@ -32,7 +32,7 @@
         <xsl:when test="CreateDate">
           <xsl:call-template name="validator">
             <xsl:with-param name="obj" select="CreateDate"/>
-            <xsl:with-param name="dataType" select="datetime"/>
+            <xsl:with-param name="dataType" select="'datetime'"/>
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
@@ -44,7 +44,7 @@
         <xsl:when test="CreatedBy">
           <xsl:call-template name="validator">
             <xsl:with-param name="obj" select="CreatedBy"/>
-            <xsl:with-param name="dataType" select="string"/>
+            <xsl:with-param name="dataType" select="'string'"/>
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
@@ -56,7 +56,7 @@
         <xsl:when test="ModifyDate">
           <xsl:call-template name="validator">
             <xsl:with-param name="obj" select="ModifyDate"/>
-            <xsl:with-param name="dataType" select="datetime"/>
+            <xsl:with-param name="dataType" select="'datetime'"/>
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
@@ -68,7 +68,7 @@
         <xsl:when test="ModifiedBy">
           <xsl:call-template name="validator">
             <xsl:with-param name="obj" select="ModifiedBy"/>
-            <xsl:with-param name="dataType" select="string"/>
+            <xsl:with-param name="dataType" select="'string'"/>
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
@@ -80,7 +80,7 @@
         <xsl:when test="DiaryType">
           <xsl:call-template name="validator">
             <xsl:with-param name="obj" select="DiaryType"/>
-            <xsl:with-param name="dataType" select="string"/>
+            <xsl:with-param name="dataType" select="'string'"/>
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
@@ -92,7 +92,7 @@
         <xsl:when test="DiaryStatus">
           <xsl:call-template name="validator">
             <xsl:with-param name="obj" select="DiaryStatus"/>
-            <xsl:with-param name="dataType" select="string"/>
+            <xsl:with-param name="dataType" select="'string'"/>
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
@@ -104,7 +104,7 @@
         <xsl:when test="DueDate">
           <xsl:call-template name="validator">
             <xsl:with-param name="obj" select="DueDate"/>
-            <xsl:with-param name="dataType" select="datetime"/>
+            <xsl:with-param name="dataType" select="'datetime'"/>
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
@@ -116,7 +116,7 @@
         <xsl:when test="DiaryTo">
           <xsl:call-template name="validator">
             <xsl:with-param name="obj" select="DiaryTo"/>
-            <xsl:with-param name="dataType" select="string"/>
+            <xsl:with-param name="dataType" select="'string'"/>
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
@@ -128,7 +128,7 @@
         <xsl:when test="Description">
           <xsl:call-template name="validator">
             <xsl:with-param name="obj" select="Description"/>
-            <xsl:with-param name="dataType" select="string"/>
+            <xsl:with-param name="dataType" select="'string'"/>
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>false</xsl:otherwise>
