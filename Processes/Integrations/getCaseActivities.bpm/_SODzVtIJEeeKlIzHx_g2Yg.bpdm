@@ -62,9 +62,9 @@
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Core/CaseEvaluator-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/BusinessRule.xsd"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/logger-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Services/REST/QueryCaseActivities.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/integrations/getCaseActivities.xsd"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/logger-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Schemas/integrations/Validation.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar"/>
         <bpdm:namespaceContributor bpdm:url="project:///Metrics/metrics.xvar.xsd"/>
@@ -326,7 +326,24 @@
                                                         </bpel:copy>
                                                         <bpel:copy>
                                                             <bpel:from>if (false() = $DocumentValid/Validation:isValid) then ($DocumentValid/Validation:element) else ("Error calling get activities")</bpel:from>
-                                                            <bpel:to>$ExecutionError/metrics:message</bpel:to><mapper:mapperLink><mapper:vertice id="186744160" targetPath="$ExecutionError/metrics:message" targetedBy="936102389-arg3"></mapper:vertice><mapper:vertice id="936102389" dimension="79x24" location="280,716"><mapper:value>if-then-else</mapper:value></mapper:vertice><mapper:vertice id="423809353" dimension="79x24" location="156,696" targetedBy="936102389-arg0"><mapper:value>=</mapper:value></mapper:vertice><mapper:vertice id="630839792" dimension="79x24" location="60,676" targetedBy="423809353-arg0"><mapper:value>false()</mapper:value></mapper:vertice><mapper:vertice id="1407565021" sourcePath="$DocumentValid/Validation:isValid" targetedBy="423809353-arg1"></mapper:vertice><mapper:vertice id="603224672" sourcePath="$DocumentValid/Validation:element" targetedBy="936102389-arg1"></mapper:vertice><mapper:vertice id="806344195" dimension="150x24" location="24,804" targetedBy="936102389-arg2"><mapper:value>"Error calling get activities"</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                            <bpel:to>$ExecutionError/metrics:message</bpel:to>
+<mapper:mapperLink>
+  <mapper:vertice id="236398328" targetPath="$ExecutionError/metrics:message" targetedBy="1001672364-arg3"></mapper:vertice>
+  <mapper:vertice id="1001672364" dimension="79x24" location="348,708">
+    <mapper:value>if-then-else</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="312271169" dimension="79x24" location="156,696" targetedBy="1001672364-arg0">
+    <mapper:value>=</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="269254567" dimension="79x24" location="60,676" targetedBy="312271169-arg0">
+    <mapper:value>false()</mapper:value>
+  </mapper:vertice>
+  <mapper:vertice id="1273811322" sourcePath="$DocumentValid/Validation:isValid" targetedBy="312271169-arg1"></mapper:vertice>
+  <mapper:vertice id="688599330" sourcePath="$DocumentValid/Validation:element" targetedBy="1001672364-arg1"></mapper:vertice>
+  <mapper:vertice id="1917652055" dimension="150x24" location="108,780" targetedBy="1001672364-arg2">
+    <mapper:value>"Error calling get activities"</mapper:value>
+  </mapper:vertice>
+</mapper:mapperLink>
                                                         </bpel:copy>
                                                     </bpdm:linkset>
                                                 </bpdm:messagingtask>

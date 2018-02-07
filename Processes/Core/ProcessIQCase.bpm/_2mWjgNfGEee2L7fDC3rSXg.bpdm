@@ -75,14 +75,6 @@
             <wsdl:message name="Get_resultsResponse" bpdm:source="partner-pool:///_B8ixENZFEeeaesenvnhebw">
                 <wsdl:part name="body" element="this:Get_resultsResponse"/>
             </wsdl:message>
-            <xs:element name="Get_DCM_Ack.Request" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
-            <wsdl:message name="Get_DCM_Ack.Request" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
-                <wsdl:part name="body" element="this:Get_DCM_Ack.Request"/>
-            </wsdl:message>
-            <xs:element name="Get_DCM_Ack.Response" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
-            <wsdl:message name="Get_DCM_Ack.Response" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
-                <wsdl:part name="body" element="this:Get_DCM_Ack.Response"/>
-            </wsdl:message>
             <xs:element name="Receive_IQ_Batch_ResultsRequest" type="Launchpoint:IQBatchResponseType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
             <wsdl:message name="Receive_IQ_Batch_ResultsRequest" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
                 <wsdl:part name="body" element="this:Receive_IQ_Batch_ResultsRequest"/>
@@ -98,6 +90,14 @@
             <xs:element name="Receive_acknowledgementResponse" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
             <wsdl:message name="Receive_acknowledgementResponse" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
                 <wsdl:part name="body" element="this:Receive_acknowledgementResponse"/>
+            </wsdl:message>
+            <xs:element name="Get_DCM_Ack.Request" type="Launchpoint:CaseIdentifierType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
+            <wsdl:message name="Get_DCM_Ack.Request" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
+                <wsdl:part name="body" element="this:Get_DCM_Ack.Request"/>
+            </wsdl:message>
+            <xs:element name="Get_DCM_Ack.Response" type="Launchpoint:BpmAckType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
+            <wsdl:message name="Get_DCM_Ack.Response" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
+                <wsdl:part name="body" element="this:Get_DCM_Ack.Response"/>
             </wsdl:message>
             <xs:element name="Receive_resultsRequest" type="Launchpoint:IQLetterType" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw"/>
             <wsdl:message name="Receive_resultsRequest" bpdm:source="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw">
@@ -161,8 +161,8 @@
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_DJOeoNkOEeee0bCkMq0JVw" bpdm:label="DCM"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_2mWjgNfGEee2L7fDC3rSXgimplicitPartner" bpdm:label="Queue MonitorimplicitPartner"/>
         <bpdm:namespaceContributor bpdm:url="partner-pool:///_xRG1oLwFEee_aqBavMEZDg" bpdm:label="Process IQ Case"/>
-        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/HumanVerification-process.wsdl"/>
+        <bpdm:namespaceContributor bpdm:url="project:///Schemas/Launchpoint.xsd"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getOldestQueuedCases-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/generateFile-process.wsdl"/>
         <bpdm:namespaceContributor bpdm:url="project:///Processes/Integrations/getIQBatch-process.wsdl"/>
@@ -452,10 +452,6 @@
                                                                             <bpel:to>$ExecutionError/metrics:id</bpel:to><mapper:mapperLink><mapper:vertice id="1405220014" targetPath="$ExecutionError/metrics:id" targetedBy="422329312-arg4"></mapper:vertice><mapper:vertice id="422329312" dimension="79x24" location="279,76"><mapper:value>concat()</mapper:value></mapper:vertice><mapper:vertice id="70174435" sourcePath="$ode:pid" targetedBy="422329312-arg0"></mapper:vertice><mapper:vertice id="2041281014" sourcePath="$IQDBCaseType/Launchpoint:Case/Launchpoint:CaseId" targetedBy="422329312-arg1"></mapper:vertice><mapper:vertice id="1668782260" sourcePath="$IQDBCaseType/Launchpoint:Case/Launchpoint:ClientId" targetedBy="422329312-arg2"></mapper:vertice><mapper:vertice id="320343241" sourcePath="$IQDBCaseType/Launchpoint:Case/Launchpoint:EnvironmentId" targetedBy="422329312-arg3"></mapper:vertice></mapper:mapperLink>
                                                                         </bpel:copy>
                                                                         <bpel:copy>
-                                                                            <bpel:from>$IQDBCaseType/Launchpoint:letter</bpel:from>
-                                                                            <bpel:to>$ExecutionError/metrics:CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="1295435979" targetPath="$ExecutionError/metrics:CaseId" targetedBy="562289456-arg0"></mapper:vertice><mapper:vertice id="562289456" sourcePath="$IQDBCaseType/Launchpoint:letter"></mapper:vertice></mapper:mapperLink>
-                                                                        </bpel:copy>
-                                                                        <bpel:copy>
                                                                             <bpel:from>$IQDBCaseType/Launchpoint:Case/Launchpoint:ClientId</bpel:from>
                                                                             <bpel:to>$ExecutionError/metrics:ClientId</bpel:to><mapper:mapperLink><mapper:vertice id="1160284354" targetPath="$ExecutionError/metrics:ClientId" targetedBy="1479817486-arg0"></mapper:vertice><mapper:vertice id="1479817486" sourcePath="$IQDBCaseType/Launchpoint:Case/Launchpoint:ClientId"></mapper:vertice></mapper:mapperLink>
                                                                         </bpel:copy>
@@ -494,6 +490,10 @@
                                                                         <bpel:copy>
                                                                             <bpel:from>true()</bpel:from>
                                                                             <bpel:to>$delayOccured</bpel:to><mapper:mapperLink><mapper:vertice id="1914931980" targetPath="$delayOccured" targetedBy="436419426-arg0"></mapper:vertice><mapper:vertice id="436419426" dimension="79x24" location="267,242"><mapper:value>true()</mapper:value></mapper:vertice></mapper:mapperLink>
+                                                                        </bpel:copy>
+                                                                        <bpel:copy>
+                                                                            <bpel:from>$IQDBCaseType/Launchpoint:Case/Launchpoint:CaseId</bpel:from>
+                                                                            <bpel:to>$ExecutionError/metrics:CaseId</bpel:to><mapper:mapperLink><mapper:vertice id="892907587" targetPath="$ExecutionError/metrics:CaseId" targetedBy="1672019259-arg0"></mapper:vertice><mapper:vertice id="1672019259" sourcePath="$IQDBCaseType/Launchpoint:Case/Launchpoint:CaseId"></mapper:vertice></mapper:mapperLink>
                                                                         </bpel:copy>
                                                                     </bpdm:linkset>
                                                                 </bpdm:messagingtask>

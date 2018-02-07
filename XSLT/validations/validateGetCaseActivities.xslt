@@ -3,17 +3,17 @@
   <xsl:output/>
   <xsl:template match="/iob_element">
     <!--ClientId-->
-    <xsl:variable name="chkClientId">
-      <xsl:choose>
-        <xsl:when test="ClientId">
-          <xsl:call-template name="validator">
-            <xsl:with-param name="obj" select="ClientId"/>
-            <xsl:with-param name="dataType" select="'integer'"/>
-          </xsl:call-template>
-        </xsl:when>
-        <xsl:otherwise>false</xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
+<!--     <xsl:variable name="chkClientId"> -->
+<!--       <xsl:choose> -->
+<!--         <xsl:when test="ClientId"> -->
+<!--           <xsl:call-template name="validator"> -->
+<!--             <xsl:with-param name="obj" select="ClientId"/> -->
+<!--             <xsl:with-param name="dataType" select="'integer'"/> -->
+<!--           </xsl:call-template> -->
+<!--         </xsl:when> -->
+<!--         <xsl:otherwise>false</xsl:otherwise> -->
+<!--       </xsl:choose> -->
+<!--     </xsl:variable> -->
     <!--CaseId-->
     <xsl:variable name="chkCaseId">
       <xsl:choose>
@@ -112,10 +112,10 @@
     </xsl:variable>
     <Validation:DocumentValid>
       <xsl:choose>
-        <xsl:when test="$chkClientId='false'">
-          <Validation:isValid>false</Validation:isValid>
-          <Validation:element>ClientId</Validation:element>
-        </xsl:when>
+<!--         <xsl:when test="$chkClientId='false'"> -->
+<!--           <Validation:isValid>false</Validation:isValid> -->
+<!--           <Validation:element>ClientId</Validation:element> -->
+<!--         </xsl:when> -->
         <xsl:when test="$chkCaseId='false'">
           <Validation:isValid>false</Validation:isValid>
           <Validation:element>CaseId</Validation:element>
